@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title><%= page_title %></title>
+  <%= stylesheet_link_tag :application, :media => 'all' %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="<%= body_class %>">
+  <div id="header">
+    <% if signed_in? -%>
+      <%= link_to "Sign out", sign_out_path, :method => :delete %>
+    <% else -%>
+      <%= link_to "Sign in", sign_in_path %>
+    <% end -%>
+  </div>
+  <%= render 'shared/flashes' -%>
+  <%= yield %>
+  <%= render 'shared/javascript' %>
+</body>
+</html>

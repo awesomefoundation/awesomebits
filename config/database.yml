@@ -1,0 +1,13 @@
+development: &default
+  adapter: postgresql
+  database: awesomefoundation_development
+  pool: 5
+  timeout: 5000
+
+test: &test
+  <<: *default
+  database: awesomefoundation_test
+  min_messages: warning
+
+cucumber:
+  <<: *test

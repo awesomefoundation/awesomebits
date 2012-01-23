@@ -1,0 +1,14 @@
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/
+.sass-cache/
+db/schema.rb
+public/system
+*.DS_Store
+coverage/*
+*.swp
+rerun.txt
+tags
+!.keep
+vendor/bundler_gems
