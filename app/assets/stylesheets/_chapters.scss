@@ -1,0 +1,105 @@
+.projects-wrapper {
+  margin: 0 auto;
+  width: grid-width(12);
+}
+
+header {
+  @extend .clearfix;
+
+  h1 {
+    float: left;
+    font-size: 40px;
+  }
+
+  .external-links {
+    float: right;
+    margin-top: 12px;
+
+    ol {
+      margin: 0;
+
+      li {
+        float: right;
+        list-style: none;
+        margin-left: 10px;
+
+        &:last-child {
+          margin: 0px;
+        }
+
+        a {
+          background: rgb(230, 230, 230);
+          @include border-radius(15px);
+          display: block;
+          height: 30px;
+          width: 30px;
+
+          &:hover {
+            background: rgb(252, 103, 147);
+          }
+        }
+      }
+    }
+  }
+}
+
+.projects {
+  @extend .clearfix;
+
+  ol {
+    li {
+      background: rgb(230,230,230);
+      float: left;
+      height: 200px;
+      list-style: none;
+      margin-bottom: $gw-gutter;
+      margin-right: $gw-gutter;
+      width: grid-width(4);
+
+      &:nth-child(3n) {
+        margin-right: 0px;
+      }
+
+      section.project {
+        img {
+        }
+
+        .meta-data {
+        }
+      }
+    }
+  }
+}
+
+.chapter-info {
+  background: rgb(230,230,230);
+  margin-top: 60px;
+
+  .info-wrapper {
+    @extend .clearfix;
+    margin: 0 auto;
+    padding: 40px 0px;
+    width: grid-width(12);
+
+    h1 {
+      border-bottom: 1px solid rgb(200,200,200);
+      float: none;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      text-align: center;
+    }
+
+    .description {
+      float: left;
+      height: 600px;
+      margin-right: $gw-gutter;
+      width: grid-width(4);
+    }
+
+    .trustees {
+      float: left;
+      height: 600px;
+      width: grid-width(8);
+    }
+  }
+}

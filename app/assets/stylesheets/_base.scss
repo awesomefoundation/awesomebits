@@ -1,7 +1,7 @@
 html, body {
 }
 
-header {
+header.main {
   background: rgb(0,0,0);
   height: 50px;
   margin-bottom: 80px;
@@ -41,6 +41,4 @@ header {
 }
 
 section.container {
-  margin: 0 auto;
-  width: grid-width(12);
 }

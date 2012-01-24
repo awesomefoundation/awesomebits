@@ -9,9 +9,9 @@
 <body class="<%= body_class %>">
   <%= render :partial => 'shared/navigation' %>
   <section class="container">
+    <%= render 'shared/flashes' -%>
+    <%= yield %>
   </section>
-  <%= render 'shared/flashes' -%>
-  <%= yield %>
   <%= render 'shared/javascript' %>
 </body>
 </html>
