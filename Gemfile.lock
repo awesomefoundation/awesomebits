@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/plataformatec/simple_form.git
+  revision: 8faff4c0ec37ac40fc2ff8bbea984279672088ee
+  specs:
+    simple_form (2.0.0.dev)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -245,6 +253,7 @@ DEPENDENCIES
   sass-rails (~> 3.2.0)
   sham_rack
   shoulda-matchers
+  simple_form!
   sprockets-redirect
   thin
   timecop
