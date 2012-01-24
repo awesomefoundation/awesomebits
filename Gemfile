@@ -38,6 +38,7 @@ group :development, :test do
 end
 
 group :test do
+  gem "pry"
   gem "turnip"
   gem "capybara"
   gem "capybara-webkit", "~> 0.7.1"
