@@ -1,0 +1,46 @@
+html, body {
+}
+
+header {
+  background: rgb(0,0,0);
+  height: 50px;
+  margin-bottom: 80px;
+  width: 100%;
+
+  nav {
+    @extend .clearfix;
+    margin: 0 auto;
+    padding: 15px 0px;
+    width: grid-width(12);
+
+    h1 {
+      color: rgb(255,255,255);
+      float: left;
+      font-size: 16px;
+      font-style: italic;
+      text-transform: uppercase;
+    }
+
+    ol {
+      li {
+        float: right;
+        list-style: none;
+        margin-left: 20px;
+
+        &:last-child {
+          margin: 0;
+        }
+
+        a {
+          color: rgb(255,255,255);
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+section.container {
+  margin: 0 auto;
+  width: grid-width(12);
+}

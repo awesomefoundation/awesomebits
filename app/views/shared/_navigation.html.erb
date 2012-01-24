@@ -1,0 +1,31 @@
+<header id="header">
+  <nav>
+    <h1>The Awesome Foundation</h1>
+    <ol>
+      <li>
+        <a href="#">Apply</a>
+      </li>
+      <li>
+        <% if signed_in? -%>
+          <%= link_to "Sign out", sign_out_path, :method => :delete %>
+        <% else -%>
+          <%= link_to "Sign in", sign_in_path %>
+        <% end -%>
+      </li>
+      <li>
+        <a href="#">Contact</a>
+      </li>
+      <li>
+        <a href="#">faq</a>
+      </li>
+      <li>
+        <a href="#">About</a>
+      </li>
+      <li>
+        <a href="#">Blog</a>
+      </li>
+      <li>
+        <a href="#">Chapters</a>
+      </li>
+  <nav>
+</header>
