@@ -35,7 +35,7 @@ header {
           width: 30px;
 
           &:hover {
-            background: rgb(252, 103, 147);
+            background: $pink;
           }
         }
       }
@@ -71,11 +71,11 @@ header {
   }
 }
 
-.chapter-info {
+.info-wrapper {
   background: rgb(230,230,230);
   margin-top: 60px;
 
-  .info-wrapper {
+  .chapter-info {
     @extend .clearfix;
     margin: 0 auto;
     padding: 40px 0px;
@@ -84,6 +84,8 @@ header {
     h1 {
       border-bottom: 1px solid rgb(200,200,200);
       float: none;
+      font: normal 40px $serif;
+      text-transform: uppercase;
       margin-bottom: 30px;
       padding-bottom: 20px;
       text-align: center;
@@ -94,12 +96,92 @@ header {
       height: 600px;
       margin-right: $gw-gutter;
       width: grid-width(4);
+
+      article {
+        margin-bottom: 30px;
+
+        h2 {
+          font-size: 16px;
+          margin-bottom: 15px;
+        }
+
+        p {
+          font: 300 13px/20px $sans-serif;
+          font-weight: 300px;
+          margin-bottom: 0px;
+        }
+
+        &.about {
+          border-bottom: 1px solid rgb(200,200,200);
+          padding-bottom: 30px;
+        }
+      }
+    }
+
+    ol.feed {
+      margin: 0px;
+
+      li {
+        list-style: none;
+        margin-bottom: 10px;
+
+        &:last-child {
+          margin: 0px;
+        }
+      }
     }
 
     .trustees {
       float: left;
       height: 600px;
       width: grid-width(8);
+
+      ol {
+        @extend .clearfix;
+        margin: 5px 0 0 0;
+
+        li {
+          background: rgb(240,240,240);
+          @include border-radius(35px);
+          float: left;
+          height: 60px;
+          list-style: none;
+          margin: 0 $gw-gutter 30px 0;
+          width: grid-width(4);
+
+          &:nth-child(even) {
+            margin-right: 0px;
+          }
+
+          article.trustee {
+            padding-top: 15px;
+            position: relative;
+
+            a.avatar {
+              background: white;
+              border: 5px solid rgb(200,200,200);
+              @include border-radius(35px);
+              display: block;
+              height: 60px;
+              left: 0px;
+              position: absolute;
+              top: -5px;
+              width: 60px;
+
+              &:hover {
+                background: $pink;
+                border-color: rgba(255,255,255, 1);
+              }
+            }
+
+            h3 {
+              font: normal 16px/18px $serif;
+              text-transform: uppercase;
+              margin-left: 85px;
+            }
+          }
+        }
+      }
     }
   }
 }

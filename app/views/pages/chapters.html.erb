@@ -31,8 +31,8 @@
   </section>
 </div>
 
-<section class="chapter-info">
-  <div class="info-wrapper">
+<div class="info-wrapper">
+  <section class="chapter-info">
     <header>
       <h1>We Fund Awesome</h1>
     </header>
@@ -44,7 +44,7 @@
       </article>
       <article class="upcoming-events">
         <h2>Upcoming Events</h2>
-        <ol>
+        <ol class="feed">
           <li>
             <p>2/2/12 - Melbourne Grant Party</p>
           </li>
@@ -58,7 +58,7 @@
       </article>
       <article class="rss-feed">
         <h2>Recent Posts</h2>
-        <ol>
+        <ol class="feed">
           <li>
             <p>Awesome Melbourne teams up with Pozible</p>
           </li>
@@ -73,6 +73,18 @@
     </section>
 
     <section class="trustees">
+      <ol>
+        <% 10.times do %>
+        <li>
+          <article class="trustee">
+            <a class="avatar" href="#">
+              <img />
+            </a>
+            <h3>Trustee Name</h3>
+          </article>
+        </li>
+      <% end %>
+      </ol>
     </section>
-  </div>
-</section>
+  </section>
+</div>
