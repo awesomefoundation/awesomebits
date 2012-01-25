@@ -73,7 +73,7 @@ header {
 
 .info-wrapper {
   background: rgb(230,230,230);
-  margin-top: 60px;
+  margin: 60px 0px;
 
   .chapter-info {
     @extend .clearfix;
@@ -93,7 +93,6 @@ header {
 
     .description {
       float: left;
-      height: 600px;
       margin-right: $gw-gutter;
       width: grid-width(4);
 
@@ -133,7 +132,6 @@ header {
 
     .trustees {
       float: left;
-      height: 600px;
       width: grid-width(8);
 
       ol {
@@ -154,19 +152,19 @@ header {
           }
 
           article.trustee {
-            padding-top: 15px;
+            padding-top: 10px;
             position: relative;
 
             a.avatar {
               background: white;
-              border: 5px solid rgb(200,200,200);
+              border: 4px solid rgb(200,200,200);
               @include border-radius(35px);
               display: block;
-              height: 60px;
+              height: 62px;
               left: 0px;
               position: absolute;
               top: -5px;
-              width: 60px;
+              width: 62px;
 
               &:hover {
                 background: $pink;
