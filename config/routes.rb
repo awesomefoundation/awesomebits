@@ -2,6 +2,7 @@ Awesomefoundation::Application.routes.draw do
   resource :sessions, :to => 'Clearance::Sessions'
 
   match '/chapters/show', :to => 'pages#chapters'
+  match '/projects/show', :to => 'pages#projects'
   resources :users
   resources :chapters do
     resources :invitations

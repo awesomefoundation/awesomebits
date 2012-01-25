@@ -1,0 +1,17 @@
+//*****************************************************
+//RSS and Events Sidebar Feed
+//*****************************************************
+
+ol.feed {
+  margin: 0px;
+
+  li {
+    list-style: none;
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin: 0px;
+    }
+  }
+}
+
