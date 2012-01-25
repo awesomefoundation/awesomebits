@@ -6,4 +6,4 @@ Feature: An admin can invite new trustees, and they can accept and become users
     Then that person should get an invitation email
     When they accept the invitation
     Then they should get another email welcoming them
-    And they should be able to log in
+    And the trustee can log in

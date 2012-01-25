@@ -1,4 +1,6 @@
 <%= simple_form_for [@chapter, @invitation] do |form| %>
+  <%= form.input :first_name %>
+  <%= form.input :last_name %>
   <%= form.input :email %>
   <%= submit_tag "Invite" %>
 <% end %>

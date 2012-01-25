@@ -6,7 +6,12 @@ Awesomefoundation::Application.routes.draw do
   resources :chapters do
     resources :invitations
   end
+  resources :invitations, :only => [:new, :create] do
+    resources :acceptances, :only => [:new, :create]
+  end
   resources :projects
 
+  match "sign_in", :to => "Clearance::Sessions#new"
+  match "sign_out", :to => "Clearance::Sessions#destroy", :via => :delete
   root :to => 'home#index'
 end

@@ -1,4 +1,6 @@
 class InvitationsController < ApplicationController
+  before_filter :must_be_admin
+
   def new
     @chapter = Chapter.find(params[:chapter_id])
     @invitation = @chapter.invitations.build
@@ -6,9 +8,10 @@ class InvitationsController < ApplicationController
 
   def create
     @chapter = Chapter.find(params[:chapter_id])
-    @invitation = Invitation.new(params)
+    @invitation = Invitation.new(params[:invitation])
+    @invitation.chapter = @chapter
     if @invitation.save
-      redirect_to chapter_url(@chapter)
+      redirect_to chapter_path(@chapter)
     else
       render :new
     end
