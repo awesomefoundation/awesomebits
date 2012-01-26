@@ -165,8 +165,11 @@ header {
               position: absolute;
               top: -5px;
               width: 62px;
+              @include transition(all, 0.1s, ease-in);
 
               &:hover {
+                //@include border-radius(0px);
+                //@include transform(rotate(180deg));
                 background: $pink;
                 border-color: rgba(50,50,50, 1);
               }
