@@ -6,4 +6,9 @@ require File.expand_path('../config/application', __FILE__)
 
 Awesomefoundation::Application.load_tasks
 task(:default).clear
-task :default => [:spec, :cucumber]
+task :default => [:spec]
+
+task(:spec).clear
+RSpec::Core::RakeTask.new(:spec) do |t|
+  t.pattern = ["./spec/**/*_spec.rb", ".spec/**/*.feature"]
+end 

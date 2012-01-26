@@ -32,7 +32,7 @@ group :development do
 end
 
 group :development, :test do
-  gem "rspec-rails", "~> 2.6.1"
+  gem "rspec-rails", "~> 2.8.0"
   gem "ruby-debug19"
   gem "sham_rack"
 end
@@ -49,6 +49,7 @@ group :test do
   gem "shoulda-matchers"
   gem "launchy"
   gem "email_spec"
+  gem "database_cleaner"
 end
 
 group :staging, :production do
