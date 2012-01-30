@@ -35,6 +35,7 @@ group :development, :test do
   gem "rspec-rails", "~> 2.8.0"
   gem "ruby-debug19"
   gem "sham_rack"
+  gem "tddium"
 end
 
 group :test do

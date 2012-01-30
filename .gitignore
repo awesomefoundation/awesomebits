@@ -13,3 +13,5 @@ tags
 !.keep
 vendor/bundler_gems
 bin
+.tddium*
+.tddium
