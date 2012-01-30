@@ -91,7 +91,7 @@ header {
 .chapter-info-wrapper {
   @include border-image(url('jagged_edge.png')27 repeat);
   background: rgb(230,230,230);
-  margin: 60px 0px;
+  margin: 70px 0px;
 
   .chapter-info {
     @extend .clearfix;
@@ -206,12 +206,6 @@ header {
                   font: normal 16px/18px $serif;
                   margin: 0px;
                   text-transform: uppercase;
-                  text-align: center;
-                }
-
-                p {
-                  font: italic 300 13px $serif;
-                  margin: 0px;
                   text-align: center;
                 }
               }

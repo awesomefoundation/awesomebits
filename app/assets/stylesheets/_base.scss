@@ -4,28 +4,31 @@ html, body {
 
 header.main {
   background: rgb(0,0,0);
-  height: 50px;
-  margin-bottom: 80px;
+  margin-bottom: 70px;
   width: 100%;
 
   nav {
     @extend .clearfix;
+    height: 50px;
     margin: 0 auto;
-    padding: 15px 0px;
     width: grid-width(12);
 
     h1 {
       color: rgb(255,255,255);
       float: left;
       font-size: 16px;
+      margin-top: 15px;
       text-transform: uppercase;
     }
 
     ol {
+      height: 100%;
+      margin: 0;
+
       li {
         float: right;
         list-style: none;
-        margin-left: 20px;
+        margin-left: 10px;
 
         &:last-child {
           margin: 0;
@@ -33,7 +36,16 @@ header.main {
 
         a {
           color: rgb(255,255,255);
+          display: block;
+          font: 300 12px/16px $sans-serif;
+          height: 27px;
+          padding: 18px 5px 0px 5px;
           text-decoration: none;
+          text-transform: uppercase;
+
+          &:hover {
+            border-bottom: 5px solid $pink;
+          }
         }
       }
     }
@@ -44,6 +56,22 @@ section.container {
 }
 
 section.footer {
+  @extend .clearfix;
+  border-top: 1px solid rgb(200,200,200);
   height: 200px;
-  width: 100%;
+  margin: 0 auto;
+  padding-top: 10px;
+  width: grid-width(12);
+
+  ol {
+    li {
+      float: left;
+      list-style: none;
+      margin-right: 10px;
+
+      &:last-child {
+        margin-right: 0px;
+      }
+    }
+  }
 }
