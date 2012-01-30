@@ -13,5 +13,9 @@ class User < ActiveRecord::Base
     [first_name, last_name].map(&:to_s).join(" ").strip
   end
 
+  def can_manage_chapter?(chapter)
+    admin? || roles.deans_for_chapter(chapter).any?
+  end
+
 end
 

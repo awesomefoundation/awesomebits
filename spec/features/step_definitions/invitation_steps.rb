@@ -5,15 +5,16 @@ step 'I invite a new trustee to the :name chapter' do |name|
   click_link("Invite new trustee")
   fill_in("First name", :with => "Joe")
   fill_in("Last name", :with => "Schmoe")
-  fill_in("Email", :with => "new_trustee@example.com")
+  @invitation_address = FactoryGirl.generate(:email)
+  fill_in("Email", :with => @invitation_address)
   click_button("Invite")
 end
 
 step 'that person should get an invitation email' do
-  invitation = Invitation.find_by_email("new_trustee@example.com")
+  invitation = Invitation.find_by_email(@invitation_address)
   invitation.should_not be_nil
   deliveries = ActionMailer::Base.deliveries.select do |email|
-    email.subject =~ /invited/ && email.to.include?("new_trustee@example.com")
+    email.subject =~ /invited/ && email.to.include?(@invitation_address)
   end
   deliveries.should have(1).item
   @invitation_email = deliveries.first
@@ -29,10 +30,10 @@ step 'they accept the invitation' do
 end
 
 step 'they should get another email welcoming them' do
-  user = User.find_by_email("new_trustee@example.com")
+  user = User.find_by_email(@invitation_address)
   user.should_not be_nil
   deliveries = ActionMailer::Base.deliveries.select do |email|
-    email.subject =~ /Welcome/ && email.to.include?("new_trustee@example.com")
+    email.subject =~ /Welcome/ && email.to.include?(@invitation_address)
   end
   deliveries.should have(1).item
 end
