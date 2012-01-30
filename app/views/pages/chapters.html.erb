@@ -21,7 +21,7 @@
       <% 6.times do %>
       <li>
         <section class="project">
-          <img />
+          <%= image_tag("project.jpg") %>
           <div class="meta-data">
           </div>
         </section>
@@ -31,7 +31,7 @@
   </section>
 </div>
 
-<div class="info-wrapper">
+<div class="chapter-info-wrapper">
   <section class="chapter-info">
     <header>
       <h1>We Fund Awesome</h1>
@@ -78,15 +78,16 @@
         <li>
           <article class="trustee">
             <a class="avatar" href="#">
-              <img />
+              <div class="trustee-details">
+                <h3>Trustee Name</h3>
+              </div>
+              <div class="avatar">
+                <%= image_tag("avatar.jpg") %>
+              </div>
             </a>
-            <div class="trustee-details">
-              <h3>Trustee Name</h3>
-              <p class="title">The Defender of Awesome</p>
-            </div>
           </article>
         </li>
-      <% end %>
+        <% end %>
       </ol>
     </section>
   </section>

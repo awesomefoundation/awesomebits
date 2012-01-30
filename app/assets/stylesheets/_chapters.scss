@@ -28,14 +28,27 @@ header {
         }
 
         a {
-          background: rgb(230, 230, 230);
-          @include border-radius(15px);
+          background: transparent;
           display: block;
           height: 30px;
           width: 30px;
+        }
+
+        .twitter {
+          background: url("social_icons.png");
+          background-position: 0px 0px;
 
           &:hover {
-            background: $pink;
+            background-position: 0px -30px;
+          }
+        }
+
+        .faceboo {
+          background: url("social_icons.png");
+          background-position: 30px 0px;
+
+          &:hover {
+            background-position: 30px -30px;
           }
         }
       }
@@ -50,7 +63,6 @@ header {
     li {
       background: rgb(230,230,230);
       float: left;
-      height: 200px;
       list-style: none;
       margin-bottom: $gw-gutter;
       margin-right: $gw-gutter;
@@ -61,6 +73,11 @@ header {
       }
 
       section.project {
+        border: 1px solid rgb(200,200,200);
+        @include border-radius(5px);
+        height: 200px;
+        overflow: hidden;
+
         img {
         }
 
@@ -71,8 +88,9 @@ header {
   }
 }
 
-.info-wrapper {
-  //background: rgb(230,230,230);
+.chapter-info-wrapper {
+  @include border-image(url('jagged_edge.png')27 repeat);
+  background: rgb(230,230,230);
   margin: 60px 0px;
 
   .chapter-info {
@@ -138,15 +156,12 @@ header {
         margin: 5px 0 0 0;
 
         li {
-          background: rgb(240,240,240);
-          @include border-radius(35px);
           float: left;
-          height: 60px;
           list-style: none;
           margin: 0 $gw-gutter 30px 0;
-          width: grid-width(4);
+          width: grid-width(2);
 
-          &:nth-child(even) {
+          &:nth-child(4n) {
             margin-right: 0px;
           }
 
@@ -154,37 +169,57 @@ header {
             padding-top: 10px;
             position: relative;
 
-            a.avatar {
-              background: white;
-              border: 4px solid rgb(200,200,200);
-              @include border-radius(35px);
-              @include box-shadow(inset 0 0 5px 0 rgba(0, 0, 0, 0.2));
-              display: block;
-              height: 62px;
-              left: 0px;
-              position: absolute;
-              top: -5px;
-              width: 62px;
-              @include transition(all, 0.1s, ease-in);
+            a {
+              text-decoration: none;
+
+              div.avatar {
+                background: rgb(50,50,50);
+                border: 1px solid rgb(50,50,50);
+                @include border-radius(70px);
+                @include box-shadow(inset 0 0 5px 0 rgba(0, 0, 0, 0.2));
+                display: block;
+                height: 115px;
+                margin: 0 auto;
+                overflow: hidden;
+                width: 115px;
+
+                img {
+                  height: 115px;
+                  width: 115px;
+                }
+              }
+
+              .trustee-details {
+                background: rgba($pink, 0.8);
+                @include border-radius(4px);
+                left: -15px;
+                opacity: 0;
+                padding: 8px;
+                position: absolute;
+                @include transform(rotate(-10deg));
+                //@include transition(opacity, 0.1s, ease-out);
+                top: 20px;
+                width: grid-width(2);
+
+                h3 {
+                  color: rgb(255,255,255);
+                  font: normal 16px/18px $serif;
+                  margin: 0px;
+                  text-transform: uppercase;
+                  text-align: center;
+                }
+
+                p {
+                  font: italic 300 13px $serif;
+                  margin: 0px;
+                  text-align: center;
+                }
+              }
 
               &:hover {
-                //@include border-radius(0px);
-                //@include transform(rotate(180deg));
-                background: $pink;
-                border-color: rgba(50,50,50, 1);
-              }
-            }
-
-            .trustee-details {
-              margin-left: 85px;
-
-              h3 {
-                font: bold 16px/18px $sans-serif;
-                //text-transform: uppercase;
-              }
-
-              p {
-                font: italic 300 13px $serif;
+                .trustee-details {
+                  opacity: 1;
+                }
               }
             }
           }
