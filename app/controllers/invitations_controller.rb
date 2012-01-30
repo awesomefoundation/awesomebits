@@ -1,4 +1,5 @@
 class InvitationsController < ApplicationController
+  before_filter :must_be_logged_in
   before_filter :must_be_able_to_access_chapter
 
   def new
@@ -20,7 +21,8 @@ class InvitationsController < ApplicationController
   private
 
   def must_be_able_to_access_chapter
-    if current_user.try(:can_manage_chapter?, Chapter.find(params[:chapter_id])).nil?
+    if !current_user.can_manage_chapter?(current_chapter)
+      flash[:notice] = "You cannot invite new trustees for that chapter."
       redirect_to root_path
     end
   end

@@ -1,5 +1,4 @@
 step 'I invite a new trustee to the :name chapter' do |name|
-  ActionMailer::Base.deliveries.clear
   @chapter = Factory(:chapter, :name => name)
   visit chapter_url(@chapter)
   click_link("Invite new trustee")
@@ -8,6 +7,40 @@ step 'I invite a new trustee to the :name chapter' do |name|
   @invitation_address = FactoryGirl.generate(:email)
   fill_in("Email", :with => @invitation_address)
   click_button("Invite")
+end
+
+step 'I invite a new trustee to a different chapter' do |name|
+  @chapter = FactoryGirl.create(:chapter)
+  visit chapter_url(@chapter)
+  click_link("Invite new trustee")
+  fill_in("First name", :with => "Joe")
+  fill_in("Last name", :with => "Schmoe")
+  @invitation_address = FactoryGirl.generate(:email)
+  fill_in("Email", :with => @invitation_address)
+  click_button("Invite")
+end
+
+step 'I invite a new trustee to my chapter' do |name|
+  visit chapter_url(@current_chapter)
+  click_link("Invite new trustee")
+  fill_in("First name", :with => "Joe")
+  fill_in("Last name", :with => "Schmoe")
+  @invitation_address = FactoryGirl.generate(:email)
+  fill_in("Email", :with => @invitation_address)
+  click_button("Invite")
+end
+
+step 'I try to invite a new trustee to my chapter' do
+  visit new_chapter_invitation_path(@current_chapter)
+end
+
+step 'I try to invite a new trustee to a different chapter' do
+  @inaccessible_chapter = FactoryGirl.create(:chapter)
+  visit new_chapter_invitation_path(@inaccessible_chapter)
+end
+
+step 'I am unable to invite them' do
+  page.should have_css("#flash_notice:contains('You cannot invite new trustees for that chapter.')")
 end
 
 step 'that person should get an invitation email' do
