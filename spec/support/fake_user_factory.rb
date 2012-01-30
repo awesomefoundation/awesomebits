@@ -8,6 +8,10 @@ class FakeUserFactory
     @users
   end
 
+  def user
+    @users.last
+  end
+
   def new(attributes)
     @attributes = attributes
     self
@@ -19,6 +23,6 @@ class FakeUserFactory
 
   def create
     @users << User.new(@attributes)
-    @return_value && @users.last
+    @return_value
   end
 end

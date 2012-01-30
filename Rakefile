@@ -9,7 +9,7 @@ task(:default).clear
 task :default => [:spec, "spec:features"]
 
 namespace :spec do
-  RSpec::Core::RakeTask.new(:features) do |t|
+  RSpec::Core::RakeTask.new(:features => ["db:test:prepare"]) do |t|
     t.pattern = "./spec/**/*.feature"
   end
 end

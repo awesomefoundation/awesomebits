@@ -14,6 +14,7 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|
   config.mock_with :mocha
-  config.use_transactional_fixtures = true
   config.after(:each){ DatabaseCleaner.clean }
+  config.before(:each){ FactoryGirl.create(:chapter, :name => "Any") }
+  config.before(:each){ ActionMailer::Base.deliveries.clear }
 end

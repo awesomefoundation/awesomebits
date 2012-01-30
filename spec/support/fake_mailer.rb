@@ -8,12 +8,13 @@ class FakeMailer
     @emails.last
   end
 
-  def delivery_count_for(name)
-    @emails.select{|mail| mail.name == name }.length
-  end
-
-  def delivery_made_for(name)
-    @emails.select{|mail| mail.name == name }.all?(&:delivered?)
+  def delivery_to(email_name, to = nil)
+    @emails.select do |mail|
+      res = mail.name == email_name
+      res &&= (to.nil? || mail.to.include?(to))
+      res &&= mail.delivered?
+      res
+    end
   end
 
   class FakeEmail

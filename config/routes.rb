@@ -11,6 +11,7 @@ Awesomefoundation::Application.routes.draw do
     resources :acceptances, :only => [:new, :create]
   end
   resources :projects
+  resources :submissions, :controller => "projects"
 
   match "sign_in", :to => "Clearance::Sessions#new"
   match "sign_out", :to => "Clearance::Sessions#destroy", :via => :delete

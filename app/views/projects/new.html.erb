@@ -1,0 +1,11 @@
+<%= simple_form_for @project, :url => submissions_url do |form| %>
+  <%= form.input :name %>
+  <%= form.input :title, :label => "Project title" %>
+  <%= form.input :url, :label => "URL" %>
+  <%= form.input :email %>
+  <%= form.input :phone %>
+  <%= form.input :description, :label => "About me" %>
+  <%= form.input :use, :label => "About the project" %>
+  <%= form.input :chapter_id, :collection => Chapter.all, :as => :select, :group_method => :name %>
+  <%= submit_tag "Apply" %>
+<% end %>

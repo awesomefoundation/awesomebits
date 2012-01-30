@@ -9,18 +9,12 @@ class UserFactory
     end
   end
 
-  private
-
   def user
     if @user.nil?
       @user = User.new(@attributes)
       @user.update_password(password)
     end
     @user
-  end
-
-  def password
-    @password ||= @attributes.delete(:password)
   end
 
   def chapter
@@ -35,4 +29,11 @@ class UserFactory
     end
     @role
   end
+
+  private
+
+  def password
+    @password ||= @attributes.delete(:password)
+  end
+
 end

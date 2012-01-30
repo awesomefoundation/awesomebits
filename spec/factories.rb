@@ -13,9 +13,27 @@ FactoryGirl.define do
     password "12345"
   end
 
+  factory :role do
+    user
+    chapter
+
+    trait :trustee do
+      name "trustee"
+    end
+  end
+
   factory :invitation do
     email
     chapter
     inviter
+  end
+
+  factory :project do
+    name "Joe Schmoe"
+    title "Something Awesome"
+    email "awesome@example.com"
+    description "I am awesome."
+    use "I will do awesome."
+    chapter
   end
 end

@@ -12,7 +12,8 @@ describe UserFactory do
     }}
     let(:factory) { UserFactory.new(user_attributes) }
     it "saves a User and the Role between the User and the Chapter" do
-      user = factory.create
+      factory.create
+      user = factory.user
 
       user.should_not be_a_new_record
       user.should have(1).role

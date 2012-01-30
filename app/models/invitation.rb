@@ -7,8 +7,11 @@ class Invitation < ActiveRecord::Base
   validates_presence_of :chapter
   attr_accessible :email
 
-  dependency :mailer, InvitationMailer
-  dependency :user_factory, UserFactory
+  cattr_accessor :mailer
+  self.mailer = InvitationMailer
+
+  cattr_accessor :user_factory
+  self.user_factory = UserFactory
 
   def accept(new_attributes)
     factory = user_factory.new(:first_name => new_attributes[:first_name] || first_name,
@@ -17,9 +20,9 @@ class Invitation < ActiveRecord::Base
                                :email => email,
                                :chapter => chapter)
 
-    if user = factory.create
+    if factory.create
       mailer.welcome_trustee(self).deliver
-      self.invitee = user
+      self.invitee = factory.user
     end
   end
 

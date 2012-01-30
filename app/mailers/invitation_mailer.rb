@@ -1,5 +1,5 @@
 class InvitationMailer < ActionMailer::Base
-  default from: "do_not_reply@awesomefoundation.org"
+  default :from => FROM_ADDRESS
 
   def invite_trustee(invitation)
     @invitation = invitation
