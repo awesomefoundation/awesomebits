@@ -1,5 +1,11 @@
 @import 'projects-index';
 
+body.pages-projects {
+  section.container {
+    width: 100%;
+  }
+}
+
 .top {
   margin: 0 auto;
   margin-bottom: 10px;
