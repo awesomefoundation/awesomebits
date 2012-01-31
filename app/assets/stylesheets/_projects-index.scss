@@ -1,0 +1,54 @@
+body.projects-index {
+  section.container {
+    @extend .clearfix;
+  }
+}
+
+.admin-pannel {
+  background: rgb(230,230,230);
+  float: left;
+  height: 400px;
+  margin-right: $gw-gutter;
+  width: grid-width(3);
+}
+
+.applications {
+  float: left;
+  width: grid-width(9);
+
+  .application-filters {
+    background: rgb(230,230,230);
+    height: 60px;
+    margin-bottom: 40px;
+    width: grid-width(9);
+  }
+
+  article.application {
+    background: rgb(230,230,230);
+    margin-bottom: 30px;
+
+    header.title {
+        border-bottom: 1px solid rgb(200,200,200);
+
+      h2 {
+        border-bottom: 1px solid rgb(200,200,200);
+        margin: 0px;
+        padding: 10px;
+      }
+
+      div.meta-data {
+        padding: 10px;
+      }
+    }
+
+    section.application-details {
+      padding: 10px;
+
+      .project-pitch {
+      }
+
+      .details-toggle {
+      }
+    }
+  }
+}

@@ -4,7 +4,8 @@ html, body {
 
 body {
   section.container {
-    margin-top: 70px;
+    margin: 70px auto;
+    width: grid-width(12);
   }
 }
 
@@ -43,13 +44,13 @@ header.main {
           color: rgb(255,255,255);
           display: block;
           font: 300 12px/16px $sans-serif;
-          height: 27px;
-          padding: 18px 5px 0px 5px;
+          height: 29px;
+          padding: 18px 3px 0px 3px;
           text-decoration: none;
           text-transform: uppercase;
 
           &:hover {
-            border-bottom: 5px solid $pink;
+            border-bottom: 3px solid $pink;
           }
         }
       }
