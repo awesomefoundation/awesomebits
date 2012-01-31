@@ -129,7 +129,6 @@ GEM
       rake
     multi_json (1.0.4)
     multi_xml (0.4.1)
-    mysql (2.8.1)
     newrelic_rpm (3.3.1)
     nokogiri (1.5.0)
     paperclip (2.5.0)
@@ -137,6 +136,7 @@ GEM
       activesupport (>= 2.3.2)
       cocaine (>= 0.0.2)
       mime-types
+    pg (0.12.2)
     polyglot (0.3.3)
     pry (0.9.7.4)
       coderay (~> 0.9.8)
@@ -269,9 +269,9 @@ DEPENDENCIES
   high_voltage
   jquery-rails
   launchy
-  mysql
   newrelic_rpm
   paperclip
+  pg
   pry
   rails (= 3.2.0)
   rspec-rails (~> 2.8.0)
