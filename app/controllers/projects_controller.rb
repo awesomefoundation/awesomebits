@@ -2,6 +2,7 @@ class ProjectsController < ApplicationController
   before_filter :must_be_trustee, :except => [:new, :create]
 
   def index
+    @projects = Project.visible_to(current_user)
   end
 
   def new
@@ -20,5 +21,10 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+  end
+
+  private
+
+  def which_month
   end
 end

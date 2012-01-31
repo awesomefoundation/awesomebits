@@ -19,4 +19,21 @@ describe Project do
       fake_mailer.should have_delivered_email(:new_application)
     end
   end
+
+  context '.visible_to' do
+    let(:role){ FactoryGirl.create(:role) }
+    let(:user){ role.user }
+    let(:chapter){ role.chapter }
+    let(:any_chapter){ FactoryGirl.create(:chapter, :name => "Any") }
+    let!(:good_project){ FactoryGirl.create(:project, :chapter => chapter) }
+    let!(:bad_project){ FactoryGirl.create(:project) }
+    let!(:any_project){ FactoryGirl.create(:project, :chapter => any_chapter) }
+
+    it 'finds the projects a user has access to' do
+      projects = Project.visible_to(user).all
+      projects.should include(good_project)
+      projects.should include(any_project)
+      projects.should_not include(bad_project)
+    end
+  end
 end

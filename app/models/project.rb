@@ -13,6 +13,12 @@ class Project < ActiveRecord::Base
   cattr_accessor :mailer
   self.mailer = ProjectMailer
 
+  def self.visible_to(user)
+    joins(:chapter).
+      joins("LEFT OUTER JOIN roles ON roles.chapter_id = chapters.id").
+      where("roles.user_id = #{user.id} OR chapters.name = 'Any'")
+  end
+
   def save
     was_new_record = new_record?
     saved = super
