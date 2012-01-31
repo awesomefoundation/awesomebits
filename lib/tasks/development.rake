@@ -1,0 +1,51 @@
+namespace :app do
+  namespace :dev do
+    desc "Prime development database"
+    task :prime => :environment do
+      require 'database_cleaner'
+      DatabaseCleaner.strategy = :truncation
+      DatabaseCleaner.clean
+
+      require 'factory_girl_rails'
+
+      Rake::Task['db:seed'].execute
+
+      chapter_boston = FactoryGirl.create(:chapter, :name => "Boston")
+
+      user = FactoryGirl.create(:user, :email => "boston@example.com")
+      user.update_password("12345")
+      FactoryGirl.create(:role, :user => user, :chapter => chapter_boston)
+      user = FactoryGirl.create(:user, :email => "boston+dean@example.com")
+      user.update_password("12345")
+      FactoryGirl.create(:role, :user => user, :chapter => chapter_boston, :name => "dean")
+
+      chapter_la = FactoryGirl.create(:chapter, :name => "LA")
+
+      user = FactoryGirl.create(:user, :email => "la@example.com")
+      user.update_password("12345")
+      FactoryGirl.create(:role, :user => user, :chapter => chapter_la)
+      user = FactoryGirl.create(:user, :email => "la+dean@example.com")
+      user.update_password("12345")
+      FactoryGirl.create(:role, :user => user, :chapter => chapter_la, :name => "dean")
+
+      project = FactoryGirl.create(:project, :chapter => chapter_boston)
+      project = FactoryGirl.create(:project, :chapter => chapter_boston)
+      project = FactoryGirl.create(:project, :chapter => chapter_la)
+
+      puts <<-end_doc
+An admin user has been created: admin@awesomefoundation.org / gnarly
+
+The "Any" chapter has been created
+
+A Boston chapter has been created with a trustee: boston@example.com / 12345
+  and a dean: boston+dean@example.com / 12345
+
+An LA chapter has been created with a trustee: la@example.com / 12345
+  and a dean: la+dean@example.com / 12345
+
+Two projects have been created for the Boston chapter.
+One project has been created for the LA chapter.
+      end_doc
+    end
+  end
+end
