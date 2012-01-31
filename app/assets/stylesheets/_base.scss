@@ -2,9 +2,14 @@ html, body {
   height: 100%;
 }
 
+body {
+  section.container {
+    margin-top: 70px;
+  }
+}
+
 header.main {
   background: rgb(0,0,0);
-  margin-bottom: 70px;
   width: 100%;
 
   nav {
