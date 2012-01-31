@@ -8,8 +8,10 @@ Awesomefoundation::Application.load_tasks
 task(:default).clear
 task :default => [:spec, "spec:features"]
 
-namespace :spec do
-  RSpec::Core::RakeTask.new(:features => ["db:test:prepare"]) do |t|
-    t.pattern = "./spec/**/*.feature"
+if defined?(RSpec)
+  namespace :spec do
+    RSpec::Core::RakeTask.new(:features => ["db:test:prepare"]) do |t|
+      t.pattern = "./spec/**/*.feature"
+    end
   end
 end

@@ -24,7 +24,6 @@ gem 'formtastic'
 gem 'flutie'
 gem 'bourbon'
 gem 'copycopter_client'
-gem 'airbrake'
 gem "simple_form", :git => "https://github.com/plataformatec/simple_form.git"
 
 group :development do

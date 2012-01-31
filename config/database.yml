@@ -1,3 +1,9 @@
+production: &default
+  adapter: postgresql
+  database: awesomefoundation_production
+  pool: 5
+  timeout: 5000
+
 development: &default
   adapter: postgresql
   database: awesomefoundation_development
