@@ -9,11 +9,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def must_be_admin
-    redirect_to root_url unless current_user.try(:admin?)
+  def must_be_trustee
+    redirect_to root_url unless current_user.try(:trustee?)
   end
 
-  def current_chapter
-    Chapter.find(params[:chapter_id])
+  def must_be_admin
+    redirect_to root_url unless current_user.try(:admin?)
   end
 end

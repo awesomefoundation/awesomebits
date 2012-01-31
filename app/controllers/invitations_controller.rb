@@ -20,6 +20,10 @@ class InvitationsController < ApplicationController
 
   private
 
+  def current_chapter
+    @chapter ||= Chapter.find(params[:chapter_id])
+  end
+
   def must_be_able_to_access_chapter
     if !current_user.can_manage_chapter?(current_chapter)
       flash[:notice] = "You cannot invite new trustees for that chapter."

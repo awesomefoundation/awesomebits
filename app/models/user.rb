@@ -17,5 +17,9 @@ class User < ActiveRecord::Base
     admin? || roles.deans_for_chapter(chapter).any?
   end
 
+  def trustee?
+    admin? || roles.any?(&:trustee?)
+  end
+
 end
 

@@ -5,4 +5,12 @@ class Role < ActiveRecord::Base
   def self.deans_for_chapter(chapter)
     where(:name => "dean", :chapter_id => chapter.id)
   end
+
+  def trustee?
+    true
+  end
+
+  def dean?
+    name == "dean"
+  end
 end

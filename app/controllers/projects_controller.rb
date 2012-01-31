@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  before_filter :must_be_trustee, :except => [:new, :create]
+
   def index
   end
 

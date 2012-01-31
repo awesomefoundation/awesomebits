@@ -33,4 +33,33 @@ describe User do
       user.can_manage_chapter?(chapter).should be_false
     end
   end
+
+  context "#trustee?" do
+    let(:user){ FactoryGirl.build(:user) }
+    let(:chapter){ FactoryGirl.build(:chapter) }
+    let(:role){ FactoryGirl.build(:role, :user => user, :chapter => chapter) }
+    before do
+      user.roles = [role]
+    end
+
+    it 'returns true if the user is a trustee anywhere' do
+      user.trustee?.should be_true
+    end
+
+    it 'returns false if the user is not a trustee anywhere' do
+      user.roles = []
+      user.trustee?.should be_false
+    end
+
+    it 'returns true if the user is only a dean somewhere' do
+      role.name = "dean"
+      user.trustee?.should be_true
+    end
+
+    it 'returns true if the user is an admin' do
+      user.admin = true
+      user.roles = []
+      user.trustee?.should be_true
+    end
+  end
 end
