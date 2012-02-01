@@ -28,15 +28,34 @@ body.projects-index {
     margin-bottom: 30px;
 
     header.title {
-        border-bottom: 1px solid rgb(200,200,200);
+      background: rgb(220,220,220);
+      border-bottom: 1px solid rgb(200,200,200);
 
-      h2 {
+      div {
+        @extend .clearfix;
         border-bottom: 1px solid rgb(200,200,200);
-        margin: 0px;
         padding: 10px;
+
+        h2 {
+          float: left;
+          margin: 0px;
+        }
+
+        a.short-list {
+          @include button;
+          float: right;
+          text-decoration: none;
+        }
+
+        a.mark-as-winner {
+          @include button;
+          float: right;
+          margin-left: 10px;
+          text-decoration: none;
+        }
       }
 
-      div.meta-data {
+      .meta-data {
         padding: 10px;
       }
     }
