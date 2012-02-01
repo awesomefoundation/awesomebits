@@ -5,11 +5,42 @@ body.projects-index {
 }
 
 .admin-pannel {
-  background: rgb(230,230,230);
+  //background: rgb(230,230,230);
+  border-right: 1px solid rgb(200,200,200);
   float: left;
   height: 400px;
-  margin-right: $gw-gutter;
-  width: grid-width(3);
+  margin-right: 39px;
+  padding-right: 20px;
+  width: 180px;
+
+  div.avatar {
+    background: rgb(50,50,50);
+    border: 1px solid rgb(50,50,50);
+    @include border-radius(70px);
+    @include box-shadow(inset 0 0 5px 0 rgba(0, 0, 0, 0.2));
+    display: block;
+    height: 115px;
+    margin: 0 auto 30px auto;
+    overflow: hidden;
+    width: 115px;
+
+    img {
+      height: 115px;
+      width: 115px;
+    }
+  }
+
+  div {
+    a {
+      @include button(rgb(230,230,230));
+      display: block;
+      margin: 0 auto 15px auto;
+      padding: 10px 0px;
+      text-align: center;
+      text-decoration: none;
+      width: 160px;
+    }
+  }
 }
 
 .applications {
@@ -25,20 +56,26 @@ body.projects-index {
 
   article.application {
     background: rgb(230,230,230);
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 
-    header.title {
+    header {
       background: rgb(220,220,220);
       border-bottom: 1px solid rgb(200,200,200);
 
-      div {
+      div.title {
         @extend .clearfix;
         border-bottom: 1px solid rgb(200,200,200);
         padding: 10px;
 
-        h2 {
+        a {
+          color: rgb(50,50,50);
           float: left;
-          margin: 0px;
+          font: bold 24px $sans-serif;
+          text-decoration: none;
+
+          &:hover {
+            color: rgb(100,100,100);
+          }
         }
 
         a.short-list {
@@ -57,16 +94,44 @@ body.projects-index {
 
       .meta-data {
         padding: 10px;
+
+        span {
+          margin-right: 10px;
+        }
       }
     }
 
     section.application-details {
-      padding: 10px;
+      overflow: hidden;
+      position: relative;
+
+      p {
+        padding: 15px 10px;
+        margin: 0px;
+      }
 
       .project-pitch {
       }
 
       .details-toggle {
+      }
+
+      .see-more {
+        background: rgba(220, 220, 220, 1);
+        display: block;
+        text-decoration: none;
+        @include transition(all 0.2s ease-out);
+
+        p {
+          color: rgb(50,50,50);
+          font: 300 12px/14px $sans-serif;
+          padding: 5px 10px;
+          text-align: right;
+        }
+
+        &:hover {
+          background: rgba(200, 200, 200, 1);
+        }
       }
     }
   }

@@ -1,39 +1,56 @@
-<section class="admin-panel">
-<% if current_user.can_manage_permissions? %>
-  <%= link_to "Manage user permissions", "#" %>
-<% end %>
-<% if current_user.can_create_chapters? %>
-  <%= link_to "Create Chapter", new_chapter_path %>
-<% end %>
+<section class="admin-pannel">
+  <div class="avatar">
+    <%= image_tag("avatar.jpg") %>
+  </div>
+  <% if current_user.can_manage_permissions? %>
+    <%= link_to "Manage user permissions", "#" %>
+  <% end %>
+  <% if current_user.can_create_chapters? %>
+    <%= link_to "Create Chapter", new_chapter_path %>
+  <% end %>
+  <div class="trustee">
+    <a class="edit-profile" href="#">Edit Profile</a>
+  </div>
+  <div class="dean">
+    <a class="invite-trustee" href="#">Invite a Trustee</a>
+  </div>
+  <div class="admin">
+    <a class="edit-users" href="#">Edit Users</a>
+    <a class="edit-chapters" href="#">Edit Chapters</a>
+  </div>
 </section>
 
 <section class="applications">
   <section class="application-filters">
-  <form accept-charset="UTF-8" action="/projects" class="simple_form filter" method="get">
-    <div class="input string optional">
-      <label class="string optional" for="filter_start">Start</label>
-      <input class="string optional" id="filter_start" name="start" size="50" type="text" value="<%= @start_date %>">
-    </div>
-    <div class="input string optional">
-      <label class="string optional" for="filter_end"> End</label>
-      <input class="string optional" id="filter_end" name="end" size="50" type="text" value="<%= @end_date %>">
-    </div>
-    <input name="" type="submit" value="Filter">
-  </form>
+    <form accept-charset="UTF-8" action="/projects" class="simple_form filter" method="get">
+      <div class="input string optional">
+        <label class="string optional" for="filter_start">Start</label>
+        <input class="string optional" id="filter_start" name="start" size="50" type="text" value="<%= @start_date %>">
+      </div>
+      <div class="input string optional">
+        <label class="string optional" for="filter_end"> End</label>
+        <input class="string optional" id="filter_end" name="end" size="50" type="text" value="<%= @end_date %>">
+      </div>
+      <input name="" type="submit" value="Filter">
+    </form>
   </section>
+
     <% @projects.each do |project| %>
-      <article class="application project">
-        <header class="title">
-          <div>
-            <h2><%= project.title %></h2>
+      <article class="application">
+        <header>
+          <div class="title">
+            <a class="full-application" href="#"><%= project.name %></a>
             <a class="mark-as-winner" href="#">Winner</a>
             <a class="short-list" href="#">Like</a>
           </div>
 
           <section class="meta-data">
-            <span><%= project.name %></span>
-            <span><%= project.chapter.name %></span>
-            <span><%= project.created_at %></span>
+            <span><strong>By:</strong> Rebecca Fiona, Boston Mass.</span>
+            <span>
+              <strong>Submitted to: </strong>
+              <%= project.chapter.name %>
+              , <em><%= project.created_at %></em>
+            </span>
           </section>
         </header>
 
@@ -43,6 +60,9 @@
           </div>
           <div="details-toggle">
           </div>
+          <a class="see-more" href="#">
+            <p>See the rest →</p>
+          </a>
         </section>
       </article>
     <% end %>
