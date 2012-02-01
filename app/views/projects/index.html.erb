@@ -3,29 +3,31 @@
 
 <section class="applications">
   <section class="application-filters">
+  <%= simple_form_for :filter, :url => projects_path, :method => :get do |form| %>
+    <%= form.input :start, :required => false, :input_html => { :value => @start_date } %>
+    <%= form.input :end,   :required => false, :input_html => { :value => @end_date } %>
+    <%= submit_tag "Filter", :name => '' %>
+  <% end %>
   </section>
-    <% 10.times do %>
-      <article class="application">
+    <% @projects.each do |project| %>
+      <article class="application project">
         <header class="title">
           <div>
-            <h2>Project Title</h2>
+            <h2><%= project.title %></h2>
             <a class="mark-as-winner" href="#">Winner</a>
             <a class="short-list" href="#">Like</a>
           </div>
 
           <section class="meta-data">
-            <span>Rebecca Fiona</span>
-            <span>Boston Mass.</span>
-            <span>Boston Chapter</span>
-            <span>1/24/12</span>
+            <span><%= project.name %></span>
+            <span><%= project.chapter.name %></span>
+            <span><%= project.created_at %></span>
           </section>
         </header>
 
         <section class="application-details">
           <div class="project-pitch">
-            <p>
-            I'll have some artists coming in from out of town and it'll be a great time. Right now I don't have any idea what we'll be painting, but that's the way I like it, and the school principal is fine with that. I know it'll be really colorful. The wall is boring crummy brick and needs some love.
-            </p>
+            <p><%= project.use %></p>
           </div>
           <div="details-toggle">
           </div>

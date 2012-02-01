@@ -1,5 +1,4 @@
-Feature: As a Trustee I can view a list of grant applications and add them to a
-  shortlist
+Feature: As a Trustee I can view a list of grant applications and add them to a shortlist
 
   Scenario: Trustee creates application shortlist
     Given I am logged in as a trustee

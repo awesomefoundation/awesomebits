@@ -1,8 +1,9 @@
 class ProjectsController < ApplicationController
-  before_filter :must_be_trustee, :except => [:new, :create]
+  before_filter :must_be_logged_in, :except => [:new, :create]
 
   def index
-    @projects = Project.visible_to(current_user)
+    @start_date, @end_date = timeframe
+    @projects = Project.visible_to(current_user).during_timeframe(@start_date, @end_date)
   end
 
   def new
@@ -24,7 +25,22 @@ class ProjectsController < ApplicationController
   end
 
   private
-
-  def which_month
+# 
+  def timeframe
+    if params[:filter]
+      start_date = if params[:filter][:start].blank?
+                     nil
+                   else
+                     Date.strptime(params[:filter][:start], "%Y-%m-%d")
+                   end
+      end_date = if params[:filter][:end].blank?
+                     nil
+                   else
+                     Date.strptime(params[:filter][:end], "%Y-%m-%d")
+                   end
+      [start_date, end_date]
+    else
+      [nil, nil]
+    end
   end
 end

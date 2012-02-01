@@ -1,5 +1,6 @@
 FactoryGirl.define do
   sequence(:email) {|n| "user#{n}@example.com" }
+  sequence(:title) {|n| "Something Awesome ##{n}" }
   sequence(:index)
 
   factory :chapter do
@@ -30,8 +31,8 @@ FactoryGirl.define do
 
   factory :project do
     name "Joe Schmoe"
-    title "Something Awesome"
-    email "awesome@example.com"
+    title
+    email
     description "I am awesome."
     use "I will do awesome."
     chapter

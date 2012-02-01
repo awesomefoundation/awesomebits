@@ -19,6 +19,12 @@ class Project < ActiveRecord::Base
       where("roles.user_id = #{user.id} OR chapters.name = 'Any'")
   end
 
+  def self.during_timeframe(start_date, end_date)
+    start_date ||= 100.years.ago.to_date
+    end_date ||= Date.today
+    where("created_at BETWEEN ? AND ?", start_date, end_date + 1.day)
+  end
+
   def save
     was_new_record = new_record?
     saved = super

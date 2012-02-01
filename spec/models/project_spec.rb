@@ -36,4 +36,29 @@ describe Project do
       projects.should_not include(bad_project)
     end
   end
+
+  context '.during_timeframe' do
+    let(:start_date) { Date.parse("2001-01-01") }
+    let(:end_date) { Date.parse("2010-10-10") }
+    let!(:before_start) { FactoryGirl.create(:project, :created_at => Date.parse("2000-12-31")) }
+    let!(:before_end) { FactoryGirl.create(:project, :created_at => Date.parse("2001-01-02")) }
+    let!(:after_start) { FactoryGirl.create(:project, :created_at => Date.parse("2010-10-09")) }
+    let!(:after_end) { FactoryGirl.create(:project, :created_at => Date.parse("2010-10-11")) }
+
+    it 'searches between two dates' do
+      actual = Project.during_timeframe(start_date, end_date)
+      actual.should_not include(after_end)
+      actual.should_not include(before_start)
+      actual.should include(after_start)
+      actual.should include(before_end)
+    end
+
+    it 'defaults to all dates if none are supplied' do
+      actual = Project.during_timeframe(nil, nil)
+      actual.should include(after_end)
+      actual.should include(before_start)
+      actual.should include(after_start)
+      actual.should include(before_end)
+    end
+  end
 end

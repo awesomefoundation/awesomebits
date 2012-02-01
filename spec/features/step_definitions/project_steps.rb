@@ -1,23 +1,59 @@
-step 'some projects are from this month' do
-  @projects_this_month = FactoryGirl.create(:project, :chapter => @current_chapter)
-end
-
-step 'some projects are from last month' do
-  @projects_last_month = FactoryGirl.create(:project,
-                                            :chapter => @current_chapter,
-                                            :created_at => 35.days.ago)
-end
-
-step 'some projects are from this month, but for a different chapter' do
-  @projects_other_chapter = FactoryGirl.create(:project,
-                                               :chapter => FactoryGirl.create(:chapter))
-end
-
-step 'some projects are from this month, but for any chapter' do
-  @projects_other_chapter = FactoryGirl.create(:project,
-                                               :chapter => Chapter.find_by_name("Any"))
-end
-
 step 'I go to the projects index' do
   visit projects_path
+end
+
+step 'a project was created on each of the last 7 days for my chapter' do
+  @my_projects = []
+  7.times do |x|
+    @my_projects << FactoryGirl.create(:project,
+                                       :chapter => @current_chapter,
+                                       :created_at => x.days.ago)
+  end
+end
+
+step 'a project was created on each of the last 7 days for a different chapter' do
+  other_chapter = FactoryGirl.create(:chapter)
+  @other_projects = []
+  7.times do |x|
+    @other_projects << FactoryGirl.create(:project,
+                                          :chapter => other_chapter,
+                                          :created_at => x.days.ago)
+  end
+end
+
+step 'a project was created on each of the last 7 days for any chapter' do
+  any_chapter = Chapter.find_by_name("Any") || raise("'Any' chapter not found")
+  @any_projects = []
+  7.times do |x|
+    @any_projects << FactoryGirl.create(:project,
+                                        :chapter => any_chapter,
+                                        :created_at => x.days.ago)
+  end
+end
+
+step 'I want to see my projects for the past 3 days' do
+  fill_in("End", :with => Time.now.strftime("%Y-%m-%d"))
+  fill_in("Start", :with => (3.days.ago).strftime("%Y-%m-%d"))
+  click_button("Filter")
+end
+
+step 'I should see my projects for the past 3 days' do
+  expected = @my_projects[0..3] + @any_projects[0..3]
+  expected.each do |project|
+    page.should have_css(".project .title:contains('#{project.title}')")
+  end
+end
+
+step 'I should not see projects that are not mine' do
+  not_expected = @other_projects
+  not_expected.each do |project|
+    page.should_not have_css(".project .title:contains('#{project.title}')")
+  end
+end
+
+step 'I should not see any projects that are 4 or more days old' do
+  not_expected = @my_projects[4..-1] + @any_projects[4..-1]
+  not_expected.each do |project|
+    page.should_not have_css(".project .title:contains('#{project.title}')")
+  end
 end
