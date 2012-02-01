@@ -25,22 +25,10 @@ class ProjectsController < ApplicationController
   end
 
   private
-# 
+
   def timeframe
-    if params[:filter]
-      start_date = if params[:filter][:start].blank?
-                     nil
-                   else
-                     Date.strptime(params[:filter][:start], "%Y-%m-%d")
-                   end
-      end_date = if params[:filter][:end].blank?
-                     nil
-                   else
-                     Date.strptime(params[:filter][:end], "%Y-%m-%d")
-                   end
-      [start_date, end_date]
-    else
-      [nil, nil]
-    end
+    start_date = params[:start].blank? ? nil : Date.strptime(params[:start], "%Y-%m-%d")
+    end_date =   params[:end].blank?   ? nil : Date.strptime(params[:end],   "%Y-%m-%d")
+    [start_date, end_date]
   end
 end

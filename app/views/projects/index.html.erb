@@ -3,11 +3,17 @@
 
 <section class="applications">
   <section class="application-filters">
-  <%= simple_form_for :filter, :url => projects_path, :method => :get do |form| %>
-    <%= form.input :start, :required => false, :input_html => { :value => @start_date } %>
-    <%= form.input :end,   :required => false, :input_html => { :value => @end_date } %>
-    <%= submit_tag "Filter", :name => '' %>
-  <% end %>
+  <form accept-charset="UTF-8" action="/projects" class="simple_form filter" method="get">
+    <div class="input string optional">
+      <label class="string optional" for="filter_start">Start</label>
+      <input class="string optional" id="filter_start" name="start" size="50" type="text" value="<%= @start_date %>">
+    </div>
+    <div class="input string optional">
+      <label class="string optional" for="filter_end"> End</label>
+      <input class="string optional" id="filter_end" name="end" size="50" type="text" value="<%= @end_date %>">
+    </div>
+    <input name="" type="submit" value="Filter">
+  </form>
   </section>
     <% @projects.each do |project| %>
       <article class="application project">
