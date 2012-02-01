@@ -8,6 +8,7 @@
 user = User.create(:first_name => "Awesome",
                    :last_name => "Admin",
                    :email => "admin@awesomefoundation.org")
+user.update_attribute(:admin, true)
 user.update_password("gnarly")
 
 Chapter.create(:name => "Any")
