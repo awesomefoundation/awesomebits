@@ -9,11 +9,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def must_be_trustee
-    redirect_to root_url unless current_user.try(:trustee?)
-  end
-
   def must_be_admin
-    redirect_to root_url unless current_user.try(:admin?)
+    unless current_user.try(:admin?)
+      flash[:notice] = "You must be an administrator."
+      redirect_to root_url
+    end
   end
 end

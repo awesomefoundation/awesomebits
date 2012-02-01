@@ -1,13 +1,13 @@
 step "I am logged in as an admin" do
   @current_user = Factory(:user, :admin => true, :password => "12345")
-  visit new_sessions_path
+  visit sign_in_path
   fill_in("Email", :with => @current_user.email)
   fill_in("Password", :with => "12345")
   click_button("Sign in")
 end
 
 step "I log back in" do
-  visit new_sessions_path
+  visit sign_in_path
   fill_in("Email", :with => @current_user.email)
   fill_in("Password", :with => "12345")
   click_button("Sign in")
@@ -20,7 +20,7 @@ step "I am logged in as a dean" do
                                      :user => @current_user,
                                      :chapter => @current_chapter,
                                      :name => "dean")
-  visit new_sessions_path
+  visit sign_in_path
   fill_in("Email", :with => @current_user.email)
   fill_in("Password", :with => "12345")
   click_button("Sign in")
@@ -33,7 +33,7 @@ step "I am logged in as a trustee" do |name|
                                      :user => @current_user,
                                      :chapter => @current_chapter,
                                      :name => "trustee")
-  visit new_sessions_path
+  visit sign_in_path
   fill_in("Email", :with => @current_user.email)
   fill_in("Password", :with => "12345")
   click_button("Sign in")

@@ -21,5 +21,13 @@ class User < ActiveRecord::Base
     admin? || roles.any?(&:trustee?)
   end
 
+  def can_manage_permissions?
+    admin?
+  end
+
+  def can_create_chapters?
+    admin?
+  end
+
 end
 
