@@ -2,54 +2,59 @@
   <div class="avatar">
     <%= image_tag("avatar.jpg") %>
   </div>
+
   <% if current_user.can_manage_permissions? %>
     <%= link_to "Manage user permissions", "#" %>
   <% end %>
+  <a class="edit-profile" href="#">Edit Profile</a>
+  <a class="invite-trustee" href="#">Invite a Trustee</a>
   <% if current_user.can_create_chapters? %>
     <%= link_to "Create Chapter", new_chapter_path %>
   <% end %>
-  <div class="trustee">
-    <a class="edit-profile" href="#">Edit Profile</a>
-  </div>
-  <div class="dean">
-    <a class="invite-trustee" href="#">Invite a Trustee</a>
-  </div>
-  <div class="admin">
-    <a class="edit-users" href="#">Edit Users</a>
-    <a class="edit-chapters" href="#">Edit Chapters</a>
-  </div>
+  <a class="edit-users" href="#">Edit Users</a>
+  <a class="edit-chapters" href="#">Edit Chapters</a>
 </section>
 
 <section class="applications">
   <section class="application-filters">
+    <h1>Boston Chapter</h1>
     <form accept-charset="UTF-8" action="/projects" class="simple_form filter" method="get">
-      <div class="input string optional">
+      <div class="input short-list-toggle">
+        <label for="my-short-list">
+        <input class="" id="my-short-list" type="checkbox">
+        My Short-list</label>
+      </div>
+      <div class="input string optional date-range">
         <label class="string optional" for="filter_start">Start</label>
         <input class="string optional" id="filter_start" name="start" size="50" type="text" value="<%= @start_date %>">
       </div>
-      <div class="input string optional">
+
+      <div class="input string optional date-range">
         <label class="string optional" for="filter_end"> End</label>
         <input class="string optional" id="filter_end" name="end" size="50" type="text" value="<%= @end_date %>">
       </div>
+
       <input name="" type="submit" value="Filter">
     </form>
   </section>
 
+  <% 5.times do %>
     <% @projects.each do |project| %>
       <article class="application">
         <header>
           <div class="title">
             <a class="full-application" href="#"><%= project.name %></a>
             <a class="mark-as-winner" href="#">Winner</a>
-            <a class="short-list" href="#">Like</a>
+            <a class="short-list" href="#">Awesome</a>
           </div>
 
           <section class="meta-data">
-            <span><strong>By:</strong> Rebecca Fiona, Boston Mass.</span>
             <span>
-              <strong>Submitted to: </strong>
-              <%= project.chapter.name %>
-              , <em><%= project.created_at %></em>
+              Rebecca Fiona, Boston Mass.
+            </span>
+            <span>
+              <%= project.chapter.name %>,
+              <%= project.created_at %>
             </span>
           </section>
         </header>
@@ -66,4 +71,5 @@
         </section>
       </article>
     <% end %>
+  <% end %>
 </section>
