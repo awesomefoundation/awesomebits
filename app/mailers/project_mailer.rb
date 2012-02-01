@@ -1,5 +1,5 @@
 class ProjectMailer < ActionMailer::Base
-  default :from => FROM_ADDRESS
+  default :from => DO_NOT_REPLY
 
   def new_application(project)
     @project = project

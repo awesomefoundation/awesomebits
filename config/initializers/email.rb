@@ -1,1 +1,10 @@
-FROM_ADDRESS = "do_not_reply@awesomefoundation.com"
+DO_NOT_REPLY = "do-not-reply@awesomefoundation.com"
+
+ActionMailer::Base.smtp_settings = {
+  :address        => "smtp.sendgrid.net",
+  :port           => "25",
+  :authentication => :plain,
+  :user_name      => ENV['SENDGRID_USERNAME'],
+  :password       => ENV['SENDGRID_PASSWORD'],
+  :domain         => ENV['SENDGRID_DOMAIN']
+}
