@@ -22,7 +22,7 @@ gem 'high_voltage'
 gem 'paperclip'
 gem 'formtastic'
 gem 'flutie'
-gem 'bourbon'
+gem 'bourbon', '~> 1.3.6'
 gem 'copycopter_client'
 gem "simple_form", :git => "https://github.com/plataformatec/simple_form.git"
 
