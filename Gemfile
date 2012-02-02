@@ -37,14 +37,11 @@ group :development, :test do
   gem "tddium"
 end
 
-group :development, :test, :staging do
-  gem "database_cleaner"
-end
-
 group :test do
   gem "pry"
   gem "turnip"
   gem "capybara"
+  gem "database_cleaner"
   gem "capybara-webkit", "~> 0.7.1"
   gem "factory_girl_rails"
   gem "bourne"
