@@ -1,13 +1,27 @@
 require 'spec_helper'
 
 describe Invitation do
-  it { should belong_to(:inviter) }
-  it { should belong_to(:invitee) }
-  it { should belong_to(:chapter) }
-  it { should validate_presence_of(:email) }
-  it { should validate_presence_of(:chapter) }
+  context "validations" do
+    before{ FactoryGirl.create(:invitation) }
+    it { should belong_to(:inviter) }
+    it { should belong_to(:invitee) }
+    it { should belong_to(:chapter) }
+    it { should validate_presence_of(:email) }
+    it { should validate_presence_of(:inviter) }
+    it { should validate_presence_of(:chapter) }
+    it { should validate_uniqueness_of(:email).scoped_to(:chapter_id) }
+  end
 
   context "#save" do
+    let(:user) { FactoryGirl.create(:user) }
+    let(:chapter) { FactoryGirl.create(:chapter) }
+    let(:invitation) { FactoryGirl.build(:invitation, :inviter => user, :chapter => chapter) }
+    it 'should not be valid if the inviter cannot invite to this chapter' do
+      invitation.should_not be_valid
+    end
+  end
+
+  context "#send_invitation" do
     let(:invitation) { Factory.build(:invitation) }
     let(:fake_mailer) { FakeMailer.new }
     around do |example|
@@ -16,9 +30,15 @@ describe Invitation do
       invitation.mailer = old_mailer
     end
 
-    it "sends the invitation email" do
-      invitation.save
+    it "sends the invitation email if it hasn't already been accepted" do
+      invitation.send_invitation
       fake_mailer.should have_delivered_email(:invite_trustee)
+    end
+
+    it "doesn't send the invitation email if it has already been accepted" do
+      invitation.accepted = true
+      invitation.send_invitation
+      fake_mailer.should_not have_delivered_email(:invite_trustee)
     end
   end
 

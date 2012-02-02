@@ -21,5 +21,17 @@ describe UserFactory do
       user.chapters.first.should == chapter
       user.roles.first.name.should == "trustee"
     end
+    it "creates a new Role, but not a User, if the User exists already" do
+      existing_user = FactoryGirl.create(:user, :email => user_attributes[:email])
+
+      factory.create
+      user = factory.user
+
+      user.should == existing_user
+      user.should have(1).role
+      user.should have(1).chapter
+      user.chapters.first.should == chapter
+      user.roles.first.name.should == "trustee"
+    end
   end
 end

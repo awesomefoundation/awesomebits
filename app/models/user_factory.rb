@@ -11,7 +11,7 @@ class UserFactory
 
   def user
     if @user.nil?
-      @user = User.new(@attributes)
+      @user = User.find_by_email(@attributes[:email]) || User.new(@attributes)
       @user.update_password(password)
     end
     @user

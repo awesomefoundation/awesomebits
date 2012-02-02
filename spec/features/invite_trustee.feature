@@ -15,6 +15,7 @@ Feature: An admin can invite new trustees, and they can accept and become users
     Then they should get another email welcoming them
     And the trustee can log in
 
+  @dean
   Scenario: Dean can only invite to their chapter
     Given I am logged in as a dean
     When I invite a new trustee to my chapter
@@ -24,9 +25,10 @@ Feature: An admin can invite new trustees, and they can accept and become users
     And the trustee can log in
 
     Given I log back in
-    When I try to invite a new trustee to a different chapter
+    When I try to invite a new trustee to a chapter I am not dean of
     Then I am unable to invite them
 
+  @trustee
   Scenario: Trustee can't invite others
     Given I am logged in as a trustee
     When I try to invite a new trustee to my chapter

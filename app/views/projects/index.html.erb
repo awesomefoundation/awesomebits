@@ -3,11 +3,11 @@
     <%= image_tag("avatar.jpg") %>
   </div>
 
+  <%= link_to "Invite a trustee", new_invitation_path %>
   <% if current_user.can_manage_permissions? %>
     <%= link_to "Manage user permissions", "#" %>
   <% end %>
   <a class="edit-profile" href="#">Edit Profile</a>
-  <a class="invite-trustee" href="#">Invite a Trustee</a>
   <% if current_user.can_create_chapters? %>
     <%= link_to "Create Chapter", new_chapter_path %>
   <% end %>
@@ -38,38 +38,36 @@
     </form>
   </section>
 
-  <% 5.times do %>
-    <% @projects.each do |project| %>
-      <article class="application">
-        <header>
-          <div class="title">
-            <a class="full-application" href="#"><%= project.name %></a>
-            <a class="mark-as-winner" href="#">Winner</a>
-            <a class="short-list" href="#">Awesome</a>
-          </div>
+  <% @projects.each do |project| %>
+    <article class="project">
+      <header>
+        <div class="title">
+          <a class="title" href="#"><%= project.title %></a>
+          <a class="mark-as-winner" href="#">Winner</a>
+          <a class="short-list" href="#">Awesome</a>
+        </div>
 
-          <section class="meta-data">
-            <span>
-              Rebecca Fiona, Boston Mass.
-            </span>
-            <span>
-              <%= project.chapter.name %>,
-              <%= project.created_at %>
-            </span>
-          </section>
-        </header>
-
-        <section class="application-details">
-          <div class="project-pitch">
-            <p><%= project.use %></p>
-          </div>
-          <div="details-toggle">
-          </div>
-          <a class="see-more" href="#">
-            <p>See the rest →</p>
-          </a>
+        <section class="meta-data">
+          <span>
+            <%= project.name %>
+          </span>
+          <span>
+            <%= project.chapter.name %>,
+            <%= project.created_at %>
+          </span>
         </section>
-      </article>
-    <% end %>
+      </header>
+
+      <section class="project-details">
+        <div class="project-pitch">
+          <p><%= project.use %></p>
+        </div>
+        <div="details-toggle">
+        </div>
+        <a class="see-more" href="#">
+          <p>See the rest →</p>
+        </a>
+      </section>
+    </article>
   <% end %>
 </section>

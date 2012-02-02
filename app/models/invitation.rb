@@ -5,7 +5,11 @@ class Invitation < ActiveRecord::Base
 
   validates_presence_of :email
   validates_presence_of :chapter
-  attr_accessible :email, :first_name, :last_name
+  validates_presence_of :inviter
+  validates_uniqueness_of :email, :scope => :chapter_id
+  validate :ensure_inviter_can_invite_to_chapter
+
+  attr_accessible :email, :first_name, :last_name, :chapter_id
 
   cattr_accessor :mailer
   self.mailer = InvitationMailer
@@ -23,15 +27,20 @@ class Invitation < ActiveRecord::Base
     if factory.create
       mailer.welcome_trustee(self).deliver
       self.invitee = factory.user
+      self.accepted = true
+      self.save
     end
   end
 
-  def save
-    was_new_record = new_record?
-    saved = super
-    if was_new_record && saved
+  def send_invitation
+    if not accepted
       mailer.invite_trustee(self).deliver
     end
-    saved
+  end
+
+  def ensure_inviter_can_invite_to_chapter
+    unless inviter && inviter.can_invite_to_chapter?(chapter)
+      errors.add(:chapter_id, "You cannot invite to this chapter.")
+    end
   end
 end

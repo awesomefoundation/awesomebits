@@ -4,7 +4,7 @@ FactoryGirl.define do
   sequence(:index)
 
   factory :chapter do
-    name "Chapter for Generic Location ##{FactoryGirl.generate(:index)}"
+    name { "Chapter for Generic Location ##{FactoryGirl.generate(:index)}" }
   end
 
   factory :user, :aliases => [:inviter, :invitee] do
@@ -12,6 +12,13 @@ FactoryGirl.define do
     last_name "Schmoe"
     email
     password "12345"
+
+    factory :user_with_dean_role do
+      after_create do |user|
+        FactoryGirl.create(:role, :user => user, :name => "dean")
+        user.reload
+      end
+    end
   end
 
   factory :role do
@@ -25,8 +32,11 @@ FactoryGirl.define do
 
   factory :invitation do
     email
-    chapter
-    inviter
+    association :inviter, :factory => :user_with_dean_role
+
+    after_build do |invitation, proxy|
+      invitation.chapter = invitation.inviter.chapters.first
+    end
   end
 
   factory :project do

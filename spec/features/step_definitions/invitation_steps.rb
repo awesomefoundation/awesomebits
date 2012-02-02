@@ -1,9 +1,10 @@
 step 'I invite a new trustee to the :name chapter' do |name|
   @chapter = Factory(:chapter, :name => name)
-  visit chapter_url(@chapter)
-  click_link("Invite new trustee")
+  visit projects_path
+  click_link("Invite a trustee")
   fill_in("First name", :with => "Joe")
   fill_in("Last name", :with => "Schmoe")
+  select(@chapter.name, :from => "Chapter")
   @invitation_address = FactoryGirl.generate(:email)
   fill_in("Email", :with => @invitation_address)
   click_button("Invite")
@@ -11,36 +12,51 @@ end
 
 step 'I invite a new trustee to a different chapter' do |name|
   @chapter = FactoryGirl.create(:chapter)
-  visit chapter_url(@chapter)
-  click_link("Invite new trustee")
+  visit projects_path
+  click_link("Invite a trustee")
   fill_in("First name", :with => "Joe")
   fill_in("Last name", :with => "Schmoe")
+  select(@chapter.name, :from => "Chapter")
   @invitation_address = FactoryGirl.generate(:email)
   fill_in("Email", :with => @invitation_address)
   click_button("Invite")
+end
+
+step 'I try to invite a new trustee to my chapter' do |name|
+  visit new_invitation_path
 end
 
 step 'I invite a new trustee to my chapter' do |name|
-  visit chapter_url(@current_chapter)
-  click_link("Invite new trustee")
+  visit projects_path
+  click_link("Invite a trustee")
   fill_in("First name", :with => "Joe")
   fill_in("Last name", :with => "Schmoe")
+  select(@current_chapter.name, :from => "Chapter")
   @invitation_address = FactoryGirl.generate(:email)
   fill_in("Email", :with => @invitation_address)
   click_button("Invite")
 end
 
-step 'I try to invite a new trustee to my chapter' do
-  visit new_chapter_invitation_path(@current_chapter)
-end
-
-step 'I try to invite a new trustee to a different chapter' do
+step 'I try to invite a new trustee to a chapter I am not dean of' do
   @inaccessible_chapter = FactoryGirl.create(:chapter)
-  visit new_chapter_invitation_path(@inaccessible_chapter)
+  visit new_invitation_path
+  select(@inaccessible_chapter.name, :from => "Chapter")
+  fill_in("First name", :with => "Joe")
+  fill_in("Last name", :with => "Schmoe")
+  fill_in("Email", :with => FactoryGirl.generate(:email))
+  click_button("Invite")
 end
 
-step 'I am unable to invite them' do
-  page.should have_css("#flash_notice:contains('You cannot invite new trustees for that chapter.')")
+steps_for :dean do
+  step 'I am unable to invite them' do
+    page.should have_css(".error:contains('You cannot invite to this chapter.')")
+  end
+end
+
+steps_for :trustee do
+  step 'I am unable to invite them' do
+    page.should have_css("#flash #flash_notice:contains('You do not have permission to invite others.')")
+  end
 end
 
 step 'that person should get an invitation email' do

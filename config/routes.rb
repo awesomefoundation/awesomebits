@@ -6,9 +6,7 @@ Awesomefoundation::Application.routes.draw do
   match '/chapters/show', :to => 'pages#chapters'
   match '/projects/show', :to => 'pages#projects'
   resources :users
-  resources :chapters do
-    resources :invitations
-  end
+  resources :chapters
   resources :invitations, :only => [:new, :create] do
     resources :acceptances, :only => [:new, :create]
   end

@@ -7,33 +7,6 @@ describe User do
   it { should have_many(:roles) }
   it { should have_many(:chapters).through(:roles) }
 
-  context "#can_manage_chapter?" do
-    let(:chapter) { FactoryGirl.create(:chapter) }
-    let(:user) { FactoryGirl.create(:user) }
-    let(:role) { FactoryGirl.create(:role, :user => user, :chapter => chapter) }
-
-    it 'returns true when the Role is a Dean role' do
-      role.update_attribute(:name, "dean")
-      user.can_manage_chapter?(chapter).should be_true
-    end
-
-    it 'returns false when the Role is a trustee role' do
-      role.update_attribute(:name, "trustee")
-      user.can_manage_chapter?(chapter).should be_false
-    end
-
-    it 'returns true if the use is an admin' do
-      role.destroy
-      user.admin = true
-      user.can_manage_chapter?(chapter).should be_true
-    end
-
-    it 'returns false if the user is not affiliated with the chapter' do
-      role.destroy
-      user.can_manage_chapter?(chapter).should be_false
-    end
-  end
-
   context "#trustee?" do
     let(:user){ FactoryGirl.build(:user) }
     let(:chapter){ FactoryGirl.build(:chapter) }
@@ -62,4 +35,48 @@ describe User do
       user.trustee?.should be_true
     end
   end
+
+  context '#can_invite?' do
+    let(:user) { FactoryGirl.build(:user) }
+    it 'returns true if the user is an admin' do
+      user.admin = true
+      user.can_invite?.should be_true
+    end
+    it 'asks the roles if it can invite if not an admin' do
+      user.admin = false
+      user.roles.stubs(:can_invite?)
+      user.can_invite?
+      user.roles.should have_received(:can_invite?)
+    end
+  end
+
+  context '#can_invite_to_chapter?' do
+    let(:user) { FactoryGirl.build(:user) }
+    it 'returns true if the user is an admin' do
+      user.admin = true
+      user.can_invite_to_chapter?(:chapter).should be_true
+    end
+    it 'asks the roles if it can invite if not an admin' do
+      user.admin = false
+      user.roles.stubs(:can_invite_to_chapter?)
+      user.can_invite_to_chapter?(:chapter)
+      user.roles.should have_received(:can_invite_to_chapter?)
+    end
+  end
+
+  context "#can_manage_chapter?" do
+    let(:user) { FactoryGirl.build(:user) }
+    it 'returns true if the user is an admin' do
+      user.admin = true
+      user.can_manage_chapter?(:chapter).should be_true
+    end
+    it 'asks the roles if it can manage if not an admin' do
+      user.admin = false
+      user.roles.stubs(:can_manage_chapter?)
+      user.can_manage_chapter?(:chapter)
+      user.roles.should have_received(:can_manage_chapter?)
+    end
+  end
+
+
 end

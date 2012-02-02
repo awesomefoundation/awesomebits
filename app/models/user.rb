@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   end
 
   def can_manage_chapter?(chapter)
-    admin? || roles.deans_for_chapter(chapter).any?
+    admin? || roles.can_manage_chapter?(chapter)
   end
 
   def trustee?
@@ -29,5 +29,12 @@ class User < ActiveRecord::Base
     admin?
   end
 
-end
+  def can_invite?
+    admin? || roles.can_invite?
+  end
 
+  def can_invite_to_chapter?(chapter)
+    admin? || roles.can_invite_to_chapter?(chapter)
+  end
+
+end

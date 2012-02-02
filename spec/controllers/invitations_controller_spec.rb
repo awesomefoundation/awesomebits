@@ -6,7 +6,7 @@ describe InvitationsController do
   context 'not logged in' do
     context 'GET to #new' do
       before do
-        get :new, :chapter_id => chapter.id
+        get :new
       end
       it { should redirect_to(root_path) }
       it 'sets the flash' do
@@ -15,26 +15,31 @@ describe InvitationsController do
     end
   end
 
-  context 'logged in as a dean' do
+  context 'logged in as a trustee' do
     let(:other_chapter) { FactoryGirl.create(:chapter) }
     let(:user) { FactoryGirl.create(:user) }
-    let(:role) { FactoryGirl.create(:role, :user => user, :chapter => chapter, :name => "dean") }
-    context 'GET to #new for the right chapter' do
+    let(:role) { FactoryGirl.create(:role, :user => user, :chapter => chapter, :name => "trustee") }
+    context 'GET to #new' do
       before do
-        controller.send(:current_user=, user)
-        get :new, :chapter_id => chapter.id
-      end
-      it { should render_template(nil) }
-    end
-    context 'GET to #new for the wrong chapter' do
-      before do
-        controller.send(:current_user=, user)
-        get :new, :chapter_id => other_chapter.id
+        sign_in_as user
+        get :new
       end
       it { should redirect_to(root_path) }
       it 'sets the flash' do
-        flash[:notice].should == "You cannot invite new trustees for that chapter."
+        flash[:notice].should == "You do not have permission to invite others."
       end
+    end
+  end
+
+  context 'logged in as a dean' do
+    let(:user) { role.user }
+    let(:role) { FactoryGirl.create(:role, :name => "dean") }
+    context 'GET to #new' do
+      before do
+        sign_in_as user
+        get :new
+      end
+      it { should respond_with(:success) }
     end
   end
 end

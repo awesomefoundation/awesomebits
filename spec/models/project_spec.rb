@@ -24,7 +24,7 @@ describe Project do
     let(:role){ FactoryGirl.create(:role) }
     let(:user){ role.user }
     let(:chapter){ role.chapter }
-    let(:any_chapter){ FactoryGirl.create(:chapter, :name => "Any") }
+    let(:any_chapter){ Chapter.find_by_name("Any") }
     let!(:good_project){ FactoryGirl.create(:project, :chapter => chapter) }
     let!(:bad_project){ FactoryGirl.create(:project) }
     let!(:any_project){ FactoryGirl.create(:project, :chapter => any_chapter) }

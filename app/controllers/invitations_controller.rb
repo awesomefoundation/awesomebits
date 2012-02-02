@@ -1,18 +1,17 @@
 class InvitationsController < ApplicationController
   before_filter :must_be_logged_in
-  before_filter :must_be_able_to_access_chapter
+  before_filter :must_be_able_to_invite
 
   def new
-    @chapter = Chapter.find(params[:chapter_id])
-    @invitation = @chapter.invitations.build
+    @invitation = Invitation.new
   end
 
   def create
-    @chapter = Chapter.find(params[:chapter_id])
-    @invitation = Invitation.new(params[:invitation])
-    @invitation.chapter = @chapter
+    @invitation = find_invitation(params[:invitation])
+    @invitation.inviter = current_user
     if @invitation.save
-      redirect_to chapter_path(@chapter)
+      @invitation.send_invitation
+      redirect_to projects_path
     else
       render :new
     end
@@ -20,13 +19,18 @@ class InvitationsController < ApplicationController
 
   private
 
-  def current_chapter
-    @chapter ||= Chapter.find(params[:chapter_id])
+  def find_invitation(attributes)
+    invitation = Invitation.where(:email => attributes[:email]).
+                            where(:chapter_id => attributes[:chapter_id]).
+                            first
+    invitation ||= Invitation.new
+    invitation.attributes = attributes
+    invitation
   end
 
-  def must_be_able_to_access_chapter
-    if !current_user.can_manage_chapter?(current_chapter)
-      flash[:notice] = "You cannot invite new trustees for that chapter."
+  def must_be_able_to_invite
+    unless current_user.can_invite?
+      flash[:notice] = "You do not have permission to invite others."
       redirect_to root_path
     end
   end
