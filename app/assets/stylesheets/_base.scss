@@ -4,7 +4,10 @@ html, body {
 
 body {
   section.container {
-    margin: 70px auto;
+    //background: rgb(60,60,60);
+    //@include radial-gradient(50% 50%, circle cover, rgb(100,100,100), rgb(60,60,60));
+    margin: 0px auto;
+    padding: 70px 0px;
     width: grid-width(12);
   }
 }

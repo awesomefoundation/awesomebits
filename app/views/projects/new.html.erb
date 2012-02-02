@@ -1,11 +1,17 @@
-<%= simple_form_for @project, :url => submissions_url do |form| %>
-  <%= form.input :name %>
-  <%= form.input :title, :label => "Project title" %>
-  <%= form.input :url, :label => "URL" %>
-  <%= form.input :email %>
-  <%= form.input :phone %>
-  <%= form.input :description, :label => "About me" %>
-  <%= form.input :use, :label => "About the project" %>
-  <%= form.input :chapter_id, :collection => Chapter.all, :as => :select, :group_method => :name %>
-  <%= submit_tag "Apply" %>
-<% end %>
+<section class="application-form">
+  <%= simple_form_for @project, :url => submissions_url do |form| %>
+    <div class="personal-info">
+      <%= form.input :name %>
+      <%= form.input :email %>
+      <%= form.input :phone %>
+    </div>
+    <div class="project-info">
+      <%= form.input :title, :label => "Project title" %>
+      <%= form.input :url, :label => "Project website" %>
+    </div>
+    <%= form.input :description, :label => "About me", :input_html => { :class => "about-me" } %>
+    <%= form.input :use, :label => "About the project", :input_html => { :class => "project-desc" } %>
+    <%= form.input :chapter_id, :collection => Chapter.all, :as => :select, :group_method => :name, :label => "Select a Chapter to apply to:" %>
+    <%= submit_tag "Apply" %>
+  <% end %>
+</section>
