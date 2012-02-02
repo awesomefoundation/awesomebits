@@ -37,6 +37,10 @@ group :development, :test do
   gem "tddium"
 end
 
+group :development, :test, :staging do
+  gem "database_cleaner"
+end
+
 group :test do
   gem "pry"
   gem "turnip"
@@ -44,7 +48,6 @@ group :test do
   gem "capybara-webkit", "~> 0.7.1"
   gem "factory_girl_rails"
   gem "bourne"
-  gem "database_cleaner"
   gem "timecop"
   gem "shoulda-matchers"
   gem "launchy"
