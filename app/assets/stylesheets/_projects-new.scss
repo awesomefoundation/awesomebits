@@ -1,9 +1,3 @@
-body {
-  section.container {
-    width: 100%;
-  }
-}
-
 .application-form {
   background: rgb(240,240,240);
   border: 1px solid rgb(170,170,170);
@@ -49,7 +43,7 @@ body {
     }
 
     label {
-      font: bold 14px/16px $sans-serif;
+      font: bold 14px/16px $helvetica;
       margin-bottom: 3px;
 
       &.required {
@@ -80,7 +74,7 @@ body {
       @include border-radius(3px);
       @include box-shadow(inset 0 0 3px 0 rgba(0,0,0, 0.2));
       @include box-sizing(border-box);
-      font: normal 14px/16px $sans-serif;
+      font: normal 14px/16px $helvetica;
       height: 35px;
       margin: 0px;
       padding: 5px 8px;
@@ -120,8 +114,8 @@ body {
 
     input[type="submit"] {
       @include button($pink);
-      font: 300 24px $sans-serif;
-      margin: 40px 0 10px 0;
+      font: 300 24px $helvetica;
+      margin: 30px 0 10px 0;
       padding: 10px;
       width: 100%;
     }

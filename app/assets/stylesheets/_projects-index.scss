@@ -54,7 +54,7 @@ body.projects-index {
     width: grid-width(9);
 
     h1 {
-      font: 300 22px $sans-serif;
+      font: 300 22px $helvetica;
       float: left;
       margin: 0px 20px 0px 0px;
       padding: 10px;
@@ -139,7 +139,7 @@ body.projects-index {
         a {
           color: rgb(50,50,50);
           float: left;
-          font: bold 24px $sans-serif;
+          font: bold 24px $helvetica;
           text-decoration: none;
 
           &:hover {
@@ -164,7 +164,7 @@ body.projects-index {
         padding: 5px 10px;
 
         span {
-          font: normal 12px/14px $sans-serif;
+          font: normal 12px/14px $helvetica;
           margin-right: 10px;
         }
       }
@@ -180,7 +180,7 @@ body.projects-index {
       }
 
       .project-pitch {
-        font: normal 14px/18px $serif;
+        font: normal 14px/18px $times;
       }
 
       .details-toggle {
@@ -196,7 +196,7 @@ body.projects-index {
 
         p {
           color: rgb(50,50,50);
-          font: 300 12px/14px $sans-serif;
+          font: 300 12px/14px $helvetica;
           padding: 5px 10px;
           text-align: right;
         }

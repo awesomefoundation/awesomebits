@@ -13,7 +13,7 @@ body {
 }
 
 header.main {
-  background: rgb(0,0,0);
+  background: rgb(41,41,41);
   width: 100%;
 
   nav {
@@ -46,7 +46,7 @@ header.main {
         a {
           color: rgb(255,255,255);
           display: block;
-          font: 300 12px/16px $sans-serif;
+          font: 300 12px/16px $helvetica;
           height: 29px;
           padding: 18px 3px 0px 3px;
           text-decoration: none;
