@@ -5,7 +5,7 @@ class Invitation < ActiveRecord::Base
 
   validates_presence_of :email
   validates_presence_of :chapter
-  attr_accessible :email
+  attr_accessible :email, :first_name, :last_name
 
   cattr_accessor :mailer
   self.mailer = InvitationMailer
