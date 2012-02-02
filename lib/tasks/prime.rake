@@ -48,4 +48,50 @@ One project has been created for the LA chapter.
       end_doc
     end
   end
+
+  namespace :staging do
+    desc "Prime staging"
+    task :prime => :environment do
+      u = User.new(:first_name => "Admin", :last_name => "Admin", :email => "admin@awesomefoundation.org")
+      u.password = "12345"
+      u.admin = true
+      u.save
+      u.update_password("gnarly")
+      bt = User.new(:first_name => "Boston", :last_name => "Trustee", :email => "boston@example.com")
+      bt.password = "12345"
+      bt.save
+      bd = User.new(:first_name => "Boston", :last_name => "Dean", :email => "boston+dean@example.com")
+      bd.password = "12345"
+      bd.save
+      lt = User.new(:first_name => "LA", :last_name => "Trustee", :email => "la@example.com")
+      lt.password = "12345"
+      lt.save
+      ld = User.new(:first_name => "LA", :last_name => "Dean", :email => "la+dean@example.com")
+      ld.password = "12345"
+      ld.save
+      bos = Chapter.create(:name => "Boston")
+      la = Chapter.create(:name => "LA")
+      r = Role.new
+      r.chapter = bos
+      r.user = bt
+      r.name = "trustee"
+      r.save
+      r = Role.new
+      r.user = bd
+      r.name = "dean"
+      r.chapter = bos
+      r.save
+      r = Role.new
+      r.user = lt
+      r.chapter = la
+      r.name = "trustee"
+      r.save
+      r = Role.new
+      r.user = ld
+      r.name = "dean"
+      r.chapter = la
+      r.save
+      Chapter.create(:name => "Any")
+    end
+  end
 end
