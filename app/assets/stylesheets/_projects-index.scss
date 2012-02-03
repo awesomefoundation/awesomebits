@@ -111,7 +111,7 @@ body.projects-index {
     }
   }
 
-  article.application {
+  article.project {
     border: 1px solid rgb(200,200,200);
     background: rgb(255,255,255);
     @include border-radius(4px);
@@ -170,7 +170,7 @@ body.projects-index {
       }
     }
 
-    section.application-details {
+    section.project-proposal-details {
       overflow: hidden;
       position: relative;
 
