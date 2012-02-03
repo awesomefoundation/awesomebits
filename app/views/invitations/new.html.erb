@@ -1,7 +1,12 @@
-<%= simple_form_for [@chapter, @invitation] do |form| %>
-  <%= form.input :chapter_id, :as => :select, :collection => Chapter.all, :group_method => :name %>
-  <%= form.input :first_name %>
-  <%= form.input :last_name %>
-  <%= form.input :email %>
-  <%= submit_tag "Invite" %>
-<% end %>
+<section class="invitation-form">
+  <h1>Invite a new trustee</h1>
+  <%= simple_form_for [@chapter, @invitation] do |form| %>
+    <%= form.input :chapter, :as => :select, :collection => Chapter.all, :group_method => :name, :label => "Select a chapter:" %>
+    <div class="invitee-name">
+      <%= form.input :first_name %>
+      <%= form.input :last_name %>
+    </div>
+    <%= form.input :email %>
+    <%= submit_tag "Invite" %>
+  <% end %>
+</section>
