@@ -8,6 +8,8 @@ describe Project do
   it { should validate_presence_of :use }
   it { should validate_presence_of :chapter_id }
   it { should validate_presence_of :description }
+  it { should have_many(:votes) }
+  it { should have_many(:users).through(:votes) }
 
   context '#save' do
     let(:fake_mailer) { FakeMailer.new }
@@ -61,4 +63,21 @@ describe Project do
       actual.should include(before_end)
     end
   end
+
+  context '#shortlisted_by?' do
+    let!(:vote){ FactoryGirl.create(:vote) }
+    let!(:user){ vote.user }
+    let!(:project){ vote.project }
+    let!(:other_user) { FactoryGirl.create(:user) }
+
+    it 'returns true if this project had been shortlisted by the given user' do
+      project.shortlisted_by?(user).should be_true
+    end
+
+    it 'returns false if this project had not been shortlisted by the given user' do
+      project.shortlisted_by?(other_user).should_not be_true
+    end
+
+  end
+
 end

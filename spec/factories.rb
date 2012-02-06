@@ -47,4 +47,9 @@ FactoryGirl.define do
     use "I will do awesome."
     chapter
   end
+
+  factory :vote do
+    user
+    project
+  end
 end

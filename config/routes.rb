@@ -10,7 +10,10 @@ Awesomefoundation::Application.routes.draw do
   resources :invitations, :only => [:new, :create] do
     resources :acceptances, :only => [:new, :create]
   end
-  resources :projects
+  resources :projects do
+    resources :votes, :only => [:create]
+  end
+  resources :votes, :only => [:destroy]
   resources :submissions, :controller => "projects"
 
   root :to => 'home#index'

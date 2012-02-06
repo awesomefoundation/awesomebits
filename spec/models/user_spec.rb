@@ -6,6 +6,8 @@ describe User do
   it { should validate_presence_of(:encrypted_password) }
   it { should have_many(:roles) }
   it { should have_many(:chapters).through(:roles) }
+  it { should have_many(:votes) }
+  it { should have_many(:projects).through(:votes) }
 
   context "#trustee?" do
     let(:user){ FactoryGirl.build(:user) }

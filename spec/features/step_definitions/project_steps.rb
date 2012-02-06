@@ -1,4 +1,4 @@
-step 'I go to the projects index' do
+step 'I am looking at the list of projects' do
   visit projects_path
 end
 

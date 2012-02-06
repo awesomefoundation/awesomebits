@@ -50,3 +50,7 @@ end
 
 step 'I have not navigated anywhere yet' do
 end
+
+step 'I refresh the page' do
+  visit(page.current_path)
+end

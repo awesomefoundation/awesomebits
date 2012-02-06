@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
   has_many :roles
   has_many :chapters, :through => :roles
 
+  has_many :votes
+  has_many :projects, :through => :votes
+
   def name
     [first_name, last_name].map(&:to_s).join(" ").strip
   end

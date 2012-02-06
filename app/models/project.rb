@@ -1,5 +1,7 @@
 class Project < ActiveRecord::Base
   belongs_to :chapter
+  has_many :votes
+  has_many :users, :through => :votes
 
   attr_accessible :name, :title, :url, :email, :phone, :description, :use, :chapter_id
 
@@ -23,6 +25,10 @@ class Project < ActiveRecord::Base
     start_date ||= 100.years.ago.to_date
     end_date ||= Date.today
     where("created_at BETWEEN ? AND ?", start_date, end_date + 1.day)
+  end
+
+  def shortlisted_by?(user)
+    users.include?(user)
   end
 
   def save
