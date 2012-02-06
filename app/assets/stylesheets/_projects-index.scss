@@ -149,12 +149,16 @@ body.projects-index {
 
         a.short-list,
         a.mark-as-winner {
-          @include button();
+          @include button(rgb(230,230,230));
           float: right;
           margin-left: 10px;
           text-decoration: none;
 
           &:hover {
+            @include button($pink);
+          }
+
+          &.short-listed {
             @include button($pink);
           }
         }

@@ -1,8 +1,11 @@
-<%= simple_form_for @chapter do |form| %>
-  <%= form.input :name %>
-  <%= form.input :twitter_url, :label => "Twitter URL" %>
-  <%= form.input :facebook_url, :label => "Facebook URL" %>
-  <%= form.input :blog_url, :label => "Blog URL" %>
-  <%= form.input :description %>
-  <%= submit_tag "Create Chapter" %>
-<% end %>
+<section class="chapter-form">
+  <h1>Create a new chapter</h1>
+  <%= simple_form_for @chapter do |form| %>
+    <%= form.input :name %>
+    <%= form.input :twitter_url, :label => "Twitter URL" %>
+    <%= form.input :facebook_url, :label => "Facebook URL" %>
+    <%= form.input :blog_url, :label => "Blog URL" %>
+    <%= form.input :description %>
+    <%= submit_tag "Create Chapter" %>
+  <% end %>
+</section>

@@ -1,29 +1,10 @@
 .invitation-form {
-  background: rgb(240,240,240);
-  border: 1px solid rgb(170,170,170);
-  @include border-radius(4px);
-  margin: 0 auto;
-  padding: 30px 40px;
-  width: grid-width(6);
-
-  h1 {
-    border-bottom: 1px solid rgb(200,200,200);
-    font: 300 28px $helvetica;
-    margin-bottom: 40px;
-    padding-bottom: 10px;
-  }
-
   form {
-    margin: 0 auto;
-    width: grid-width(6);
-
     .invitee-name {
       @extend .clearfix;
     }
 
     div.input {
-      margin: 0 0 15px 0;
-
       &.string {
         float: left;
         margin-right: $gw-gutter;
@@ -41,65 +22,6 @@
         margin-bottom: 20px;
         padding: 0px 0px 20px 0px;
       }
-    }
-
-    label {
-      font: bold 14px/16px $helvetica;
-      margin-bottom: 3px;
-
-      &.required {
-        margin-left: -9px;
-
-        abbr {
-          border: none;
-          color: $pink;
-        }
-      }
-
-      &.select {
-        margin-right: 10px;
-        @include inline-block;
-      }
-    }
-
-    select {
-      margin: 0px;
-      vertical-align: baseline;
-    }
-
-    input[type="text"],
-    input[type="tel"],
-    input[type="email"],
-    input[type="url"] {
-      border: 1px solid rgb(170,170,170);
-      @include border-radius(3px);
-      @include box-shadow(inset 0 0 3px 0 rgba(0,0,0, 0.2));
-      @include box-sizing(border-box);
-      font: normal 14px/16px $helvetica;
-      height: 35px;
-      margin: 0px;
-      padding: 5px 8px;
-      width: 100%;
-    }
-
-    textarea,
-    input[type="text"],
-    input[type="tel"],
-    input[type="email"],
-    input[type="url"] {
-      &:focus {
-        border-color: $pink;
-        @include box-shadow(inset 0 0 3px 0 rgba(0,0,0, 0.2), 0 0 5px 0 $pink);
-        outline: none;
-      }
-    }
-
-    input[type="submit"] {
-      @include button($pink);
-      font: 300 24px $helvetica;
-      margin: 30px 0 10px 0;
-      padding: 10px;
-      width: 100%;
     }
   }
 }
