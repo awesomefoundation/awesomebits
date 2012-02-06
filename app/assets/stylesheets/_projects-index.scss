@@ -72,6 +72,8 @@ body.projects-index {
           background: rgb(230,230,230);
           border: 1px solid rgb(190,190,190);
           @include border-radius(3px);
+          font: normal 12px $helvetica;
+          margin: 0px;
           text-shadow: 0 1px rgba(255,255,255, 0.8);
           padding: 6px 12px 5px 12px;
 
@@ -96,10 +98,7 @@ body.projects-index {
         }
 
         input[type="text"] {
-          border: 1px solid rgb(200,200,200);
-          @include border-radius(3px);
-          @include box-shadow(inset 0 0 3px 0 rgba(0,0,0, 0.2));
-          height: 20px;
+          height: 28px;
           width: 100px;
         }
       }
@@ -107,6 +106,7 @@ body.projects-index {
       input[type="submit"] {
         @include button(rgb(230,230,230));
         margin: 0px;
+        width: auto;
       }
     }
   }
@@ -122,14 +122,6 @@ body.projects-index {
       background: rgba(240, 240, 240, 1);
       border-bottom: 1px solid rgb(200,200,200);
       @include border-top-radius(4px);
-
-      &.short-listed {
-        background: $pink;
-
-        section.meta-data {
-          background: $pink;
-        }
-      }
 
       div.title {
         @extend .clearfix;
@@ -155,10 +147,6 @@ body.projects-index {
           text-decoration: none;
 
           &:hover {
-            @include button($pink);
-          }
-
-          &.short-listed {
             @include button($pink);
           }
         }
@@ -208,6 +196,19 @@ body.projects-index {
         &:hover {
           background: rgba(230, 230, 230, 1);
         }
+      }
+    }
+  }
+
+  article.project.shortlisted {
+    border: 1px solid $pink;
+    background: rgb(255,255,255);
+    @include border-radius(4px);
+    @include box-shadow(0 1px 6px 0 rgba($pink, 0.6));
+
+    div.title {
+      a.short-list {
+        @include button($pink);
       }
     }
   }
