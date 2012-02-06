@@ -26,10 +26,12 @@ Feature: An admin can invite new trustees, and they can accept and become users
 
     Given I log back in
     When I try to invite a new trustee to a chapter I am not dean of
-    Then I am unable to invite them
+    Then I am unable to invite them to that chapter
 
   @trustee
   Scenario: Trustee can't invite others
     Given I am logged in as a trustee
-    When I try to invite a new trustee to my chapter
+    When I have not navigated anywhere yet
+    Then I should not see a link to invite other trustees
+    When I try to invite a new trustee to my chapter anyway
     Then I am unable to invite them

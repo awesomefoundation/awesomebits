@@ -4,7 +4,7 @@ step 'I invite a new trustee to the :name chapter' do |name|
   click_link("Invite a trustee")
   fill_in("First name", :with => "Joe")
   fill_in("Last name", :with => "Schmoe")
-  select(@chapter.name, :from => "Chapter")
+  select(@chapter.name, :from => "Select a chapter")
   @invitation_address = FactoryGirl.generate(:email)
   fill_in("Email", :with => @invitation_address)
   click_button("Invite")
@@ -16,14 +16,18 @@ step 'I invite a new trustee to a different chapter' do |name|
   click_link("Invite a trustee")
   fill_in("First name", :with => "Joe")
   fill_in("Last name", :with => "Schmoe")
-  select(@chapter.name, :from => "Chapter")
+  select(@chapter.name, :from => "Select a chapter")
   @invitation_address = FactoryGirl.generate(:email)
   fill_in("Email", :with => @invitation_address)
   click_button("Invite")
 end
 
-step 'I try to invite a new trustee to my chapter' do |name|
+step 'I try to invite a new trustee to my chapter anyway' do |name|
   visit new_invitation_path
+end
+
+step 'I should not see a link to invite other trustees' do
+  page.should have_no_css(".admin-panel a:contains('Invite a trustee')")
 end
 
 step 'I invite a new trustee to my chapter' do |name|
@@ -31,7 +35,7 @@ step 'I invite a new trustee to my chapter' do |name|
   click_link("Invite a trustee")
   fill_in("First name", :with => "Joe")
   fill_in("Last name", :with => "Schmoe")
-  select(@current_chapter.name, :from => "Chapter")
+  select(@current_chapter.name, :from => "Select a chapter")
   @invitation_address = FactoryGirl.generate(:email)
   fill_in("Email", :with => @invitation_address)
   click_button("Invite")
@@ -40,16 +44,11 @@ end
 step 'I try to invite a new trustee to a chapter I am not dean of' do
   @inaccessible_chapter = FactoryGirl.create(:chapter)
   visit new_invitation_path
-  select(@inaccessible_chapter.name, :from => "Chapter")
-  fill_in("First name", :with => "Joe")
-  fill_in("Last name", :with => "Schmoe")
-  fill_in("Email", :with => FactoryGirl.generate(:email))
-  click_button("Invite")
 end
 
 steps_for :dean do
-  step 'I am unable to invite them' do
-    page.should have_css(".error:contains('You cannot invite to this chapter.')")
+  step 'I am unable to invite them to that chapter' do
+    page.should have_no_css("select[name='invitation[chapter_id]'] option:contains('#{@inaccessible_chapter.name}')")
   end
 end
 

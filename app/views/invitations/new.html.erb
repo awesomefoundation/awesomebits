@@ -1,7 +1,7 @@
 <section class="invitation-form">
   <h1>Invite a new trustee</h1>
   <%= simple_form_for [@chapter, @invitation] do |form| %>
-    <%= form.input :chapter, :as => :select, :collection => Chapter.all, :group_method => :name, :label => "Select a chapter:" %>
+    <%= form.input :chapter_id, :as => :select, :collection => Chapter.invitable_by(current_user), :group_method => :name, :label => "Select a chapter", :prompt => "- Select -" %>
     <div class="invitee-name">
       <%= form.input :first_name %>
       <%= form.input :last_name %>

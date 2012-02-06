@@ -4,7 +4,7 @@ class Invitation < ActiveRecord::Base
   belongs_to :chapter
 
   validates_presence_of :email
-  validates_presence_of :chapter
+  validates_presence_of :chapter_id
   validates_presence_of :inviter
   validates_uniqueness_of :email, :scope => :chapter_id
   validate :ensure_inviter_can_invite_to_chapter

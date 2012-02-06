@@ -11,7 +11,7 @@
     </div>
     <%= form.input :description, :label => "About me", :input_html => { :class => "about-me" } %>
     <%= form.input :use, :label => "About the project", :input_html => { :class => "project-desc" } %>
-    <%= form.input :chapter_id, :collection => Chapter.all, :as => :select, :group_method => :name, :label => "Select a Chapter to apply to:" %>
+    <%= form.input :chapter_id, :collection => Chapter.all, :as => :select, :group_method => :name, :label => "Select chapter to apply to" %>
     <%= submit_tag "Apply" %>
   <% end %>
 </section>

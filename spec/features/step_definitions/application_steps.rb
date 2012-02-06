@@ -6,12 +6,12 @@ step 'I submit a project to the :name chapter' do
   click_link("Apply")
   fill_in("Name", :with => "Mr. Awesome")
   fill_in("Project title", :with => "Awesomeness")
-  fill_in("URL", :with => "http://awesome.com")
+  fill_in("Project website", :with => "http://awesome.com")
   fill_in("Email", :with => "awesome@awesome.com")
   fill_in("Phone", :with => "")
   fill_in("About me", :with => "I am awesome.")
   fill_in("About the project", :with => "I want to make awesomeness.")
-  select("Any", :from => "Chapter")
+  select("Any", :from => "Select chapter to apply to")
   click_button("Apply")
 end
 
@@ -39,11 +39,14 @@ step 'I fix the error and resubmit' do
   click_link("Apply")
   fill_in("Name", :with => "Mr. Awesome")
   fill_in("Project title", :with => "Awesomeness")
-  fill_in("URL", :with => "http://awesome.com")
+  fill_in("Project website", :with => "http://awesome.com")
   fill_in("Email", :with => "awesome@awesome.com")
   fill_in("Phone", :with => "")
   fill_in("About me", :with => "I am awesome.")
   fill_in("About the project", :with => "I want to make awesomeness.")
-  select("Any", :from => "Chapter")
+  select("Any", :from => "Select chapter to apply to")
   click_button("Apply")
+end
+
+step 'I have not navigated anywhere yet' do
 end

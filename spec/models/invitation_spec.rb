@@ -8,7 +8,7 @@ describe Invitation do
     it { should belong_to(:chapter) }
     it { should validate_presence_of(:email) }
     it { should validate_presence_of(:inviter) }
-    it { should validate_presence_of(:chapter) }
+    it { should validate_presence_of(:chapter_id) }
     it { should validate_uniqueness_of(:email).scoped_to(:chapter_id) }
   end
 

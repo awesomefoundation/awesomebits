@@ -3,7 +3,9 @@
     <%= image_tag("avatar.jpg") %>
   </div>
 
-  <%= link_to "Invite a trustee", new_invitation_path %>
+  <% if current_user.can_invite? %>
+    <%= link_to "Invite a trustee", new_invitation_path %>
+  <% end %>
   <% if current_user.can_manage_permissions? %>
     <%= link_to "Manage user permissions", "#" %>
   <% end %>
