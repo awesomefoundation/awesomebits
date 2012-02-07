@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
 
   def must_be_admin_or_dean_for_chapter
     chapter = Chapter.find(params[:id])
-    unless current_user.try(:admin?) || current_user.can_manage_chapter?(chapter)
+    unless current_user.try(:admin?) || (current_user && current_user.can_manage_chapter?(chapter))
       flash[:notice] = "You must be and administrator or dean."
       redirect_to root_url
     end
