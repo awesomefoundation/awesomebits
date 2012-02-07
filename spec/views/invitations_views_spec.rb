@@ -12,7 +12,8 @@ describe 'invitations/new.html.erb' do
   it 'renders a chapter drop down when dean of multiple chapters' do
     assign(:chapter, chapter)
     assign(:invitation, invitation)
-    view.stubs(:generate_chapter_select).returns(true)
+    view.stubs(:current_user).returns(user)
+    view.stubs(:chapters_dropdown?).returns(true)
     view.stubs(:chapters_collection).returns([chapter, another_chapter])
     render
     rendered.should have_content("Select a chapter")
@@ -21,8 +22,9 @@ describe 'invitations/new.html.erb' do
   it 'renders a chapter hidden field when dean of one chapter' do
     assign(:chapter, chapter)
     assign(:invitation, invitation)
-    view.stubs(:generate_chapter_select).returns(false)
-    view.stubs(:current_chapter).returns(chapter)
+    view.stubs(:current_user).returns(user)
+    view.stubs(:chapters_dropdown?).returns(false)
+    view.stubs(:chapter).returns(chapter)
     render
     rendered.should_not have_content("Select a chapter")
   end

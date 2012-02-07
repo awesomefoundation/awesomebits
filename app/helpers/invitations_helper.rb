@@ -1,7 +1,7 @@
 module InvitationsHelper
 
-  def generate_chapter_select
-    if Chapter.invitable_by(current_user).count > 1
+  def chapters_dropdown?
+    if Chapter.invitable_by(current_user).count > 1 || current_user.admin
       true
     else
       false
@@ -12,7 +12,7 @@ module InvitationsHelper
     Chapter.invitable_by(current_user)
   end
 
-  def current_chapter
+  def chapter
     Chapter.invitable_by(current_user).first
   end
 

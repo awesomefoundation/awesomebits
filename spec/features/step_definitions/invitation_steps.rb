@@ -4,9 +4,7 @@ step 'I invite a new trustee to the :name chapter' do |name|
   click_link("Invite a trustee")
   fill_in("First name", :with => "Joe")
   fill_in("Last name", :with => "Schmoe")
-  if Chapter.all.count > 2
-    select(@chapter.name, :from => "Select a chapter")
-  end
+  select(@chapter.name, :from => "Select a chapter")
   @invitation_address = FactoryGirl.generate(:email)
   fill_in("Email", :with => @invitation_address)
   click_button("Invite")
@@ -45,9 +43,6 @@ step 'I invite a new trustee to my chapter' do |name|
   click_link("Invite a trustee")
   fill_in("First name", :with => "Joe")
   fill_in("Last name", :with => "Schmoe")
-  if Chapter.all.count > 2
-    select(@current_chapter.name, :from => "Select a chapter")
-  end
   @invitation_address = FactoryGirl.generate(:email)
   fill_in("Email", :with => @invitation_address)
   click_button("Invite")

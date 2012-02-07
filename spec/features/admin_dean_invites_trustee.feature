@@ -29,7 +29,7 @@ Feature: Admins and Deans can invite users to chapters they have access to
     Then I am unable to invite them to that chapter
 
   Scenario: Dean will not see the chapter dropdown if they can only invite to one chapter
-    Given I am logged in as a dean
+    Given I am logged in as a dean for only one chapter
     When I visit the invitation screen
     Then I should not see a drop down menu with chapters
 
