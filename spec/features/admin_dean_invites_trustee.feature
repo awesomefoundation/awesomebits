@@ -1,4 +1,4 @@
-Feature: An admin can invite new trustees, and they can accept and become users
+Feature: Admins and Deans can invite users to chapters they have access to
 
   Scenario: Admin invites to any chapter
     Given I am logged in as an admin
