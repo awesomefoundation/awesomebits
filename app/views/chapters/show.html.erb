@@ -1,6 +1,9 @@
 <div class="projects-wrapper">
+<% if can_manage_chapter?(@chapter) %>
+  <%= link_to "Edit Chapter", edit_chapter_path(@chapter) %>
+<% end %>
   <header>
-    <h1>Awesome Boston</h1>
+    <h1><%= @chapter.name %></h1>
     <section class="external-links">
       <ol>
         <li>
