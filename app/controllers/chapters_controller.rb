@@ -5,6 +5,10 @@ class ChaptersController < ApplicationController
     @chapters = Chapter.all
   end
 
+  def show
+    @chapter = Chapter.find(params[:id])
+  end
+
   def new
     @chapter = Chapter.new
   end
@@ -18,7 +22,16 @@ class ChaptersController < ApplicationController
     end
   end
 
-  def show
+  def edit
     @chapter = Chapter.find(params[:id])
+  end
+
+  def update
+    @chapter = Chapter.find(params[:id])
+    if @chapter.update_attributes(params[:chapter])
+      redirect_to(@chapter)
+    else
+      render "edit"
+    end
   end
 end
