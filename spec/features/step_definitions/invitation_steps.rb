@@ -26,6 +26,14 @@ step 'I try to invite a new trustee to my chapter anyway' do |name|
   visit new_invitation_path
 end
 
+step 'I visit the invitation screen' do
+  visit new_invitation_path
+end
+
+step 'I should not see a drop down menu with chapters' do
+  page.should have_no_content('Select a chapter')
+end
+
 step 'I should not see a link to invite other trustees' do
   page.should have_no_css(".admin-panel a:contains('Invite a trustee')")
 end
@@ -35,7 +43,6 @@ step 'I invite a new trustee to my chapter' do |name|
   click_link("Invite a trustee")
   fill_in("First name", :with => "Joe")
   fill_in("Last name", :with => "Schmoe")
-  select(@current_chapter.name, :from => "Select a chapter")
   @invitation_address = FactoryGirl.generate(:email)
   fill_in("Email", :with => @invitation_address)
   click_button("Invite")
