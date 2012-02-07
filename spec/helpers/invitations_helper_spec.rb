@@ -11,17 +11,17 @@ describe InvitationsHelper do
 
   it 'checks if more than one chapter avaiable to user' do
     helper.stubs(:current_user).returns(user)
-    helper.chapters_dropdown?.should == true
+    helper.show_chapters_dropdown?.should == true
   end
 
   it 'returns an array of chapters available to user' do
     helper.stubs(:current_user).returns(user)
-    helper.chapters_collection == [chapter, another_chapter]
+    helper.invitable_chapters == [chapter, another_chapter]
   end
 
   it 'returns the single chapter available to user' do
     helper.stubs(:current_user).returns(user)
-    helper.chapter == chapter
+    helper.primary_invitable_chapter == chapter
   end
 
 end
