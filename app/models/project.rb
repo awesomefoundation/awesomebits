@@ -21,10 +21,21 @@ class Project < ActiveRecord::Base
       where("roles.user_id = #{user.id} OR chapters.name = 'Any'")
   end
 
+  def self.voted_for_by_members_of(chapter)
+    joins(:users => :chapters).where("chapters.id = #{chapter.id}")
+  end
+
   def self.during_timeframe(start_date, end_date)
     start_date ||= 100.years.ago.to_date
     end_date ||= Date.today
-    where("created_at BETWEEN ? AND ?", start_date, end_date + 1.day)
+    where("projects.created_at BETWEEN ? AND ?", start_date, end_date + 1.day)
+  end
+
+  def self.by_vote_count
+    select("projects.id, projects.title, COUNT(votes.project_id) as vote_count").
+      group("projects.id, projects.title, votes.project_id").
+      joins(:users).
+      order("vote_count DESC")
   end
 
   def shortlisted_by?(user)

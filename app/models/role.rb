@@ -16,6 +16,10 @@ class Role < ActiveRecord::Base
     where(:name => "dean", :chapter_id => chapter).any?
   end
 
+  def self.can_view_finalists_for?(chapter)
+    where(:name => "dean", :chapter_id => chapter).any?
+  end
+
   def trustee?
     true
   end

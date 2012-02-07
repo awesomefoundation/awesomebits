@@ -80,5 +80,19 @@ describe User do
     end
   end
 
+  context "#can_view_finalists_for?" do
+    let(:user) { FactoryGirl.build(:user) }
+    it 'returns true if the user is an admin' do
+      user.admin = true
+      user.can_view_finalists_for?(:chapter).should be_true
+    end
+    it 'asks the roles if it can view finalists if not an admin' do
+      user.admin = false
+      user.roles.stubs(:can_view_finalists_for?)
+      user.can_view_finalists_for?(:chapter)
+      user.roles.should have_received(:can_view_finalists_for?)
+    end
+  end
+
 
 end

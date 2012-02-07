@@ -24,3 +24,17 @@ step 'none of the projects should be shortlisted' do
     el['class'].should_not include('shortlisted')
   end
 end
+
+step 'someone has voted for a project in another chapter' do
+  FactoryGirl.create(:vote)
+end
+
+step ':count people/person have/has voted on a/another project in my chapter' do |count|
+  @finalist_projects ||= []
+  project = FactoryGirl.create(:project, :chapter => @current_chapter)
+  @finalist_projects << [project, count] if count.to_i > 0
+  count.to_i.times do |x|
+    vote = FactoryGirl.create(:vote, :project => project)
+    FactoryGirl.create(:role, :user => vote.user, :chapter => @current_chapter)
+  end
+end

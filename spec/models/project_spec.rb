@@ -77,7 +77,49 @@ describe Project do
     it 'returns false if this project had not been shortlisted by the given user' do
       project.shortlisted_by?(other_user).should_not be_true
     end
+  end
 
+  context '.voted_for_by_members_of' do
+    let(:boston){ FactoryGirl.create(:chapter) }
+    let(:boston_project) { FactoryGirl.create(:project, :chapter => boston) }
+    let(:boston_trustee) { FactoryGirl.create(:user) }
+    let!(:boston_role) { FactoryGirl.create(:role, :user => boston_trustee, :chapter => boston) }
+    let!(:boston_vote) do
+      FactoryGirl.create(:vote, :project => boston_project, :user => boston_trustee)
+    end
+    let(:chicago){ FactoryGirl.create(:chapter) }
+    let(:chicago_project) { FactoryGirl.create(:project, :chapter => chicago) }
+    let(:chicago_trustee) { FactoryGirl.create(:user) }
+    let!(:chicago_role) { FactoryGirl.create(:role, :user => chicago_trustee, :chapter => chicago) }
+    let!(:chicago_vote) do
+      FactoryGirl.create(:vote, :project => chicago_project, :user => chicago_trustee)
+    end
+
+    it 'returns the projects that the given chapter has voted on' do
+      Project.voted_for_by_members_of(boston).should == [boston_project]
+      Project.voted_for_by_members_of(chicago).should == [chicago_project]
+    end
+  end
+
+  context '.by_vote_count' do
+    let(:chapter) { FactoryGirl.create(:chapter) }
+    let(:projects) { [FactoryGirl.create(:project, :chapter => chapter),
+                      FactoryGirl.create(:project, :chapter => chapter),
+                      FactoryGirl.create(:project, :chapter => chapter)] }
+    before do
+      2.times{ FactoryGirl.create(:vote, :project => projects[1]) }
+      1.times{ FactoryGirl.create(:vote, :project => projects[2]) }
+      0.times{ FactoryGirl.create(:vote, :project => projects[0]) }
+    end
+
+    it 'returns the projects in descending order of vote_count' do
+      Project.by_vote_count.map(&:id).should == [projects[1].id, projects[2].id]
+    end
+
+    it 'gives each returned project a #vote_count getter with its count' do
+      Project.by_vote_count[0].vote_count.should == "2"
+      Project.by_vote_count[1].vote_count.should == "1"
+    end
   end
 
 end

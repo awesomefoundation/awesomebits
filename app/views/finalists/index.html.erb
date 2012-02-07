@@ -1,0 +1,14 @@
+<table>
+  <tr class="headers">
+    <th>ID</th>
+    <th>Votes</th>
+    <th>Title</th>
+  </tr>
+  <% @projects.each do |project| %>
+    <tr class="finalist">
+      <td><%= project.id %></td>
+      <td><%= project.vote_count %></td>
+      <td><%= project.title %></td>
+    </tr>
+  <% end %>
+</table>

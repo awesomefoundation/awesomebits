@@ -40,4 +40,8 @@ class User < ActiveRecord::Base
     admin? || roles.can_invite_to_chapter?(chapter)
   end
 
+  def can_view_finalists_for?(chapter)
+    admin? || roles.can_view_finalists_for?(chapter)
+  end
+
 end
