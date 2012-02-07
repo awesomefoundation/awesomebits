@@ -18,7 +18,7 @@ body {
 //*******************************************************************
 
 header.main {
-  border-bottom: 4px solid $pink;
+  border-bottom: 3px solid $pink;
   background: rgb(60,60,60);
   width: 100%;
 
@@ -28,22 +28,45 @@ header.main {
     position: relative;
     width: grid-width(12);
 
-    .logo {
-      background: $pink;
-      @include border-radius(45px);
-      height: 90px;
-      left: -50px;
-      position: absolute;
-      top: -12px;
-      width: 90px;
-    }
+    a.logo {
+      text-decoration: none;
 
-    h1 {
-      color: rgb(255,255,255);
-      float: left;
-      font: 300 20px $sans-serif;
-      margin: 15px 0px 0px $gw-column;
-      text-transform: uppercase;
+      .fast-forward {
+        background: $pink;
+        @include border-radius(45px);
+        @include box-shadow(0 1px 5px 0 rgba(0,0,0, 0.2));
+        display: block;
+        height: 90px;
+        left: -50px;
+        position: absolute;
+        @include transition(all, 0.2s, ease-in);
+        top: -12px;
+        width: 90px;
+
+        img {
+          margin: 19px 0 0 20px;
+        }
+      }
+
+      h1 {
+        color: rgb(255,255,255);
+        float: left;
+        font: 300 20px $sans-serif;
+        margin: 14px 0px 0px 0px;
+        padding-left: $gw-column;
+        text-transform: uppercase;
+      }
+
+      &:hover {
+        .fast-forward {
+          cursor: pointer;
+          @include transform(rotate(360deg));
+        }
+
+        h1 {
+          color: $pink;
+        }
+      }
     }
 
     ol {
@@ -53,18 +76,17 @@ header.main {
       li {
         float: right;
         list-style: none;
-        margin: 15px 0px 0px 3px;
+        margin: 15px 0px 0px 2px;
 
         &:last-child {
           margin-left: 0;
         }
 
         a {
-          color: rgb(255,255,255);
+          color: rgb(200,200,200);
           display: block;
-          font: bold 11px/16px $sans-serif;
+          font: bold 14px/16px $sans-serif;
           height: 20px;
-          opacity: 0.7;
           padding: 6px 12px 6px;
           text-decoration: none;
           text-transform: uppercase;
@@ -72,7 +94,7 @@ header.main {
 
           &:hover {
             background: $pink;
-            opacity: 1;
+            color: rgb(255,255,255);
           }
         }
       }
@@ -84,7 +106,7 @@ body {
   &.projects-new {
     a.apply {
       background: $pink;
-      opacity: 1;
+      color: rgb(255,255,255);
       text-shadow: 0px -1px rgba(0,0,0, 0.2);
     }
   }
@@ -92,7 +114,7 @@ body {
   &.chapters {
     a.chapters {
       background: $pink;
-      opacity: 1;
+      color: rgb(255,255,255);
       text-shadow: 0px -1px rgba(0,0,0, 0.2);
     }
   }
@@ -100,7 +122,7 @@ body {
   &.projects-index {
     a.dashboard {
       background: $pink;
-      opacity: 1;
+      color: rgb(255,255,255);
       text-shadow: 0px -1px rgba(0,0,0, 0.2);
     }
   }

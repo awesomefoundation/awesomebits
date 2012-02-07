@@ -1,13 +1,19 @@
 <header class="main" id="header">
   <nav>
-    <div class="logo"></div>
-    <h1>The Awesome Foundation</h1>
+    <a href="#" class="logo">
+      <div class="fast-forward">
+        <%= image_tag("logo.png") %>
+      </div>
+      <h1>The Awesome Foundation</h1>
+    </a>
     <ol>
+      <% if  signed_in? %>
+        <li>
+          <%= link_to "My Dashboard", projects_path, { :class => "dashboard" } %>
+        </li>
+      <% end %>
       <li>
-      <%= link_to "My Dashboard", projects_path, { :class => "dashboard" } %>
-      </li>
-      <li>
-      <%= link_to "Apply", new_submission_path, { :class => "apply" } %>
+        <%= link_to "Apply", new_submission_path, { :class => "apply" } %>
       </li>
       <li>
         <a href="#" class="blog">Blog</a>
