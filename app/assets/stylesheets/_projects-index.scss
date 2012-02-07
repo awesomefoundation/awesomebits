@@ -13,15 +13,15 @@ body.projects-index {
   width: 180px;
 
   div.avatar {
-    background: rgb(50,50,50);
-    border: 1px solid rgb(50,50,50);
+    background: rgb(220,220,220);
+    border: 6px solid white;
     @include border-radius(70px);
-    @include box-shadow(inset 0 0 5px 0 rgba(0, 0, 0, 0.2));
+    @include box-shadow(0 0 5px 0 rgba(0, 0, 0, 0.2));
     display: block;
-    height: 115px;
+    height: 122px;
     margin: 0 auto 30px auto;
     overflow: hidden;
-    width: 115px;
+    width: 122px;
 
     img {
       height: 115px;

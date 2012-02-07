@@ -1,14 +1,19 @@
 html, body {
-  //background: rgb(245,245,245);
+  background: rgb(243,243,243);
   height: 100%;
 }
 
 body {
   section.container {
     margin: 0px auto;
-    padding: 70px 0px;
+    padding: 70px 0px 0px;
     width: grid-width(12);
   }
+}
+
+a {
+  color: rgb(55,55,55);
+  text-decoration: none;
 }
 
 //*******************************************************************
@@ -137,11 +142,27 @@ body {
 
 section.footer {
   @extend .clearfix;
-  border-top: 1px solid rgb(200,200,200);
   height: 200px;
   margin: 0 auto;
   padding-top: 10px;
   width: grid-width(12);
+
+  p {
+    padding: 10px 0;
+    text-align: center;
+
+    a {
+      color: rgb(55,55,55);
+      font: bold 14px/16px $sans-serif;
+      margin: 0 10px;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      &:hover {
+        border-bottom: 3px solid $pink;
+      }
+    }
+  }
 
   ol {
     li {

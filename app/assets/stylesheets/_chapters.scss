@@ -1,4 +1,4 @@
-body.pages-chapters {
+body.chapters-show {
   section.container {
     width: 100%;
   }
@@ -13,7 +13,19 @@ body.pages-chapters {
 
     h1 {
       float: left;
-      font-size: 40px;
+      font: 300 40px $sans-serif;
+      text-transform: uppercase;
+
+      a {
+        color: rgb(55,55,55);
+        font: 300 18px $sans-serif;
+        text-decoration: none;
+        text-transform: uppercase;
+
+        &:hover {
+          color: $pink;
+        }
+      }
     }
 
     .external-links {
@@ -62,7 +74,17 @@ body.pages-chapters {
   }
 
   .project-gallery {
+    background: rgb(240,240,240);
+    border: 2px solid rgb(50,50,50);
+    //@include box-shadow(0 0 15px 0 rgb(255,255,255));
+    height: 470px;
+    overflow: hidden;
+    width: grid-width(12);
     @extend .clearfix;
+
+    img {
+      min-width: grid-width(12);
+    }
 
     ol {
       li {
@@ -95,71 +117,34 @@ body.pages-chapters {
 }
 
 .chapter-info-wrapper {
-  @include border-image(url('jagged_edge.png')27 repeat);
-  background: rgb(230,230,230);
-  margin: 70px 0px;
+  border: 1px solid rgb(200,200,200);
+  //@include border-image(url('jagged_edge.png')27 repeat);
+  background: rgb(255,255,255);
+  margin: 100px 0px 0px;
 
   .chapter-info {
     @extend .clearfix;
     margin: 0 auto;
-    padding: 40px 0px;
+    padding: 40px 0px 80px;
     width: grid-width(12);
 
     h1 {
       border-bottom: 1px solid rgb(200,200,200);
       float: none;
-      font: normal 40px $serif;
+      font: 300 40px $sans-serif;
       text-transform: uppercase;
       margin-bottom: 30px;
       padding-bottom: 20px;
       text-align: center;
     }
 
-    .description {
-      float: left;
-      margin-right: $gw-gutter;
-      width: grid-width(4);
-
-      article {
-        margin-bottom: 30px;
-
-        h2 {
-          font-size: 16px;
-          margin-bottom: 15px;
-        }
-
-        p {
-          font: 300 13px/20px $sans-serif;
-          margin-bottom: 0px;
-        }
-
-        &.about {
-          border-bottom: 1px solid rgb(200,200,200);
-          padding-bottom: 30px;
-        }
-      }
-    }
-
-    ol.feed {
-      margin: 0px;
-
-      li {
-        list-style: none;
-        margin-bottom: 10px;
-
-        &:last-child {
-          margin: 0px;
-        }
-      }
-    }
-
     .trustees {
-      float: left;
-      width: grid-width(8);
+      margin: 50px auto 40px;
+      width: grid-width(10);
 
       ol {
         @extend .clearfix;
-        margin: 5px 0 0 0;
+        margin: 0px;
 
         li {
           float: left;
@@ -167,31 +152,29 @@ body.pages-chapters {
           margin: 0 $gw-gutter 30px 0;
           width: grid-width(2);
 
-          &:nth-child(4n) {
+          &:nth-child(5n) {
             margin-right: 0px;
           }
 
           article.trustee {
-            padding-top: 10px;
             position: relative;
 
             a {
               text-decoration: none;
 
               div.avatar {
-                background: rgb(50,50,50);
-                border: 1px solid rgb(50,50,50);
+                background: rgb(220,220,220);
+                border: 6px solid white;
                 @include border-radius(70px);
-                @include box-shadow(inset 0 0 5px 0 rgba(0, 0, 0, 0.2));
+                @include box-shadow(0 0 5px 0 rgba(0, 0, 0, 0.2));
                 display: block;
-                height: 115px;
+                height: 122px;
                 margin: 0 auto;
                 overflow: hidden;
-                width: 115px;
+                width: 122px;
 
                 img {
-                  height: 115px;
-                  width: 115px;
+                  max-width: 122px;
                 }
               }
 
@@ -203,13 +186,13 @@ body.pages-chapters {
                 padding: 8px;
                 position: absolute;
                 @include transform(rotate(-10deg));
-                //@include transition(opacity, 0.1s, ease-out);
+                @include transition(opacity, 0.1s, ease-out);
                 top: 20px;
                 width: grid-width(2);
 
                 h3 {
                   color: rgb(255,255,255);
-                  font: normal 16px/18px $serif;
+                  font: 300 16px/18px $sans-serif;
                   margin: 0px;
                   text-transform: uppercase;
                   text-align: center;
@@ -226,5 +209,60 @@ body.pages-chapters {
         }
       }
     }
+
+    .description {
+      @extend .clearfix;
+      border-top: 1px solid rgb(200,200,200);
+      margin: 0 auto;
+      padding-top: 50px;
+      width: grid-width(10);
+
+      article {
+        float: left;
+        margin-right: $gw-gutter;
+        width: grid-width(4);
+
+        &:last-child {
+          margin: 0px;
+        }
+
+        h2 {
+          font-size: 16px;
+          margin-bottom: 15px;
+        }
+
+        p {
+          font: 300 14px/20px $sans-serif;
+          margin-bottom: 0px;
+        }
+
+        &.about {
+          padding-bottom: 30px;
+          width: grid-width(6);
+        }
+      }
+    }
+
+    ol.feed {
+      margin: 0px;
+
+      li {
+        list-style: none;
+        margin: 0px 0px 5px 0px;
+
+        &:last-child {
+          margin: 0px;
+        }
+
+        a {
+          text-decoration: none;
+
+          &:hover {
+            color: $pink;
+          }
+        }
+      }
+    }
+
   }
 }

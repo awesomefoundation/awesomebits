@@ -1,25 +1,15 @@
 <section class="footer">
-  <ol>
-    <li>
-      <a href="#">About Us</a>
-    </li>
-    <li>
-      <a href="#">Contact</a>
-    </li>
-    <li>
-      <a href="#">faq</a>
-    </li>
-    <li>
-      <a href="#">Want to join the Movement?</a>
-    </li>
-    <li>
-      <% if signed_in? -%>
-        <%= link_to "Sign out", sign_out_path, :method => :delete %>
-      <% else -%>
-        <%= link_to "Sign in", sign_in_path %>
-      <% end -%>
-    </li>
-  </ol>
+  <p>
+    <a href="#">About Us</a>
+    <a href="#">Contact</a>
+    <a href="#">faq</a>
+    <a href="#">Want to help?</a>
+    <% if signed_in? -%>
+      <%= link_to "Sign out", sign_out_path, :method => :delete %>
+    <% else -%>
+      <%= link_to "Sign in", sign_in_path %>
+    <% end -%>
+  </p>
 
   <ol class="social-links">
     <li>
