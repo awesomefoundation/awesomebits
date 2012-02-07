@@ -1,6 +1,6 @@
 <%= @chapters.each do |chapter| %>
   <div class="chapter">
-    <h2 class="name"><%= chapter.name %></h2>
+    <h2 class="name"><%= link_to chapter.name, chapter_path(chapter) %></h2>
     <p class="twitter_url"><%= chapter.twitter_url %></p>
     <p class="facebook_url"><%= chapter.facebook_url %></p>
     <p class="blog_url"><%= chapter.blog_url %></p>
