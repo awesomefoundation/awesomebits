@@ -4,6 +4,18 @@
       @extend .clearfix;
     }
 
+    p {
+      font: bold 14px/16px $sans-serif;
+      margin-bottom: 35px;
+
+      span {
+        border-bottom: 1px dotted rgb(60,60,60);
+        font: 300 16px/18px $sans-serif;
+        margin-left: 10px;
+        padding-bottom: 3px;
+      }
+    }
+
     div.input {
       &.string {
         float: left;

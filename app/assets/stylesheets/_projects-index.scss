@@ -5,7 +5,6 @@ body.projects-index {
 }
 
 .admin-pannel {
-  //background: rgb(230,230,230);
   border-right: 1px solid rgb(200,200,200);
   float: left;
   height: 400px;
@@ -50,14 +49,17 @@ body.projects-index {
     background: rgb(230,230,230);
     border: 1px solid rgb(200,200,200);
     @include border-radius(4px);
+    @include box-shadow(inset 0 -1px 0 0 rgba(255,255,255, 0.3), inset 0 1px 0 0 rgba(255,255,255, 0.8));
+    @include linear-gradient(rgb(240,240,240), rgb(220,220,220));
     margin-bottom: 40px;
     width: grid-width(9);
 
     h1 {
-      font: 300 22px $helvetica;
+      font: 300 22px $sans-serif;
       float: left;
       margin: 0px 20px 0px 0px;
       padding: 10px;
+      text-shadow: 0 1px rgba(255,255,255, 0.75);
     }
 
     form.filter {
@@ -72,7 +74,7 @@ body.projects-index {
           background: rgb(230,230,230);
           border: 1px solid rgb(190,190,190);
           @include border-radius(3px);
-          font: normal 12px $helvetica;
+          font: normal 12px $sans-serif;
           margin: 0px;
           text-shadow: 0 1px rgba(255,255,255, 0.8);
           padding: 6px 12px 5px 12px;
@@ -98,7 +100,7 @@ body.projects-index {
         }
 
         input[type="text"] {
-          height: 28px;
+          height: 30px;
           width: 100px;
         }
       }
@@ -119,8 +121,6 @@ body.projects-index {
     margin-bottom: 40px;
 
     header {
-      background: rgba(240, 240, 240, 1);
-      border-bottom: 1px solid rgb(200,200,200);
       @include border-top-radius(4px);
 
       div.title {
@@ -131,7 +131,7 @@ body.projects-index {
         a {
           color: rgb(50,50,50);
           float: left;
-          font: bold 24px $helvetica;
+          font: bold 24px $sans-serif;
           text-decoration: none;
 
           &:hover {
@@ -141,7 +141,7 @@ body.projects-index {
 
         a.short-list,
         a.mark-as-winner {
-          @include button(rgb(230,230,230));
+          @include button(rgb(240,240,240));
           float: right;
           margin-left: 10px;
           text-decoration: none;
@@ -156,7 +156,7 @@ body.projects-index {
         padding: 5px 10px;
 
         span {
-          font: normal 12px/14px $helvetica;
+          font: normal 12px/14px $sans-serif;
           margin-right: 10px;
         }
       }
@@ -167,19 +167,19 @@ body.projects-index {
       position: relative;
 
       p {
-        padding: 15px 10px;
+        padding: 15px 20px 20px 20px;
         margin: 0px;
       }
 
       .project-pitch {
-        font: normal 14px/18px $times;
+        font: normal 16px/20px $serif;
       }
 
       .details-toggle {
       }
 
       .see-more {
-        background: rgba(240, 240, 240, 1);
+        background: rgba(245, 245, 245, 1);
         border-top: 1px solid rgb(200,200,200);
         @include border-bottom-radius(4px);
         display: block;
@@ -188,7 +188,7 @@ body.projects-index {
 
         p {
           color: rgb(50,50,50);
-          font: 300 12px/14px $helvetica;
+          font: 300 12px/14px $sans-serif;
           padding: 5px 10px;
           text-align: right;
         }

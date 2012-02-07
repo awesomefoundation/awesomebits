@@ -1,4 +1,5 @@
 html, body {
+  //background: rgb(245,245,245);
   height: 100%;
 }
 
@@ -9,6 +10,12 @@ body {
     width: grid-width(12);
   }
 }
+
+//*******************************************************************
+//
+// Application Header
+//
+//*******************************************************************
 
 header.main {
   border-bottom: 4px solid $pink;
@@ -34,7 +41,7 @@ header.main {
     h1 {
       color: rgb(255,255,255);
       float: left;
-      font: 300 22px $helvetica;
+      font: 300 20px $sans-serif;
       margin: 15px 0px 0px $gw-column;
       text-transform: uppercase;
     }
@@ -55,10 +62,10 @@ header.main {
         a {
           color: rgb(255,255,255);
           display: block;
-          font: bold 11px/16px $helvetica;
+          font: bold 11px/16px $sans-serif;
           height: 20px;
           opacity: 0.7;
-          padding: 8px 15px 6px;
+          padding: 6px 12px 6px;
           text-decoration: none;
           text-transform: uppercase;
           @include transition(all, 0.15s, linear);
@@ -89,7 +96,22 @@ body {
       text-shadow: 0px -1px rgba(0,0,0, 0.2);
     }
   }
+
+  &.projects-index {
+    a.dashboard {
+      background: $pink;
+      opacity: 1;
+      text-shadow: 0px -1px rgba(0,0,0, 0.2);
+    }
+  }
 }
+
+//*******************************************************************
+//
+// Applicaiton Footer
+//
+//*******************************************************************
+
 
 section.footer {
   @extend .clearfix;

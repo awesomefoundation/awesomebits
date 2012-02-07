@@ -4,8 +4,9 @@
     <% if show_chapters_dropdown? %>
       <%= form.input :chapter_id, :as => :select, :collection => invitable_chapters, :group_method => :name, :label => "Select a chapter", :prompt => "- Select -" %>
     <% else %>
-      Invite a trustee to:
-      <%= primary_invitable_chapter.name %>
+      <p>Trustee will be invited to:
+        <span><%= primary_invitable_chapter.name %></span>
+      </p>
       <%= form.input :chapter_id,
                      :as         => :hidden,
                      :input_html => { :value => primary_invitable_chapter.id } %>

@@ -108,7 +108,7 @@ body.pages-chapters {
     h1 {
       border-bottom: 1px solid rgb(200,200,200);
       float: none;
-      font: normal 40px $times;
+      font: normal 40px $serif;
       text-transform: uppercase;
       margin-bottom: 30px;
       padding-bottom: 20px;
@@ -129,7 +129,7 @@ body.pages-chapters {
         }
 
         p {
-          font: 300 13px/20px $helvetica;
+          font: 300 13px/20px $sans-serif;
           margin-bottom: 0px;
         }
 
@@ -209,7 +209,7 @@ body.pages-chapters {
 
                 h3 {
                   color: rgb(255,255,255);
-                  font: normal 16px/18px $times;
+                  font: normal 16px/18px $serif;
                   margin: 0px;
                   text-transform: uppercase;
                   text-align: center;
