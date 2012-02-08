@@ -1,0 +1,10 @@
+<%= simple_form_for chapter do |form| %>
+  <%= form.input :name %>
+  <%= form.input :twitter_url, :label => "Twitter URL" %>
+  <%= form.input :facebook_url, :label => "Facebook URL" %>
+  <%= form.input :blog_url, :label => "Blog URL" %>
+  <%= form.input :rss_feed_url, :label => "RSS Feed URL" %>
+  <%= form.input :description %>
+  <%= form.button :submit %>
+<% end %>
+

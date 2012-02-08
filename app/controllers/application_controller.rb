@@ -15,4 +15,13 @@ class ApplicationController < ActionController::Base
       redirect_to root_url
     end
   end
+
+  def must_be_able_to_manage_chapter
+    chapter = Chapter.find(params[:id])
+    unless current_user.try(:admin?) || (current_user && current_user.can_manage_chapter?(chapter))
+      flash[:notice] = "You must be an admin or dean to access this page."
+      redirect_to root_url
+    end
+  end
+
 end
