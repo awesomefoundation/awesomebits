@@ -71,14 +71,15 @@ describe Role do
   end
 
   context ".can_view_finalists_for?" do
-    let(:role) { FactoryGirl.create(:role, :name => "dean") }
+    let(:role) { FactoryGirl.create(:role, :name => "trustee") }
     let!(:chapter) { role.chapter }
     let!(:other_chapter) { FactoryGirl.create(:chapter) }
-    it 'returns true when we have dean role for this chapter' do
+
+    it 'returns true when we have a trustee role for this chapter' do
       Role.can_view_finalists_for?(chapter).should be_true
     end
 
-    it 'returns false if chapter has no dean role' do
+    it 'returns false if chapter has no trustee role' do
       Role.can_view_finalists_for?(other_chapter).should be_false
       Role.delete_all
       Role.can_view_finalists_for?(chapter).should be_false

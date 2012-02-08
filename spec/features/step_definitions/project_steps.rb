@@ -32,8 +32,8 @@ step 'a project was created on each of the last 7 days for any chapter' do
 end
 
 step 'I want to see my projects for the past 3 days' do
-  fill_in("End", :with => Time.now.strftime("%Y-%m-%d"))
-  fill_in("Start", :with => (3.days.ago).strftime("%Y-%m-%d"))
+  fill_in("end date", :with => Time.now.strftime("%Y-%m-%d"))
+  fill_in("start date", :with => (3.days.ago).strftime("%Y-%m-%d"))
   click_button("Filter")
 end
 
