@@ -18,21 +18,23 @@ step 'I should see this new chapter' do
   page.should have_css(".chapter .name:contains('#{@chapter_name}')")
 end
 
-step 'I click on a chapter I am dean of' do
+step 'I edit a chapter' do
+  visit(chapters_url)
   click_link(@current_chapter.name)
-end
-
-step 'I click on the edit link' do
   click_link('Edit Chapter')
-end
-
-step 'I edit the chapter' do
   @new_chapter_name = "Montecito"
   fill_in("Name", :with => @new_chapter_name)
   click_button("Update Chapter")
 end
 
-step 'I should see the updated chapter page' do
+step 'I should see the updated chapter' do
   page.should have_content(@new_chapter_name)
 end
 
+step 'I attempt to edit a chapter' do
+  visit(edit_chapter_path(@current_chapter))
+end
+
+step 'I should see a permissions error' do
+  page.should have_content('You must be an admin or dean to access this page.')
+end

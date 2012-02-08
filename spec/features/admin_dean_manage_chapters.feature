@@ -8,11 +8,12 @@ Feature: Manage Chapters
     And I go to the chapters index
     Then I should see this new chapter
 
-  Scenario: A dean modifies a chapter
+  Scenario: A dean edits a chapter
     Given I am logged in as a dean
-    When I go to the chapters index
-    And I click on a chapter I am dean of
-    And I click on the edit link
-    And I edit the chapter
-    Then I should see the updated chapter page
+    When I edit a chapter
+    Then I should see the updated chapter
 
+  Scenario: A trustee attempts to edit a chapter
+    Given I am logged in as a trustee
+    When I attempt to edit a chapter
+    Then I should see a permissions error
