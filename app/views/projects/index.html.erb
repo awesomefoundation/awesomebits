@@ -40,40 +40,6 @@
     </form>
   </section>
 
-  <% @projects.each do |project| %>
-    <article class="project <%= "shortlisted" if project.shortlisted_by?(current_user) %>" data-id="<%= project.id %>">
-      <header>
-        <div class="title">
-          <a class="title" href="#"><%= project.title %></a>
-          <a class="mark-as-winner" href="#">Winner</a>
-          <% if project.shortlisted_by?(current_user) %>
-            <%= link_to "Awesome", vote_path(Vote.by(current_user).for(project).first), :method => :delete, :class => "short-list" %>
-          <% else %>
-            <%= link_to "Awesome", project_votes_path(project), :method => :post, :class => "short-list" %>
-          <% end %>
-        </div>
+  <%= render @projects %>
 
-        <section class="meta-data">
-          <span>
-            <%= project.name %>
-          </span>
-          <span>
-            <%= project.chapter.name %>,
-            <%= project.created_at %>
-          </span>
-        </section>
-      </header>
-
-      <section class="project-proposal-details">
-        <div class="project-pitch">
-          <p><%= project.use %></p>
-        </div>
-        <div="details-toggle">
-        </div>
-        <a class="see-more" href="#">
-          <p>See the rest →</p>
-        </a>
-      </section>
-    </article>
-  <% end %>
 </section>
