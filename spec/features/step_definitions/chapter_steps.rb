@@ -5,6 +5,7 @@ step 'I create a new chapter' do
   fill_in("Twitter URL", :with => "http://twitter.com/awesomefound")
   fill_in("Facebook URL", :with => "http://twitter.com/awesomefound")
   fill_in("Blog URL", :with => "http://twitter.com/awesomefound")
+  fill_in("RSS Feed URL", :with => "http://example.com/feed.rss")
   fill_in("Description", :with => "http://twitter.com/awesomefound")
   click_button("Create Chapter")
 end

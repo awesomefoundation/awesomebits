@@ -6,7 +6,7 @@ class Chapter < ActiveRecord::Base
 
   validates_uniqueness_of :name
 
-  attr_accessible :name, :twitter_url, :facebook_url, :blog_url, :description
+  attr_accessible :name, :twitter_url, :facebook_url, :blog_url, :rss_feed_url, :description
 
   def self.invitable_by(user)
     if user.admin?

@@ -15,3 +15,4 @@ Feature: Manage Chapters
     And I click on the edit link
     And I edit the chapter
     Then I should see the updated chapter page
+
