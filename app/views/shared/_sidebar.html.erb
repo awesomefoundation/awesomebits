@@ -5,30 +5,22 @@
 <h2><%= current_user.first_name %> <%= current_user.last_name %></h2>
 
 <div class="editing">
-  <%= link_to "Edit My Profile", edit_user_path(current_user) %>
-</div>
-
-<% if current_user.can_manage_chapter?(@chapter) %>
-  <div class="editing">
-    <%= link_to "Edit Chapter Profile", edit_chapter_path(@chapter) %>
-  </div>
-<% end %>
-
-<div class="editing">
   <%= link_to "Projects", chapter_projects_path(@chapter) %>
 </div>
 
-<% current_user.chapters.each do |chapter| %>
-  <div class="editing">
-    <%= link_to "Finalists", chapter_finalists_path(chapter) %>
-  </div>
-<% end %>
+<div class="editing">
+  <%= link_to "Finalists", chapter_finalists_path(@chapter) %>
+</div>
 
 <% if current_user.can_create_chapters? %>
   <div class="editing">
     <%= link_to "Create Chapter", new_chapter_path %>
   </div>
 <% end %>
+
+<div class="editing">
+  <%= link_to "Members", chapter_users_path(@chapter) %>
+</div>
 
 <% if current_user.can_invite? %>
   <div class="editing">
@@ -37,5 +29,11 @@
 <% end %>
 
 <div class="editing">
-  <%= link_to "Trustees", chapter_users_path(@chapter) %>
+  <%= link_to "Edit My Profile", edit_user_path(current_user) %>
 </div>
+
+<% if current_user.can_manage_chapter?(@chapter) %>
+  <div class="editing">
+    <%= link_to "Edit Chapter Profile", edit_chapter_path(@chapter) %>
+  </div>
+<% end %>

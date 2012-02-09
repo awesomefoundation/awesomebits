@@ -5,14 +5,14 @@ class PromotionsController < ApplicationController
     role = Role.find(params[:role_id])
     role.name = 'dean'
     role.save
-    redirect_to users_path # TODO: user respond_with for AJAX saves
+    redirect_to chapter_users_path(role.chapter)
   end
 
   def destroy
     role = Role.find(params[:role_id])
     role.name = 'trustee'
     role.save
-    redirect_to users_path
+    redirect_to chapter_users_path(role.chapter)
   end
 
 end
