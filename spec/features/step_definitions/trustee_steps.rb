@@ -12,4 +12,5 @@ end
 step "there is a trustee in the system" do
   @trustee_role     = Factory(:role, :name => 'trustee')
   @trustee          = @trustee_role.user
+  @trustee_chapter  = @trustee_role.chapter
 end
