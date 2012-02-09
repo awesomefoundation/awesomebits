@@ -1,19 +1,42 @@
 <div class="avatar">
   <%= image_tag("avatar.jpg") %>
 </div>
+<h2>Jason Fried</h2>
+
+<div class="editing">
+  <a class="edit-profile" href="#">Edit my profile</a>
+</div>
+
+<% current_user.chapters.each do |chapter| %>
+  <div class="editing">
+    <%= link_to "View Finalists", chapter_finalists_path(chapter) %>
+  </div>
+<% end %>
 
 <% if current_user.can_invite? %>
-  <%= link_to "Invite a trustee", new_invitation_path %>
+  <div class="editing">
+    <%= link_to "Invite a trustee", new_invitation_path %>
+  </div>
 <% end %>
+
+<% if current_user.can_create_chapters? %>
+  <div class="editing">
+    <%= link_to "Create Chapter", new_chapter_path %>
+  </div>
+<% end %>
+
+<div class="editing">
+  <a href="#">Edit Chapter</a>
+</div>
+
+<div class="editing">
+  <a href="#">Edit Projects</a>
+</div>
+
+<div class="editing">
+  <a href="#">Edit Trustees</a>
+</div>
+
 <% if current_user.can_manage_permissions? %>
   <%= link_to "Manage user permissions", "#" %>
 <% end %>
-<a class="edit-profile" href="#">Edit Profile</a>
-<% if current_user.can_create_chapters? %>
-  <%= link_to "Create Chapter", new_chapter_path %>
-<% end %>
-<% current_user.chapters.each do |chapter| %>
-  <%= link_to "View Finalists for #{chapter.name}", chapter_finalists_path(chapter) %>
-<% end %>
-<a class="edit-users" href="#">Edit Users</a>
-<a class="edit-chapters" href="#">Edit Chapters</a>

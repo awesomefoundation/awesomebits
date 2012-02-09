@@ -4,7 +4,21 @@
 
 <section class="applications">
   <section class="application-filters">
-    <h1>Boston</h1>
+    <nav>
+      <label class="chapter-selection" for="chapter-selection">
+        <span>Boston</span>
+        <span class="arrow"></span>
+      </label>
+      <input id="chapter-selection" type="checkbox">
+      <ol>
+        <% 60.times do %>
+        <li>
+          <a href="#">Boston</a>
+        </li>
+      <% end %>
+      </ol>
+    </nav>
+
     <form accept-charset="UTF-8" action="/projects" class="simple_form filter" method="get">
       <div class="input short-list-toggle">
         <label for="my-short-list">

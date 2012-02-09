@@ -1,0 +1,15 @@
+Feature: A dean can generate a report of all shortlisted projects for a specified time period
+
+  Scenario: dean generates shortlist
+    Given I am logged in as a dean
+    And trustees in my chapter have shortlisted projects submtted in the past 7 days
+    When I generate a report of projects that have been submitted in the past 3 days and shorlisted
+    Then I see a list of projects that were submitted in the last 3 days and have been shortlisted
+    And I should not see any non-shortlisted projects
+    And I should not see any projects that were submitted 4 days ago
+
+  Scenario: dean exports short list
+    Given I am logged in as a dean
+    And I have generated a report of shortlisted projects
+    When I export the report as a CSV
+    Then I should get a conformation taht the report has exported
