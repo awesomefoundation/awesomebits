@@ -2,7 +2,9 @@
       <header>
         <div class="title">
           <a class="title" href="#"><%= project.title %></a>
-          <a class="mark-as-winner" href="#">Winner</a>
+          <% if current_user.can_mark_winner?(project) %>
+            <%= link_to "Winner", project_winners_url(project), :method => :post, :class => 'mark-as-winner' %>
+          <% end %>
           <% if project.shortlisted_by?(current_user) %>
             <%= link_to "Awesome", vote_path(Vote.by(current_user).for(project).first), :method => :delete, :class => "short-list" %>
           <% else %>

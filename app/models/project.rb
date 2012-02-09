@@ -42,6 +42,19 @@ class Project < ActiveRecord::Base
     users.include?(user)
   end
 
+  def deliver_winning_email
+    mailer.winner(self).deliver
+  end
+
+  def declare_winner!
+    self.funded_on = Date.today
+    save
+  end
+
+  def winner?
+    funded_on.present?
+  end
+
   def save
     was_new_record = new_record?
     saved = super

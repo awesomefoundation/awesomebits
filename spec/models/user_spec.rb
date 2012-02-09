@@ -94,5 +94,19 @@ describe User do
     end
   end
 
+  context "#can_mark_winner?" do
+    let(:user) { FactoryGirl.build(:user) }
+    it 'returns true if the user is an admin' do
+      user.admin = true
+      user.can_mark_winner?(:chapter).should be_true
+    end
+    it 'asks the roles if it can manage if not an admin' do
+      user.admin = false
+      user.roles.stubs(:can_mark_winner?)
+      user.can_mark_winner?(:chapter)
+      user.roles.should have_received(:can_mark_winner?)
+    end
+  end
+
 
 end

@@ -13,6 +13,7 @@ Awesomefoundation::Application.routes.draw do
     resources :acceptances, :only => [:new, :create]
   end
   resources :projects do
+    resources :winners, :only => [:create]
     resources :votes, :only => [:create]
   end
   resources :votes, :only => [:destroy]

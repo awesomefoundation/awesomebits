@@ -1,6 +1,6 @@
 <section class="project-form">
-  <%= simple_form_for @project, :url => submissions_url do |form| %>
+  <%= simple_form_for @project do |form| %>
     <%= render :partial => 'form', :locals => {:form => form} %>
-    <%= submit_tag "Apply" %>
+    <%= submit_tag "Save" %>
   <% end %>
 </section>

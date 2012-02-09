@@ -44,4 +44,8 @@ class User < ActiveRecord::Base
     admin? || roles.can_view_finalists_for?(chapter)
   end
 
+  def can_mark_winner?(project)
+    admin? || roles.can_mark_winner?(project)
+  end
+
 end

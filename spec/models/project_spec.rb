@@ -122,4 +122,18 @@ describe Project do
     end
   end
 
+  context "#declare_winner!" do
+    let(:project) { FactoryGirl.create(:project) }
+
+    it 'sets the #funded_on attribute' do
+      project.declare_winner!
+      project.funded_on.should == Date.today
+    end
+
+    it 'saves the record' do
+      project.declare_winner!
+      Project.find(project.id).funded_on.should == Date.today
+    end
+  end
+
 end

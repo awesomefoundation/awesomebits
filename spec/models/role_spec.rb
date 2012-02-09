@@ -86,4 +86,20 @@ describe Role do
     end
   end
 
+  context ".can_mark_winner?" do
+    let(:role) { FactoryGirl.create(:role, :name => "dean") }
+    let!(:chapter) { role.chapter }
+    let!(:project) { FactoryGirl.create(:project, :chapter => chapter) }
+    let!(:other_project) { FactoryGirl.create(:project) }
+    it 'returns true when we have dean role for this chapter' do
+      Role.can_mark_winner?(project).should be_true
+    end
+
+    it 'returns false if chapter has no dean role' do
+      Role.can_mark_winner?(other_project).should be_false
+      Role.delete_all
+      Role.can_mark_winner?(project).should be_false
+    end
+  end
+
 end

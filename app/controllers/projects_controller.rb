@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
-  before_filter :must_be_logged_in, :except => [:new, :create]
+  before_filter :must_be_logged_in, :except => [:show, :new, :create]
+  before_filter :must_be_logged_in_to_see_unpublished_projects, :only => [:show]
 
   include ApplicationHelper
 
@@ -24,5 +25,18 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+  end
+
+  private
+
+  def current_project
+    @current_project ||= Project.find(params[:id])
+  end
+
+  def must_be_logged_in_to_see_unpublished_projects
+    if !current_project.try(:winner?) && !current_user
+      flash[:notice] = "You must be logged in."
+      redirect_to root_url
+    end
   end
 end

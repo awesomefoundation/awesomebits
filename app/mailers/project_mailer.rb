@@ -6,4 +6,10 @@ class ProjectMailer < ActionMailer::Base
     mail(:to => project.email,
          :subject => "[Awesome] Thanks for applying!")
   end
+
+  def winner(project)
+    @project = project
+    mail(:to => project.email,
+         :subject => "[Awesome] Your project won!")
+  end
 end

@@ -1,9 +1,9 @@
 <section class="top">
   <section class="titles">
-    <h1>The Big Hammock</h1>
+  <h1><%= @project.title %></h1>
     <div class="title-data">
-      <p><strong>Fellow:</strong> Hansy Better</p>
-      <p><strong>Funded:</strong> August 2010 by Awesome Boston</p>
+      <p><strong>Fellow:</strong> <%= @project.name %></p>
+      <p><strong>Funded:</strong> <%= @project.funded_on %> by <%= @project.chapter.name %></p>
     <div>
   </section>
 </section>
@@ -15,14 +15,7 @@
 
 <section class="project-details">
   <section class="description">
-    <h2>Where it all began</h2>
-    <p>
-      I was awarded the first ever grant of $1,000 from the Awesome Foundation based on my interest in bringing people together through design of public art and objects. The grant supports people doing awesome things around the world and acknowledges the individual that evokes surprises without the prospect of audience or profit.
-    </p>
-    <h2>Where it all began</h2>
-    <p>
-      I was awarded the first ever grant of $1,000 from the Awesome Foundation based on my interest in bringing people together through design of public art and objects. The grant supports people doing awesome things around the world and acknowledges the individual that evokes surprises without the prospect of audience or profit.
-    </p>
+    <%= @project.use %>
   </section>
   <section class="side-bar">
     <article class="rss-feed">

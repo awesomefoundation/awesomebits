@@ -37,4 +37,15 @@ step ':count people/person have/has voted on a/another project in my chapter' do
     vote = FactoryGirl.create(:vote, :project => project)
     FactoryGirl.create(:role, :user => vote.user, :chapter => @current_chapter)
   end
+
+step 'there are some projects for this month with votes' do
+  role = FactoryGirl.create(:role, :chapter => @current_chapter)
+  3.times do
+    project = FactoryGirl.create(:project, :chapter => @current_chapter)
+    FactoryGirl.create(:vote, :user => role.user, :project => project)
+  end
+end
+
+step 'I view the list of projects for this month' do
+  visit(projects_path)
 end

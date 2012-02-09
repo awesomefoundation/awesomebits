@@ -12,6 +12,10 @@ class Role < ActiveRecord::Base
     where(:name => "dean", :chapter_id => chapter).any?
   end
 
+  def self.can_mark_winner?(project)
+    where(:name => "dean", :chapter_id => project.chapter).any?
+  end
+
   def self.can_manage_chapter?(chapter)
     where(:name => "dean", :chapter_id => chapter).any?
   end
