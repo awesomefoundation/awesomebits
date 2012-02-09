@@ -18,3 +18,7 @@ step 'the submitter of the project gets an email saying they won' do
 
   deliveries.should have(1).item
 end
+
+step 'the winning project should look triumphant' do
+  page.should have_css("article.winner[data-id='#{@winning_project.id}']")
+end

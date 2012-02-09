@@ -1,9 +1,13 @@
-    <article class="project <%= "shortlisted" if project.shortlisted_by?(current_user) %>" data-id="<%= project.id %>">
+<article class="project <%= "shortlisted" if project.shortlisted_by?(current_user) %> <%= "winner" if project.winner? %>" data-id="<%= project.id %>">
       <header>
         <div class="title">
           <a class="title" href="#"><%= project.title %></a>
           <% if current_user.can_mark_winner?(project) %>
-            <%= link_to "Winner", project_winners_url(project), :method => :post, :class => 'mark-as-winner' %>
+            <% if project.winner? %>
+              <%= link_to "Winner", "#", :class => 'mark-as-winner' %>
+            <% else %>
+              <%= link_to "Winner", project_winners_url(project), :method => :post, :class => 'mark-as-winner' %>
+            <% end %>
           <% end %>
           <% if project.shortlisted_by?(current_user) %>
             <%= link_to "Awesome", vote_path(Vote.by(current_user).for(project).first), :method => :delete, :class => "short-list" %>
