@@ -8,3 +8,8 @@ step "the trustee can log in" do
   page.should have_no_css("body.home")
   page.should have_no_css("body.clearance-sessions")
 end
+
+step "there is a trustee in the system" do
+  @trustee_role     = Factory(:role, :name => 'trustee')
+  @trustee          = @trustee_role.user
+end
