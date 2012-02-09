@@ -37,6 +37,7 @@ step ':count people/person have/has voted on a/another project in my chapter' do
     vote = FactoryGirl.create(:vote, :project => project)
     FactoryGirl.create(:role, :user => vote.user, :chapter => @current_chapter)
   end
+end
 
 step 'there are some projects for this month with votes' do
   role = FactoryGirl.create(:role, :chapter => @current_chapter)
