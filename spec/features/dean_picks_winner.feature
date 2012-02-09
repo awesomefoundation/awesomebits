@@ -7,3 +7,5 @@ Feature: A dean picks a winner
     And I pick a winner
     Then the project is visible to the public
     And the submitter of the project gets an email saying they won
+    When I log back in
+    Then the winning project should look triumphant

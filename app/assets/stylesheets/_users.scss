@@ -1,0 +1,54 @@
+section.awesome-members {
+  background: rgb(255,255,255);
+  border: 1px solid rgb(170,170,170);
+  @include border-radius(4px);
+  margin: 20px auto;
+  padding: 30px 40px;
+
+  header {
+    border-bottom: 1px solid rgb(200,200,200);
+    margin-bottom: 30px;
+
+    h1 {
+    }
+  }
+
+  table.members {
+    tr {
+      border-bottom: 1px solid rgb(200,200,200);
+      height: 45px;
+      list-style: none;
+      margin: 10px 0px;
+      padding: 10px 0px;
+      width: 100%;
+
+      td {
+        text-transform: capitalize;
+
+        h2 {
+          font: bold 14px/16px $sans-serif;
+          display: inline;
+        }
+
+        .demote-user,
+        .promote-user {
+          @include button(rgb(240,240,240));
+          @include inline-block;
+          padding: 4px 0px;
+          text-align: center;
+          text-decoration: none;
+          text-shadow: 0 1px rgba(255,255,255, 0.4);
+          width: 120px;
+        }
+
+        &.promote-demote {
+          width: 120px;
+        }
+
+        &.name {
+          width: 300px;
+        }
+      }
+    }
+  }
+}

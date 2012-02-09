@@ -23,6 +23,7 @@ body.projects-index {
     width: 122px;
 
     img {
+      @include border-radius(70px);
       max-width: 122px;
     }
   }
@@ -350,14 +351,26 @@ body.projects-index {
     }
   }
 
-  article.project.shortlisted {
+  article.project.shortlisted, article.project.winner {
     border: 1px solid $pink;
     background: rgb(255,255,255);
     @include border-radius(4px);
     @include box-shadow(0 1px 6px 0 rgba($pink, 0.6));
+  }
 
+  article.project.shortlisted {
     div.title {
       a.short-list {
+        @include button($pink);
+      }
+    }
+  }
+
+  article.project.winner {
+    border: 2px solid $pink;
+    background: #FFEDF2;
+    div.title {
+      a.mark-as-winner {
         @include button($pink);
       }
     }
