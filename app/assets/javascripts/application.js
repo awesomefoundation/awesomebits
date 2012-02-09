@@ -8,3 +8,10 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require_tree .
+
+$('a.chapters').toggle(function() {
+  $('.chapter-menu').addClass("expanded");
+}, function() {
+  $('.chapter-menu').removeClass("expanded");
+});
+

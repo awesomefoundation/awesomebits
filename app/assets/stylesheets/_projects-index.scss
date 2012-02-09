@@ -100,31 +100,6 @@ body.projects-index {
     position: relative;
     width: grid-width(9);
 
-    h1 {
-      font: normal 24px/26px $sans-serif;
-      float: left;
-      margin: 0px 20px 0px 5px;
-      padding: 10px;
-      text-shadow: 0 1px rgba(255,255,255, 0.75);
-    }
-
-    select {
-      font: normal 24px/26px $sans-serif;
-      float: left;
-      margin: 10px 20px 0px 15px;
-      padding: 0px;
-      text-shadow: 0 1px rgba(255,255,255, 0.75);
-      border: none;
-      background: transparent;
-      @include border-radius(0);
-      @include box-shadow(none);
-      -webkit-appearance: none;
-
-      &:focus {
-        outline: none;
-      }
-    }
-
     nav {
       float: left;
       padding: 10px;
@@ -201,8 +176,10 @@ body.projects-index {
           }
 
           a {
+            color: rgb(55,55,55);
             display: block;
             padding: 5px 8px;
+            text-decoration: none;
 
             &:hover {
               background: $pink;

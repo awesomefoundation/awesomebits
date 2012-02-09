@@ -25,6 +25,7 @@ a {
 header.main {
   border-bottom: 3px solid $pink;
   background: rgb(60,60,60);
+  overflow: hidden;
   width: 100%;
 
   nav {
@@ -45,7 +46,7 @@ header.main {
         left: -50px;
         position: absolute;
         @include transition(all, 0.2s, ease-in);
-        top: -12px;
+        top: -18px;
         width: 90px;
 
         img {
@@ -101,6 +102,62 @@ header.main {
             background: $pink;
             color: rgb(255,255,255);
           }
+        }
+      }
+    }
+  }
+}
+
+section.chapter-menu {
+  background: rgb(255,255,255);
+  border-bottom: 1px solid rgb(200,200,200);
+  @include box-shadow(inset 0 -1px 8px 0 rgba(0,0,0, 0.2), inset 0 1px 5px 0 rgba(0,0,0, 0.1));
+  //@include box-shadow(0 1px 8px 0 rgba(0,0,0, 0.2));
+  height: 0px;
+  overflow: hidden;
+  top: 50px;
+  @include transition(height, 0.5s, ease-out);
+  width: 100%;
+  z-index: 2;
+
+  &.expanded {
+    height: auto;
+  }
+
+  .inner-wrapper {
+    margin: 0 auto;
+    padding: 30px 0 0 0;
+    width: grid-width(12);
+
+    h1 {
+      font: 300 24px/26px $sans-serif;
+      text-align: center;
+    }
+
+    .chapters {
+      -webkit-column-count: 5;
+      -webkit-column-gap: $gw-gutter;
+      padding: 10px 0 40px 0;
+
+      h2 {
+        //border-bottom: 1px solid rgb(200,200,200);
+        font: bold 14px/16px $sans-serif;
+        padding: 0 0 3px 0;
+      }
+
+      a + h2 {
+        margin-top: 20px;
+      }
+
+      a {
+        color: rgb(55,55,55);
+        display: block;
+        font: normal 14px/16px $sans-serif;
+        padding: 5px 0;
+        text-decoration: none;
+
+        &:hover {
+          color: $pink;
         }
       }
     }
