@@ -1,0 +1,21 @@
+<article>
+  <header>
+    <h2><%= user.id %>. <%= user.first_name %> <%= user.last_name %></h2>
+    <strong>Admin: <%= user.admin %></strong>
+  </header>
+  <section>
+    <ul>
+    <% user.roles.each do |role| %>
+      <li data-role-id="<%= role.id %>"><%= role.chapter.name %>, <%= role.name %>
+      <% if current_user.can_manage_permissions? %> 
+        <% if role.name == 'trustee' %>
+          <%= link_to "Promote to Dean", role_promotions_path(role), :method => :post, :class => "promote-user" %>
+        <% else %>
+          <%= link_to "Demote to Trustee", role_promotions_path(role), :method => :delete, :class => "demote-user" %>
+        <% end %>
+      <% end %>
+      </li>
+    <% end %>
+    </ul>
+  </section>
+</article>
