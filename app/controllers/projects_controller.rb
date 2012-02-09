@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_filter :ensure_chapter_or_admin, :only => [:index]
   before_filter :must_be_logged_in, :except => [:show, :new, :create]
   before_filter :must_be_logged_in_to_see_unpublished_projects, :only => [:show]
 
@@ -6,7 +7,8 @@ class ProjectsController < ApplicationController
 
   def index
     @start_date, @end_date = extract_timeframe
-    @projects = Project.visible_to(current_user).during_timeframe(@start_date, @end_date)
+    @chapter = Chapter.find(params[:chapter_id])
+    @projects = @chapter.projects.during_timeframe(@start_date, @end_date)
   end
 
   def new
@@ -31,6 +33,16 @@ class ProjectsController < ApplicationController
 
   def current_project
     @current_project ||= Project.find(params[:id])
+  end
+
+  def ensure_chapter_or_admin
+    if params[:chapter_id].blank?
+      if current_user.admin?
+        redirect_to chapter_projects_path(Chapter.first)
+      else
+        redirect_to chapter_projects_path(current_user.chapters.first)
+      end
+    end
   end
 
   def must_be_logged_in_to_see_unpublished_projects
