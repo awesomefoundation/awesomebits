@@ -1,7 +1,7 @@
 step 'I invite a new trustee to the :name chapter' do |name|
   @chapter = Factory(:chapter, :name => name)
   visit projects_path
-  click_link("Invite a trustee")
+  click_link("Invite a Trustee")
   fill_in("First name", :with => "Joe")
   fill_in("Last name", :with => "Schmoe")
   select(@chapter.name, :from => "Select a chapter")
@@ -13,7 +13,7 @@ end
 step 'I invite a new trustee to a different chapter' do |name|
   @chapter = FactoryGirl.create(:chapter)
   visit projects_path
-  click_link("Invite a trustee")
+  click_link("Invite a Trustee")
   fill_in("First name", :with => "Joe")
   fill_in("Last name", :with => "Schmoe")
   select(@chapter.name, :from => "Select a chapter")
@@ -40,7 +40,7 @@ end
 
 step 'I invite a new trustee to my chapter' do |name|
   visit projects_path
-  click_link("Invite a trustee")
+  click_link("Invite a Trustee")
   fill_in("First name", :with => "Joe")
   fill_in("Last name", :with => "Schmoe")
   @invitation_address = FactoryGirl.generate(:email)
