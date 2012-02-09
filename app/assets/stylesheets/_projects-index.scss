@@ -23,6 +23,7 @@ body.projects-index {
     width: 122px;
 
     img {
+      @include border-radius(70px);
       max-width: 122px;
     }
   }
