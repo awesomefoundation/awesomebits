@@ -1,9 +1,9 @@
 <div class="projects-wrapper">
-<% if can_manage_chapter?(@chapter) %>
-  <%= link_to "Edit Chapter", edit_chapter_path(@chapter) %>
-<% end %>
   <header>
-    <h1><%= @chapter.name %></h1>
+    <h1>
+      <%= @chapter.name %>
+      <a href="#" class="apply-here">/ Apply Here</a>
+    </h1>
     <section class="external-links">
       <ol>
         <li>
@@ -12,11 +12,11 @@
         <li>
           <a class="faceboo" href="#"></a>
         </li>
-        <li>
-          <a class="blog" href="#"></a>
-        </li>
       </ol>
     </section>
+    <% if can_manage_chapter?(@chapter) %>
+      <%= link_to "Edit Chapter", edit_chapter_path(@chapter), :class => 'edit-chapter' %>
+    <% end %>
   </header>
 
   <section class="project-gallery">

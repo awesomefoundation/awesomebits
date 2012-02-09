@@ -22,9 +22,16 @@
       }
     }
 
+    a.edit-chapter {
+      @include button(rgb(240,240,240));
+      float: left;
+      margin: 25px 0px 0px 20px;
+      text-decoration: none;
+      padding: 4px 10px;
+    }
+
     .external-links {
       float: right;
-      margin-top: 12px;
 
       ol {
         margin: 0;
@@ -33,16 +40,13 @@
           float: right;
           list-style: none;
           margin-left: 10px;
-
-          &:last-child {
-            margin: 0px;
-          }
+          padding-top: 23px;
 
           a {
             background: transparent;
             display: block;
-            height: 30px;
-            width: 30px;
+            height: 20px;
+            width: 20px;
           }
 
           .twitter {
