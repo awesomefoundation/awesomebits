@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
     admin? || roles.any?(&:trustee?)
   end
 
+  def gravatar_url
+    Gravatar.new(email).url
+  end
+
   def can_manage_permissions?
     admin?
   end
