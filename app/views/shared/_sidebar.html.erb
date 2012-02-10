@@ -12,15 +12,15 @@
   <%= link_to "Finalists", chapter_finalists_path(@chapter) %>
 </div>
 
-<% if current_user.can_create_chapters? %>
-  <div class="editing">
-    <%= link_to "Create Chapter", new_chapter_path %>
-  </div>
-<% end %>
-
 <div class="editing">
   <%= link_to "Members", chapter_users_path(@chapter) %>
 </div>
+
+<% if current_user.can_create_chapters? %>
+  <div class="editing">
+    <%= link_to "Create a Chapter", new_chapter_path %>
+  </div>
+<% end %>
 
 <% if current_user.can_invite? %>
   <div class="editing">
