@@ -3,7 +3,7 @@ class ChaptersController < ApplicationController
   before_filter :must_be_able_to_manage_chapter, :only => [:edit, :update]
 
   def index
-    @chapters = Chapter.all.order(:name)
+    @chapters = Chapter.order(:name).all
   end
 
   def show

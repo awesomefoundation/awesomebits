@@ -7,7 +7,7 @@ class FinalistsController < ApplicationController
     @start_date, @end_date = extract_timeframe
     @projects = Project.
                   voted_for_by_members_of(current_chapter).
-                  during_timeframe(@start_date, @end_date).
+                  voted_on_during_timeframe(@start_date, @end_date).
                   by_vote_count
   end
 
