@@ -11,6 +11,9 @@ Feature: A trustee can see all of the projects up for discussion and shortlist t
     And I should not see projects that are not mine
     And I should not see any projects that are 4 or more days old
 
+    When I look at the projects for the "Any" chapter
+    Then I should see its projects for the past 3 days
+
   Scenario: Trustee creates project shortlist
     Given I am logged in as a trustee
     And a project was created on each of the last 7 days for my chapter
