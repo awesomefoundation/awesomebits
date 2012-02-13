@@ -1,0 +1,45 @@
+#static-title {
+	margin: 0 auto;
+	width: 940px; height: 70px;
+		h1 {
+			text-align: center;
+		}
+}
+
+#static-details {
+		h3 {
+			text-transform: uppercase;
+		}
+		
+		.h3-helper {
+			font-style: italic;
+			display: inline;
+			float: left;
+			font-size: 20pt;
+			margin: 0 0 0 -30px;
+			opacity: 0.4;
+		}
+
+}
+
+.static-description {
+	width: 100%;
+	text-align: justify;
+		a {
+			color: rgb(248, 81, 152);
+			text-decoration: none;
+		}
+		a:hover {
+			opacity: 0.8;
+		}
+}
+
+ol {
+	display: block;
+	list-style-type: decimal;
+	margin-bottom: 1em; margin-top: 1em;
+	padding-left: 40px;
+		li {
+			padding-bottom: 10px;
+		}
+}
