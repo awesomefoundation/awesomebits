@@ -6,16 +6,16 @@
   <section class="application-filters">
     <nav>
       <label class="chapter-selection" for="chapter-selection">
-        <span>Boston</span>
+        <span><%= @chapter.name %></span>
         <span class="arrow"></span>
       </label>
       <input id="chapter-selection" type="checkbox">
-      <ol>
-        <% 60.times do %>
-        <li>
-          <a href="#">Boston</a>
-        </li>
-      <% end %>
+      <ol class="chapter-selector">
+        <% selectable_chapters_for(current_user).each do |chapter| %>
+          <li>
+            <%= link_to chapter.name, chapter_projects_path(chapter) %>
+          </li>
+        <% end %>
       </ol>
     </nav>
 

@@ -57,3 +57,14 @@ step 'I should not see any projects that are 4 or more days old' do
     page.should_not have_css(".project .title:contains('#{project.title}')")
   end
 end
+
+step 'I look at the projects for the "Any" chapter' do
+  page.find(:css, "ol.chapter-selector li a:contains('Any')").click
+end
+
+step 'I should see its projects for the past 3 days' do
+  expected = @any_projects[0..3]
+  expected.each do |project|
+    page.should have_css(".project .title:contains('#{project.title}')")
+  end
+end
