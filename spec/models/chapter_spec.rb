@@ -22,4 +22,13 @@ describe Chapter do
       Chapter.invitable_by(user).should == [chapter]
     end
   end
+
+  context '#any_chapter?' do
+    it 'returns true if the name of this chapter is "Any"' do
+      FactoryGirl.build(:chapter, :name => "Any").any_chapter?.should be_true
+    end
+    it 'returns false if the name of this chapter is "Any"' do
+      FactoryGirl.build(:chapter, :name => "XXX").any_chapter?.should be_false
+    end
+  end
 end

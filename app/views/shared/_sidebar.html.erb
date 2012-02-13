@@ -8,13 +8,15 @@
   <%= link_to "Projects", chapter_projects_path(@chapter) %>
 </div>
 
-<div class="editing">
-  <%= link_to "Finalists", chapter_finalists_path(@chapter) %>
-</div>
+<% unless @chapter.any_chapter? %>
+  <div class="editing">
+    <%= link_to "Finalists", chapter_finalists_path(@chapter) %>
+  </div>
 
-<div class="editing">
-  <%= link_to "Members", chapter_users_path(@chapter) %>
-</div>
+  <div class="editing">
+    <%= link_to "Members", chapter_users_path(@chapter) %>
+  </div>
+<% end %>
 
 <% if current_user.can_create_chapters? %>
   <div class="editing">

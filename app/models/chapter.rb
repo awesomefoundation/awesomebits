@@ -18,4 +18,8 @@ class Chapter < ActiveRecord::Base
         where("chapters.name != 'Any'")
     end
   end
+
+  def any_chapter?
+    name == "Any"
+  end
 end
