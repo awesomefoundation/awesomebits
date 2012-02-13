@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def index
     @chapter = Chapter.find(params[:chapter_id])
-    @users = @chapter.users
+    @users = @chapter.users.order(:id)
   end
 
   private

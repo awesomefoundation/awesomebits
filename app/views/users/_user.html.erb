@@ -1,7 +1,8 @@
 <tr class="">
+    <td><%= user.id %></td>
   <% if user.admin %>
     <td class="name">
-      <h2><%= user.first_name %> <%= user.last_name %> <%= user.id %></h2>
+      <h2><%= user.first_name %> <%= user.last_name %></h2>
       <span> - Admin</span>
     </td>
     <td><p>-</p></td>
@@ -9,7 +10,7 @@
     <td></td>
   <% else %>
     <td class="name">
-      <h2><%= user.first_name %> <%= user.last_name %> <%= user.id %></h2>
+      <h2><%= user.first_name %> <%= user.last_name %></h2>
     </td>
   <% end %>
 
