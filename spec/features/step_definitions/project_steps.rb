@@ -38,21 +38,21 @@ step 'I want to see my projects for the past 3 days' do
 end
 
 step 'I should see my projects for the past 3 days' do
-  expected = @my_projects[0..3] + @any_projects[0..3]
+  expected = @my_projects[0..3]
   expected.each do |project|
     page.should have_css(".project .title:contains('#{project.title}')")
   end
 end
 
 step 'I should not see projects that are not mine' do
-  not_expected = @other_projects
+  not_expected = @other_projects + @any_projects
   not_expected.each do |project|
     page.should_not have_css(".project .title:contains('#{project.title}')")
   end
 end
 
 step 'I should not see any projects that are 4 or more days old' do
-  not_expected = @my_projects[4..-1] + @any_projects[4..-1]
+  not_expected = @my_projects[4..-1]
   not_expected.each do |project|
     page.should_not have_css(".project .title:contains('#{project.title}')")
   end
