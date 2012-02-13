@@ -1,6 +1,19 @@
 require 'spec_helper'
 
 describe ProjectsController do
+  context 'viewing the index without a chapter' do
+    let(:chapter) { FactoryGirl.create(:chapter) }
+    let(:user) { FactoryGirl.create(:user) }
+    let!(:role) { FactoryGirl.create(:role, :user => user, :chapter => chapter) }
+
+    before do
+      sign_in_as user
+      get :index
+    end
+
+    it { should redirect_to(chapter_projects_path(chapter)) }
+  end
+
   context 'viewing a project that has not won yet' do
     let!(:project) { FactoryGirl.create(:project) }
     let!(:user) { FactoryGirl.create(:user) }

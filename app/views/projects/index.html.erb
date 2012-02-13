@@ -6,20 +6,20 @@
   <section class="application-filters">
     <nav>
       <label class="chapter-selection" for="chapter-selection">
-        <span>Boston</span>
+        <span><%= @chapter.name %></span>
         <span class="arrow"></span>
       </label>
       <input id="chapter-selection" type="checkbox">
-      <ol>
-        <% 60.times do %>
-        <li>
-          <a href="#">Boston</a>
-        </li>
-      <% end %>
+      <ol class="chapter-selector">
+        <% selectable_chapters_for(current_user).each do |chapter| %>
+          <li>
+            <%= link_to chapter.name, chapter_projects_path(chapter) %>
+          </li>
+        <% end %>
       </ol>
     </nav>
 
-    <form accept-charset="UTF-8" action="/projects" class="simple_form filter" method="get">
+    <form accept-charset="UTF-8" action="<%= chapter_projects_path(@chapter) %>" class="simple_form filter" method="get">
       <div class="input short-list-toggle">
         <label for="my-short-list">
         <input class="" id="my-short-list" type="checkbox">
