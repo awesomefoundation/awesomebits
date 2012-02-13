@@ -9,6 +9,7 @@
 @import 'bourbon';
 
 @import 'base-variables';
+@import 'base-extends';
 @import 'base';
 @import 'shared-feed';
 @import 'shared-forms';
@@ -19,3 +20,4 @@
 @import 'sessions';
 @import 'users';
 @import 'finalists';
+@import 'shared-header';

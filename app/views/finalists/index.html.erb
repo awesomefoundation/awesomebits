@@ -8,15 +8,15 @@
   </section>
   <table>
     <tr class="headers">
+      <th>Title</th>
       <th>ID</th>
       <th>Votes</th>
-      <th>Title</th>
     </tr>
     <% @projects.each do |project| %>
       <tr class="finalist">
+        <td><%= link_to project.title, project_path(project) %></td>
         <td><%= project.id %></td>
         <td><%= project.vote_count %></td>
-        <td><%= link_to project.title, project_path(project) %></td>
       </tr>
     <% end %>
   </table>

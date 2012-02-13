@@ -4,9 +4,13 @@ html, body {
 }
 
 body {
+  .container-wrapper {
+    background: rgb(255,255,255);
+  }
+
   section.container {
     margin: 0px auto;
-    padding: 70px 0px 0px;
+    padding: 70px 0px 100px;
     width: grid-width(12);
   }
 }
@@ -16,176 +20,17 @@ a {
   text-decoration: none;
 }
 
-//*******************************************************************
-//
-// Application Header
-//
-//*******************************************************************
+table {
+  tr {
+    border-bottom: 1px solid rgb(200,200,200);
+    height: 45px;
+    list-style: none;
+    margin: 10px 0px;
+    padding: 10px 0px;
+    width: 100%;
 
-header.main {
-  border-bottom: 3px solid $pink;
-  background: rgb(60,60,60);
-  overflow: hidden;
-  width: 100%;
-
-  nav {
-    @extend .clearfix;
-    margin: 0 auto;
-    position: relative;
-    width: grid-width(12);
-
-    a.logo {
-      text-decoration: none;
-
-      .fast-forward {
-        background: $pink;
-        @include border-radius(45px);
-        @include box-shadow(0 1px 5px 0 rgba(0,0,0, 0.2));
-        display: block;
-        height: 90px;
-        left: -50px;
-        position: absolute;
-        @include transition(all, 0.2s, ease-in);
-        top: -18px;
-        width: 90px;
-
-        img {
-          margin: 19px 0 0 20px;
-        }
-      }
-
-      h1 {
-        color: rgb(255,255,255);
-        float: left;
-        font: 300 20px $sans-serif;
-        margin: 14px 0px 0px 0px;
-        padding-left: $gw-column;
-        text-transform: uppercase;
-      }
-
-      &:hover {
-        .fast-forward {
-          cursor: pointer;
-          @include transform(rotate(360deg));
-        }
-
-        h1 {
-          color: $pink;
-        }
-      }
-    }
-
-    ol {
-      height: 100%;
-      margin: 0;
-
-      li {
-        float: right;
-        list-style: none;
-        margin: 15px 0px 0px 2px;
-
-        &:last-child {
-          margin-left: 0;
-        }
-
-        a {
-          color: rgb(200,200,200);
-          display: block;
-          font: bold 14px/16px $sans-serif;
-          height: 20px;
-          padding: 6px 12px 6px;
-          text-decoration: none;
-          text-transform: uppercase;
-          @include transition(all, 0.15s, linear);
-
-          &:hover {
-            background: $pink;
-            color: rgb(255,255,255);
-          }
-        }
-      }
-    }
-  }
-}
-
-section.chapter-menu {
-  background: rgb(255,255,255);
-  border-bottom: 1px solid rgb(200,200,200);
-  @include box-shadow(inset 0 -1px 8px 0 rgba(0,0,0, 0.2), inset 0 1px 5px 0 rgba(0,0,0, 0.1));
-  //@include box-shadow(0 1px 8px 0 rgba(0,0,0, 0.2));
-  height: 0px;
-  overflow: hidden;
-  top: 50px;
-  @include transition(height, 0.5s, ease-out);
-  width: 100%;
-  z-index: 2;
-
-  &.expanded {
-    height: auto;
-  }
-
-  .inner-wrapper {
-    margin: 0 auto;
-    padding: 30px 0 0 0;
-    width: grid-width(12);
-
-    h1 {
-      font: 300 24px/26px $sans-serif;
-      text-align: center;
-    }
-
-    .chapters {
-      -webkit-column-count: 5;
-      -webkit-column-gap: $gw-gutter;
-      padding: 10px 0 40px 0;
-
-      h2 {
-        //border-bottom: 1px solid rgb(200,200,200);
-        font: bold 14px/16px $sans-serif;
-        padding: 0 0 3px 0;
-      }
-
-      a + h2 {
-        margin-top: 20px;
-      }
-
-      a {
-        color: rgb(55,55,55);
-        display: block;
-        font: normal 14px/16px $sans-serif;
-        padding: 5px 0;
-        text-decoration: none;
-
-        &:hover {
-          color: $pink;
-        }
-      }
-    }
-  }
-}
-
-body {
-  &.projects-new {
-    a.apply {
-      background: $pink;
-      color: rgb(255,255,255);
-      text-shadow: 0px -1px rgba(0,0,0, 0.2);
-    }
-  }
-
-  &.chapters {
-    a.chapters {
-      background: $pink;
-      color: rgb(255,255,255);
-      text-shadow: 0px -1px rgba(0,0,0, 0.2);
-    }
-  }
-
-  &.projects-index {
-    a.dashboard {
-      background: $pink;
-      color: rgb(255,255,255);
-      text-shadow: 0px -1px rgba(0,0,0, 0.2);
+    td {
+      text-transform: capitalize;
     }
   }
 }
@@ -199,18 +44,18 @@ body {
 
 section.footer {
   @extend .clearfix;
+  border-top: 1px solid rgb(220,220,220);
   height: 200px;
-  margin: 0 auto;
   padding-top: 10px;
-  width: grid-width(12);
+  width: 100%;
 
   p {
     padding: 10px 0;
     text-align: center;
 
     a {
-      color: rgb(55,55,55);
-      font: bold 14px/16px $sans-serif;
+      color: rgb(155,155,155);
+      font: normal 12px/14px $sans-serif;
       margin: 0 10px;
       text-decoration: none;
       text-transform: uppercase;

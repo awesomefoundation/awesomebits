@@ -2,24 +2,24 @@
   <nav>
     <a href="#" class="logo">
       <div class="fast-forward">
-        <%= image_tag("logo.png") %>
+        <%# image_tag("logo.png") %>
       </div>
       <h1>The Awesome Foundation</h1>
     </a>
     <ol>
+      <li>
+        <%= link_to "Apply", new_submission_path, { :class => "apply" } %>
+      </li>
       <% if  signed_in? %>
         <li>
           <%= link_to "My Dashboard", projects_path, { :class => "dashboard" } %>
         </li>
       <% end %>
       <li>
-        <%= link_to "Apply", new_submission_path, { :class => "apply" } %>
-      </li>
-      <li>
         <a href="#" class="blog">Blog</a>
       </li>
       <li>
-        <a href="#" class="description">Is this for real!?</a>
+        <a href="#" class="description">For real!?</a>
       </li>
       <li>
         <a href="#" class="chapters">Chapters</a>

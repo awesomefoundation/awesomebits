@@ -3,3 +3,21 @@ body.finalists-index {
     @extend .clearfix;
   }
 }
+
+section.applications {
+  table {
+    tr {
+      td {
+        a {
+          color: rgb(55,55,55);
+          font: bold 12px/14px $sans-serif;
+          text-decoration: none;
+
+          &:hover {
+            color: $pink;
+          }
+        }
+      }
+    }
+  }
+}

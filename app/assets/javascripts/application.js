@@ -11,7 +11,9 @@
 
 $('a.chapters').toggle(function() {
   $('.chapter-menu').addClass("expanded");
+  $('a.chapters').addClass("active");
 }, function() {
   $('.chapter-menu').removeClass("expanded");
+  $('a.chapters').removeClass("active");
 });
 
