@@ -51,3 +51,8 @@ step "I am logged in as a trustee" do |name|
   fill_in("Password", :with => "12345")
   click_button("Sign in")
 end
+
+step "I log out" do
+  click_link("Sign out")
+  page.should have_content("Sign in")
+end

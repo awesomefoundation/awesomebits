@@ -1,16 +1,18 @@
 Feature: As a trustee I can edit my profile
 
-  Scenario: Trustee chagnes password, email, name and twitter handle
+  Scenario: Trustee changes account information
     Given I am logged in as a trustee
-    When I change my password
-    And I change my email
-    And I change my name
-    And I change my twitter handle
+    When I change my profile information
     Then my profile is updated
-    And I am notified that my profile has been updated
 
-  Scenario: Trustee adds twitter handle to their profile
+  Scenario: Trustee tries to change another users account
     Given I am logged in as a trustee
-    When I add a twitter handle
-    Then my profile is updated
-    And I am notified that my profile has been updated
+    And there is another trustee in the system
+    When I try to change the other trustees information
+    Then I should see an update user permission error
+
+  Scenario: Trustee changes password
+    Given I am logged in as a trustee
+    When I update my password
+    And I log out
+    Then I should be able to log in with updated password

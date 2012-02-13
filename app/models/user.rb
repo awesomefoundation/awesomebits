@@ -1,10 +1,13 @@
 class User < ActiveRecord::Base
   include Clearance::User
-  attr_accessible :first_name, :last_name, :email
+  attr_accessible :first_name, :last_name, :email, :bio, :url, :twitter_username, :facebook_url, :linkedin_url
 
   validates_presence_of :first_name
   validates_presence_of :last_name
+  validates_presence_of :email
   validates_presence_of :encrypted_password
+
+  validates_uniqueness_of :email
 
   has_many :roles
   has_many :chapters, :through => :roles
@@ -50,6 +53,10 @@ class User < ActiveRecord::Base
 
   def can_mark_winner?(project)
     admin? || roles.can_mark_winner?(project)
+  end
+
+  def can_edit_profile?(user_id)
+    admin? || id == user_id.to_i
   end
 
 end
