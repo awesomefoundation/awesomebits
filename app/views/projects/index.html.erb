@@ -5,11 +5,10 @@
 <section class="applications">
   <section class="application-filters">
     <nav>
-      <label class="chapter-selection" for="chapter-selection">
+      <a href="#" class="chapter-selection">
         <span><%= @chapter.name %></span>
         <span class="arrow"></span>
-      </label>
-      <input id="chapter-selection" type="checkbox">
+      </a>
       <ol class="chapter-selector">
         <% selectable_chapters_for(current_user).each do |chapter| %>
           <li>
@@ -21,9 +20,8 @@
 
     <form accept-charset="UTF-8" action="<%= chapter_projects_path(@chapter) %>" class="simple_form filter" method="get">
       <div class="input short-list-toggle">
-        <label for="my-short-list">
         <input class="" id="my-short-list" type="checkbox">
-        My Short-list</label>
+        <label for="my-short-list">My Short-list</label>
       </div>
       <div class="input string optional date-range">
         <label class="string optional" for="filter_start">start date</label>

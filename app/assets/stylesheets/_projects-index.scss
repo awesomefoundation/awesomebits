@@ -105,18 +105,19 @@ body.projects-index {
       padding: 10px;
       position: relative;
 
-      label.chapter-selection {
+      a.chapter-selection {
         background: rgb(230,230,230);
         border: 1px solid rgb(190,190,190);
         @include border-radius(3px);
+        display: block;
         margin: 0px;
         padding: 5px 40px 5px 10px;
+        text-decoration: none;
         width: 150px;
         z-index: 2;
 
         &:hover {
           background: rgb(220,220,220);
-          cursor: pointer;
         }
 
         span {
@@ -127,31 +128,27 @@ body.projects-index {
 
         span.arrow {
           border: {
-            top: 10px solid rgb(150,150,150);
-            right: 10px solid transparent;
-            bottom: 10px solid transparent;
-            left: 10px solid transparent;
+            top: 7px solid rgb(150,150,150);
+            right: 7px solid transparent;
+            bottom: 7px solid transparent;
+            left: 7px solid transparent;
           }
-
           position: absolute;
-          top: 21px;
-          right: 20px;
+          top: 22px;
+          right: 25px;
+        }
+
+        &.expanded {
+          background: rgb(220,220,220);
+          border: 1px solid rgb(150,150,150);
+          @include border-radius(3px 3px 0px 0px);
+          cursor: pointer;
         }
       }
 
-      input[type="checkbox"] {
-        display: none;
-      }
-
-      input[type="checkbox"]:checked + ol {
-        opacity: 1;
-        visibility: visible;
-      }
-
-      ol {
+      ol.chapter-selector {
         background: rgb(255,255,255);
         border: 1px solid rgb(150,150,150);
-        border-top: 1px solid rgb(200,200,200);
         @include border-bottom-radius(4px);
         @include box-shadow(0 3px 5px 0 rgba(0,0,0, 0.2));
         max-height: 450px;
@@ -160,7 +157,7 @@ body.projects-index {
         overflow-y: auto;
         padding-bottom: 10px;
         position: absolute;
-        top: 40px;
+        top: 39px;
         visibility: hidden;
         width: 200px;
         z-index: 1;
@@ -187,6 +184,11 @@ body.projects-index {
             }
           }
         }
+
+        &.expanded {
+          opacity: 1;
+          visibility: visible;
+        }
       }
     }
 
@@ -196,7 +198,13 @@ body.projects-index {
 
       div.short-list-toggle {
         float: left;
-        margin-right: 30px;
+        margin-right: 20px;
+
+        input[type="checkbox"] {
+          display: none;
+          margin-top: 2px;
+          vertical-align: middle;
+        }
 
         label {
           background: rgb(230,230,230);
@@ -211,11 +219,11 @@ body.projects-index {
             background: rgb(220,220,220);
             cursor: pointer;
           }
+        }
 
-          input[type="checkbox"] {
-            margin-top: 2px;
-            vertical-align: middle;
-          }
+        input[type="checkbox"]:checked + label {
+          background: rgb(220,220,220);
+          cursor: pointer;
         }
       }
 
@@ -228,8 +236,13 @@ body.projects-index {
         }
 
         input[type="text"] {
+          color: rgb(180,180,180);
           height: 30px;
           width: 100px;
+
+          &:focus {
+            color: rgb(55,55,55);
+          }
         }
       }
 

@@ -4,94 +4,8 @@
 //
 //*******************************************************************
 
-//header.main {
-  ////border-bottom: 3px solid $pink;
-  //background: rgb(60,60,60);
-  //overflow: hidden;
-  //width: 100%;
-
-  //nav {
-    //@extend .clearfix;
-    //margin: 0 auto;
-    //position: relative;
-    //width: grid-width(12);
-
-    //a.logo {
-      //text-decoration: none;
-
-      //.fast-forward {
-        //background: $pink;
-        //@include border-radius(45px);
-        //@include box-shadow(0 1px 5px 0 rgba(0,0,0, 0.2));
-        //display: block;
-        //height: 90px;
-        //left: -50px;
-        //position: absolute;
-        //@include transition(all, 0.2s, ease-in);
-        //top: -18px;
-        //width: 90px;
-
-        //img {
-          //margin: 19px 0 0 20px;
-        //}
-      //}
-
-      //h1 {
-        //color: rgb(255,255,255);
-        //float: left;
-        //font: 300 20px $sans-serif;
-        //margin: 14px 0px 0px 0px;
-        //padding-left: $gw-column;
-        //text-transform: uppercase;
-      //}
-
-      //&:hover {
-        //.fast-forward {
-          //cursor: pointer;
-          //@include transform(rotate(360deg));
-        //}
-
-        //h1 {
-          //color: $pink;
-        //}
-      //}
-    //}
-
-    //ol {
-      //height: 100%;
-      //margin: 0;
-
-      //li {
-        //float: right;
-        //list-style: none;
-        //margin: 15px 0px 0px 2px;
-
-        //&:last-child {
-          //margin-left: 0;
-        //}
-
-        //a {
-          //color: rgb(200,200,200);
-          //display: block;
-          //font: bold 14px/16px $sans-serif;
-          //height: 20px;
-          //padding: 6px 12px 6px;
-          //text-decoration: none;
-          //text-transform: uppercase;
-          //@include transition(all, 0.15s, linear);
-
-          //&:hover {
-            //background: $pink;
-            //color: rgb(255,255,255);
-          //}
-        //}
-      //}
-    //}
-  //}
-//}
-
 header.main {
-  //background: rgb(0,0,0);
+  background: rgb(243,243,243);
   border-bottom: 1px solid rgb(210,210,210);
   overflow: hidden;
   width: 100%;
@@ -154,16 +68,22 @@ header.main {
           color: rgb(155,155,155);
           display: block;
           font: normal 12px/14px $sans-serif;
-          //margin: 0px 10px;
-          padding: 6px 12px;
+          margin: 0px 10px;
+          padding: 6px 0px;
+          position: relative;
           text-decoration: none;
           text-transform: uppercase;
-          @include transition(all 0.15s linear);
+          //@include transition(all 0.15s linear);
 
           &:hover {
-            background: $pink;
-            //border-bottom: 3px solid $pink;
-            color: rgb(255,255,255);
+            //background: $pink;
+            border-bottom: 3px solid $pink;
+            //color: rgb(255,255,255);
+            color: rgb(55,55,55);
+          }
+
+          &:active {
+            top: 1px;
           }
 
           &.chapters.active {

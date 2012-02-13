@@ -7,12 +7,12 @@
 
     h1 {
       float: left;
-      font: 300 40px $sans-serif;
+      font: normal 34px $sans-serif;
       text-transform: uppercase;
 
       a {
         color: rgb(55,55,55);
-        font: 300 18px $sans-serif;
+        font: normal 16px $sans-serif;
         text-decoration: none;
         text-transform: uppercase;
 
@@ -40,30 +40,30 @@
           float: right;
           list-style: none;
           margin-left: 10px;
-          padding-top: 23px;
+          padding-top: 12px;
 
           a {
             background: transparent;
             display: block;
-            height: 20px;
-            width: 20px;
+            height: 25px;
+            width: 25px;
           }
 
           .twitter {
-            background: url("social_icons.png");
-            background-position: 0px 0px;
+            background: url("twitter.png");
+            opacity: 0.7;
 
             &:hover {
-              background-position: 0px -30px;
+              opacity: 1;
             }
           }
 
-          .faceboo {
-            background: url("social_icons.png");
-            background-position: 30px 0px;
+          .facebook {
+            background: url("fb.png");
+            opacity: 0.7;
 
             &:hover {
-              background-position: 30px -30px;
+              opacity: 1;
             }
           }
         }
@@ -73,7 +73,7 @@
 
   .project-gallery {
     background: rgb(240,240,240);
-    border: 2px solid rgb(50,50,50);
+    border: 1px solid rgb(200,200,200);
     height: 470px;
     overflow: hidden;
     width: grid-width(12);
@@ -82,41 +82,11 @@
     img {
       min-width: grid-width(12);
     }
-
-    ol {
-      li {
-        background: rgb(230,230,230);
-        float: left;
-        list-style: none;
-        margin-bottom: $gw-gutter;
-        margin-right: $gw-gutter;
-        width: grid-width(4);
-
-        &:nth-child(3n) {
-          margin-right: 0px;
-        }
-
-        section.project {
-          border: 1px solid rgb(200,200,200);
-          @include border-radius(5px);
-          height: 200px;
-          overflow: hidden;
-
-          img {
-          }
-
-          .meta-data {
-          }
-        }
-      }
-    }
   }
 }
 
 .chapter-info-wrapper {
-  border: 1px solid rgb(200,200,200);
-  background: rgb(255,255,255);
-  margin: 100px 0px 0px;
+  margin: 50px 0px 0px;
 
   .chapter-info {
     @extend .clearfix;
@@ -126,8 +96,7 @@
 
     h1 {
       border-bottom: 1px solid rgb(200,200,200);
-      float: none;
-      font: 300 40px $sans-serif;
+      font: normal 34px $sans-serif;
       text-transform: uppercase;
       margin-bottom: 30px;
       padding-bottom: 20px;
@@ -224,12 +193,13 @@
         }
 
         h2 {
-          font-size: 16px;
+          font: normal 16px/20px $sans-serif;
           margin-bottom: 15px;
+          text-transform: uppercase;
         }
 
         p {
-          font: 300 14px/20px $sans-serif;
+          font: normal 12px/20px $sans-serif;
           margin-bottom: 0px;
         }
 
@@ -245,7 +215,7 @@
 
       li {
         list-style: none;
-        margin: 0px 0px 5px 0px;
+        margin: 0px 0px 3px 0px;
 
         &:last-child {
           margin: 0px;
