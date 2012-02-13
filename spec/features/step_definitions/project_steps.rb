@@ -2,6 +2,10 @@ step 'I am looking at the list of projects' do
   visit projects_path
 end
 
+step 'I am looking at the list of projects for the first chapter' do
+  visit chapter_projects_path(@my_chapter)
+end
+
 step 'a project was created on each of the last 7 days for my chapter' do
   @my_projects = []
   7.times do |x|
@@ -11,12 +15,22 @@ step 'a project was created on each of the last 7 days for my chapter' do
   end
 end
 
+step 'a project was created on each of the last 7 days for one chapter' do
+  @my_chapter = FactoryGirl.create(:chapter)
+  @my_projects = []
+  7.times do |x|
+    @my_projects << FactoryGirl.create(:project,
+                                       :chapter => @my_chapter,
+                                       :created_at => x.days.ago)
+  end
+end
+
 step 'a project was created on each of the last 7 days for a different chapter' do
-  other_chapter = FactoryGirl.create(:chapter)
+  @other_chapter = FactoryGirl.create(:chapter)
   @other_projects = []
   7.times do |x|
     @other_projects << FactoryGirl.create(:project,
-                                          :chapter => other_chapter,
+                                          :chapter => @other_chapter,
                                           :created_at => x.days.ago)
   end
 end
@@ -60,11 +74,18 @@ end
 
 step 'I look at the projects for the "Any" chapter' do
   page.find(:css, "ol.chapter-selector li a:contains('Any')").click
+  @viewing_projects = @any_projects
+end
+
+step 'I look at the projects for the other chapter' do
+  page.find(:css, "ol.chapter-selector li a:contains('#{@other_chapter.name}')").click
+  @viewing_projects = @other_projects
 end
 
 step 'I should see its projects for the past 3 days' do
-  expected = @any_projects[0..3]
+  expected = @viewing_projects[0..3]
   expected.each do |project|
     page.should have_css(".project .title:contains('#{project.title}')")
   end
 end
+
