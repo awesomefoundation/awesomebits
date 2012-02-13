@@ -25,7 +25,7 @@
     a.edit-chapter {
       @include button(rgb(240,240,240));
       float: left;
-      margin: 25px 0px 0px 20px;
+      margin: 17px 0px 0px 20px;
       text-decoration: none;
       padding: 4px 10px;
     }
@@ -46,25 +46,25 @@
             background: transparent;
             display: block;
             height: 25px;
+            opacity: 0.7;
+            position: relative;
             width: 25px;
+
+            &:hover {
+              opacity: 1;
+            }
+
+            &:active {
+              top: 1px;
+            }
           }
 
           .twitter {
             background: url("twitter.png");
-            opacity: 0.7;
-
-            &:hover {
-              opacity: 1;
-            }
           }
 
           .facebook {
             background: url("fb.png");
-            opacity: 0.7;
-
-            &:hover {
-              opacity: 1;
-            }
           }
         }
       }
@@ -75,12 +75,47 @@
     background: rgb(240,240,240);
     border: 1px solid rgb(200,200,200);
     height: 470px;
-    overflow: hidden;
+    position: relative;
     width: grid-width(12);
     @extend .clearfix;
 
-    img {
-      min-width: grid-width(12);
+    .arrow {
+      background: rgba(0,0,0, 0.4);
+      //border: 1px solid rgba(0,0,0, 0.3);
+      @include border-radius(60px);
+      color: rgba(255,255,255, 0.5);
+      display: block;
+      font: normal 60px $sans-serif;
+      height: 100px;
+      padding-top: 20px;
+      position: absolute;
+      text-align: center;
+      text-decoration: none;
+      top: 175px;
+      @include transition(all 0.15s ease-in);
+      width: 120px;
+
+      &:hover {
+        background: rgba($pink, 0.8);
+      }
+
+      &.left {
+        left: -60px;
+      }
+
+      &.right {
+        right: -60px;
+      }
+    }
+
+    .image-wrapper {
+      height: 470px;
+      overflow: hidden;
+      width: grid-width(12);
+
+      img {
+        min-width: grid-width(12);
+      }
     }
   }
 }
@@ -95,16 +130,16 @@
     width: grid-width(12);
 
     h1 {
-      border-bottom: 1px solid rgb(200,200,200);
       font: normal 34px $sans-serif;
       text-transform: uppercase;
       margin-bottom: 30px;
-      padding-bottom: 20px;
       text-align: center;
     }
 
     .trustees {
-      margin: 50px auto 40px;
+      border-top: 1px solid rgb(200,200,200);
+      margin: 0px auto;
+      padding: 50px 0px 30px;
       width: grid-width(10);
 
       ol {
