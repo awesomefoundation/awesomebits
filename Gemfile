@@ -39,6 +39,8 @@ end
 
 group :test do
   gem "pry"
+  gem "pry-nav"
+  gem "pry-stack_explorer"
   gem "turnip"
   gem "capybara"
   gem "database_cleaner"
