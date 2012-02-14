@@ -17,7 +17,7 @@ class ChaptersController < ApplicationController
   def create
     chapter = Chapter.new(params[:chapter])
     if chapter.save
-      redirect_to chapters_path
+      redirect_to(chapter)
     else
       render :new
     end

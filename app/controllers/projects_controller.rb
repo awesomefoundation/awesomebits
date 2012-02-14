@@ -9,6 +9,7 @@ class ProjectsController < ApplicationController
     @start_date, @end_date = extract_timeframe
     @chapter = Chapter.find(params[:chapter_id])
     @projects = @chapter.projects.during_timeframe(@start_date, @end_date)
+    current_user.mark_last_viewed_chapter(params[:chapter_id])
   end
 
   def new
