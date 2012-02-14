@@ -4,6 +4,7 @@ Feature: As a trustee I can edit my profile
     Given I am logged in as a trustee
     When I change my profile information
     Then my profile is updated
+    And I am on the projects page for my last viewed chapter
 
   Scenario: Trustee tries to change another users account
     Given I am logged in as a trustee
