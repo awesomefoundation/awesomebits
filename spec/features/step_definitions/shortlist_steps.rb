@@ -34,7 +34,7 @@ step ':count people/person have/has voted on a/another project in my chapter' do
   project = FactoryGirl.create(:project, :chapter => @current_chapter)
   @finalist_projects << [project, count] if count.to_i > 0
   count.to_i.times do |x|
-    vote = FactoryGirl.create(:vote, :project => project)
+    vote = FactoryGirl.create(:vote, :project => project, :created_at => x.days.ago)
     FactoryGirl.create(:role, :user => vote.user, :chapter => @current_chapter)
   end
 end
