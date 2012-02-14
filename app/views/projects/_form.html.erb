@@ -24,26 +24,6 @@
     var extra_questions = {
     <% Chapter.all.each do |chapter| %>
       "<%= chapter.id %>": <%= chapter.extra_questions_json %>,
-    <% end %>
-    }
-
-    function updateExtraQuestions(event) {
-      var element = $(event.currentTarget);
-      var questions = extra_questions[element.val()];
-
-      $('.extra-questions').show();
-      var answers = $('.extra-questions .extra-answer');
-      answers.hide();
-      $(questions).each(function(i, question){
-        var answer_box = $(answers[i]);
-        answer_box.show();
-        answer_box.find('label').text(question);
-
-        var question_field = $($(".extra-questions .extra-question input")[i]);
-        question_field.val(question);
-      });
-    }
-
-    $('#project_chapter_id').change(updateExtraQuestions);
+    <% end %>}
   <% end %>
 <% end %>
