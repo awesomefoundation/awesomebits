@@ -3,7 +3,9 @@ class Project < ActiveRecord::Base
   has_many :votes
   has_many :users, :through => :votes
 
-  attr_accessible :name, :title, :url, :email, :phone, :description, :use, :chapter_id
+  attr_accessible :name, :title, :url, :email, :phone, :description, :use, :chapter_id,
+                  :extra_question_1, :extra_question_2, :extra_question_3,
+                  :extra_answer_1, :extra_answer_2, :extra_answer_3
 
   validates_presence_of :name
   validates_presence_of :title

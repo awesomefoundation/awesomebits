@@ -10,6 +10,23 @@ step 'I create a new chapter' do
   click_button("Create Chapter")
 end
 
+step 'I enter new questions for applicants to answer' do
+  @extra_question_1 = "What is your name?"
+  fill_in("Extra question 1", :with => @extra_question_1)
+  @extra_question_2 = "What is your quest?"
+  fill_in("Extra question 2", :with => @extra_question_2)
+  @extra_question_3 = "What is the airspeed velocity of an unladen swallow?"
+  fill_in("Extra question 3", :with => @extra_question_3)
+  click_button("Update")
+end
+
+step 'I enter different questions for applicants to answer' do
+  fill_in("Extra question 1", :with => "New Stuff 1")
+  fill_in("Extra question 2", :with => "New Stuff 2")
+  fill_in("Extra question 3", :with => "New Stuff 3")
+  click_button("Update")
+end
+
 step 'I go to the chapters index' do
   visit(chapters_url)
 end
@@ -31,7 +48,7 @@ step 'I should see the updated chapter' do
   page.should have_content(@new_chapter_name)
 end
 
-step 'I attempt to edit a chapter' do
+step 'I attempt to edit a/my chapter' do
   visit(edit_chapter_path(@current_chapter))
 end
 

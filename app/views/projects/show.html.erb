@@ -17,6 +17,32 @@
   <section class="description">
     <%= @project.use %>
   </section>
+  <section class="questions">
+  <% if @project.extra_answer_1.present? %>
+    <section class="question">
+      <h2><%= @project.extra_question_1 %></h2>
+      <section class="answer">
+        <%= @project.extra_answer_1 %>
+      </section>
+    </section>
+  <% end %>
+  <% if @project.extra_answer_2.present? %>
+    <section class="question">
+      <h2><%= @project.extra_question_2 %></h2>
+      <section class="answer">
+        <%= @project.extra_answer_2 %>
+      </section>
+    </section>
+  <% end %>
+  <% if @project.extra_answer_3.present? %>
+    <section class="question">
+      <h2><%= @project.extra_question_3 %></h2>
+      <section class="answer">
+        <%= @project.extra_answer_3 %>
+      </section>
+    </section>
+  <% end %>
+  </section>
   <section class="side-bar">
     <article class="rss-feed">
       <h2>Recent Posts</h2>

@@ -6,7 +6,8 @@ class Chapter < ActiveRecord::Base
 
   validates_uniqueness_of :name
 
-  attr_accessible :name, :twitter_url, :facebook_url, :blog_url, :rss_feed_url, :description
+  attr_accessible :name, :twitter_url, :facebook_url, :blog_url, :rss_feed_url, :description,
+                  :extra_question_1, :extra_question_2, :extra_question_3
 
   def self.invitable_by(user)
     if user.admin?
@@ -21,5 +22,9 @@ class Chapter < ActiveRecord::Base
 
   def any_chapter?
     name == "Any"
+  end
+
+  def extra_questions_json
+    [extra_question_1, extra_question_2, extra_question_3].reject(&:blank?).to_json.html_safe
   end
 end
