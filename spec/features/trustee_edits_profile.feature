@@ -15,5 +15,5 @@ Feature: As a trustee I can edit my profile
   Scenario: Trustee changes password
     Given I am logged in as a trustee
     When I update my password
-    When I log out
+    And I log out
     Then I should be able to log in with updated password
