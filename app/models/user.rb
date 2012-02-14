@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   include Clearance::User
-  attr_accessible :first_name, :last_name, :email, :bio, :url, :twitter_username, :facebook_url, :linkedin_url
+  attr_accessible :first_name, :last_name, :email, :bio, :url, :twitter_username, :facebook_url, :linkedin_url, :last_viewed_chapter_id
 
   validates_presence_of :first_name
   validates_presence_of :last_name
@@ -57,6 +57,16 @@ class User < ActiveRecord::Base
 
   def can_edit_profile?(user_id)
     admin? || id == user_id.to_i
+  end
+
+  def view_chapter(chapter_id)
+    update_attributes(:last_viewed_chapter_id => chapter_id)
+  end
+
+  def set_password(new_password)
+    unless new_password.blank?
+      self.password = new_password
+    end
   end
 
 end

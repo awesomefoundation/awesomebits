@@ -7,10 +7,9 @@ class ProjectsController < ApplicationController
 
   def index
     @start_date, @end_date = extract_timeframe
-    @chapter = Chapter.find(params[:chapter_id])
+    @chapter = Chapter.find_by_id(params[:chapter_id])
     @projects = @chapter.projects.during_timeframe(@start_date, @end_date)
-    current_user.last_viewed_chapter_id = @chapter.id
-    current_user.save
+    current_user.view_chapter(params[:chapter_id])
   end
 
   def new

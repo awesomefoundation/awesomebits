@@ -10,9 +10,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    unless params[:user][:password].blank?
-      @user.password = params[:user][:password]
-    end
+    @user.set_password(params[:user].delete(:new_password))
     if @user.update_attributes(params[:user])
       redirect_to chapter_projects_path(@user.last_viewed_chapter_id)
     else

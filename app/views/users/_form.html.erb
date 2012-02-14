@@ -8,11 +8,8 @@
   <%= form.input :twitter_username %>
   <%= form.input :facebook_url %>
   <%= form.input :linkedin_url %>
-  <%= form.input :password, 
+  <%= form.input :new_password, 
     :as         => :password, 
-    :label      => "New password", 
-    :input_html => {
-      :auto_complete => "off" 
-    } %>
+    :label      => "New password" %>
   <%= form.button :submit %>
 <% end %>
