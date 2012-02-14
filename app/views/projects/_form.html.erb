@@ -10,3 +10,40 @@
 <%= form.input :description, :label => "About me", :input_html => { :class => "about-me" } %>
 <%= form.input :use, :label => "About the project", :input_html => { :class => "project-desc" } %>
 <%= form.input :chapter_id, :collection => Chapter.all, :as => :select, :group_method => :name, :label => "Select chapter to apply to" %>
+<div class="extra-questions" style="display:none">
+  <%= form.input :extra_question_1, :as => :hidden, :wrapper_html => {:class => "extra-question"}  %>
+  <%= form.input :extra_question_2, :as => :hidden, :wrapper_html => {:class => "extra-question"}  %>
+  <%= form.input :extra_question_3, :as => :hidden, :wrapper_html => {:class => "extra-question"}  %>
+  <%= form.input :extra_answer_1, :label => "Extra Question 1", :wrapper_html => {:class => "extra-answer"} %>
+  <%= form.input :extra_answer_2, :label => "Extra Question 2", :wrapper_html => {:class => "extra-answer"} %>
+  <%= form.input :extra_answer_3, :label => "Extra Question 3", :wrapper_html => {:class => "extra-answer"} %>
+</div>
+
+<% content_for :javascript do %>
+  <%= javascript_tag do %>
+    var extra_questions = {
+    <% Chapter.all.each do |chapter| %>
+      "<%= chapter.id %>": <%= chapter.extra_questions_json %>,
+    <% end %>
+    }
+
+    function updateExtraQuestions(event) {
+      var element = $(event.currentTarget);
+      var questions = extra_questions[element.val()];
+
+      $('.extra-questions').show();
+      var answers = $('.extra-questions .extra-answer');
+      answers.hide();
+      $(questions).each(function(i, question){
+        var answer_box = $(answers[i]);
+        answer_box.show();
+        answer_box.find('label').text(question);
+
+        var question_field = $($(".extra-questions .extra-question input")[i]);
+        question_field.val(question);
+      });
+    }
+
+    $('#project_chapter_id').change(updateExtraQuestions);
+  <% end %>
+<% end %>

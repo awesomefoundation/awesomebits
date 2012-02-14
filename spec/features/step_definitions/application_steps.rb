@@ -15,6 +15,35 @@ step 'I submit a project to the :name chapter' do
   click_button("Apply")
 end
 
+step 'I should see them on the application form' do
+  click_link("Apply")
+  select(@current_chapter.name, :from => "Select chapter to apply to")
+  fill_in("New Stuff 1", :with => "Something")
+  fill_in("New Stuff 2", :with => "Something")
+  fill_in("New Stuff 3", :with => "Something")
+  click_button("Apply")
+end
+
+step 'I submit a project to the :name chapter with the extra questions answered' do
+  @project_title = "Crusades!"
+  click_link("Apply")
+  fill_in("Name", :with => "Arthur")
+  fill_in("Project title", :with => @project_title)
+  fill_in("Project website", :with => "http://awesome.com")
+  fill_in("Email", :with => "awesome@awesome.com")
+  fill_in("Phone", :with => "")
+  fill_in("About me", :with => "I am awesome.")
+  fill_in("About the project", :with => "I want to make awesomeness.")
+  select(@current_chapter.name, :from => "Select chapter to apply to")
+  @extra_answer_1 = "Arthur of Camelot."
+  fill_in(@extra_question_1, :with => @extra_answer_1)
+  @extra_answer_2 = "I seek the Grail."
+  fill_in(@extra_question_2, :with => @extra_answer_2)
+  @extra_answer_3 = "What do you mean? An African or European swallow?"
+  fill_in(@extra_question_3, :with => @extra_answer_3)
+  click_button("Apply")
+end
+
 step 'I should be thanked' do
   page.should show_the_flash("notice").containing("Thanks for applying")
 end
