@@ -1,14 +1,3 @@
-step "the trustee can log in" do
-  visit root_path
-  click_link("Sign out")
-  fill_in("Email", :with => @invitation_address)
-  fill_in("Password", :with => "12345")
-  click_button("Sign in")
-  page.should have_css("body.projects")
-  page.should have_no_css("body.home")
-  page.should have_no_css("body.clearance-sessions")
-end
-
 step "there is a trustee in the system" do
   @trustee_role     = Factory(:role, :name => 'trustee')
   @trustee          = @trustee_role.user
@@ -39,6 +28,10 @@ end
 
 step "my profile is updated" do
   page.should have_selector("h2", :text => "#{@updated_trustee_first_name} #{@updated_trustee_last_name}")
+end
+
+step "I am on the projects page of my last viewed chapter" do
+  page.should have_selector("a.chapter-selection", :text => @current_chapter.name)
 end
 
 step "I should see an update user permission error" do
