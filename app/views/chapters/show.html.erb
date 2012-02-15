@@ -12,6 +12,9 @@
         <li>
           <%= link_to "", @chapter.facebook_url, :class => "facebook" %>
         </li>
+        <li>
+          <%= link_to "", @chapter.blog_url, :class => "blog" %>
+        </li>
       </ol>
     </section>
     <% if can_manage_chapter?(@chapter) %>
@@ -58,7 +61,7 @@
         <h2>About Us</h2>
         <p><%= @chapter.description %></p>
       </article>
-      <article class="rss-feed">
+      <article class="rss-feed" data-feed-url="<%= @chapter.rss_feed_url %>">
         <h2>Recent Posts</h2>
         <ol class="feed">
           <li>

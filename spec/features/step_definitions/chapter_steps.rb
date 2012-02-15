@@ -40,12 +40,27 @@ step 'I edit a chapter' do
   click_link(@current_chapter.name)
   click_link('Edit Chapter')
   @new_chapter_name = "Montecito"
-  fill_in("Name", :with => @new_chapter_name)
+  @new_twitter_url = "http://twitter.com/awesomefound"
+  @new_facebook_url = "http://facebook.com/awesomefound"
+  @new_blog_url = "http://blog.com/awesomefound"
+  @new_rss_feed_url = "http://rss.com/awesomefound"
+  @new_description = "This is a description of the chapter."
+  fill_in("Name",         :with => @new_chapter_name)
+  fill_in("Twitter URL",  :with => @new_twitter_url)
+  fill_in("Facebook URL", :with => @new_facebook_url)
+  fill_in("Blog URL",     :with => @new_blog_url)
+  fill_in("RSS Feed URL", :with => @new_rss_feed_url)
+  fill_in("Description",  :with => @new_description)
   click_button("Update Chapter")
 end
 
 step 'I should see the updated chapter' do
-  page.should have_content(@new_chapter_name)
+  page.should have_css("h1:contains('#{@new_chapter_name}')")
+  page.should have_css("a.twitter[href='#{@new_twitter_url}']")
+  page.should have_css("a.facebook[href='#{@new_facebook_url}']")
+  page.should have_css("a.blog[href='#{@new_blog_url}']")
+  page.should have_css("article.rss-feed[data-feed-url='#{@new_rss_feed_url}']")
+  page.should have_css(".about p:contains('#{@new_description}')")
 end
 
 step 'I attempt to edit a/my chapter' do
