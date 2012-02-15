@@ -1,6 +1,6 @@
 <header class="main" id="header">
   <nav>
-    <a href="#" class="logo">
+    <a href="<%= root_path %>" class="logo">
       <div class="fast-forward">▸▸</div>
       <h1>The Awesome Foundation</h1>
     </a>
@@ -14,13 +14,13 @@
         </li>
       <% end %>
       <li>
-        <a href="#" class="blog">Blog</a>
+        <%= link_to "Blog", "/blog", :class => "blog" %>
       </li>
       <li>
-        <a href="#" class="description">For real?!</a>
+        <%= link_to "For real?!", page_path("description"), :class => "description" %>
       </li>
       <li>
-        <a href="#" class="chapters">Chapters</a>
+        <%= link_to "Chapters", chapters_path, :class => "chapters" %>
       </li>
     </ol>
   </nav>
