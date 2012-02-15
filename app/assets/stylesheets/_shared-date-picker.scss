@@ -1,0 +1,86 @@
+div.ui-datepicker {
+  background: rgb(245,245,245);
+  border: 1px solid rgb(150,150,150);
+  @include border-radius(4px);
+  @include box-shadow(0 0 20px 0 rgba(0,0,0, 0.2));
+  margin-top: 5px;
+  padding: 10px;
+
+  .ui-datepicker-header {
+    margin-bottom: 10px;
+
+    a {
+      font: italic 12px/14px $serif;
+      position: absolute;
+      top: 10px;
+
+      &:hover {
+        color: $pink;
+        cursor: pointer;
+      }
+    }
+
+    a.ui-datepicker-prev {
+      left: 10px;
+    }
+
+    a.ui-datepicker-next {
+      right: 10px;
+    }
+
+    .ui-datepicker-title {
+      margin: 0px 30px;
+      text-align: center;
+
+      span {
+        font: bold 12px/14px $sans-serif;
+        text-align: center;
+      }
+    }
+  }
+
+  table.ui-datepicker-calendar {
+    margin: 0px;
+
+    thead {
+      tr {
+        border-bottom: 1px solid rgb(200,200,200);
+
+        th {
+          border: none;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        border: none;
+        height: 35px;
+
+        td {
+          border: none;
+          padding: 5px 6px 0px 0px;
+
+          &:last-child {
+            padding-right: 0px;
+          }
+
+          a {
+            background: rgb(255,255,255);
+            border: 1px solid rgb(220,220,220);
+            color: $base-font-color;
+            display: block;
+            padding: 6px;
+            text-align: center;
+            text-decoration: none;
+
+            &:hover {
+              background: $pink;
+              color: rgb(255,255,255);
+            }
+          }
+        }
+      }
+    }
+  }
+}
