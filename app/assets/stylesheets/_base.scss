@@ -5,12 +5,11 @@ html, body {
 
 body {
   .container-wrapper {
-    background: rgb(255,255,255);
   }
 
   section.container {
     margin: 0px auto;
-    padding: 70px 0px 100px;
+    padding: 50px 0px 100px;
     width: grid-width(12);
   }
 }
@@ -45,7 +44,7 @@ table {
 section.footer {
   @extend .clearfix;
   border-top: 1px solid rgb(220,220,220);
-  height: 200px;
+  height: 100px;
   margin: 0 auto;
   padding-top: 10px;
   width: grid-width(12);

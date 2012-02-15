@@ -1,0 +1,145 @@
+body.projects-show {
+  section.container {
+  }
+}
+
+header.project {
+  margin-bottom: 12px;
+
+  h1 {
+    font: normal 34px $sans-serif;
+    @include inline-block;
+    margin: 0px;
+  }
+}
+
+.project-gallery {
+  background: rgb(255,255,255);
+  border: 1px solid rgb(200,200,200);
+  height: 470px;
+  margin: 0px auto 40px;
+  padding: 1px;
+  position: relative;
+  width: grid-width(12);
+  @extend .clearfix;
+
+  .arrow {
+    background: rgba(0,0,0, 0.4);
+    @include border-radius(60px);
+    color: rgba(255,255,255, 0.5);
+    font: normal 40px $sans-serif;
+    height: 120px;
+    opacity: 0;
+    position: absolute;
+    text-align: center;
+    text-decoration: none;
+    top: 175px;
+    @include transition(all 0.15s ease-in);
+    width: 120px;
+
+    &:hover {
+      background: rgba($pink, 0.8);
+    }
+
+    &.left {
+      left: -60px;
+    }
+
+    &.right {
+      right: -60px;
+    }
+  }
+
+  .image-wrapper {
+    height: 470px;
+    overflow: hidden;
+    width: grid-width(12);
+
+    img {
+      min-width: grid-width(12);
+    }
+  }
+
+  &:hover {
+    .arrow {
+      opacity: 1;
+    }
+  }
+}
+
+.project-details {
+  @extend .clearfix;
+  margin: 0px auto;
+  width: grid-width(12);
+
+  .meta-data {
+    @extend .clearfix;
+    border-bottom: 1px solid rgb(220,220,220);
+    margin-bottom: 30px;
+
+    p {
+      color: rgb(100,100,100);
+      font: normal 14px/22px $sans-serif;
+      float: left;
+    }
+
+    a {
+      color: rgb(100,100,100);
+      font: normal 14px/22px $sans-serif;
+      float: right;
+      margin-left: 20px;
+      text-decoration: none;
+
+      &:hover {
+        color: $pink;
+      }
+    }
+  }
+
+  .description {
+    float: left;
+    margin-right: $gw-gutter;
+    width: grid-width(8);
+
+    h2 {
+      font: normal 18px/22px $sans-serif;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+
+    p + h2 {
+      margin-top: 40px;
+    }
+
+    p {
+      color: rgb(100,100,100);
+      font: normal 14px/22px $sans-serif;
+    }
+  }
+
+  .side-bar {
+    float: left;
+    width: grid-width(4);
+
+    article {
+      background: rgb(230,230,230);
+      @include border-radius(4px);
+      margin-bottom: 15px;
+      padding: 10px;
+
+      h2 {
+        font: normal 16px/20px $sans-serif;
+      }
+
+      a {
+        color: rgb(55,55,55);
+        font: normal 12px/20px $sans-serif;
+        text-decoration: none;
+
+        &:hover {
+          color: $pink;
+        }
+      }
+    }
+  }
+}

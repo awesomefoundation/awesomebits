@@ -1,60 +1,82 @@
-<section class="top">
-  <section class="titles">
+<header class="project">
   <h1><%= @project.title %></h1>
-    <div class="title-data">
-      <p><strong>Fellow:</strong> <%= @project.name %></p>
-      <p><strong>Funded:</strong> <%= @project.funded_on %> by <%= @project.chapter.name %></p>
-    <div>
-  </section>
-</section>
+</header>
 
-<div class="media-wrapper">
-  <section class="project-media">
-  </section>
-</div>
+ <section class="project-gallery">
+   <a href="#" class="arrow left"></a>
+   <div class="image-wrapper">
+     <%= image_tag("project.jpg") %>
+   </div>
+   <a href="#" class="arrow right"></a>
+ </section>
 
 <section class="project-details">
+  <section class="meta-data">
+    <p>A <%= @project.chapter.name %> project created by <%= @project.name %></p>
+    <a href="#">Share on Twitter</a>
+    <a href="#">Share on FaceBook</a>
+  </section>
+
   <section class="description">
-    <%= @project.use %>
-  </section>
-  <section class="questions">
-  <% if @project.extra_answer_1.present? %>
-    <section class="question">
+    <h2>Project Description</h2>
+    <p><%= @project.use %></p>
+
+    <% if @project.extra_answer_1.present? %>
       <h2><%= @project.extra_question_1 %></h2>
-      <section class="answer">
-        <%= @project.extra_answer_1 %>
-      </section>
-    </section>
-  <% end %>
-  <% if @project.extra_answer_2.present? %>
-    <section class="question">
+      <p><%= @project.extra_answer_1 %></p>
+    <% end %>
+
+    <% if @project.extra_answer_2.present? %>
       <h2><%= @project.extra_question_2 %></h2>
-      <section class="answer">
-        <%= @project.extra_answer_2 %>
-      </section>
-    </section>
-  <% end %>
-  <% if @project.extra_answer_3.present? %>
-    <section class="question">
+      <p><%= @project.extra_answer_2 %></p>
+    <% end %>
+
+    <% if @project.extra_answer_3.present? %>
       <h2><%= @project.extra_question_3 %></h2>
-      <section class="answer">
-        <%= @project.extra_answer_3 %>
-      </section>
-    </section>
-  <% end %>
+      <p><%= @project.extra_answer_3 %></p>
+    <% end %>
   </section>
+
   <section class="side-bar">
+    <article>
+      <% if @project.winner? %>
+        <div class="state funded">
+          <p>Funded on <%= @project.funded_on %> by <%= @project.chapter.name %></p>
+        </div>
+        <div class="state inprogress">
+          <p>Funded on <%= @project.funded_on %> by <%= @project.chapter.name %></p>
+          <p>Project is beig worked on</p>
+        </div>
+        <div class="state finished">
+          <p>Funded on <%= @project.funded_on %> by <%= @project.chapter.name %></p>
+          <p>And completed on dd/mm/yyyy</p>
+        </div>
+      <% else %>
+        <div class="state applied">
+          <p>Project application sumitted to <%= @project.chapter.name %></p>
+        </div>
+      <% end %>
+    </article>
+
+    <article>
+      Condition
+    </article>
+
+    <article>
+      URLS
+    </article>
+
     <article class="rss-feed">
       <h2>Recent Posts</h2>
       <ol class="feed">
         <li>
-          <a href="#"><p>Awesome Melbourne teams up with Pozible</p></a>
+          <a href="#">Awesome Melbourne teams up with Pozible</a>
         </li>
         <li>
-          <a href="#"><p>Introducing... Boston's Awesome Office Hours!</p></a>
+          <a href="#">Introducing... Boston's Awesome Office Hours!</a>
         </li>
         <li>
-          <a href="#"><p>Montreal's first grant party!</p></a>
+          <a href="#">Montreal's first grant party!</a>
         </li>
       </ol>
     </article>

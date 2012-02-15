@@ -71,7 +71,7 @@
     }
   }
 
-  .project-gallery {
+  .chapter-gallery {
     background: rgb(240,240,240);
     border: 1px solid rgb(200,200,200);
     height: 470px;
@@ -121,6 +121,7 @@
 }
 
 .chapter-info-wrapper {
+  background: rgb(235,235,235);
   margin: 50px 0px 0px;
 
   .chapter-info {
@@ -130,16 +131,17 @@
     width: grid-width(12);
 
     h1 {
-      font: normal 34px $sans-serif;
+      font: normal 26px $sans-serif;
       text-transform: uppercase;
-      margin-bottom: 30px;
-      text-align: center;
+      margin: 0px auto 20px;
+      //text-align: center;
+      width: grid-width(10);
     }
 
     .trustees {
       border-top: 1px solid rgb(200,200,200);
       margin: 0px auto;
-      padding: 50px 0px 30px;
+      padding: 50px 0px 25px;
       width: grid-width(10);
 
       ol {
@@ -228,19 +230,31 @@
         }
 
         h2 {
-          font: normal 16px/20px $sans-serif;
+          font: normal 16px/22px $sans-serif;
           margin-bottom: 15px;
           text-transform: uppercase;
         }
 
         p {
-          font: normal 12px/20px $sans-serif;
+          color: rgb(100,100,100);
+          font: normal 14px/22px $sans-serif;
           margin-bottom: 0px;
         }
 
         &.about {
           padding-bottom: 30px;
           width: grid-width(6);
+        }
+
+        &.rss-feed {
+          a {
+            color: $base-font-color;
+            font: normal 12px/22px $sans-serif;
+
+            &:hover {
+              color: $pink;
+            }
+          }
         }
       }
     }

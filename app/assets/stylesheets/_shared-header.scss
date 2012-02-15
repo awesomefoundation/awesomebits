@@ -5,8 +5,7 @@
 //*******************************************************************
 
 header.main {
-  background: rgb(243,243,243);
-  border-bottom: 1px solid rgb(210,210,210);
+  background: rgb(45,45,45);
   overflow: hidden;
   width: 100%;
 
@@ -23,8 +22,7 @@ header.main {
       .fast-forward {
         background: $pink;
         @include border-radius(45px);
-        @include box-shadow(0 1px 3px 0 rgba(0,0,0, 0.1));
-        color: rgb(255,255,255);
+        color: rgba(255,255,255, 1);
         display: block;
         float: left;
         font: normal 20px/28px $sans-serif;
@@ -32,6 +30,7 @@ header.main {
         letter-spacing: 0px;
         margin: 18px 0px 0px 0px;
         padding: 0px 0px 0px 5px;
+        @include transition(all, 0.2s, ease-in);
         width: 25px;
 
         img {
@@ -40,15 +39,20 @@ header.main {
       }
 
       h1 {
-        color: rgb(55,55,55);
+        color: rgb(255,255,255);
         float: left;
         font: normal 12px/14px $sans-serif;
         margin: 20px 0px 0px 0px;
         padding: 6px 20px;
         text-transform: uppercase;
+        @include transition(all, 0.2s, ease-in);
       }
 
       &:hover {
+
+        .fast-forward {
+        }
+
         h1 {
           color: $pink;
         }
@@ -82,12 +86,8 @@ header.main {
           &:hover {
             //background: $pink;
             border-bottom: 3px solid $pink;
-            //color: rgb(255,255,255);
-            color: rgb(55,55,55);
-          }
-
-          &:active {
-            top: 1px;
+            color: rgb(255,255,255);
+            //color: rgb(55,55,55);
           }
 
           &.chapters.active {
