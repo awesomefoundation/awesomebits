@@ -3,9 +3,7 @@ class WinnersController < ApplicationController
 
   def create
     @project = Project.find(params[:project_id])
-    if @project.declare_winner!
-      @project.deliver_winning_email
-    end
+    @project.declare_winner!
     redirect_to projects_path
   end
 
