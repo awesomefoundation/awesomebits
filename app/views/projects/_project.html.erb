@@ -6,9 +6,9 @@
           <%= link_to "Winner", project_winner_url(project), :method => (project.winner? ? :delete : :post), :class => 'mark-as-winner' %>
       <% end %>
       <% if project.shortlisted_by?(current_user) %>
-        <%= link_to "Awesome", vote_path(Vote.by(current_user).for(project).first), :method => :delete, :class => "short-list" %>
+        <%= link_to "Awesome", project_vote_path(project), :method => :delete, :remote => true, :class => "short-list" %>
       <% else %>
-        <%= link_to "Awesome", project_votes_path(project), :method => :post, :class => "short-list" %>
+        <%= link_to "Awesome", project_vote_path(project), :method => :post, :remote => true, :class => "short-list" %>
       <% end %>
     </div>
 

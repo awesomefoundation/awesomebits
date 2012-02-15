@@ -19,10 +19,8 @@ Awesomefoundation::Application.routes.draw do
 
   resources :projects do
     resource :winner, :only => [:create, :destroy]
-    resources :votes, :only => [:create]
+    resource :vote, :only => [:create, :destroy]
   end
-
-  resources :votes, :only => [:destroy]
 
   resources :submissions, :controller => "projects"
 
