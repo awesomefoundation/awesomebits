@@ -1,17 +1,41 @@
+body.chapters-show {
+  section.container {
+    padding-top: 0px;
+  }
+}
+
 .projects-wrapper {
-  margin: 0 auto;
-  width: grid-width(12);
+  width: 100%;
 
   header {
+    background: url("boston.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 270px;
+    padding-top: 80px;
+    width: 100%;
+  }
+
+  .title {
     @extend .clearfix;
+    background: rgba(0,0,0, 0.8);
+    @include border-radius(4px);
+    border: 1px solid rgba(0,0,0, 0.9);
+    @include box-shadow(0 1px 15px 0 rgba(0,0,0, 0.2));
+    margin: 0 auto;
+    padding: 30px 20px;
+    width: grid-width(9);
 
     h1 {
+      color: rgba(255,255,255, 0.9);
       float: left;
       font: normal 34px $sans-serif;
+      margin: 0px;
       text-transform: uppercase;
 
       a {
         color: rgb(55,55,55);
+        display: none;
         font: normal 16px $sans-serif;
         text-decoration: none;
         text-transform: uppercase;
@@ -22,6 +46,37 @@
       }
     }
 
+    a.external {
+      background: transparent;
+      display: block;
+      float: right;
+      height: 25px;
+      margin: 12px 0px 0px 10px;
+      opacity: 0.7;
+      position: relative;
+      width: 25px;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &:active {
+        top: 1px;
+      }
+
+      &.twitter {
+        background: url("twitter.png");
+      }
+
+      &.facebook {
+        background: url("fb.png");
+      }
+
+      &.blog {
+        background: url("twitter.png");
+      }
+    }
+
     a.edit-chapter {
       @include button(rgb(240,240,240));
       float: left;
@@ -29,59 +84,22 @@
       text-decoration: none;
       padding: 4px 10px;
     }
-
-    .external-links {
-      float: right;
-
-      ol {
-        margin: 0;
-
-        li {
-          float: right;
-          list-style: none;
-          margin-left: 10px;
-          padding-top: 12px;
-
-          a {
-            background: transparent;
-            display: block;
-            height: 25px;
-            opacity: 0.7;
-            position: relative;
-            width: 25px;
-
-            &:hover {
-              opacity: 1;
-            }
-
-            &:active {
-              top: 1px;
-            }
-          }
-
-          .twitter {
-            background: url("twitter.png");
-          }
-
-          .facebook {
-            background: url("fb.png");
-          }
-        }
-      }
-    }
   }
 
   .chapter-gallery {
-    background: rgb(240,240,240);
-    border: 1px solid rgb(200,200,200);
-    height: 470px;
+    background: rgb(230,230,230);
+    border: {
+      top: 1px solid rgb(200,200,200);
+      bottom: 1px solid rgb(200,200,200);
+    }
+    height: 204px;
+    padding: 30px 0px;
     position: relative;
-    width: grid-width(12);
+    width: 100%;
     @extend .clearfix;
 
     .arrow {
       background: rgba(0,0,0, 0.4);
-      //border: 1px solid rgba(0,0,0, 0.3);
       @include border-radius(60px);
       color: rgba(255,255,255, 0.5);
       display: block;
@@ -91,7 +109,7 @@
       position: absolute;
       text-align: center;
       text-decoration: none;
-      top: 175px;
+      top: 70px;
       @include transition(all 0.15s ease-in);
       width: 120px;
 
@@ -108,170 +126,158 @@
       }
     }
 
-    .image-wrapper {
-      height: 470px;
-      overflow: hidden;
-      width: grid-width(12);
+    .projects {
+      width: 2000px;
+    }
 
-      img {
-        min-width: grid-width(12);
+    .project {
+      background: rgb(255,255,255);
+      border: 1px solid rgb(200,200,200);
+      height: 200px;
+      float: left;
+      margin-left: $gw-gutter;
+      overflow: hidden;
+      padding: 1px;
+      width: grid-width(4);
+
+      .image-wrapper {
+        height: 200px;
+        overflow: hidden;
+        width: grid-width(4);
+
+        img {
+          max-width: grid-width(4);
+        }
       }
     }
   }
 }
 
-.chapter-info-wrapper {
-  background: rgb(235,235,235);
-  margin: 50px 0px 0px;
+.chapter-info {
+  @extend .clearfix;
+  margin: 0 auto;
+  padding: 40px 0px 80px;
+  width: grid-width(12);
 
-  .chapter-info {
-    @extend .clearfix;
-    margin: 0 auto;
-    padding: 40px 0px 80px;
-    width: grid-width(12);
+  h1 {
+    font: normal 26px $sans-serif;
+    text-transform: uppercase;
+    margin: 0px auto 20px;
+    width: grid-width(10);
+  }
 
-    h1 {
-      font: normal 26px $sans-serif;
-      text-transform: uppercase;
-      margin: 0px auto 20px;
-      //text-align: center;
-      width: grid-width(10);
-    }
+  .trustees {
+    border-top: 1px solid rgb(200,200,200);
+    margin: 0px auto;
+    padding: 50px 0px 25px;
+    width: grid-width(10);
 
-    .trustees {
-      border-top: 1px solid rgb(200,200,200);
-      margin: 0px auto;
-      padding: 50px 0px 25px;
-      width: grid-width(10);
-
-      ol {
-        @extend .clearfix;
-        margin: 0px;
-
-        li {
-          float: left;
-          list-style: none;
-          margin: 0 $gw-gutter 30px 0;
-          width: grid-width(2);
-
-          &:nth-child(5n) {
-            margin-right: 0px;
-          }
-
-          article.trustee {
-            position: relative;
-
-            a {
-              text-decoration: none;
-
-              div.avatar {
-                background: rgb(220,220,220);
-                border: 6px solid white;
-                @include border-radius(70px);
-                @include box-shadow(0 0 5px 0 rgba(0, 0, 0, 0.2));
-                display: block;
-                height: 122px;
-                margin: 0 auto;
-                overflow: hidden;
-                width: 122px;
-
-                img {
-                  @include border-radius(70px);
-                  max-width: 122px;
-                }
-              }
-
-              .trustee-details {
-                background: rgba($pink, 0.8);
-                @include border-radius(4px);
-                left: -15px;
-                opacity: 0;
-                padding: 8px;
-                position: absolute;
-                @include transform(rotate(-10deg));
-                @include transition(opacity, 0.1s, ease-out);
-                top: 20px;
-                width: grid-width(2);
-
-                h3 {
-                  color: rgb(255,255,255);
-                  font: 300 16px/18px $sans-serif;
-                  margin: 0px;
-                  text-transform: uppercase;
-                  text-align: center;
-                }
-              }
-
-              &:hover {
-                .trustee-details {
-                  opacity: 1;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-
-    .description {
+    ol {
       @extend .clearfix;
-      border-top: 1px solid rgb(200,200,200);
-      margin: 0 auto;
-      padding-top: 50px;
-      width: grid-width(10);
-
-      article {
-        float: left;
-        margin-right: $gw-gutter;
-        width: grid-width(4);
-
-        &:last-child {
-          margin: 0px;
-        }
-
-        h2 {
-          font: normal 16px/22px $sans-serif;
-          margin-bottom: 15px;
-          text-transform: uppercase;
-        }
-
-        p {
-          color: rgb(100,100,100);
-          font: normal 14px/22px $sans-serif;
-          margin-bottom: 0px;
-        }
-
-        &.about {
-          padding-bottom: 30px;
-          width: grid-width(6);
-        }
-
-        &.rss-feed {
-          a {
-            color: $base-font-color;
-            font: normal 12px/22px $sans-serif;
-
-            &:hover {
-              color: $pink;
-            }
-          }
-        }
-      }
-    }
-
-    ol.feed {
       margin: 0px;
 
       li {
+        float: left;
         list-style: none;
-        margin: 0px 0px 3px 0px;
+        margin: 0 $gw-gutter 30px 0;
+        width: grid-width(2);
 
-        &:last-child {
-          margin: 0px;
+        &:nth-child(5n) {
+          margin-right: 0px;
         }
 
+        article.trustee {
+          position: relative;
+
+          a {
+            text-decoration: none;
+
+            div.avatar {
+              background: rgb(220,220,220);
+              border: 6px solid white;
+              @include border-radius(70px);
+              @include box-shadow(0 0 5px 0 rgba(0, 0, 0, 0.2));
+              display: block;
+              height: 122px;
+              margin: 0 auto;
+              overflow: hidden;
+              width: 122px;
+
+              img {
+                @include border-radius(70px);
+                max-width: 122px;
+              }
+            }
+
+            .trustee-details {
+              background: rgba($pink, 0.8);
+              @include border-radius(4px);
+              left: -15px;
+              opacity: 0;
+              padding: 8px;
+              position: absolute;
+              @include transform(rotate(-10deg));
+              @include transition(opacity, 0.1s, ease-out);
+              top: 20px;
+              width: grid-width(2);
+
+              h3 {
+                color: rgb(255,255,255);
+                font: 300 16px/18px $sans-serif;
+                margin: 0px;
+                text-transform: uppercase;
+                text-align: center;
+              }
+            }
+
+            &:hover {
+              .trustee-details {
+                opacity: 1;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .description {
+    @extend .clearfix;
+    border-top: 1px solid rgb(200,200,200);
+    margin: 0 auto;
+    padding-top: 50px;
+    width: grid-width(10);
+
+    article {
+      float: left;
+      margin-right: $gw-gutter;
+      width: grid-width(4);
+
+      &:last-child {
+        margin: 0px;
+      }
+
+      h2 {
+        font: normal 16px/22px $sans-serif;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+      }
+
+      p {
+        color: rgb(100,100,100);
+        font: normal 14px/22px $sans-serif;
+        margin-bottom: 0px;
+      }
+
+      &.about {
+        padding-bottom: 30px;
+        width: grid-width(6);
+      }
+
+      &.rss-feed {
         a {
-          text-decoration: none;
+          color: $base-font-color;
+          font: normal 12px/22px $sans-serif;
 
           &:hover {
             color: $pink;
@@ -279,6 +285,27 @@
         }
       }
     }
-
   }
+
+  ol.feed {
+    margin: 0px;
+
+    li {
+      list-style: none;
+      margin: 0px 0px 3px 0px;
+
+      &:last-child {
+        margin: 0px;
+      }
+
+      a {
+        text-decoration: none;
+
+        &:hover {
+          color: $pink;
+        }
+      }
+    }
+  }
+
 }

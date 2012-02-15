@@ -1,81 +1,78 @@
 <div class="projects-wrapper">
   <header>
-    <h1>
-      <%= @chapter.name %>
-      <%= link_to "/ Apply Here", new_submission_path, :class => "apply-here" %>
-    </h1>
-    <section class="external-links">
-      <ol>
-        <li>
-          <%= link_to "", @chapter.twitter_url, :class => "twitter" %>
-        </li>
-        <li>
-          <%= link_to "", @chapter.facebook_url, :class => "facebook" %>
-        </li>
-        <li>
-          <%= link_to "", @chapter.blog_url, :class => "blog" %>
-        </li>
-      </ol>
-    </section>
-    <% if can_manage_chapter?(@chapter) %>
-      <%= link_to "Edit Chapter", edit_chapter_path(@chapter), :class => 'edit-chapter' %>
-    <% end %>
+    <div class="title">
+      <h1>
+        <%= @chapter.name %>
+        <%= link_to "/ Apply Here", new_submission_path, :class => "apply-here" %>
+      </h1>
+      <%= link_to "", @chapter.twitter_url, :class => "external twitter" %>
+      <%= link_to "", @chapter.facebook_url, :class => "external facebook" %>
+      <%= link_to "", @chapter.blog_url, :class => "external blog" %>
+      <% if can_manage_chapter?(@chapter) %>
+        <%= link_to "Edit Chapter", edit_chapter_path(@chapter), :class => 'edit-chapter' %>
+      <% end %>
+    </div>
   </header>
 
   <section class="chapter-gallery">
     <a href="#" class="arrow left">←</a>
-    <div class="image-wrapper">
-      <%= image_tag("project.jpg") %>
-    </div>
+      <section class="projects">
+        <% 5.times do %>
+          <article class="project">
+            <div class="image-wrapper">
+              <%= image_tag("project.jpg") %>
+            </div>
+          </article>
+        <% end %>
+      </section>
     <a href="#" class="arrow right">→</a>
   </section>
 </div>
 
-<div class="chapter-info-wrapper">
-  <section class="chapter-info">
-    <header>
-      <h1>Meet the Trustees</h1>
-    </header>
+<section class="chapter-info">
+  <header>
+    <h1>Meet the Trustees</h1>
+  </header>
 
-    <section class="trustees">
-      <ol>
-        <% @chapter.users.deans_first.including_role.each do |user| %>
-        <li>
-          <article class="trustee <%= user.role %>">
-            <a class="avatar" href="#">
-              <div class="trustee-details">
-                <h3><%= user.first_name %> <%= user.last_name %></h3>
-              </div>
-              <div class="avatar">
-                <%= image_tag user.gravatar_url %>
-              </div>
-            </a>
-          </article>
-        </li>
-        <% end %>
-      </ol>
-    </section>
-
-    <section class="description">
-      <article class="about">
-        <h2>About Us</h2>
-        <p><%= @chapter.description %></p>
-      </article>
-      <article class="rss-feed" data-feed-url="<%= @chapter.rss_feed_url %>">
-        <h2>Recent Posts</h2>
-        <ol class="feed">
-          <li>
-            <a href="#">Awesome Melbourne teams up with Pozible</a>
-          </li>
-          <li>
-            <a href="#">Introducing... Boston's Awesome Office Hours!</a>
-          </li>
-          <li>
-            <a href="#">Montreal's first grant party!</a>
-          </li>
-        </ol>
-      </article>
-    </section>
-
+  <section class="trustees">
+    <ol>
+      <% 5.times do %>
+      <% @chapter.users.deans_first.including_role.each do |user| %>
+      <li>
+        <article class="trustee <%= user.role %>">
+          <a class="avatar" href="#">
+            <div class="trustee-details">
+              <h3><%= user.first_name %> <%= user.last_name %></h3>
+            </div>
+            <div class="avatar">
+              <%= image_tag user.gravatar_url %>
+            </div>
+          </a>
+        </article>
+      </li>
+      <% end %>
+      <% end %>
+    </ol>
   </section>
-</div>
+
+  <section class="description">
+    <article class="about">
+      <h2>About Us</h2>
+      <p><%= @chapter.description %></p>
+    </article>
+    <article class="rss-feed" data-feed-url="<%= @chapter.rss_feed_url %>">
+      <h2>Recent Posts</h2>
+      <ol class="feed">
+        <li>
+          <a href="#">Awesome Melbourne teams up with Pozible</a>
+        </li>
+        <li>
+          <a href="#">Introducing... Boston's Awesome Office Hours!</a>
+        </li>
+        <li>
+          <a href="#">Montreal's first grant party!</a>
+        </li>
+      </ol>
+    </article>
+  </section>
+</section>
