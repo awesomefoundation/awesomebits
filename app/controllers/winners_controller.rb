@@ -9,6 +9,12 @@ class WinnersController < ApplicationController
     redirect_to projects_path
   end
 
+  def destroy
+    @project = Project.find(params[:project_id])
+    @project.revoke_winner!
+    redirect_to projects_path
+  end
+
   private
 
   def current_project

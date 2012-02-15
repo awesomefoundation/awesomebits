@@ -59,6 +59,11 @@ class Project < ActiveRecord::Base
     save
   end
 
+  def revoke_winner!
+    self.funded_on = nil
+    save
+  end
+
   def winner?
     funded_on.present?
   end

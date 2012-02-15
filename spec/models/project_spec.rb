@@ -161,4 +161,19 @@ describe Project do
     end
   end
 
+  context "#revoke_winner!" do
+    let(:project) { FactoryGirl.create(:project) }
+    before{ project.declare_winner! }
+
+    it 'sets the #funded_on attribute' do
+      project.revoke_winner!
+      project.funded_on.should be_nil
+    end
+
+    it 'saves the record' do
+      project.revoke_winner!
+      Project.find(project.id).funded_on.should be_nil
+    end
+  end
+
 end
