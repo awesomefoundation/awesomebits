@@ -23,6 +23,23 @@ describe Chapter do
     end
   end
 
+  context '.visitable' do
+    let!(:chapter){ FactoryGirl.create(:chapter) }
+    let!(:any_chapter){ Chapter.find_by_name("Any") }
+    it 'only returns chapters that are not the "Any" chapter' do
+      Chapter.visitable.should == [chapter]
+    end
+  end
+
+  context '.alphabetically' do
+    let!(:z_chapter){ FactoryGirl.create(:chapter, :name => "ZZZ") }
+    let!(:m_chapter){ FactoryGirl.create(:chapter, :name => "MMM") }
+    let!(:any_chapter){ Chapter.find_by_name("Any") }
+    it 'sorta alphabetically' do
+      Chapter.alphabetically.should == [any_chapter, m_chapter, z_chapter]
+    end
+  end
+
   context '#any_chapter?' do
     it 'returns true if the name of this chapter is "Any"' do
       FactoryGirl.build(:chapter, :name => "Any").any_chapter?.should be_true

@@ -9,6 +9,14 @@ class Chapter < ActiveRecord::Base
   attr_accessible :name, :twitter_url, :facebook_url, :blog_url, :rss_feed_url, :description,
                   :extra_question_1, :extra_question_2, :extra_question_3
 
+  def self.visitable
+    where("chapters.name != ?", "Any")
+  end
+
+  def self.alphabetically
+    order(:name)
+  end
+
   def self.invitable_by(user)
     if user.admin?
       where("chapters.name != 'Any'")

@@ -30,11 +30,8 @@
   <div class="inner-wrapper">
     <h1>Awesome Everywhere!</h1>
     <section class="chapters">
-      <% 4.times do %>
-        <h2>North America</h2>
-        <% 13.times do %>
-          <a href="#">Boston Chapter</a>
-        <% end %>
+      <% Chapter.visitable.alphabetically.each do |chapter| %>
+        <%= link_to chapter.name, chapter %>
       <% end %>
     </section>
   </div>
