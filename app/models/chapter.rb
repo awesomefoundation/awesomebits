@@ -23,8 +23,4 @@ class Chapter < ActiveRecord::Base
   def any_chapter?
     name == "Any"
   end
-
-  def extra_questions_json
-    [extra_question_1, extra_question_2, extra_question_3].reject(&:blank?).to_json.html_safe
-  end
 end

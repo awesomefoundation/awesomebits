@@ -23,7 +23,7 @@
   <%= javascript_tag do %>
     var extra_questions = {
     <% Chapter.all.each do |chapter| %>
-      "<%= chapter.id %>": <%= chapter.extra_questions_json %>,
+      "<%= chapter.id %>": <%= extra_questions_json(chapter) %>,
     <% end %>}
   <% end %>
 <% end %>
