@@ -6,7 +6,7 @@ require File.expand_path('../config/application', __FILE__)
 
 Awesomefoundation::Application.load_tasks
 task(:default).clear
-task :default => [:spec, "spec:features"]
+task :default => [:spec, "spec:javascripts", "spec:features"]
 
 if defined?(RSpec)
   namespace :spec do

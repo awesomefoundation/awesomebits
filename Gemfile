@@ -35,6 +35,7 @@ group :development, :test do
   gem "ruby-debug19"
   gem "sham_rack"
   gem "tddium"
+  gem "evergreen", :require => "evergreen/rails"
 end
 
 group :test do
