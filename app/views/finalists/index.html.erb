@@ -52,3 +52,12 @@
     <% end %>
   </table>
 </section>
+
+<% content_for :javascript do %>
+  <% javascript_tag do %>
+    $(window).load(function(){
+      $('#filter_start').datepicker({dateFormat: 'yy-mm-dd'});
+      $('#filter_end').datepicker({dateFormat: 'yy-mm-dd'});
+    });
+  <% end %>
+<% end %>
