@@ -5,13 +5,22 @@ class VotesController < ApplicationController
     @project = Project.find(params[:project_id])
     @user = current_user
     @vote = Vote.new(:user => @user, :project => @project)
-    @vote.save
-    redirect_to projects_path
+    if @vote.save
+      render :json => {:shortlisted => true, :project_id => @project.id}
+    else
+      render :json => {:message => "Vote already exists for this project"}, :status => 400
+    end
   end
 
   def destroy
-    Vote.destroy(params[:id])
-    redirect_to projects_path
+    @project = Project.find(params[:project_id])
+    @user = current_user
+    if @vote = Vote.find_by_project_id_and_user_id(@project, @user)
+      @vote.destroy
+      render :json => {:shortedlisted => false, :project_id => @project.id}
+    else
+      render :json => {:message => "Vote has already been deleted"}, :status => 400
+    end
   end
 
 end
