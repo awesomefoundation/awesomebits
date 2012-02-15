@@ -15,6 +15,14 @@ class User < ActiveRecord::Base
   has_many :votes
   has_many :projects, :through => :votes
 
+  def self.deans_first
+    joins(:chapters).order("roles.name, users.last_name")
+  end
+
+  def self.including_role
+    joins(:chapters).select('users.*, roles.name as role')
+  end
+
   def name
     [first_name, last_name].map(&:to_s).join(" ").strip
   end

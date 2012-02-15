@@ -108,5 +108,23 @@ describe User do
     end
   end
 
+  context ".deans_first" do
+    let(:chapter){ FactoryGirl.create(:chapter) }
+    let!(:trustee){ FactoryGirl.create(:role, :chapter => chapter) }
+    let!(:dean){ FactoryGirl.create(:role, :name => "dean", :chapter => chapter) }
+    it 'orders the users so deans are first' do
+      chapter.users.deans_first.should == [dean.user, trustee.user]
+    end
+  end
+
+  context ".including_role" do
+    let(:chapter){ FactoryGirl.create(:chapter) }
+    let!(:trustee){ FactoryGirl.create(:role, :chapter => chapter) }
+    let!(:dean){ FactoryGirl.create(:role, :name => "dean", :chapter => chapter) }
+    it 'includes the role name on the records' do
+      User.including_role.where(:id => dean.user.id).first.role.should == "dean"
+      User.including_role.where(:id => trustee.user.id).first.role.should == "trustee"
+    end
+  end
 
 end

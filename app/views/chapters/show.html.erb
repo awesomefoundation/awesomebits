@@ -2,15 +2,15 @@
   <header>
     <h1>
       <%= @chapter.name %>
-      <a href="#" class="apply-here">/ Apply Here</a>
+      <%= link_to "/ Apply Here", new_submission_path, :class => "apply-here" %>
     </h1>
     <section class="external-links">
       <ol>
         <li>
-          <a class="twitter" href="#"></a>
+          <%= link_to "", @chapter.twitter_url, :class => "twitter" %>
         </li>
         <li>
-          <a class="facebook" href="#"></a>
+          <%= link_to "", @chapter.facebook_url, :class => "facebook" %>
         </li>
       </ol>
     </section>
@@ -36,15 +36,15 @@
 
     <section class="trustees">
       <ol>
-        <% 10.times do %>
+        <% @chapter.users.deans_first.including_role.each do |user| %>
         <li>
-          <article class="trustee">
+          <article class="trustee <%= user.role %>">
             <a class="avatar" href="#">
               <div class="trustee-details">
-                <h3>Jason Freid</h3>
+                <h3><%= user.first_name %> <%= user.last_name %></h3>
               </div>
               <div class="avatar">
-                <%= image_tag("avatar.jpg") %>
+                <%= image_tag user.gravatar_url %>
               </div>
             </a>
           </article>
@@ -56,7 +56,7 @@
     <section class="description">
       <article class="about">
         <h2>About Us</h2>
-        <p>Want to know when we're having parties and who is getting the ca$h? Check out our blog and follow @awesomebos on Twitter. Curious about what we think is "Awesome"? Take a look at our Tumblr feed: Found Awesome.</p>
+        <p><%= @chapter.description %></p>
       </article>
       <article class="rss-feed">
         <h2>Recent Posts</h2>
