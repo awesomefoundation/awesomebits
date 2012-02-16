@@ -5,13 +5,13 @@ step 'I create a new chapter' do
   fill_in("Twitter URL", :with => "http://twitter.com/awesomefound")
   fill_in("Facebook URL", :with => "http://twitter.com/awesomefound")
   fill_in("Blog URL", :with => "http://twitter.com/awesomefound")
-  fill_in("RSS Feed URL", :with => Rails.root.join('spec', 'support', 'feed.xml'))
+  fill_in("RSS Feed URL", :with => "http://awesomefoundation.org/blog/feed/")
   fill_in("Description", :with => "http://twitter.com/awesomefound")
   click_button("Create Chapter")
 end
 
 step 'there is a chapter in the system' do
-  @current_chapter = FactoryGirl.create(:chapter)
+  @current_chapter = FactoryGirl.create(:chapter, :rss_feed_url => Rails.root.join('spec', 'support', 'feed.xml').to_s)
 end
 
 step 'I go to the chapter page' do
@@ -19,7 +19,7 @@ step 'I go to the chapter page' do
 end
 
 step 'I should see recent headlines' do
-  page.should have_selector('ol.feed li a', :text => 'New Melbourne Chapter')
+  page.should have_selector('ol.feed li', :text => 'New Melbourne Chapter')
 end
 
 step 'I enter new questions for applicants to answer' do

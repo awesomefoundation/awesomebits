@@ -10,7 +10,7 @@ class Headline
 
   def parse_xml
     begin
-      doc = Nokogiri.XML(raw_xml)
+      doc = Nokogiri.XML(@raw_xml)
       @headlines = doc.xpath('//rss/channel/item').map do |i| {
         :title        => i.xpath('title').text,
         :link         => i.xpath('link').text,

@@ -6,7 +6,7 @@ class RSS
   def initialize(feed_url)
     begin
       @raw_xml = open(feed_url, "UserAgent" => "Ruby-OpenURI").read
-    rescue OpenURI::HTTPError
+    rescue
       @raw_xml = ''
     end
   end

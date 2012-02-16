@@ -12,7 +12,7 @@ module ChaptersHelper
     [chapter.extra_question_1, chapter.extra_question_2, chapter.extra_question_3].reject(&:blank?).to_json.html_safe
   end
 
-  def headlines(rss_feed_url, num_headlines = 5)
-    Headline.new(RSS.new(rss_feed_url).raw_xml).top(num_headlines)
+  def headlines(chapter, num_items = 5)
+    Headline.new(RSS.new(chapter.rss_feed_url).raw_xml).top(num_items)
   end
 end
