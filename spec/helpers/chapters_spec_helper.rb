@@ -16,4 +16,10 @@ describe ChaptersHelper do
     helper.can_manage_chapter?(chapter).should == false
   end
 
+  it 'returns an array of headlines from chapter feed' do
+    rss_feed_url = Rails.root.join('spec', 'support', 'feed.xml')
+    helper.headlines(rss_feed_url).should be_an_instance_of Array
+    helper.headlines(rss_feed_url).should have(1).things
+  end
+
 end

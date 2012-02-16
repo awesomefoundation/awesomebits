@@ -8,7 +8,6 @@ class ChaptersController < ApplicationController
 
   def show
     @chapter = Chapter.find(params[:id])
-    @headlines = Headline.new(RSS.new())
   end
 
   def new
