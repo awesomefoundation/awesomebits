@@ -61,18 +61,14 @@
       <p><%= @chapter.description %></p>
     </article>
     <article class="rss-feed" data-feed-url="<%= @chapter.rss_feed_url %>">
-      <h2>Recent Posts</h2>
-      <ol class="feed">
+    <h2>Recent Posts</h2>
+    <ol class="feed">
+      <% headlines(@chapter.rss_feed_url).each do |headline| %>
         <li>
-          <a href="#">Awesome Melbourne teams up with Pozible</a>
+          <%= headline[:publish_date] %> <%= link_to headline[:title], headline[:link] %>
         </li>
-        <li>
-          <a href="#">Introducing... Boston's Awesome Office Hours!</a>
-        </li>
-        <li>
-          <a href="#">Montreal's first grant party!</a>
-        </li>
-      </ol>
+      <% end %>
+    </ol>
     </article>
   </section>
 </section>
