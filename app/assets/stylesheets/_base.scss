@@ -1,5 +1,7 @@
 html, body {
   background: rgb(255,255,255);
+  color: $base-font-color;
+  font: normal 12px/14px $sans-serif;
   height: 100%;
 }
 
@@ -17,6 +19,11 @@ body {
 a {
   color: rgb(55,55,55);
   text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $base-font-color;
+  font-family: $sans-serif;
 }
 
 table {
