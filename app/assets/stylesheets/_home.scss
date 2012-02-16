@@ -1,6 +1,122 @@
-body.home {
+body.home-index {
   section.container {
-    margin: 0 auto 70px auto;
-    width: grid-width(12);
+    padding-top: 0px;
+    width: 100%;
   }
+}
+
+.awesome-wrapper {
+  position: relative;
+
+  .tag-line {
+    background: rgba(0,0,0, 0.7);
+    padding: 25px 25px 30px 25%;
+    position: absolute;
+    top: 115px;
+    width: 50%;
+    z-index: 2;
+
+    h1 {
+      color: rgba(255,255,255, 0.9);
+      font: bold 42px/39px $sans-serif;
+      margin: 0px;
+      padding-right: 25px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
+
+  .awesome-projects {
+    @extend .clearfix;
+    margin-left: 10px;
+
+    .project {
+      background: rgb(255,255,255);
+      height: 150px;
+      float: left;
+      margin: 0px;
+      overflow: hidden;
+      width: 20%;
+
+      .image-wrapper {
+        background: url('project.jpg');
+        background-size: cover;
+        background-position: center;
+        display: block;
+        height: 100%;
+        margin: 10px 10px 0px 0px;
+        overflow: hidden;
+        position: relative;
+        text-decoration: none;
+        width: auto;
+        z-index: 1;
+
+        .project-name {
+          background: $pink;
+          @include box-sizing(border-box);
+          height: 100%;
+          opacity: 0;
+          padding: 10px;
+          position: absolute;
+          //@include transition(all, 0.2s, linear);
+          bottom: 100%;
+          width: 100%;
+
+          h2 {
+            color: rgb(255,255,255);
+            font: normal 22px $sans-serif;
+            text-transform: uppercase;
+          }
+        }
+
+        &:hover {
+          .project-name {
+            bottom: 0px;
+            opacity: 1;
+          }
+        }
+
+        img {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}
+
+.what-how {
+  border-bottom: 1px solid rgb(220,220,220);
+  margin: 0 auto;
+  padding: 50px 0px;
+  width: grid-width(12);
+
+  h2 {
+    margin-bottom: 30px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .info-graphic {
+    background: rgb(240,240,240);
+    height: 250px;
+    margin: 0 20px;
+  }
+}
+
+.who-where {
+  border-bottom: 1px solid rgb(220,220,220);
+  margin: 0 auto;
+  padding: 50px 0px;
+  width: grid-width(12);
+
+  h2 {
+    margin-bottom: 30px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
+
+.news {
+  margin: 0 auto;
+  width: grid-width(12);
 }
