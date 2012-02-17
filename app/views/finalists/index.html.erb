@@ -56,8 +56,8 @@
 <% content_for :javascript do %>
   <% javascript_tag do %>
     $(window).load(function(){
-      $('#filter_start').datepicker({dateFormat: 'yy-mm-dd'});
-      $('#filter_end').datepicker({dateFormat: 'yy-mm-dd'});
+      $('#filter_start').datepicker({dateFormat: 'yy-mm-dd', onClose: function(){ $('#filter_start').blur() }});
+      $('#filter_end').datepicker({dateFormat: 'yy-mm-dd', onClose: function(){ $('#filter_end').blur() }});
     });
   <% end %>
 <% end %>
