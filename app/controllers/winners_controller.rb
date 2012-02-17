@@ -3,7 +3,7 @@ class WinnersController < ApplicationController
 
   def create
     @project = Project.find(params[:project_id])
-    @project.declare_winner!
+    @project.declare_winner!(winning_chapter)
     redirect_to projects_path
   end
 
@@ -14,6 +14,12 @@ class WinnersController < ApplicationController
   end
 
   private
+
+  def winning_chapter
+    if params[:chapter_id].present?
+      @chapter ||= Chapter.find(params[:chapter_id])
+    end
+  end
 
   def current_project
     @current_project ||= Project.find(params[:project_id])

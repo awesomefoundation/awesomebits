@@ -149,10 +149,22 @@ describe Project do
 
   context "#declare_winner!" do
     let(:project) { FactoryGirl.create(:project) }
+    let(:chapter) { project.chapter }
+    let(:other_chapter) { FactoryGirl.create(:chapter) }
 
     it 'sets the #funded_on attribute' do
       project.declare_winner!
       project.funded_on.should == Date.today
+    end
+
+    it 'does not move the project to a different chapter, if not supplied' do
+      project.declare_winner!
+      project.chapter.should == chapter
+    end
+
+    it 'moves the project to a different chapter, if supplied' do
+      project.declare_winner!(other_chapter)
+      project.chapter.should == other_chapter
     end
 
     it 'saves the record' do
@@ -173,6 +185,19 @@ describe Project do
     it 'saves the record' do
       project.revoke_winner!
       Project.find(project.id).funded_on.should be_nil
+    end
+  end
+
+  context "#in_any_chapter?" do
+    let(:project){ FactoryGirl.build(:project, :chapter => Chapter.where(:name == "Any").first) }
+    let(:other_project) { FactoryGirl.build(:project) }
+
+    it 'is true when the project is in the Any chapter' do
+      project.in_any_chapter?.should be_true
+    end
+
+    it 'is false when the project is in some other chapter' do
+      other_project.in_any_chapter?.should be_false
     end
   end
 

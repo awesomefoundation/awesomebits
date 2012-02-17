@@ -7,4 +7,15 @@ module ProjectsHelper
       [any_chapter] + user.chapters.order(:name)
     end
   end
+
+  def show_winner_buttons_for(project)
+    if @chapter.any_chapter?
+      winnable_chapters = current_user.dean_chapters
+    else
+      winnable_chapters = [@chapter]
+    end
+    winnable_chapters.map do |chapter|
+      link_to("Winner for #{chapter.name}", project_winner_url(project, :chapter_id => chapter.id), :method => (project.winner? ? :delete : :post), :class => "mark-as-winner chapter-#{chapter.id}")
+    end.join("").html_safe
+  end
 end

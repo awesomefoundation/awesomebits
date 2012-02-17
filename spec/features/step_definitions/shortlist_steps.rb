@@ -47,6 +47,20 @@ step 'there are some projects for this month with votes' do
   end
 end
 
+step 'there are some projects in the "Any" chapter for this month with votes' do
+  @any_chapter = Chapter.where(:name => "Any").first
+  role = FactoryGirl.create(:role, :chapter => @current_chapter)
+  3.times do
+    project = FactoryGirl.create(:project, :chapter => @any_chapter)
+    FactoryGirl.create(:vote, :user => role.user, :project => project)
+  end
+end
+
 step 'I view the list of projects for this month' do
   visit(projects_path)
+end
+
+step 'I view the list of projects for this month in the "Any" chapter' do
+  visit(projects_path)
+  page.find(:css, ".chapter-selector a:contains('Any')").click
 end

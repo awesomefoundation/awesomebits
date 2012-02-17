@@ -3,7 +3,7 @@
     <div class="title">
       <%= link_to project.title, project_path(project), :class => "title" %></a>
       <% if current_user.can_mark_winner?(project) %>
-          <%= link_to "Winner", project_winner_url(project), :method => (project.winner? ? :delete : :post), :class => 'mark-as-winner' %>
+        <%= show_winner_buttons_for(project) %>
       <% end %>
       <% if project.shortlisted_by?(current_user) %>
         <%= link_to "Awesome", project_vote_path(project), :method => :delete, :remote => true, :class => "short-list" %>

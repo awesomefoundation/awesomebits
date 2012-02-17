@@ -54,8 +54,11 @@ class Project < ActiveRecord::Base
     mailer.winner(self).deliver
   end
 
-  def declare_winner!
+  def declare_winner!(new_chapter = nil)
     self.funded_on = Date.today
+    if new_chapter.present?
+      self.chapter = new_chapter
+    end
     save
   end
 
@@ -66,6 +69,10 @@ class Project < ActiveRecord::Base
 
   def winner?
     funded_on.present?
+  end
+
+  def in_any_chapter?
+    chapter.any_chapter?
   end
 
   def save

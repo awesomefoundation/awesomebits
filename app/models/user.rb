@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
 
   has_many :roles
   has_many :chapters, :through => :roles
+  has_many :dean_chapters, :source => :chapter, :through => :roles, :conditions => "roles.name = 'dean'"
 
   has_many :votes
   has_many :projects, :through => :votes
@@ -27,16 +28,16 @@ class User < ActiveRecord::Base
     [first_name, last_name].map(&:to_s).join(" ").strip
   end
 
-  def can_manage_chapter?(chapter)
-    admin? || roles.can_manage_chapter?(chapter)
-  end
-
   def trustee?
     admin? || roles.any?(&:trustee?)
   end
 
   def gravatar_url
     Gravatar.new(email).url
+  end
+
+  def can_manage_chapter?(chapter)
+    admin? || roles.can_manage_chapter?(chapter)
   end
 
   def can_manage_permissions?
@@ -60,7 +61,7 @@ class User < ActiveRecord::Base
   end
 
   def can_mark_winner?(project)
-    admin? || roles.can_mark_winner?(project)
+    admin? || project.in_any_chapter? || roles.can_mark_winner?(project)
   end
 
   def can_edit_profile?(user_id)
