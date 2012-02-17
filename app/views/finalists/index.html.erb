@@ -44,7 +44,7 @@
       <th>Votes</th>
     </tr>
     <% @projects.each do |project| %>
-      <tr class="finalist" data-count="<%= project.vote_count %>">
+      <tr class="finalist" data-count="<%= project.vote_count %>" data-id="<%= project.id %>">
         <td><%= link_to project.title, project_path(project) %></td>
         <td><%= project.id %></td>
         <td><%= project.vote_count %></td>

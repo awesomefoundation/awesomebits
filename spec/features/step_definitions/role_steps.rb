@@ -24,3 +24,9 @@ step 'I should not see promotion links' do
   page.should_not have_css(".demote-user")
   page.should_not have_css(".promote-user")
 end
+
+step 'I am a trustee for another chapter as well' do
+  @other_current_chapter = FactoryGirl.create(:chapter)
+  FactoryGirl.create(:role, :chapter => @other_current_chapter,
+                            :user => @current_user)
+end

@@ -24,7 +24,7 @@ class Project < ActiveRecord::Base
   end
 
   def self.voted_for_by_members_of(chapter)
-    joins(:users => :chapters).where("chapters.id = #{chapter.id}")
+    joins(:users => :chapters).where("chapters.id = #{chapter.id} OR chapters.name = 'Any'")
   end
 
   def self.during_timeframe(start_date, end_date)

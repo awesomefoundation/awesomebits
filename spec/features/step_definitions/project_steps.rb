@@ -73,6 +73,7 @@ step 'I should not see any projects that are 4 or more days old' do
 end
 
 step 'I look at the projects for the "Any" chapter' do
+  page.find(:css, "a.chapter-selection").click
   page.find(:css, "ol.chapter-selector li a:contains('Any')").click
   @viewing_projects = @any_projects
 end
