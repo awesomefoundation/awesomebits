@@ -13,7 +13,7 @@ Feature: A trustee can see all of the projects up for discussion and shortlist t
 
     When I look at the projects for the "Any" chapter
     Then I should see its projects for the past 3 days
-  
+
   @javascript
   Scenario: Trustee creates project shortlist
     Given I am logged in as a trustee
@@ -25,3 +25,14 @@ Feature: A trustee can see all of the projects up for discussion and shortlist t
     Then the correct projects are displayed as shortlisted
     When I de-shortlist that project
     Then none of the projects should be shortlisted
+
+  @javascript
+  Scenario: Trustee can filter projects list based on shortlist
+    Given I am logged in as a trustee
+    And a project was created on each of the last 7 days for my chapter
+    When I am looking at the list of projects
+    And I shortlist a project
+    And I view only my shortlisted projects
+    Then I should only see my shortlisted projects
+    When I de-shortlist that project
+    Then I should see no projects
