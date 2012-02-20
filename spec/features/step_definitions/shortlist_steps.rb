@@ -64,3 +64,19 @@ step 'I view the list of projects for this month in the "Any" chapter' do
   visit(projects_path)
   page.find(:css, ".chapter-selector a:contains('Any')").click
 end
+
+step 'I view only my shortlisted projects' do
+  check('my-short-list')
+end
+
+step 'I should only see my shortlisted projects' do
+  page.should have_css('article.project', :visible => true, :count => 1)
+  page.all(:css, "article.project", :visible => true).each do |el|
+    el['class'].should include('shortlisted')
+  end
+end
+
+step 'I should see no projects' do
+  page.should_not have_css('article.project', :visible => true)
+end
+

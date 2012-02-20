@@ -39,3 +39,14 @@ Feature: A trustee can see all of the projects up for discussion and shortlist t
     Then I should see the project I shortlisted
     When I look at my chapter's finalists
     Then I should see the project I shortlisted
+
+  @javascript
+  Scenario: Trustee can filter projects list based on shortlist
+    Given I am logged in as a trustee
+    And a project was created on each of the last 7 days for my chapter
+    When I am looking at the list of projects
+    And I shortlist a project
+    And I view only my shortlisted projects
+    Then I should only see my shortlisted projects
+    When I de-shortlist that project
+    Then I should see no projects
