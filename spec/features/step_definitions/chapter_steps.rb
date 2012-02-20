@@ -70,3 +70,13 @@ end
 step 'I should see a permissions error' do
   page.should have_content('You must be an admin or dean to access this page.')
 end
+
+step 'there are 5 chapters' do
+  @chapters = (1..5).map{ FactoryGirl.create(:chapter) }
+end
+
+step 'I should see those 5 chapters' do
+  @chapters.each do |chapter|
+    page.should have_css(".awesome-chapters h2:contains('#{chapter.name}')")
+  end
+end

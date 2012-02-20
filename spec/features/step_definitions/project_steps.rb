@@ -110,3 +110,13 @@ end
 step 'I go to the recently submitted project' do
   visit(project_path(Project.last))
 end
+
+step 'there are 5 winning projects' do
+  @projects = (1..5).map{|x| FactoryGirl.create(:project, :funded_on => x.days.ago) }
+end
+
+step 'I should see those 5 winning projects in their proper order' do
+  project_ids = @projects.sort_by(&:funded_on).reverse.map(&:id)
+  css_selector = project_ids.map{|id| ".project-#{id}"}.join(" + ")
+  page.should have_css(".awesome-projects #{css_selector}")
+end

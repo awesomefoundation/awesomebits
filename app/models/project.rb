@@ -46,6 +46,10 @@ class Project < ActiveRecord::Base
       order("vote_count DESC")
   end
 
+  def self.recent_winners
+    where('projects.funded_on is not null').order(:funded_on).reverse_order
+  end
+
   def shortlisted_by?(user)
     users.include?(user)
   end

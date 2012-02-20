@@ -147,6 +147,15 @@ describe Project do
     end
   end
 
+  context '.recent_winners' do
+    let!(:loser) { FactoryGirl.create(:project) }
+    let!(:old_winner) { FactoryGirl.create(:project, :funded_on => 2.days.ago) }
+    let!(:new_winner) { FactoryGirl.create(:project, :funded_on => 1.days.ago) }
+    it 'returns projects by descending funding date' do
+      Project.recent_winners.all.should == [new_winner, old_winner]
+    end
+  end
+
   context "#declare_winner!" do
     let(:project) { FactoryGirl.create(:project) }
     let(:chapter) { project.chapter }

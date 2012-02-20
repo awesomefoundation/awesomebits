@@ -3,126 +3,27 @@
     <h1>Forwarding the interst of Awesome in the universe, $1,000 at a time.</h1>
   </section>
   <section class="awesome-projects">
-    <article class="project">
-      <a href="#" class="image-wrapper">
+  <% @projects.each do |project| %>
+    <article class="project project-<%= project.id %>">
+      <%= link_to project, :class => "image-wrapper" do %>
         <div class="project-name">
-          <h2>Project Title</h2>
+          <h2><%= project.title %></h2>
         </div>
         <%= image_tag("1.JPG") %>
-      </a>
+      <% end %>
     </article>
-    <article class="project">
-      <a href="#" class="image-wrapper">
-        <div class="project-name">
-          <h2>Project Title</h2>
-        </div>
-        <%= image_tag("2.JPG") %>
-      </a>
-    </article>
-    <article class="project">
-      <a href="#" class="image-wrapper">
-        <div class="project-name">
-          <h2>Project Title</h2>
-        </div>
-        <%= image_tag("3.JPG") %>
-      </a>
-    </article>
-    <article class="project">
-      <a href="#" class="image-wrapper">
-        <div class="project-name">
-          <h2>Project Title</h2>
-        </div>
-        <%= image_tag("4.JPG") %>
-      </a>
-    </article>
-    <article class="project">
-      <a href="#" class="image-wrapper">
-        <div class="project-name">
-          <h2>Project Title</h2>
-        </div>
-        <%= image_tag("5.JPG") %>
-      </a>
-    </article>
-    <article class="project">
-      <a href="#" class="image-wrapper">
-        <div class="project-name">
-          <h2>Project Title</h2>
-        </div>
-        <%= image_tag("6.JPG") %>
-      </a>
-    </article>
-    <article class="project">
-      <a href="#" class="image-wrapper">
-        <div class="project-name">
-          <h2>Project Title</h2>
-        </div>
-        <%= image_tag("7.JPG") %>
-      </a>
-    </article>
-    <article class="project">
-      <a href="#" class="image-wrapper">
-        <div class="project-name">
-          <h2>Project Title</h2>
-        </div>
-        <%= image_tag("8.JPG") %>
-      </a>
-    </article>
-    <article class="project">
-      <a href="#" class="image-wrapper">
-        <div class="project-name">
-          <h2>Project Title</h2>
-        </div>
-        <%= image_tag("9.JPG") %>
-      </a>
-    </article>
-    <article class="project">
-      <a href="#" class="image-wrapper">
-        <div class="project-name">
-          <h2>Project Title</h2>
-        </div>
-        <%= image_tag("10.JPG") %>
-      </a>
-    </article>
-    <article class="project">
-      <a href="#" class="image-wrapper">
-        <div class="project-name">
-          <h2>Project Title</h2>
-        </div>
-        <%= image_tag("11.JPG") %>
-      </a>
-    </article>
-    <article class="project">
-      <a href="#" class="image-wrapper">
-        <div class="project-name">
-          <h2>Project Title</h2>
-        </div>
-        <%= image_tag("12.JPG") %>
-      </a>
-    </article>
-    <article class="project">
-      <a href="#" class="image-wrapper">
-        <div class="project-name">
-          <h2>Project Title</h2>
-        </div>
-        <%= image_tag("13.JPG") %>
-      </a>
-    </article>
-    <article class="project">
-      <a href="#" class="image-wrapper">
-        <div class="project-name">
-          <h2>Project Title</h2>
-        </div>
-        <%= image_tag("14.JPG") %>
-      </a>
-    </article>
-    <article class="project">
-      <a href="#" class="image-wrapper">
-        <div class="project-name">
-          <h2>Project Title</h2>
-        </div>
-        <%= image_tag("15.JPG") %>
-      </a>
-    </article>
+  <% end %>
+  </section>
+  <section class="awesome-chapters">
+    <% @chapters.each do |chapter| %>
+      <article class="chapter">
+        <%= link_to chapter, :class => "image-wrapper" do %>
+          <div class="chapter-name">
+            <h2><%= chapter.name %></h2>
+          </div>
+        <% end %>
+      </article>
+    <% end %>
   </section>
 </section>
 
