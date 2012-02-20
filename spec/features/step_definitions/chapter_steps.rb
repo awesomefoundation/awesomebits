@@ -92,3 +92,4 @@ step 'I should see those 5 chapters' do
     page.should have_css(".awesome-chapters p:contains('#{chapter.name}')")
   end
 end
+

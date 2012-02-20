@@ -36,7 +36,6 @@
 
   <section class="trustees">
     <ol>
-      <% 5.times do %>
       <% @chapter.users.deans_first.including_role.each do |user| %>
       <li>
         <article class="trustee <%= user.role %>">
@@ -50,7 +49,6 @@
           </a>
         </article>
       </li>
-      <% end %>
       <% end %>
     </ol>
   </section>
