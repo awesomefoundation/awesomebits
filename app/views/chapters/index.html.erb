@@ -1,1 +1,8 @@
-<%= render @chapters %>
+<hgroup>
+  <h2>Awesome is Everywhere</h2>
+</hgroup>
+<section class="chapters">
+  <% 10.times do %>
+  <%= render @chapters %>
+  <% end %>
+</section>

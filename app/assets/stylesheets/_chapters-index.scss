@@ -1,0 +1,52 @@
+body.chapters-index {
+  hgroup {
+    border-bottom: 1px solid rgb(200,200,200);
+    margin: 0 auto 50px;
+    width: grid-width(12);
+
+    h2 {
+      font: bold 34px/44px $sans-serif;
+      text-align: center;
+    }
+  }
+}
+
+section.chapters {
+  @extend .clearfix;
+}
+
+.chapter {
+  background: rgb(240,240,240);
+  @include border-radius(4px);
+  float: left;
+  height: 250px;
+  margin: 0px $gw-gutter $gw-gutter 0px;
+  width: grid-width(6);
+
+  &:nth-child(2n) {
+    margin-right: 0px;
+  }
+
+  .inner-wrapper {
+    background: rgb(255,255,255);
+    @include border-radius(4px);
+    height: 210px;
+    margin: 10px;
+    padding: 10px;
+  }
+
+  h2 {
+    border-bottom: 1px dotted rgb(200,200,200);
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+    a {
+      color: $base-font-color;
+      text-decoration: none;
+    }
+  }
+
+  p {
+    color: $lighter-base-font-color;
+  }
+}
+

@@ -9,20 +9,21 @@ body.home-index {
   position: relative;
 
   .tag-line {
-    //background: rgba(0,0,0, 0.7);
+    background: rgba(255,255,255, 0.7);
     margin: 0 auto;
-    //position: absolute;
-    top: 115px;
-    width: grid-width(12);
-    z-index: 2;
+    width: 100%;
 
     h1 {
       color: rgba(55,55,55, 1);
       font: 900 38px/44px $sans-serif;
-      margin: 0px;
+      margin: 0px auto;
       padding: 35px 20px;
       text-align: center;
       text-transform: uppercase;
+      width: grid-width(12) - 40px;
+    }
+
+    &:hover {
     }
   }
 
@@ -32,7 +33,7 @@ body.home-index {
 
     .project {
       background: rgb(255,255,255);
-      //height: 150px;
+      height: 150px;
       float: left;
       margin: 0px;
       overflow: hidden;
@@ -92,9 +93,31 @@ body.home-index {
   }
 
   .info-graphic {
+    @extend .clearfix;
     background: rgb(240,240,240);
     height: 250px;
-    margin: 0 20px;
+    margin: 0 auto;
+
+    > div {
+      border-right: 1px dashed rgb(200,200,200);
+      float: left;
+      margin-right: $gw-gutter;
+      width: grid-width(4) - 1;
+
+      &:last-child {
+        border: none;
+        margin: 0;
+      }
+
+      img {
+        position: absolute;
+      }
+
+      h2 {
+        text-align: center;
+        width: 100%;
+      }
+    }
   }
 }
 
