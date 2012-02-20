@@ -281,6 +281,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   newrelic_rpm
+  nokogiri
   paperclip
   pg
   pry

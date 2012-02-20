@@ -25,6 +25,7 @@ gem 'flutie'
 gem 'bourbon', '~> 1.3.6'
 gem 'copycopter_client'
 gem "simple_form", :git => "https://github.com/plataformatec/simple_form.git"
+gem 'nokogiri'
 
 group :development do
   gem "heroku"
