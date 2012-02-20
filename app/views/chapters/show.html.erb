@@ -1,16 +1,15 @@
 <section class="chapter-header-wrapper">
   <header>
+    <% if can_manage_chapter?(@chapter) %>
+      <%= link_to "Edit Chapter", edit_chapter_path(@chapter), :class => 'edit-chapter' %>
+    <% end %>
     <div class="title">
       <h1>
         <%= @chapter.name %>
-        <%= link_to "/ Apply Here", new_submission_path, :class => "apply-here" %>
       </h1>
       <%= link_to "", @chapter.twitter_url, :class => "external twitter" %>
       <%= link_to "", @chapter.facebook_url, :class => "external facebook" %>
       <%= link_to "", @chapter.blog_url, :class => "external blog" %>
-      <% if can_manage_chapter?(@chapter) %>
-        <%= link_to "Edit Chapter", edit_chapter_path(@chapter), :class => 'edit-chapter' %>
-      <% end %>
     </div>
   </header>
 
