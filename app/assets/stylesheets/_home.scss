@@ -9,18 +9,18 @@ body.home-index {
   position: relative;
 
   .tag-line {
-    background: rgba(0,0,0, 0.7);
-    padding: 25px 25px 30px 25%;
-    position: absolute;
+    //background: rgba(0,0,0, 0.7);
+    margin: 0 auto;
+    //position: absolute;
     top: 115px;
-    width: 50%;
+    width: grid-width(12);
     z-index: 2;
 
     h1 {
-      color: rgba(255,255,255, 0.9);
-      font: bold 42px/39px $sans-serif;
+      color: rgba(55,55,55, 1);
+      font: 900 38px/44px $sans-serif;
       margin: 0px;
-      padding-right: 25px;
+      padding: 35px 20px;
       text-align: center;
       text-transform: uppercase;
     }
@@ -32,18 +32,14 @@ body.home-index {
 
     .project {
       background: rgb(255,255,255);
-      height: 150px;
+      //height: 150px;
       float: left;
       margin: 0px;
       overflow: hidden;
       width: 20%;
 
       .image-wrapper {
-        background: url('project.jpg');
-        background-size: cover;
-        background-position: center;
         display: block;
-        height: 100%;
         margin: 10px 10px 0px 0px;
         overflow: hidden;
         position: relative;
@@ -58,8 +54,7 @@ body.home-index {
           opacity: 0;
           padding: 10px;
           position: absolute;
-          //@include transition(all, 0.2s, linear);
-          bottom: 100%;
+          top: 0px;
           width: 100%;
 
           h2 {
@@ -71,12 +66,12 @@ body.home-index {
 
         &:hover {
           .project-name {
-            bottom: 0px;
             opacity: 1;
           }
         }
 
         img {
+          margin: 0px;
           max-width: 100%;
         }
       }
