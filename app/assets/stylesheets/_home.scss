@@ -123,7 +123,7 @@ body.home-index {
 
 .who-where {
   border-bottom: 1px solid rgb(220,220,220);
-  margin: 0 auto;
+  margin: 0 auto 120px;
   padding: 50px 0px;
   width: grid-width(12);
 
@@ -135,6 +135,52 @@ body.home-index {
 }
 
 .news {
+  background: rgb(240,240,240);
   margin: 0 auto;
   width: grid-width(12);
+
+  header {
+    background: rgb(200,200,200);
+    margin: 0 auto;
+    padding: 10px 0px;
+    position: relative;
+    top: -40px;
+    width: grid-width(10);
+
+    h2 {
+      font: 900 italic 48px/52px $sans-serif;
+      text-align: center;
+    }
+  }
+
+  .feed-wrapper {
+    @extend .clearfix;
+    padding: 10px grid-width(1) 40px;
+  }
+
+  .rss, .events {
+    float: left;
+    margin: 0 $gw-gutter;
+    width: grid-width(5);
+
+    &.events {
+      margin-left: 0px;
+    }
+
+    h3 {
+      border-bottom: 1px solid rgb(200,200,200);
+      margin-bottom: 20px;
+      padding-bottom: 5px;
+      text-align: center;
+    }
+
+    ol {
+      background: white;
+      padding: 10px;
+
+      li {
+        list-style: none;
+      }
+    }
+  }
 }
