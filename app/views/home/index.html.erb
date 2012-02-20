@@ -65,11 +65,11 @@
     <section class="rss">
       <h3>Recent posts from the blog</h3>
       <ol>
-        <% 6.times do %>
+        <% headlines(MAIN_AWESOME_RSS, 6).each do |headline| %>
           <li class="post">
-            <a href="#">
-              <p>This is a recent and awesome post</p>
-            </a>
+            <%= link_to headline[:link] do %>
+              <p><%= headline[:title] %></p>
+            <% end %>
           </li>
         <% end %>
       </ol>
