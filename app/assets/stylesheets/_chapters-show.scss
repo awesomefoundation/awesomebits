@@ -4,32 +4,36 @@ body.chapters-show {
   }
 }
 
-.projects-wrapper {
-  width: 100%;
+.chapter-header-wrapper {
+  background: rgb(240,240,240) url('worldmap.png');
+  background-position: cover;
+  background-repeat: repeat-x;
+  background-size: contain;
+  border-bottom: 1px solid rgb(200,200,200);
+  margin: 0 auto;
+  padding-bottom: 60px;
+  position: relative;
 
   header {
-    background: url("boston.jpg");
-    background-size: cover;
-    background-position: center;
-    height: 270px;
-    padding-top: 80px;
+    //background: url("boston.jpg");
+    //background-size: cover;
+    //background-position: center;
+    padding: 50px 0px 30px;
     width: 100%;
   }
 
   .title {
     @extend .clearfix;
-    background: rgba(0,0,0, 0.8);
-    @include border-radius(4px);
-    border: 1px solid rgba(0,0,0, 0.9);
-    @include box-shadow(0 1px 15px 0 rgba(0,0,0, 0.2));
+    background: rgba(255,255,255, 0.4);
+    border: 1px solid rgba(200,200,200, 1);
     margin: 0 auto;
-    padding: 30px 20px;
-    width: grid-width(9);
+    padding: 25px 20px;
+    width: grid-width(10);
 
     h1 {
-      color: rgba(255,255,255, 0.9);
+      color: rgba(55,55,55, 1);
       float: left;
-      font: normal 34px $sans-serif;
+      font: 900 38px/44px $sans-serif;
       margin: 0px;
       text-transform: uppercase;
 
@@ -86,67 +90,67 @@ body.chapters-show {
     }
   }
 
-  .chapter-gallery {
-    background: rgb(230,230,230);
-    border: {
-      top: 1px solid rgb(200,200,200);
-      bottom: 1px solid rgb(200,200,200);
-    }
-    height: 204px;
-    padding: 30px 0px;
-    position: relative;
+  .gallery-container {
+    overflow: scroll;
     width: 100%;
+  }
+
+  .awesome-projects {
     @extend .clearfix;
-
-    .arrow {
-      background: rgba(0,0,0, 0.4);
-      @include border-radius(60px);
-      color: rgba(255,255,255, 0.5);
-      display: block;
-      font: normal 60px $sans-serif;
-      height: 100px;
-      padding-top: 20px;
-      position: absolute;
-      text-align: center;
-      text-decoration: none;
-      top: 70px;
-      @include transition(all 0.15s ease-in);
-      width: 120px;
-
-      &:hover {
-        background: rgba($pink, 0.8);
-      }
-
-      &.left {
-        left: -60px;
-      }
-
-      &.right {
-        right: -60px;
-      }
-    }
-
-    .projects {
-      width: 2000px;
-    }
+    margin-left: 10px;
+    width: 5100px;
 
     .project {
-      background: rgb(255,255,255);
-      border: 1px solid rgb(200,200,200);
-      height: 200px;
+      background: transparent;
+      height: 310px;
       float: left;
-      margin-left: $gw-gutter;
+      margin: 0px;
       overflow: hidden;
-      padding: 1px;
-      width: grid-width(4);
+      width: 500px;
 
       .image-wrapper {
-        height: 200px;
+        display: block;
+        margin: 10px 10px 0px 0px;
         overflow: hidden;
-        width: grid-width(4);
+        position: relative;
+        text-decoration: none;
+        width: auto;
+        z-index: 1;
+
+        .project-name {
+          background: $pink;
+          @include box-sizing(border-box);
+          height: 100%;
+          opacity: 0;
+          padding: 10px;
+          position: absolute;
+          top: 0px;
+          width: 100%;
+
+          h2 {
+            color: rgb(255,255,255);
+            font: normal 22px $sans-serif;
+            text-transform: uppercase;
+          }
+
+          p {
+            color: rgb(255,255,255);
+
+            span {
+              color: $base-font-color;
+            }
+          }
+        }
+
+        &:hover {
+          .project-name {
+            opacity: 1;
+          }
+        }
 
         img {
-          max-width: grid-width(4);
+          margin: 0px;
+          max-width: 100%;
         }
       }
     }
@@ -167,7 +171,6 @@ body.chapters-show {
   }
 
   .trustees {
-    border-top: 1px solid rgb(200,200,200);
     margin: 0px auto;
     padding: 50px 0px 25px;
     width: grid-width(10);

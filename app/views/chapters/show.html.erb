@@ -1,4 +1,4 @@
-<div class="projects-wrapper">
+<section class="chapter-header-wrapper">
   <header>
     <div class="title">
       <h1>
@@ -14,28 +14,28 @@
     </div>
   </header>
 
-  <section class="chapter-gallery">
-    <a href="#" class="arrow left">←</a>
-      <section class="projects">
+  <div class="gallery-container">
+    <section class="awesome-projects">
         <% @chapter.winning_projects.each do |project| %>
           <article class="project" data-id="<%= project.id %>">
             <%= link_to project do %>
               <div class="image-wrapper">
-                <%= image_tag("project.jpg") %>
+                <div class="project-name">
+                  <h2>Project Title</h2>
+                  <p>
+                    <span>By Charlie Chaplin</span>
+                  </p>
+                </div>
+                <%= image_tag("1.JPG") %>
               </div>
             <% end %>
           </article>
         <% end %>
-      </section>
-    <a href="#" class="arrow right">→</a>
-  </section>
-</div>
+    </section>
+  </div>
+</section>
 
 <section class="chapter-info">
-  <header>
-    <h1>Meet the Trustees</h1>
-  </header>
-
   <section class="trustees">
     <ol>
       <% @chapter.users.deans_first.including_role.each do |user| %>
