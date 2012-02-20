@@ -6,12 +6,18 @@ body.home-index {
 }
 
 .awesome-wrapper {
+  background: rgb(240,240,240) url('worldmap.png');
+  background-position: cover;
+  background-repeat: repeat-x;
+  background-size: contain;
+  border-bottom: 1px solid rgb(200,200,200);
+  margin: 0 auto;
+  padding-bottom: 60px;
   position: relative;
 
   .tag-line {
-    background: rgba(255,255,255, 0.7);
-    margin: 0 auto;
-    width: 100%;
+    margin: 0px 10px;
+    width: auto;
 
     h1 {
       color: rgba(55,55,55, 1);
@@ -32,7 +38,7 @@ body.home-index {
     margin-left: 10px;
 
     .project {
-      background: rgb(255,255,255);
+      background: transparent;
       height: 150px;
       float: left;
       margin: 0px;
@@ -63,6 +69,14 @@ body.home-index {
             font: normal 22px $sans-serif;
             text-transform: uppercase;
           }
+
+          p {
+            color: rgb(255,255,255);
+
+            span {
+              color: $base-font-color;
+            }
+          }
         }
 
         &:hover {
@@ -82,21 +96,33 @@ body.home-index {
 
 .what-how {
   border-bottom: 1px solid rgb(220,220,220);
-  margin: 0 auto;
-  padding: 50px 0px;
+  margin: 0 auto 20px;
+  padding: 60px 0px;
   width: grid-width(12);
 
   h2 {
-    margin-bottom: 30px;
+    font: bold 48px/48px $sans-serif;
+    margin-bottom: 50px;
     text-align: center;
     text-transform: uppercase;
+
+    span {
+      color: rgb(180,180,180);
+      font: 500 32px/48px $sans-serif;
+
+      &.divider {
+        font: 500 48px/48px $sans-serif;
+      }
+    }
   }
 
   .info-graphic {
     @extend .clearfix;
     background: rgb(240,240,240);
-    height: 250px;
+    @include border-radius(4px);
+    height: auto;
     margin: 0 auto;
+    padding: 20px 0px;
 
     > div {
       border-right: 1px dashed rgb(200,200,200);
@@ -110,10 +136,13 @@ body.home-index {
       }
 
       img {
-        position: absolute;
+        display: block;
+        margin: 0 auto 30px;
       }
 
-      h2 {
+      h3 {
+        font: 300 24px/28px $sans-serif;
+        margin-bottom: 20px;
         text-align: center;
         width: 100%;
       }
@@ -124,13 +153,30 @@ body.home-index {
 .who-where {
   border-bottom: 1px solid rgb(220,220,220);
   margin: 0 auto 120px;
-  padding: 50px 0px;
+  padding: 60px 0px;
   width: grid-width(12);
 
   h2 {
-    margin-bottom: 30px;
+    font: bold 48px/48px $sans-serif;
+    margin-bottom: 50px;
     text-align: center;
     text-transform: uppercase;
+
+    span {
+      color: rgb(180,180,180);
+      font: 500 32px/48px $sans-serif;
+
+      &.divider {
+        font: 500 48px/48px $sans-serif;
+      }
+    }
+  }
+
+  .about-preview {
+    p {
+      font: normal 14px/20px $sans-serif;
+      width: grid-width(6);
+    }
   }
 }
 

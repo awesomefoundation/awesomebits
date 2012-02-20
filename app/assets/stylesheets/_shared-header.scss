@@ -153,6 +153,12 @@ section.chapter-menu {
 }
 
 body {
+  &.home-index {
+    a.home {
+      @extend .active-link;
+    }
+  }
+
   &.projects-new {
     a.apply {
       @extend .active-link;
