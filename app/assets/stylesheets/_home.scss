@@ -39,20 +39,42 @@ body.home-index {
 
     .project {
       background: transparent;
-      height: 150px;
       float: left;
       margin: 0px;
       overflow: hidden;
+      position: relative;
       width: 20%;
 
       .image-wrapper {
         display: block;
+        height: 100%;
         margin: 10px 10px 0px 0px;
         overflow: hidden;
         position: relative;
         text-decoration: none;
         width: auto;
         z-index: 1;
+
+        .funding-chapter {
+          background: rgba(0,0,0, 0.4);
+          bottom: 0px;
+          position: absolute;
+          width: 100%;
+
+          h3 {
+            color: rgba(255,255,255, 0.8);
+            font: normal 14px/14px $sans-serif;
+            margin: 0px;
+            padding: 8px 10px;
+            text-transform: uppercase;
+
+            img {
+              @include inline-block;
+              margin-right: 5px;
+              vertical-align: bottom;
+            }
+          }
+        }
 
         .project-name {
           background: $pink;
@@ -83,9 +105,14 @@ body.home-index {
           .project-name {
             opacity: 1;
           }
+
+          .funding-chapter {
+            background: rgba(0,0,0, 0);
+          }
         }
 
         img {
+          display: block;
           margin: 0px;
           max-width: 100%;
         }
