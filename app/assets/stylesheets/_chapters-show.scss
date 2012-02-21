@@ -98,8 +98,11 @@ body.chapters-show {
       overflow: hidden;
       width: 500px;
 
+      a {
+        text-decoration: none;
+      }
+
       .image-wrapper {
-        display: block;
         height: 100%;
         margin: 10px 10px 0px 0px;
         overflow: hidden;

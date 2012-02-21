@@ -157,12 +157,12 @@ end
 
 step 'I should see only those 5 winning projects for this chapter listed' do
   @winning_projects_for_other_chapter.each do |project|
-    page.should have_no_css(".projects .project[data-id='#{project.id}']")
+    page.should have_no_css(".chapter-projects .project[data-id='#{project.id}']")
   end
   @not_winning_projects.each do |project|
-    page.should have_no_css(".projects .project[data-id='#{project.id}']")
+    page.should have_no_css(".chapter-projects .project[data-id='#{project.id}']")
   end
   @winning_projects.each do |project|
-    page.should have_css(".projects .project[data-id='#{project.id}'] a[href*='#{project_path(project)}']")
+    page.should have_css(".chapter-projects .project[data-id='#{project.id}'] a[href*='#{project_path(project)}']")
   end
 end
