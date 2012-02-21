@@ -1,39 +1,37 @@
-<tr class="">
-    <td><%= user.id %></td>
-  <% if user.admin %>
-    <td class="name">
-      <h2><%= user.first_name %> <%= user.last_name %></h2>
-      <span> - <%= t(".admin") %></span>
-    </td>
-    <td><p>-</p></td>
-    <td><p>-</p></td>
-    <td></td>
-  <% else %>
-    <td class="name">
-      <h2><%= user.first_name %> <%= user.last_name %></h2>
-    </td>
-  <% end %>
-
-
-  <% user.roles.each do |role| %>
-    <td>
-      <span><%= role.chapter.name %></span>
-    </td>
-    <td>
-      <span><%= role.name %></span>
-    </td>
-    <td class="promote-demote">
-      <span data-role-id="<%= role.id %>">
-        <% if current_user.can_manage_permissions? %> 
-          <% if role.name == 'trustee' %>
-            <%= link_to t(".promote-to-dean"), role_promotions_path(role), :method => :post, :class => "promote-user" %>
-          <% else %>
-            <%= link_to t(".demote-to-trustee"), role_promotions_path(role), :method => :delete, :class => "demote-user" %>
-          <% end %>
+<tr data-user-id="<%= user.id %>" class="<%= user.admin ? 'admin' : 'trustee' %>">
+  <td class="name">
+    <h2><%= user.first_name %> <%= user.last_name %></h2>
+    <span> - <%= t(".admin") %></span>
+  </td>
+  <td><%= user.email %></td>
+  <td><%= user.chapter_name ? user.chapter_name : "<p>-</p>".html_safe %></td>
+  <td class="role-name"><%= user.role_name ? user.role_name : "<p>-</p>".html_safe %></td>
+  <td class="promote-demote <%= user.role_name %>">
+    <span data-role-id="<%= user.role_id %>">
+      <% if current_user.can_manage_permissions? %> 
+        <% if user.role_name == 'trustee' %>
+          <%= link_to t('.promote-to-dean'), role_promotions_path(user.role_id), :method => :post, :remote => true, :class => "promote-user dean-toggle" %>
+        <% elsif user.role_name == 'dean' %>
+          <%= link_to t(".demote-to-trustee"), role_promotions_path(user.role_id), :method => :delete, :remote => true, :class => "demote-user dean-toggle" %>
         <% else %>
           <p>-</p>
         <% end %>
-      </span>
-    </td>
-  <% end %>
+      <% else %>
+        <p>-</p>
+      <% end %>
+    </span>
+  </td>
+  <td class="promote-demote">
+    <span>
+      <% if current_user.can_manage_permissions? && current_user.id != user.id %> 
+        <% if user.admin? %>
+          <%= link_to t(".demote-admin"), user_admins_path(user.id), :method => :delete, :remote => true, :class => "demote-user admin-toggle" %>
+        <% else %>
+          <%= link_to t(".promote-admin"), user_admins_path(user.id), :method => :post, :remote => true, :class => "promote-user admin-toggle" %>
+        <% end %>
+      <% else %>
+        <p>-</p>
+      <% end %>
+    </span>
+  </td>
 </tr>

@@ -4,8 +4,10 @@ class UsersController < ApplicationController
   before_filter :must_be_logged_in
 
   def index
-    @chapter = Chapter.find(params[:chapter_id])
-    @users = @chapter.users.order(:id)
+    @users = User.including_role_and_chapter
+    if params[:chapter_id]
+      @users = @users.where("chapters.id = ?", params[:chapter_id])
+    end
   end
 
   def update
@@ -32,11 +34,9 @@ class UsersController < ApplicationController
   end
 
   def ensure_chapter
-    if params[:chapter_id].blank?
+    if params[:chapter_id].blank? && !current_user.admin?
       if current_user.last_viewed_chapter_id
         redirect_to chapter_users_path(current_user.last_viewed_chapter_id)
-      elsif current_user.admin?
-        redirect_to chapter_users_path(Chapter.first)
       else
         redirect_to chapter_users_path(current_user.chapters.first)
       end

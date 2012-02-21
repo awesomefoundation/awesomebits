@@ -30,6 +30,12 @@
   </div>
 <% end %>
 
+<% if current_user.admin? %>
+  <div class="editing">
+    <%= link_to "View all Users", users_path %>
+  </div>
+<% end %>
+
 <div class="editing">
   <%= link_to t("layouts.sidebar.edit-profile"), edit_user_path(current_user) %>
 </div>

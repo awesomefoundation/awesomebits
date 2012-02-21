@@ -122,6 +122,8 @@ en:
       admin: ADMIIIIN! AAAAAAAA!
       promote-to-dean: Promote to Dean
       demote-to-trustee: Demote to Trustee
+      demote-admin: Demote to Trustee
+      promote-admin: Promote to Admin
     edit:
       title: Edit user information
     index:
