@@ -1,4 +1,4 @@
-DO_NOT_REPLY = "do-not-reply@awesomefoundation.com"
+DO_NOT_REPLY = "do-not-reply@awesomefoundation.org"
 
 ActionMailer::Base.smtp_settings = {
   :address        => "smtp.sendgrid.net",
