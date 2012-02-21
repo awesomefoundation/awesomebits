@@ -163,6 +163,6 @@ step 'I should see only those 5 winning projects for this chapter listed' do
     page.should have_no_css(".projects .project[data-id='#{project.id}']")
   end
   @winning_projects.each do |project|
-    page.should have_css(".projects .project[data-id='#{project.id}']")
+    page.should have_css(".projects .project[data-id='#{project.id}'] a[href*='#{project_path(project)}']")
   end
 end
