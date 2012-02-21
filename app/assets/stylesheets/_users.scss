@@ -41,7 +41,21 @@ section.awesome-members {
         &.name {
           width: 300px;
         }
+
       }
+
+      &.trustee {
+
+        td.name {
+
+          span {
+            display: none;
+          }
+
+        }
+
+      }
+
     }
   }
 }

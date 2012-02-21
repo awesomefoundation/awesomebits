@@ -4,15 +4,21 @@ class PromotionsController < ApplicationController
   def create
     role = Role.find(params[:role_id])
     role.name = 'dean'
-    role.save
-    redirect_to chapter_users_path(role.chapter)
+    if role.save
+      render :json => { :role => role.name, :role_id => role.id }
+    else
+      render :json => { :message => "Promotion failed" }, :status => 400
+    end
   end
 
   def destroy
     role = Role.find(params[:role_id])
     role.name = 'trustee'
-    role.save
-    redirect_to chapter_users_path(role.chapter)
+    if role.save
+      render :json => { :role => role.name, :role_id => role.id }
+    else
+      render :json => { :message => "Demotion failed" }, :status => 400
+    end
   end
 
 end
