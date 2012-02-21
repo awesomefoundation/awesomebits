@@ -13,6 +13,9 @@
     </div>
 
     <section class="meta-data">
+      <span class="spam" style="float: right">
+        <%= link_to "Delete this project", project_path(project), :method => :delete, :confirm => "Really delete this?", :class => 'delete-spam' %>
+      </span>
       <span>
         <%= project.name %>
       </span>

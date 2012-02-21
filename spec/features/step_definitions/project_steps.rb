@@ -166,3 +166,19 @@ step 'I should see only those 5 winning projects for this chapter listed' do
     page.should have_css(".chapter-projects .project[data-id='#{project.id}'] a[href*='#{project_path(project)}']")
   end
 end
+
+step 'someone has submitted spam to my chapter' do
+  @spam_project = FactoryGirl.create(:project, :chapter => @current_chapter)
+end
+
+step 'I go to the projects list' do
+  visit(projects_path)
+end
+
+step 'I delete the project' do
+  page.find(:css, ".project[data-id='#{@spam_project.id}'] .delete-spam").click
+end
+
+step 'I should not see the project anymore' do
+  page.should have_no_css(".project[data-id='#{@spam_project.id}']")
+end
