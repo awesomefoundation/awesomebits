@@ -17,8 +17,8 @@
   <section class="chapter-gallery">
     <a href="#" class="arrow left">←</a>
       <section class="projects">
-        <% 5.times do %>
-          <article class="project">
+        <% @chapter.winning_projects.each do |project| %>
+          <article class="project" data-id="<%= project.id %>">
             <div class="image-wrapper">
               <%= image_tag("project.jpg") %>
             </div>

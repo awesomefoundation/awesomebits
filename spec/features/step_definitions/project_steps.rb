@@ -135,3 +135,34 @@ step 'I should see the page describing it and all its details' do
   page.should have_css(".project-details .description:contains('#{project.use}')")
   page.should have_css(".side-bar .funded_on:contains('#{project.funded_on.strftime("%Y-%m-%d")}')")
 end
+
+step '5 projects have won for this chapter' do
+  @winning_projects = (1..5).map do |x|
+    FactoryGirl.create(:project, :chapter => @current_chapter, :funded_on => x.days.ago)
+  end
+end
+
+step '5 projects have not won for this chapter' do
+  @not_winning_projects = (1..5).map do |x|
+    FactoryGirl.create(:project, :chapter => @current_chapter)
+  end
+end
+
+step '5 projects have won, but not for this chapter' do
+  @other_chapter = FactoryGirl.create(:chapter)
+  @winning_projects_for_other_chapter = (1..5).map do |x|
+    FactoryGirl.create(:project, :chapter => @other_chapter)
+  end
+end
+
+step 'I should see only those 5 winning projects for this chapter listed' do
+  @winning_projects_for_other_chapter.each do |project|
+    page.should have_no_css(".projects .project[data-id='#{project.id}']")
+  end
+  @not_winning_projects.each do |project|
+    page.should have_no_css(".projects .project[data-id='#{project.id}']")
+  end
+  @winning_projects.each do |project|
+    page.should have_css(".projects .project[data-id='#{project.id}']")
+  end
+end
