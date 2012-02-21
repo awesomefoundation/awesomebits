@@ -14,22 +14,20 @@
   </header>
 
   <div class="gallery-container">
-    <section class="awesome-projects">
-        <% @chapter.winning_projects.each do |project| %>
-          <article class="project" data-id="<%= project.id %>">
-            <%= link_to project do %>
-              <div class="image-wrapper">
-                <div class="project-name">
-                  <h2>Project Title</h2>
-                  <p>
-                    <span>By Charlie Chaplin</span>
-                  </p>
-                </div>
-                <%= image_tag("1.JPG") %>
+    <section class="chapter-projects">
+      <% @chapter.winning_projects.each do |project| %>
+        <article class="project" data-id="<%= project.id %>">
+          <%= link_to project do %>
+            <div class="image-wrapper">
+              <div class="project-name">
+                <h2>Project Title</h2>
+                <p>By Charlie Chaplin</p>
               </div>
-            <% end %>
-          </article>
-        <% end %>
+              <%= image_tag("1.JPG") %>
+            </div>
+          <% end %>
+        </article>
+      <% end %>
     </section>
   </div>
 </section>
@@ -60,11 +58,14 @@
       <p><%= @chapter.description %></p>
     </article>
     <article class="rss-feed" data-feed-url="<%= @chapter.rss_feed_url %>">
-    <h2>Recent Posts</h2>
+    <div class="fancy-title">
+      <h2><%= @chapter.name %> News</h2>
+    </div>
     <ol class="feed">
       <% headlines(@chapter.rss_feed_url).each do |headline| %>
         <li>
-          <%= headline[:publish_date] %> <%= link_to headline[:title], headline[:link] %>
+          <span class="post-date"><%= headline[:publish_date] %>:</span>
+          <%= link_to headline[:title], headline[:link] %>
         </li>
       <% end %>
     </ol>

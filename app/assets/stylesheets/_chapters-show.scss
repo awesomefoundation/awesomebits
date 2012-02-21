@@ -85,7 +85,7 @@ body.chapters-show {
     width: 100%;
   }
 
-  .awesome-projects {
+  .chapter-projects {
     @extend .clearfix;
     margin-left: 10px;
     width: 5100px;
@@ -100,6 +100,7 @@ body.chapters-show {
 
       .image-wrapper {
         display: block;
+        height: 100%;
         margin: 10px 10px 0px 0px;
         overflow: hidden;
         position: relative;
@@ -108,33 +109,29 @@ body.chapters-show {
         z-index: 1;
 
         .project-name {
-          background: $pink;
+          background: rgba(0,0,0, 0.5);
           @include box-sizing(border-box);
-          height: 100%;
-          opacity: 0;
+          //height: 90px;
           padding: 10px;
           position: absolute;
-          top: 0px;
+          bottom: 0px;
           width: 100%;
 
           h2 {
             color: rgb(255,255,255);
-            font: normal 22px $sans-serif;
+            font: normal 26px $sans-serif;
+            margin: 0px;
             text-transform: uppercase;
           }
 
           p {
-            color: rgb(255,255,255);
-
-            span {
-              color: $base-font-color;
-            }
+            color: rgba(255,255,255, 0.7);
           }
         }
 
         &:hover {
           .project-name {
-            opacity: 1;
+            background: rgba($pink, 1);
           }
         }
 
@@ -150,7 +147,7 @@ body.chapters-show {
 .chapter-info {
   @extend .clearfix;
   margin: 0 auto;
-  padding: 40px 0px 80px;
+  padding: 60px 0px 0px;
   width: grid-width(12);
 
   h1 {
@@ -161,9 +158,9 @@ body.chapters-show {
   }
 
   .trustees {
-    margin: 0px auto;
-    padding: 50px 0px 25px;
-    width: grid-width(10);
+    float: left;
+    margin-right: $gw-gutter;
+    width: grid-width(6);
 
     ol {
       @extend .clearfix;
@@ -172,11 +169,15 @@ body.chapters-show {
       li {
         float: left;
         list-style: none;
-        margin: 0 $gw-gutter 30px 0;
+        margin-right: 60px;
         width: grid-width(2);
 
-        &:nth-child(5n) {
+        &:nth-child(even) {
           margin-right: 0px;
+        }
+
+        &:nth-child(4n+3) {
+          margin-left: 100px;
         }
 
         article.trustee {
@@ -186,18 +187,20 @@ body.chapters-show {
             text-decoration: none;
 
             div.avatar {
-              background: rgb(220,220,220);
-              border: 6px solid white;
+              @include background-image(linear-gradient(90deg, rgb(240,240,240), rgb(250,250,250)));
               @include border-radius(70px);
-              @include box-shadow(0 0 5px 0 rgba(0, 0, 0, 0.2));
+              @include box-shadow(0 0 5px 0 rgba(0, 0, 0, 0.4));
               display: block;
               height: 122px;
               margin: 0 auto;
               overflow: hidden;
+              padding: 6px;
               width: 122px;
 
               img {
                 @include border-radius(70px);
+                @include box-shadow(inset 0 0 3px 0 rgba(0, 0, 0, 0.9));
+                display: block;
                 max-width: 122px;
               }
             }
@@ -236,15 +239,12 @@ body.chapters-show {
 
   .description {
     @extend .clearfix;
-    border-top: 1px solid rgb(200,200,200);
-    margin: 0 auto;
-    padding-top: 50px;
-    width: grid-width(10);
+    float: left;
+    margin: 0px;
+    width: grid-width(6);
 
     article {
-      float: left;
-      margin-right: $gw-gutter;
-      width: grid-width(4);
+      width: 100%;
 
       &:last-child {
         margin: 0px;
@@ -263,17 +263,27 @@ body.chapters-show {
       }
 
       &.about {
-        padding-bottom: 30px;
+        margin-bottom: 80px;
         width: grid-width(6);
       }
 
       &.rss-feed {
-        a {
-          color: $base-font-color;
-          font: normal 12px/22px $sans-serif;
+        background: rgb(240,240,240);
+        @include border-radius(6px);
 
-          &:hover {
-            color: $pink;
+        .fancy-title {
+          background: rgb(230,230,230);
+          margin: 0 auto;
+          padding: 12px;
+          position: relative;
+          top: -23px;
+          width: grid-width(4);
+
+          h2 {
+            font: bold italic 20px/22px $sans-serif;
+            margin: 0px;
+            text-transform: uppercase;
+            text-align: center;
           }
         }
       }
@@ -282,16 +292,28 @@ body.chapters-show {
 
   ol.feed {
     margin: 0px;
+    padding: 0px 40px 30px;
 
     li {
       list-style: none;
-      margin: 0px 0px 3px 0px;
+      margin-bottom: 10px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
 
       &:last-child {
         margin: 0px;
       }
 
+      span.post-date {
+        margin-right: 12px;
+        font: normal 14px/20px $serif;
+      }
+
       a {
+        color: $lighter-base-font-color;
+        font: normal 14px/20px $sans-serif;
         text-decoration: none;
 
         &:hover {
@@ -300,5 +322,4 @@ body.chapters-show {
       }
     }
   }
-
 }
