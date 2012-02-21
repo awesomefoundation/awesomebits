@@ -20,8 +20,8 @@
           <%= link_to project do %>
             <div class="image-wrapper">
               <div class="project-name">
-                <h2>Project Title</h2>
-                <p>By Charlie Chaplin</p>
+                <h2><%= project.title %></h2>
+                <p>By <%= project.name %></p>
               </div>
               <%= image_tag("1.JPG") %>
             </div>
