@@ -111,12 +111,27 @@ step 'I go to the recently submitted project' do
   visit(project_path(Project.last))
 end
 
-step 'there are 5 winning projects' do
-  @projects = (1..5).map{|x| FactoryGirl.create(:project, :funded_on => x.days.ago) }
+step 'there is/are :count winning project(s)' do |count|
+  count = count.to_i
+  @projects = (1..count).map{|x| FactoryGirl.create(:project, :funded_on => x.days.ago) }
 end
 
 step 'I should see those 5 winning projects in their proper order' do
   project_ids = @projects.sort_by(&:funded_on).reverse.map(&:id)
   css_selector = project_ids.map{|id| ".project-#{id}"}.join(" + ")
   page.should have_css(".awesome-projects #{css_selector}")
+end
+
+step 'I click on that project' do
+  page.find(:css, ".awesome-projects .image-wrapper").click
+end
+
+step 'I should see the page describing it and all its details' do
+  project = @projects.first
+  page.should have_css(".projects-show")
+  page.should have_css("header h1:contains('#{project.title}')")
+  page.should have_css(".project-details .chapter-name:contains('#{project.chapter.name}')")
+  page.should have_css(".project-details .project-starter:contains('#{project.name}')")
+  page.should have_css(".project-details .description:contains('#{project.use}')")
+  page.should have_css(".side-bar .funded_on:contains('#{project.funded_on.strftime("%Y-%m-%d")}')")
 end
