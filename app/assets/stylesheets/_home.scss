@@ -89,15 +89,12 @@ body.home-index {
           h2 {
             color: rgb(255,255,255);
             font: normal 22px $sans-serif;
+            margin: 0px;
             text-transform: uppercase;
           }
 
           p {
-            color: rgb(255,255,255);
-
-            span {
-              color: $base-font-color;
-            }
+            color: $base-font-color;
           }
         }
 
