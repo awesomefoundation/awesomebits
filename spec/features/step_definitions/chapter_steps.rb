@@ -7,6 +7,7 @@ step 'I create a new chapter' do
   fill_in("Blog URL", :with => "http://twitter.com/awesomefound")
   fill_in("RSS Feed URL", :with => "http://awesomefoundation.org/blog/feed/")
   fill_in("Description", :with => "http://twitter.com/awesomefound")
+  select("United States", :from => "Country")
   click_button("Create Chapter")
 end
 
