@@ -10,6 +10,7 @@ describe Project do
   it { should validate_presence_of :description }
   it { should have_many(:votes) }
   it { should have_many(:users).through(:votes) }
+  it { should have_many(:photos) }
 
   context '#save' do
     let(:fake_mailer) { FakeMailer.new }
@@ -207,6 +208,24 @@ describe Project do
 
     it 'is false when the project is in some other chapter' do
       other_project.in_any_chapter?.should be_false
+    end
+  end
+
+  context '#new_photos=' do
+    let(:project){ FactoryGirl.build(:project) }
+    it 'creates new Photo records' do
+      project.new_photos = [File.new(Rails.root.join('spec', 'support', 'fixtures', '1.JPG'))]
+      project.photos.first.image_file_name.should == "1.JPG"
+    end
+
+    it 'creates and saves new Photo records if the Project has been saved' do
+      project.new_photos = [File.new(Rails.root.join('spec', 'support', 'fixtures', '1.JPG'))]
+      project.photos.first.image_file_name.should == "1.JPG"
+      project.save
+      project.photos.first.new_record?.should be_false
+
+      project.new_photos = [File.new(Rails.root.join('spec', 'support', 'fixtures', '2.JPG'))]
+      project.photos.last.image_file_name.should == "2.JPG"
     end
   end
 

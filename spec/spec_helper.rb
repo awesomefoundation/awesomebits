@@ -5,6 +5,7 @@ require 'rspec/rails'
 require 'turnip'
 require 'turnip/capybara'
 require 'database_cleaner'
+require 'paperclip/matchers'
 
 DatabaseCleaner.strategy = :truncation
 Capybara.javascript_driver = :webkit
@@ -18,4 +19,5 @@ RSpec.configure do |config|
   config.after(:each){ DatabaseCleaner.clean }
   config.before(:each){ FactoryGirl.create(:chapter, :name => "Any") }
   config.before(:each){ ActionMailer::Base.deliveries.clear }
+  config.include(Paperclip::Shoulda::Matchers)
 end

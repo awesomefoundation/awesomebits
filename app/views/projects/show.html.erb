@@ -1,13 +1,20 @@
 <header class="project">
+  <% if can_manage_chapter?(@project.chapter) %>
+    <%= link_to "Edit Project", edit_project_path(@project), :class => 'edit-project' %>
+  <% end %>
   <h1><%= @project.title %></h1>
 </header>
 
- <section class="project-gallery">
-   <a href="#" class="arrow left"></a>
-   <div class="image-wrapper">
-     <%= image_tag("1.JPG") %>
+ <section class="project-gallery" id="project-gallery">
+   <ul class="viewport">
+     <% @project.photos.each do |photo| %>
+       <li class="piece image-wrapper"> <%= image_tag(photo.image.url) %> </li>
+     <% end %>
+   </ul>
+   <div class="arrows">
+     <a href="#" class="arrow left"></a>
+     <a href="#" class="arrow right"></a>
    </div>
-   <a href="#" class="arrow right"></a>
  </section>
 
 <section class="project-details">
@@ -77,3 +84,11 @@
     </article>
   </section>
 </section>
+
+<%= content_for :javascript do %>
+  <%= javascript_tag do %>
+    $(document).ready(function(){
+      Slideshow("#project-gallery .piece").run();
+    });
+  <% end %>
+<% end %>

@@ -2,10 +2,12 @@ class Project < ActiveRecord::Base
   belongs_to :chapter
   has_many :votes
   has_many :users, :through => :votes
+  has_many :photos
 
   attr_accessible :name, :title, :url, :email, :phone, :description, :use, :chapter_id,
                   :extra_question_1, :extra_question_2, :extra_question_3,
-                  :extra_answer_1, :extra_answer_2, :extra_answer_3
+                  :extra_answer_1, :extra_answer_2, :extra_answer_3,
+                  :new_photos
 
   validates_presence_of :name
   validates_presence_of :title
@@ -77,6 +79,13 @@ class Project < ActiveRecord::Base
 
   def in_any_chapter?
     chapter.any_chapter?
+  end
+
+  def new_photos=(photos)
+    photos.each do |photo|
+      new_photo = self.photos.build(:image => photo)
+      new_photo.save unless new_record?
+    end
   end
 
   def save

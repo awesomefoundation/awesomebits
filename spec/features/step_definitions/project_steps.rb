@@ -116,6 +116,15 @@ step 'there is/are :count winning project(s)' do |count|
   @projects = (1..count).map{|x| FactoryGirl.create(:project, :funded_on => x.days.ago) }
 end
 
+step 'there is 1 winning project in my chapter' do
+  @project = FactoryGirl.create(:project, :funded_on => 2.days.ago, :chapter => @current_chapter)
+end
+
+step 'I edit that winning project' do
+  visit(project_path(@project))
+  click_link "Edit Project"
+end
+
 step 'I should see those 5 winning projects in their proper order' do
   project_ids = @projects.sort_by(&:funded_on).reverse.map(&:id)
   css_selector = project_ids.map{|id| ".project-#{id}"}.join(" + ")
@@ -181,4 +190,8 @@ end
 
 step 'I should not see the project anymore' do
   page.should have_no_css(".project[data-id='#{@spam_project.id}']")
+end
+
+step 'I go to the public page for that project' do
+  visit(project_path(@project))
 end
