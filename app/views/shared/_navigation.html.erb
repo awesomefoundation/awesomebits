@@ -33,7 +33,10 @@
   <div class="inner-wrapper">
     <h1><%= t("layouts.application.chapter_header") %></h1>
     <section class="chapters">
-      <% Chapter.visitable.alphabetically.each do |chapter| %>
+    <% Chapter.visitable.sort_by(&CountrySorter.new(COUNTRY_PRIORITY)).each do |chapter| %>
+        <% if display_country?(chapter.country) %>
+          <h3><%= chapter.country %></h3>
+        <% end %>
         <%= link_to chapter.name, chapter %>
       <% end %>
     </section>

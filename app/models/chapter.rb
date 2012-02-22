@@ -8,9 +8,10 @@ class Chapter < ActiveRecord::Base
   validates_presence_of :name
   validates_presence_of :description
   validates_uniqueness_of :name
+  validates_presence_of :name, :country
 
   attr_accessible :name, :twitter_url, :facebook_url, :blog_url, :rss_feed_url, :description,
-                  :extra_question_1, :extra_question_2, :extra_question_3
+                  :country, :extra_question_1, :extra_question_2, :extra_question_3
 
   def self.visitable
     where("chapters.name != ?", "Any")
@@ -34,4 +35,5 @@ class Chapter < ActiveRecord::Base
   def any_chapter?
     name == "Any"
   end
+
 end

@@ -72,6 +72,7 @@ GEM
     copycopter_client (1.1.2)
       i18n (>= 0.5.0)
       json
+    country_select (0.0.1)
     daemons (1.1.6)
     database_cleaner (0.7.1)
     diesel (0.1.5)
@@ -286,6 +287,7 @@ DEPENDENCIES
   clearance
   coffee-rails (~> 3.2.0)
   copycopter_client
+  country_select
   database_cleaner
   email_spec
   evergreen
