@@ -1,4 +1,3 @@
-<section class="chapter-header-wrapper">
   <header>
     <% if can_manage_chapter?(@chapter) %>
       <%= link_to "Edit Chapter", edit_chapter_path(@chapter), :class => 'edit-chapter' %>
@@ -12,9 +11,11 @@
       <%= link_to "", @chapter.blog_url, :class => "external blog" %>
     </div>
   </header>
+<section class="chapter-header-wrapper">
 
   <div class="gallery-container">
     <section class="chapter-projects">
+      <% 3.times do %>
       <% @chapter.winning_projects.each do |project| %>
         <article class="project" data-id="<%= project.id %>">
           <%= link_to project do %>
@@ -28,11 +29,17 @@
           <% end %>
         </article>
       <% end %>
+      <% end %>
     </section>
   </div>
+  <nav>
+    <p>Recently funded projects</p>
+    <a href="#">See more Awesomeness</a>
+  </nav>
 </section>
 
 <section class="chapter-info">
+  <h2>Meet the Trustees</h2>
   <section class="trustees">
     <ol>
       <% @chapter.users.deans_first.including_role.each do |user| %>
@@ -58,17 +65,15 @@
       <p><%= @chapter.description %></p>
     </article>
     <article class="rss-feed" data-feed-url="<%= @chapter.rss_feed_url %>">
-    <div class="fancy-title">
       <h2><%= @chapter.name %> News</h2>
-    </div>
-    <ol class="feed">
-      <% headlines(@chapter.rss_feed_url).each do |headline| %>
-        <li>
-          <span class="post-date"><%= headline[:publish_date] %>:</span>
-          <%= link_to headline[:title], headline[:link] %>
-        </li>
-      <% end %>
-    </ol>
+      <ol class="feed">
+        <% headlines(@chapter.rss_feed_url).each do |headline| %>
+          <li>
+            <span class="post-date"><%= headline[:publish_date] %>:</span>
+            <%= link_to headline[:title], headline[:link] %>
+          </li>
+        <% end %>
+      </ol>
     </article>
   </section>
 </section>

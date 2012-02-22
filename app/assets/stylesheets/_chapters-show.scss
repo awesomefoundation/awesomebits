@@ -1,40 +1,34 @@
 body.chapters-show {
   section.container {
+  background: url('chapter_bg.png');
+  background-repeat: repeat-x;
+  background-size: contain;
     padding-top: 0px;
+
+    header {
+      border-bottom: 1px solid rgb(200,200,200);
+      margin: 0 auto 40px;
+      padding: 60px 0px 10px;
+      width: grid-width(12);
+
+      a.edit-chapter {
+        @include button(rgb(240,240,240));
+        right: 20px;
+        text-decoration: none;
+        padding: 7px 12px 6px;
+        position: absolute;
+        top: 20px;
+      }
+    }
   }
 }
 
-.chapter-header-wrapper {
-  background: rgb(240,240,240) url('worldmap.png');
-  background-position: cover;
-  background-repeat: repeat-x;
-  background-size: contain;
-  border-bottom: 1px solid rgb(200,200,200);
-  margin: 0 auto;
-  padding-bottom: 60px;
-  position: relative;
-
-  header {
-    padding: 50px 0px 30px;
-    width: auto;
-
-    a.edit-chapter {
-      @include button(rgb(240,240,240));
-      right: 20px;
-      text-decoration: none;
-      padding: 7px 12px 6px;
-      position: absolute;
-      top: 20px;
-    }
-  }
 
   .title {
     @extend .clearfix;
-    background: rgba(255,255,255, 0.4);
-    border: 1px solid rgba(200,200,200, 1);
     margin: 0 auto;
-    padding: 25px 20px;
-    width: grid-width(10);
+    padding-bottom: 0px;
+    width: grid-width(12);
 
     h1 {
       color: rgba(55,55,55, 1);
@@ -76,6 +70,11 @@ body.chapters-show {
     }
   }
 
+.chapter-header-wrapper {
+  margin: 0 auto;
+  position: relative;
+
+
   .gallery-container {
     overflow: scroll;
     width: 100%;
@@ -88,7 +87,7 @@ body.chapters-show {
 
     .project {
       background: transparent;
-      height: 310px;
+      height: auto;
       float: left;
       margin: 0px;
       overflow: hidden;
@@ -100,7 +99,7 @@ body.chapters-show {
 
       .image-wrapper {
         height: 100%;
-        margin: 10px 10px 0px 0px;
+        margin: 0px 10px 0px 0px;
         overflow: hidden;
         position: relative;
         text-decoration: none;
@@ -134,10 +133,26 @@ body.chapters-show {
         }
 
         img {
+          display: block;
           margin: 0px;
           max-width: 100%;
         }
       }
+    }
+  }
+
+  nav {
+    display: none;
+    padding: 20px 10px;
+
+    p {
+      float: left;
+      margin-left: 10px;
+    }
+
+    a {
+      float: right;
+      margin-right: 10px;
     }
   }
 }
@@ -145,20 +160,21 @@ body.chapters-show {
 .chapter-info {
   @extend .clearfix;
   margin: 0 auto;
-  padding: 60px 0px 0px;
+  padding: 40px 0px 0px;
   width: grid-width(12);
 
-  h1 {
-    font: normal 26px $sans-serif;
+  h2 {
+    font: normal 16px/22px $sans-serif;
+    margin-bottom: 15px;
     text-transform: uppercase;
-    margin: 0px auto 20px;
-    width: grid-width(10);
   }
 
   .trustees {
-    float: left;
-    margin-right: $gw-gutter;
-    width: grid-width(6);
+    border-top: 1px solid rgb(200,200,200);
+    border-bottom: 1px solid rgb(200,200,200);
+    margin-bottom: 40px;
+    padding: 40px 0px 40px;
+    width: grid-width(12);
 
     ol {
       @extend .clearfix;
@@ -167,15 +183,11 @@ body.chapters-show {
       li {
         float: left;
         list-style: none;
-        margin-right: 60px;
+        margin: 0 $gw-gutter $gw-gutter 0;
         width: grid-width(2);
 
-        &:nth-child(even) {
-          margin-right: 0px;
-        }
-
-        &:nth-child(4n+3) {
-          margin-left: 100px;
+        &:nth-child(6n) {
+          margin-right: 0;
         }
 
         article.trustee {
@@ -186,34 +198,35 @@ body.chapters-show {
 
             div.avatar {
               @include background-image(linear-gradient(90deg, rgb(240,240,240), rgb(250,250,250)));
+              border: 1px solid rgb(200,200,200);
               @include border-radius(70px);
-              @include box-shadow(0 0 5px 0 rgba(0, 0, 0, 0.4));
               display: block;
               height: 122px;
               margin: 0 auto;
               overflow: hidden;
-              padding: 6px;
+              position: relative;
+              padding: 5px;
               width: 122px;
+              z-index: 2;
 
               img {
                 @include border-radius(70px);
-                @include box-shadow(inset 0 0 3px 0 rgba(0, 0, 0, 0.9));
                 display: block;
                 max-width: 122px;
               }
             }
 
             .trustee-details {
-              background: rgba($pink, 0.8);
-              @include border-radius(4px);
-              left: -15px;
+              background: rgba($pink, 0.9);
+              border: 1px solid rgba($pink, 1);
+              @include border-radius(2px);
+              @include box-shadow(0 1px 5px 0 rgba(0, 0, 0, 0.3));
               opacity: 0;
               padding: 8px;
               position: absolute;
-              @include transform(rotate(-10deg));
-              @include transition(opacity, 0.1s, ease-out);
-              top: 20px;
+              top: 80px;
               width: grid-width(2);
+              z-index: 3;
 
               h3 {
                 color: rgb(255,255,255);
@@ -225,9 +238,32 @@ body.chapters-show {
             }
 
             &:hover {
+              div.avatar {
+                @include box-shadow(0 1px 6px 0 rgba(0, 0, 0, 0.2));
+                top: -5px;
+              }
+
               .trustee-details {
                 opacity: 1;
               }
+            }
+          }
+        }
+
+        &:nth-child(even) {
+          a:hover {
+            .trustee-details {
+              left: -4px;
+              @include transform(rotate(-10deg));
+            }
+          }
+        }
+
+        &:nth-child(odd) {
+          a:hover {
+            .trustee-details {
+              left: -12px;
+              @include transform(rotate(7deg));
             }
           }
         }
@@ -237,16 +273,12 @@ body.chapters-show {
 
   .description {
     @extend .clearfix;
-    float: left;
-    margin: 0px;
-    width: grid-width(6);
+    margin: 0px auto;
+    width: grid-width(12);
 
     article {
-      width: 100%;
-
-      &:last-child {
-        margin: 0px;
-      }
+      float: left;
+      width: grid-width(6);
 
       h2 {
         font: normal 16px/22px $sans-serif;
@@ -261,36 +293,17 @@ body.chapters-show {
       }
 
       &.about {
-        margin-bottom: 80px;
-        width: grid-width(6);
+        margin-right: $gw-gutter;
       }
 
       &.rss-feed {
-        background: rgb(240,240,240);
-        @include border-radius(6px);
-
-        .fancy-title {
-          background: rgb(230,230,230);
-          margin: 0 auto;
-          padding: 12px;
-          position: relative;
-          top: -23px;
-          width: grid-width(4);
-
-          h2 {
-            font: bold italic 20px/22px $sans-serif;
-            margin: 0px;
-            text-transform: uppercase;
-            text-align: center;
-          }
-        }
       }
     }
   }
 
   ol.feed {
     margin: 0px;
-    padding: 0px 40px 30px;
+    padding: 0px 0px 30px;
 
     li {
       list-style: none;
