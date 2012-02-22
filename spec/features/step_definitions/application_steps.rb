@@ -4,7 +4,7 @@ end
 
 step 'I submit a project to the :name chapter' do
   click_link("Apply")
-  fill_in("Name", :with => "Mr. Awesome")
+  fill_in("Your name", :with => "Mr. Awesome")
   fill_in("Project title", :with => "Awesomeness")
   fill_in("Project website", :with => "http://awesome.com")
   fill_in("Email", :with => "awesome@awesome.com")
@@ -27,7 +27,7 @@ end
 step 'I submit a project to the :name chapter with the extra questions answered' do
   @project_title = "Crusades!"
   click_link("Apply")
-  fill_in("Name", :with => "Arthur")
+  fill_in("Your name", :with => "Arthur")
   fill_in("Project title", :with => @project_title)
   fill_in("Project website", :with => "http://awesome.com")
   fill_in("Email", :with => "awesome@awesome.com")
@@ -66,7 +66,7 @@ end
 
 step 'I fix the error and resubmit' do
   click_link("Apply")
-  fill_in("Name", :with => "Mr. Awesome")
+  fill_in("Your name", :with => "Mr. Awesome")
   fill_in("Project title", :with => "Awesomeness")
   fill_in("Project website", :with => "http://awesome.com")
   fill_in("Email", :with => "awesome@awesome.com")

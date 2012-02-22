@@ -1,3 +1,17 @@
+.application-intro {
+  margin-bottom: 40px;
+
+  h1 {
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  p {
+    font: normal 14px/20px $sans-serif;
+    text-align: center;
+  }
+}
+
 .project-form {
   form {
     .personal-info,
