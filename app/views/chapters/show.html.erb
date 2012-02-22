@@ -15,7 +15,6 @@
 
   <div class="gallery-container">
     <section class="chapter-projects">
-      <% 3.times do %>
       <% @chapter.winning_projects.each do |project| %>
         <article class="project" data-id="<%= project.id %>">
           <%= link_to project do %>
@@ -28,7 +27,6 @@
             </div>
           <% end %>
         </article>
-      <% end %>
       <% end %>
     </section>
   </div>
