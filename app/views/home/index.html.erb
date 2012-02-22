@@ -10,12 +10,12 @@
       <%= link_to project, :class => "image-wrapper" do %>
         <div class="project-name">
           <h2><%= project.title %></h2>
-          <p>By <%= project.name %></p>
+          <p>
+            <%= project.use %>
+            <span>By <%= project.name %></span>
+          </p>
         </div>
-        <div class="funding-chapter">
-          <h3><%= image_tag("location_pin_small.png") %>Boston</h3>
-        </div>
-        <%= image_tag("1.JPG") %>
+        <%= project.photos.any? ? image_tag(project.photos.first.image) : "" %>
       <% end %>
     </article>
   <% end %>

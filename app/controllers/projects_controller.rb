@@ -57,7 +57,7 @@ class ProjectsController < ApplicationController
 
   def ensure_chapter_or_admin
     if params[:chapter_id].blank?
-      if current_user.admin?
+      if current_user.try(:admin?)
         redirect_to chapter_projects_path(Chapter.first)
       else
         redirect_to chapter_projects_path(current_user.chapters.first)
