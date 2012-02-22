@@ -15,7 +15,7 @@
             <span>By <%= project.name %></span>
           </p>
         </div>
-        <%= project.photos.any? ? image_tag(project.photos.first.image) : "" %>
+        <%= project.photos.any? ? image_tag(project.photos.first.image(:index)) : "" %>
       <% end %>
     </article>
   <% end %>
