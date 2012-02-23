@@ -18,10 +18,10 @@
   </ul>
 <% end %>
 <div class="input file optional">
-  <label class="file optional"> New photos</label>
+  <label class="file optional">Upload images of your project</label>
   <div class="multi-input first noremove">
-    <a href="#" data-remove="true">x</a>
     <input class="file optional multi new_photo" id="project_new_photos" name="project[new_photos][]" type="file" value="">
+    <a href="#" class="remove-image" data-remove="true">remove</a>
   </div>
 </div>
 <%= form.input :chapter_id, :collection => Chapter.all, :as => :select, :group_method => :name, :label => "Select chapter to apply to" %>

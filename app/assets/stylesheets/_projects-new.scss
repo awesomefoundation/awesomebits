@@ -46,11 +46,52 @@
 
     textarea {
       &.project-desc {
-        margin-bottom: 20px;
+        padding-bottom: 20px;
       }
 
       &.about-me {
         height: 100px;
+      }
+    }
+
+    .input.file {
+      padding: 20px 0px 10px;
+
+      .multi-input {
+        padding: 10px 5px;
+
+        &.first {
+          margin: 5px 0 10px 0;
+
+          a.remove-image {
+            display: none;
+          }
+        }
+
+        &:not(.first) {
+          background: rgb(230,230,230);
+          border-top: 1px solid rgb(200,200,200);
+          //margin-bottom: 10px;
+
+          //&:last-child {
+            //border: none;
+          //}
+
+          input {
+            //display: none;
+          }
+        }
+
+        a.remove-image {
+          color: $base-font-color;
+          float: right;
+          margin-right: 5px;
+          padding-top: 4px;
+
+          &:hover {
+            color: $pink;
+          }
+        }
       }
     }
   }
