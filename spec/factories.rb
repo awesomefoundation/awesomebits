@@ -53,4 +53,9 @@ FactoryGirl.define do
     user
     project
   end
+
+  factory :photo do
+    project
+    image { File.new(Rails.root.join("spec", "support", "fixtures", "1.JPG")) }
+  end
 end

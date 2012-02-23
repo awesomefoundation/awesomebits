@@ -229,4 +229,35 @@ describe Project do
     end
   end
 
+  context '#photo_order' do
+    let(:project){ FactoryGirl.create(:project) }
+    let(:photo1) { FactoryGirl.create(:photo, :project => project) }
+    let(:photo2) { FactoryGirl.create(:photo, :project => project) }
+    let(:photo3) { FactoryGirl.create(:photo, :project => project) }
+
+    it "returns a string of the photos' ids in order" do
+      project.photos = [photo1, photo2, photo3]
+      expected = [photo1, photo2, photo3].map(&:id).join(" ")
+      project.photo_order.should == expected
+    end
+  end
+
+  context '#photo_order=' do
+    let(:project){ FactoryGirl.create(:project) }
+    let(:photo1) { FactoryGirl.create(:photo, :project => project) }
+    let(:photo2) { FactoryGirl.create(:photo, :project => project) }
+    let(:photo3) { FactoryGirl.create(:photo, :project => project) }
+
+    it 'sets the order of the photos based on their position in the string' do
+      project.photo_order = [photo2.id, photo3.id, photo1.id].map(&:to_s).join(" ")
+      project.photos = [photo2, photo3, photo1]
+    end
+
+    it 'removes photos if they are not in the string' do
+      project.photo_order = [photo2.id, photo3.id, photo1.id].map(&:to_s).join(" ")
+      project.photos = [photo2, photo3, photo1]
+      project.photo_order = [photo2.id, photo1.id].map(&:to_s).join(" ")
+      project.photos = [photo2, photo1]
+    end
+  end
 end
