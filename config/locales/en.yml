@@ -143,6 +143,7 @@ en:
         use: About the project
         new_photos: Upload images of your project
         chapter_id: Select chapter to apply to
+        rss_feed_url: "Project RSS feed url"
       chapter:
         name: Name
         twitter_url: Twitter URL
