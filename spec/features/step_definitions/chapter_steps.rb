@@ -10,6 +10,19 @@ step 'I create a new chapter' do
   click_button("Create Chapter")
 end
 
+step 'I go to create a new chapter' do
+  click_link("Create a Chapter")
+end
+
+step 'I just submit the form' do
+  click_button("Create Chapter")
+end
+
+step 'I should see the new chapter form with errors' do
+  page.should have_css(".field_with_errors label:contains('* Name')")
+  page.should have_css(".field_with_errors label:contains('* Description')")
+end
+
 step 'there is a chapter in the system' do
   @current_chapter = FactoryGirl.create(:chapter, :rss_feed_url => Rails.root.join('spec', 'support', 'feed.xml').to_s)
 end

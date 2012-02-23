@@ -8,6 +8,12 @@ Feature: Manage Chapters
     And I go to the chapters index
     Then I should see this new chapter
 
+  Scenario: An admin tries to create an invalid chapter
+    Given I am logged in as an admin
+    When I go to create a new chapter
+    But I just submit the form
+    Then I should see the new chapter form with errors
+
   Scenario: A dean edits a chapter
     Given I am logged in as a dean
     When I edit a chapter

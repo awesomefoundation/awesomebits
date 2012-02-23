@@ -5,6 +5,8 @@ class Chapter < ActiveRecord::Base
   has_many :winning_projects, :class_name => "Project", :conditions => "funded_on IS NOT NULL"
   has_many :invitations
 
+  validates_presence_of :name
+  validates_presence_of :description
   validates_uniqueness_of :name
 
   attr_accessible :name, :twitter_url, :facebook_url, :blog_url, :rss_feed_url, :description,

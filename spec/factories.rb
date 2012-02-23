@@ -5,6 +5,7 @@ FactoryGirl.define do
 
   factory :chapter do
     name { "Chapter for Generic Location ##{FactoryGirl.generate(:index)}" }
+    description { "This is a description." }
   end
 
   factory :user, :aliases => [:inviter, :invitee] do

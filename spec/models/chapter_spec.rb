@@ -5,6 +5,10 @@ describe Chapter do
   it { should have_many(:roles) }
   it { should have_many(:invitations) }
   it { should have_many(:users).through(:roles)}
+  it { should validate_presence_of :name }
+  it { should validate_presence_of :description }
+  it { should validate_uniqueness_of :name }
+
   context '.invitable_by for deans' do
     let!(:role) {FactoryGirl.create(:role, :name => 'dean')}
     let!(:chapter) {role.chapter}
