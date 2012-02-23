@@ -24,34 +24,31 @@
     <a href="#">Share on FaceBook</a>
   </section>
 
-  <section class="description">
+  <section class="project-description">
     <h2>Project Description</h2>
-    <p class="description"><%= @project.use %></p>
+    <p><%= @project.use %></p>
 
     <% if @project.extra_answer_1.present? %>
       <h2><%= @project.extra_question_1 %></h2>
-      <p class="extra-answer-1"><%= @project.extra_answer_1 %></p>
+      <p><%= @project.extra_answer_1 %></p>
     <% end %>
 
     <% if @project.extra_answer_2.present? %>
       <h2><%= @project.extra_question_2 %></h2>
-      <p class="extra-answer-2"><%= @project.extra_answer_2 %></p>
+      <p><%= @project.extra_answer_2 %></p>
     <% end %>
 
     <% if @project.extra_answer_3.present? %>
       <h2><%= @project.extra_question_3 %></h2>
-      <p class="extra-answer-3"><%= @project.extra_answer_3 %></p>
+      <p><%= @project.extra_answer_3 %></p>
     <% end %>
   </section>
 
-  <section class="side-bar">
-    <article>
+  <section class="project-side-bar">
+    <article class="project-state">
       <% if @project.winner? %>
         <div class="state funded">
-          <p>Funded on <span class="funded_on"><%= @project.funded_on %></span> by <span class="chapter-name"><%= @project.chapter.name %></span></p>
-        </div>
-        <div class="state inprogress">
-          <p>Project is being worked on</p>
+          <p>Funded by <span class="chapter-name"><%= @project.chapter.name %></span> <span class="funded-on">(<%= @project.funded_on %>)</span></p>
         </div>
       <% else %>
         <div class="state applied">
@@ -60,15 +57,14 @@
       <% end %>
     </article>
 
-    <article>
-      Condition
+    <article class="project-site-link">
+      <a href="#">
+        Visit this projects web site
+        <span>→</span>
+      </a>
     </article>
 
-    <article>
-      URLS
-    </article>
-
-    <article class="rss-feed">
+    <article class="project-rss">
       <h2>Recent Posts</h2>
       <ol class="feed">
         <li>
@@ -79,6 +75,12 @@
         </li>
         <li>
           <a href="#">Montreal's first grant party!</a>
+        </li>
+        <li>
+          <a href="#">Awesome Melbourne teams up with Pozible</a>
+        </li>
+        <li>
+          <a href="#">Introducing... Boston's Awesome Office Hours!</a>
         </li>
       </ol>
     </article>

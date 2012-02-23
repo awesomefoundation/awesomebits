@@ -1,12 +1,15 @@
 body.home-index {
   section.container {
+    //background: url('chapter_bg.png');
+    //background-repeat: repeat-x;
+    //background-size: contain;
     padding-top: 0px;
     width: 100%;
   }
 }
 
 .awesome-wrapper {
-  background: rgb(245,245,245) url('worldmap.png');
+  background: rgb(245,245,245) url('chapter_bg.png');
   background-position: cover;
   background-repeat: repeat-x;
   background-size: contain;
@@ -197,15 +200,57 @@ body.home-index {
   }
 
   .about-preview {
-    p {
-      font: normal 14px/20px $sans-serif;
+    @extend .clearfix;
+    border-bottom: 1px solid rgb(200,200,200);
+    padding: 40px 0px;
+
+    .intro {
+      float: left;
+      margin-right: $gw-gutter;
       width: grid-width(6);
+
+      h3 {
+        color: $base-font-color;
+        font: normal 18px/22px $sans-serif;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+      }
+
+      p {
+        color: $lighter-base-font-color;
+        font: normal 14px/20px $sans-serif;
+      }
+    }
+
+    .mini-map {
+      float: left;
+      padding-top: 5px;
+      width: grid-width(6);
+
+      img {}
+    }
+  }
+
+  .awesome-chapters {
+    padding-top: 40px;
+
+    a {
+      color: $base-font-color;
+      display: block;
+      font: bold 14px/20px $sans-serif;
+      text-decoration: none;
+
+      &:hover {
+        color: $pink;
+      }
     }
   }
 }
 
 .news {
   background: rgb(240,240,240);
+  border: 1px solid rgb(200,200,200);
+  @include border-radius(4px);
   margin: 0 auto;
   width: grid-width(12);
 
@@ -220,36 +265,69 @@ body.home-index {
     h2 {
       font: 900 italic 48px/52px $sans-serif;
       text-align: center;
+      text-transform: uppercase;
     }
   }
 
   .feed-wrapper {
     @extend .clearfix;
-    padding: 10px grid-width(1) 40px;
+    padding: 10px grid-width(1) 50px;
   }
 
   .rss, .events {
     float: left;
     margin: 0 $gw-gutter;
-    width: grid-width(5);
+
+    &.rss {
+      border-right: 1px dashed rgb(200,200,200);
+      width: grid-width(5) - 1;
+    }
 
     &.events {
       margin-left: 0px;
+      width: grid-width(5);
+    }
+
+    .inner-wrapper {
+      padding: 0px $gw-gutter;
     }
 
     h3 {
-      border-bottom: 1px solid rgb(200,200,200);
+      font: normal 18px/22px $sans-serif;
       margin-bottom: 20px;
       padding-bottom: 5px;
-      text-align: center;
+      text-transform: uppercase;
     }
 
-    ol {
-      background: white;
-      padding: 10px;
+    ol.feed {
+      margin: 0px;
 
       li {
         list-style: none;
+        margin-bottom: 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 100%;
+
+        &:last-child {
+          margin: 0px;
+        }
+
+        span.post-date {
+          margin-right: 12px;
+          font: normal 14px/20px $serif;
+        }
+
+        a {
+          color: $lighter-base-font-color;
+          font: normal 14px/20px $sans-serif;
+          text-decoration: none;
+
+          &:hover {
+            color: $pink;
+          }
+        }
       }
     }
   }

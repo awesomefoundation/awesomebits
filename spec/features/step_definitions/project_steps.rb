@@ -141,8 +141,8 @@ step 'I should see the page describing it and all its details' do
   page.should have_css("header h1:contains('#{project.title}')")
   page.should have_css(".project-details .chapter-name:contains('#{project.chapter.name}')")
   page.should have_css(".project-details .project-starter:contains('#{project.name}')")
-  page.should have_css(".project-details .description:contains('#{project.use}')")
-  page.should have_css(".side-bar .funded_on:contains('#{project.funded_on.strftime("%Y-%m-%d")}')")
+  page.should have_css(".project-details p:contains('#{project.use}')")
+  page.should have_css(".project-side-bar .funded-on:contains('#{project.funded_on.strftime("%Y-%m-%d")}')")
 end
 
 step '5 projects have won for this chapter' do

@@ -1,7 +1,7 @@
 <section class="awesome-wrapper">
 
   <section class="tag-line">
-    <h1>Forwarding the interst of Awesome in the universe, $1,000 at a time.</h1>
+    <h1>Forwarding the interest of Awesome in the universe, $1,000 at a time.</h1>
   </section>
 
   <section class="awesome-projects">
@@ -42,16 +42,23 @@
 
 <section class ="who-where">
   <h2>37 <span>Chapters</span> <span class="divider">|</span> 9 <span>Countries</span> <span class="divider">|</span> 4 <span>Continents</span></h2>
+
   <div class="about-preview">
-    <p>
-      The Awesome Foundation for the Arts and Sciences is an ever-growing, worldwide network of people devoted to forwarding the interest of awesomeness in the universe. Created in the long hot summer days of 2009 in Boston, the Foundation distributes a series of monthly $1,000 grants to projects and their creators. The money is pooled together from the coffers of ten or so self-organizing “micro-trustees” and given upfront in cash, check, or gold doubloons. The chapters are autonomous and organized by the trustees around geographic areas or topics of interest.
-    </p>
+    <div class="intro">
+      <h3>Awesome is Everywehre!</h3>
+      <p>
+        The Awesome Foundation for the Arts and Sciences is an ever-growing, worldwide network of people devoted to forwarding the interest of awesomeness in the universe. Created in the long hot summer days of 2009 in Boston, the Foundation distributes a series of monthly $1,000 grants to projects and their creators. The money is pooled together from the coffers of ten or so self-organizing “micro-trustees” and given upfront in cash, check, or gold doubloons. The chapters are autonomous and organized by the trustees around geographic areas or topics of interest.
+      </p>
+    </div>
+    <div class="mini-map">
+      <%= image_tag("mini_map.png") %>
+    </div>
   </div>
 
   <section class="awesome-chapters">
     <% @chapters.each do |chapter| %>
         <%= link_to chapter, :class => "image-wrapper" do %>
-          <p><%= chapter.name %></p>
+          <%= chapter.name %>
         <% end %>
     <% end %>
   </section>
@@ -59,32 +66,34 @@
 
 <section class="news">
   <header>
-    <h2>Awesome News</h2>
+    <h2>Awesome News!</h2>
   </header>
   <div class="feed-wrapper">
     <section class="rss">
-      <h3>Recent posts from the blog</h3>
-      <ol>
-        <% headlines(MAIN_AWESOME_RSS, 6).each do |headline| %>
-          <li class="post">
-            <%= link_to headline[:link] do %>
-              <p><%= headline[:title] %></p>
-            <% end %>
-          </li>
-        <% end %>
-      </ol>
+      <div class="inner-wrapper">
+        <h3>Recent blog posts</h3>
+        <ol class="feed">
+          <% headlines(MAIN_AWESOME_RSS, 6).each do |headline| %>
+            <li class="post">
+              <%= link_to headline[:link] do %>
+                <%= headline[:title] %>
+              <% end %>
+            </li>
+          <% end %>
+        </ol>
+      </div>
     </section>
     <section class="events">
-      <h3>Upcoming Events</h3>
-      <ol>
-        <% 6.times do %>
-          <li class="post">
-            <a href="#">
-              <p>This is going to be an awesome event!</p>
-            </a>
-          </li>
-        <% end %>
-      </ol>
+      <div class="inner-wrapper">
+        <h3>Upcoming Events</h3>
+        <ol class="feed">
+          <% 6.times do %>
+            <li class="post">
+              <a href="#">This is going to be an awesome event!</a>
+            </li>
+          <% end %>
+        </ol>
+      </div>
     </section>
   </div>
 </section>

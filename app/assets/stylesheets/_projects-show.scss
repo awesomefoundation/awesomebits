@@ -53,10 +53,16 @@ header.project {
     }
 
     &.left {
+      background-image: url("arrow_left.png");
+      background-position: center center;
+      background-repeat: no-repeat;
       left: -60px;
     }
 
     &.right {
+      background-image: url("arrow_right.png");
+      background-position: center center;
+      background-repeat: no-repeat;
       right: -60px;
     }
   }
@@ -108,7 +114,7 @@ header.project {
     }
   }
 
-  .description {
+  .project-description {
     float: left;
     margin-right: $gw-gutter;
     width: grid-width(8);
@@ -129,27 +135,91 @@ header.project {
     }
   }
 
-  .side-bar {
+  .project-side-bar {
     float: left;
     width: grid-width(4);
 
-    article {
-      background: rgb(230,230,230);
-      @include border-radius(4px);
+    .project-state {
+      @include background-image(linear-gradient(top, rgb(106, 189, 255), rgb(65, 165, 255)));
+      border: 1px solid $blue;
+      @include border-radius(3px);
       margin-bottom: 15px;
-      padding: 10px;
+      padding: 10px 15px;
 
-      h2 {
+      p {
+        color: $base-font-color;
         font: normal 16px/20px $sans-serif;
+        margin: 0px;
+        text-align: center;
+        text-shadow: 0 1px rgba(255,255,255, 0.3);
       }
+    }
+
+    .project-site-link {
+      margin-bottom: 15px;
 
       a {
-        color: rgb(55,55,55);
+        @include background-image(linear-gradient(top, rgb(106, 189, 255), rgb(65, 165, 255)));
+        border: 1px solid $blue;
+        @include border-radius(3px);
+        color: $base-font-color;
+        display: block;
+        font: normal 16px/20px $sans-serif;
+        padding: 10px 15px;
+        text-decoration: none;
+        text-shadow: 0 1px rgba(255,255,255, 0.3);
+
+        &:hover {
+        }
+
+        span {
+          float: right;
+        }
+      }
+    }
+
+    .project-rss {
+      background: rgb(240,240,240);
+      border: 1px solid rgb(200,200,200);
+      @include border-radius(3px);
+      margin-bottom: 15px;
+      padding: 20px 15px 30px;
+
+      a {
+        color: $lighter-base-font-color;
         font: normal 12px/20px $sans-serif;
         text-decoration: none;
 
         &:hover {
           color: $pink;
+        }
+      }
+
+      h2 {
+        font: normal 18px/20px $sans-serif;
+        margin-bottom: 20px;
+      }
+
+      ol.feed {
+        margin: 0px;
+        padding: 0px;
+
+        li {
+          list-style: none;
+          margin-bottom: 10px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          width: 100%;
+
+          &:last-child {
+            margin: 0px;
+          }
+
+          span.post-date {
+            margin-right: 12px;
+            font: normal 12px/20px $serif;
+          }
         }
       }
     }

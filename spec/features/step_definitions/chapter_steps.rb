@@ -89,7 +89,7 @@ end
 
 step 'I should see those 5 chapters' do
   @chapters.each do |chapter|
-    page.should have_css(".awesome-chapters p:contains('#{chapter.name}')")
+    page.should have_css(".awesome-chapters a:contains('#{chapter.name}')")
   end
 end
 

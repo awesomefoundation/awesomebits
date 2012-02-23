@@ -7,6 +7,6 @@ end
 
 step 'I should see the news from the feed on the homepage' do
   RSS.new(Fetcher.new(@feed_path).to_s).headlines.first(6).each do |headline|
-    page.should have_css(".feed-wrapper p:contains('#{headline[:title]}')")
+    page.should have_css(".feed-wrapper a:contains('#{headline[:title]}')")
   end
 end

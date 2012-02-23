@@ -361,13 +361,12 @@ body.projects-index {
   }
 
   article.project.winner {
-    $winner: rgb(34,122,255);
-    border: 1px solid $winner;
-    @include box-shadow(0 1px 6px 0 rgba($winner, 0.6));
+    border: 1px solid $blue;
+    @include box-shadow(0 1px 6px 0 rgba($blue, 0.6));
 
     div.title {
       a.mark-as-winner {
-        @include button($winner);
+        @include button($blue);
       }
     }
   }

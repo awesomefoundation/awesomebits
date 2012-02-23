@@ -1,8 +1,8 @@
 body.chapters-show {
   section.container {
-  background: url('chapter_bg.png');
-  background-repeat: repeat-x;
-  background-size: contain;
+    background: url('chapter_bg.png');
+    background-repeat: repeat-x;
+    background-size: contain;
     padding-top: 0px;
 
     header {
@@ -10,65 +10,63 @@ body.chapters-show {
       margin: 0 auto 40px;
       padding: 60px 0px 10px;
       width: grid-width(12);
+    }
+
+    .title {
+      @extend .clearfix;
+      margin: 0 auto;
+      padding-bottom: 0px;
+      width: grid-width(12);
+
+      h1 {
+        color: rgba(55,55,55, 1);
+        float: left;
+        font: 900 38px/44px $sans-serif;
+        margin: 0px;
+        text-transform: uppercase;
+      }
 
       a.edit-chapter {
         @include button(rgb(240,240,240));
-        right: 20px;
+        float: right;
+        margin: 10px 0px 0px 10px;
         text-decoration: none;
         padding: 7px 12px 6px;
-        position: absolute;
-        top: 20px;
+      }
+
+      a.external {
+        background: transparent;
+        display: block;
+        float: right;
+        height: 25px;
+        margin: 12px 0px 0px 10px;
+        opacity: 0.7;
+        position: relative;
+        width: 25px;
+
+        &:hover {
+          opacity: 1;
+        }
+
+        &:active {
+          top: 1px;
+        }
+
+        &.twitter {
+          background: url("twitter.png");
+        }
+
+        &.facebook {
+          background: url("fb.png");
+        }
+
+        &.blog {
+          background: url("blog-2.png");
+        }
       }
     }
   }
 }
-
-
-  .title {
-    @extend .clearfix;
-    margin: 0 auto;
-    padding-bottom: 0px;
-    width: grid-width(12);
-
-    h1 {
-      color: rgba(55,55,55, 1);
-      float: left;
-      font: 900 38px/44px $sans-serif;
-      margin: 0px;
-      text-transform: uppercase;
-    }
-
-    a.external {
-      background: transparent;
-      display: block;
-      float: right;
-      height: 25px;
-      margin: 12px 0px 0px 10px;
-      opacity: 0.7;
-      position: relative;
-      width: 25px;
-
-      &:hover {
-        opacity: 1;
-      }
-
-      &:active {
-        top: 1px;
-      }
-
-      &.twitter {
-        background: url("twitter.png");
-      }
-
-      &.facebook {
-        background: url("fb.png");
-      }
-
-      &.blog {
-        background: url("blog-2.png");
-      }
-    }
-  }
 
 .chapter-header-wrapper {
   margin: 0 auto;
@@ -91,7 +89,7 @@ body.chapters-show {
       float: left;
       margin: 0px;
       overflow: hidden;
-      width: 500px;
+      width: 510px;
 
       a {
         text-decoration: none;
