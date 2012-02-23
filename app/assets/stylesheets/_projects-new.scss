@@ -58,9 +58,13 @@
       padding: 20px 0px 10px;
 
       .multi-input {
+        background: rgb(230,230,230);
+        border-top: 1px solid rgb(200,200,200);
         padding: 10px 5px;
 
-        &.first {
+        &.noremove {
+          background: transparent;
+          border: none;
           margin: 5px 0 10px 0;
 
           a.remove-image {
@@ -68,19 +72,6 @@
           }
         }
 
-        &:not(.first) {
-          background: rgb(230,230,230);
-          border-top: 1px solid rgb(200,200,200);
-          //margin-bottom: 10px;
-
-          //&:last-child {
-            //border: none;
-          //}
-
-          input {
-            //display: none;
-          }
-        }
 
         a.remove-image {
           color: $base-font-color;
