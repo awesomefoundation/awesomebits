@@ -10,17 +10,18 @@
 <%= form.input :description, :label => "About me", :input_html => { :class => "about-me" } %>
 <%= form.input :use, :label => "About the project", :input_html => { :class => "project-desc" } %>
 <% unless form.object.photos.blank? %>
-<div class="old-photos">
-  <% form.object.photos.reverse.each do |photo| %>
-    <p><%= photo.image_file_name %></p>
-  <% end %>
-</div>
+  <ul class="old-photos">
+    <%= form.input :photo_order, :as => :hidden %>
+    <% form.object.photos.each do |photo| %>
+      <li data-id="<%= photo.id %>"><a href="#" data-remove="true">x</a><span><%= photo.image_file_name %></span></li>
+    <% end %>
+  </ul>
 <% end %>
 <div class="input file optional">
   <label class="file optional"> New photos</label>
-  <div class="multi-input first">
+  <div class="multi-input first noremove">
     <a href="#" data-remove="true">x</a>
-    <input class="file optional multi first new_photo" id="project_new_photos" name="project[new_photos][]" type="file" value="">
+    <input class="file optional multi new_photo" id="project_new_photos" name="project[new_photos][]" type="file" value="">
   </div>
 </div>
 <%= form.input :chapter_id, :collection => Chapter.all, :as => :select, :group_method => :name, :label => "Select chapter to apply to" %>
@@ -39,5 +40,23 @@
     <% Chapter.all.each do |chapter| %>
       "<%= chapter.id %>": <%= extra_questions_json(chapter) %>,
     <% end %>}
+
+    function reorderPhotos(){
+      var photo_order = $('.old-photos li[data-id]').map(function(x, el){
+        return $(el).attr('data-id') 
+      });
+      $('#project_photo_order').val($.makeArray(photo_order).join(" "));
+    }
+
+    $(".old-photos *[data-remove='true']").live("click", function(){
+      var val = $('#project_photo_order').val();
+      val = val.replace($(this.parentNode).attr('data-id'), '');
+      $('#project_photo_order').val(val);
+    });
+
+    $(window).load(function(){
+    $(".old-photos").sortable({
+      update: reorderPhotos
+    })});
   <% end %>
 <% end %>

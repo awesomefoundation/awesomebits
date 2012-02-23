@@ -2,12 +2,12 @@ class Project < ActiveRecord::Base
   belongs_to :chapter
   has_many :votes
   has_many :users, :through => :votes
-  has_many :photos
+  has_many :photos, :order => "photos.sort_order"
 
   attr_accessible :name, :title, :url, :email, :phone, :description, :use, :chapter_id,
                   :extra_question_1, :extra_question_2, :extra_question_3,
                   :extra_answer_1, :extra_answer_2, :extra_answer_3,
-                  :new_photos
+                  :new_photos, :photo_order
 
   validates_presence_of :name
   validates_presence_of :title
@@ -79,6 +79,19 @@ class Project < ActiveRecord::Base
 
   def in_any_chapter?
     chapter.any_chapter?
+  end
+
+  def photo_order
+    photos.map(&:id).join(" ")
+  end
+
+  def photo_order=(order_string)
+    ids = order_string.split(" ").map(&:to_i)
+    ordered_photos = ids.map do |id|
+      photos.find(id)
+    end
+    ordered_photos.each_with_index{|photo, i| photo.update_attribute(:sort_order, i) }
+    self.photos = ordered_photos
   end
 
   def new_photos=(photos)
