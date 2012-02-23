@@ -1,37 +1,32 @@
-.faq-wrapper {
+.about-wrapper, .contact-wrapper, .faq-wrapper {
   @extend .clearfix;
+  margin: 0 auto;
 }
 
-#static-wrap {
-  border-left: 1px solid #d3d3d3;
-  float: right;
-  width: grid-width(9);
-
-  p {
-    font-size: 14px;
-    line-height: 1.6em;
-  }
-
-  .inner-wrapper {
-    padding-left: 50px;
-  }
+.about-wrapper, .contact-wrapper {
+	padding: 60px 0 60px 0;
 }
 
-#static-title {
+.static-title, .static-title-alt {
   border-bottom: 1px solid rgb(200,200,200);
-  margin: 0 auto 60px;
+  margin: 0 auto;
 
   h1 {
     text-align: center;
+    margin: 0 0 50px 0;
   }
+}
+
+.static-title-alt {
+	border-top: 1px solid rgb(200,200,200);
+	padding: 40px 0 0 0;
 }
 
 #static-sidebar-wrap {
   float: left;
-  margin-right: $gw-gutter;
-  padding-top: 20px;
-  position: fixed;
-  width: grid-width(3);
+  margin: 0 $gw-gutter 0 0;
+  padding: 20px 0 0 0;
+  width: grid-width(3) - 20;
 
   ul {
     margin: 0 0 0 10px;
@@ -42,38 +37,53 @@
 
       a {
         color: #65caff;
+        text-decoration: none;
+
+        &:hover {
+      		opacity: 0.8;
+    		}
       }
     }
   }
 
   .title {
     font-size: 10pt;
+    text-transform: uppercase;
     margin: 10px 0 10px 0;
 
     a {
       color: #373737;
+      text-decoration: none;
+
+      &:hover {
+      	opacity: 0.8;
+    	}
     }
   }
 }
 
 #static-wrap {
+	border-left: 1px solid #d3d3d3;
+	float: right;
+	width: grid-width(9) - 1;
+
+  h2 {
+    padding: 20px 0 0 0;
+  }
+
   h3 {
-    text-transform: uppercase;
-    padding: 10px 0 0 0;
+		font-size: 20px;
+		line-height: 1.6em;
   }
 
-  .h3-helper {
-    display: inline;
-    float: left;
-    font-size: 20pt;
-    margin: 0 0 0 -34px;
-    padding: 10px 0 0 0;
-    color: #d3d3d3;
+  p {
+    font-size: 14px;
+    line-height: 1.6em;
   }
-}
 
-#static-wrap {
-  text-align: justify;
+  .inner-wrapper {
+    padding-left: 50px;
+  }
 
   a {
     color: rgb(248, 81, 152);
@@ -85,14 +95,14 @@
   }
 
   ol {
-    font-size: 12pt;
+    font-size: 14px;
     display: block;
     list-style-type: decimal;
     margin-bottom: 1em; margin-top: 1em;
     padding-left: 40px;
 
     li {
-      padding-bottom: 10px;
+      padding: 0 0 10px 0;
     }
   }
 }
@@ -106,6 +116,39 @@ strong {
 }
 
 .static-section:target {
-  box-shadow: inset 5px 0px 0px 0px #07d0eb;
-  padding: 10px 20px;
+	h3 {
+  	color: #07d0eb;
+  	padding: 30px 0 0 0;
+  }
+}
+
+.intro {
+	width: grid-width(10);
+	margin: 0 auto;
+	font-size: 18px;
+	padding: 0 0 20px 0;
+	text-align: center;
+}
+
+.static-description {
+	column-count: 2;
+	column-gap: $gw-gutter;
+	column-width: grid-width(6);
+	margin: 0;
+	width: grid-width(12);
+	vertical-align: top;
+
+	p {
+    font-size: 14px;
+    line-height: 1.6em;
+  }
+
+  a {
+    color: rgb(248, 81, 152);
+    text-decoration: none;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
 }
