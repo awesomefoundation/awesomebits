@@ -260,4 +260,18 @@ describe Project do
       project.photos = [photo2, photo1]
     end
   end
+
+  context '#index_image_url' do
+    let(:project) { FactoryGirl.create(:project) }
+    let(:photo) { FactoryGirl.create(:photo, :project => project) }
+    it 'returns the image name of the first photo if there is one' do
+      project.photos = [photo]
+      project.index_image_url.should == project.photos.first.image.url(:index)
+    end
+
+    it 'returns a default image name if there is not' do
+      project.index_image_url.should == "no_image.png"
+    end
+  end
+
 end
