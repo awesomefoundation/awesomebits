@@ -97,13 +97,13 @@ step 'I view the project in the admin area' do
 end
 
 step 'I should see the questions and my answers to them' do
-  question_1 = page.find(:css, ".description h2:contains('#{@extra_question_1}')").find(:xpath, "./..")
+  question_1 = page.find(:css, ".project-description h2:contains('#{@extra_question_1}')").find(:xpath, "./..")
   question_1.should have_css("p:contains('#{@extra_answer_1}')")
 
-  question_2 = page.find(:css, ".description h2:contains('#{@extra_question_2}')").find(:xpath, "./..")
+  question_2 = page.find(:css, ".project-description h2:contains('#{@extra_question_2}')").find(:xpath, "./..")
   question_2.should have_css("p:contains('#{@extra_answer_2}')")
 
-  question_3 = page.find(:css, ".description h2:contains('#{@extra_question_3}')").find(:xpath, "./..")
+  question_3 = page.find(:css, ".project-description h2:contains('#{@extra_question_3}')").find(:xpath, "./..")
   question_3.should have_css("p:contains('#{@extra_answer_3}')")
 end
 
