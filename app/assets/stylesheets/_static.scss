@@ -1,6 +1,13 @@
 .about-wrapper, .contact-wrapper, .faq-wrapper {
   @extend .clearfix;
   margin: 0 auto;
+
+    h3 {
+  	font: 18px/22px "museo-sans", "brandon-grotesque", "proxima-nova", "Open Sans", "helvetica neue", sans-serif;
+		line-height: 1.6em;
+		text-transform: uppercase;
+		margin: 0 0 15px 0;
+  }
 }
 
 .about-wrapper, .contact-wrapper {
@@ -29,7 +36,7 @@
   width: grid-width(3) - 20;
 
   ul {
-    margin: 0 0 0 10px;
+    margin: 0 0 20px 10px;
     list-style-type: none;
 
     li {
@@ -40,7 +47,7 @@
         text-decoration: none;
 
         &:hover {
-      		opacity: 0.8;
+      		text-shadow: 0 0 10px rgb(238,238,0);
     		}
       }
     }
@@ -52,7 +59,7 @@
     margin: 10px 0 10px 0;
 
     a {
-      color: #373737;
+      color: rgb(55,55,55);
       text-decoration: none;
 
       &:hover {
@@ -63,17 +70,16 @@
 }
 
 #static-wrap {
-	border-left: 1px solid #d3d3d3;
+	border-left: 1px solid rgb(211,211,211);
 	float: right;
 	width: grid-width(9) - 1;
 
+	#info, #general, #rollout {
+		margin: 0 0 30px 0;
+	}
+
   h2 {
     padding: 20px 0 0 0;
-  }
-
-  h3 {
-		font-size: 20px;
-		line-height: 1.6em;
   }
 
   p {
@@ -90,7 +96,7 @@
     text-decoration: none;
 
     &:hover {
-      opacity: 0.8;
+      text-decoration: underline;
     }
   }
 
@@ -111,13 +117,9 @@
   margin: 0 0 50px 0;
 }
 
-strong {
-  font-weight: 700;
-}
-
 .static-section:target {
 	h3 {
-  	color: #07d0eb;
+  	color: rgb(7,208,235);
   	padding: 30px 0 0 0;
   }
 }
@@ -148,7 +150,7 @@ strong {
     text-decoration: none;
 
     &:hover {
-      opacity: 0.8;
+      text-decoration: underline;
     }
   }
 }
