@@ -23,7 +23,7 @@
                 <h2><%= project.title %></h2>
                 <p>By <%= project.name %></p>
               </div>
-              <%= image_tag(project.photos.first.image(:index)) %>
+              <%= image_tag(project.photos.first.image.url(:index)) %>
             </div>
           <% end %>
         </article>
