@@ -81,6 +81,14 @@ class Project < ActiveRecord::Base
     chapter.any_chapter?
   end
 
+  def index_image_url
+    if photos.blank?
+      "no_image.png"
+    else
+      photos.first.image.url(:index)
+    end
+  end
+
   def photo_order
     photos.map(&:id).join(" ")
   end

@@ -44,6 +44,7 @@ FactoryGirl.define do
     name "Joe Schmoe"
     title
     email
+    url "http://something.com"
     description "I am awesome."
     use "I will do awesome."
     chapter
@@ -52,5 +53,10 @@ FactoryGirl.define do
   factory :vote do
     user
     project
+  end
+
+  factory :photo do
+    project
+    image { File.new(Rails.root.join("spec", "support", "fixtures", "1.JPG")) }
   end
 end

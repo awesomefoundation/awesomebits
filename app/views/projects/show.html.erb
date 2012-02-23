@@ -57,12 +57,14 @@
       <% end %>
     </article>
 
-    <article class="project-site-link">
-      <a href="#">
-        Visit this projects web site
-        <span>→</span>
-      </a>
-    </article>
+    <% unless @project.url.blank? %>
+      <article class="project-site-link">
+        <%= link_to @project.url do %>
+          Visit this project's web site
+          <span>→</span>
+        <% end %>
+      </article>
+    <% end %>
 
     <article class="project-rss">
       <h2>Recent Posts</h2>
