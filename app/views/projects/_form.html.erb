@@ -7,21 +7,25 @@
   <%= form.input :title, :label => "Project title" %>
   <%= form.input :url, :label => "Project website" %>
 </div>
-<%= form.input :description, :label => "About me", :input_html => { :class => "about-me" } %>
-<%= form.input :use, :label => "About the project", :input_html => { :class => "project-desc" } %>
-<% unless form.object.photos.blank? %>
-  <ul class="old-photos">
-    <%= form.input :photo_order, :as => :hidden %>
-    <% form.object.photos.each do |photo| %>
-      <li data-id="<%= photo.id %>"><a href="#" data-remove="true">x</a><span><%= photo.image_file_name %></span></li>
-    <% end %>
-  </ul>
-<% end %>
-<div class="input file optional">
-  <label class="file optional">Upload images of your project</label>
-  <div class="multi-input first noremove">
-    <input class="file optional multi new_photo" id="project_new_photos" name="project[new_photos][]" type="file" value="">
-    <a href="#" class="remove-image" data-remove="true">remove</a>
+<div class="descriptions">
+  <%= form.input :description, :label => "About me", :input_html => { :class => "about-me" } %>
+  <%= form.input :use, :label => "About the project", :input_html => { :class => "project-desc" } %>
+</div>
+<div class="image-upload">
+  <% unless form.object.photos.blank? %>
+    <ul class="old-photos">
+      <%= form.input :photo_order, :as => :hidden %>
+      <% form.object.photos.each do |photo| %>
+        <li data-id="<%= photo.id %>"><a href="#" data-remove="true">x</a><span><%= photo.image_file_name %></span></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <div class="input file optional">
+    <label class="file optional">Upload images of your project</label>
+    <div class="multi-input first noremove">
+      <input class="file optional multi new_photo" id="project_new_photos" name="project[new_photos][]" type="file" value="">
+      <a href="#" class="remove-image" data-remove="true">remove</a>
+    </div>
   </div>
 </div>
 <%= form.input :chapter_id, :collection => Chapter.all, :as => :select, :group_method => :name, :label => "Select chapter to apply to" %>
