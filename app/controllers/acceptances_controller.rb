@@ -8,7 +8,7 @@ class AcceptancesController < ApplicationController
     if @invitation.accept(params[:invitation])
       redirect_to chapter_url(@invitation.chapter)
     else
-      flash[:notice] = "Could not accept the invitation"
+      flash[:notice] = t("flash.acceptances.cannot")
       render :new
     end
   end

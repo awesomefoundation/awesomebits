@@ -19,7 +19,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(params[:project])
     if @project.save
-      flash[:notice] = "Thanks for applying!"
+      flash[:notice] = t("flash.applications.thanks")
       redirect_to root_path
     else
       render :new
@@ -67,7 +67,7 @@ class ProjectsController < ApplicationController
 
   def must_be_logged_in_to_see_unpublished_projects
     if !current_project.try(:winner?) && !current_user
-      flash[:notice] = "You must be logged in."
+      flash[:notice] = t("flash.permissions.must-be-logged-in")
       redirect_to root_url
     end
   end

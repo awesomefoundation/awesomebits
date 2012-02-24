@@ -3,7 +3,7 @@
   <% if user.admin %>
     <td class="name">
       <h2><%= user.first_name %> <%= user.last_name %></h2>
-      <span> - Admin</span>
+      <span> - <%= t(".admin") %></span>
     </td>
     <td><p>-</p></td>
     <td><p>-</p></td>
@@ -26,9 +26,9 @@
       <span data-role-id="<%= role.id %>">
         <% if current_user.can_manage_permissions? %> 
           <% if role.name == 'trustee' %>
-            <%= link_to "Promote to Dean", role_promotions_path(role), :method => :post, :class => "promote-user" %>
+            <%= link_to t(".promote-to-dean"), role_promotions_path(role), :method => :post, :class => "promote-user" %>
           <% else %>
-            <%= link_to "Demote to Trustee", role_promotions_path(role), :method => :delete, :class => "demote-user" %>
+            <%= link_to t(".demote-to-trustee"), role_promotions_path(role), :method => :delete, :class => "demote-user" %>
           <% end %>
         <% else %>
           <p>-</p>

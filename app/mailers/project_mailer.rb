@@ -4,6 +4,6 @@ class ProjectMailer < ActionMailer::Base
   def new_application(project)
     @project = project
     mail(:to => project.email,
-         :subject => "[Awesome] Thanks for applying!")
+         :subject => "[Awesome] #{t("emails.application.subject")}")
   end
 end

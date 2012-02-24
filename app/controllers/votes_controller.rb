@@ -8,7 +8,7 @@ class VotesController < ApplicationController
     if @vote.save
       render :json => {:shortlisted => true, :project_id => @project.id}
     else
-      render :json => {:message => "Vote already exists for this project"}, :status => 400
+      render :json => {:message => t("flash.votes.already-voted")}, :status => 400
     end
   end
 
@@ -19,7 +19,7 @@ class VotesController < ApplicationController
       @vote.destroy
       render :json => {:shortedlisted => false, :project_id => @project.id}
     else
-      render :json => {:message => "Vote has already been deleted"}, :status => 400
+      render :json => {:message => t("flash.votes.already-deleted")}, :status => 400
     end
   end
 

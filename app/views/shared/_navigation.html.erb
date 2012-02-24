@@ -2,28 +2,28 @@
   <nav>
     <a href="<%= root_path %>" class="logo">
       <div class="fast-forward"><%= image_tag("logo.png") %></div>
-      <h1>The Awesome Foundation</h1>
+      <h1><%= t "layouts.application.main-header" %></h1>
     </a>
     <ol>
       <li>
-        <%= link_to "Apply", new_submission_path, { :class => "apply" } %>
+        <%= link_to t("layouts.application.apply"), new_submission_path, { :class => "apply" } %>
       </li>
       <% if  signed_in? %>
         <li>
-          <%= link_to "Dashboard", projects_path, { :class => "dashboard" } %>
+          <%= link_to t("layouts.application.dashboard"), projects_path, { :class => "dashboard" } %>
         </li>
       <% end %>
       <li>
-        <%= link_to "Blog", "/blog", :class => "blog" %>
+        <%= link_to t("layouts.application.blog"), "/blog", :class => "blog" %>
       </li>
       <li>
-        <%= link_to "For real?!", page_path("description"), :class => "description" %>
+        <%= link_to t("layouts.application.description"), page_path("description"), :class => "description" %>
       </li>
       <li>
-        <%= link_to "Chapters", chapters_path, :class => "chapters" %>
+        <%= link_to t("layouts.application.chapters"), chapters_path, :class => "chapters" %>
       </li>
       <li>
-        <%= link_to "home", root_path, :class => "home" %>
+        <%= link_to t("layouts.application.home"), root_path, :class => "home" %>
       </li>
     </ol>
   </nav>
@@ -31,7 +31,7 @@
 
 <section class="chapter-menu">
   <div class="inner-wrapper">
-    <h1>Awesome Everywhere!</h1>
+    <h1><%= t("layouts.application.chapter_header") %></h1>
     <section class="chapters">
       <% Chapter.visitable.alphabetically.each do |chapter| %>
         <%= link_to chapter.name, chapter %>

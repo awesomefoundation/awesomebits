@@ -1,15 +1,15 @@
 <div class="personal-info">
-  <%= form.input :name, :label => "Your name" %>
+  <%= form.input :name %>
   <%= form.input :email %>
   <%= form.input :phone %>
 </div>
 <div class="project-info">
-  <%= form.input :title, :label => "Project title" %>
-  <%= form.input :url, :label => "Project website" %>
+  <%= form.input :title %>
+  <%= form.input :url %>
 </div>
 <div class="descriptions">
-  <%= form.input :description, :label => "About me", :input_html => { :class => "about-me" } %>
-  <%= form.input :use, :label => "About the project", :input_html => { :class => "project-desc" } %>
+  <%= form.input :description, :input_html => { :class => "about-me" } %>
+  <%= form.input :use, :input_html => { :class => "project-desc" } %>
 </div>
 <div class="image-upload">
   <% unless form.object.photos.blank? %>
@@ -21,21 +21,21 @@
     </ul>
   <% end %>
   <div class="input file optional">
-    <label class="file optional">Upload images of your project</label>
+    <label class="file optional"><%= t "simple_form.labels.project.new_photos" %></label>
     <div class="multi-input first noremove">
       <input class="file optional multi new_photo" id="project_new_photos" name="project[new_photos][]" type="file" value="">
       <a href="#" class="remove-image" data-remove="true">remove</a>
     </div>
   </div>
 </div>
-<%= form.input :chapter_id, :collection => Chapter.all, :as => :select, :group_method => :name, :label => "Select chapter to apply to" %>
+<%= form.input :chapter_id, :collection => Chapter.all, :as => :select, :group_method => :name %>
 <div class="extra-questions" style="display:none">
   <%= form.input :extra_question_1, :as => :hidden, :wrapper_html => {:class => "extra-question"}  %>
   <%= form.input :extra_question_2, :as => :hidden, :wrapper_html => {:class => "extra-question"}  %>
   <%= form.input :extra_question_3, :as => :hidden, :wrapper_html => {:class => "extra-question"}  %>
-  <%= form.input :extra_answer_1, :label => "Extra Question 1", :wrapper_html => {:class => "extra-answer"} %>
-  <%= form.input :extra_answer_2, :label => "Extra Question 2", :wrapper_html => {:class => "extra-answer"} %>
-  <%= form.input :extra_answer_3, :label => "Extra Question 3", :wrapper_html => {:class => "extra-answer"} %>
+  <%= form.input :extra_answer_1, :wrapper_html => {:class => "extra-answer"} %>
+  <%= form.input :extra_answer_2, :wrapper_html => {:class => "extra-answer"} %>
+  <%= form.input :extra_answer_3, :wrapper_html => {:class => "extra-answer"} %>
 </div>
 
 <% content_for :javascript do %>

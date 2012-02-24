@@ -6,15 +6,15 @@
         <%= show_winner_buttons_for(project) %>
       <% end %>
       <% if project.shortlisted_by?(current_user) %>
-        <%= link_to "Awesome", project_vote_path(project), :method => :delete, :remote => true, :class => "short-list" %>
+        <%= link_to t(".awesome"), project_vote_path(project), :method => :delete, :remote => true, :class => "short-list" %>
       <% else %>
-        <%= link_to "Awesome", project_vote_path(project), :method => :post, :remote => true, :class => "short-list" %>
+        <%= link_to t(".awesome"), project_vote_path(project), :method => :post, :remote => true, :class => "short-list" %>
       <% end %>
     </div>
 
     <section class="meta-data">
       <span class="spam">
-        <%= link_to "Delete this project", project_path(project), :method => :delete, :confirm => "Really delete this?", :class => 'delete-spam' %>
+        <%= link_to t(".delete"), project_path(project), :method => :delete, :confirm => t(".confirm-delete"), :class => 'delete-spam' %>
       </span>
       <span>
         <%= project.name %>
@@ -32,7 +32,8 @@
     </div>
     <div="details-toggle">
     </div>
-    <%= link_to "<p>See the rest →</p>".html_safe, project_path(project), :class => "see-more" %></a>
+    <%= link_to project_path(project), :class => "see-more" do %>
+      <p><%= t ".see-the-rest" %></p>
+    <% end %>
   </section>
 </article>
-

@@ -30,7 +30,7 @@ class InvitationsController < ApplicationController
 
   def must_be_able_to_invite
     unless current_user.can_invite?
-      flash[:notice] = "You do not have permission to invite others."
+      flash[:notice] = t("flash.permissions.cannot-invite")
       redirect_to root_path
     end
   end

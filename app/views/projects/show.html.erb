@@ -1,6 +1,6 @@
 <header class="project">
   <% if can_manage_chapter?(@project.chapter) %>
-    <%= link_to "Edit Project", edit_project_path(@project), :class => 'edit-project' %>
+    <%= link_to t(".edit"), edit_project_path(@project), :class => 'edit-project' %>
   <% end %>
   <h1><%= @project.title %></h1>
 </header>
@@ -19,7 +19,7 @@
 
 <section class="project-details">
   <section class="meta-data">
-    <p>A <span class="chapter-name"><%= @project.chapter.name %></span> project created by <span class="project-starter"><%= @project.name %></span></p>
+    <p><%= t(".byline-html", :chapter_name => @project.chapter.name, :submitter_name => @project.name) %></p>
     <!-- AddThis Button BEGIN -->
     <div class="addthis_toolbox addthis_default_style ">
       <a class="addthis_button_twitter"></a>
@@ -34,7 +34,7 @@
   </section>
 
   <section class="project-description">
-    <h2>Project Description</h2>
+    <h2><%= t ".description.header" %></h2>
     <p><%= @project.use %></p>
 
     <% if @project.extra_answer_1.present? %>
@@ -57,11 +57,11 @@
     <article class="project-state">
       <% if @project.winner? %>
         <div class="state funded">
-          <p>Funded by <span class="chapter-name"><%= @project.chapter.name %></span> <span class="funded-on">(<%= @project.funded_on %>)</span></p>
+          <p><%= t(".funder-html", :name => @project.chapter.name) %> <span class="funded-on">(<%= l @project.funded_on, :format => :funding %>)</span></p>
         </div>
       <% else %>
         <div class="state applied">
-          <p>Project application sumitted to <span class="created_at"><%= @project.chapter.name %></span></p>
+          <p><%= t(".submitted-to-html", :name => @project.chapter.name) %></p>
         </div>
       <% end %>
     </article>
@@ -76,22 +76,25 @@
     <% end %>
 
     <article class="project-rss">
-      <h2>Recent Posts</h2>
+      <h2><%= t ".feed-title" %></h2>
       <ol class="feed">
         <li>
-          <a href="#">Awesome Melbourne teams up with Pozible</a>
+          <a href="#">Dummy Feed Item</a>
         </li>
         <li>
-          <a href="#">Introducing... Boston's Awesome Office Hours!</a>
+          <a href="#">Dummy Feed Item</a>
         </li>
         <li>
-          <a href="#">Montreal's first grant party!</a>
+          <a href="#">Dummy Feed Item</a>
         </li>
         <li>
-          <a href="#">Awesome Melbourne teams up with Pozible</a>
+          <a href="#">Dummy Feed Item</a>
         </li>
         <li>
-          <a href="#">Introducing... Boston's Awesome Office Hours!</a>
+          <a href="#">Dummy Feed Item</a>
+        </li>
+        <li>
+          <a href="#">Dummy Feed Item</a>
         </li>
       </ol>
     </article>

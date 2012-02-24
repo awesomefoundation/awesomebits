@@ -5,7 +5,7 @@
       <%= link_to project, :class => "image-wrapper" do %>
         <div class="project-name">
           <h2><%= project.title %></h2>
-          <p>By <%= project.name %></p>
+          <p><%= t ".by", :name => project.name %></p>
         </div>
         <div class="funding-chapter">
           <h3><%= image_tag("location_pin_small.png") %> <%= project.chapter.name %></h3>
@@ -19,7 +19,7 @@
     <div class="inner-wrapping">
       <div class="wrapper-2">
         <div class="message">
-          <h1>Forwarding the interest of Awesome in the universe, $1,000 at a time.</h1>
+          <h1><%= t ".title" %></h1>
         </div>
       </div>
     </div>
@@ -30,7 +30,7 @@
       <%= link_to project, :class => "image-wrapper" do %>
         <div class="project-name">
           <h2><%= project.title %></h2>
-          <p>By <%= project.name %></p>
+          <p><%= t ".by", :name => project.name %></p>
         </div>
         <div class="funding-chapter">
           <h3><%= image_tag("location_pin_small.png") %> <%= project.chapter.name %></h3>
@@ -47,15 +47,15 @@
   <div class="info-graphic">
     <div class="have-idea">
       <%= image_tag("idea.png") %>
-      <h3>Have an idea?</h3>
+      <h3><%= t ".have-an-idea" %></h3>
     </div>
     <div class="apply">
       <%= image_tag("apply.png") %>
-      <h3>Apply</h3>
+      <h3><%= t ".apply" %></h3>
     </div>
     <div class="get-funded">
       <%= image_tag("money.png") %>
-      <h3>Get Funding</h3>
+      <h3><%= t ".get-funding" %></h3>
     </div>
   </div>
 </section>
@@ -65,10 +65,8 @@
 
   <div class="about-preview">
     <div class="intro">
-      <h3>Awesome is Everywehre!</h3>
-      <p>
-        The Awesome Foundation for the Arts and Sciences is an ever-growing, worldwide network of people devoted to forwarding the interest of awesomeness in the universe. Created in the long hot summer days of 2009 in Boston, the Foundation distributes a series of monthly $1,000 grants to projects and their creators. The money is pooled together from the coffers of ten or so self-organizing “micro-trustees” and given upfront in cash, check, or gold doubloons. The chapters are autonomous and organized by the trustees around geographic areas or topics of interest.
-      </p>
+      <h3><%= t ".intro.header" %></h3>
+      <p><%= t ".intro.body" %></p>
     </div>
     <div class="mini-map">
       <%= image_tag("mini_map.png") %>
@@ -86,12 +84,12 @@
 
 <section class="news">
   <header>
-    <h2>Awesome News!</h2>
+    <h2><%= t ".news.header" %></h2>
   </header>
   <div class="feed-wrapper">
     <section class="rss">
       <div class="inner-wrapper">
-        <h3>Recent blog posts</h3>
+        <h3><%= t ".news.recent" %></h3>
         <ol class="feed">
           <% headlines(MAIN_AWESOME_RSS, 6).each do |headline| %>
             <li class="post">
@@ -105,7 +103,7 @@
     </section>
     <section class="events">
       <div class="inner-wrapper">
-        <h3>Upcoming Events</h3>
+        <h3><%= t ".news.events" %></h3>
         <ol class="feed">
           <% 6.times do %>
             <li class="post">

@@ -5,37 +5,37 @@
 <h2><%= current_user.first_name %> <%= current_user.last_name %></h2>
 
 <div class="editing">
-  <%= link_to "Projects", chapter_projects_path(@chapter) %>
+  <%= link_to t("layouts.sidebar.projects"), chapter_projects_path(@chapter) %>
 </div>
 
 <% unless @chapter.any_chapter? %>
   <div class="editing">
-    <%= link_to "Finalists", chapter_finalists_path(@chapter) %>
+    <%= link_to t("layouts.sidebar.finalists"), chapter_finalists_path(@chapter) %>
   </div>
 
   <div class="editing">
-    <%= link_to "Members", chapter_users_path(@chapter) %>
+    <%= link_to t("layouts.sidebar.members"), chapter_users_path(@chapter) %>
   </div>
 <% end %>
 
 <% if current_user.can_create_chapters? %>
   <div class="editing">
-    <%= link_to "Create a Chapter", new_chapter_path %>
+    <%= link_to t("layouts.sidebar.create-chapter"), new_chapter_path %>
   </div>
 <% end %>
 
 <% if current_user.can_invite? %>
   <div class="editing">
-    <%= link_to "Invite a Trustee", new_invitation_path %>
+    <%= link_to t("layouts.sidebar.invite-trustee"), new_invitation_path %>
   </div>
 <% end %>
 
 <div class="editing">
-  <%= link_to "Edit My Profile", edit_user_path(current_user) %>
+  <%= link_to t("layouts.sidebar.edit-profile"), edit_user_path(current_user) %>
 </div>
 
 <% if current_user.can_manage_chapter?(@chapter) %>
   <div class="editing">
-    <%= link_to "Edit Chapter Profile", edit_chapter_path(@chapter) %>
+    <%= link_to t("layouts.sidebar.edit-chapter-profile"), edit_chapter_path(@chapter) %>
   </div>
 <% end %>

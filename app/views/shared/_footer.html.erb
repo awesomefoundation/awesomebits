@@ -1,13 +1,13 @@
 <section class="footer">
   <p>
-    <%= link_to "About Us", page_path("about_us") %>
-    <%= link_to "Contact", page_path("contact") %>
-    <%= link_to "FAQ", page_path("faq") %>
-    <%= link_to "Want to help?", page_path("trustees") %>
+    <%= link_to t("layouts.application.about_us"), page_path("about_us") %>
+    <%= link_to t("layouts.application.contact"), page_path("contact") %>
+    <%= link_to t("layouts.application.faq"), page_path("faq") %>
+    <%= link_to t("layouts.application.want_to_help"), page_path("trustees") %>
     <% if signed_in? -%>
-      <%= link_to "Sign out", sign_out_path, :method => :delete %>
+      <%= link_to t("layouts.application.sign-out"), sign_out_path, :method => :delete %>
     <% else -%>
-      <%= link_to "Sign in", sign_in_path %>
+      <%= link_to t("layouts.application.sign-in"), sign_in_path %>
     <% end -%>
   </p>
 

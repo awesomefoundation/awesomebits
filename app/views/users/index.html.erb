@@ -1,15 +1,15 @@
 <section class="awesome-members">
   <header>
-    <h1>Awesome Foundation Members</h1>
+    <h1><%= t(".title") %></h1>
   </header>
   <section class="members-list">
     <table class="members">
       <tr>
-        <th>User ID</th>
-        <th>Name</th>
-        <th>Chapter(s)</th>
-        <th>Position</th>
-        <th>Change Position</th>
+        <th><%= t(".id") %></th>
+        <th><%= t(".name") %></th>
+        <th><%= t(".chapters") %></th>
+        <th><%= t(".position") %></th>
+        <th><%= t(".change-position") %></th>
       </tr>
       <%= render @users %>
     </table>

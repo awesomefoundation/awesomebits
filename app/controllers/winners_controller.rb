@@ -27,7 +27,7 @@ class WinnersController < ApplicationController
 
   def must_be_able_to_mark_winner
     unless current_user.admin? || current_user.can_mark_winner?(current_project)
-      flash[:notice] = "You cannot mark that a winner."
+      flash[:notice] = t("flash.permissions.cannot-mark-winner")
       redirect_to projects_path
     end
   end

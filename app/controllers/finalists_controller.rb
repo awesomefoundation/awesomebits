@@ -19,7 +19,7 @@ class FinalistsController < ApplicationController
 
   def must_be_able_to_view_finalists
     unless current_user.admin? || current_user.can_view_finalists_for?(current_chapter)
-      flash[:notice] = "You are not permitted to see this."
+      flash[:notice] = t("flash.permissions.cannot-view-finalists")
       redirect_to projects_path
     end
   end

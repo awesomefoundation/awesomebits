@@ -4,12 +4,12 @@ class InvitationMailer < ActionMailer::Base
   def invite_trustee(invitation)
     @invitation = invitation
     mail(:to => invitation.email,
-         :subject => "[Awesome] You've been invited to the #{invitation.chapter.name} chapter of the Awesome Foundation!")
+         :subject => "[Awesome] #{t('emails.invitation.subject', :name => invitation.chapter.name)}")
   end
 
   def welcome_trustee(invitation)
     @invitation = invitation
     mail(:to => invitation.email,
-         :subject => "[Awesome] Welcome to the #{invitation.chapter.name} chapter!")
+         :subject => "[Awesome] #{t('emails.welcome.subject', :name => invitation.chapter.name)}")
   end
 end

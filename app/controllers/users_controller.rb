@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
   def ensure_current_user_or_admin
     unless current_user.can_edit_profile?(params[:id])
-      flash[:notice] = "You do not have permission to modify this account."
+      flash[:notice] = t("flash.permissions.cannot-modify-account")
       redirect_to root_path
     end
   end
