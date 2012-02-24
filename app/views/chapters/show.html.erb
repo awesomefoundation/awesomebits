@@ -40,7 +40,7 @@
   <h2>Meet the Trustees</h2>
   <section class="trustees">
     <ol>
-      <% @chapter.users.deans_first.including_role.each do |user| %>
+      <% @chapter.users.deans_first.including_role.uniq.each do |user| %>
       <li>
         <article class="trustee <%= user.role %>">
           <a class="avatar" href="#">
