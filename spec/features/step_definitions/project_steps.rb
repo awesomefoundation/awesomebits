@@ -113,16 +113,11 @@ end
 
 step 'there is/are :count winning project(s)' do |count|
   count = count.to_i
-  @projects = (1..count).map{|x| FactoryGirl.create(:project,
-                                                    :rss_feed_url => Rails.root.join('spec', 'support', 'feed.xml').to_s,
-                                                    :funded_on => x.days.ago) }
+  @projects = (1..count).map{|x| FactoryGirl.create(:full_project, :funded_on => x.days.ago) }
 end
 
 step 'there is 1 winning project in my chapter' do
-  @project = FactoryGirl.create(:project,
-                                :funded_on => 2.days.ago,
-                                :rss_feed_url => Rails.root.join('spec', 'support', 'feed.xml').to_s, 
-                                :chapter => @current_chapter)
+  @project = FactoryGirl.create(:project, :funded_on => 2.days.ago, :chapter => @current_chapter)
 end
 
 step 'I edit that winning project' do

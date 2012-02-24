@@ -49,6 +49,9 @@ FactoryGirl.define do
     description "I am awesome."
     use "I will do awesome."
     chapter
+    factory :full_project do
+      rss_feed_url Rails.root.join('spec', 'support', 'feed.xml').to_s
+    end
   end
 
   factory :vote do
