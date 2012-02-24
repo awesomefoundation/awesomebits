@@ -23,7 +23,8 @@ class UserFactory
 
   def role
     if @role.nil?
-      @role = Role.new(:name => "trustee")
+      @role = Role.new
+      @role.name = "trustee"
       @role.user = user
       @role.chapter = chapter
     end
