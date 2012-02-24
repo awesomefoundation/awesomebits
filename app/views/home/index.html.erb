@@ -25,7 +25,7 @@
     </div>
   </section>
 
-  <% @projects[6..11].each do |project| %>
+  <% (@projects[6..11] || []).each do |project| %>
     <article class="project project-<%= project.id %>">
       <%= link_to project, :class => "image-wrapper" do %>
         <div class="project-name">
