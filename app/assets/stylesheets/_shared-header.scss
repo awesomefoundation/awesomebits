@@ -6,6 +6,7 @@
 
 header.main {
   background: rgb(45,45,45);
+  border-bottom: 1px solid rgb(0,0,0);
   overflow: hidden;
   width: 100%;
 
@@ -25,16 +26,11 @@ header.main {
         color: rgba(255,255,255, 1);
         display: block;
         float: left;
-        font: normal 20px/28px $sans-serif;
         height: 30px;
-        letter-spacing: 0px;
         margin: 18px 0px 0px 0px;
-        padding: 0px 0px 0px 5px;
-        @include transition(all, 0.2s, ease-in);
-        width: 25px;
+        width: 30px;
 
         img {
-          margin: 19px 0 0 20px;
         }
       }
 

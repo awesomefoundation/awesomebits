@@ -1,18 +1,36 @@
 <section class="awesome-wrapper">
-
-  <section class="tag-line">
-    <h1>Forwarding the interest of Awesome in the universe, $1,000 at a time.</h1>
-  </section>
-
   <section class="awesome-projects">
-  <% @projects.each do |project| %>
+  <% @projects[0..5].each do |project| %>
     <article class="project project-<%= project.id %>">
       <%= link_to project, :class => "image-wrapper" do %>
         <div class="project-name">
           <h2><%= project.title %></h2>
-          <p>
-            <span>By <%= project.name %></span>
-          </p>
+          <p>By <%= project.name %></p>
+        </div>
+        <div class="funding-chapter">
+          <h3><%= image_tag("location_pin_small.png") %> <%= project.chapter.name %></h3>
+        </div>
+        <%= project.photos.any? ? image_tag(project.photos.first.image(:index)) : "" %>
+      <% end %>
+    </article>
+  <% end %>
+
+  <section class="tagline">
+    <div class="inner-wrapping">
+      <div class="wrapper-2">
+        <div class="message">
+          <h1>Forwarding the interest of Awesome in the universe, $1,000 at a time.</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <% @projects[6..11].each do |project| %>
+    <article class="project project-<%= project.id %>">
+      <%= link_to project, :class => "image-wrapper" do %>
+        <div class="project-name">
+          <h2><%= project.title %></h2>
+          <p>By <%= project.name %></p>
         </div>
         <div class="funding-chapter">
           <h3><%= image_tag("location_pin_small.png") %> <%= project.chapter.name %></h3>

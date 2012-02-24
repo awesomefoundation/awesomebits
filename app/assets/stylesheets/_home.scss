@@ -9,44 +9,66 @@ body.home-index {
 }
 
 .awesome-wrapper {
-  background: rgb(245,245,245) url('chapter_bg.png');
-  background-position: cover;
-  background-repeat: repeat-x;
-  background-size: contain;
-  border-bottom: 1px solid rgb(200,200,200);
   margin: 0 auto;
   padding-bottom: 60px;
   position: relative;
 
-  .tag-line {
-    margin: 0px 10px;
-    width: auto;
-
-    h1 {
-      color: rgba(55,55,55, 1);
-      font: 900 38px/44px $sans-serif;
-      margin: 0px auto;
-      padding: 35px 20px;
-      text-align: center;
-      text-transform: uppercase;
-      width: grid-width(12) - 40px;
-    }
-
-    &:hover {
-    }
-  }
-
   .awesome-projects {
     @extend .clearfix;
+    font-size: 0px;
     margin-left: 10px;
+    min-width: grid-width(12);
+
+    .tagline {
+      @include inline-block;
+      position: relative;
+      width: 60%;
+      vertical-align: top;
+
+      .inner-wrapping {
+        background: url('chapter_bg.png');
+        background-repeat: repeat-x;
+        background-size: cover;
+        height: 100%;
+        margin: 10px 10px 0 0;
+        overflow: hidden;
+        width: auto;
+
+        .wrapper-2 {
+          background: rgba(0,0,0, 0.7);
+          display: table;
+          height: 100%;
+          width: 100%;
+
+          .message {
+            display: table-cell;
+            vertical-align: middle;
+
+            h1 {
+              color: rgba(255,255,255, 1);
+              font: normal 18px/22px $sans-serif;
+              margin-bottom: 10px;
+              text-align: center;
+              text-transform: uppercase;
+            }
+          }
+
+          &:hover {
+            background: rgba(0,0,0, 0.8);
+          }
+        }
+      }
+    }
+
 
     .project {
       background: transparent;
-      float: left;
+      @include inline-block;
       margin: 0px;
       overflow: hidden;
       position: relative;
       width: 20%;
+      vertical-align: top;
 
       .image-wrapper {
         display: block;
@@ -94,10 +116,15 @@ body.home-index {
             font: normal 22px $sans-serif;
             margin: 0px;
             text-transform: uppercase;
+
+            @media screen and (max-width: 940px) {
+              font: normal 18px $sans-serif;
+            }
           }
 
           p {
             color: $base-font-color;
+            font-size: 12px;
           }
         }
 

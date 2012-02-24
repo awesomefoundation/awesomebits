@@ -3,7 +3,7 @@ class Photo < ActiveRecord::Base
   has_attached_file :image,
                     :default_style => :main,
                     :styles => {
-                      :main => "1440x880#",
+                      :main => "940x470#",
                       :index => "500x300#"
                     }
 

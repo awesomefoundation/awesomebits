@@ -24,3 +24,14 @@ $('a.chapter-selection').toggle(function() {
   $('.chapter-selector').removeClass("expanded");
   $('a.chapter-selection').removeClass("expanded");
 });
+
+$(document).ready( function() {
+  function size_message() {
+    var project_height = $('.project:first-child').outerHeight();
+    $('.tagline').height(project_height - 10);
+  }
+
+  $('.project:first-child img').load(size_message);
+
+  $(window).resize(size_message);
+});
