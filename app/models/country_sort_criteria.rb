@@ -1,4 +1,4 @@
-class CountrySorter
+class CountrySortCriteria
 
   def initialize(country_priority)
     @country_priority = country_priority
