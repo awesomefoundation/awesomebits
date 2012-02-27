@@ -43,14 +43,14 @@
       <% @chapter.users.deans_first.including_role.uniq.each do |user| %>
       <li>
         <article class="trustee <%= user.role %>">
-          <a class="avatar" href="#">
+          <%= link_to user.url, :class => 'avatar' do %>
             <div class="trustee-details">
               <h3><%= user.first_name %> <%= user.last_name %></h3>
             </div>
             <div class="avatar">
               <%= image_tag user.gravatar_url %>
             </div>
-          </a>
+          <% end %>
         </article>
       </li>
       <% end %>
