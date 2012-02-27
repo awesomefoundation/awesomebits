@@ -16,10 +16,17 @@ class User < ActiveRecord::Base
   has_many :votes
   has_many :projects, :through => :votes
 
-  scope :including_role_and_chapter, joins("LEFT JOIN roles ON users.id = roles.user_id").
-    joins("LEFT JOIN chapters ON chapters.id = roles.chapter_id").
-    select("users.*, chapters.name AS chapter_name, roles.id AS role_id, roles.name AS role_name").
-    order(:first_name, :id)
+  def self.all_with_chapter(chapter_id)
+    association = joins("LEFT JOIN roles ON users.id = roles.user_id").
+      joins("LEFT JOIN chapters ON chapters.id = roles.chapter_id").
+      select("users.*, chapters.name AS chapter_name, roles.id AS role_id, roles.name AS role_name").
+      order(:first_name, :id)
+    if chapter_id.nil?
+      association
+    else
+      association.where("chapters.id = ?", chapter_id)
+    end
+  end
 
   def self.deans_first
     joins(:chapters).order("roles.name, users.last_name")

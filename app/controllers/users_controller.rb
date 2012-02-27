@@ -4,10 +4,7 @@ class UsersController < ApplicationController
   before_filter :must_be_logged_in
 
   def index
-    @users = User.including_role_and_chapter
-    if params[:chapter_id]
-      @users = @users.where("chapters.id = ?", params[:chapter_id])
-    end
+    @users = User.all_with_chapter(params[:chapter_id])
   end
 
   def update
