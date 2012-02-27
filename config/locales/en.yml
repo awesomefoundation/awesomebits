@@ -119,7 +119,7 @@ en:
       forgot-password: Forgot your password?
   users:
     user:
-      admin: ADMIIIIN! AAAAAAAA!
+      admin: Admin
       promote-to-dean: Promote to Dean
       demote-to-trustee: Demote to Trustee
     edit:
