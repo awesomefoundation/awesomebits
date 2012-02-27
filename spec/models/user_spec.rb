@@ -135,16 +135,16 @@ describe User do
     end
   end
 
-  context ".including_role_and_chapter" do
+  context ".all_with_chapter" do
     let!(:chapter) { FactoryGirl.create(:chapter) }
     let!(:trustee) { FactoryGirl.create(:user) }
     let!(:role) { FactoryGirl.create(:role, :user => trustee, :chapter => chapter) }
     let!(:admin) { FactoryGirl.create(:user) }
     it 'includes all users' do
-      User.including_role_and_chapter.all.should == [trustee, admin]
+      User.all_with_chapter(nil).should == [trustee, admin]
     end
     it 'includes only trustees for chapter' do
-      User.including_role_and_chapter.where("chapters.id = ?", chapter.id).all.should == [trustee]
+      User.all_with_chapter(chapter.id).should == [trustee]
     end
   end
 
