@@ -119,20 +119,25 @@ en:
       forgot-password: Forgot your password?
   users:
     user:
-      admin: ADMIIIIN! AAAAAAAA!
+      admin: Admin
       promote-to-dean: Promote to Dean
       demote-to-trustee: Demote to Trustee
       demote-admin: Demote to Trustee
       promote-admin: Promote to Admin
+      error-dean-promotion: Dean promotion failed
+      error-dean-demotion: Dean demotion failed
+      error-admin-promotion: Admin promotion failed
+      error-admin-demotion: Admin demotion failed
     edit:
       title: Edit user information
     index:
       title: Awesome Foundation Members
-      id: User ID
       name: Name
-      chapters: "Chapter(s)"
-      position: Position
-      change-position: Change Position
+      email: Email
+      chapter: Chapter
+      role: Role
+      change-dean: Dean
+      change-admin: Admin
   simple_form:
     labels:
       project:
