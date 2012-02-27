@@ -21,3 +21,9 @@ Feature: View chapters in the system
     And 5 projects have won, but not for this chapter
     When I go to the chapter page
     Then I should see only those 5 winning projects for this chapter listed
+
+  Scenario: Guest can click on trustees avatar to visit their website
+    Given there is a chapter in the system
+    And there is a trustee
+    When I go to the chapter page
+    Then I should be able to click on a trustee
