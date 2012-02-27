@@ -8,7 +8,7 @@ class AdminsController < ApplicationController
     if user.save
       render :json => { :admin => true, :user_id => user.id }
     else
-      render :json => { :message => "Admin promotion failed" }, :status => 400
+      render :json => { :message => I18n.t("users.user.error-admin-promotion") }, :status => 400
     end
   end
 
@@ -19,7 +19,7 @@ class AdminsController < ApplicationController
     if user.save
       render :json => { :admin => false, :user_id => user.id }
     else
-      render :json => { :message => "Admin demotion failed" }, :status => 400
+      render :json => { :message => I18n.t("users.user.error-admin-demotion") }, :status => 400
     end
   end
 end

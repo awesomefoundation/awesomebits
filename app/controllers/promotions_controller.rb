@@ -7,7 +7,7 @@ class PromotionsController < ApplicationController
     if role.save
       render :json => { :role => role.name, :role_id => role.id }
     else
-      render :json => { :message => "Promotion failed" }, :status => 400
+      render :json => { :message => I18n.t("users.user.error-dean-promotion") }, :status => 400
     end
   end
 
@@ -17,7 +17,7 @@ class PromotionsController < ApplicationController
     if role.save
       render :json => { :role => role.name, :role_id => role.id }
     else
-      render :json => { :message => "Demotion failed" }, :status => 400
+      render :json => { :message => I18n.t("users.user.error-dean-demotion") }, :status => 400
     end
   end
 

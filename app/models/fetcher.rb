@@ -13,6 +13,8 @@ class Fetcher
       ""
     rescue OpenURI::HTTPError
       ""
+    rescue Errno::ENOENT
+      ""
     end
   end
 

@@ -32,9 +32,11 @@ section.awesome-members {
           text-decoration: none;
           text-shadow: 0 1px rgba(255,255,255, 0.4);
           width: 120px;
+          display: none;
         }
 
-        &.promote-demote {
+        &.promote-demote-dean,
+        &.promote-demote-admin {
           width: 120px;
         }
 
@@ -42,20 +44,40 @@ section.awesome-members {
           width: 300px;
         }
 
-      }
-
-      &.trustee {
-
-        td.name {
-
-          span {
-            display: none;
+        &.trustee {
+          a.promote-user {
+            display: block;
           }
+        }
 
+        &.dean {
+          a.demote-user {
+            display: block;
+          }
         }
 
       }
 
+      &.admin {
+        td.promote-demote-admin {
+          a.demote-user {
+            display: block;
+          }
+        }
+      }
+
+      &.non_admin {
+        td.name {
+          span {
+            display: none;
+          }
+        }
+        td.promote-demote-admin {
+          a.promote-user {
+            display: block;
+          }
+        }
+      }
     }
   }
 }
