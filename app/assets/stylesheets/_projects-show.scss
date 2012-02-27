@@ -6,11 +6,10 @@ body.projects-show {
 header {
   a.edit-project {
     @include button(rgb(240,240,240));
-    right: 20px;
     text-decoration: none;
     padding: 7px 12px 6px;
-    position: absolute;
-    top: 20px;
+    margin-top: 10px;
+    float: right;
   }
 }
 
