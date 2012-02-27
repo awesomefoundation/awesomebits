@@ -113,7 +113,7 @@ end
 
 step 'there is/are :count winning project(s)' do |count|
   count = count.to_i
-  @projects = (1..count).map{|x| FactoryGirl.create(:project, :funded_on => x.days.ago) }
+  @projects = (1..count).map{|x| FactoryGirl.create(:project_with_rss_feed, :funded_on => x.days.ago) }
 end
 
 step 'there is 1 winning project in my chapter' do
