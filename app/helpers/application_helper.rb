@@ -6,6 +6,11 @@ module ApplicationHelper
   end
 
   def display_country?(country)
+    if(!defined?(@current_country))
+      @first_country = true
+    else
+      @first_country = false
+    end
     if(!defined?(@current_country) || country != @current_country)
       @current_country = country
     end

@@ -33,12 +33,17 @@
   <div class="inner-wrapper">
     <h1><%= t("layouts.application.chapter_header") %></h1>
     <section class="chapters">
-    <% Chapter.visitable.sort_by(&CountrySortCriteria.new(COUNTRY_PRIORITY)).each do |chapter| %>
+      <% Chapter.visitable.sort_by(&CountrySortCriteria.new(COUNTRY_PRIORITY)).each do |chapter| %>
         <% if display_country?(chapter.country) %>
-          <h3><%= chapter.country %></h3>
+          <% unless @first_country %>
+            </article>
+          <% end %>
+          <article class="country">
+            <h3><%= chapter.country %></h3>
         <% end %>
-        <%= link_to chapter.name, chapter %>
+        <p><%= link_to chapter.name, chapter %></p>
       <% end %>
+      </article>
     </section>
   </div>
 </section>

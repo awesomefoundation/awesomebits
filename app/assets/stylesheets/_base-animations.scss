@@ -84,19 +84,22 @@
 //************************************************************************//
 
 .animation-logo-wiggle {
-  @include animation(logo-wiggle 0.25s $ease-out-sine);
+  @include animation(logo-wiggle 0.5s linear);
   @include animation-fill-mode(both);
 }
 
 @mixin logo-wiggle-keyframes {
   0% {
-    left: -3px
+    left: 4px
   }
-  35% {
-    left: 6px
+  25% {
+    left: -4px
   }
-  70% {
-    left: -3px
+  50% {
+    left: 4px
+  }
+  75% {
+    left: -4px
   }
   100% {
     left: 0px
