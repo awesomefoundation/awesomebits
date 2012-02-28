@@ -1,0 +1,41 @@
+Internationalization
+--------------------
+
+This application uses the Rails internationalization API to handle internationalized content. The translation files are stored in `config/locales` and are named according to their language code. There is currently an "en" language for English.
+
+An overview of the syntax and basic application of the I18n API can be found at: http://guides.rubyonrails.org/i18n.html
+
+Specfic to the Awesome Foundation app, some things in the locales file go beyond the basics put forth in the Rails Guide. Starting at the top:
+
+Explanations of keys
+====================
+
+The `en.number.delimiter` key contains the character that will be used for "thousands" separation. For example, "1,000,000". Many European countries use "." for this.
+
+The `en.number.separator` key contains the "decimal" separator and is "." for the USA. Many countries use "," for this.
+
+The `date.formats.funding` key contains the format that's used for the date on the project page to display when the project was funded. The current value shows the month and year. For example, "February, 2012". The full list of possible variables can be found here: http://ruby-doc.org/core-1.9.3/Time.html#method-i-strftime
+
+The `flash` set of keys are used to display temporary messages.
+The `flash.permissions` set are for access control messages, such as "You don't have permission for this" or "You must be logged in."
+
+The `layouts` set of keys are found in the header and footer of all or most pages. The `layouts.sidebar` set are used in the sidebar of the Dashboard.
+
+`home`, `chapters`, `finalists`, `projects`, `sessions`, and `users` are all used as the Rails Guide suggests.
+
+The `emails` keys are used in the emails that get sent out.
+
+The `simple_form` keys are used by the simple_form plugin when it generates forms. The key maps to the name of the field that is being displayed. More information can be found here, under "I18n": https://github.com/plataformatec/simple_form
+
+New Translations
+================
+
+Translating a locale file is as simple as getting a translation for each value and putting them into a file that matches the structure of the existing locale. Save this as a new file with the name ofthe locale's standard code (en for English, fr for French, es for Spanish, etc). Save it alongside the existing English locale file of `config/locales/en.yml`.
+
+The `config/routes.rb` file must also be changed. In order to get a locale to work in the URL, it must be allowed by the routes. For example, to add French, you'd need to change line 38 of `config/routes.rb` to
+
+    scope "(:locale)", :locale => /en|fr/, &routes
+
+And so on for other languages.
+
+New additions to the routes and new additions or changes to the locale files MUST be deployed for the changes to be visible.
