@@ -20,18 +20,13 @@ header.main {
     a.logo {
       text-decoration: none;
 
-      .fast-forward {
-        background: $pink;
-        @include border-radius(45px);
-        color: rgba(255,255,255, 1);
+      img.fast-forward {
         display: block;
         float: left;
         height: 30px;
         margin: 18px 0px 0px 0px;
+        position: relative;
         width: 30px;
-
-        img {
-        }
       }
 
       h1 {
@@ -39,14 +34,14 @@ header.main {
         float: left;
         font: normal 12px/14px $sans-serif;
         margin: 20px 0px 0px 0px;
-        padding: 6px 20px;
+        padding: 6px 12px;
         text-transform: uppercase;
-        @include transition(all, 0.2s, ease-in);
       }
 
       &:hover {
 
-        .fast-forward {
+        img.fast-forward {
+          @extend .animation-logo-wiggle;
         }
 
         h1 {

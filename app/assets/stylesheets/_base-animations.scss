@@ -79,3 +79,30 @@
 @-webkit-keyframes content-appear { @include content-appear-keyframes; }
    @-moz-keyframes content-appear { @include content-appear-keyframes; }
         @keyframes content-appear { @include content-appear-keyframes; }
+
+// logo wiggle animation
+//************************************************************************//
+
+.animation-logo-wiggle {
+  @include animation(logo-wiggle 0.25s $ease-out-sine);
+  @include animation-fill-mode(both);
+}
+
+@mixin logo-wiggle-keyframes {
+  0% {
+    left: -3px
+  }
+  35% {
+    left: 6px
+  }
+  70% {
+    left: -3px
+  }
+  100% {
+    left: 0px
+  }
+}
+
+@-webkit-keyframes logo-wiggle { @include logo-wiggle-keyframes; }
+   @-moz-keyframes logo-wiggle { @include logo-wiggle-keyframes; }
+        @keyframes logo-wiggle { @include logo-wiggle-keyframes; }
