@@ -1,0 +1,39 @@
+// Slide in tiles
+//************************************************************************//
+.animation-tilefill {
+  @include animation(tilefill 0.25s $ease-out-sine);
+  @include animation-fill-mode(both);
+}
+
+@mixin tilefill {
+  0% {
+    opacity: 0;
+    @include transform(scale(0.0));
+    @include transform-origin(left top);
+  }
+  80% {
+    @include transform(scale(1));
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes tilefill { @include tilefill; }
+   @-moz-keyframes tilefill { @include tilefill; }
+        @keyframes tilefill { @include tilefill; }
+
+$t: 0.05s;
+$delay: $t;
+
+//@for $child from 1 through 15 {
+  //&:nth-child(#{$child}) {
+    //@extend .animation-tilefill;
+    //@include animation-delay($delay);
+    //@include transition;
+  //}
+  //$delay: $delay + $t;
+//}
+
+// add @extend .animation-tilefill; to all animated elements
+// all animated elements also have @include transition

@@ -48,7 +48,7 @@ table {
 //*******************************************************************
 
 
-section.footer {
+footer {
   @extend .clearfix;
   border-top: 1px solid rgb(220,220,220);
   height: 100px;
@@ -60,7 +60,7 @@ section.footer {
     padding: 10px 0;
     text-align: center;
 
-    a {
+    a:link, a:visited {
       color: rgb(155,155,155);
       font: normal 12px/14px $sans-serif;
       margin: 0 10px;

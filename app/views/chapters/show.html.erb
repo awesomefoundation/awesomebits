@@ -1,18 +1,18 @@
-  <header>
-    <div class="title">
-      <h1>
-        <%= @chapter.name %>
-      </h1>
-      <% if can_manage_chapter?(@chapter) %>
-        <%= link_to t(".edit"), edit_chapter_path(@chapter), :class => 'edit-chapter' %>
-      <% end %>
-      <%= link_to "", @chapter.twitter_url, :class => "external twitter" %>
-      <%= link_to "", @chapter.facebook_url, :class => "external facebook" %>
-      <%= link_to "", @chapter.blog_url, :class => "external blog" %>
-    </div>
-  </header>
-<section class="chapter-header-wrapper">
+<header>
+  <div class="title">
+    <h1>
+      <%= @chapter.name %>
+    </h1>
+    <% if can_manage_chapter?(@chapter) %>
+      <%= link_to "Edit Chapter", edit_chapter_path(@chapter), :class => 'edit-chapter' %>
+    <% end %>
+    <%= link_to "", @chapter.twitter_url, :class => "external twitter" %>
+    <%= link_to "", @chapter.facebook_url, :class => "external facebook" %>
+    <%= link_to "", @chapter.blog_url, :class => "external blog" %>
+  </div>
+</header>
 
+<section class="chapter-header-wrapper">
   <div class="gallery-container">
     <section class="chapter-projects">
       <% @chapter.winning_projects.each do |project| %>
