@@ -1,8 +1,7 @@
 Awesomefoundation::Application.routes.draw do
   routes = lambda do
     resources :sessions
-
-    match "sign_in", :to => "sessions#new"
+    match "sign_in",  :to => "sessions#new"
     match "sign_out", :to => "sessions#destroy", :via => :delete
 
     resources :users do

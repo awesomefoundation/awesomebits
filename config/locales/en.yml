@@ -27,14 +27,13 @@ en:
       apply: Apply
       dashboard: Dashboard
       blog: Blog
-      description: For Real!?
       chapters: Chapters
       chapter_header: Awesome Everywhere!
       home: Home
       about_us: About Us
-      contact: Contact
+      contact: Contact Us
       faq: FAQ
-      want_to_help: Want to help?
+      want_to_help: Get Involved
       sign-out: Sign out
       sign-in: Sign in
     sidebar:
