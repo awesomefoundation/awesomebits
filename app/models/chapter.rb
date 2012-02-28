@@ -13,6 +13,10 @@ class Chapter < ActiveRecord::Base
   attr_accessible :name, :twitter_url, :facebook_url, :blog_url, :rss_feed_url, :description,
                   :country, :extra_question_1, :extra_question_2, :extra_question_3
 
+  def self.country_count
+    select("count(distinct country) as country_count").first.country_count
+  end
+
   def self.visitable
     where("chapters.name != ?", "Any")
   end

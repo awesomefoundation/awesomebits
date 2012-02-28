@@ -4,12 +4,15 @@ module ApplicationHelper
     end_date =   params[:end].blank?   ? nil : Date.strptime(params[:end],   "%Y-%m-%d")
     [start_date, end_date]
   end
+
   def display_country?(country)
     if(!defined?(@current_country) || country != @current_country)
       @current_country = country
-      true
-    else
-      false
     end
+  end
+
+  def funding_amount_for(winner_count)
+    number_with_delimiter(winner_count * 1000, :delimiter => I18n.t("number.delimiter"),
+                                               :separator => I18n.t("number.separator"))
   end
 end

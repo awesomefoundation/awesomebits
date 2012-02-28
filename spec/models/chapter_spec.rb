@@ -9,6 +9,15 @@ describe Chapter do
   it { should validate_presence_of :description }
   it { should validate_uniqueness_of :name }
 
+  context '.country_count' do
+    let!(:chapter1){ FactoryGirl.create(:chapter, :country => "United States") }
+    let!(:chapter2){ FactoryGirl.create(:chapter, :country => "BBB") }
+    let!(:chapter3){ FactoryGirl.create(:chapter, :country => "United States") }
+    it 'returns the number of unique countries we have chapters in' do
+      Chapter.country_count.should == "2"
+    end
+  end
+
   context '.invitable_by for deans' do
     let!(:role) {FactoryGirl.create(:role, :name => 'dean')}
     let!(:chapter) {role.chapter}
@@ -19,6 +28,7 @@ describe Chapter do
       Chapter.invitable_by(user).should == [chapter]
     end
   end
+
   context '.invitable_by for admin' do
     let!(:chapter) {FactoryGirl.create(:chapter)}
     let!(:user) {FactoryGirl.create(:user, :admin => true)}

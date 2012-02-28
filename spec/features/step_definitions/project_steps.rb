@@ -196,3 +196,8 @@ end
 step 'I go to the public page for that project' do
   visit(project_path(@project))
 end
+
+step 'I should see that 5 projects have been funded for $5000' do
+  page.should have_css(".what-how h2 .funding:contains('$5,000')")
+  page.should have_css(".what-how h2 .winners:contains('5')")
+end

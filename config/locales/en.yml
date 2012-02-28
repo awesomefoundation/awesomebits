@@ -1,4 +1,7 @@
 en:
+  number:
+    delimiter: ","
+    separator: "."
   date:
     formats:
       funding: "%B, %Y"
@@ -56,6 +59,10 @@ en:
         header: Awesome News!
         recent: Recent blog posts
         events: Upcoming Events
+      funding-html: "<em class='funding'>$%{amount}</em> Granted"
+      winner-count-html: "<em class='winners'>%{amount}</em> projects funded"
+      chapter-count-html: "<em class='chapters'>%{count}</em> Chapters"
+      country-count-html: "<em class='countries'>%{count}</em> Countries"
   chapters:
     index:
       title: Awesome is Everywhere

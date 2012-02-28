@@ -101,9 +101,18 @@ step 'there are 5 chapters' do
   @chapters = (1..5).map{ FactoryGirl.create(:chapter) }
 end
 
+step "those projects' chapters are in 4 countries total" do
+  countries = ['United States', 'United States', 'Canada', 'United Kingdom', 'Spain']
+  @projects.each_with_index{|p, i| p.chapter.update_attribute(:country, countries[i]) }
+end
+
 step 'I should see those 5 chapters' do
-  @chapters.each do |chapter|
-    page.should have_css(".awesome-chapters a:contains('#{chapter.name}')")
+  @projects.each do |project|
+    page.should have_css(".awesome-chapters a:contains('#{project.chapter.name}')")
   end
 end
 
+step 'I should see that the 6 chapters, including Any, are spread across 4 countries' do
+  page.should have_css(".who-where h2 .chapters:contains('6')")
+  page.should have_css(".who-where h2 .countries:contains('4')")
+end

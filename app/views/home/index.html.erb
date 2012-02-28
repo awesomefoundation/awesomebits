@@ -43,7 +43,7 @@
 </section>
 
 <section class="what-how">
-  <h2>$127,000 <span>Granted</span> <span class="divider">|</span> 127 <span>projects funded</span></h2>
+<h2><%= t(".funding-html", :amount => funding_amount_for(Project.winner_count)) %> <span class="divider">|</span> <%= t(".winner-count-html", :amount => Project.winner_count) %></h2>
   <div class="info-graphic">
     <div class="have-idea">
       <%= image_tag("idea.png") %>
@@ -61,7 +61,7 @@
 </section>
 
 <section class ="who-where">
-  <h2>37 <span>Chapters</span> <span class="divider">|</span> 9 <span>Countries</span> <span class="divider">|</span> 4 <span>Continents</span></h2>
+  <h2><%= t(".chapter-count-html", :count => Chapter.count) %> <span class="divider">|</span> <%= t(".country-count-html", :count => Chapter.country_count) %></h2>
 
   <div class="about-preview">
     <div class="intro">

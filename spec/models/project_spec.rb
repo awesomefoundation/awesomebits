@@ -23,6 +23,14 @@ describe Project do
     end
   end
 
+  context '.winner_count' do
+    let!(:winners) { (1..2).map{|x| FactoryGirl.create(:project, :funded_on => Date.today) } }
+    let!(:non_winners){ (1..3).map{|x| FactoryGirl.create(:project, :funded_on => nil) } }
+    it 'counts the winners' do
+      Project.winner_count.should == 2
+    end
+  end
+
   context '.visible_to' do
     let(:role){ FactoryGirl.create(:role) }
     let(:user){ role.user }

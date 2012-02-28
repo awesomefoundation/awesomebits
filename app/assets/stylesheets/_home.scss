@@ -160,13 +160,16 @@ body.home-index {
     text-align: center;
     text-transform: uppercase;
 
-    span {
-      color: rgb(180,180,180);
-      font: 500 32px/48px $sans-serif;
+    color: rgb(180,180,180);
+    font: 500 32px/48px $sans-serif;
 
-      &.divider {
-        font: 500 48px/48px $sans-serif;
-      }
+    em {
+      font: bold 48px/48px "museo-sans", "brandon-grotesque", "proxima-nova", "Open Sans", "helvetica neue", sans-serif;
+      color: black;
+    }
+
+    span.divider {
+      font: 500 48px/48px $sans-serif;
     }
   }
 
@@ -216,13 +219,16 @@ body.home-index {
     text-align: center;
     text-transform: uppercase;
 
-    span {
-      color: rgb(180,180,180);
-      font: 500 32px/48px $sans-serif;
+    color: rgb(180,180,180);
+    font: 500 32px/48px $sans-serif;
 
-      &.divider {
-        font: 500 48px/48px $sans-serif;
-      }
+    em {
+      font: bold 48px/48px "museo-sans", "brandon-grotesque", "proxima-nova", "Open Sans", "helvetica neue", sans-serif;
+      color: black;
+    }
+
+    span.divider {
+      font: 500 48px/48px $sans-serif;
     }
   }
 

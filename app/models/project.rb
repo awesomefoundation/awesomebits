@@ -19,6 +19,10 @@ class Project < ActiveRecord::Base
   cattr_accessor :mailer
   self.mailer = ProjectMailer
 
+  def self.winner_count
+    where("funded_on IS NOT NULL").count
+  end
+
   def self.visible_to(user)
     joins(:chapter).
       joins("LEFT OUTER JOIN roles ON roles.chapter_id = chapters.id").
