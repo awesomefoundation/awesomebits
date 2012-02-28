@@ -45,12 +45,13 @@ describe Chapter do
     end
   end
 
-  context '.alphabetically' do
+  context '.for_display' do
     let!(:z_chapter){ FactoryGirl.create(:chapter, :name => "ZZZ") }
-    let!(:m_chapter){ FactoryGirl.create(:chapter, :name => "MMM") }
+    let!(:one_chapter){ FactoryGirl.create(:chapter, :name => "111") }
+    let!(:a_chapter){ FactoryGirl.create(:chapter, :name => "AAA") }
     let!(:any_chapter){ Chapter.find_by_name("Any") }
-    it 'sorta alphabetically' do
-      Chapter.alphabetically.should == [any_chapter, m_chapter, z_chapter]
+    it 'sorts alphabetically, but with "Any" in front' do
+      Chapter.for_display.should == [any_chapter, one_chapter, a_chapter, z_chapter]
     end
   end
 
@@ -62,14 +63,4 @@ describe Chapter do
       FactoryGirl.build(:chapter, :name => "XXX").any_chapter?.should be_false
     end
   end
-
-  context '.select_data' do
-    let!(:a_chapter){ FactoryGirl.create(:chapter, :name => "AAA") }
-    let!(:z_chapter){ FactoryGirl.create(:chapter, :name => "ZZZ") }
-    let!(:any_chapter){ Chapter.find_by_name("Any") }
-    it 'sorts alphabetically with Any chapter first' do
-      Chapter.select_data.should == [any_chapter, a_chapter, z_chapter]
-    end
-  end
-
 end

@@ -21,8 +21,9 @@ class Chapter < ActiveRecord::Base
     where("chapters.name != ?", "Any")
   end
 
-  def self.alphabetically
-    order(:name)
+  def self.for_display
+    select("(case chapters.name when 'Any' then '0 Any' end) as sort_name, chapters.*").
+    order("sort_name, chapters.name")
   end
 
   def self.invitable_by(user)
