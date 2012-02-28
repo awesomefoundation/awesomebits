@@ -54,6 +54,16 @@
   </section>
 
   <section class="project-side-bar">
+
+  <% unless @project.url.blank? %>
+    <article class="project-site-link">
+    <%= link_to @project.url do %>
+      Visit this project's web site
+      <span>→</span>
+    <% end %>
+    </article>
+  <% end %>
+
     <article class="project-state">
       <% if @project.winner? %>
         <div class="state funded">
@@ -65,15 +75,6 @@
         </div>
       <% end %>
     </article>
-
-    <% unless @project.url.blank? %>
-      <article class="project-site-link">
-        <%= link_to @project.url do %>
-          Visit this project's web site
-          <span>→</span>
-        <% end %>
-      </article>
-    <% end %>
 
     <article class="project-rss">
       <h2><%= t ".feed-title" %></h2>
