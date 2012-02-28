@@ -1,6 +1,14 @@
 require 'spec_helper'
 
 describe ProjectsController do
+  context 'viewing the index when logged out' do
+    before do
+      get :index
+    end
+
+    it { should redirect_to(root_path) }
+  end
+
   context 'viewing the index without a chapter' do
     let(:chapter) { FactoryGirl.create(:chapter) }
     let(:user) { FactoryGirl.create(:user) }

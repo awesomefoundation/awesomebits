@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
-  before_filter :ensure_chapter_or_admin, :only => [:index]
   before_filter :must_be_logged_in, :except => [:show, :new, :create]
+  before_filter :ensure_chapter_or_admin, :only => [:index]
   before_filter :must_be_logged_in_to_see_unpublished_projects, :only => [:show]
 
   include ApplicationHelper
