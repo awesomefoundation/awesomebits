@@ -122,6 +122,7 @@ GEM
     high_voltage (1.0.1)
     highline (1.6.11)
     hike (1.2.1)
+    hirb (0.6.0)
     httparty (0.8.1)
       multi_json
       multi_xml
@@ -297,6 +298,7 @@ DEPENDENCIES
   formtastic
   heroku
   high_voltage
+  hirb
   jquery-rails
   launchy
   newrelic_rpm

@@ -36,6 +36,10 @@ class Chapter < ActiveRecord::Base
     end
   end
 
+  def self.select_data
+    where("chapters.name = ?", 'Any') + where("chapters.name != ?", 'Any').order(:name)
+  end
+
   def any_chapter?
     name == "Any"
   end
