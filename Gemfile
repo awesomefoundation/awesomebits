@@ -31,6 +31,7 @@ gem 'nokogiri'
 
 group :development do
   gem "heroku"
+  gem "hirb"
 end
 
 group :development, :test do

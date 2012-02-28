@@ -29,7 +29,7 @@
     </div>
   </div>
 </div>
-<%= form.input :chapter_id, :collection => Chapter.all, :as => :select, :group_method => :name %>
+<%= form.input :chapter_id, :collection => Chapter.select_data, :prompt => '- Select -', :as => :select, :group_method => :name %>
 <div class="extra-questions" style="display:none">
   <%= form.input :extra_question_1, :as => :hidden, :wrapper_html => {:class => "extra-question"}  %>
   <%= form.input :extra_question_2, :as => :hidden, :wrapper_html => {:class => "extra-question"}  %>
