@@ -132,18 +132,12 @@ header.project {
     width: grid-width(4);
 
     .project-state {
-      @include background-image(linear-gradient(top, rgb(106, 189, 255), rgb(65, 165, 255)));
-      border: 1px solid $blue;
-      @include border-radius(3px);
       margin-bottom: 15px;
-      padding: 10px 15px;
 
       p {
         color: $base-font-color;
         font: normal 16px/20px $sans-serif;
         margin: 0px;
-        text-align: center;
-        text-shadow: 0 1px rgba(255,255,255, 0.3);
       }
     }
 
@@ -151,18 +145,9 @@ header.project {
       margin-bottom: 15px;
 
       a {
-        @include background-image(linear-gradient(top, rgb(106, 189, 255), rgb(65, 165, 255)));
-        border: 1px solid $blue;
-        @include border-radius(3px);
-        color: $base-font-color;
+        @include af-button();
         display: block;
         font: normal 16px/20px $sans-serif;
-        padding: 10px 15px;
-        text-decoration: none;
-        text-shadow: 0 1px rgba(255,255,255, 0.3);
-
-        &:hover {
-        }
 
         span {
           float: right;

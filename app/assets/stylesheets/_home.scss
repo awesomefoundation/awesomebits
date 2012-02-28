@@ -20,6 +20,8 @@ body.home-index {
     min-width: grid-width(12);
 
     .tagline {
+      @extend .animation-tagline-enter;
+      @include transition;
       @include inline-block;
       position: relative;
       width: 60%;
@@ -62,6 +64,8 @@ body.home-index {
 
 
     .project {
+      @extend .animation-tilefill;
+      @include transition;
       background: transparent;
       @include inline-block;
       margin: 0px;
@@ -69,6 +73,16 @@ body.home-index {
       position: relative;
       width: 20%;
       vertical-align: top;
+
+      $t: 0.05s;
+      $delay: 2s;
+
+      @for $child from 1 through 15 {
+        &:nth-child(#{$child}) {
+          @include animation-delay($delay);
+        }
+        $delay: $delay + $t;
+      }
 
       .image-wrapper {
         display: block;
@@ -149,6 +163,7 @@ body.home-index {
 }
 
 .what-how {
+  @extend .animation-content-appear;
   border-bottom: 1px solid rgb(220,220,220);
   margin: 0 auto 20px;
   padding: 60px 0px;
@@ -208,6 +223,7 @@ body.home-index {
 }
 
 .who-where {
+  @extend .animation-content-appear;
   border-bottom: 1px solid rgb(220,220,220);
   margin: 0 auto 120px;
   padding: 60px 0px;
@@ -281,6 +297,7 @@ body.home-index {
 }
 
 .news {
+  @extend .animation-content-appear;
   background: rgb(240,240,240);
   border: 1px solid rgb(200,200,200);
   @include border-radius(4px);

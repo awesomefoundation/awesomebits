@@ -1,7 +1,9 @@
-// Slide in tiles
+
+// projects fade in
 //************************************************************************//
+
 .animation-tilefill {
-  @include animation(tilefill 0.25s $ease-out-sine);
+  @include animation(tilefill 0.5s $ease-out-sine);
   @include animation-fill-mode(both);
 }
 
@@ -23,17 +25,57 @@
    @-moz-keyframes tilefill { @include tilefill; }
         @keyframes tilefill { @include tilefill; }
 
-$t: 0.05s;
-$delay: $t;
-
-//@for $child from 1 through 15 {
-  //&:nth-child(#{$child}) {
-    //@extend .animation-tilefill;
-    //@include animation-delay($delay);
-    //@include transition;
-  //}
-  //$delay: $delay + $t;
-//}
-
 // add @extend .animation-tilefill; to all animated elements
 // all animated elements also have @include transition
+
+
+// tagline appear animation
+//************************************************************************//
+
+.animation-tagline-enter {
+  @include animation(tagline-enter 1s $ease-out-sine);
+  @include animation-fill-mode(both);
+  @include animation-delay(1s);
+}
+
+@mixin tagline-enter-keyframes {
+  0% {
+    opacity: 0;
+    @include transform(scale(0.0));
+  }
+  60% {
+    @include transform(scale(1.05));
+  }
+  80% {
+    @include transform(scale(1));
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes tagline-enter { @include tagline-enter-keyframes; }
+   @-moz-keyframes tagline-enter { @include tagline-enter-keyframes; }
+        @keyframes tagline-enter { @include tagline-enter-keyframes; }
+
+// tagline appear animation
+//************************************************************************//
+
+.animation-content-appear {
+  @include animation(content-appear 1.3s $ease-out-sine);
+  @include animation-fill-mode(both);
+  @include animation-delay(3s);
+}
+
+@mixin content-appear-keyframes {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes content-appear { @include content-appear-keyframes; }
+   @-moz-keyframes content-appear { @include content-appear-keyframes; }
+        @keyframes content-appear { @include content-appear-keyframes; }
