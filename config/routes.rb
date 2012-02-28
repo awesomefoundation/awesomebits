@@ -32,8 +32,14 @@ Awesomefoundation::Application.routes.draw do
 
     resources :pages
 
+    match "description", :to => "high_voltage/pages#show", :id => "description"
+    match "about_us",    :to => "high_voltage/pages#show", :id => "about_us"
+    match "contact",     :to => "high_voltage/pages#show", :id => "contact"
+    match "faq",         :to => "high_voltage/pages#show", :id => "faq"
+    match "trustees",    :to => "high_voltage/pages#show", :id => "trustees"
+
     root :to => 'home#index'
   end
+  scope "(/:locale)", :locale => /en/, &routes
   routes.call
-  scope "(:locale)", :locale => /en/, &routes
 end
