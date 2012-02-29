@@ -40,5 +40,5 @@ end
 
 step 'the winning project should belong to my chapter' do
   visit(project_path(@winning_project))
-  page.should have_css(".meta-data p:contains('A #{@current_chapter.name} project')")
+  page.should have_css(".meta-data p:contains('#{@current_chapter.name} project')")
 end

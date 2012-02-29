@@ -1,17 +1,20 @@
+header.users {
+  margin-bottom: 30px;
+
+  h1 {
+    color: $base-font-color;
+    font: bold 38px/44px $sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
+
 section.awesome-members {
-  background: rgb(255,255,255);
+  background: rgb(240,240,240);
   border: 1px solid rgb(170,170,170);
   @include border-radius(4px);
   margin: 20px auto;
   padding: 30px 40px;
-
-  header {
-    border-bottom: 1px solid rgb(200,200,200);
-    margin-bottom: 30px;
-
-    h1 {
-    }
-  }
 
   table.members {
     tr {
@@ -19,6 +22,7 @@ section.awesome-members {
         text-transform: capitalize;
 
         h2 {
+          color: $base-font-color;
           font: bold 12px/16px $sans-serif;
           display: inline;
         }
@@ -27,21 +31,12 @@ section.awesome-members {
         .promote-user {
           @include button(rgb(240,240,240));
           @include inline-block;
-          padding: 4px 0px;
+          font-weight: normal;
+          padding: 5px 0px 3px;
           text-align: center;
           text-decoration: none;
           text-shadow: 0 1px rgba(255,255,255, 0.4);
-          width: 120px;
           display: none;
-        }
-
-        &.promote-demote-dean,
-        &.promote-demote-admin {
-          width: 120px;
-        }
-
-        &.name {
-          width: 300px;
         }
 
         &.trustee {
@@ -55,7 +50,6 @@ section.awesome-members {
             display: block;
           }
         }
-
       }
 
       &.admin {

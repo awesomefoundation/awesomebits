@@ -46,6 +46,7 @@ en:
       invite-trustee: Invite a Trustee
       edit-profile: Edit My Profile
       edit-chapter-profile: Edit Chapter Profile
+      view-all-users: View all Users
   home:
     index:
       title: Forwarding the interest of Awesome in the universe, $1,000 at a time.
@@ -106,9 +107,10 @@ en:
       start-date: start date
       end-date: end date
       short-list-filter: My Short-list
+      title: "Projects for %{name}"
     show:
       edit: Edit Project
-      byline-html: "A <span class='chapter-name'>%{chapter_name}</span> project created by <span class='project-starter'>%{submitter_name}</span>"
+      byline-html: "<span class='chapter-name'>%{chapter_name}</span> project created by <span class='project-starter'>%{submitter_name}</span>"
       funder-html: "Funded by <span class='chapter-name'>%{name}</span>"
       submitted-to-html: "Project application submitted to <span class=''>%{name}</span>"
       description:

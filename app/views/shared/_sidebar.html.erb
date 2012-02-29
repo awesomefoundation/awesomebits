@@ -1,47 +1,45 @@
-<div class="avatar">
+<div class="user-profile-image">
   <%= image_tag(current_user.gravatar_url) %>
 </div>
 
 <h2><%= current_user.first_name %> <%= current_user.last_name %></h2>
 
-<div class="editing">
-  <%= link_to t("layouts.sidebar.projects"), chapter_projects_path(@chapter) %>
-</div>
-
-<% unless @chapter.any_chapter? %>
-  <div class="editing">
-    <%= link_to t("layouts.sidebar.finalists"), chapter_finalists_path(@chapter) %>
-  </div>
-
-  <div class="editing">
-    <%= link_to t("layouts.sidebar.members"), chapter_users_path(@chapter) %>
-  </div>
-<% end %>
-
-<% if current_user.can_create_chapters? %>
-  <div class="editing">
-    <%= link_to t("layouts.sidebar.create-chapter"), new_chapter_path %>
-  </div>
-<% end %>
-
-<% if current_user.can_invite? %>
-  <div class="editing">
-    <%= link_to t("layouts.sidebar.invite-trustee"), new_invitation_path %>
-  </div>
-<% end %>
-
-<% if current_user.admin? %>
-  <div class="editing">
-    <%= link_to "View all Users", users_path %>
-  </div>
-<% end %>
-
-<div class="editing">
-  <%= link_to t("layouts.sidebar.edit-profile"), edit_user_path(current_user) %>
-</div>
-
-<% if current_user.can_manage_chapter?(@chapter) %>
-  <div class="editing">
-    <%= link_to t("layouts.sidebar.edit-chapter-profile"), edit_chapter_path(@chapter) %>
-  </div>
-<% end %>
+<ol>
+  <li>
+    <%= link_to t("layouts.sidebar.edit-profile"), edit_user_path(current_user) %>
+  </li>
+  <% if current_user.can_invite? %>
+    <li>
+      <%= link_to t("layouts.sidebar.invite-trustee"), new_invitation_path %>
+    </li>
+  <% end %>
+  <% if current_user.can_create_chapters? %>
+    <li>
+      <%= link_to t("layouts.sidebar.create-chapter"), new_chapter_path %>
+    </li>
+  <% end %>
+  <% if current_user.admin? %>
+    <li>
+      <%= link_to t("layouts.sidebar.view-all-users"), users_path %>
+    </li>
+  <% end %>
+  <li class="section-title">
+    <h3><%= @chapter.name %></h3>
+  </li>
+  <li>
+    <%= link_to t("layouts.sidebar.projects"), chapter_projects_path(@chapter) %>
+  </li>
+  <% unless @chapter.any_chapter? %>
+    <li>
+      <%= link_to t("layouts.sidebar.finalists"), chapter_finalists_path(@chapter) %>
+    </li>
+    <li>
+      <%= link_to t("layouts.sidebar.members"), chapter_users_path(@chapter) %>
+    </li>
+  <% end %>
+  <% if current_user.can_manage_chapter?(@chapter) %>
+    <li>
+      <%= link_to t("layouts.sidebar.edit-chapter-profile"), edit_chapter_path(@chapter) %>
+    </li>
+  <% end %>
+</ol>

@@ -2,3 +2,24 @@
   border-bottom: 3px solid $pink;
   color: rgb(255,255,255);
 }
+
+
+.user-avatar {
+  @include background-image(linear-gradient(90deg, rgb(240,240,240), rgb(250,250,250)));
+  border: 1px solid rgb(200,200,200);
+  @include border-radius(70px);
+  display: block;
+  height: 122px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  padding: 5px;
+  width: 122px;
+  z-index: 2;
+
+  img {
+    @include border-radius(70px);
+    display: block;
+    max-width: 122px;
+  }
+}

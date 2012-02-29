@@ -11,75 +11,51 @@ body.projects-index {
   padding: 0px 20px 20px 0px;
   width: 180px;
 
-  div.avatar {
-    background: rgb(220,220,220);
-    border: 6px solid white;
-    @include border-radius(70px);
-    @include box-shadow(0 0 5px 0 rgba(0, 0, 0, 0.2));
-    display: block;
-    height: 122px;
-    margin: 0 auto 10px auto;
-    overflow: hidden;
-    width: 122px;
-
-    img {
-      @include border-radius(70px);
-      max-width: 122px;
-    }
-  }
-
-  div.editing {
-    border-bottom: 1px dotted rgb(200,200,200);
-    margin-bottom: 15px;
-    padding-bottom: 15px;
+  .user-profile-image {
+    @extend .user-avatar;
   }
 
   h2 {
     border-bottom: 1px dotted rgb(200,200,200);
     font: 300 18px/20px $sans-serif;
-    margin-bottom: 15px;
+    margin: 15px 0px;
     padding-bottom: 30px;
     text-align: center;
   }
 
-  a {
-    color: rgb(55,55,55);
-    display: block;
-    font: normal 12px/14px $sans-serif;
-    padding: 5px 0px 5px 10px;
-    text-decoration: none;
-
-    &:hover {
-      background: $pink;
-      color: rgb(255,255,255);
-    }
-  }
-
-
   ol {
     margin: 0px;
-    padding: 0px;
 
     li {
       border-bottom: 1px dotted rgb(200,200,200);
       list-style: none;
       margin-bottom: 15px;
-      padding: 5px 0px 15px 0px;
+      padding: 0px 0px 15px 0px;
 
-      &:last-child {
-        border: none;
-        margin: 0px;
-        padding-bottom: 0px;
+      &:first-child {
+        border-top: none;
       }
 
-      a {
-        padding-left: 10px;
+      &.section-title {
+        padding: 15px 0px 5px 0px;
       }
 
       h3 {
-        font: bold 12px/16px $sans-serif;
-        padding-left: 10px;
-        text-transform: uppercase;
+        color: $base-font-color;
+        font: bold 14px/22px $sans-serif;
+      }
+
+      a {
+        color: rgb(55,55,55);
+        display: block;
+        font: normal 12px/14px $sans-serif;
+        padding: 5px 0px 5px 10px;
+        text-decoration: none;
+
+        &:hover {
+          background: $pink;
+          color: rgb(255,255,255);
+        }
       }
     }
   }
@@ -199,11 +175,12 @@ body.projects-index {
       div.short-list-toggle {
         float: left;
         margin-right: 20px;
+        position: relative;
 
         input[type="checkbox"] {
-          display: none;
-          margin-top: 2px;
-          vertical-align: middle;
+          left: 12px;
+          position: absolute;
+          top: 10px;
         }
 
         label {
@@ -211,9 +188,10 @@ body.projects-index {
           border: 1px solid rgb(190,190,190);
           @include border-radius(3px);
           font: normal 12px $sans-serif;
+          height: 22px;
           margin: 0px;
           text-shadow: 0 1px rgba(255,255,255, 0.8);
-          padding: 6px 12px 5px 12px;
+          padding: 8px 12px 0px 30px;
 
           &:hover {
             background: rgb(220,220,220);
@@ -254,6 +232,12 @@ body.projects-index {
     }
   }
 
+  h1 {
+    color: $base-font-color;
+    font: bold 18px/22px $sans-serif;
+    text-transform: uppercase;
+  }
+
   article.project {
     border: 1px solid rgb(200,200,200);
     background: rgb(255,255,255);
@@ -270,13 +254,13 @@ body.projects-index {
         padding: 10px;
 
         a {
-          color: rgb(50,50,50);
+          color: $base-font-color;
           float: left;
           font: bold 24px $sans-serif;
           text-decoration: none;
 
           &:hover {
-            color: rgb(100,100,100);
+            color: $pink;
           }
         }
 
@@ -307,6 +291,16 @@ body.projects-index {
 
         .spam {
           float: right;
+          margin: 0px;
+
+          a {
+            color: $base-font-color;
+            text-decoration: none;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
         }
       }
     }
@@ -331,12 +325,12 @@ body.projects-index {
         background: rgba(245, 245, 245, 1);
         border-top: 1px solid rgb(200,200,200);
         @include border-bottom-radius(4px);
+        color: $pink;
         display: block;
         text-decoration: none;
         @include transition(all 0.2s ease-out);
 
         p {
-          color: rgb(50,50,50);
           font: 300 12px/14px $sans-serif;
           padding: 5px 10px;
           text-align: right;
@@ -344,6 +338,7 @@ body.projects-index {
 
         &:hover {
           background: rgba(230, 230, 230, 1);
+          text-decoration: underline;
         }
       }
     }

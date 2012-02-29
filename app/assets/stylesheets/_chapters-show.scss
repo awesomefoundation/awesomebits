@@ -222,23 +222,7 @@ body.chapters-show {
             text-decoration: none;
 
             div.avatar {
-              @include background-image(linear-gradient(90deg, rgb(240,240,240), rgb(250,250,250)));
-              border: 1px solid rgb(200,200,200);
-              @include border-radius(70px);
-              display: block;
-              height: 122px;
-              margin: 0 auto;
-              overflow: hidden;
-              position: relative;
-              padding: 5px;
-              width: 122px;
-              z-index: 2;
-
-              img {
-                @include border-radius(70px);
-                display: block;
-                max-width: 122px;
-              }
+              @extend .user-avatar;
             }
 
             .trustee-details {
@@ -356,6 +340,14 @@ body.chapters-show {
           color: $pink;
         }
       }
+
+      &.event {
+      }
+    }
+
+    .news-events-divider {
+     border-top: 1px dashed rgb(200,200,200);
+     padding-top: 10px;
     }
   }
 }

@@ -99,6 +99,17 @@ header.project {
       color: rgb(100,100,100);
       font: normal 14px/22px $sans-serif;
       float: left;
+
+      span {
+        a {
+          color: $pink;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
     }
 
     div.addthis_toolbox {
@@ -138,6 +149,10 @@ header.project {
         color: $base-font-color;
         font: normal 16px/20px $sans-serif;
         margin: 0px;
+
+        span.chapter-name {
+          text-transform: uppercase;
+        }
       }
     }
 
