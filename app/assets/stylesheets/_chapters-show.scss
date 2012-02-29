@@ -76,20 +76,24 @@ body.chapters-show {
 
   a.nav {
     background: rgba(0,0,0, 0.7);
-    @include border-radius(30px);
+    @include border-radius(60px);
     display: block;
-    height: 60px;
+    height: 120px;
     position: absolute;
-    top: 50%;
-    width: 60px;
+    top: 90px;
+    width: 120px;
     z-index: 3;
 
+    &:hover {
+      background: rgba($pink, 0.7);
+    }
+
     &.right {
-      right: 30px;
+      right: -60px;
     }
 
     &.left {
-      left: 30px;
+      left: -60px;
     }
   }
 

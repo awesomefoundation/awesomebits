@@ -151,7 +151,6 @@ section.chapter-menu {
           font: normal 14px/16px $sans-serif;
           padding: 3px 0;
           text-decoration: none;
-          @include transition(all 0.2s linear);
 
           &:hover {
             color: rgb(255, 255, 255);

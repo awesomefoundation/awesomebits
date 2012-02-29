@@ -84,25 +84,25 @@
 //************************************************************************//
 
 .animation-logo-wiggle {
-  @include animation(logo-wiggle 0.5s linear);
+  @include animation(logo-wiggle 0.4s linear);
   @include animation-fill-mode(both);
 }
 
 @mixin logo-wiggle-keyframes {
   0% {
-    left: 4px
+    @include transform(rotate(-10deg));
   }
   25% {
-    left: -4px
+    @include transform(rotate(10deg));
   }
   50% {
-    left: 4px
+    @include transform(rotate(-10deg));
   }
   75% {
-    left: -4px
+    @include transform(rotate(10deg));
   }
   100% {
-    left: 0px
+    @include transform(rotate(0deg));
   }
 }
 

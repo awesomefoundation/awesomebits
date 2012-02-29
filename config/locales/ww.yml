@@ -74,7 +74,7 @@ en:
       trustees:
         header: Meet the Trustees
         about: About Us
-        news: "%{name} News"
+        news: "%{name} News & Events"
     edit:
       title: Edit chapter information
     new:
