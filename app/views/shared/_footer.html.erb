@@ -1,7 +1,7 @@
 <footer>
   <p>
-    <%= link_to t("layouts.application.contact"), page_path("contact") %>
-    <%= link_to t("layouts.application.want_to_help"), page_path("trustees") %>
+    <%= link_to t("layouts.application.contact"), contact_path %>
+    <%= link_to t("layouts.application.want_to_help"), trustees_path %>
     <% if signed_in? -%>
       <%= link_to t("layouts.application.sign-out"), sign_out_path, :method => :delete %>
     <% else -%>

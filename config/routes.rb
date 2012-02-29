@@ -4,6 +4,10 @@ Awesomefoundation::Application.routes.draw do
     match "sign_in",  :to => "sessions#new"
     match "sign_out", :to => "sessions#destroy", :via => :delete
 
+    match "about_us", :to => "pages#about_us"
+    match "contact",  :to => "pages#contact"
+    match "trustees", :to => "pages#trustees"
+
     resources :users do
       resource :admins, :only => [:create, :destroy]
     end
