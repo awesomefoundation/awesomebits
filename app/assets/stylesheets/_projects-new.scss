@@ -53,15 +53,72 @@
       }
     }
 
+    .image-upload {
+      .current-images {
+        border-bottom: 1px solid rgb(200,200,200);
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+
+        label {
+          margin-bottom: 15px;
+          span {
+            font-weight: normal;
+          }
+        }
+
+        ul.old-photos {
+          li {
+            background: rgb(255, 255,255);
+            border: 1px solid rgb(200,200,200);
+            @include border-radius(20px);
+            @include box-shadow(0 1px 0 0 rgba(255,255,255, 0.75), inset 0 0 3px 0 rgba(0,0,0, 0.2));
+            @include linear-gradient(rgb(246,246,246), rgb(253,253,253));
+            list-style: none;
+            margin-bottom: 10px;
+            padding: 10px 15px;
+
+            &:last-child {
+              margin: 0px;
+            }
+
+            a.remove-image {
+              color: $base-font-color;
+              float: right;
+              margin-right: 5px;
+
+              &:hover {
+                color: $pink;
+              }
+            }
+
+            &:hover {
+              background: rgb(230,230,230);
+              cursor: move;
+            }
+          }
+        }
+      }
+    }
+
     .input.file {
       .multi-input {
-        background: rgb(230,230,230);
+        background: rgb(255,255,255);
         border-top: 1px solid rgb(200,200,200);
-        padding: 10px 5px;
+        border: 1px solid rgb(200,200,200);
+        @include border-radius(20px);
+        @include box-shadow(0 1px 0 0 rgba(255,255,255, 0.75), inset 0 0 3px 0 rgba(0,0,0, 0.2));
+        @include linear-gradient(rgb(246,246,246), rgb(253,253,253));
+        margin-bottom: 10px;
+        padding: 8px 15px;
+
+        &:last-child {
+          margin: 0px;
+        }
 
         &.noremove {
           background: transparent;
           border: none;
+          @include box-shadow(none);
           margin: 5px 0 10px 0;
 
           a.remove-image {

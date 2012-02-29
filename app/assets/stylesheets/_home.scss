@@ -17,7 +17,6 @@ body.home-index {
 
     .tagline {
       @extend .animation-tagline-enter;
-      @include transition;
       @include inline-block;
       position: relative;
       width: 60%;

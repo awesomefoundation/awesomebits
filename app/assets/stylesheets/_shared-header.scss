@@ -105,8 +105,8 @@ section.chapter-menu {
   }
 
   .inner-wrapper {
-    margin: 20px auto;
-    padding: 20px 0 0;
+    margin: 40px auto 0;
+    padding: 0;
     width: grid-width(12);
 
     h1 {
@@ -121,7 +121,6 @@ section.chapter-menu {
       @include column-count(4);
       @include column-gap($gw-gutter);
       @include column-width(grid-width(3));
-      padding: 10px 0 10px 0;
 
       article.country {
         @include inline-block;

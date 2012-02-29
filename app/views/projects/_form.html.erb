@@ -14,12 +14,18 @@
 </div>
 <div class="image-upload">
   <% unless form.object.photos.blank? %>
-    <ul class="old-photos">
-      <%= form.input :photo_order, :as => :hidden %>
-      <% form.object.photos.each do |photo| %>
-        <li data-id="<%= photo.id %>"><a href="#" data-remove="true">x</a><span><%= photo.image_file_name %></span></li>
-      <% end %>
-    </ul>
+    <section class="current-images">
+      <label>Current images <span>(drag to re-order)</span></label>
+      <ul class="old-photos">
+        <%= form.input :photo_order, :as => :hidden %>
+        <% form.object.photos.each do |photo| %>
+          <li data-id="<%= photo.id %>">
+            <span><%= photo.image_file_name %></span>
+            <a href="#" class="remove-image" data-remove="true">remove</a>
+          </li>
+        <% end %>
+      </ul>
+    </section>
   <% end %>
   <div class="input file optional">
     <label class="file optional"><%= t "simple_form.labels.project.new_photos" %></label>

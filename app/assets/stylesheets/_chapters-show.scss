@@ -69,19 +69,41 @@ body.chapters-show {
 }
 
 .chapter-header-wrapper {
-  margin: 0 auto;
+  height: 300px;
+  overflow: hidden;
   position: relative;
+  width: 100%;
 
+  a.nav {
+    background: rgba(0,0,0, 0.7);
+    @include border-radius(30px);
+    display: block;
+    height: 60px;
+    position: absolute;
+    top: 50%;
+    width: 60px;
+    z-index: 3;
+
+    &.right {
+      right: 30px;
+    }
+
+    &.left {
+      left: 30px;
+    }
+  }
 
   .gallery-container {
-    overflow: scroll;
-    width: 100%;
+    position: absolute;
   }
 
   .chapter-projects {
     @extend .clearfix;
+    @include inline-block;
+    left: 0px;
     margin-left: 10px;
-    width: 5100px;
+    position: relative;
+    top: 0px;
 
     .project {
       background: transparent;

@@ -12,9 +12,9 @@
   </div>
 </header>
 
-<section class="chapter-header-wrapper">
-  <div class="gallery-container">
-    <section class="chapter-projects">
+<section class="chapter-header-wrapper jThumbnailScroller">
+  <div class="gallery-container jTscrollerContainer">
+    <section class="chapter-projects jTscroller">
       <% @chapter.winning_projects.each do |project| %>
         <article class="project" data-id="<%= project.id %>">
           <%= link_to project do %>
@@ -34,6 +34,8 @@
     <p><%= t(".recent_winners") %></p>
     <a href="#"><%= t(".see_more") %></a>
   </nav>
+  <a href="#" class="nav left jTscrollerPrevButton"></a>
+  <a href="#" class="nav right jTscrollerNextButton"></a>
 </section>
 
 <section class="chapter-info">
