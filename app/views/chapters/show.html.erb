@@ -23,7 +23,8 @@
             <div class="image-wrapper">
               <div class="project-name">
                 <h2><%= project.title %></h2>
-                <p>By <%= project.name %></p>
+                <p><%= t(".byline", :name => project.name) %> </p>
+                <p><%= l project.funded_on, :format => :funding %></p>
               </div>
               <%= image_tag(project.index_image_url) %>
             </div>

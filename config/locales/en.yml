@@ -70,6 +70,7 @@ en:
       edit: Edit Chapter
       recent_winners: Recently funded projects
       see_more: See more Awesomeness
+      byline: "By %{name}"
       trustees:
         header: Meet the Trustees
         about: About Us

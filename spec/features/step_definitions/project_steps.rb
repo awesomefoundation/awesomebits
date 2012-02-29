@@ -201,3 +201,21 @@ step 'I should see that 5 projects have been funded for $5000' do
   page.should have_css(".what-how h2 .funding:contains('$5,000')")
   page.should have_css(".what-how h2 .winners:contains('5')")
 end
+
+step 'that chapter has 5 winning projects' do
+  @winning_projects = (1..5).map do |x|
+    FactoryGirl.create(:project, :chapter => @current_chapter, :funded_on => x.months.ago)
+  end
+end
+
+step 'I should see those 5 projects' do
+  @winning_projects.each_with_index do |project, x|
+    page.should have_css(".image-wrapper img[src*='#{project.photos[x].image_file_name}']")
+  end
+end
+
+step 'I should when each has won' do
+  @winning_projects.each_with_index do |project, x|
+    page.should have_css(".image-wrapper p:contains('#{I18n.l project.funded_on, :format => :funding}')")
+  end
+end
