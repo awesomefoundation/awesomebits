@@ -4,13 +4,19 @@
   <%= form.input :phone %>
 </div>
 <div class="project-info">
-  <%= form.input :title %>
+  <%= form.input :title, :maxlength => 50 %>
   <%= form.input :url %>
   <%= form.input :rss_feed_url %>
 </div>
 <div class="descriptions">
-  <%= form.input :description, :input_html => { :class => "about-me" } %>
-  <%= form.input :use, :input_html => { :class => "project-desc" } %>
+  <%= form.input :description, :maxlength => 2500, :input_html => { :class => "about-me" } %>
+  <div class="chars_left">
+    You have <span id="project_description_chars_left">2500</span> chars left
+  </div>
+  <%= form.input :use, :maxlength => 500, :input_html => { :class => "project-desc" } %>
+  <div class="chars_left">
+    You have <span id="project_use_chars_left">500</span> chars left
+  </div>
 </div>
 <div class="image-upload">
   <% unless form.object.photos.blank? %>

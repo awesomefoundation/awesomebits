@@ -167,6 +167,11 @@ section.chapter-form {
     margin: 0 0 20px 0;
   }
 
+  div.chars_left {
+    margin-top: -15px;
+    margin-bottom: 15px;
+  }
+
   label {
     &.select {
       margin-right: 10px;
