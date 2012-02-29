@@ -43,6 +43,6 @@ Awesomefoundation::Application.routes.draw do
 
     root :to => 'home#index'
   end
-  scope "(/:locale)", :locale => /en/, &routes
+  scope "(:locale)", :locale => /en/, &routes
   routes.call
 end
