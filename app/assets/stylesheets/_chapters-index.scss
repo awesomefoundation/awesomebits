@@ -1,52 +1,104 @@
 body.chapters-index {
   hgroup {
-    border-bottom: 1px solid rgb(200,200,200);
-    margin: 0 auto 50px;
-    width: grid-width(12);
+    border-bottom: 3px solid $pink;
+    margin: 0 auto 80px;
+    padding-bottom: 10px;
+    width: grid-width(11);
 
     h2 {
-      font: bold 34px/44px $sans-serif;
+      font: bold 38px/44px $sans-serif;
       text-align: center;
+      text-transform: uppercase;
     }
   }
 }
 
 section.chapters {
   @extend .clearfix;
+  margin: 0 auto;
+  width: grid-width(11);
 }
 
 .chapter {
-  background: rgb(240,240,240);
-  @include border-radius(4px);
+  border-bottom: 3px solid $pink;
   float: left;
-  height: 250px;
-  margin: 0px $gw-gutter $gw-gutter 0px;
-  width: grid-width(6);
+  margin-right: grid-width(1);
+  margin-bottom: 60px;
+  position: relative;
+  width: grid-width(5) + $gw-gutter;
 
   &:nth-child(2n) {
     margin-right: 0px;
   }
 
   .inner-wrapper {
-    background: rgb(255,255,255);
+    @extend .clearfix;
     @include border-radius(4px);
-    height: 210px;
-    margin: 10px;
-    padding: 10px;
+    padding: 10px 0px;
   }
 
   h2 {
-    border-bottom: 1px dotted rgb(200,200,200);
-    margin-bottom: 20px;
-    padding-bottom: 5px;
+    float: left;
+    margin: 0px;
+
     a {
       color: $base-font-color;
+      color: $pink;
+      font: bold 26px/28px $sans-serif;
       text-decoration: none;
+      text-transform: uppercase;
+
+      &:hover {
+        color: $pink;
+        color: $base-font-color;
+      }
     }
   }
 
-  p {
+  .external-links {
+    float: right;
+    padding-top: 1px;
+
+    a {
+      background: transparent;
+      display: block;
+      float: left;
+      height: 25px;
+      margin: 0px 0px 0px 10px;
+      opacity: 0.7;
+      position: relative;
+      width: 25px;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &:active {
+        top: 1px;
+      }
+
+      &.twitter_url {
+        background: url("twitter.png");
+      }
+
+      &.facebook_url {
+        background: url("fb.png");
+      }
+
+      &.blog_url {
+        background: url("blog-2.png");
+      }
+    }
+  }
+
+  p.country {
+    background: rgb(255,255,255);
+    bottom: -8px;
     color: $lighter-base-font-color;
+    font: normal 14px/16px $serif;
+    margin: 0px;
+    padding-right: 10px;
+    position: absolute;
   }
 }
 
