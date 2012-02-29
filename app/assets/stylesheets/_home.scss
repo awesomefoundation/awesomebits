@@ -6,7 +6,7 @@ body.home-index {
 }
 
 .awesome-wrapper {
-  margin: 0 auto;
+  margin: 0 auto 60px;
   position: relative;
 
   .awesome-projects {
@@ -157,20 +157,19 @@ body.home-index {
   }
 }
 
-.what-how {
+.what-how,
+.who-where {
   @extend .animation-content-appear;
-  border-bottom: 1px solid rgb(220,220,220);
-  margin: 0 auto 20px;
-  padding: 60px 0px;
   width: grid-width(12);
 
   h2 {
-    font: bold 48px/48px $sans-serif;
+    border-bottom: 1px solid rgb(220,220,220);
+    color: $base-font-color;
+    font: 500 32px/48px $sans-serif;
     margin-bottom: 50px;
+    padding-bottom: 10px;
     text-align: center;
     text-transform: uppercase;
-    color: rgb(180,180,180);
-    font: 500 32px/48px $sans-serif;
 
     em {
       color: $pink;
@@ -181,6 +180,10 @@ body.home-index {
       font: 500 48px/48px $sans-serif;
     }
   }
+}
+
+.what-how {
+  margin: 0 auto 100px;
 
   .info-graphic {
     @extend .clearfix;
@@ -217,34 +220,12 @@ body.home-index {
 }
 
 .who-where {
-  @extend .animation-content-appear;
-  border-bottom: 1px solid rgb(220,220,220);
-  margin: 0 auto 120px;
-  padding: 60px 0px;
-  width: grid-width(12);
-
-  h2 {
-    font: bold 48px/48px $sans-serif;
-    margin-bottom: 50px;
-    text-align: center;
-    text-transform: uppercase;
-    color: rgb(180,180,180);
-    font: 500 32px/48px $sans-serif;
-
-    em {
-      color: $pink;
-      font: bold 48px/48px "museo-sans", "brandon-grotesque", "proxima-nova", "Open Sans", "helvetica neue", sans-serif;
-    }
-
-    span.divider {
-      font: 500 48px/48px $sans-serif;
-    }
-  }
+  margin: 0 auto 140px;
 
   .about-preview {
     @extend .clearfix;
     border-bottom: 1px solid rgb(200,200,200);
-    padding: 40px 0px;
+    padding-bottom: 40px;
 
     .intro {
       float: left;
@@ -272,21 +253,6 @@ body.home-index {
       img {}
     }
   }
-
-  .awesome-chapters {
-    padding-top: 40px;
-
-    a {
-      color: $base-font-color;
-      display: block;
-      font: bold 14px/20px $sans-serif;
-      text-decoration: none;
-
-      &:hover {
-        color: $pink;
-      }
-    }
-  }
 }
 
 .news {
@@ -294,7 +260,7 @@ body.home-index {
   background: rgb(240,240,240);
   border: 1px solid rgb(200,200,200);
   @include border-radius(4px);
-  margin: 0 auto;
+  margin: 0 auto 60px;
   width: grid-width(12);
 
   header {
@@ -363,15 +329,36 @@ body.home-index {
         }
 
         a {
-          color: $lighter-base-font-color;
-          font: normal 14px/20px $sans-serif;
+          color: $pink;
+          font: bold 14px/20px $sans-serif;
           text-decoration: none;
 
           &:hover {
-            color: $pink;
+            text-decoration: underline;
           }
         }
       }
+    }
+  }
+}
+
+.awesome-chapters {
+  @include border-radius(4px);
+  @include column-count(4);
+  @include column-gap($gw-gutter);
+  @include column-width(grid-width(3));
+  margin: 0 auto;
+  padding-top: 40px;
+  width: grid-width(12);
+
+  a {
+    color: $base-font-color;
+    display: block;
+    font: bold 14px/20px $sans-serif;
+    text-decoration: none;
+
+    &:hover {
+      color: $pink;
     }
   }
 }

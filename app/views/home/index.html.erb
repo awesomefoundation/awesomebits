@@ -72,14 +72,6 @@
       <%= image_tag("mini_map.png") %>
     </div>
   </div>
-
-  <section class="awesome-chapters">
-    <% @chapters.each do |chapter| %>
-        <%= link_to chapter, :class => "image-wrapper" do %>
-          <%= chapter.name %>
-        <% end %>
-    <% end %>
-  </section>
 </section>
 
 <section class="news">
@@ -114,6 +106,14 @@
       </div>
     </section>
   </div>
+</section>
+
+<section class="awesome-chapters">
+  <% @chapters.each do |chapter| %>
+      <%= link_to chapter, :class => "image-wrapper" do %>
+        <%= chapter.name %>
+      <% end %>
+  <% end %>
 </section>
 
 
