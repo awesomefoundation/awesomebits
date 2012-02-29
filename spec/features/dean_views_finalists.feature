@@ -14,3 +14,9 @@ Feature: A dean can view the voting tally for a chapter
 
     When I filter the finalists to only show yesterday and the day before
     Then I should only see that 3 votes that were cast in that time
+
+  Scenario: Switching between chapters
+    Given I am logged in as a dean for 2 chapters
+    When I view the finalists for the first chapter
+    And I select the other chapter from the navigation dropdown
+    Then I should see the finalists for the other chapter

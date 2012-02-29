@@ -8,13 +8,12 @@
   </section>
   <section class="application-filters">
     <nav>
-      <label class="chapter-selection" for="chapter-selection">
+      <a href="#" class="chapter-selection">
         <span><%= @chapter.name %></span>
         <span class="arrow"></span>
-      </label>
-      <input id="chapter-selection" type="checkbox">
+      </a>
       <ol class="chapter-selector">
-        <% selectable_chapters_for(current_user).each do |chapter| %>
+        <% selectable_chapters_for(current_user)[1..-1].each do |chapter| %>
           <li>
             <%= link_to chapter.name, chapter_finalists_path(chapter) %>
           </li>
@@ -33,7 +32,7 @@
         <input class="string optional prefilled" id="filter_end" name="end" size="50" type="text" value="<%= @end_date %>">
       </div>
 
-      <input name="" type="submit" value="<%= t ".filter-button" %>">
+      <input name="" type="submit" value="<%= t(".filter-button") %>">
     </form>
   </section>
 

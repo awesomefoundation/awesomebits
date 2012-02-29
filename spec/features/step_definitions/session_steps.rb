@@ -26,6 +26,24 @@ step "I am logged in as a dean" do
   click_button("Sign in")
 end
 
+step "I am logged in as a dean for 2 chapters" do
+  @current_chapter = FactoryGirl.create(:chapter)
+  @other_chapter = FactoryGirl.create(:chapter)
+  @current_user = FactoryGirl.create(:user, :password => "12345")
+  @current_role = FactoryGirl.create(:role,
+                                     :user => @current_user,
+                                     :chapter => @current_chapter,
+                                     :name => "dean")
+  @other_role = FactoryGirl.create(:role,
+                                     :user => @current_user,
+                                     :chapter => @other_chapter,
+                                     :name => "dean")
+  visit sign_in_path
+  fill_in("Email", :with => @current_user.email)
+  fill_in("Password", :with => "12345")
+  click_button("Sign in")
+end
+
 step "I am logged in as a dean for only one chapter" do
   @current_chapter = FactoryGirl.create(:chapter)
   @current_user = FactoryGirl.create(:user, :password => "12345")
