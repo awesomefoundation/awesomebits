@@ -19,7 +19,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(params[:project])
     if @project.save
-      flash[:notice] = t("flash.applications.thanks")
+      flash[:thanks] = t("flash.applications.thanks")
       redirect_to root_path
     else
       render :new
