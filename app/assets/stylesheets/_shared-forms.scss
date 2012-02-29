@@ -120,6 +120,16 @@ body.sessions-create {
       list-style: none;
       float: right;
       margin-left: 10px;
+
+      a {
+        color: $lighter-base-font-color;
+        text-decoration: none;
+
+        &:hover {
+          color: $pink;
+          text-decoration: underline;
+        }
+      }
     }
   }
 }
