@@ -10,7 +10,7 @@ else
       provider:              'AWS',
       region:                'us-west-1'
     },
-    fog_directory:   ENV['AWS_BUCKET'] || "afdev-#{Rails.env}",
+    fog_directory:   ENV['AWS_BUCKET'] || "af-#{Rails.env}",
     fog_public:      :public
   }
 end

@@ -63,14 +63,7 @@ One project has been created for the LA chapter.
       bd = User.new(:first_name => "Boston", :last_name => "Dean", :email => "boston+dean@example.com")
       bd.password = "12345"
       bd.save
-      lt = User.new(:first_name => "LA", :last_name => "Trustee", :email => "la@example.com")
-      lt.password = "12345"
-      lt.save
-      ld = User.new(:first_name => "LA", :last_name => "Dean", :email => "la+dean@example.com")
-      ld.password = "12345"
-      ld.save
       bos = Chapter.create(:name => "Boston")
-      la = Chapter.create(:name => "LA")
       r = Role.new
       r.chapter = bos
       r.user = bt
@@ -80,16 +73,6 @@ One project has been created for the LA chapter.
       r.user = bd
       r.name = "dean"
       r.chapter = bos
-      r.save
-      r = Role.new
-      r.user = lt
-      r.chapter = la
-      r.name = "trustee"
-      r.save
-      r = Role.new
-      r.user = ld
-      r.name = "dean"
-      r.chapter = la
       r.save
       Chapter.create(:name => "Any")
     end
