@@ -7,8 +7,8 @@ class Chapter < ActiveRecord::Base
 
   validates_presence_of :name
   validates_presence_of :description
+  validates_presence_of :country
   validates_uniqueness_of :name
-  validates_presence_of :name, :country
 
   attr_accessible :name, :twitter_url, :facebook_url, :blog_url, :rss_feed_url, :description,
                   :country, :extra_question_1, :extra_question_2, :extra_question_3

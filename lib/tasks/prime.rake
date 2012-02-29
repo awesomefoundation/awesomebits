@@ -52,18 +52,24 @@ One project has been created for the LA chapter.
   namespace :staging do
     desc "Prime staging"
     task :prime => :environment do
+
+      User.delete_all
       u = User.new(:first_name => "Admin", :last_name => "Admin", :email => "admin@awesomefoundation.org")
-      u.password = "12345"
+      u.password = "gnarly"
       u.admin = true
       u.save
-      u.update_password("gnarly")
       bt = User.new(:first_name => "Boston", :last_name => "Trustee", :email => "boston@example.com")
       bt.password = "12345"
       bt.save
       bd = User.new(:first_name => "Boston", :last_name => "Dean", :email => "boston+dean@example.com")
       bd.password = "12345"
       bd.save
-      bos = Chapter.create(:name => "Boston")
+
+      Chapter.delete_all
+      Chapter.create(:name => "Any")
+      bos = Chapter.create(:name => "Boston", :description => "Awesome Boston!", :country => "United States")
+
+      Role.delete_all
       r = Role.new
       r.chapter = bos
       r.user = bt
@@ -74,7 +80,6 @@ One project has been created for the LA chapter.
       r.name = "dean"
       r.chapter = bos
       r.save
-      Chapter.create(:name => "Any")
     end
   end
 end
