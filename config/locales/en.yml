@@ -107,7 +107,7 @@ en:
       short-list-filter: My Short-list
     show:
       edit: Edit Project
-      byline-html: "A <span class='chapter-name'>%{chapter_name}</span> project created by <span class='project-starter'>%{submitter_name}</span>"
+      byline-html: "A <span class='chapter-name'>%{chapter_link}</span> project created by <span class='project-starter'>%{submitter_name}</span>"
       funder-html: "Funded by <span class='chapter-name'>%{name}</span>"
       submitted-to-html: "Project application submitted to <span class=''>%{name}</span>"
       description:
