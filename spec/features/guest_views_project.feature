@@ -11,3 +11,9 @@ Feature: Guest views a project's page
     And I am on the homepage
     When I click on that project
     Then I should see the project rss feed
+
+  Scenario: Guest views project with no RSS feed
+    Given there is 1 winning project and it has no RSS feed
+    And I am on the homepage
+    When I click on that project
+    Then I should see no feed for the project

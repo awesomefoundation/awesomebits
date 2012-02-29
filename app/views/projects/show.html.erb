@@ -75,6 +75,8 @@
       </article>
     <% end %>
 
+
+    <% if has_headlines?(@project.rss_feed_url) %>
     <article class="project-rss">
       <h2><%= t ".feed-title" %></h2>
       <ol class="feed">
@@ -86,6 +88,8 @@
         <% end %>
       </ol>
     </article>
+    <% end %>
+
   </section>
 </section>
 
