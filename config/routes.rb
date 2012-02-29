@@ -1,5 +1,5 @@
 Awesomefoundation::Application.routes.draw do
-  routes = lambda do
+  scope "(:locale)", :locale => /en/ do
     resources :sessions
     match "sign_in",  :to => "sessions#new"
     match "sign_out", :to => "sessions#destroy", :via => :delete
@@ -43,6 +43,4 @@ Awesomefoundation::Application.routes.draw do
 
     root :to => 'home#index'
   end
-  scope "(:locale)", :locale => /en/, &routes
-  routes.call
 end
