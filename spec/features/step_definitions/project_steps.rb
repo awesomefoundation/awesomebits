@@ -120,6 +120,10 @@ step 'there is 1 winning project in my chapter' do
   @project = FactoryGirl.create(:project, :funded_on => 2.days.ago, :chapter => @current_chapter)
 end
 
+step 'there is 1 winning project and it has no RSS feed' do
+  @project = FactoryGirl.create(:project, :funded_on => 2.days.ago, :rss_feed_url => nil)
+end
+
 step 'I edit that winning project' do
   visit(project_path(@project))
   click_link "Edit Project"
@@ -204,18 +208,25 @@ end
 
 step 'that chapter has 5 winning projects' do
   @winning_projects = (1..5).map do |x|
-    FactoryGirl.create(:project, :chapter => @current_chapter, :funded_on => x.months.ago)
+    p = FactoryGirl.build(:project, :chapter => @current_chapter, :funded_on => x.months.ago)
+    p.photos = [Photo.new(:image => File.new(Rails.root.join("spec", "support", "fixtures", "1.JPG")))]
+    p.save
+    p
   end
 end
 
 step 'I should see those 5 projects' do
   @winning_projects.each_with_index do |project, x|
-    page.should have_css(".image-wrapper img[src*='#{project.photos[x].image_file_name}']")
+    page.should have_css(".image-wrapper img[src*='#{project.photos[0].image_file_name}']")
   end
 end
 
-step 'I should when each has won' do
+step 'I should see when each has won' do
   @winning_projects.each_with_index do |project, x|
-    page.should have_css(".image-wrapper p:contains('#{I18n.l project.funded_on, :format => :funding}')")
+    page.should have_css(".image-wrapper p:contains('#{I18n.l project.funded_on.to_date, :format => :funding}')")
   end
+end
+
+step 'I should see no feed for the project' do
+  page.should have_no_css(".project-rss")
 end
