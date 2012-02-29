@@ -45,7 +45,7 @@ step 'I submit a project to the :name chapter with the extra questions answered'
 end
 
 step 'I should be thanked' do
-  page.should show_the_flash("notice").containing("Thanks for applying")
+  page.should show_the_flash("thanks").containing("Thanks for applying")
 end
 
 step 'I should get an email telling me the application went through' do
