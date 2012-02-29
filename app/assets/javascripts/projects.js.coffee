@@ -20,9 +20,19 @@ filter_short_list = ->
   else
     $('section.applications article').show()
 
+display_remaining_chars = ->
+  self = $(this)
+  element = $('#'+self.attr('id')+'_chars_left')
+  max_length = self.attr('maxlength')
+  curr_length = self.val().length
+  element.text(max_length - curr_length)
+
 $(".short-list")
   .bind("ajax:beforeSend",  shortlist_before_send)
   .bind("ajax:success", shortlist_success)
   .bind("ajax:failure", shortlist_failure)
 
 $('.short-list-toggle input[type="checkbox"]').change(filter_short_list)
+
+$('#project_description').keydown(display_remaining_chars)
+$('#project_use').keydown(display_remaining_chars)
