@@ -1,16 +1,16 @@
+<% provide(:title, t(".title_tag")) %>
 <section class="static-title">
-	<h1>Contact</h1>
+  <h1><%= t(".headline") %></h1>
 </section>
 
 <div class="contact-wrapper">
 
-	<section class="project-gallery">
-		<div class="image-wrapper">
-		</div>
-	</section>
+<section class="project-gallery">
+  <div class="image-wrapper"></div>
+</section>
 
-	<section class="static-description">
-		<p>You can drop us an email at <a href="mailto:contact@awesomefoundation.org">contact@awesomefoundation.org</a>, follow us on Twitter at <a href="http://twitter.com/awesomefound">@awesomefound</a>, or track us on Facebook <a href="http://www.facebook.com/awesomefoundation">here</a>. If you’re interested in helping to start a chapter or joining an existing one if a spot opens up, great! <a href="http://spreadsheets2.google.com/a/awesomefoundation.org/viewform?hl=en&formkey=dFJwaXhNTFp6VG40clU3cFVfWFk0bXc6MQ">Tell us about yourself here!</a></p>
-	</section>
+<section class="static-description">
+  <%= t(".content").html_safe %>
+</section>
 
 </div>

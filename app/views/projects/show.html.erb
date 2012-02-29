@@ -1,3 +1,5 @@
+<% provide(:title, @project.title) %>
+
 <header class="project">
   <% if can_manage_chapter?(@project.chapter) %>
     <%= link_to t(".edit"), edit_project_path(@project), :class => 'edit-project' %>

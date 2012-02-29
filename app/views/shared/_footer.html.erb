@@ -1,8 +1,6 @@
 <footer>
   <p>
-    <%= link_to t("layouts.application.about_us"), about_us_path %>
     <%= link_to t("layouts.application.contact"), contact_path %>
-    <%= link_to t("layouts.application.faq"), faq_path %>
     <%= link_to t("layouts.application.want_to_help"), trustees_path %>
     <% if signed_in? -%>
       <%= link_to t("layouts.application.sign-out"), sign_out_path, :method => :delete %>
@@ -19,7 +17,7 @@
       <%= link_to "", "http://facebook.com/awesomefoundation", :class => "facebook" %>
     </li>
     <li>
-      <%= link_to "", "/blog", :class => "blog" %>
+      <%= link_to "", "http://blog.awesomefoundation.org", :class => "blog" %>
     </li>
   </ol>
 </footer>
