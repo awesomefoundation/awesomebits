@@ -4,8 +4,8 @@
     <span> - <%= t(".admin") %></span>
   </td>
   <td><%= user.email %></td>
-  <td class="chapter-name"><%= user.chapter_name ? user.chapter_name : "-".html_safe %></td>
-  <td class="role-name"><%= user.role_name ? user.role_name : "-".html_safe %></td>
+  <td class="chapter-name"><%= user.chapter_name || "-" %></td>
+  <td class="role-name"><%= user.role_name || "-" %></td>
   <% if current_user.can_manage_permissions? %>
    <td class="promote-demote-dean <%= user.role_name %>">
       <span data-role-id="<%= user.role_id %>">
@@ -15,7 +15,7 @@
         <%= link_to t(".demote_to_trustee"), role_promotions_path(user.role_id), :method => :delete, 
           :remote => true, :class => "demote-user" %>
       <% else %>
-      -
+        -
       <% end %>
       </span>
     </td>
@@ -32,12 +32,12 @@
       </span>
     </td>
     <td class="remove-trustee">
-      <% if user.role_name %>
-        <%= link_to t('.remove_from_chapter'), role_path(user.role_id), :method => :delete,
-          :remote => true, :class => "remove-user", :confirm => "Are you sure you want to remove?" %>
-      <% else %>
+    <% if user.role_name %>
+      <%= link_to t('.remove_from_chapter'), role_path(user.role_id), :method => :delete,
+        :remote => true, :class => "remove-user", :confirm => "Are you sure you want to remove?" %>
+    <% else %>
       -
-      <% end %>
+    <% end %>
     </td>
     <% end %>
 </tr>
