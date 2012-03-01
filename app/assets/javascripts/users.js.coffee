@@ -21,6 +21,14 @@ admin_success = (event, data, status, xhr) ->
     row.removeClass('admin').addClass('non_admin')
     row.find('td.promote-demote-admin a.promote-user').css('display', 'block')
 
+remove_success = (event, data, status, xhr) ->
+  row = $('span[data-role-id="'+data.role_id+'"]').closest('tr')
+  row.find('.chapter-name').text('-')
+  row.find('.role-name').text('-')
+  row.find('.remove-trustee').text('-')
+  row.find('.promote-demote-dean').text('-')
+
+
 ajax_failure = (xhr, status, error) ->
   alert(error.message)
 
@@ -33,3 +41,6 @@ $("td.promote-demote-dean a")
   .live("ajax:beforeSend", set_data_method)
   .live("ajax:success", dean_success)
   .live("ajax:failure", ajax_failure)
+
+$("td.remove-trustee a")
+  .live("ajax:success", remove_success)

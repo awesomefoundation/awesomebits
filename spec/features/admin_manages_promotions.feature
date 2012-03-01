@@ -23,6 +23,13 @@ Feature: Manage Promotions
     When I demote the dean to trustee
     Then I should see the new trustee
 
+  @javascript
+  Scenario: As an admin, I can remove trustee from chapter
+    Given I am logged in as an admin
+    And there is a trustee in the system
+    When I remove trustee from a chapter
+    Then I should see the deactivated user
+
   Scenario: As a non-admin, I should not see the promotion links
     Given I am logged in as a dean
     And there is a trustee in the system

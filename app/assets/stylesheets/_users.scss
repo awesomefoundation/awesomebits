@@ -28,7 +28,8 @@ section.awesome-members {
         }
 
         .demote-user,
-        .promote-user {
+        .promote-user,
+        .remove-user, {
           @include button(rgb(240,240,240));
           @include inline-block;
           font-weight: normal;
@@ -36,6 +37,11 @@ section.awesome-members {
           text-align: center;
           text-decoration: none;
           text-shadow: 0 1px rgba(255,255,255, 0.4);
+          display: block;
+        }
+
+        .demote-user,
+        .promote-user {
           display: none;
         }
 

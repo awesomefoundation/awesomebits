@@ -5,6 +5,16 @@ step 'I promote the trustee to admin' do
   page.find(:css, "tr[data-user-id='#{@trustee.id}'].non_admin td.promote-demote-admin a.promote-user").click
 end
 
+step 'I remove trustee from a chapter' do
+  visit users_path
+  click_link("Remove")
+  page.evaluate_script('window.confirm = function() { return true; }')
+end
+
+step 'I should see the deactivated user' do
+  page.should have_selector(".remove-trustee", :text => '-')
+end
+
 step 'I should see the new admin' do
   page.should have_css("tr[data-user-id='#{@trustee.id}'].admin")
 end

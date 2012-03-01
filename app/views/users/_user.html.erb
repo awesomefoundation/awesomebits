@@ -4,30 +4,40 @@
     <span> - <%= t(".admin") %></span>
   </td>
   <td><%= user.email %></td>
-  <td><%= user.chapter_name ? user.chapter_name : "<p>-</p>".html_safe %></td>
-  <td class="role-name"><%= user.role_name ? user.role_name : "<p>-</p>".html_safe %></td>
-  <td class="promote-demote-dean <%= user.role_name %>">
-    <span data-role-id="<%= user.role_id %>">
-      <% if current_user.can_manage_permissions? && user.role_name %> 
-        <%= link_to t('.promote-to-dean'), role_promotions_path(user.role_id), :method => :post, 
+  <td class="chapter-name"><%= user.chapter_name ? user.chapter_name : "-".html_safe %></td>
+  <td class="role-name"><%= user.role_name ? user.role_name : "-".html_safe %></td>
+  <% if current_user.can_manage_permissions? %>
+   <td class="promote-demote-dean <%= user.role_name %>">
+      <span data-role-id="<%= user.role_id %>">
+      <% if user.role_name %>
+        <%= link_to t('.promote_to_dean'), role_promotions_path(user.role_id), :method => :post, 
           :remote => true, :class => "promote-user" %>
-        <%= link_to t(".demote-to-trustee"), role_promotions_path(user.role_id), :method => :delete, 
+        <%= link_to t(".demote_to_trustee"), role_promotions_path(user.role_id), :method => :delete, 
           :remote => true, :class => "demote-user" %>
       <% else %>
-        <p>-</p>
+      -
       <% end %>
-    </span>
-  </td>
-  <td class="promote-demote-admin">
-    <span>
-      <% if current_user.can_manage_permissions? && current_user.id != user.id %> 
-        <%= link_to t(".promote-admin"), user_admins_path(user.id), :method => :post, 
+      </span>
+    </td>
+    <td class="promote-demote-admin">
+      <span>
+      <% if current_user.id != user.id %> 
+        <%= link_to t(".promote_admin"), user_admins_path(user.id), :method => :post,
           :remote => true, :class => "promote-user" %>
-        <%= link_to t(".demote-admin"), user_admins_path(user.id), :method => :delete, 
+        <%= link_to t(".demote_admin"), user_admins_path(user.id), :method => :delete,
           :remote => true, :class => "demote-user" %>
       <% else %>
-        <p>-</p>
+        -
       <% end %>
-    </span>
-  </td>
+      </span>
+    </td>
+    <td class="remove-trustee">
+      <% if user.role_name %>
+        <%= link_to t('.remove_from_chapter'), role_path(user.role_id), :method => :delete,
+          :remote => true, :class => "remove-user", :confirm => "Are you sure you want to remove?" %>
+      <% else %>
+      -
+      <% end %>
+    </td>
+    <% end %>
 </tr>
