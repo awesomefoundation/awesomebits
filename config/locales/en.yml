@@ -182,11 +182,11 @@ en:
         phone: Phone number
         title: Project title
         url: Project website
-        description: "About me"
-        use: "About the project"
+        description: About me
+        use: About the project
         new_photos: Upload images of your project
         chapter_id: Select chapter to apply to
-        rss_feed_url: "Project RSS feed url"
+        rss_feed_url: Project RSS feed url
       chapter:
         name: Name
         twitter_url: Twitter URL
