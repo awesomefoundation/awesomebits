@@ -7,7 +7,7 @@ body.chapters-show {
 
     header {
       border-bottom: 1px solid rgb(200,200,200);
-      margin: 0 auto 40px;
+      margin: 0 auto;
       padding: 60px 0px 10px;
       width: grid-width(12);
     }
@@ -76,7 +76,7 @@ body.chapters-show {
 .chapter-header-wrapper {
   height: 300px;
   margin: 0 auto;
-  padding: 0px 100px 0px 100px;
+  padding: 40px 0px;
   position: relative;
   width: 1020px;
 
@@ -87,7 +87,7 @@ body.chapters-show {
   }
 
   a.nav {
-    background: rgba(0,0,0, 0.7);
+    background: rgba(0,0,0, 0.6);
     background-position: center center;
     background-repeat: no-repeat;
     @include border-radius(60px);
@@ -95,8 +95,8 @@ body.chapters-show {
     height: 120px;
     opacity: 0;
     position: absolute;
-    @include transition(opacity, 0.2s, ease-out);
-    top: 50px;
+    @include transition((opacity, background-color), 0.2s, ease-out);
+    top: 90px;
     width: 120px;
     z-index: 3;
 
@@ -106,25 +106,12 @@ body.chapters-show {
 
     &.left {
       background-image: url("arrow_left.png");
-      left: 40px;
+      left: -60px;
     }
 
     &.right {
       background-image: url("arrow_right.png");
-      right: 40px;
-    }
-  }
-
-  .gallery-title {
-    display: none;
-    left: 40px;
-    position: absolute;
-    top: 315px;
-
-    h2 {
-      font: normal 18px/22px $sans-serif;
-      margin-bottom: 15px;
-      text-transform: uppercase;
+      right: -60px;
     }
   }
 
@@ -175,15 +162,19 @@ body.chapters-show {
             text-transform: uppercase;
           }
 
-          p {
+          span {
             color: rgba(255,255,255, 0.7);
-            margin-bottom: 1px;
+            margin-right: 10px;
           }
         }
 
         &:hover {
           .project-name {
             background: rgba($pink, 1);
+
+            span {
+              color: $base-font-color;
+            }
           }
         }
 
@@ -195,27 +186,11 @@ body.chapters-show {
       }
     }
   }
-
-  nav {
-    display: none;
-    padding: 20px 10px;
-
-    p {
-      float: left;
-      margin-left: 10px;
-    }
-
-    a {
-      float: right;
-      margin-right: 10px;
-    }
-  }
 }
 
 .chapter-info {
   @extend .clearfix;
   margin: 0 auto;
-  padding: 40px 0px 0px;
   width: grid-width(12);
 
   h2 {

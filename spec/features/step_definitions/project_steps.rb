@@ -223,7 +223,7 @@ end
 
 step 'I should see when each has won' do
   @winning_projects.each_with_index do |project, x|
-    page.should have_css(".image-wrapper p:contains('#{I18n.l project.funded_on.to_date, :format => :funding}')")
+    page.should have_css(".image-wrapper span:contains('#{I18n.l project.funded_on.to_date, :format => :funding}')")
   end
 end
 

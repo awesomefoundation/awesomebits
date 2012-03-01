@@ -24,8 +24,8 @@
               <div class="image-wrapper">
                 <div class="project-name">
                   <h2><%= project.title %></h2>
-                  <p><%= t(".byline", :name => project.name) %> </p>
-                  <p><%= l project.funded_on, :format => :funding %></p>
+                  <span><%= t(".byline", :name => project.name) %> </span>
+                  <span><%= l project.funded_on, :format => :funding %></span>
                 </div>
                 <%= image_tag(project.index_image_url) %>
               </div>
@@ -34,13 +34,6 @@
         <% end %>
       </section>
     </div>
-    <div class="gallery-title">
-      <h2>Recently funded projects</h2>
-    </div>
-    <nav>
-      <p><%= t(".recent_winners") %></p>
-      <a href="#"><%= t(".see_more") %></a>
-    </nav>
     <a href="#" class="nav left jTscrollerPrevButton"></a>
     <a href="#" class="nav right jTscrollerNextButton"></a>
   </section>
