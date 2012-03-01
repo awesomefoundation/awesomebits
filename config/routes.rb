@@ -1,7 +1,7 @@
 Awesomefoundation::Application.routes.draw do
   match "/blog/contact/" => redirect("/en/contact")
   match "/blog/about/"   => redirect("/en/about_us")
-  match "/blog/*path"    => redirect("http://blog.awesomefoundation.org/blog/%{path}")
+  match "/blog/*path"    => redirect("http://blog.awesomefoundation.org/%{path}")
 
   scope "(:locale)", :locale => /en/ do
     resources :sessions
