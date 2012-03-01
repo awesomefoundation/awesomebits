@@ -51,10 +51,11 @@ en:
     index:
       title: Forwarding the interest of Awesome in the universe, $1,000 at a time.
       by: "By %{name}"
-      have-an-idea: Have an idea?
-      apply: Apply
-      get-funding: Get Funding
-      intro:
+      what:
+        header: Need some funding?
+        body-html: "Do you have a crazy brilliant idea that needs some funding? We award <strong>$1,000 grants every month</strong>. It couldn't be simpler! Your idea is yours alone. We don't want a stake in it. We just want to help you make it happen."
+      call-to-action: Apply now for an Awesome Foundation grant!
+      who:
         header: Awesome is Everywhere!
         body: The Awesome Foundation for the Arts and Sciences is an ever-growing, worldwide network of people devoted to forwarding the interest of awesomeness in the universe. Created in the long hot summer days of 2009 in Boston, the Foundation distributes a series of monthly $1,000 grants to projects and their creators. The money is pooled together from the coffers of ten or so self-organizing “micro-trustees” and given upfront in cash, check, or gold doubloons. The chapters are autonomous and organized by the trustees around geographic areas or topics of interest.
       news:

@@ -48,8 +48,8 @@
   </hgroup>
   <div class="need-funding">
     <div class="description">
-      <h3>Need some funding?</h3>
-      <p>Do you have a crazy brilliant idea that needs some funding? We award <strong>$1,000 grants every month</strong>. It couldn't be simpler! Your idea is yours alone. We don't want a stake in it. We just want to help you make it happen.</p>
+      <h3><%= t ".what.header" %></h3>
+      <p><%= t ".what.body-html" %></p>
     </div>
     <div class="info-graphic">
       <div class="graphic">
@@ -59,7 +59,7 @@
   </div>
 
   <section class="call-to-action">
-    <a href="#">Apply now for an Awesome Foundation grant!</a>
+    <%= link_to t(".call-to-action"), new_submission_path %>
   </section>
 </section>
 
@@ -73,8 +73,8 @@
       <%= image_tag("mini_map.png") %>
     </div>
     <div class="intro">
-      <h3><%= t ".intro.header" %></h3>
-      <p><%= t ".intro.body" %></p>
+      <h3><%= t ".who.header" %></h3>
+      <p><%= t ".who.body" %></p>
     </div>
   </div>
 </section>
