@@ -6,7 +6,7 @@ body.home-index {
 }
 
 .awesome-wrapper {
-  margin: 0 auto 60px;
+  margin: 0 auto 80px;
   position: relative;
 
   .awesome-projects {
@@ -162,11 +162,14 @@ body.home-index {
   @extend .animation-content-appear;
   width: grid-width(12);
 
+  hgroup {
+    border-bottom: 3px solid rgb(220,220,220);
+    margin-bottom: 50px;
+  }
+
   h2 {
-    border-bottom: 1px solid rgb(220,220,220);
     color: $base-font-color;
     font: 500 32px/48px $sans-serif;
-    margin-bottom: 50px;
     padding-bottom: 10px;
     text-align: center;
     text-transform: uppercase;
@@ -183,53 +186,87 @@ body.home-index {
 }
 
 .what-how {
-  margin: 0 auto 100px;
+  //border-bottom: 3px solid rgb(220,220,220);
+  margin: 0 auto 120px;
 
-  .info-graphic {
-    @extend .clearfix;
-    background: rgb(240,240,240);
-    @include border-radius(4px);
-    height: auto;
-    margin: 0 auto;
-    padding: 20px 0px;
+  .need-funding {
+    @include clearfix();
+    margin-bottom: 60px;
 
-    > div {
-      border-right: 1px dashed rgb(200,200,200);
+    .description {
       float: left;
       margin-right: $gw-gutter;
-      width: grid-width(4) - 1;
-
-      &:last-child {
-        border: none;
-        margin: 0;
-      }
-
-      img {
-        display: block;
-        margin: 0 auto 30px;
-      }
+      width: grid-width(6);
 
       h3 {
-        font: 300 24px/28px $sans-serif;
-        margin-bottom: 20px;
-        text-align: center;
-        width: 100%;
+        color: $base-font-color;
+        font: normal 18px/22px $sans-serif;
+        margin-bottom: 15px;
+        text-transform: uppercase;
       }
+
+      p {
+        color: $lighter-base-font-color;
+        font: normal 14px/20px $sans-serif;
+
+        strong {
+          color: $pink;
+        }
+      }
+    }
+
+    .info-graphic {
+      float: left;
+      padding-top: 15px;
+      width: grid-width(6);
+
+      .graphic {
+        border: 1px dashed rgb(200,200,200);
+        @include border-radius(4px);
+        height: 70px;
+        padding: 15px 0px;
+        width: 100%;
+
+        img {
+          display: block;
+          margin: 0 auto;
+          width: 352px;
+        }
+      }
+    }
+  }
+
+  .call-to-action {
+    background: rgb(240,240,240);
+    border: 1px solid rgb(200,200,200);
+    @include border-radius(4px);
+    @include box-shadow(inset 0 0 5px 0 rgba(0,0,0, 0.15));
+    padding: 20px;
+
+    a {
+      @include button($button-pink);
+      display: block;
+      font: normal 18px/22px $sans-serif;
+      margin: 0 auto;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      padding: 20px 0px;
+      width: 100%;
     }
   }
 }
 
 .who-where {
-  margin: 0 auto 140px;
+  margin: 0 auto 160px;
 
   .about-preview {
     @extend .clearfix;
-    border-bottom: 1px solid rgb(200,200,200);
+    //border-bottom: 3px solid rgb(220,220,220);
     padding-bottom: 40px;
 
     .intro {
       float: left;
-      margin-right: $gw-gutter;
       width: grid-width(6);
 
       h3 {
@@ -247,6 +284,7 @@ body.home-index {
 
     .mini-map {
       float: left;
+      margin-right: $gw-gutter;
       padding-top: 5px;
       width: grid-width(6);
 
@@ -260,19 +298,25 @@ body.home-index {
   background: rgb(240,240,240);
   border: 1px solid rgb(200,200,200);
   @include border-radius(4px);
-  margin: 0 auto 60px;
+  @include box-shadow(inset 0 0 5px 0 rgba(0,0,0, 0.15));
+  margin: 0 auto;
+  position: relative;
   width: grid-width(12);
 
   header {
-    background: rgb(200,200,200);
+    background-image: url('awesome-news-banner.png');
+    background-position: top center;
+    background-repeat: no-repeat;
+    height: 70px;
     margin: 0 auto;
-    padding: 10px 0px;
-    position: relative;
+    padding: 16px 0px 0px;
+    position: absolute;
     top: -40px;
-    width: grid-width(10);
+    width: 100%;
 
     h2 {
-      font: 900 italic 48px/52px $sans-serif;
+      color: rgb(255,255,255);
+      font: bold italic 48px/52px $sans-serif;
       text-align: center;
       text-transform: uppercase;
     }
@@ -280,7 +324,7 @@ body.home-index {
 
   .feed-wrapper {
     @extend .clearfix;
-    padding: 10px grid-width(1) 50px;
+    padding: 80px grid-width(1) 50px;
   }
 
   .rss, .events {
@@ -288,8 +332,8 @@ body.home-index {
     margin: 0 $gw-gutter;
 
     &.rss {
-      border-right: 1px dashed rgb(200,200,200);
-      width: grid-width(5) - 1;
+      //border-right: 1px dashed rgb(200,200,200);
+      width: grid-width(5);
     }
 
     &.events {
@@ -343,6 +387,7 @@ body.home-index {
 }
 
 .awesome-chapters {
+  display: none;
   @include border-radius(4px);
   @include column-count(4);
   @include column-gap($gw-gutter);

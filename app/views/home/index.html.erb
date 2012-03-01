@@ -43,33 +43,38 @@
 </section>
 
 <section class="what-how">
-<h2><%= t(".funding-html", :amount => funding_amount_for(Project.winner_count)) %> <span class="divider">|</span> <%= t(".winner-count-html", :amount => Project.winner_count) %></h2>
-  <div class="info-graphic">
-    <div class="have-idea">
-      <%= image_tag("idea.png") %>
-      <h3><%= t ".have-an-idea" %></h3>
+  <hgroup>
+    <h2><%= t(".funding-html", :amount => funding_amount_for(Project.winner_count)) %> <span class="divider">|</span> <%= t(".winner-count-html", :amount => Project.winner_count) %></h2>
+  </hgroup>
+  <div class="need-funding">
+    <div class="description">
+      <h3>Need some funding?</h3>
+      <p>Do you have a crazy brilliant idea that needs some funding? We award <strong>$1,000 grants every month</strong>. It couldn't be simpler! Your idea is yours alone. We don't want a stake in it. We just want to help you make it happen.</p>
     </div>
-    <div class="apply">
-      <%= image_tag("apply.png") %>
-      <h3><%= t ".apply" %></h3>
-    </div>
-    <div class="get-funded">
-      <%= image_tag("money.png") %>
-      <h3><%= t ".get-funding" %></h3>
+    <div class="info-graphic">
+      <div class="graphic">
+        <%= image_tag("info_graphic.png") %>
+      </div>
     </div>
   </div>
+
+  <section class="call-to-action">
+    <a href="#">Apply now for an Awesome Foundation grant!</a>
+  </section>
 </section>
 
 <section class ="who-where">
-  <h2><%= t(".chapter-count-html", :count => Chapter.count) %> <span class="divider">|</span> <%= t(".country-count-html", :count => Chapter.country_count) %></h2>
+  <hgroup>
+    <h2><%= t(".chapter-count-html", :count => Chapter.count) %> <span class="divider">|</span> <%= t(".country-count-html", :count => Chapter.country_count) %></h2>
+  </hgroup>
 
   <div class="about-preview">
+    <div class="mini-map">
+      <%= image_tag("mini_map.png") %>
+    </div>
     <div class="intro">
       <h3><%= t ".intro.header" %></h3>
       <p><%= t ".intro.body" %></p>
-    </div>
-    <div class="mini-map">
-      <%= image_tag("mini_map.png") %>
     </div>
   </div>
 </section>
