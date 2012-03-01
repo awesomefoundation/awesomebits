@@ -68,32 +68,63 @@ body.chapters-show {
   }
 }
 
+.gallery-overflow-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
 .chapter-header-wrapper {
   height: 300px;
-  overflow: hidden;
+  margin: 0 auto;
+  padding: 0px 100px 0px 100px;
   position: relative;
-  width: 100%;
+  width: 1020px;
+
+  &:hover {
+    a.nav {
+      opacity: 1;
+    }
+  }
 
   a.nav {
     background: rgba(0,0,0, 0.7);
+    background-position: center center;
+    background-repeat: no-repeat;
     @include border-radius(60px);
     display: block;
     height: 120px;
+    opacity: 0;
     position: absolute;
-    top: 90px;
+    @include transition(opacity, 0.2s, ease-out);
+    top: 50px;
     width: 120px;
     z-index: 3;
 
     &:hover {
-      background: rgba($pink, 0.7);
-    }
-
-    &.right {
-      right: -60px;
+      background-color: rgba($pink, 1);
     }
 
     &.left {
-      left: -60px;
+      background-image: url("arrow_left.png");
+      left: 40px;
+    }
+
+    &.right {
+      background-image: url("arrow_right.png");
+      right: 40px;
+    }
+  }
+
+  .gallery-title {
+    display: none;
+    left: 40px;
+    position: absolute;
+    top: 315px;
+
+    h2 {
+      font: normal 18px/22px $sans-serif;
+      margin-bottom: 15px;
+      text-transform: uppercase;
     }
   }
 
@@ -105,7 +136,6 @@ body.chapters-show {
     @extend .clearfix;
     @include inline-block;
     left: 0px;
-    margin-left: 10px;
     position: relative;
     top: 0px;
 
@@ -123,7 +153,7 @@ body.chapters-show {
 
       .image-wrapper {
         height: 100%;
-        margin: 0px 10px 0px 0px;
+        margin: 0px 5px;
         overflow: hidden;
         position: relative;
         text-decoration: none;

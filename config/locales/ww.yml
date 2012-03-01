@@ -53,7 +53,7 @@ en:
       by: "By %{name}"
       what:
         header: Need some funding?
-        body-html: "Do you have a crazy brilliant idea that needs some funding? We award <strong>$1,000 grants every month</strong>. It couldn't be simpler! Your idea is yours alone. We don't want a stake in it. We just want to help you make it happen."
+        body-html: "Have a crazy brilliant idea that needs funding? We award <strong>$1,000 grants every month</strong>. It couldn't be simpler! Your idea is yours alone. We don't want a stake in it. We just want to help you make it happen!"
       call-to-action: Apply now for an Awesome Foundation grant!
       who:
         header: Awesome is Everywhere!

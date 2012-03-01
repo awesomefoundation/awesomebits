@@ -14,32 +14,37 @@
   </div>
 </header>
 
-<section class="chapter-header-wrapper jThumbnailScroller">
-  <div class="gallery-container jTscrollerContainer">
-    <section class="chapter-projects jTscroller">
-      <% @chapter.winning_projects.each do |project| %>
-        <article class="project" data-id="<%= project.id %>">
-          <%= link_to project do %>
-            <div class="image-wrapper">
-              <div class="project-name">
-                <h2><%= project.title %></h2>
-                <p><%= t(".byline", :name => project.name) %> </p>
-                <p><%= l project.funded_on, :format => :funding %></p>
+<div class="gallery-overflow-wrapper">
+  <section class="chapter-header-wrapper jThumbnailScroller">
+    <div class="gallery-container jTscrollerContainer">
+      <section class="chapter-projects jTscroller">
+        <% @chapter.winning_projects.each do |project| %>
+          <article class="project" data-id="<%= project.id %>">
+            <%= link_to project do %>
+              <div class="image-wrapper">
+                <div class="project-name">
+                  <h2><%= project.title %></h2>
+                  <p><%= t(".byline", :name => project.name) %> </p>
+                  <p><%= l project.funded_on, :format => :funding %></p>
+                </div>
+                <%= image_tag(project.index_image_url) %>
               </div>
-              <%= image_tag(project.index_image_url) %>
-            </div>
-          <% end %>
-        </article>
-      <% end %>
-    </section>
-  </div>
-  <nav>
-    <p><%= t(".recent_winners") %></p>
-    <a href="#"><%= t(".see_more") %></a>
-  </nav>
-  <a href="#" class="nav left jTscrollerPrevButton"></a>
-  <a href="#" class="nav right jTscrollerNextButton"></a>
-</section>
+            <% end %>
+          </article>
+        <% end %>
+      </section>
+    </div>
+    <div class="gallery-title">
+      <h2>Recently funded projects</h2>
+    </div>
+    <nav>
+      <p><%= t(".recent_winners") %></p>
+      <a href="#"><%= t(".see_more") %></a>
+    </nav>
+    <a href="#" class="nav left jTscrollerPrevButton"></a>
+    <a href="#" class="nav right jTscrollerNextButton"></a>
+  </section>
+</div>
 
 <section class="chapter-info">
   <h2><%= t(".trustees.header") %></h2>

@@ -1,6 +1,6 @@
 $(window).ready(function(){
     $(".chapter-header-wrapper").thumbnailScroller({
-        scrollerType: "hoverAccelerate",
+        scrollerType: "clickButtons",
         scrollerOrientation: "horizontal",
         scrollSpeed: 2,
         scrollEasing: "easeOutCirc",
