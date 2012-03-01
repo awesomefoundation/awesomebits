@@ -13,11 +13,13 @@
        <li class="piece image-wrapper"> <%= image_tag(photo.image.url) %> </li>
      <% end %>
    </ul>
-   <div class="arrows">
-     <a class="arrow left"></a>
-     <a class="arrow right"></a>
-   </div>
- </section>
+   <% if @project.photos.count > 1 %>
+     <div class="arrows">
+       <a class="arrow left"></a>
+       <a class="arrow right"></a>
+     </div>
+   <% end %>
+   </section>
 
 <section class="project-details">
   <section class="meta-data">
