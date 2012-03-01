@@ -101,6 +101,12 @@
     }
 
     .input.file {
+      label {
+        span {
+          font-weight: normal;
+        }
+      }
+
       .multi-input {
         background: rgb(255,255,255);
         border-top: 1px solid rgb(200,200,200);

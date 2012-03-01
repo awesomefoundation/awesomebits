@@ -1,6 +1,12 @@
 body.chapters-index {
+  section.container-wrapper {
+    background: url('chapter_bg.png');
+    background-repeat: repeat-x;
+    background-size: contain;
+  }
+
   hgroup {
-    border-bottom: 3px solid $pink;
+    border-bottom: 3px solid rgb(220,220,220);
     margin: 0 auto 80px;
     padding-bottom: 10px;
     width: grid-width(11);
@@ -40,24 +46,24 @@ section.chapters {
   h2 {
     float: left;
     margin: 0px;
+    padding-right: 100px;
 
     a {
       color: $base-font-color;
-      color: $pink;
       font: bold 26px/28px $sans-serif;
       text-decoration: none;
       text-transform: uppercase;
 
       &:hover {
         color: $pink;
-        color: $base-font-color;
       }
     }
   }
 
   .external-links {
-    float: right;
+    right: 0px;
     padding-top: 1px;
+    position: absolute;
 
     a {
       background: transparent;

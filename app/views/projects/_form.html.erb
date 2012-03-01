@@ -15,7 +15,7 @@
 <div class="image-upload">
   <% unless form.object.photos.blank? %>
     <section class="current-images">
-      <label>Current images <span>(drag to re-order)</span></label>
+    <label><%= t "simple_form.labels.project.current_photos-html" %></label>
       <ul class="old-photos">
         <%= form.input :photo_order, :as => :hidden %>
         <% form.object.photos.each do |photo| %>
@@ -28,7 +28,7 @@
     </section>
   <% end %>
   <div class="input file optional">
-    <label class="file optional"><%= t "simple_form.labels.project.new_photos" %></label>
+    <label class="file optional"><%= t "simple_form.labels.project.new_photos-html" %></label>
     <div class="multi-input first noremove">
       <input class="file optional multi new_photo" id="project_new_photos" name="project[new_photos][]" type="file" value="">
       <a href="#" class="remove-image" data-remove="true">remove</a>
