@@ -1,11 +1,9 @@
 Awesomefoundation::Application.routes.draw do
-
   match "/blog/contact/" => redirect("/en/contact")
   match "/blog/about/"   => redirect("/en/about_us")
   match "/blog/*path"    => redirect("http://blog.awesomefoundation.org/blog/%{path}")
 
   scope "(:locale)", :locale => /en/ do
-
     resources :sessions
     match "sign_in",  :to => "sessions#new"
     match "sign_out", :to => "sessions#destroy", :via => :delete
@@ -45,5 +43,4 @@ Awesomefoundation::Application.routes.draw do
 
     root :to => 'home#index'
   end
-
 end
