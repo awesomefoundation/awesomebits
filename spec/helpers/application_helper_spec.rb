@@ -14,10 +14,10 @@ describe ApplicationHelper do
 
   context "page title" do
     it "returns the base title when no title is given" do
-      helper.full_title("").should == "AwesomeFoundation"
+      helper.full_title("").should == "The Awesome Foundation"
     end
     it "returns a full title when title is provided" do
-      helper.full_title("Some Page Title").should == "Some Page Title | AwesomeFoundation"
+      helper.full_title("Some Page Title").should == "Some Page Title | The Awesome Foundation"
     end
   end
 
