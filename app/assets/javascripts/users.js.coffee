@@ -28,7 +28,6 @@ remove_success = (event, data, status, xhr) ->
   row.find('.remove-trustee').text('-')
   row.find('.promote-demote-dean').text('-')
 
-
 ajax_failure = (xhr, status, error) ->
   alert(error.message)
 
