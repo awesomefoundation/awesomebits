@@ -127,15 +127,16 @@ en:
       forgot-password: Forgot your password?
   users:
     user:
-      admin: Admin
-      promote-to-dean: Promote to Dean
-      demote-to-trustee: Demote to Trustee
-      demote-admin: Demote to Trustee
-      promote-admin: Promote to Admin
-      error-dean-promotion: Dean promotion failed
-      error-dean-demotion: Dean demotion failed
-      error-admin-promotion: Admin promotion failed
-      error-admin-demotion: Admin demotion failed
+      promote_to_dean: Promote
+      demote_to_trustee: Demote
+      demote_admin: Demote
+      promote_admin: Promote
+      error_dean_promotion: Dean promotion failed
+      error_dean_demotion: Dean demotion failed
+      error_admin_promotion: Admin promotion failed
+      error_admin_demotion: Admin demotion failed
+      error_removing_user: Error removing user
+      remove_from_chapter: Remove
     edit:
       title: Edit user information
     index:
@@ -144,8 +145,9 @@ en:
       email: Email
       chapter: Chapter
       role: Role
-      change-dean: Dean
-      change-admin: Admin
+      remove: Remove
+      dean: Dean
+      admin: Admin
   pages:
     about_us:
       title_tag: About Us

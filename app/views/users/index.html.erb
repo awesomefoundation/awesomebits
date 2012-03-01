@@ -10,8 +10,11 @@
         <th><%= t(".email") %></th>
         <th><%= t(".chapter") %></th>
         <th><%= t(".role") %></th>
-        <th><%= t(".change-dean") %></th>
-        <th><%= t(".change-admin") %></th>
+        <% if current_user.can_manage_permissions? %>
+          <th><%= t(".dean") %></th>
+          <th><%= t(".admin") %></th>
+          <th><%= t(".remove") %></th>
+        <% end %>
       </tr>
       <%= render @users %>
     </table>
