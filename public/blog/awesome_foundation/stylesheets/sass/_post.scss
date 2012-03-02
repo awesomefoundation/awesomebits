@@ -1,0 +1,124 @@
+.posts, .single-post {
+  float: left;
+}
+
+.post {
+  @include clearfix;
+  margin-bottom: 40px;
+  margin-right: $gw-gutter;
+  width: grid-width(9);
+
+  & + .post {
+    padding-top: 40px;
+  }
+
+  &:last-child {
+    margin-bottom: 0px;
+  }
+
+  a:link, a:visited {
+    color: $pink;
+    font-size: 14px;
+    font-family: $sans-serif;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  header {
+    margin-bottom: 20px;
+
+    h2 {
+      margin: 0px;
+
+      a:link, a:visited {
+        color: $base-font-color;
+        font: normal 26px/32px $sans-serif;
+        text-decoration: none;
+        text-transform: uppercase;
+
+        &:hover {
+          color: $pink;
+          text-decoration: none;
+        }
+      }
+    }
+
+    p.date {
+      color: $lighter-base-font-color;
+      font: normal 14px/16px $serif;
+    }
+  }
+
+  div.post-hero {
+    background: rgb(255,255,255);
+    border: 1px solid rgb(200,200,200);
+    float: left;
+    margin-right: $gw-gutter;
+    padding: 1px;
+
+    img {
+      display: block;
+      margin: 0px;
+    }
+  }
+
+  div.excerpt {
+    float: left;
+  }
+
+  img {
+    margin: 20px 0px;
+  }
+
+  img.alignleft {
+    float: left;
+    margin-right: 20px;
+  }
+
+  img.alignright {
+    float: right;
+    margin-left: 20px;
+  }
+
+  ul {
+    li {
+      @include inline-block;
+      list-style: none;
+      margin-right: 10px;
+
+      a {
+        color: $blue;
+        text-decoration: none;
+      }
+    }
+  }
+
+  p {
+    color: $lighter-base-font-color;
+    font: normal 14px/20px $sans-serif;
+    margin: 0px;
+
+    span {
+      display: block;
+      margin-top: 5px;
+
+      a:link, a:visited {
+        color: $pink;
+        font: normal 14px/20px $sans-serif;
+        font: normal 14px/20px $serif;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  p + p {
+    margin-bottom: 15px;
+  }
+}

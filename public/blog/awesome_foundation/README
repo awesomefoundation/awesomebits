@@ -1,0 +1,7 @@
+This is the wordpress theme for the Awesome Foundation blog.
+
+The theme must link to the awesomefoundation.org stylesheet in the header-head.php file before it links to the theme's own style sheet.
+
+The source for the logo in the header of the wordpress theme is also the awesomefoundation.org site.
+
+Any changes made to the .php or .scss files stored here in the awesomefoundation.org rails site in the public/blog/awesome_foundation directory must be copied to the theme that is actually installed in the wordpress blog.

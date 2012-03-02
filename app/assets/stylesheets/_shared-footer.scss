@@ -1,6 +1,6 @@
 footer {
   @extend .clearfix;
-  border-top: 1px solid rgb(220,220,220);
+  border-top: 1px solid rgb(200,200,200);
   height: 100px;
   margin: 0 auto;
   padding-top: 10px;
@@ -11,9 +11,10 @@ footer {
     text-align: center;
 
     a:link, a:visited {
-      color: rgb(155,155,155);
+      color: $lighter-base-font-color;
       font: normal 12px/14px $sans-serif;
       margin: 0 10px;
+      padding-bottom: 3px;
       text-decoration: none;
       text-transform: uppercase;
 

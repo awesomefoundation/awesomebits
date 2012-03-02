@@ -1,0 +1,47 @@
+aside {
+  //background: rgb(240,240,240);
+  //@include border-radius(4px);
+  border-left: 1px solid rgb(210,210,210);
+  float: left;
+  width: grid-width(3) - 1;
+
+  .inner-wrapper {
+    padding: 0px 0px 0px 15px;
+  }
+
+  ul {
+    li {
+      list-style: none;
+      margin-bottom: 30px;
+
+      h2 {
+        font: normal 18px/22px $sans-serif;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+      }
+
+      ul {
+        li {
+          margin-bottom: 5px;
+
+           a:link, a:visited {
+             color: rgb(180,180,180);
+             font: bold 12px/16px $sans-serif;
+             text-decoration: none;
+
+             &:hover {
+               color: $pink;
+               //text-decoration: underline;
+             }
+          }
+        }
+      }
+    }
+  }
+
+  form {
+    label {
+      display: none;
+    }
+  }
+}

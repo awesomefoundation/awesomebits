@@ -1,0 +1,85 @@
+//*********************************************************//
+//
+// Base styles
+//
+//*********************************************************//
+
+body {
+  font-size: 14px;
+  font-family: $sans-serif;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+div, p, em, strong {
+  color: $lighter-base-font-color;
+  line-height: 20px;
+}
+
+strong, strong > em {
+  color: $base-font-color;
+}
+
+blockquote {
+  border-left: 4px solid $pink;
+  padding: 5px 0px 5px 20px;
+}
+
+iframe {
+  margin: 20px 0px;
+}
+
+//*********************************************************//
+//
+// Base layout
+//
+//*********************************************************//
+
+section.container {
+  @include clearfix;
+}
+
+header.main {
+  a.blog {
+    border-bottom: 3px solid $pink;
+    color: rgb(255,255,255);
+  }
+}
+
+//*********************************************************//
+//
+// Bread Crumbs
+//
+//*********************************************************//
+
+section.bread-crumbs {
+  background: rgb(90,90,90);
+  border-bottom: 1px solid rgb(60,60,60);
+  font: normal 14px/16px $serif;
+  padding: 15px 10px;
+
+  .bread-crumb-wrapper {
+    color: rgb(255,255,255);
+    margin: 0 auto;
+    width: grid-width(12);
+  }
+
+  a:link, a:visited {
+    color: rgba(255,255,255, 0.5);
+    font: normal 14px/16px $serif;
+    margin: 0px 8px;
+    text-decoration: none;
+
+    &:first-child {
+      margin-left: 0px;
+    }
+
+    &:hover {
+      border-bottom: 2px solid $pink;
+      color: rgb(255,255,255);
+      text-decoration: none;
+    }
+  }
+}
