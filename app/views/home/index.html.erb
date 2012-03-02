@@ -57,10 +57,10 @@
       </div>
     </div>
   </div>
+</section>
 
-  <section class="call-to-action">
-    <%= link_to t(".call-to-action"), new_submission_path %>
-  </section>
+<section class="call-to-action">
+  <%= link_to t(".call-to-action"), new_submission_path %>
 </section>
 
 <section class ="who-where">
@@ -85,30 +85,26 @@
   </header>
   <div class="feed-wrapper">
     <section class="rss">
-      <div class="inner-wrapper">
-        <h3><%= t ".news.recent" %></h3>
-        <ol class="feed">
-          <% headlines(MAIN_AWESOME_RSS, 6).each do |headline| %>
-            <li class="post">
-              <%= link_to headline[:link] do %>
-                <%= headline[:title] %>
-              <% end %>
-            </li>
-          <% end %>
-        </ol>
-      </div>
+      <h3><%= t ".news.recent" %></h3>
+      <ol class="feed">
+        <% headlines(MAIN_AWESOME_RSS, 6).each do |headline| %>
+          <li class="post">
+            <%= link_to headline[:link] do %>
+              <%= headline[:title] %>
+            <% end %>
+          </li>
+        <% end %>
+      </ol>
     </section>
     <section class="events">
-      <div class="inner-wrapper">
-        <h3><%= t ".news.events" %></h3>
-        <ol class="feed">
-          <% 6.times do %>
-            <li class="post">
-              <a href="#">This is going to be an awesome event!</a>
-            </li>
-          <% end %>
-        </ol>
-      </div>
+      <h3><%= t ".news.events" %></h3>
+      <ol class="feed">
+        <% 6.times do %>
+          <li class="post">
+            <a href="#">This is going to be an awesome event!</a>
+          </li>
+        <% end %>
+      </ol>
     </section>
   </div>
 </section>

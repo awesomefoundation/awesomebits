@@ -310,6 +310,8 @@ body.projects-index {
       position: relative;
 
       p {
+        color: $lighter-base-font-color;
+        font: normal 14px/20px $serif;
         padding: 15px 20px 20px 20px;
         margin: 0px;
       }
@@ -325,7 +327,6 @@ body.projects-index {
         background: rgba(245, 245, 245, 1);
         border-top: 1px solid rgb(200,200,200);
         @include border-bottom-radius(4px);
-        color: $pink;
         display: block;
         text-decoration: none;
         @include transition(all 0.2s ease-out);
@@ -338,7 +339,10 @@ body.projects-index {
 
         &:hover {
           background: rgba(230, 230, 230, 1);
-          text-decoration: underline;
+
+          p {
+            color: $pink;
+          }
         }
       }
     }

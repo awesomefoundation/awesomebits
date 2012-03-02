@@ -11,6 +11,7 @@
 @import 'base-variables';
 @import 'base-extends';
 @import 'base-mixins';
+@import 'base-animations';
 @import 'base';
 @import 'shared-feed';
 @import 'shared-forms';
@@ -25,5 +26,5 @@
 @import 'shared-date-picker';
 @import 'shared-flash-messages';
 @import 'slideshow';
-@import 'static';
-@import 'base-animations';
+@import 'about';
+@import 'faq';

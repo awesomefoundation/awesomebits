@@ -1,16 +1,17 @@
-<% provide(:title, t(".title_tag")) %>
-<section class="static-title">
-  <h1><%= t(".headline") %></h1>
+<section class="about-wrapper">
+  <header>
+    <% provide(:title, t(".title_tag")) %>
+    <h1><%= t(".headline") %></h1>
+    <h2><%= t(".sub_headline") %></h2>
+  </header>
+  <div class="wrapper">
+    <section class="our-story">
+      <h2>Our Story</h2>
+      <%= t(".our-story").html_safe %>
+    </section>
+    <section class="contact">
+      <h2>Contact us</h2>
+      <%= t(".contact").html_safe %>
+    </section>
+  </div>
 </section>
-<div class="about-wrapper">
-  <section class="project-gallery">
-    <div class="image-wrapper">
-    </div>
-  </section>
-  <section class="intro">
-  <h2><%= t(".sub_headline") %></h2>
-  </section>
-  <section class="static-description">
-    <%= t(".content").html_safe %>
-  </section>
-</div>

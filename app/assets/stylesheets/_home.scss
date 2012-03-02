@@ -185,12 +185,34 @@ body.home-index {
   }
 }
 
+.call-to-action {
+  @extend .animation-content-appear;
+  background: rgb(240,240,240);
+  border: 1px solid rgb(200,200,200);
+  @include border-radius(4px);
+  @include box-shadow(inset 0 0 5px 0 rgba(0,0,0, 0.15));
+  margin: 0 auto 100px;
+  padding: 20px;
+  width: grid-width(12) - 40;
+
+  a {
+    @include button($button-pink);
+    display: block;
+    font: normal 18px/22px $sans-serif;
+    margin: 0 auto;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 20px 0px;
+    width: 100%;
+  }
+}
+
 .what-how {
-  margin: 0 auto 120px;
+  margin: 0 auto 100px;
 
   .need-funding {
     @include clearfix();
-    margin-bottom: 60px;
 
     .description {
       float: left;
@@ -233,35 +255,13 @@ body.home-index {
       }
     }
   }
-
-  .call-to-action {
-    background: rgb(240,240,240);
-    border: 1px solid rgb(200,200,200);
-    @include border-radius(4px);
-    @include box-shadow(inset 0 0 5px 0 rgba(0,0,0, 0.15));
-    padding: 20px;
-
-    a {
-      @include button($button-pink);
-      display: block;
-      font: normal 18px/22px $sans-serif;
-      margin: 0 auto;
-      text-align: center;
-      text-decoration: none;
-      text-transform: uppercase;
-      padding: 20px 0px;
-      width: 100%;
-    }
-  }
 }
 
 .who-where {
-  margin: 0 auto 160px;
+  margin: 0 auto 100px;
 
   .about-preview {
     @extend .clearfix;
-    //border-bottom: 3px solid rgb(220,220,220);
-    padding-bottom: 40px;
 
     .intro {
       float: left;
@@ -302,6 +302,7 @@ body.home-index {
   width: grid-width(12);
 
   header {
+    display: none;
     background-image: url('awesome-news-banner.png');
     background-position: top center;
     background-repeat: no-repeat;
@@ -322,36 +323,32 @@ body.home-index {
 
   .feed-wrapper {
     @extend .clearfix;
-    padding: 80px grid-width(1) 50px;
+    margin: 0 auto;
+    padding: 50px grid-width(1);
+    width: grid-width(10);
   }
 
   .rss, .events {
     float: left;
-    margin: 0 $gw-gutter;
+    margin-right: $gw-gutter;
+    width: grid-width(5);
 
     &.rss {
-      //border-right: 1px dashed rgb(200,200,200);
-      width: grid-width(5);
     }
 
     &.events {
-      margin-left: 0px;
-      width: grid-width(5);
-    }
-
-    .inner-wrapper {
-      padding: 0px $gw-gutter;
+      margin: 0px;
     }
 
     h3 {
       font: normal 18px/22px $sans-serif;
-      margin-bottom: 20px;
-      padding-bottom: 5px;
+      margin-bottom: 15px;
       text-transform: uppercase;
     }
 
     ol.feed {
       margin: 0px;
+      padding-left: 10px;
 
       li {
         list-style: none;
@@ -372,7 +369,7 @@ body.home-index {
 
         a {
           color: $pink;
-          font: bold 14px/20px $sans-serif;
+          font: normal 14px/20px $sans-serif;
           text-decoration: none;
 
           &:hover {
