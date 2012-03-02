@@ -2,7 +2,6 @@
   <p>
     <%= link_to t("layouts.application.about_contact"), about_us_path %>
     <%= link_to t("layouts.application.faq"), faq_path %>
-    <%= link_to t("layouts.application.want_to_help"), trustees_path %>
     <% if signed_in? -%>
       <%= link_to t("layouts.application.sign-out"), sign_out_path, :method => :delete %>
     <% else -%>
