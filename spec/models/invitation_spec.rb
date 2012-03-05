@@ -22,7 +22,7 @@ describe Invitation do
   end
 
   context "#send_invitation" do
-    let(:invitation) { Factory.build(:invitation) }
+    let(:invitation) { FactoryGirl.build(:invitation) }
     let(:fake_mailer) { FakeMailer.new }
     around do |example|
       old_mailer, invitation.mailer = invitation.mailer, fake_mailer
