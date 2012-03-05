@@ -1,7 +1,7 @@
 <header class="main" id="header">
   <nav>
     <a href="" class="logo">
-      <img class="fast-forward" src="http://localhost:3000/assets/logo.png" />
+      <img class="fast-forward" src="http://staging.awesomefoundation.org/assets/logo.png" />
       <h1>The Awesome Foundation</h1>
     </a>
     <ol>
