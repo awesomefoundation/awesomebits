@@ -100,7 +100,7 @@ en:
       winner: "Winner for %{name}"
     new:
       title: Are you ready to get Awesome!?
-      description: Just fill out the application below with information about your self and the detials of your project.
+      description: Just fill out the application below with information about your self and the details of your project.
     form:
       save: Save
     index:
