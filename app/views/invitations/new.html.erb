@@ -7,9 +7,7 @@
       <p>Trustee will be invited to:
         <span><%= primary_invitable_chapter.name %></span>
       </p>
-      <%= form.input :chapter_id,
-                     :as         => :hidden,
-                     :input_html => { :value => primary_invitable_chapter.id } %>
+      <%= form.input :chapter_id, :as => :hidden, :input_html => { :value => primary_invitable_chapter.id } %>
     <% end %>
     <div class="invitee-name">
       <%= form.input :first_name %>
