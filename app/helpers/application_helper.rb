@@ -16,15 +16,6 @@ module ApplicationHelper
     end
   end
 
-  def full_title(page_title)
-    base_title = "The Awesome Foundation"
-    if page_title.empty?
-      base_title
-    else
-      "#{page_title} | #{base_title}"
-    end
-  end
-
   def funding_amount_for(winner_count)
     number_with_delimiter(winner_count * 1000, :delimiter => I18n.t("number.delimiter"),
                                                :separator => I18n.t("number.separator"))

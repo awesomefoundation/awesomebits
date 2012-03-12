@@ -12,13 +12,4 @@ describe ApplicationHelper do
     helper.display_country?(chapter3.country).should be_true
   end
 
-  context "page title" do
-    it "returns the base title when no title is given" do
-      helper.full_title("").should == "The Awesome Foundation"
-    end
-    it "returns a full title when title is provided" do
-      helper.full_title("Some Page Title").should == "Some Page Title | The Awesome Foundation"
-    end
-  end
-
 end
