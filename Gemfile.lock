@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/plataformatec/simple_form.git
-  revision: cd59fc0beded1366ef45827564e66ff3a0e93626
+  revision: 5fc9c8c0c1c701c9e0c683495d06036f2ff1579a
   specs:
     simple_form (2.0.2.dev)
       actionpack (~> 3.0)
@@ -310,7 +310,7 @@ DEPENDENCIES
   pry-nav
   pry-stack_explorer
   rails (= 3.2.2)
-  rspec-rails (~> 2.8.0)
+  rspec-rails (= 2.8.1)
   ruby-debug19
   sass
   sass-rails (~> 3.2.0)

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'invitations/new.html.erb' do
+describe 'invitations/new' do
 
   let!(:role) { FactoryGirl.create(:role, :name => 'dean') }
   let!(:user) { role.user }
