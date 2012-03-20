@@ -5,26 +5,14 @@
       <h1><%= t "layouts.application.main-header" %></h1>
     </a>
     <ol>
-      <li>
-        <%= link_to t("layouts.application.home"), root_path, :class => :home %>
-      </li>
-      <li>
-        <%= link_to t("layouts.application.about_us"), about_us_path, :class => :about_us %>
-      </li>
-      <li>
-        <%= link_to t("layouts.application.chapters"), chapters_path, :class => :chapters %>
-      </li>
-      <li>
-        <%= link_to t("layouts.application.blog"), "http://blog.awesomefoundation.org", :class => :blog %>
-      </li>
+      <li><%= link_to t("layouts.application.home"), root_path, :class => :home %></li>
+      <li><%= link_to t("layouts.application.about_us"), about_us_path, :class => :about_us %></li>
+      <li><%= link_to t("layouts.application.chapters"), chapters_path, :class => :chapters %></li>
+      <li><%= link_to t("layouts.application.blog"), "http://blog.awesomefoundation.org", :class => :blog %></li>
       <% if signed_in? %>
-        <li>
-          <%= link_to t("layouts.application.dashboard"), projects_path, { :class => :dashboard } %>
-        </li>
+        <li><%= link_to t("layouts.application.dashboard"), projects_path, { :class => :dashboard } %></li>
       <% end %>
-      <li>
-        <%= link_to t("layouts.application.apply"), new_submission_path, { :class => :apply } %>
-      </li>
+      <li><%= link_to t("layouts.application.apply"), new_submission_path, { :class => :apply } %></li>
     </ol>
   </nav>
 </header>
