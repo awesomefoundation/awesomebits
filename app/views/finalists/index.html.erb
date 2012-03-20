@@ -6,15 +6,13 @@
   <h1><%= t ".title", :name => @chapter.name %></h1>
   <section class="application-filters">
     <nav>
-      <a href="#" class="chapter-selection">
+      <%= link_to '#', :class => 'chapter-selection' do %>
         <span><%= @chapter.name %></span>
         <span class="arrow"></span>
-      </a>
+      <% end -%>
       <ol class="chapter-selector">
         <% selectable_chapters_for(current_user)[1..-1].each do |chapter| %>
-          <li>
-            <%= link_to chapter.name, chapter_finalists_path(chapter) %>
-          </li>
+          <li><%= link_to chapter.name, chapter_finalists_path(chapter) %></li>
         <% end %>
       </ol>
     </nav>

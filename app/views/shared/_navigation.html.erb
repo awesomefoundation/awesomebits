@@ -1,9 +1,9 @@
 <header class="main" id="header">
   <nav>
-    <a href="<%= root_path %>" class="logo">
+    <%= link_to root_path, :class => :logo do %>
       <%= image_tag("logo.png", :class => "fast-forward") %>
       <h1><%= t "layouts.application.main-header" %></h1>
-    </a>
+    <% end -%>
     <ol>
       <li><%= link_to t("layouts.application.home"), root_path, :class => :home %></li>
       <li><%= link_to t("layouts.application.about_us"), about_us_path, :class => :about_us %></li>
