@@ -63,4 +63,26 @@ describe Chapter do
       FactoryGirl.build(:chapter, :name => "XXX").any_chapter?.should be_false
     end
   end
+
+  context '.current_chapter_for_user' do
+    it 'returns first chapter for admin user' do
+      admin = FactoryGirl.create(:user, :admin => true)
+      FactoryGirl.create(:chapter)
+      FactoryGirl.create(:chapter)
+
+      Chapter.current_chapter_for_user(admin).should == Chapter.first
+    end
+    it 'returns first chapter for trustee' do
+      FactoryGirl.create(:chapter)
+      trustee = FactoryGirl.create(:user)
+      chapter = FactoryGirl.create(:chapter)
+      FactoryGirl.create(:role, :user => trustee, :chapter => chapter)
+      Chapter.current_chapter_for_user(trustee).should == chapter
+    end
+    it 'returns nil for user with no chapters' do
+      user = FactoryGirl.create(:user)
+      user.chapters.should == []
+      Chapter.current_chapter_for_user(user).should be_nil
+    end
+  end
 end

@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_filter :must_be_logged_in, :except => [:show, :new, :create]
-  before_filter :ensure_chapter_or_admin, :only => [:index]
+  before_filter :redirect_to_chapter_or_sign_in, :only => [:index], :if => :chapter_id_blank?
   before_filter :must_be_logged_in_to_see_unpublished_projects, :only => [:show]
 
   include ApplicationHelper
@@ -55,14 +55,20 @@ class ProjectsController < ApplicationController
     @current_project ||= Project.find(params[:id])
   end
 
-  def ensure_chapter_or_admin
-    if params[:chapter_id].blank?
-      if current_user.try(:admin?)
-        redirect_to chapter_projects_path(Chapter.first)
-      else
-        redirect_to chapter_projects_path(current_user.chapters.first)
-      end
+  def current_chapter_for_user
+    @current_chapter_for_user ||= Chapter.current_chapter_for_user(current_user)
+  end
+
+  def redirect_to_chapter_or_sign_in
+    if current_chapter_for_user
+      redirect_to chapter_projects_path(current_chapter_for_user)
+    else
+      redirect_to sign_in_path, notice: t("flash.permissions.must-have-chapter")
     end
+  end
+
+  def chapter_id_blank?
+    params[:chapter_id].blank?
   end
 
   def must_be_logged_in_to_see_unpublished_projects

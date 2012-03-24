@@ -81,6 +81,15 @@ step "the trustee can log in" do
   page.should have_no_css("body.clearance-sessions")
 end
 
+step "I log in as a trustee with no chapter" do
+  @current_user = FactoryGirl.create(:user, :password => "12345")
+
+  visit sign_in_path
+  fill_in("Email", :with => @current_user.email)
+  fill_in("Password", :with => "12345")
+  click_button("Sign in")
+end
+
 step "I log out" do
   click_link("Sign out")
   page.should have_content("Sign in")

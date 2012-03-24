@@ -17,3 +17,7 @@ Feature: As a trustee I can edit my profile
     When I update my password
     And I log out
     Then I should be able to log in with updated password
+
+  Scenario: Trustee is not associated with a chpater
+    Given I log in as a trustee with no chapter
+    Then I should see an error about not having a chapter
