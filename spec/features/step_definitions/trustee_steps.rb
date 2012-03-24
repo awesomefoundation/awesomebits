@@ -38,6 +38,10 @@ step "I should see an update user permission error" do
   page.should have_content("You do not have permission to modify this account.")
 end
 
+step "I should see an error about not having a chapter" do
+  page.should have_content("Your account is not associated with any chapters.")
+end
+
 step "I update my password" do
   @updated_password = "BaxterRocks"
   visit chapter_projects_path(@current_chapter)
