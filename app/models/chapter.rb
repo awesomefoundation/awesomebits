@@ -45,4 +45,11 @@ class Chapter < ActiveRecord::Base
     name == "Any"
   end
 
+  def self.current_chapter_for_user(user)
+    if user.admin?
+      Chapter.first
+    else
+      user.chapters.first
+    end
+  end
 end
