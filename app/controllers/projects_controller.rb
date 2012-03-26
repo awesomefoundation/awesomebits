@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_filter :must_be_logged_in, :except => [:show, :new, :create]
-  before_filter :redirect_to_chapter_or_sign_in, :only => [:index], :if => :chapter_id_blank?
+  before_filter :redirect_to_chapter_or_sign_in, :only => [:index], :if => :chapter_missing?
   before_filter :must_be_logged_in_to_see_unpublished_projects, :only => [:show]
 
   include ApplicationHelper
@@ -67,7 +67,7 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def chapter_id_blank?
+  def chapter_missing?
     params[:chapter_id].blank?
   end
 
