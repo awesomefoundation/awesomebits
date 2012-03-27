@@ -1,11 +1,11 @@
 step "there is a trustee in the system" do
-  @trustee_role     = Factory(:role, :name => 'trustee')
+  @trustee_role     = create(:role, :name => 'trustee')
   @trustee          = @trustee_role.user
   @trustee_chapter  = @trustee_role.chapter
 end
 
 step "there is another trustee in the system" do
-  @another_trustee_role    = Factory(:role, :name => "trustee")
+  @another_trustee_role    = create(:role, :name => "trustee")
   @another_trustee         = @another_trustee_role.user
   @another_trustee_chapter = @another_trustee_role.chapter
 end

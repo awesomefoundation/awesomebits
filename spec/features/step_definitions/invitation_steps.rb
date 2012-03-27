@@ -1,5 +1,5 @@
 step 'I invite a new trustee to the :name chapter' do |name|
-  @chapter = Factory(:chapter, :name => name)
+  @chapter = create(:chapter, :name => name)
   visit projects_path
   click_link("Invite a Trustee")
   fill_in("First name", :with => "Joe")

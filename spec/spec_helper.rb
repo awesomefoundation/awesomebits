@@ -20,4 +20,5 @@ RSpec.configure do |config|
   config.before(:each){ FactoryGirl.create(:chapter, :name => "Any") }
   config.before(:each){ ActionMailer::Base.deliveries.clear }
   config.include(Paperclip::Shoulda::Matchers)
+  config.include(FactoryGirl::Syntax::Methods)
 end

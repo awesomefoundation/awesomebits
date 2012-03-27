@@ -1,5 +1,5 @@
 step "I am logged in as an admin" do
-  @current_user = Factory(:user, :admin => true, :password => "12345")
+  @current_user = create(:user, :admin => true, :password => "12345")
   visit sign_in_path
   fill_in("Email", :with => @current_user.email)
   fill_in("Password", :with => "12345")
