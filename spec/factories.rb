@@ -15,6 +15,10 @@ FactoryGirl.define do
     email
     password "12345"
 
+    factory :admin do
+      admin true
+    end
+
     factory :user_with_dean_role do
       after_create do |user|
         FactoryGirl.create(:role, :user => user, :name => "dean")
