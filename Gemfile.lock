@@ -154,7 +154,7 @@ GEM
     netrc (0.7.1)
     newrelic_rpm (3.3.3)
     nokogiri (1.5.2)
-    paperclip (3.0.0)
+    paperclip (3.0.1)
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -250,13 +250,13 @@ GEM
     sprockets-redirect (0.1.0)
       activesupport (>= 3.1.0)
       rack
-    tddium (1.2.2)
-      bundler (~> 1.1.0)
+    tddium (1.3.1)
       highline
       json
-      tddium_client (~> 0.1.4)
+      launchy
+      tddium_client (~> 0.2.0)
       thor
-    tddium_client (0.1.5)
+    tddium_client (0.2.0)
       httparty (>= 0.8.1)
       json
     thin (1.3.1)
