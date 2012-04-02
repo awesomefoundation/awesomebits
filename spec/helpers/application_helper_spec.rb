@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ApplicationHelper do
+describe ApplicationHelper, '#display_country?' do
 
   let(:chapter1) { FactoryGirl.create(:chapter, :country => 'Australia') }
   let(:chapter2) { FactoryGirl.create(:chapter, :country => 'Australia') }

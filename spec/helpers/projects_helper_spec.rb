@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ProjectsHelper, 'selectable_chapters_for' do
+describe ProjectsHelper, '#selectable_chapters_for' do
 
   let!(:admin) { create :admin }
   let!(:user) { create :user }

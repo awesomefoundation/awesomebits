@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ChaptersHelper do
+describe ChaptersHelper, '#can_manage_chapter?' do
 
   let!(:role) { FactoryGirl.create(:role, :name => 'dean') }
   let!(:user) { role.user }
@@ -15,6 +15,10 @@ describe ChaptersHelper do
     helper.stubs(:current_user).returns(nil)
     helper.can_manage_chapter?(chapter).should == false
   end
+
+end
+
+describe ChaptersHelper, '#headlines' do
 
   it 'returns an array of headlines from chapter feed' do
     rss_feed = Rails.root.join('spec', 'support', 'feed.xml')
