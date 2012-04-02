@@ -5,10 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-user = User.create(:first_name => "Awesome",
-                   :last_name => "Admin",
-                   :email => "admin@awesomefoundation.org")
+
+# Set up the admin user
+user = User.find_or_create_by_first_name_and_last_name_and_email("Awesome", "Admin", "admin@awesomefoundation.org")
 user.update_attribute(:admin, true)
 user.update_password("gnarly")
 
-Chapter.create(:name => "Any")
+# Set up the "Any" Chapter
+Chapter.find_or_create_by_name("Any", :description => "Any Chapter", :country => COUNTRY_PRIORITY.first)
