@@ -4,16 +4,17 @@ class Project < ActiveRecord::Base
   has_many :users, :through => :votes
   has_many :photos, :order => "photos.sort_order"
 
-  attr_accessible :name, :title, :url, :email, :phone, :description, :use, :chapter_id,
-                  :extra_question_1, :extra_question_2, :extra_question_3,
+  attr_accessible :name, :title, :url, :email, :phone, :about_me, :about_project,
+                  :chapter_id, :extra_question_1, :extra_question_2, :extra_question_3,
                   :extra_answer_1, :extra_answer_2, :extra_answer_3,
-                  :new_photos, :photo_order, :rss_feed_url
+                  :new_photos, :photo_order, :rss_feed_url, :use_for_money
 
   validates_presence_of :name
   validates_presence_of :title
   validates_presence_of :email
-  validates_presence_of :description
-  validates_presence_of :use
+  validates_presence_of :about_me
+  validates_presence_of :about_project
+  validates_presence_of :use_for_money
   validates_presence_of :chapter_id
 
   cattr_accessor :mailer

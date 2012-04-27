@@ -175,12 +175,13 @@ en:
         phone: Phone number
         title: Project title
         url: Project website
-        description: About me
-        use: About the project
         current_photos-html: "Current images <span>(drag to re-order)</span>"
         new_photos-html: "Upload images of your project <span>(first image is set as cover image)</span>"
         chapter_id: Select chapter to apply to
         rss_feed_url: Project RSS feed url
+        about_me: Tell us a little about yourself
+        about_project: What is this project's deal, anyway?
+        use_for_money: How will you use the money?
       chapter:
         name: Name
         twitter_url: Twitter URL

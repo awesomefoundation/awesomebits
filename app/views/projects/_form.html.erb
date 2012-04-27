@@ -9,13 +9,17 @@
   <%= form.input :rss_feed_url %>
 </div>
 <div class="descriptions">
-  <%= form.input :description, :maxlength => 2500, :input_html => { :class => "about-me" } %>
+  <%= form.input :about_me, :maxlength => 500, :input_html => { :class => "about-me" } %>
   <div class="chars_left">
-    You have <span id="project_description_chars_left">2500</span> chars left
+    You have <span id="project_about_me_chars_left">500</span> chars left
   </div>
-  <%= form.input :use, :maxlength => 500, :input_html => { :class => "project-desc" } %>
+  <%= form.input :about_project, :maxlength => 2000, :input_html => { :class => "project-desc" } %>
   <div class="chars_left">
-    You have <span id="project_use_chars_left">500</span> chars left
+    You have <span id="project_about_project_chars_left">2000</span> chars left
+  </div>
+  <%= form.input :use_for_money, :maxlength => 500, :input_html => { :class => "project-use-for-money" } %>
+  <div class="chars_left">
+    You have <span id="project_use_for_money_chars_left">500</span> chars left
   </div>
 </div>
 <div class="image-upload">

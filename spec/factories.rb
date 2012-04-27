@@ -50,8 +50,9 @@ FactoryGirl.define do
     title
     email
     url "http://something.com"
-    description "I am awesome."
-    use "I will do awesome."
+    about_project "I am awesome."
+    about_me "I am a meat popsicle."
+    use_for_money "I will do awesome."
     chapter
     factory :project_with_rss_feed do
       rss_feed_url Rails.root.join('spec', 'support', 'feed.xml').to_s

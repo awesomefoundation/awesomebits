@@ -5,9 +5,10 @@ describe Project do
   it { should validate_presence_of :name }
   it { should validate_presence_of :title }
   it { should validate_presence_of :email }
-  it { should validate_presence_of :use }
+  it { should validate_presence_of :about_me }
+  it { should validate_presence_of :about_project }
+  it { should validate_presence_of :use_for_money }
   it { should validate_presence_of :chapter_id }
-  it { should validate_presence_of :description }
   it { should have_many(:votes) }
   it { should have_many(:users).through(:votes) }
   it { should have_many(:photos) }

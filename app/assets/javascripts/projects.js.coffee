@@ -34,5 +34,6 @@ $(".short-list")
 
 $('.short-list-toggle input[type="checkbox"]').change(filter_short_list)
 
-$('#project_description').keydown(display_remaining_chars)
-$('#project_use').keydown(display_remaining_chars)
+$('#project_about_me').keydown(display_remaining_chars)
+$('#project_about_project').keydown(display_remaining_chars)
+$('#project_use_for_money').keydown(display_remaining_chars)
