@@ -12,6 +12,7 @@ end
 
 gem 'country_select'
 gem 'pg'
+gem 'mysql2'
 gem 'jquery-rails'
 gem 'clearance'
 gem 'thin'
@@ -25,6 +26,9 @@ gem 'bourbon', '~> 1.4.0'
 gem 'copycopter_client'
 gem "simple_form", :git => "https://github.com/plataformatec/simple_form.git"
 gem 'nokogiri'
+gem "pry"
+gem "pry-nav"
+gem "pry-stack_explorer"
 
 group :development do
   gem "heroku"
@@ -40,9 +44,6 @@ group :development, :test do
 end
 
 group :test do
-  gem "pry"
-  gem "pry-nav"
-  gem "pry-stack_explorer"
   gem "turnip"
   gem "capybara"
   gem "database_cleaner"

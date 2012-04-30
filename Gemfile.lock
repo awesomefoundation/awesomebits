@@ -148,6 +148,7 @@ GEM
       metaclass (~> 0.0.1)
     multi_json (1.2.0)
     multi_xml (0.4.2)
+    mysql2 (0.3.11)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-ssh (2.3.0)
@@ -303,6 +304,7 @@ DEPENDENCIES
   hirb
   jquery-rails
   launchy
+  mysql2
   newrelic_rpm
   nokogiri
   paperclip
