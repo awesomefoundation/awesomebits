@@ -111,16 +111,16 @@ namespace :import do
 
   def convert_submission(submission)
     new_submission = Project.new
-    new_submission.use_for_money = submission.use.blank? ? "I will use the money to be awesome." : submission.use
-    new_submission.about_me      = submission.description.blank? ? "I am an awesome person." : submission.description
-    new_submission.title         = submission.title.blank? ? "A Project by #{submission.name}" : submission.title
-    new_submission.name          = submission.name.blank? ? "John or Jane Doe" : submission.name
-    new_submission.email         = submission.email.blank? ? "nothing@example.com" : submission.email
-    new_submission.phone         = submission.phone
-    new_submission.url           = submission.url
-    new_submission.created_at    = submission.created_at
-    new_submission.updated_at    = submission.updated_at
-    new_submission.about_project = "This is a project."
+    new_submission.use_for_money  = submission.use.blank? ? "I will use the money to be awesome." : submission.use
+    new_submission.about_project  = submission.description.blank? ? "Project description." : submission.description
+    new_submission.title          = submission.title.blank? ? "A Project by #{submission.name}" : submission.title
+    new_submission.name           = submission.name.blank? ? "John or Jane Doe" : submission.name
+    new_submission.email          = submission.email.blank? ? "nothing@example.com" : submission.email
+    new_submission.phone          = submission.phone
+    new_submission.url            = submission.url
+    new_submission.created_at     = submission.created_at
+    new_submission.updated_at     = submission.updated_at
+    new_submission.about_me       = "I am an awesome person"
 
     old_project = OldProject.where(title: submission.title).first
     if(old_project)
