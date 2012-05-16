@@ -20,7 +20,7 @@ FactoryGirl.define do
     end
 
     factory :user_with_dean_role do
-      after_create do |user|
+      after(:create) do |user|
         FactoryGirl.create(:role, :user => user, :name => "dean")
         user.reload
       end
@@ -40,7 +40,7 @@ FactoryGirl.define do
     email
     association :inviter, :factory => :user_with_dean_role
 
-    after_build do |invitation, proxy|
+    after(:build) do |invitation, proxy|
       invitation.chapter = invitation.inviter.chapters.first
     end
   end
