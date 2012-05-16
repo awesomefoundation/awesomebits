@@ -6,6 +6,10 @@ step 'I am looking at the list of projects for the first chapter' do
   visit chapter_projects_path(@my_chapter)
 end
 
+step 'I am looking at the list of projects for the current chapter' do
+  visit chapter_projects_path(@current_chapter)
+end
+
 step 'a project was created on each of the last 7 days for my chapter' do
   @my_projects = []
   7.times do |x|
@@ -120,6 +124,10 @@ step 'there is 1 winning project in my chapter' do
   @project = FactoryGirl.create(:winning_project, :chapter => @current_chapter)
 end
 
+step 'there are :count winning projects in my chapter' do |count|
+  FactoryGirl.create_list(:winning_project, count.to_i, :chapter => @current_chapter)
+end
+
 step 'there is 1 winning project and it has no RSS feed' do
   @project = FactoryGirl.create(:winning_project, :rss_feed_url => nil)
 end
@@ -133,6 +141,10 @@ step 'I should see those 5 winning projects in their proper order' do
   project_ids = @projects.sort_by(&:funded_on).reverse.map(&:id)
   css_selector = project_ids.map{|id| ".project-#{id}"}.join(" + ")
   page.should have_css(".awesome-projects #{css_selector}")
+end
+
+step 'I should see only :count project(s)' do |count|
+  all('article.project').size.should == count.to_i
 end
 
 step 'I click on that project' do

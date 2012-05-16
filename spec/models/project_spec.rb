@@ -283,4 +283,9 @@ describe Project do
     end
   end
 
+  context 'pagination' do
+    it 'has 30 items per page' do
+      Chapter.per_page.should == 30
+    end
+  end
 end

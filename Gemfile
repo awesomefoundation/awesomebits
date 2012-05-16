@@ -29,6 +29,7 @@ gem 'nokogiri'
 gem "pry"
 gem "pry-nav"
 gem "pry-stack_explorer"
+gem "will_paginate", "~> 3.0.3"
 
 group :development do
   gem "heroku"

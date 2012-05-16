@@ -8,7 +8,7 @@
     <nav>
       <%= link_to '#', :class => 'chapter-selection' do %>
         <span><%= @chapter.name %></span>
-        <span class="arrow"></span>      
+        <span class="arrow"></span>
       <% end -%>
       <ol class="chapter-selector">
         <% selectable_chapters_for(current_user).each do |chapter| %>
@@ -36,6 +36,7 @@
     </form>
   </section>
   <%= render @projects %>
+  <%= will_paginate(@projects) %>
 </section>
 
 <% content_for :javascript do %>
