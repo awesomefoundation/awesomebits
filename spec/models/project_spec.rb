@@ -222,6 +222,7 @@ describe Project do
 
   context '#new_photos=' do
     let(:project){ FactoryGirl.build(:project) }
+
     it 'creates new Photo records' do
       project.new_photos = [File.new(Rails.root.join('spec', 'support', 'fixtures', '1.JPG'))]
       project.photos.first.image_file_name.should == "1.JPG"

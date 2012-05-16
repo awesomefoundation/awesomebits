@@ -85,9 +85,8 @@ class User < ActiveRecord::Base
   end
 
   def set_password(new_password)
-    unless new_password.blank?
+    if new_password.present?
       self.password = new_password
     end
   end
-
 end

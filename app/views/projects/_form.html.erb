@@ -23,7 +23,7 @@
   </div>
 </div>
 <div class="image-upload">
-  <% unless form.object.photos.blank? %>
+  <% if form.object.photos.present? %>
     <section class="current-images">
     <label><%= t "simple_form.labels.project.current_photos-html" %></label>
       <ul class="old-photos">

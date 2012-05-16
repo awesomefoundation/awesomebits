@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
 
   def must_be_logged_in
-    unless current_user.present?
+    if current_user.blank?
       flash[:notice] = t("flash.permissions.must-be-logged-in")
       redirect_to root_url
     end

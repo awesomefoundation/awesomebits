@@ -68,7 +68,7 @@
       <% end %>
     </article>
 
-    <% unless @project.url.blank? %>
+    <% if @project.url.present? %>
       <article class="project-site-link">
         <%= link_to @project.url do %>
           Visit this project's web site
