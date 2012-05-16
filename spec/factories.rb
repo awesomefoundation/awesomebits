@@ -54,8 +54,13 @@ FactoryGirl.define do
     about_me "I am a meat popsicle."
     use_for_money "I will do awesome."
     chapter
+
     factory :project_with_rss_feed do
       rss_feed_url Rails.root.join('spec', 'support', 'feed.xml').to_s
+    end
+
+    factory :winning_project do
+      sequence(:funded_on) { |n| (3000-n.to_i).days.ago }
     end
   end
 

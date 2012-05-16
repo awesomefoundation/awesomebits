@@ -117,11 +117,11 @@ step 'there is/are :count winning project(s)' do |count|
 end
 
 step 'there is 1 winning project in my chapter' do
-  @project = FactoryGirl.create(:project, :funded_on => 2.days.ago, :chapter => @current_chapter)
+  @project = FactoryGirl.create(:winning_project, :chapter => @current_chapter)
 end
 
 step 'there is 1 winning project and it has no RSS feed' do
-  @project = FactoryGirl.create(:project, :funded_on => 2.days.ago, :rss_feed_url => nil)
+  @project = FactoryGirl.create(:winning_project, :rss_feed_url => nil)
 end
 
 step 'I edit that winning project' do
