@@ -40,6 +40,14 @@ Feature: A trustee can see all of the projects up for discussion and shortlist t
     When I look at my chapter's finalists
     Then I should see the project I shortlisted
 
+  Scenario: Shortlist filter option does not reset
+    Given I am logged in as a trustee
+    And a project was created on each of the last 7 days for my chapter
+    When I view only my shortlisted projects
+    Then the shortlisted filter should be on
+    When I am looking at the list of projects
+    Then the shortlisted filter should be off
+
   @javascript
   Scenario: Trustee can filter projects list based on shortlist
     Given I am logged in as a trustee
@@ -49,4 +57,18 @@ Feature: A trustee can see all of the projects up for discussion and shortlist t
     And I view only my shortlisted projects
     Then I should only see my shortlisted projects
     When I de-shortlist that project
+    And I view only my shortlisted projects
+    Then I should see no projects
+
+  @javascript
+  Scenario: Trustee can filter projects list based on shortlist when projects are paginated
+    Given I am logged in as a trustee
+    And there are enough winning projects in my chapter to spread over two pages
+    When I am looking at the list of projects
+    And I shortlist a project on the second page
+    And I go back to the first page of projects
+    And I view only my shortlisted projects
+    Then I should only see my shortlisted projects
+    When I de-shortlist that project
+    And I view only my shortlisted projects
     Then I should see no projects

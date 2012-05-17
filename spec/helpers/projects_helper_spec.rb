@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe ProjectsHelper, '#selectable_chapters_for' do
-
   let!(:admin) { create :admin }
   let!(:user) { create :user }
   let!(:any_chapter) { Chapter.find_by_name 'Any' }
@@ -16,5 +15,19 @@ describe ProjectsHelper, '#selectable_chapters_for' do
   it 'should return only user chapters for non-admin user' do
     helper.selectable_chapters_for(user).should == [any_chapter, boston_chapter]
   end
+end
 
+describe ProjectsHelper, '#checked_attribute_if' do
+  it 'returns an empty string for falsy' do
+    helper.checked_attribute_if(nil).should == ''
+    helper.checked_attribute_if(false).should == ''
+  end
+
+  it 'returns a correct checked attribute for truthy' do
+    helper.checked_attribute_if(true).should == 'checked="checked"'
+  end
+
+  it 'returns an HTML-safe string for truthy' do
+    helper.checked_attribute_if(true).should be_html_safe
+  end
 end

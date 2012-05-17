@@ -4,6 +4,13 @@ step 'I shortlist a project' do
   project_element.find(:css, "header a.short-list").click
 end
 
+step 'I shortlist a project on the second page' do
+  go_to_next_page
+  project_element = page.find(:css, "article.project")
+  @shortlisted_project_id = project_element['data-id'].to_i
+  project_element.find(:css, "header a.short-list").click
+end
+
 step 'the project indicates that I have shortlisted it' do
   page.should have_css("article.project[data-id='#{@shortlisted_project_id}'].shortlisted")
 end
@@ -67,6 +74,7 @@ end
 
 step 'I view only my shortlisted projects' do
   check('my-short-list')
+  click_button('Filter')
 end
 
 step 'I should only see my shortlisted projects' do
@@ -80,3 +88,10 @@ step 'I should see no projects' do
   page.should have_no_css('article.project', :visible => true)
 end
 
+step 'the shortlisted filter should be on' do
+  find('#my-short-list')[:checked].should be_present
+end
+
+step 'the shortlisted filter should be off' do
+  find('#my-short-list')[:checked].should be_blank
+end

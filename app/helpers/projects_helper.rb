@@ -18,4 +18,12 @@ module ProjectsHelper
       link_to(t(".winner", :name => chapter.name), project_winner_url(project, :chapter_id => chapter.id), :method => (project.winner? ? :delete : :post), :class => "mark-as-winner chapter-#{chapter.id}")
     end.join("").html_safe
   end
+
+  def checked_attribute_if(value)
+    if value
+      'checked="checked"'.html_safe
+    else
+      ''
+    end
+  end
 end

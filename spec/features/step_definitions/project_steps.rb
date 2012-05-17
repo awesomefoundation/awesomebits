@@ -2,6 +2,10 @@ step 'I am looking at the list of projects' do
   visit projects_path
 end
 
+step 'I go back to the first page of projects' do
+  visit projects_path
+end
+
 step 'I am looking at the list of projects for the first chapter' do
   visit chapter_projects_path(@my_chapter)
 end
@@ -124,8 +128,8 @@ step 'there is 1 winning project in my chapter' do
   @project = create(:winning_project, :chapter => @current_chapter)
 end
 
-step 'there are :count winning projects in my chapter' do |count|
-  create_list(:winning_project, count.to_i, :chapter => @current_chapter)
+step 'there are enough winning projects in my chapter to spread over two pages' do
+  create_list(:winning_project, Project.per_page + 1, :chapter => @current_chapter)
 end
 
 step 'there is 1 winning project and it has no RSS feed' do

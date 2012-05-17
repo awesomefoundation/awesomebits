@@ -1,3 +1,3 @@
 step 'I follow the link to the next page' do
-  find('a.next_page[rel="next"]').click
+  go_to_next_page
 end
