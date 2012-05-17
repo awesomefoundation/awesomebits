@@ -65,14 +65,14 @@ end
 step 'I should not see projects that are not mine' do
   not_expected = @other_projects + @any_projects
   not_expected.each do |project|
-    page.should_not have_css(".project .title:contains('#{project.title}')")
+    page.should have_no_css(".project .title:contains('#{project.title}')")
   end
 end
 
 step 'I should not see any projects that are 4 or more days old' do
   not_expected = @my_projects[4..-1]
   not_expected.each do |project|
-    page.should_not have_css(".project .title:contains('#{project.title}')")
+    page.should have_no_css(".project .title:contains('#{project.title}')")
   end
 end
 

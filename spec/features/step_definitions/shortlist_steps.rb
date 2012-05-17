@@ -77,6 +77,6 @@ step 'I should only see my shortlisted projects' do
 end
 
 step 'I should see no projects' do
-  page.should_not have_css('article.project', :visible => true)
+  page.should have_no_css('article.project', :visible => true)
 end
 

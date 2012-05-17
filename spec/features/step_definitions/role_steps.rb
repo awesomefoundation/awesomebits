@@ -21,8 +21,8 @@ step 'I try to promote a user' do
 end
 
 step 'I should not see promotion links' do
-  page.should_not have_css(".demote-user")
-  page.should_not have_css(".promote-user")
+  page.should have_no_css(".demote-user")
+  page.should have_no_css(".promote-user")
 end
 
 step 'I am a trustee for another chapter as well' do

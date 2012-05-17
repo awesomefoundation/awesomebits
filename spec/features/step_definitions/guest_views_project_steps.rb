@@ -13,7 +13,7 @@ step 'I view the project' do
 end
 
 step 'I should not see the carousel buttons' do
-  page.should_not have_css('.arrows')
+  page.should have_no_css('.arrows')
 end
 
 step 'I should see the carousel buttons' do
