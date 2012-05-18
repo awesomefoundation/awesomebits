@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe ChaptersHelper, '#can_manage_chapter?' do
 
-  let!(:role) { FactoryGirl.create(:role, :name => 'dean') }
+  let!(:role) { create(:role, :name => 'dean') }
   let!(:user) { role.user }
   let!(:chapter) { role.chapter }
 

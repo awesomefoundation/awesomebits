@@ -25,7 +25,7 @@ step 'I should see the new chapter form with errors' do
 end
 
 step 'there is a chapter in the system' do
-  @current_chapter = FactoryGirl.create(:chapter, :rss_feed_url => Rails.root.join('spec', 'support', 'feed.xml').to_s)
+  @current_chapter = create(:chapter, :rss_feed_url => Rails.root.join('spec', 'support', 'feed.xml').to_s)
 end
 
 step 'I go to the chapter page' do
@@ -98,7 +98,7 @@ step 'I should see a permissions error' do
 end
 
 step 'there are 5 chapters' do
-  @chapters = (1..5).map{ FactoryGirl.create(:chapter) }
+  @chapters = (1..5).map{ create(:chapter) }
 end
 
 step "those projects' chapters are in 4 countries total" do

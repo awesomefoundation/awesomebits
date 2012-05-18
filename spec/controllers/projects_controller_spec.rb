@@ -10,9 +10,9 @@ describe ProjectsController do
   end
 
   context 'viewing the index without a chapter' do
-    let(:chapter) { FactoryGirl.create(:chapter) }
-    let(:user) { FactoryGirl.create(:user) }
-    let!(:role) { FactoryGirl.create(:role, :user => user, :chapter => chapter) }
+    let(:chapter) { create(:chapter) }
+    let(:user) { create(:user) }
+    let!(:role) { create(:role, :user => user, :chapter => chapter) }
 
     before do
       sign_in_as user
@@ -23,9 +23,9 @@ describe ProjectsController do
   end
 
   context 'viewing a project that has not won yet' do
-    let!(:project) { FactoryGirl.create(:project) }
-    let!(:user) { FactoryGirl.create(:user) }
-    let!(:role) { FactoryGirl.create(:role, :user => user) }
+    let!(:project) { create(:project) }
+    let!(:user) { create(:user) }
+    let!(:role) { create(:role, :user => user) }
     context 'while logged in' do
       before do
         sign_in_as user
@@ -43,7 +43,7 @@ describe ProjectsController do
   end
 
   context 'viewing a project that has won while logged out' do
-    let!(:project) { FactoryGirl.create(:project, :funded_on => Date.today) }
+    let!(:project) { create(:project, :funded_on => Date.today) }
     before do
       get :show, :id => project
     end

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe UserFactory do
   describe "#create" do
-    let(:chapter) { FactoryGirl.create(:chapter) }
+    let(:chapter) { create(:chapter) }
     let(:user_attributes) {{
       :first_name => "Joe",
       :last_name => "Schmoe",
@@ -22,7 +22,7 @@ describe UserFactory do
       user.roles.first.name.should == "trustee"
     end
     it "creates a new Role, but not a User, if the User exists already" do
-      existing_user = FactoryGirl.create(:user, :email => user_attributes[:email])
+      existing_user = create(:user, :email => user_attributes[:email])
 
       factory.create
       user = factory.user

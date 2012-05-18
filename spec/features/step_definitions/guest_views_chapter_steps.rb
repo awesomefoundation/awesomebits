@@ -1,10 +1,10 @@
 step 'there are 5 trustees' do
-  @trustees = (1..5).map { FactoryGirl.create(:user) }
+  @trustees = (1..5).map { create(:user) }
   @trustees.each do |trustee|
-    FactoryGirl.create(:role,
-                       :user => trustee,
-                       :name => 'trustee',
-                       :chapter => @current_chapter)
+    create(:role,
+           :user => trustee,
+           :name => 'trustee',
+           :chapter => @current_chapter)
   end
 end
 
@@ -15,9 +15,9 @@ step 'I should see the trustees' do
 end
 
 step 'there is a trustee' do
-  @chapter = FactoryGirl.create(:chapter)
-  @trustee = FactoryGirl.create(:user, :url => 'http://www.myawesomeblog.com')
-  @role = FactoryGirl.create(:role, :user => @trustee, :chapter => @chapter)
+  @chapter = create(:chapter)
+  @trustee = create(:user, :url => 'http://www.myawesomeblog.com')
+  @role = create(:role, :user => @trustee, :chapter => @chapter)
 end
 
 step 'I should be able to click on a trustee' do

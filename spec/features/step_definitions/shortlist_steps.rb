@@ -26,33 +26,33 @@ step 'none of the projects should be shortlisted' do
 end
 
 step 'someone has voted for a project in another chapter' do
-  FactoryGirl.create(:vote)
+  create(:vote)
 end
 
 step ':count people/person have/has voted on a/another project in my chapter' do |count|
   @finalist_projects ||= []
-  project = FactoryGirl.create(:project, :chapter => @current_chapter)
+  project = create(:project, :chapter => @current_chapter)
   @finalist_projects << [project, count] if count.to_i > 0
   count.to_i.times do |x|
-    vote = FactoryGirl.create(:vote, :project => project, :created_at => x.days.ago)
-    FactoryGirl.create(:role, :user => vote.user, :chapter => @current_chapter)
+    vote = create(:vote, :project => project, :created_at => x.days.ago)
+    create(:role, :user => vote.user, :chapter => @current_chapter)
   end
 end
 
 step 'there are some projects for this month with votes' do
-  role = FactoryGirl.create(:role, :chapter => @current_chapter)
+  role = create(:role, :chapter => @current_chapter)
   3.times do
-    project = FactoryGirl.create(:project, :chapter => @current_chapter)
-    FactoryGirl.create(:vote, :user => role.user, :project => project)
+    project = create(:project, :chapter => @current_chapter)
+    create(:vote, :user => role.user, :project => project)
   end
 end
 
 step 'there are some projects in the "Any" chapter for this month with votes' do
   @any_chapter = Chapter.where(:name => "Any").first
-  role = FactoryGirl.create(:role, :chapter => @current_chapter)
+  role = create(:role, :chapter => @current_chapter)
   3.times do
-    project = FactoryGirl.create(:project, :chapter => @any_chapter)
-    FactoryGirl.create(:vote, :user => role.user, :project => project)
+    project = create(:project, :chapter => @any_chapter)
+    create(:vote, :user => role.user, :project => project)
   end
 end
 
