@@ -11,14 +11,14 @@ group :assets do
 end
 
 gem 'country_select'
-gem 'pg'
-gem 'mysql2'
+gem 'pg', '~> 0.13.2'
+gem 'mysql2', '~> 0.3.11'
 gem 'jquery-rails'
 gem 'clearance', '~> 0.16.2'
 gem 'thin'
 gem 'sass'
-gem 'high_voltage'
-gem 'paperclip'
+gem 'high_voltage', '~> 1.1.1'
+gem 'paperclip', '~> 3.0.3'
 gem 'fog'
 gem 'formtastic'
 gem 'flutie'
@@ -32,7 +32,7 @@ gem "pry-stack_explorer"
 gem "will_paginate", "~> 3.0.3"
 
 group :development do
-  gem "heroku"
+  gem "heroku", '~> 2.25'
   gem "hirb"
 end
 
@@ -49,7 +49,7 @@ group :test do
   gem "capybara"
   gem "database_cleaner"
   gem "capybara-webkit", "0.7.1"
-  gem "factory_girl_rails"
+  gem "factory_girl_rails", "~> 3.3.0"
   gem "bourne"
   gem "timecop"
   gem "shoulda-matchers"
@@ -60,6 +60,6 @@ group :test do
 end
 
 group :staging, :production do
-  gem 'newrelic_rpm'
+  gem 'newrelic_rpm', '~> 3.3.4'
   gem 'sprockets-redirect'
 end

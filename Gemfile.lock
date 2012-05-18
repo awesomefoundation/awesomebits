@@ -302,20 +302,20 @@ DEPENDENCIES
   database_cleaner
   email_spec
   evergreen
-  factory_girl_rails
+  factory_girl_rails (~> 3.3.0)
   flutie
   fog
   formtastic
-  heroku
-  high_voltage
+  heroku (~> 2.25)
+  high_voltage (~> 1.1.1)
   hirb
   jquery-rails
   launchy
-  mysql2
-  newrelic_rpm
+  mysql2 (~> 0.3.11)
+  newrelic_rpm (~> 3.3.4)
   nokogiri
-  paperclip
-  pg
+  paperclip (~> 3.0.3)
+  pg (~> 0.13.2)
   pry
   pry-nav
   pry-stack_explorer
