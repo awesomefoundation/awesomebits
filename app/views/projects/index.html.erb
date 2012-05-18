@@ -1,4 +1,4 @@
-<section class="admin-pannel">
+<section class="admin-panel">
   <%= render :partial => 'shared/sidebar' %>
 </section>
 
@@ -19,7 +19,7 @@
 
     <form accept-charset="UTF-8" action="<%= chapter_projects_path(@chapter) %>" class="simple_form filter" method="get">
       <div class="input short-list-toggle">
-        <input class="" id="my-short-list" type="checkbox">
+        <input class="" id="my-short-list" name="short_list" <%= checked_attribute_if(@short_listed) %> type="checkbox">
         <label for="my-short-list"><%= t ".short-list-filter" %></label>
       </div>
       <div class="input string optional date-range">

@@ -8,7 +8,13 @@ class ProjectsController < ApplicationController
   def index
     @start_date, @end_date = extract_timeframe
     @chapter = Chapter.find(params[:chapter_id])
-    @projects = @chapter.projects.during_timeframe(@start_date, @end_date).paginate(:page => params[:page])
+    @short_listed = params[:short_list]
+    project_filter = ProjectFilter.new(@chapter.projects).during(@start_date, @end_date).page(params[:page])
+    if params[:short_list]
+      project_filter.shortlisted_by(current_user)
+    end
+
+    @projects = project_filter.result
     current_user.mark_last_viewed_chapter(params[:chapter_id])
   end
 
