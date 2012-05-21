@@ -108,6 +108,20 @@ describe User do
     end
   end
 
+  context "#can_edit_project?" do
+    let(:user) { build(:user) }
+    it 'returns true if the user is an admin' do
+      user.admin = true
+      user.can_edit_project?(:chapter).should be_true
+    end
+    it 'asks the roles if it can view finalists if not an admin' do
+      user.admin = false
+      user.roles.stubs(:can_edit_project?)
+      user.can_edit_project?(:chapter)
+      user.roles.should have_received(:can_edit_project?)
+    end
+  end
+
   context "#can_mark_winner?" do
     let(:user) { build(:user) }
     let(:project) { stub }

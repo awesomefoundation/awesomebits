@@ -16,6 +16,10 @@ class Role < ActiveRecord::Base
     where(:name => "dean", :chapter_id => project.chapter).any?
   end
 
+  def self.can_edit_project?(project)
+    where(:name => "dean", :chapter_id => project.chapter).any?
+  end
+
   def self.can_manage_chapter?(chapter)
     where(:name => "dean", :chapter_id => chapter).any?
   end

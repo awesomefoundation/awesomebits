@@ -117,4 +117,20 @@ describe Role do
     end
   end
 
+  context ".can_edit_project?" do
+    let(:role) { create(:role, :name => "dean") }
+    let!(:chapter) { role.chapter }
+    let!(:project) { create(:project, :chapter => chapter) }
+    let!(:other_project) { create(:project) }
+    it 'returns true when we have dean role for this chapter' do
+      Role.can_edit_project?(project).should be_true
+    end
+
+    it 'returns false if chapter has no dean role' do
+      Role.can_edit_project?(other_project).should be_false
+      Role.delete_all
+      Role.can_edit_project?(project).should be_false
+    end
+  end
+
 end

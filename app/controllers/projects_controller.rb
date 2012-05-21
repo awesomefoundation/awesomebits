@@ -58,8 +58,9 @@ class ProjectsController < ApplicationController
   private
 
   def current_project
-    @current_project ||= Project.find(params[:id])
+    @current_project ||= Project.find_by_id(params[:id])
   end
+  helper_method :current_project
 
   def current_chapter_for_user
     @current_chapter_for_user ||= Chapter.current_chapter_for_user(current_user)
@@ -78,7 +79,7 @@ class ProjectsController < ApplicationController
   end
 
   def must_be_logged_in_to_see_unpublished_projects
-    if !current_project.try(:winner?) && !current_user
+    if !current_project.try(:winner?) && !current_user.logged_in?
       flash[:notice] = t("flash.permissions.must-be-logged-in")
       redirect_to root_url
     end

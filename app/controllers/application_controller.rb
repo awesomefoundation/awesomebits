@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
 
   def must_be_logged_in
-    if current_user.blank?
+    if current_user.blank? || !current_user.logged_in?
       flash[:notice] = t("flash.permissions.must-be-logged-in")
       redirect_to root_url
     end
@@ -23,6 +23,10 @@ class ApplicationController < ActionController::Base
       flash[:notice] = t("flash.permissions.must-be-dean-or-admin")
       redirect_to root_url
     end
+  end
+
+  def current_user
+    super || Guest.new
   end
 
   def set_locale

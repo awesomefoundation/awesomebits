@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
   has_many :votes
   has_many :projects, :through => :votes
 
+  def logged_in?
+    true
+  end
+
   def self.all_with_chapter(chapter_id)
     association = joins("LEFT JOIN roles ON users.id = roles.user_id").
       joins("LEFT JOIN chapters ON chapters.id = roles.chapter_id").
@@ -78,6 +82,10 @@ class User < ActiveRecord::Base
 
   def can_mark_winner?(project)
     admin? || project.in_any_chapter? || roles.can_mark_winner?(project)
+  end
+
+  def can_edit_project?(project)
+    admin? || roles.can_edit_project?(project)
   end
 
   def can_edit_profile?(user_id)

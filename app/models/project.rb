@@ -7,7 +7,7 @@ class Project < ActiveRecord::Base
   attr_accessible :name, :title, :url, :email, :phone, :about_me, :about_project,
                   :chapter_id, :extra_question_1, :extra_question_2, :extra_question_3,
                   :extra_answer_1, :extra_answer_2, :extra_answer_3,
-                  :new_photos, :photo_order, :rss_feed_url, :use_for_money
+                  :new_photos, :photo_order, :rss_feed_url, :use_for_money, :funded_on
 
   validates_presence_of :name
   validates_presence_of :title
