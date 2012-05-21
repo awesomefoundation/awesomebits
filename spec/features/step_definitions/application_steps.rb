@@ -1,3 +1,7 @@
+step 'save and open the page' do
+  save_and_open_page
+end
+
 step 'I am on the homepage' do
   visit(root_url)
 end

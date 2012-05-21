@@ -9,6 +9,7 @@ en:
     permissions:
       must-be-logged-in: You must be logged in.
       must-be-admin: You must be an administrator.
+      cannot-remove-user: You are not allowed to remove this user.
       must-be-dean-or-admin: You must be an admin or dean to access this page.
       must-have-chapter: Your account is not associated with any chapters.
       cannot-view-finalists: "You are not permitted to see this."

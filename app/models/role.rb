@@ -20,6 +20,10 @@ class Role < ActiveRecord::Base
     where(:name => "dean", :chapter_id => chapter).any?
   end
 
+  def self.can_remove_users?(chapter)
+    where(:name => "dean", :chapter_id => chapter).any?
+  end
+
   def self.can_view_finalists_for?(chapter)
     where(:chapter_id => chapter).any?
   end

@@ -28,6 +28,7 @@ Feature: Manage Promotions
     Given I am logged in as an admin
     And there is a trustee in the system
     When I remove trustee from a chapter
+    And save and open the page
     Then I should see the deactivated user
 
   Scenario: As a non-admin, I should not see the promotion links

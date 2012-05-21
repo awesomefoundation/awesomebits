@@ -40,4 +40,9 @@ class UsersController < ApplicationController
     end
   end
 
+  def current_chapter
+    @chapter ||= Chapter.find_by_id(params[:chapter_id])
+  end
+  helper_method :current_chapter
+
 end

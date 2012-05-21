@@ -52,6 +52,10 @@ class User < ActiveRecord::Base
     admin? || roles.can_manage_chapter?(chapter)
   end
 
+  def can_remove_users?(chapter)
+    admin? || roles.can_remove_users?(chapter)
+  end
+
   def can_manage_permissions?
     admin?
   end
