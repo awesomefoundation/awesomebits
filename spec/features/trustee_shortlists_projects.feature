@@ -72,3 +72,10 @@ Feature: A trustee can see all of the projects up for discussion and shortlist t
     When I de-shortlist that project
     And I view only my shortlisted projects
     Then I should see no projects
+
+  @javascript
+  Scenario: Shortlist is paginated
+    Given I am logged in as a trustee
+    And a project was created on each of the last 7 days for my chapter
+    When I view only my shortlisted projects
+    Then I should see pagination links
