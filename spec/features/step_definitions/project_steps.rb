@@ -23,6 +23,17 @@ step 'a project was created on each of the last 7 days for my chapter' do
   end
 end
 
+step 'a project was created on each of the last 50 days for my chapter and I voted for them all' do
+  @my_projects = []
+  50.times do |x|
+    @my_projects << create(:project,
+                           :chapter => @current_chapter,
+                           :created_at => x.days.ago)
+
+    create(:vote, :project => @my_projects.last, :user => @current_user)
+  end
+end
+
 step 'a project was created on each of the last 7 days for one chapter' do
   @my_chapter = create(:chapter)
   @my_projects = []

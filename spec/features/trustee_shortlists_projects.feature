@@ -76,6 +76,6 @@ Feature: A trustee can see all of the projects up for discussion and shortlist t
   @javascript
   Scenario: Shortlist is paginated
     Given I am logged in as a trustee
-    And a project was created on each of the last 7 days for my chapter
+    And a project was created on each of the last 50 days for my chapter and I voted for them all
     When I view only my shortlisted projects
     Then I should see pagination links
