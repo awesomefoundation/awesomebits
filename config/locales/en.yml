@@ -100,6 +100,9 @@ en:
       see-the-rest: See the rest →
       confirm-delete: Really delete this?
       winner: "Winner for %{name}"
+      about-me: "A little about me:"
+      about-project: "Here's my idea:"
+      use-for-money: "How I will use the money:"
     new:
       title: Are you ready to get Awesome!?
       description: Just fill out the application below with information about your self and the details of your project.

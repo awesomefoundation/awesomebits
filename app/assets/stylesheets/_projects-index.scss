@@ -318,6 +318,21 @@ body.projects-index {
 
       .project-pitch {
         font: normal 16px/20px $serif;
+        padding: 10px;
+
+        h3, p {
+          margin: 0;
+          padding: 0;
+          font: normal 14px/20px $serif;
+        }
+
+        h3 {
+          font-weight: bold;
+        }
+
+        p {
+          margin-bottom: 10px;
+        }
       }
 
       .details-toggle {
