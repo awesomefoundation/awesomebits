@@ -43,4 +43,6 @@ Awesomefoundation::Application.routes.draw do
 
     root :to => 'home#index'
   end
+
+  match "/404", :to => "errors#not_found"
 end
