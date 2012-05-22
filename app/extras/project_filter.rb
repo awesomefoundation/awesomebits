@@ -19,6 +19,7 @@ class ProjectFilter
   end
 
   def result
+    @projects = @projects.order(:created_at).reverse_order
     @projects
   end
 end
