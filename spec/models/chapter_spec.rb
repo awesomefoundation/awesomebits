@@ -18,6 +18,30 @@ describe Chapter do
     end
   end
 
+  context "slug generation" do
+    it "happens when the record is new" do
+      chapter = FactoryGirl.build(:chapter, :slug => "", :name => "Foo")
+      chapter.slug.should be_blank
+      chapter.save
+      chapter.slug.should == "foo"
+    end
+
+    it "happens when the slug is blank" do
+      chapter = FactoryGirl.create(:chapter, :name => "Foo")
+      chapter.slug.should == "foo"
+      chapter.slug = nil
+      chapter.save
+      chapter.slug.should == "foo"
+    end
+
+    it "doesn't happen when the slug is manually set" do
+      chapter = FactoryGirl.build(:chapter, :name => "Foo")
+      chapter.slug = "this-is-a-slug"
+      chapter.save
+      chapter.slug.should == "this-is-a-slug"
+    end
+  end
+
   context '.invitable_by for deans' do
     let!(:role) {create(:role, :name => 'dean')}
     let!(:chapter) {role.chapter}

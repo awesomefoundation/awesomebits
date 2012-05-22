@@ -17,6 +17,10 @@ class Chapter < ActiveRecord::Base
   attr_accessible :name, :twitter_url, :facebook_url, :blog_url, :rss_feed_url, :description,
                   :country, :extra_question_1, :extra_question_2, :extra_question_3
 
+  def should_generate_new_friendly_id?
+    slug.blank?
+  end
+
 
   def self.country_count
     select("count(distinct country) as country_count").first.country_count
