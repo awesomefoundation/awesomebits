@@ -12,13 +12,16 @@ describe ProjectFilter do
   end
 
   it 'paginates the projects' do
-    create(:project)
-    page_number = 2
-    per_page = 1
-    second_page_project = create(:project)
-    project_filter = ProjectFilter.new(Project)
+    Timecop.freeze(Time.now) do
+      first_page_project = create(:project, :created_at => 1.day.ago)
+      second_page_project = create(:project, :created_at => 30.minutes.ago)
+      per_page = 1
 
-    project_filter.page(page_number, per_page).result.all.should == [second_page_project]
+      project_filter = ProjectFilter.new(Project)
+
+      project_filter.page(2, per_page).result.all.should == [first_page_project]
+      project_filter.page(1, per_page).result.all.should == [second_page_project]
+    end
   end
 
   it 'can filter the projects to a shortlist' do

@@ -1,6 +1,7 @@
 class ProjectFilter
   def initialize(projects)
     @projects = projects
+    @projects = @projects.order(:created_at).reverse_order
   end
 
   def during(start_date, end_date)
@@ -19,7 +20,6 @@ class ProjectFilter
   end
 
   def result
-    @projects = @projects.order(:created_at).reverse_order
     @projects
   end
 end
