@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   include Clearance::Authentication
   protect_from_forgery
   before_filter :set_locale
+  before_filter :fix_chapter_ids
 
   def must_be_logged_in
     if current_user.blank? || !current_user.logged_in?
@@ -35,6 +36,18 @@ class ApplicationController < ActionController::Base
 
   def default_url_options(options={})
     { :locale => I18n.locale }
+  end
+
+  def fix_chapter_ids
+    if params[:chapter_id]
+      chapter = Chapter.find_by_slug(params[:chapter_id])
+      params[:chapter_id] = (chapter && chapter.id) || params[:chapter_id]
+    end
+
+    if params[:id]
+      chapter = Chapter.find_by_id(params[:id])
+      params[:id] = (chapter && chapter.id) || params[:id]
+    end
   end
 
 end

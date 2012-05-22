@@ -185,6 +185,7 @@ en:
         use_for_money: How will you use the money?
       chapter:
         name: Name
+        slug: Name in the URL
         twitter_url: Twitter URL
         facebook_url: Facebook URL
         blog_url: Blog URL

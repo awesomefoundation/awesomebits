@@ -1,4 +1,7 @@
 class Chapter < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   has_many :roles
   has_many :users, :through => :roles
   has_many :projects
@@ -8,10 +11,12 @@ class Chapter < ActiveRecord::Base
   validates_presence_of :name
   validates_presence_of :description
   validates_presence_of :country
+  validates_presence_of :slug
   validates_uniqueness_of :name
 
   attr_accessible :name, :twitter_url, :facebook_url, :blog_url, :rss_feed_url, :description,
                   :country, :extra_question_1, :extra_question_2, :extra_question_3
+
 
   def self.country_count
     select("count(distinct country) as country_count").first.country_count

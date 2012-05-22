@@ -1,6 +1,17 @@
 require 'spec_helper'
 
 describe ProjectsController do
+  context "routing" do
+    let(:boston){ FactoryGirl.build_stubbed(:chapter) }
+    it "routes /chapters/boston/projects to projects#index" do
+      {:get => "/chapters/boston/projects"}.should
+        route_to({:controller => "projects", :action => "index", :id => boston.id, :locale => "en"})
+    end
+    it "routes /en/chapters/boston/projects to projects#index" do
+      {:get => "/en/chapters/boston/projects"}.should
+        route_to({:controller => "projects", :action => "index", :id => boston.id, :locale => "en"})
+    end
+  end
   context 'viewing the index when logged out' do
     before do
       get :index

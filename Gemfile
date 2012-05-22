@@ -30,6 +30,7 @@ gem "pry"
 gem "pry-nav"
 gem "pry-stack_explorer"
 gem "will_paginate", "~> 3.0.3"
+gem "friendly_id", "~> 4.0.1"
 
 group :development do
   gem "heroku", '~> 2.25'

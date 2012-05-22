@@ -58,7 +58,7 @@ class ProjectsController < ApplicationController
   private
 
   def current_project
-    @current_project ||= Project.find_by_id(params[:id])
+    @current_project ||= Project.find(params[:id])
   end
   helper_method :current_project
 

@@ -14,7 +14,7 @@ class FinalistsController < ApplicationController
   private
 
   def current_chapter
-    @chapter ||= Chapter.find(params[:chapter_id])
+    @chapter ||= Chapter.find_by_id(params[:chapter_id])
   end
 
   def must_be_able_to_view_finalists

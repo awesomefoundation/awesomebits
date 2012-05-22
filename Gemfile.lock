@@ -112,6 +112,7 @@ GEM
     formatador (0.2.2)
     formtastic (2.2.0)
       actionpack (>= 3.0)
+    friendly_id (4.0.6)
     gherkin (2.10.0)
       json (>= 1.4.6)
     heroku (2.25.0)
@@ -306,6 +307,7 @@ DEPENDENCIES
   flutie
   fog
   formtastic
+  friendly_id (~> 4.0.1)
   heroku (~> 2.25)
   high_voltage (~> 1.1.1)
   hirb
