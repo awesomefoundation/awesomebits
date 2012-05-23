@@ -8,9 +8,9 @@
     <% if can_manage_chapter?(@chapter) %>
       <%= link_to "Edit Chapter", edit_chapter_path(@chapter), :class => 'edit-chapter' %>
     <% end %>
-    <%= link_if_not_blank @chapter.blog_url, "external blog" %>
-    <%= link_if_not_blank @chapter.facebook_url, "external facebook" %>
-    <%= link_if_not_blank @chapter.twitter_url, "external twitter" %>
+    <%= blog_link @chapter %>
+    <%= facebook_link @chapter %>
+    <%= twitter_link @chapter %>
   </div>
 </header>
 
