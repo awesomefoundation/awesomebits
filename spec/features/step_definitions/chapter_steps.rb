@@ -28,23 +28,12 @@ step 'there is a chapter in the system' do
   @current_chapter = create(:chapter, :rss_feed_url => Rails.root.join('spec', 'support', 'feed.xml').to_s)
 end
 
-step 'the chapter has a twitter url and a blog url' do
-  @current_chapter.update_attributes(twitter_url: "http://twitter.com/awesomefound",
-                                     blog_url: "http://awesomefoundation.org/blog/feed/")
-end
-
 step 'I go to the chapter page' do
   visit chapter_path(@current_chapter)
 end
 
 step 'I should see recent headlines' do
   page.should have_selector('ol.feed li', :text => 'New Melbourne Chapter')
-end
-
-step 'I should see a twitter button and a blog button' do
-  page.should have_selector('header a.twitter')
-  page.should have_selector('header a.blog')
-  page.should have_no_selector('header a.facebook')
 end
 
 step 'I enter new questions for applicants to answer' do
