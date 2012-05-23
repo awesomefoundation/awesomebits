@@ -35,3 +35,18 @@ describe ChaptersHelper, '#headlines' do
   end
 
 end
+
+describe ChaptersHelper, '#link_if_not_blank' do
+
+  let!(:chapter) {create(:chapter, twitter_url: "http://twitter.com/awesomefound")}
+
+  it 'returns nil if the url is not present' do
+    helper.link_if_not_blank(chapter.facebook_url, "classes").should be_nil
+  end
+
+  it 'returns a link if the url is present' do
+    expected_value = helper.link_to("", "http://twitter.com/awesomefound", class: "classes")
+    helper.link_if_not_blank(chapter.twitter_url, "classes").should == expected_value
+  end
+
+end
