@@ -12,7 +12,6 @@ end
 
 gem 'country_select'
 gem 'pg', '~> 0.13.2'
-gem 'mysql2', '~> 0.3.11'
 gem 'jquery-rails'
 gem 'clearance', '~> 0.16.2'
 gem 'thin'
