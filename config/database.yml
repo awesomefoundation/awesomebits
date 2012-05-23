@@ -9,6 +9,7 @@ development: &default
   database: awesomefoundation_development
   pool: 5
   timeout: 5000
+  host: localhost
 
 test: &test
   <<: *default
