@@ -10,6 +10,24 @@ step "there is another trustee in the system" do
   @another_trustee_chapter = @another_trustee_role.chapter
 end
 
+step "I edit that trustee's email address" do
+  visit(root_path)
+  click_link "Dashboard"
+  click_link "View all Users"
+  within("*[data-user-id='#{@trustee.id}']") do
+    click_link "Edit"
+  end
+  fill_in("Email", with: "new@email.addr")
+  click_button("Update User")
+end
+
+step "I should see the change reflected in the list of all users" do
+  visit(root_path)
+  click_link "Dashboard"
+  click_link "View all Users"
+  page.should have_css("*[data-user-id='#{@trustee.id}'] td:contains('new@email.addr')")
+end
+
 step "I try to change the other trustees information" do
   visit edit_user_path(@another_trustee)
 end

@@ -8,6 +8,9 @@
       <tr>
         <th><%= t(".name") %></th>
         <th><%= t(".email") %></th>
+        <% if current_user.can_edit_all_profiles? %>
+          <th><%= t(".edit") %></th>
+        <% end %>
         <th><%= t(".chapter") %></th>
         <th><%= t(".role") %></th>
         <% if current_user.can_manage_permissions? %>

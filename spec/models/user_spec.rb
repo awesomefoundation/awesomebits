@@ -122,6 +122,18 @@ describe User do
     end
   end
 
+  context "#can_edit_all_profiles?" do
+    let(:user) { build(:user) }
+    it 'returns true if the user is an admin' do
+      user.admin = true
+      user.can_edit_all_profiles?.should be_true
+    end
+    it 'returns false if the user is not an admin' do
+      user.admin = false
+      user.can_edit_all_profiles?.should be_false
+    end
+  end
+
   context "#can_mark_winner?" do
     let(:user) { build(:user) }
     let(:project) { stub }

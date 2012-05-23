@@ -92,6 +92,10 @@ class User < ActiveRecord::Base
     admin? || id == user_id.to_i
   end
 
+  def can_edit_all_profiles?
+    admin?
+  end
+
   def mark_last_viewed_chapter(chapter_id)
     update_attributes(:last_viewed_chapter_id => chapter_id)
   end
