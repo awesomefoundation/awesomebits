@@ -5,7 +5,7 @@ class Chapter < ActiveRecord::Base
   has_many :roles
   has_many :users, :through => :roles
   has_many :projects
-  has_many :winning_projects, :class_name => "Project", :conditions => "funded_on IS NOT NULL"
+  has_many :winning_projects, :class_name => "Project", :conditions => "funded_on IS NOT NULL", :order => "funded_on DESC"
   has_many :invitations
 
   validates_presence_of :name

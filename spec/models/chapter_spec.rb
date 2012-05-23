@@ -42,6 +42,19 @@ describe Chapter do
     end
   end
 
+  context '.winning_projects' do
+    it 'returns projects in descending order of funded_on' do
+      Timecop.freeze(Time.now) do
+        chapter = create(:chapter)
+        project1 = create(:project, chapter: chapter, funded_on: 1.week.ago)
+        project2 = create(:project, chapter: chapter, funded_on: 1.year.ago)
+        project3 = create(:project, chapter: chapter, funded_on: 1.month.ago)
+
+        chapter.winning_projects.should == [project1, project3, project2]
+      end
+    end
+  end
+
   context '.invitable_by for deans' do
     let!(:role) {create(:role, :name => 'dean')}
     let!(:chapter) {role.chapter}
