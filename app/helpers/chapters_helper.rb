@@ -31,4 +31,8 @@ module ChaptersHelper
   def headlines(rss_feed_url = nil, num_items = 5)
     rss(rss_feed_url).first(num_items)
   end
+
+  def link_if_not_blank(url, css_class)
+    link_to("", url, :class => css_class) if url
+  end
 end

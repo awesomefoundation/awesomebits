@@ -34,3 +34,9 @@ Feature: View chapters in the system
     And there is a trustee
     When I go to the chapter page
     Then I should be able to click on a trustee
+
+  Scenario: Guest can see social media buttons on the chapter page
+    Given there is a chapter in the system
+    And the chapter has a twitter url and a blog url
+    When I go to the chapter page
+    Then I should see a twitter button and a blog button
