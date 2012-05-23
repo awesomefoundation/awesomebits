@@ -34,12 +34,6 @@ describe Invitation do
       invitation.send_invitation
       fake_mailer.should have_delivered_email(:invite_trustee)
     end
-
-    it "doesn't send the invitation email if it has already been accepted" do
-      invitation.accepted = true
-      invitation.send_invitation
-      fake_mailer.should_not have_delivered_email(:invite_trustee)
-    end
   end
 
   context "#accept" do

@@ -33,9 +33,7 @@ class Invitation < ActiveRecord::Base
   end
 
   def send_invitation
-    if not accepted
-      mailer.invite_trustee(self).deliver
-    end
+    mailer.invite_trustee(self).deliver
   end
 
   def ensure_inviter_can_invite_to_chapter
