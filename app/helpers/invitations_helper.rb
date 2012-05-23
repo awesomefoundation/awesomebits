@@ -9,7 +9,7 @@ module InvitationsHelper
   end
 
   def invitable_chapters
-    Chapter.invitable_by(current_user)
+    Chapter.invitable_by(current_user).order(:name)
   end
 
   def primary_invitable_chapter
