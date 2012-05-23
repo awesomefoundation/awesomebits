@@ -22,6 +22,7 @@ class UserFactory
   end
 
   def role
+    @role ||= Role.where(user_id: user).where(chapter_id: chapter).first
     if @role.nil?
       @role = Role.new
       @role.name = "trustee"

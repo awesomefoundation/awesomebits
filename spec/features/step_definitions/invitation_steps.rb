@@ -10,6 +10,16 @@ step 'I invite a new trustee to the :name chapter' do |name|
   click_button("Invite")
 end
 
+step 'I invite the same trustee to the :name chapter' do |name|
+  visit projects_path
+  click_link("Invite a Trustee")
+  fill_in("First name", :with => "Joe")
+  fill_in("Last name", :with => "Schmoe")
+  select(@chapter.name, :from => "Select a chapter")
+  fill_in("Email", :with => @invitation_address)
+  click_button("Invite")
+end
+
 step 'I invite a new trustee to a different chapter' do |name|
   @chapter = create(:chapter)
   visit projects_path
@@ -65,7 +75,11 @@ steps_for :trustee do
   end
 end
 
-step 'that person should get an invitation email' do
+step 'the email backlog has been cleared' do
+  ActionMailer::Base.deliveries.clear
+end
+
+step 'that person should get an(other) invitation email' do
   invitation = Invitation.find_by_email(@invitation_address)
   invitation.should_not be_nil
   deliveries = ActionMailer::Base.deliveries.select do |email|
@@ -84,7 +98,11 @@ step 'they accept the invitation' do
   click_button("Accept the invitation!")
 end
 
-step 'they should get another email welcoming them' do
+step 'the trustee tries to accept the invitation yet again' do
+  step 'they accept the invitation'
+end
+
+step 'they should get (yet) another email welcoming them' do
   user = User.find_by_email(@invitation_address)
   user.should_not be_nil
   deliveries = ActionMailer::Base.deliveries.select do |email|

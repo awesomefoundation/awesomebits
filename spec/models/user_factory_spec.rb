@@ -33,5 +33,14 @@ describe UserFactory do
       user.chapters.first.should == chapter
       user.roles.first.name.should == "trustee"
     end
+    it "uses an existing Role if it exists already" do
+      existing_user = create(:user, :email => user_attributes[:email])
+      existing_role = create(:role, :user => existing_user, :chapter => chapter)
+
+      factory.create
+      role = factory.role
+
+      role.should == existing_role
+    end
   end
 end
