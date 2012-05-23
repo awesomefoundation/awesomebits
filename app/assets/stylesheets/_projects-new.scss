@@ -132,12 +132,16 @@
           }
         }
 
+        p {
+          margin-bottom: 0;
+        }
+
 
         a.remove-image {
           color: $base-font-color;
           float: right;
           margin-right: 5px;
-          padding-top: 4px;
+          padding-top: 1px;
 
           &:hover {
             color: $pink;

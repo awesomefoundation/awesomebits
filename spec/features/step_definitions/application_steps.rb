@@ -8,6 +8,11 @@ end
 
 step 'I submit a project to the :name chapter' do
   click_link("Apply")
+  step 'I fill in the application form'
+  click_button("Apply")
+end
+
+step 'I fill in the application form' do
   fill_in("Your name", :with => "Mr. Awesome")
   fill_in("Project title", :with => "Awesomeness")
   fill_in("Project website", :with => "http://awesome.com")
@@ -17,7 +22,6 @@ step 'I submit a project to the :name chapter' do
   fill_in("project_about_project", :with => "I want to make awesomeness.")
   fill_in("project_use_for_money", :with => "I'll spend it on stuff. Obviously.")
   select("Any", :from => "Select chapter to apply to")
-  click_button("Apply")
 end
 
 step 'I should see them on the application form' do
