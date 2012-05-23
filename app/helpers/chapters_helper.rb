@@ -33,6 +33,20 @@ module ChaptersHelper
   end
 
   def link_if_not_blank(url, css_class)
-    link_to("", url, :class => css_class) if url
+    if url.present?
+      link_to("", url, :class => css_class)
+    end
+  end
+
+  def blog_link(chapter)
+    link_if_not_blank(chapter.blog_url, "external blog")
+  end
+
+  def facebook_link(chapter)
+    link_if_not_blank(chapter.facebook_url, "external facebook")
+  end
+
+  def twitter_link(chapter)
+    link_if_not_blank(chapter.twitter_url, "external twitter")
   end
 end
