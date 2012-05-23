@@ -257,3 +257,7 @@ end
 step 'I should see no feed for the project' do
   page.should have_no_css(".project-rss")
 end
+
+step 'I should be on the projects index for the chapter I am a dean for' do
+  page.current_path.should == chapter_projects_path(@current_chapter)
+end

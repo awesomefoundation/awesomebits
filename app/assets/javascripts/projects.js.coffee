@@ -13,6 +13,24 @@ shortlist_success = (event, data, status, xhr) ->
 shortlist_failure = (xhr, status, error) ->
   alert(error.message)
 
+mark_as_winner_before_send = (event, data, xhr) ->
+  xhr.type = $(event.currentTarget).attr('data-method').toUpperCase()
+
+mark_as_winner_success = (event, data, status, xhr) ->
+  project_container = $('article[data-id="'+data.project_id+'"]')
+  if data.winner
+    project_container.addClass('winner')
+    project_container.find('a.mark-as-winner').attr('data-method', 'delete')
+  else
+    project_container.removeClass('winner')
+    project_container.find('a.mark-as-winner').attr('data-method', 'post')
+
+  if data.location
+    window.location = data.location
+
+mark_as_winner_failure = (xhr, status, error) ->
+  alert(error.message)
+
 display_remaining_chars = ->
   self = $(this)
   element = $('#'+self.attr('id')+'_chars_left')
@@ -24,6 +42,11 @@ $(".short-list")
   .bind("ajax:beforeSend",  shortlist_before_send)
   .bind("ajax:success", shortlist_success)
   .bind("ajax:failure", shortlist_failure)
+
+$(".mark-as-winner")
+  .bind("ajax:beforeSend", mark_as_winner_before_send)
+  .bind("ajax:success", mark_as_winner_success)
+  .bind("ajax:failure", mark_as_winner_failure)
 
 $('#project_about_me').keydown(display_remaining_chars)
 $('#project_about_project').keydown(display_remaining_chars)

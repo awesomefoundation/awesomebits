@@ -3,14 +3,16 @@ class WinnersController < ApplicationController
 
   def create
     @project = Project.find(params[:project_id])
+    response_json = { winner: true, project_id: @project.id }
+    response_json[:location] = chapter_projects_url(winning_chapter) if winning_chapter != @project.chapter
     @project.declare_winner!(winning_chapter)
-    redirect_to projects_path
+    render :json => response_json
   end
 
   def destroy
     @project = Project.find(params[:project_id])
     @project.revoke_winner!
-    redirect_to projects_path
+    render :json => { :winner => false, :project_id => @project.id }
   end
 
   private
