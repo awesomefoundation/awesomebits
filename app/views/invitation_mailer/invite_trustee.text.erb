@@ -1,1 +1,15 @@
+Hi <%= @invitation.first_name %> <%= @invitation.last_name %>!
+
+You have been invited to join AwesomeFoundation.org as a trustee of the
+<%= @invitation.chapter.name %> chapter! Yay!
+
 <%= new_invitation_acceptance_url(@invitation, :locale => I18n.locale) %>
+
+Once you accept the invitation, you’ll be listed as a trustee on the
+chapter’s website. You’ll also be able to read and create personal
+shortlists for your chapter’s applications. It’ll be a really good time, we
+promise.
+
+If you have any questions or concerns, please contact the Awesome Web team:
+awesome-web@googlegroups.com
+
