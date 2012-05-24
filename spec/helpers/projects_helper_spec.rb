@@ -31,3 +31,4 @@ describe ProjectsHelper, '#checked_attribute_if' do
     helper.checked_attribute_if(true).should be_html_safe
   end
 end
+

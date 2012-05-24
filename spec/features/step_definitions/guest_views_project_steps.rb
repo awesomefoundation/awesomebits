@@ -20,3 +20,6 @@ step 'I should see the carousel buttons' do
   page.should have_css('.arrows')
 end
 
+step 'I should see a placeholder image' do
+  page.should have_css('#project-gallery img[src="/assets/no-image-main.png"]')
+end

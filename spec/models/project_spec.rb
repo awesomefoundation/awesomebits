@@ -271,16 +271,16 @@ describe Project do
     end
   end
 
-  context '#index_image_url' do
-    let(:project) { create(:project) }
-    let(:photo) { create(:photo, :project => project) }
-    it 'returns the image name of the first photo if there is one' do
+  context '#display_images' do
+    let(:project) { build_stubbed(:project) }
+    it "returns the photos if there are any" do
+      photo = create(:photo)
       project.photos = [photo]
-      project.index_image_url.should == project.photos.first.image.url(:index)
+      project.display_images.map(&:url).should == [photo.image.url]
     end
 
-    it 'returns a default image name if there is not' do
-      project.index_image_url.should == "no_image.png"
+    it "returns a new photo if there aren't any" do
+      project.display_images.map(&:url).should == [Photo.new.image.url]
     end
   end
 

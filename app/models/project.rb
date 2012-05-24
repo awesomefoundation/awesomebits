@@ -86,14 +86,6 @@ class Project < ActiveRecord::Base
     chapter.any_chapter?
   end
 
-  def index_image_url
-    if photos.blank?
-      "no_image.png"
-    else
-      photos.first.image.url(:index)
-    end
-  end
-
   def photo_order
     photos.map(&:id).join(" ")
   end
@@ -114,6 +106,18 @@ class Project < ActiveRecord::Base
         new_photo.save
       end
     end
+  end
+
+  def display_images
+    if photos.empty?
+      [Photo.new.image]
+    else
+      photos.map(&:image)
+    end
+  end
+
+  def primary_image
+    display_images.first
   end
 
   def save

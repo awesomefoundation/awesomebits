@@ -9,8 +9,8 @@
 
  <section class="project-gallery" id="project-gallery">
    <ul class="viewport">
-     <% @project.photos.reverse.each do |photo| %>
-       <li class="piece image-wrapper"> <%= image_tag(photo.image.url) %> </li>
+     <% @project.display_images.each do |image| %>
+       <li class="piece image-wrapper"> <%= image_tag(image.url) %> </li>
      <% end %>
    </ul>
    <% if @project.photos.count > 1 %>
