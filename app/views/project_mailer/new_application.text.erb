@@ -10,3 +10,38 @@ http://awesomefoundation.org/blog/ for information about grants from all
 of our chapters as well as future application deadlines.
 
 Thanks for your interest in the Awesome Foundation!
+
+
+Your application, for reference:
+
+Your name: <%= @project.name %>
+Your email: <%= @project.email %>
+Your phone number: <%= @project.phone %>
+Project title: <%= @project.title %>
+Project website: <%= @project.url %>
+Project RSS: <%= @project.rss_feed_url %>
+Chapter: <%= @project.chapter.name %>
+
+About me:
+<%= @project.about_me %>
+
+About the project:
+<%= @project.about_project %>
+
+How you will use the money:
+<%= @project.use_for_money %>
+
+<% if @project.extra_question_1 -%>
+<%= @project.extra_question_1 %>:
+<%= @project.extra_answer_1 %>
+
+<% end -%>
+<% if @project.extra_question_2 -%>
+<%= @project.extra_question_2 %>:
+<%= @project.extra_answer_2 %>
+
+<% end -%>
+<% if @project.extra_question_3 -%>
+<%= @project.extra_question_3 %>:
+<%= @project.extra_answer_3 %>
+<% end -%>
