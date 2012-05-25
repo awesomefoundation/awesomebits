@@ -18,52 +18,6 @@ def initialize_databases(old_db_yaml_file, new_db_yaml_file)
 end
 
 def initialize_models
-  require './app/models/user'
-  require './app/models/chapter'
-  require './app/models/project'
-
-  class Chapter < ActiveRecord::Base
-    establish_connection :new_database
-  end
-
-  class Project < ActiveRecord::Base
-    establish_connection :new_database
-  end
-
-  class User < ActiveRecord::Base
-    establish_connection :new_database
-  end
-
-  class Role < ActiveRecord::Base
-    belongs_to :chapter
-    belongs_to :user
-    establish_connection :new_database
-  end
-
-  class OldUser < ActiveRecord::Base
-    establish_connection :old_database
-    self.table_name = "users"
-    belongs_to :chapter, :class_name => "OldChapter"
-  end
-
-  class OldChapter < ActiveRecord::Base
-    establish_connection :old_database
-    self.table_name = "chapters"
-    has_many :users, :class_name => "OldUser"
-    has_many :projects, :class_name => "OldProject"
-  end
-
-  class OldProject < ActiveRecord::Base
-    establish_connection :old_database
-    self.table_name = "projects"
-    belongs_to :chapter, :class_name => "OldChapter"
-  end
-
-  class OldSubmission < ActiveRecord::Base
-    establish_connection :old_database
-    self.table_name = "submissions"
-    belongs_to :chapter, :class_name => "OldChapter"
-  end
 end
 
 def convert_chapter(chapter)
@@ -126,10 +80,58 @@ def convert_user(user)
 end
 
 namespace :import do
-  task :interim_projects => :environment do
+  task :initialize_models do
     initialize_databases(ENV['old_db'], ENV['new_db'])
-    initialize_models
 
+    require './app/models/user'
+    require './app/models/chapter'
+    require './app/models/project'
+
+    class Chapter < ActiveRecord::Base
+      establish_connection :new_database
+    end
+
+    class Project < ActiveRecord::Base
+      establish_connection :new_database
+    end
+
+    class User < ActiveRecord::Base
+      establish_connection :new_database
+    end
+
+    class Role < ActiveRecord::Base
+      belongs_to :chapter
+      belongs_to :user
+      establish_connection :new_database
+    end
+
+    class OldUser < ActiveRecord::Base
+      establish_connection :old_database
+      self.table_name = "users"
+      belongs_to :chapter, :class_name => "OldChapter"
+    end
+
+    class OldChapter < ActiveRecord::Base
+      establish_connection :old_database
+      self.table_name = "chapters"
+      has_many :users, :class_name => "OldUser"
+      has_many :projects, :class_name => "OldProject"
+    end
+
+    class OldProject < ActiveRecord::Base
+      establish_connection :old_database
+      self.table_name = "projects"
+      belongs_to :chapter, :class_name => "OldChapter"
+    end
+
+    class OldSubmission < ActiveRecord::Base
+      establish_connection :old_database
+      self.table_name = "submissions"
+      belongs_to :chapter, :class_name => "OldChapter"
+    end
+  end
+
+  task :interim_projects => [:environment, :initialize_models] do
     Chapter.transaction do
       begin
         submissions = OldSubmission.where("chapters.id > #{ENV['start_project_id']}")
@@ -149,10 +151,7 @@ namespace :import do
     end
   end
 
-  task :old_db => :environment do
-    initialize_databases(ENV['old_db'], ENV['new_db'])
-    initialize_models
-
+  task :old_db => [:environment, :initialize_models] do
     Chapter.transaction do
       Chapter.delete_all
       Project.delete_all
