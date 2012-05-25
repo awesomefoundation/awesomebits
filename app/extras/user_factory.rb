@@ -4,8 +4,16 @@ class UserFactory
   end
 
   def create
-    User.transaction do
-      user.save && chapter.save && role.save && user
+    begin
+      User.transaction do
+        user.save! && chapter.save! && role.save! && user
+      end
+    rescue ActiveRecord::ActiveRecordError => e
+      Rails.logger.error("Cannot accept invitation: #{e.message}")
+      Rails.logger.error("User: #{factory.user.errors.full_messages.to_sentence}") unless factory.user.valid?
+      Rails.logger.error("Chapter: #{factory.chapter.errors.full_messages.to_sentence}") unless factory.chapter.valid?
+      Rails.logger.error("Role: #{factory.role.errors.full_messages.to_sentence}") unless factory.role.valid?
+      false
     end
   end
 
