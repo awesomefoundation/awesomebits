@@ -44,7 +44,7 @@
 
 <section class="what-how">
   <hgroup>
-    <h2><%= t(".funding-html", :amount => funding_amount_for(Project.winner_count)) %> <span class="divider">|</span> <%= t(".winner-count-html", :amount => Project.winner_count) %></h2>
+    <h2><%= t(".funding-html", :amount => funding_amount_for(Project.winner_count)) %> <span class="divider"></span> <%= t(".winner-count-html", :amount => Project.winner_count) %></h2>
   </hgroup>
   <div class="need-funding">
     <div class="description">
@@ -65,7 +65,7 @@
 
 <section class ="who-where">
   <hgroup>
-    <h2><%= t(".chapter-count-html", :count => Chapter.count) %> <span class="divider">|</span> <%= t(".country-count-html", :count => Chapter.country_count) %></h2>
+    <h2><%= t(".chapter-count-html", :count => Chapter.count) %> <span class="divider"></span> <%= t(".country-count-html", :count => Chapter.country_count) %></h2>
   </hgroup>
 
   <div class="about-preview">
@@ -80,28 +80,18 @@
 </section>
 
 <section class="news">
-  <header>
-    <h2><%= t ".news.header" %></h2>
-  </header>
-  <div class="feed-wrapper">
+  <div class="inner-wrapper">
+    <header>
+      <h2><%= t ".news.recent" %></h2>
+    </header>
     <section class="rss">
-      <h3><%= t ".news.recent" %></h3>
       <ol class="feed">
         <% headlines(MAIN_AWESOME_RSS, 6).each do |headline| %>
           <li class="post">
             <%= link_to headline[:link] do %>
+              <span class="post-date"><%= headline[:publish_date] %></span>
               <%= headline[:title] %>
             <% end %>
-          </li>
-        <% end %>
-      </ol>
-    </section>
-    <section class="events">
-      <h3><%= t ".news.events" %></h3>
-      <ol class="feed">
-        <% 6.times do %>
-          <li class="post">
-            <a href="#">This is going to be an awesome event!</a>
           </li>
         <% end %>
       </ol>
