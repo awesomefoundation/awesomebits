@@ -20,4 +20,10 @@ module ApplicationHelper
     number_with_delimiter(winner_count * 1000, :delimiter => I18n.t("number.delimiter"),
                                                :separator => I18n.t("number.separator"))
   end
+
+  def markdown(text)
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true)
+    markdown.render(text).html_safe
+  end
+
 end
