@@ -13,3 +13,13 @@ describe ApplicationHelper, '#display_country?' do
   end
 
 end
+
+describe ApplicationHelper, '#markdown' do
+  it 'returns markdown converted text' do
+    helper.markdown('*Test*').should == "<p><em>Test</em></p>\n"
+  end
+
+  it 'returns html_safe text' do
+    helper.markdown('test').should be_html_safe
+  end
+end
