@@ -27,4 +27,10 @@ describe Fetcher do
     fetcher.stubs(:open).raises(SocketError)
     fetcher.to_s.should == ""
   end
+
+  it 'returns blank when there is a connection refused error' do
+    fetcher = Fetcher.new(url)
+    fetcher.stubs(:open).raises(Errno::ECONNREFUSED)
+    fetcher.to_s.should == ""
+  end
 end

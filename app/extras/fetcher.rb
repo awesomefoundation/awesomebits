@@ -9,12 +9,8 @@ class Fetcher
   def to_s
     begin
       open(@url).read
-    rescue SocketError
-      ""
-    rescue OpenURI::HTTPError
-      ""
-    rescue Errno::ENOENT
-      ""
+    rescue SocketError, OpenURI::HTTPError, Errno::ENOENT, Errno::ECONNREFUSED
+      String.new
     end
   end
 
