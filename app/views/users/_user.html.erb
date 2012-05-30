@@ -3,7 +3,7 @@
     <span data-role-id="<%= user.role_id %>">
       <h2><%= user.first_name %> <%= user.last_name %></h2>
     </span>
-    <span> - <%= t(".admin") %></span>
+    <span class="status"> - <%= t(".admin") %></span>
   </td>
   <td><%= user.email %></td>
   <% if current_user.can_edit_all_profiles? %>

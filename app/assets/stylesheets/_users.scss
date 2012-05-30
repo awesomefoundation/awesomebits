@@ -68,7 +68,7 @@ section.awesome-members {
 
       &.non_admin {
         td.name {
-          span {
+          span.status {
             display: none;
           }
         }
