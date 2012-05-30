@@ -61,5 +61,8 @@ module Awesomefoundation
 
     # Use our own app as the handler for errors.
     config.exceptions_app = self.routes
+
+    # Do not initialize on assets compilation
+    config.assets.initialize_on_precompile = false
   end
 end
