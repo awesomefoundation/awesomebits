@@ -134,7 +134,7 @@ namespace :import do
   task :interim_projects => [:environment, :initialize_models] do
     Chapter.transaction do
       begin
-        submissions = OldSubmission.where("chapters.id > #{ENV['start_project_id']}")
+        submissions = OldSubmission.where("id > #{ENV['start_project_id']}")
         submissions.all.each do |os|
           chapter = os.chapter
           chapter = convert_chapter(chapter)
