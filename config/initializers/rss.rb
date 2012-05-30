@@ -1,1 +1,1 @@
-MAIN_AWESOME_RSS = "http://awesomefoundation.org/blog/feed/"
+MAIN_AWESOME_RSS = "http://blog.awesomefoundation.org/feed/"
