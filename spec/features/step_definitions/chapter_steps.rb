@@ -57,6 +57,10 @@ step 'I go to the chapters index' do
   visit(chapters_url)
 end
 
+step 'I should not see the Any chapter' do
+  page.should_not have_css("h2.name:contains('Any')")
+end
+
 step 'I should see this new chapter' do
   page.should have_content(@chapter_name)
 end

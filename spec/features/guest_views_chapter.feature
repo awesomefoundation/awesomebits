@@ -34,3 +34,8 @@ Feature: View chapters in the system
     And there is a trustee
     When I go to the chapter page
     Then I should be able to click on a trustee
+
+  Scenario: Guest views the chapters index page
+    Given there is a chapter in the system
+    When I go to the chapters index
+    Then I should not see the Any chapter
