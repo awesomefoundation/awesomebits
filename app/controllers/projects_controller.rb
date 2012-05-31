@@ -20,6 +20,10 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+
+    if params[:chapter]
+      @project.chapter = Chapter.find(params[:chapter].downcase) rescue nil
+    end
   end
 
   def create
