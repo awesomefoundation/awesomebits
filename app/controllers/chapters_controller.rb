@@ -3,7 +3,7 @@ class ChaptersController < ApplicationController
   before_filter :must_be_able_to_manage_chapter, :only => [:edit, :update]
 
   def index
-    @chapters = Chapter.all.sort_by(&CountrySortCriteria.new(COUNTRY_PRIORITY))
+    @chapters = Chapter.visitable.all.sort_by(&CountrySortCriteria.new(COUNTRY_PRIORITY))
   end
 
   def show
