@@ -143,10 +143,6 @@ step 'there are enough winning projects in my chapter to spread over two pages' 
   create_list(:winning_project, Project.per_page + 1, :chapter => @current_chapter)
 end
 
-step 'there is 1 winning project and it has no RSS feed' do
-  @project = create(:winning_project, :rss_feed_url => nil)
-end
-
 step 'I edit that winning project' do
   visit(project_path(@project))
   click_link "Edit Project"

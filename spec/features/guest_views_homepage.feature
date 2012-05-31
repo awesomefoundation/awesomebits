@@ -8,8 +8,3 @@ Feature: A guest views the homepage
     And I should see those 5 winning projects in their proper order
     And I should see that 5 projects have been funded for $5000
     And I should see that the 6 chapters, including Any, are spread across 4 countries
-
-  Scenario: Viewing the news
-    Given there is news on the main news feed
-    When I am on the homepage
-    Then I should see the news from the feed on the homepage

@@ -77,19 +77,11 @@
       </article>
     <% end %>
 
-
-    <% if has_headlines?(@project.rss_feed_url) %>
-    <article class="project-rss">
-      <h2><%= t ".feed-title" %></h2>
-      <ol class="feed">
-        <% headlines(@project.rss_feed_url).each do |headline| %>
-          <li>
-            <span class="post-date"><%= headline[:publish_date] %>:</span>
-            <%= link_to headline[:title], headline[:link] %>
-          </li>
-        <% end %>
-      </ol>
-    </article>
+    <% unless @project.rss_feed_url.blank? %>
+      <article class="project-rss">
+        <h2><%= t ".feed-title" %></h2>
+        <section class="rss" id="rss-feeds"></section>
+      </article>
     <% end %>
 
   </section>
@@ -102,3 +94,7 @@
     });
   <% end %>
 <% end %>
+
+<% content_for :javascript do -%>
+  <%= render 'shared/rssfeed', rss_feed_url: @project.rss_feed_url %>
+<% end -%>

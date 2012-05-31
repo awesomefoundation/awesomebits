@@ -1,0 +1,17 @@
+<%= javascript_tag do %>
+  jQuery(function($) {
+    $("#rss-feeds").rss("<%= rss_feed_url %>",
+    {
+      limit: 6,
+      layoutTemplate: '<ol class="feed">{entries}</ol>',
+      entryTemplate: '<li class="post"><a href="{url}"><span class="post-date">{formatted_date}</span>{title}</a></li>',
+      tokens: {
+        formatted_date: function(entry, tokens) {
+          date = Date.parse(tokens.date) || Date.now();
+            return date.toString('yyyy-MM-dd');
+        }
+      }
+    }
+    )
+  })
+<% end -%>

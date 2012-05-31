@@ -68,14 +68,11 @@
     </article>
     <article class="rss-feed" data-feed-url="<%= @chapter.rss_feed_url %>">
       <h2><%= t(".trustees.news", :name => @chapter.name) %></h2>
-      <ol class="feed">
-        <% headlines(@chapter.rss_feed_url).each do |headline| %>
-          <li>
-            <span class="post-date"><%= headline[:publish_date] %>:</span>
-            <%= link_to headline[:title], headline[:link] %>
-          </li>
-        <% end %>
-      </ol>
+      <section class="rss" id="rss-feeds"></section>
     </article>
   </section>
 </section>
+
+<% content_for :javascript do -%>
+  <%= render 'shared/rssfeed', rss_feed_url: @chapter.rss_feed_url %>
+<% end -%>

@@ -84,18 +84,7 @@
     <header>
       <h2><%= t ".news.recent" %></h2>
     </header>
-    <section class="rss">
-      <ol class="feed">
-        <% headlines(MAIN_AWESOME_RSS, 6).each do |headline| %>
-          <li class="post">
-            <%= link_to headline[:link] do %>
-              <span class="post-date"><%= headline[:publish_date] %></span>
-              <%= headline[:title] %>
-            <% end %>
-          </li>
-        <% end %>
-      </ol>
-    </section>
+    <section class="rss" id="rss-feeds"></section>
   </div>
 </section>
 
@@ -107,4 +96,6 @@
   <% end %>
 </section>
 
-
+<% content_for :javascript do -%>
+  <%= render 'shared/rssfeed', rss_feed_url: MAIN_AWESOME_RSS %>
+<% end -%>

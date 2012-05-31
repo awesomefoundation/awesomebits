@@ -1,7 +1,3 @@
-step 'I should see the project rss feed' do
-  page.should have_selector("ol.feed li", :text => "New Melbourne Chapter")
-end
-
 step 'there is a project with :count photo(s)' do |count|
   @chapter = create(:chapter)
   @project = create(:project, :chapter => @chapter, :funded_on => 1.days.ago)

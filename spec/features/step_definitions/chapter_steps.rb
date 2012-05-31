@@ -32,10 +32,6 @@ step 'I go to the chapter page' do
   visit chapter_path(@current_chapter)
 end
 
-step 'I should see recent headlines' do
-  page.should have_selector('ol.feed li', :text => 'New Melbourne Chapter')
-end
-
 step 'I enter new questions for applicants to answer' do
   @extra_question_1 = "What is your name?"
   fill_in("Extra question 1", :with => @extra_question_1)
