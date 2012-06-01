@@ -184,7 +184,7 @@ en:
         chapter_id: Select chapter to apply to
         rss_feed_url: Project RSS feed url
         about_me: Tell us a little about yourself
-        about_project: What is this project's deal, anyway?
+        about_project: Tell us about your awesome project!
         use_for_money: How will you use the money?
       chapter:
         name: Name
