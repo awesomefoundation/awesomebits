@@ -64,7 +64,7 @@
   <section class="description">
     <article class="about">
       <h2><%= t(".trustees.about") %></h2>
-      <p><%= markdown @chapter.description %></p>
+      <%= markdown @chapter.description %>
     </article>
     <article class="rss-feed" data-feed-url="<%= @chapter.rss_feed_url %>">
       <h2><%= t(".trustees.news", :name => @chapter.name) %></h2>

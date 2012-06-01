@@ -37,7 +37,7 @@
 
   <section class="project-description">
     <h2><%= t ".description.header" %></h2>
-    <p><%= markdown @project.about_project %></p>
+    <%= markdown @project.about_project %>
 
     <% if @project.extra_answer_1.present? %>
       <h2><%= @project.extra_question_1 %></h2>
