@@ -13,9 +13,11 @@
     </div>
 
     <section class="meta-data">
-      <span class="spam">
-        <%= link_to t(".delete"), project_path(project), :method => :delete, :confirm => t(".confirm-delete"), :class => 'delete-spam' %>
-      </span>
+      <% if current_user.can_edit_project?(project) -%>
+        <span class="spam">
+          <%= link_to t(".delete"), project_path(project), :method => :delete, :confirm => t(".confirm-delete"), :class => 'delete-spam' %>
+        </span>
+      <% end -%>
       <span>
         <%= project.name %>
       </span>

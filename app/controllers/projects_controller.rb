@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   before_filter :must_be_logged_in, :except => [:show, :new, :create]
+  before_filter :verify_user_can_edit, :only => [:destroy]
   before_filter :redirect_to_chapter_or_sign_in, :only => [:index], :if => :chapter_missing?
   before_filter :must_be_logged_in_to_see_unpublished_projects, :only => [:show]
 
@@ -75,6 +76,12 @@ class ProjectsController < ApplicationController
       redirect_to chapter_projects_path(current_chapter_for_user)
     else
       redirect_to sign_in_path, notice: t("flash.permissions.must-have-chapter")
+    end
+  end
+
+  def verify_user_can_edit
+    unless current_user.can_edit_project?(current_project)
+      redirect_to chapter_projects_path(current_project.chapter)
     end
   end
 

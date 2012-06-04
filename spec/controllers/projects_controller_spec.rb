@@ -20,6 +20,16 @@ describe ProjectsController do
     it { should redirect_to(root_path) }
   end
 
+  context 'attempting to delete a project as a trustee who is not the dean or an admin' do
+    let(:user) { create(:user) }
+    let(:project) { create(:project) }
+    before do
+      sign_in_as user
+      delete :destroy, :id => project
+    end
+    it { should redirect_to(chapter_projects_path(project.chapter)) }
+  end
+
   context 'viewing the index without a chapter' do
     let(:chapter) { create(:chapter) }
     let(:user) { create(:user) }
