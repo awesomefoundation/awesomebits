@@ -1,8 +1,9 @@
-<%= simple_form_for chapter do |form| %>
+<%= simple_form_for chapter do |form| -%>
   <%= form.input :name %>
   <%= form.input :slug %>
   <%= form.input :twitter_url, :label => "Twitter URL" %>
   <%= form.input :facebook_url, :label => "Facebook URL" %>
+  <%= form.input :email_address, :label => "Email Address" %>
   <%= form.input :blog_url, :label => "Blog URL" %>
   <%= form.input :rss_feed_url, :label => "RSS Feed URL" %>
   <%= form.input :description %>
@@ -11,5 +12,4 @@
   <%= form.input :extra_question_2 %>
   <%= form.input :extra_question_3 %>
   <%= form.button :submit %>
-<% end %>
-
+<% end -%>

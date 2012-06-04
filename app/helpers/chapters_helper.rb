@@ -18,6 +18,10 @@ module ChaptersHelper
     end
   end
 
+  def email_link(chapter)
+    mail_to chapter.email_address, '', :class => [:external, :email]
+  end
+
   def blog_link(chapter)
     link_if_not_blank(chapter.blog_url, "external blog")
   end
