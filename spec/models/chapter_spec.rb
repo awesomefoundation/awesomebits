@@ -102,21 +102,29 @@ describe Chapter do
   end
 
   context '.current_chapter_for_user' do
-    it 'returns first chapter for admin user' do
+    it 'returns first chapter with membership for an admin user who has chapters' do
+      create(:chapter)
+      admin = create(:user, :admin => true)
+      chapter = create(:chapter)
+      create(:role, :user => admin, :chapter => chapter)
+
+      Chapter.current_chapter_for_user(admin).should == chapter
+    end
+    it 'returns first overall chapter for admin user without any chapters' do
       admin = create(:user, :admin => true)
       create(:chapter)
       create(:chapter)
 
       Chapter.current_chapter_for_user(admin).should == Chapter.first
     end
-    it 'returns first chapter for trustee' do
+    it 'returns first member chapter for a trustee' do
       create(:chapter)
       trustee = create(:user)
       chapter = create(:chapter)
       create(:role, :user => trustee, :chapter => chapter)
       Chapter.current_chapter_for_user(trustee).should == chapter
     end
-    it 'returns nil for user with no chapters' do
+    it 'returns nil for a user with no chapters' do
       user = create(:user)
       user.chapters.should == []
       Chapter.current_chapter_for_user(user).should be_nil

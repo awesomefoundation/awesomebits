@@ -56,7 +56,7 @@ class Chapter < ActiveRecord::Base
 
   def self.current_chapter_for_user(user)
     if user.admin?
-      Chapter.first
+      user.chapters.first || Chapter.first
     else
       user.chapters.first
     end
