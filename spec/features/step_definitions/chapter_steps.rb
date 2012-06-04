@@ -86,7 +86,7 @@ step 'I should see the updated chapter' do
   page.should have_css("h1:contains('#{@new_chapter_name}')")
   page.should have_css("a.twitter[href='#{@new_twitter_url}']")
   page.should have_css("a.facebook[href='#{@new_facebook_url}']")
-  page.should have_css("a.email[href='mailto:#{@new_email_address}']:contains('Email')")
+  page.should have_css("a.email[href='mailto:#{@new_email_address}']")
   page.should have_css("a.blog[href='#{@new_blog_url}']")
   page.should have_css("article.rss-feed[data-feed-url='#{@new_rss_feed_url}']")
   page.should have_css(".about p:contains('#{@new_description}')")
