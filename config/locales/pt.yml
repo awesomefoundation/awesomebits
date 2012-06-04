@@ -1,0 +1,211 @@
+pt:
+  number:
+    delimiter: "."
+    separator: ","
+  date:
+    formats:
+      funding: "%B, %Y"
+  flash:
+    permissions:
+      must-be-logged-in: Você deve estar autenticado.
+      must-be-admin: Você deve ser um administrador.
+      cannot-remove-user: Você não tem permissão para remover este usuário.
+      must-be-dean-or-admin: Você deve ser um administrador ou decano para acessar esta página.
+      must-have-chapter: Sua conta não está associada com nenhum capítulo.
+      cannot-view-finalists: "Você não tem permissão para ver isto."
+      cannot-invite: "Você não tem permissão para convidar outros."
+      cannot-modify-account: "Você não tem permissão para modificar esta conta."
+      cannot-mark-winner: "Você não pode marcá-lo como vencedor."
+    votes:
+      already-voted: "Já existe um voto para este projeto"
+      already-deleted: "O voto já foi excluído"
+    applications:
+      thanks: "Obrigado pelo envio!"
+    acceptances:
+      cannot: "Não foi possível aceitar o convite"
+  layouts:
+    application:
+      main-header: The Awesome Foundation
+      apply: Envie seu projeto
+      dashboard: Painel
+      blog: Blog
+      chapters: Capítulos
+      chapter_header: Awesome por Toda Parte!
+      home: Início
+      about_us: Sobre Nós
+      about_contact: Sobre Nós e Contato
+      faq: Perguntas Frequentes
+      want_to_help: Junte-se a Nós
+      sign-out: Sair
+      sign-in: Entrar
+    sidebar:
+      projects: Projetos
+      finalists: Finalistas
+      trustees: Curadores
+      members: Membros
+      create-chapter: Criar um Capítulo
+      invite-trustee: Convidar um Curador
+      edit-profile: Editar Meu Perfil
+      edit-chapter-profile: Editar Perfil do Capítulo
+      view-all-users: Ver Todos os Usuários
+  home:
+    index:
+      title: Encaminhando o interesse do Irado no universo, $1,000 de cada vez.
+      by: "Por %{name}"
+      what:
+        header: Precisa de Algum Financiamento?
+        body-html: "Tem uma idéia genial que precisa de financiamento? Nós oferecemos <strong>prêmios de $1.000 a cada mês</strong>. Não podia ser mais simples! Sua idéia continua toda sua. Não queremos qualquer parte dela. Queremos apenas ajudar você a fazê-la acontecer!"
+      call-to-action: Envie agora sua proposta para concorrer a um prêmio da Awesome Foundation!
+      who:
+        header: Awesome Está por Toda Parte!
+        body: A Awesome Foundation for the Arts and Sciences é uma rede mundial, em franca expansão, de pessoas dedicadas a encaminhar o interesse do irado no universo. Criada nos longos e quentes dias do verão de 2009 em Boston, a fundação distribui séries de prêmios mensais de $1,000 a projetos e seus criadores. O dinheiro é coletado a partir dos cofres de dez espécies de “micro-curadores” auto-organizados e doados em dinheiro, cheque ou moedas de ouro. Os capítulos são autônomos e organizados pelos curadores organizados por áreas geográficas ou tópicos de interesse.
+      news:
+        header: Notícias Awesome!
+        recent: Postagens recentes do blog
+        events: Próximos Eventos
+      funding-html: "<em class='funding'>$%{amount}</em> Premiados"
+      winner-count-html: "<em class='winners'>%{amount}</em> projetos financiados"
+      chapter-count-html: "<em class='chapters'>%{count}</em> Capítulos"
+      country-count-html: "<em class='countries'>%{count}</em> Países"
+  chapters:
+    index:
+      title: Awesome por Toda Parte
+    show:
+      edit: Editar Capítulo
+      recent_winners: Projetos financiados recentemente
+      see_more: Veja mais coisas iradas
+      byline: "Por %{name}"
+      trustees:
+        header: Conheça os Curadores
+        about: Sobre Nós
+        news: "Notícias de %{name}"
+    edit:
+      title: Editar informação do capítulo
+    new:
+      title: Criar um novo capítulo
+  finalists:
+    index:
+      title: "Finalistas do capítulo %{name}"
+      filter-button: Filtro
+      start-date: data inicial
+      end-date: data final
+      table:
+        title: Título
+        id: ID
+        votes: Votos
+  projects:
+    project:
+      awesome: Awesome
+      delete: Excluir este projeto
+      see-the-rest: Veja mais →
+      confirm-delete: Deseja mesmo excluir isto?
+      winner: "Vencedor do capítulo %{name}"
+      about-me: "Um pouco sobre mim:"
+      about-project: "Eis a minha idéia:"
+      use-for-money: "Como usarei o dinheiro:"
+    new:
+      title: Você está pronto para ser Irado!?
+      description: Apenas preencha o formulário abaixo com informações sobre você e os detalhes do seu projeto.
+    form:
+      save: Salvar
+    index:
+      filter-button: Filtrar
+      start-date: data inicial
+      end-date: data final
+      short-list-filter: Marcados por mim
+      title: "Projetos do capítulo %{name}"
+    show:
+      edit: Editar Projeto
+      byline-html: "Projeto do capítulo <span class='chapter-name'>%{chapter_name}</span> criado por <span class='project-starter'>%{submitter_name}</span>"
+      funder-html: "Financiado pelo capítulo <span class='chapter-name'>%{name}</span>"
+      submitted-to-html: "Projeto submetido ao capítulo <span class=''>%{name}</span>"
+      description:
+        header: Descrição do Projeto
+      feed-title: Postagens Recentes
+  emails:
+    invitation:
+      subject: "Você foi convidado para o capítulo %{name} da Awesome Foundation!"
+    welcome:
+      subject: "Bem-vindo ao capítulo %{name}!"
+    application:
+      subject: "Obrigado pelo envio!"
+  sessions:
+    new:
+      sign-in: Entrar
+      forgot-password: Esqueceu sua senha?
+  users:
+    user:
+      promote_to_dean: Tornar Decano
+      demote_to_trustee: Retornar a Curador
+      demote_admin: Permitir Administração 
+      promote_admin: Revogar Administração
+      error_dean_promotion: Falha na promoção a decano
+      error_dean_demotion: Falha no retorno a curador
+      error_admin_promotion: Falha na permissão de administração
+      error_admin_demotion: Falha na revogação de administração
+      error_removing_user: Erro ao remover usuário
+      remove_from_chapter: Remover
+    edit:
+      title: Editar informãções do usuário
+    index:
+      title: Membros da Awesome Foundation
+      name: Nome
+      email: E-mail
+      chapter: Capítulo
+      role: Papel
+      remove: Remover
+      dean: Curador
+      admin: Administrador
+  pages:
+    about_us:
+      title_tag: Sobre Nós
+      meta_description: Sobre a Awesome Foundation
+      meta_keywords:
+      headline: "A Awesome Foundation"
+      sub_headline: "For the Arts and Sciences e o avanço do Irado no universo."
+      our-story: "<p>Somos uma rede mundial, em franca expansão, de pessoas dedicadas a encaminhar o interesse do irado no universo. Criada nos longos e quentes dias do verão de 2009 em Boston, a fundação distribui séries de prêmios mensais de $1,000 a projetos e seus criadores. O dinheiro é coletado a partir dos cofres de dez espécies de “micro-curadores” auto-organizados e doados em dinheiro, cheque ou moedas de ouro. Os capítulos são autônomos e organizados pelos curadores organizados por áreas geográficas ou tópicos de interesse.</p>
+    <p>A Fundação oferece estes prêmios sem compromisso e sem obter qualquer participação nos projetos apoiados. Isto é, nas palavras de um de nossos curadores, um mini-prêmio genial por lampejos de brilhantismo.</p>
+    <p>Desde sua humilde origem, muitos <a href=\"http://awesomefoundation.org/chapters/\">capítulos da Awesome Foundation floresceram mundialmente</a> para conservar, manter, e apoiar o ecosistema global do irado. Projetos tem envidado esforços numa ampla gama de áreas incluindo tecnologia, artes, bem social, e além.</p>
+    <p><a href=\"http://www.youtube.com/watch?v=PPoYzyOn44M\">Ainda estamos esperando por algo ligado a dinossauros (não é uma dica... ou é?)</a>.</p>"
+      contact: "<p>Você pode dos deixar um email em <a href=\"mailto:contact@awesomefoundation.org\">contact@awesomefoundation.org</a>, nos seguir no Twitter em <a href=\"http://twitter.com/awesomefound\">@awesomefound</a>, ou nos acompanhar no Facebook <a href=\"http://www.facebook.com/awesomefoundation\">aqui</a>. Se você estiver interessado em ajudar a iniciar um capítulo ou juntar-se a algum se abrir uma vaga, beleza! <a href=\"http://spreadsheets2.google.com/a/awesomefoundation.org/viewform?hl=en&formkey=dFJwaXhNTFp6VG40clU3cFVfWFk0bXc6MQ\">Fale-nos sobre você aqui!</a></p>"
+    faq:
+      headline: Informações super iradas
+      sub_headline: Tudo o que você precisa saber sobre avançar o irado.
+  simple_form:
+    labels:
+      project:
+        name: Seu nome
+        email: E-mail
+        phone: Número de telefone
+        title: Título do projeto
+        url: Site do projeto
+        current_photos-html: "Imagens atuais<span>(Arraste para reordenar)</span>"
+        new_photos-html: "Envie imagens do seu projeto <span>(primeira imagem é usada como capa)</span>"
+        chapter_id: Selecione o capítulo ao qual quer submeter o projeto
+        rss_feed_url: URL do RSS do projeto
+        about_me: Fale-nos um pouco sobre você
+        about_project: Qual é o seu projeto, afinal?
+        use_for_money: Como você vai usar o dinheiro?
+      chapter:
+        name: Nome
+        slug: Nome na URL
+        twitter_url: URL do Twitter
+        facebook_url: URL do Facebook
+        blog_url: URL do Blog
+        rss_feed_url: URL do RSS
+        description: Descrição
+        extra_question_1: Questão extra 1
+        extra_question_2: Questão extra 2
+        extra_question_3: Questão extra 3
+        submit: Enviar
+      user:
+        first_name: Nome
+        last_name: Sobrenome
+        email: E-mail
+        bio: Bio
+        url: URL
+        twitter_username: Usuário no Twitter
+        facebook_url: URL do Facebook
+        linkedin_url: URL do LinkedIn
+        new_password: Nova Senha
+        submit: Enviar
