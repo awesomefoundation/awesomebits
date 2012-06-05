@@ -22,7 +22,7 @@
     You have <span id="project_use_for_money_chars_left">500</span> chars left
   </div>
 </div>
-<% if current_user.can_edit_project?(@project) %>
+<% if current_user.can_edit_project?(project) %>
   <div class="funded_on">
     <%= form.input :funded_on, :as => :string %>
   </div>
