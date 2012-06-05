@@ -35,8 +35,6 @@ Awesomefoundation::Application.routes.draw do
       resource :promotions, :only => [:create, :destroy]
     end
 
-    resources :pages
-
     %w(about_us faq).each do |page|
       match page, :to => 'high_voltage/pages#show', :id => page
     end
