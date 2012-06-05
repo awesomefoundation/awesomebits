@@ -10,11 +10,11 @@ Awesomefoundation::Application.routes.draw do
     match "sign_in",  :to => "sessions#new"
     match "sign_out", :to => "sessions#destroy", :via => :delete
 
-    resources :users do
+    resources :users, :only => [:index, :update, :edit] do
       resource :admins, :only => [:create, :destroy]
     end
 
-    resources :chapters do
+    resources :chapters, :only => [:index, :show, :new, :create, :edit, :update] do
       resources :finalists, :only => [:index]
       resources :projects,  :only => [:index]
       resources :users,     :only => [:index]
@@ -31,7 +31,7 @@ Awesomefoundation::Application.routes.draw do
 
     resources :submissions, :controller => "projects"
 
-    resources :roles do
+    resources :roles, :only => [:destroy] do
       resource :promotions, :only => [:create, :destroy]
     end
 
