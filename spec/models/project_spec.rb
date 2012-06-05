@@ -240,10 +240,10 @@ describe Project do
   end
 
   context '#photo_order' do
-    let(:project){ create(:project) }
-    let(:photo1) { create(:photo, :project => project) }
-    let(:photo2) { create(:photo, :project => project) }
-    let(:photo3) { create(:photo, :project => project) }
+    let(:project) { create(:project) }
+    let(:photo1)  { create(:photo, :project => project) }
+    let(:photo2)  { create(:photo, :project => project) }
+    let(:photo3)  { create(:photo, :project => project) }
 
     it "returns a string of the photos' ids in order" do
       project.photos = [photo1, photo2, photo3]
