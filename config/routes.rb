@@ -37,11 +37,9 @@ Awesomefoundation::Application.routes.draw do
 
     resources :pages
 
-    match "description", :to => "high_voltage/pages#show", :id => "description"
-    match "about_us",    :to => "high_voltage/pages#show", :id => "about_us"
-    match "contact",     :to => "high_voltage/pages#show", :id => "contact"
-    match "faq",         :to => "high_voltage/pages#show", :id => "faq"
-    match "trustees",    :to => "high_voltage/pages#show", :id => "trustees"
+    %w(about_us faq).each do |page|
+      match page, :to => 'high_voltage/pages#show', :id => page
+    end
 
     root :to => 'home#index'
   end
