@@ -5,7 +5,7 @@
 
 <section class="project-form">
   <%= simple_form_for @project, :url => submissions_url, :html => { :multipart => true } do |form| %>
-    <%= render :partial => 'form', :locals => { :project => @project, :form => form } %>
+    <%= render 'form', :project => @project, :form => form %>
     <%= submit_tag "Apply" %>
   <% end %>
 </section>

@@ -13,14 +13,14 @@
   <![endif]-->
 </head>
 <body class="<%= body_class %>">
-  <%= render :partial => 'shared/navigation' %>
+  <%= render 'shared/navigation' %>
   <section class="container-wrapper">
     <section class="container">
       <%= render 'shared/flashes' -%>
       <%= yield %>
     </section>
   </section>
-  <%= render :partial => 'shared/footer' %>
+  <%= render 'shared/footer' %>
   <%= render 'shared/javascript' %>
 </body>
 </html>
