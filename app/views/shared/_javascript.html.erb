@@ -1,5 +1,7 @@
 <%= javascript_include_tag :application %>
 
+<%= render 'shared/analytics' %>
+
 <%= yield :javascript %>
 
 <% if Rails.env.test? %>
@@ -7,5 +9,3 @@
     $.ajaxSetup({ async: false });
   <% end %>
 <% end %>
-
-<%= render 'shared/analytics' %>
