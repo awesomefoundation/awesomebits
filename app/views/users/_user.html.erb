@@ -24,7 +24,7 @@
     </td>
     <td class="promote-demote-admin">
       <span>
-        <% if current_user.id != user.id %> 
+        <% if current_user.id != user.id %>
           <%= link_to t(".promote_admin"), user_admins_path(user.id), :method => :post, :remote => true, :class => "promote-user" %>
           <%= link_to t(".demote_admin"), user_admins_path(user.id), :method => :delete, :remote => true, :class => "demote-user" %>
         <% else %>

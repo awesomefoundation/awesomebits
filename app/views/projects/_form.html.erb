@@ -73,7 +73,7 @@
 
     function reorderPhotos(){
       var photo_order = $('.old-photos li[data-id]').map(function(x, el){
-        return $(el).attr('data-id') 
+        return $(el).attr('data-id')
       });
       $('#project_photo_order').val($.makeArray(photo_order).join(" "));
     }
