@@ -16,14 +16,14 @@
     <li><%= link_to t("layouts.sidebar.view-all-users"), users_path %></li>
   <% end %>
   <li class="section-title">
-    <h3><%= @chapter.name %></h3>
+    <h3><%= chapter.name %></h3>
   </li>
-  <li><%= link_to t("layouts.sidebar.projects"), chapter_projects_path(@chapter) %></li>
-  <% unless @chapter.any_chapter? %>
-    <li><%= link_to t("layouts.sidebar.finalists"), chapter_finalists_path(@chapter) %></li>
-    <li><%= link_to t("layouts.sidebar.members"), chapter_users_path(@chapter) %></li>
+  <li><%= link_to t("layouts.sidebar.projects"), chapter_projects_path(chapter) %></li>
+  <% unless chapter.any_chapter? %>
+    <li><%= link_to t("layouts.sidebar.finalists"), chapter_finalists_path(chapter) %></li>
+    <li><%= link_to t("layouts.sidebar.members"), chapter_users_path(chapter) %></li>
   <% end %>
-  <% if current_user.can_manage_chapter?(@chapter) %>
-    <li><%= link_to t("layouts.sidebar.edit-chapter-profile"), edit_chapter_path(@chapter) %></li>
+  <% if current_user.can_manage_chapter?(chapter) %>
+    <li><%= link_to t("layouts.sidebar.edit-chapter-profile"), edit_chapter_path(chapter) %></li>
   <% end %>
 </ol>
