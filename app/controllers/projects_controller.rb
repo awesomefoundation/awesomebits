@@ -50,7 +50,7 @@ class ProjectsController < ApplicationController
     if @project.update_attributes(params[:project])
       redirect_to @project
     else
-      render "edit"
+      render :edit
     end
   end
 

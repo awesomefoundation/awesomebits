@@ -32,7 +32,7 @@ class ChaptersController < ApplicationController
     if @chapter.update_attributes(params[:chapter])
       redirect_to(@chapter)
     else
-      render "edit"
+      render :edit
     end
   end
 end
