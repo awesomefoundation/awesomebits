@@ -51,7 +51,7 @@ group :test do
   gem "capybara"
   gem "database_cleaner"
   gem "capybara-webkit", "0.7.1"
-  gem "factory_girl_rails", "~> 3.3.0"
+  gem "factory_girl_rails", "~> 3.4.0"
   gem "bourne"
   gem "timecop"
   gem "shoulda-matchers"

@@ -95,10 +95,10 @@ GEM
     excon (0.13.4)
     execjs (1.3.2)
       multi_json (~> 1.0)
-    factory_girl (3.3.0)
+    factory_girl (3.4.0)
       activesupport (>= 3.0.0)
-    factory_girl_rails (3.3.0)
-      factory_girl (~> 3.3.0)
+    factory_girl_rails (3.4.0)
+      factory_girl (~> 3.4.0)
       railties (>= 3.0.0)
     ffi (1.0.11)
     flutie (1.3.3)
@@ -307,7 +307,7 @@ DEPENDENCIES
   database_cleaner
   email_spec
   evergreen
-  factory_girl_rails (~> 3.3.0)
+  factory_girl_rails (~> 3.4.0)
   flutie
   fog
   formtastic
