@@ -36,7 +36,7 @@
   <% if current_user.can_remove_users?(current_chapter) %>
     <td class="remove-trustee">
       <% if user.role_name && user.id != current_user.id %>
-        <%= link_to t('.remove_from_chapter'), role_path(user.role_id), :method => :delete, :remote => true, :class => "remove-user", :confirm => "Are you sure you want to remove?" %>
+        <%= link_to t('.remove_from_chapter'), role_path(user.role_id), :method => :delete, :remote => true, :class => "remove-user", :data => { :confirm => "Are you sure you want to remove?" } %>
       <% else %>
         -
       <% end %>
