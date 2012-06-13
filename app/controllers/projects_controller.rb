@@ -7,16 +7,23 @@ class ProjectsController < ApplicationController
   include ApplicationHelper
 
   def index
-    @start_date, @end_date = extract_timeframe
     @chapter = Chapter.find(params[:chapter_id])
+    @start_date, @end_date = extract_timeframe
     @short_listed = params[:short_list]
-    project_filter = ProjectFilter.new(@chapter.projects).during(@start_date, @end_date).page(params[:page])
+    project_filter = ProjectFilter.new(@chapter.projects).during(@start_date, @end_date)
     if params[:short_list]
       project_filter.shortlisted_by(current_user)
     end
-
-    @projects = project_filter.result
-    current_user.mark_last_viewed_chapter(params[:chapter_id])
+    respond_to do |format|
+      format.html do
+        @projects = project_filter.page(params[:page]).result
+        current_user.mark_last_viewed_chapter(params[:chapter_id])
+      end
+      format.csv do
+        @projects = project_filter.result
+        render :text => Project.csv_export(@projects), :content_type => 'text/csv'
+      end
+    end
   end
 
   def new

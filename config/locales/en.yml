@@ -114,6 +114,7 @@ en:
       end-date: end date
       short-list-filter: My Short-list
       title: "Projects for %{name}"
+      export-projects: Export projects CSV
     show:
       edit: Edit Project
       byline-html: "<span class='chapter-name'>%{chapter_name}</span> project created by <span class='project-starter'>%{submitter_name}</span>"

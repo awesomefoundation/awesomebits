@@ -290,3 +290,29 @@ describe Project do
     end
   end
 end
+
+describe Project, 'csv_export' do
+  let!(:project) do
+    create :project,
+    :name => 'Name',
+    :url => 'http://example.com',
+    :email => 'mail@example.com',
+    :phone => '555-555-5555',
+    :about_me => 'About me',
+    :about_project => 'About project',
+    :title => 'Title',
+    :funded_on => Date.new(2012,1,1),
+    :rss_feed_url => 'http://example.com/rss',
+    :use_for_money => 'Fun'
+  end
+  subject { Project.csv_export([project]) }
+  let(:parsed)  { CSV.parse(subject).to_a }
+
+  it 'adds headers' do
+    parsed.first.should == %w(name url email phone about_me chapter_id created_at about_project title funded_on extra_question_1 extra_question_2 extra_question_3 extra_answer_1 extra_answer_2 extra_answer_3 rss_feed_url use_for_money)
+  end
+
+  it 'includes basic information for a project' do
+    parsed.should include(['Name','http://example.com','mail@example.com','555-555-5555', 'About me', project.chapter.id.to_s, project.created_at.to_s, 'About project', 'Title', '2012-01-01', '', '', '', '', '', '', 'http://example.com/rss', 'Fun'])
+  end
+end

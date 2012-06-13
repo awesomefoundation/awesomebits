@@ -43,6 +43,20 @@ describe ProjectsController do
     it { should redirect_to(chapter_projects_path(chapter)) }
   end
 
+  context 'downloading the csv report' do
+    let!(:project)  { create :project }
+    let!(:user)     { create :user }
+    let!(:chapter)  { create :chapter }
+    let!(:role)     { create :role, :user => user, :chapter => chapter }
+
+    before do
+      sign_in_as user
+      get :index, :chapter_id => chapter, :format => :csv
+    end
+
+    it { should respond_with_content_type(:csv) }
+  end
+
   context 'viewing a project that has not won yet' do
     let!(:project) { create(:project) }
     let!(:user) { create(:user) }

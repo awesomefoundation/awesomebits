@@ -57,6 +57,23 @@ class Project < ActiveRecord::Base
     where('projects.funded_on is not null').order(:funded_on).reverse_order
   end
 
+  def self.csv_export(projects)
+    CSV.generate do |csv|
+      csv << attributes_for_export
+      projects.each do |project|
+        csv << project.to_a
+      end
+    end
+  end
+
+  def self.attributes_for_export
+    %w(name url email phone about_me chapter_id created_at about_project title funded_on extra_question_1 extra_question_2 extra_question_3 extra_answer_1 extra_answer_2 extra_answer_3 rss_feed_url use_for_money)
+  end
+
+  def to_a
+    self.class.attributes_for_export.collect { |attr| send(attr).to_s }
+  end
+
   def shortlisted_by?(user)
     users.include?(user)
   end
