@@ -17,6 +17,8 @@ class Project < ActiveRecord::Base
   validates_presence_of :use_for_money
   validates_presence_of :chapter_id
 
+  delegate :name, :to => :chapter, :prefix => true
+
   cattr_accessor :mailer
   self.mailer = ProjectMailer
 
@@ -67,7 +69,7 @@ class Project < ActiveRecord::Base
   end
 
   def self.attributes_for_export
-    %w(name url email phone about_me chapter_id created_at about_project title funded_on extra_question_1 extra_question_2 extra_question_3 extra_answer_1 extra_answer_2 extra_answer_3 rss_feed_url use_for_money)
+    %w(name title about_project use_for_money about_me url email phone chapter_name id created_at funded_on extra_question_1 extra_question_2 extra_question_3 extra_answer_1 extra_answer_2 extra_answer_3 rss_feed_url)
   end
 
   def to_a

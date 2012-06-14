@@ -24,6 +24,14 @@ describe Project do
     end
   end
 
+  context '#chapter_name' do
+    let(:chapter) { create :chapter, :name => 'Test chapter' }
+    let(:project) { create :project, :chapter => chapter }
+    it 'should delegate to chapter' do
+      project.chapter_name.should == 'Test chapter'
+    end
+  end
+
   context '.winner_count' do
     let!(:winners) { (1..2).map{|x| create(:project, :funded_on => Date.today) } }
     let!(:non_winners){ (1..3).map{|x| create(:project, :funded_on => nil) } }
@@ -309,10 +317,10 @@ describe Project, 'csv_export' do
   let(:parsed)  { CSV.parse(subject).to_a }
 
   it 'adds headers' do
-    parsed.first.should == %w(name url email phone about_me chapter_id created_at about_project title funded_on extra_question_1 extra_question_2 extra_question_3 extra_answer_1 extra_answer_2 extra_answer_3 rss_feed_url use_for_money)
+    parsed.first.should == %w(name title about_project use_for_money about_me url email phone chapter_name id created_at funded_on extra_question_1 extra_question_2 extra_question_3 extra_answer_1 extra_answer_2 extra_answer_3 rss_feed_url)
   end
 
   it 'includes basic information for a project' do
-    parsed.should include(['Name','http://example.com','mail@example.com','555-555-5555', 'About me', project.chapter.id.to_s, project.created_at.to_s, 'About project', 'Title', '2012-01-01', '', '', '', '', '', '', 'http://example.com/rss', 'Fun'])
+    parsed.should include(['Name', 'Title', 'About project', 'Fun', 'About me', 'http://example.com','mail@example.com','555-555-5555', project.chapter.name.to_s, project.id.to_s, project.created_at.to_s, '2012-01-01', '', '', '', '', '', '', 'http://example.com/rss'])
   end
 end
