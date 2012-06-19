@@ -35,7 +35,12 @@
       <input name="" type="submit" value="<%= t(".filter-button") %>">
     </form>
   </section>
-  <p class="exports"><%= link_to t('.export-projects'), params.merge(:format => :csv) %></p>
+  <p class="exports">
+    <%= link_to t('.export-projects'), params.merge(:format => :csv) %>
+    <% if current_user.admin? %>
+      | <%= link_to t('.export-all-projects'), params.merge(:format => :csv, :export_all => :true) %>
+    <% end %>
+  </p>
 
   <%= render @projects %>
   <%= will_paginate(@projects) %>
