@@ -114,6 +114,8 @@ pt:
       end-date: data final
       short-list-filter: Marcados por mim
       title: "Projetos do capítulo %{name}"
+      export-projects: Exportar Filtrados
+      export-all-projects: Exportar Todos
     show:
       edit: Editar Projeto
       byline-html: "Projeto do capítulo <span class='chapter-name'>%{chapter_name}</span> criado por <span class='project-starter'>%{submitter_name}</span>"
