@@ -20,7 +20,11 @@ class ProjectsController < ApplicationController
         current_user.mark_last_viewed_chapter(params[:chapter_id])
       end
       format.csv do
-        @projects = project_filter.result
+        if export_all?
+          @projects = Project.during_timeframe(@start_date, @end_date)
+        else
+          @projects = project_filter.result
+        end
         render :text => Project.csv_export(@projects), :content_type => 'text/csv'
       end
     end
@@ -73,6 +77,10 @@ class ProjectsController < ApplicationController
     @current_project ||= Project.find(params[:id])
   end
   helper_method :current_project
+
+  def export_all?
+    params[:export_all] && current_user.admin?
+  end
 
   def current_chapter_for_user
     @current_chapter_for_user ||= Chapter.current_chapter_for_user(current_user)
