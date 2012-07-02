@@ -317,7 +317,7 @@ describe Project, 'csv_export' do
   let(:parsed)  { CSV.parse(subject).to_a }
 
   it 'adds headers' do
-    parsed.first.should == %w(name title about_project use_for_money about_me url email phone chapter_name id created_at funded_on extra_question_1 extra_question_2 extra_question_3 extra_answer_1 extra_answer_2 extra_answer_3 rss_feed_url)
+    parsed.first.should == %w(name title about_project use_for_money about_me url email phone chapter_name id created_at funded_on extra_question_1 extra_answer_1 extra_question_2 extra_answer_2 extra_question_3 extra_answer_3 rss_feed_url)
   end
 
   it 'includes basic information for a project' do
