@@ -33,11 +33,6 @@ gem "friendly_id", "~> 4.0.1"
 gem 'airbrake'
 gem 'redcarpet'
 
-group :development do
-  gem "heroku", '~> 2.25'
-  gem "hirb"
-end
-
 group :development, :test do
   gem "rspec-rails"
   gem "ruby-debug19"
@@ -51,7 +46,7 @@ group :test do
   gem "capybara"
   gem "database_cleaner"
   gem "capybara-webkit", "0.7.1"
-  gem "factory_girl_rails", "~> 3.4.0"
+  gem "factory_girl_rails"
   gem "bourne"
   gem "timecop"
   gem "shoulda-matchers"
