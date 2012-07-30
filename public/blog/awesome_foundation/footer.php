@@ -16,3 +16,5 @@
     </li>
   </ol>
 </footer>
+
+<?php wp_footer(); ?>
