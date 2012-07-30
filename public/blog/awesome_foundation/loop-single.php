@@ -14,4 +14,6 @@
     echo '</section>';
 
   endwhile;
+
+  echo '<section class="navigation"><p>', posts_nav_link(), '</p></section>';
 ?>

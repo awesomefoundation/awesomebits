@@ -8,7 +8,7 @@
       echo '<div class="post" id="', the_ID(), '">';
         echo '<header>';
           echo '<h2><a href="'.get_permalink().'">', the_title(), '</a></h2>';
-          echo '<p class="date">'; the_date(); echo '</p>';
+          echo '<p class="date">'; the_time(get_option('date_format')); echo '</p>';
         echo '</header>';
         if ( has_post_thumbnail() ) {
           echo '<div class="post-hero">';
@@ -19,5 +19,7 @@
       echo '</div>';
 
     endwhile;
+
+    echo '<section class="navigation"><p>', posts_nav_link(), '</p></section>';
   ?>
 </section>
