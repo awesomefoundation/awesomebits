@@ -1,7 +1,7 @@
 <footer>
   <p>
-    <a href="http://awesomefoundation.org/about_us">About & Contact</a>
-    <a href="http://awesomefoundation.org/faq">FAQ</a>
+    <a href="http://www.awesomefoundation.org/about_us">About & Contact</a>
+    <a href="http://www.awesomefoundation.org/faq">FAQ</a>
   </p>
 
   <ol class="social-links">
