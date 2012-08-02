@@ -2,7 +2,7 @@
   <%= form.input :first_name %>
   <%= form.input :last_name %>
   <%= form.input :email %>
-  <%= form.input :url, :label => 'Website URL' %>
-  <%= form.input :new_password, :as => :password, :label => "New password" %>
+  <%= form.input :url %>
+  <%= form.input :new_password, :as => :password, :label => t(:'simple_form.labels.user.new_password') %>
   <%= form.button :submit %>
 <% end %>
