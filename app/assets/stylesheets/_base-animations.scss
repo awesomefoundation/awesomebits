@@ -10,7 +10,7 @@
 @mixin tilefill {
   0% {
     opacity: 0;
-    @include transform(scale(0.0));
+    @include transform(scale(0.1));
     @include transform-origin(left top);
   }
   80% {
@@ -41,7 +41,7 @@
 @mixin tagline-enter-keyframes {
   0% {
     opacity: 0;
-    @include transform(scale(0.0));
+    @include transform(scale(0.1));
   }
   60% {
     @include transform(scale(1.05));
