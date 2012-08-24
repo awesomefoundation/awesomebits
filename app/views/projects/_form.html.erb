@@ -64,6 +64,9 @@
   <%= javascript_tag do %>
     $(window).load(function(){
       $('#project_funded_on').datepicker({dateFormat: 'yy-mm-dd', onClose: function(){ $('#project_funded_on').blur() }});
+
+      // Fire the chapter change event to get extra questions to appear
+      $('#project_chapter_id').change();
     });
 
     var extra_questions = {
