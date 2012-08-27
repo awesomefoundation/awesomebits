@@ -118,7 +118,7 @@ GEM
     friendly_id (4.0.6)
     gherkin (2.10.0)
       json (>= 1.4.6)
-    high_voltage (1.1.1)
+    high_voltage (1.2.0)
     highline (1.6.12)
     hike (1.2.1)
     httparty (0.8.3)
@@ -303,7 +303,7 @@ DEPENDENCIES
   fog
   formtastic
   friendly_id (~> 4.0.1)
-  high_voltage (~> 1.1.1)
+  high_voltage
   jquery-rails
   launchy
   newrelic_rpm (~> 3.3.4)
