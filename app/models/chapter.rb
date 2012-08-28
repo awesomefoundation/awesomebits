@@ -14,6 +14,8 @@ class Chapter < ActiveRecord::Base
   validates_presence_of :slug
   validates_uniqueness_of :name
 
+  validates_format_of :slug, :with => /\A[a-z0-9-]+\Z/
+
   attr_accessible :name, :twitter_url, :facebook_url, :blog_url, :rss_feed_url, :description,
                   :country, :extra_question_1, :extra_question_2, :extra_question_3, :slug,
                   :email_address

@@ -211,3 +211,10 @@ en:
         linkedin_url: LinkedIn URL
         new_password: New Password
         submit: Submit
+  activerecord:
+    errors:
+      models:
+        chapter:
+          attributes:
+            slug:
+              invalid: must be lowercase and can not contain spaces

@@ -8,6 +8,9 @@ describe Chapter do
   it { should validate_presence_of :name }
   it { should validate_presence_of :description }
   it { should validate_uniqueness_of :name }
+  it { should_not allow_value("invalid slug").for(:slug) }
+  it { should_not allow_value("Invalid-Slug").for(:slug) }
+  it { should allow_value("valid-slug1").for(:slug) }
 
   context '.country_count' do
     let!(:chapter1){ create(:chapter, :country => "United States") }
