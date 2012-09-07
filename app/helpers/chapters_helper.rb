@@ -19,7 +19,9 @@ module ChaptersHelper
   end
 
   def email_link(chapter)
-    mail_to chapter.email_address, '', :class => [:external, :email]
+    if chapter.email_address.present?
+      mail_to chapter.email_address, '', :class => [:external, :email]
+    end
   end
 
   def blog_link(chapter)

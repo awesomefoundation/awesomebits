@@ -32,3 +32,17 @@ describe ChaptersHelper, '#link_if_not_blank' do
   end
 
 end
+
+describe ChaptersHelper, '#email_link' do
+  
+  context "when email is blank" do 
+    let!(:chapter) { create(:chapter) }
+    it { helper.email_link(chapter).should be_nil }
+  end
+
+  context "when email is present" do
+    let!(:chapter) { create(:chapter, email_address: "chapter@example.com") }
+    it { helper.email_link(chapter).should_not be_nil }
+  end
+
+end
