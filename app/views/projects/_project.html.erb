@@ -15,7 +15,7 @@
     <section class="meta-data">
       <% if current_user.can_edit_project?(project) -%>
         <span class="spam">
-          <%= link_to t(".delete"), project_path(project), :method => :delete, :date => { :confirm => t(".confirm-delete") }, :class => 'delete-spam' %>
+          <%= link_to t(".delete"), project_path(project), :method => :delete, :data => { :confirm => t(".confirm-delete") }, :class => 'delete-spam' %>
         </span>
       <% end -%>
       <span>
