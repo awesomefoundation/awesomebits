@@ -147,4 +147,12 @@ class Project < ActiveRecord::Base
     end
     saved
   end
+
+  def extra_question(num)
+    (question = read_attribute("extra_question_#{num}".to_sym)) && question.present? ? question : nil
+  end
+
+  def extra_answer(num)
+    (answer = read_attribute("extra_answer_#{num}".to_sym)) && answer.present? ? answer : nil
+  end
 end

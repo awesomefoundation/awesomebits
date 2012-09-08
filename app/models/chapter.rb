@@ -1,4 +1,6 @@
 class Chapter < ActiveRecord::Base
+  EXTRA_QUESTIONS_COUNT = 3
+
   extend FriendlyId
   friendly_id :name, use: :slugged
 
@@ -23,7 +25,6 @@ class Chapter < ActiveRecord::Base
   def should_generate_new_friendly_id?
     slug.blank?
   end
-
 
   def self.country_count
     select("count(distinct country) as country_count").first.country_count

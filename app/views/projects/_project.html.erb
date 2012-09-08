@@ -36,8 +36,16 @@
       <%= markdown project.about_project %>
       <h3><%= t ".use-for-money" %></h3>
       <%= markdown project.use_for_money %>
+
+      <% 1.upto(Chapter::EXTRA_QUESTIONS_COUNT) do |num| -%>
+        <% if project.extra_question(num).present? %>
+          <h3><%= project.extra_question(num) %></h3>
+          <%= markdown project.extra_answer(num) || "_#{t '.not-answered'}_" %>
+        <% end %>
+      <% end %>
     </div>
-    <div="details-toggle">
+
+    <div class="details-toggle">
     </div>
     <%= link_to project_path(project), :class => "see-more" do %>
       <p><%= t ".see-the-rest" %></p>
