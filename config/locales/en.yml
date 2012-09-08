@@ -79,6 +79,7 @@ en:
         header: Meet the Trustees
         about: About Us
         news: "%{name} News"
+      apply-for-grant: Apply For a Grant
     edit:
       title: Edit chapter information
     new:

@@ -5,9 +5,13 @@
     <h1>
       <%= @chapter.name %>
     </h1>
+
     <% if can_manage_chapter?(@chapter) %>
       <%= link_to "Edit Chapter", edit_chapter_path(@chapter), :class => 'edit-chapter' %>
     <% end %>
+
+    <%= link_to t(".apply-for-grant"), new_submission_path(:chapter => @chapter), :class => 'apply-chapter' %>
+
     <%= email_link @chapter %>
     <%= blog_link @chapter %>
     <%= facebook_link @chapter %>
@@ -72,6 +76,10 @@
       <section class="rss" id="rss-feeds"></section>
     </article>
   </section>
+</section>
+
+<section class="chapter-apply">
+  <%= link_to t(".apply-for-grant"), new_submission_path(:chapter => @chapter) %>
 </section>
 
 <% content_for :javascript do -%>

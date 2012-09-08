@@ -34,6 +34,14 @@ body.chapters-show {
         padding: 7px 12px 6px;
       }
 
+      a.apply-chapter {
+        @include button(pill, $button-pink);
+        float: right;
+        margin: 12px 0px 0px 10px;
+        text-decoration: none;
+        padding: 7px 12px 6px;
+      }
+
       a.external {
         background: transparent;
         display: block;
@@ -194,7 +202,7 @@ body.chapters-show {
 
 .chapter-info {
   @extend .clearfix;
-  margin: 0 auto;
+  margin: 0 auto 40px;
   width: grid-width(12);
 
   h2 {
@@ -366,6 +374,25 @@ body.chapters-show {
           color: $pink;
         }
       }
+    }
+  }
+}
+
+.chapter-apply {
+  @extend .clearfix;
+  margin: 0 auto;
+  width: grid-width(6);
+
+  a {
+    @include button(pill, $button-pink);
+    font: normal 18px/22px $sans-serif;
+    width: 100%;
+    display: block;
+
+    text: {
+      decoration: none;
+      align: center;
+      transform: uppercase;
     }
   }
 }
