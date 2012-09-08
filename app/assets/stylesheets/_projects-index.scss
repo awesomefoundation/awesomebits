@@ -286,13 +286,17 @@ body.projects-index {
         }
       }
 
-      .meta-data {
-        padding: 5px 10px;
+      .contact {
+        padding: 10px;
 
         span {
           font: normal 12px/14px $sans-serif;
-          margin-right: 10px;
         }
+      }
+
+      .meta-data {
+        border-bottom: 1px solid rgb(200,200,200);
+        padding: 10px;
 
         .spam {
           float: right;
