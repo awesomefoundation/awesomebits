@@ -8,6 +8,7 @@ public/system
 *.DS_Store
 coverage/*
 *.swp
+*~
 rerun.txt
 tags
 !.keep
