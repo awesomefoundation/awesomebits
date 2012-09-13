@@ -10,12 +10,13 @@ clear_existing_questions = ->
   $('.extra-questions textarea').val("")
 
 hide_questions = ->
+  $('.extra-questions').hide()
   $('.extra-questions .extra-answer').hide()
   $('.extra-questions .extra-answer').removeClass('showing')
   $('.extra-questions .extra-question').removeClass('showing')
 
 set_new_questions = (questions) ->
-  show_question_section()
+  show_question_section() if questions.length
   show_one(question) for question in questions
 
 show_question_section = ->
