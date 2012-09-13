@@ -214,6 +214,9 @@ en:
         linkedin_url: LinkedIn URL
         new_password: New Password
         submit: Submit
+    hints:
+      project:
+        funded_description: Only visible on the funded project page
   activerecord:
     errors:
       models:

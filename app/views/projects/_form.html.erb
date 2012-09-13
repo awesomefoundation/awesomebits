@@ -22,11 +22,6 @@
     You have <span id="project_use_for_money_chars_left">500</span> chars left
   </div>
 </div>
-<% if current_user.can_edit_project?(project) %>
-  <div class="funded_on">
-    <%= form.input :funded_on, :as => :string %>
-  </div>
-<% end %>
 <div class="image-upload">
   <% if form.object.photos.present? %>
     <section class="current-images">
@@ -62,6 +57,17 @@
   <%= form.input :extra_answer_2, :wrapper_html => {:class => "extra-answer"} %>
   <%= form.input :extra_answer_3, :wrapper_html => {:class => "extra-answer"} %>
 </div>
+
+<% if current_user.can_edit_project?(project) %>
+  <div class="funded_on">
+    <%= form.input :funded_on, :as => :string %>
+  </div>
+
+  <div class="funded_description">
+    <%= form.input :funded_description %>
+  </div>
+<% end %>
+
 
 <% content_for :javascript do %>
   <%= javascript_tag do %>

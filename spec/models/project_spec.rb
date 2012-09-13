@@ -194,6 +194,17 @@ describe Project do
       project.chapter.should == other_chapter
     end
 
+    it 'populates the funded description' do 
+      project.declare_winner!
+      project.funded_description.should == project.about_project
+    end
+
+    it 'does not replace an existing funded description' do 
+      project.funded_description = 'I am funded'
+      project.declare_winner!
+      project.funded_description.should == 'I am funded'
+    end
+
     it 'saves the record' do
       project.declare_winner!
       Project.find(project.id).funded_on.should == Date.today
