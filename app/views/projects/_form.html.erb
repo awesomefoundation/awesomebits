@@ -70,6 +70,11 @@
 
       // Fire the chapter change event to get extra questions to appear
       $('#project_chapter_id').change();
+
+      // Update the remaining character counts on pageload
+      $('#project_about_me').keydown();
+      $('#project_about_project').keydown();
+      $('#project_use_for_money').keydown();
     });
 
     var extra_questions = {
