@@ -9,15 +9,15 @@
   <%= form.input :rss_feed_url %>
 </div>
 <div class="descriptions">
-  <%= form.input :about_me, :maxlength => 500, :input_html => { :class => "about-me" } %>
+  <%= form.input :about_me, :maxlength => 500, :input_html => { :class => "about-me" }, :disabled => !form.object.new_record?  %>
   <div class="chars_left">
     You have <span id="project_about_me_chars_left">500</span> chars left
   </div>
-  <%= form.input :about_project, :maxlength => 2000, :input_html => { :class => "project-desc" } %>
+  <%= form.input :about_project, :maxlength => 2000, :input_html => { :class => "project-desc" }, :disabled => !form.object.new_record? %>
   <div class="chars_left">
     You have <span id="project_about_project_chars_left">2000</span> chars left
   </div>
-  <%= form.input :use_for_money, :maxlength => 500, :input_html => { :class => "project-use-for-money" } %>
+  <%= form.input :use_for_money, :maxlength => 500, :input_html => { :class => "project-use-for-money" }, :disabled => !form.object.new_record?  %>
   <div class="chars_left">
     You have <span id="project_use_for_money_chars_left">500</span> chars left
   </div>
