@@ -110,6 +110,7 @@ en:
       description: Just fill out the application below with information about your self and the details of your project.
     form:
       save: Save
+      image-notes: The first image is set as the cover image. Images will be resized to %{dimensions} pixels.
     index:
       filter-button: Filter
       start-date: start date
@@ -184,7 +185,7 @@ en:
         title: Project title
         url: Project website
         current_photos-html: "Current images <span>(drag to re-order)</span>"
-        new_photos-html: "Upload images of your project <span>(first image is set as cover image)</span>"
+        new_photos-html: "Upload images of your project"
         chapter_id: Select chapter to apply to
         rss_feed_url: Project RSS feed url
         about_me: Tell us a little about yourself

@@ -48,6 +48,9 @@
       <input class="file optional multi new_photo" id="project_new_photos" name="project[new_photos][]" type="file" value="">
       <a href="#" class="remove-image" data-remove="true">remove</a>
     </div>
+
+    <div><%= t(".image-notes", :dimensions => Photo::MAIN_DIMENSIONS) %></div>
+
   </div>
 </div>
 <%= form.input :chapter_id, :collection => Chapter.select_data, :prompt => '- Select -', :as => :select, :group_method => :name %>
