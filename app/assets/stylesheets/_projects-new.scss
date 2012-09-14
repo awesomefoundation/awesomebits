@@ -17,7 +17,8 @@
     .descriptions,
     .image-upload,
     .personal-info,
-    .project-info {
+    .project-info,
+    .extra-questions {
       @extend .clearfix;
       border-bottom: 1px solid rgb(200,200,200);
       margin-bottom: 30px;

@@ -36,22 +36,27 @@
   </section>
 
   <section class="project-description">
-    <h2><%= t ".description.header" %></h2>
-    <%= markdown @project.about_project %>
+    <% if @project.winner? %>
+      <%= markdown @project.funded_description %>
 
-    <% if @project.extra_answer_1? %>
-      <h2><%= @project.extra_question_1 %></h2>
-      <p><%= @project.extra_answer_1 %></p>
-    <% end %>
+    <% else %>
+      <h2><%= t ".description.header" %></h2>
+      <%= markdown @project.about_project %>
 
-    <% if @project.extra_answer_2? %>
-      <h2><%= @project.extra_question_2 %></h2>
-      <p><%= @project.extra_answer_2 %></p>
-    <% end %>
+      <% if @project.extra_answer_1? %>
+        <h2><%= @project.extra_question_1 %></h2>
+        <p><%= @project.extra_answer_1 %></p>
+      <% end %>
 
-    <% if @project.extra_answer_3? %>
-      <h2><%= @project.extra_question_3 %></h2>
-      <p><%= @project.extra_answer_3 %></p>
+      <% if @project.extra_answer_2? %>
+        <h2><%= @project.extra_question_2 %></h2>
+        <p><%= @project.extra_answer_2 %></p>
+      <% end %>
+
+      <% if @project.extra_answer_3? %>
+        <h2><%= @project.extra_question_3 %></h2>
+        <p><%= @project.extra_answer_3 %></p>
+      <% end %>
     <% end %>
   </section>
 

@@ -7,7 +7,7 @@ class Project < ActiveRecord::Base
   attr_accessible :name, :title, :url, :email, :phone, :about_me, :about_project,
                   :chapter_id, :extra_question_1, :extra_question_2, :extra_question_3,
                   :extra_answer_1, :extra_answer_2, :extra_answer_3,
-                  :new_photos, :photo_order, :rss_feed_url, :use_for_money, :funded_on
+                  :new_photos, :photo_order, :rss_feed_url, :use_for_money, :funded_on, :funded_description
 
   validates_presence_of :name
   validates_presence_of :title
@@ -18,6 +18,8 @@ class Project < ActiveRecord::Base
   validates_presence_of :chapter_id
 
   delegate :name, :to => :chapter, :prefix => true
+
+  before_save :ensure_funded_description
 
   cattr_accessor :mailer
   self.mailer = ProjectMailer
@@ -154,5 +156,16 @@ class Project < ActiveRecord::Base
 
   def extra_answer(num)
     (answer = read_attribute("extra_answer_#{num}".to_sym)) && answer.present? ? answer : nil
+  end
+
+  protected
+
+  # before save
+  def ensure_funded_description
+    if winner?
+      self.funded_description ||= about_project
+    end
+
+    true
   end
 end

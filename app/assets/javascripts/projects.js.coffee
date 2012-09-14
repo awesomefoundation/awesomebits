@@ -51,3 +51,12 @@ $(".mark-as-winner")
 $('#project_about_me').keydown(display_remaining_chars)
 $('#project_about_project').keydown(display_remaining_chars)
 $('#project_use_for_money').keydown(display_remaining_chars)
+
+populate_funded_description = ->
+  funded_description = $('#project_funded_description')
+  description        = $('#project_about_project').val()
+
+  if $(this).val() and !funded_description.val()
+    funded_description.val(description)
+
+$('#project_funded_on').blur(populate_funded_description)
