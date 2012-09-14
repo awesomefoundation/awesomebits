@@ -15,3 +15,25 @@ describe 'projects/index' do
     rendered.should have_content("Extra Answer 1")
   end
 end
+
+describe 'projects/show' do
+  let!(:user) { create(:user) }
+  let!(:unfunded_project) { create(:project) }
+  let!(:funded_project) { create(:project, :funded_on => Time.zone.now.to_date, :funded_description => "I am a funded project") }
+
+  it 'displays the application text for an unfunded project' do 
+    assign(:project, unfunded_project)
+    view.stubs(:current_user).returns(user)
+    
+    render
+    rendered.should have_content(unfunded_project.about_project)
+  end
+
+  it 'displays the funded description for a funded project' do 
+    assign(:project, funded_project)
+    view.stubs(:current_user).returns(user)
+
+    render
+    rendered.should have_content(funded_project.funded_description)
+  end
+end
