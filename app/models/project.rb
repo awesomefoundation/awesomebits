@@ -38,13 +38,13 @@ class Project < ActiveRecord::Base
 
   def self.during_timeframe(start_date, end_date)
     start_date ||= 100.years.ago.to_date
-    end_date ||= Date.today
+    end_date ||= Time.zone.now.to_date
     where("projects.created_at BETWEEN ? AND ?", start_date, end_date + 1.day)
   end
 
   def self.voted_on_during_timeframe(start_date, end_date)
     start_date ||= 100.years.ago.to_date
-    end_date ||= Date.today
+    end_date ||= Time.zone.now.to_date
     joins(:users).where("votes.created_at BETWEEN ? AND ?", start_date, end_date + 1.day)
   end
 
