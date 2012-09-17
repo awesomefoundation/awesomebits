@@ -1,4 +1,5 @@
 <%= simple_form_for user do |form| %>
+  <%= hidden_field_tag :return_to, params[:return_to] %>
   <%= form.input :first_name %>
   <%= form.input :last_name %>
   <%= form.input :email %>

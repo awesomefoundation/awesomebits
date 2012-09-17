@@ -11,7 +11,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.set_password(params[:user].delete(:new_password))
     if @user.update_attributes(params[:user])
-      redirect_to chapter_projects_path(current_user.last_viewed_chapter_id)
+      if params[:return_to].present?
+        redirect_to params[:return_to]
+      else
+        redirect_to chapter_projects_path(current_user.last_viewed_chapter_id)
+      end
     else
       render :edit
     end

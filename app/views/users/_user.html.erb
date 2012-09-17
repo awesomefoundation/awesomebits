@@ -7,7 +7,7 @@
   </td>
   <td><%= user.email %></td>
   <% if current_user.can_edit_all_profiles? %>
-    <td><%= link_to t(".edit"), edit_user_path(user) %></td>
+    <td><%= link_to t(".edit"), edit_user_path(user, :return_to => request.url) %></td>
   <% end %>
   <td class="chapter-name"><%= user.chapter_name || "-" %></td>
   <td class="role-name"><%= user.role_name || "-" %></td>
