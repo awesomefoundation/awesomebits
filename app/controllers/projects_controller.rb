@@ -25,6 +25,8 @@ class ProjectsController < ApplicationController
         else
           @projects = project_filter.result
         end
+
+        headers["Content-Disposition"] = "attachment; filename=#{@chapter.slug}_export.csv"
         render :text => Project.csv_export(@projects), :content_type => 'text/csv'
       end
     end
