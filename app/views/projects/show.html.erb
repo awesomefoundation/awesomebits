@@ -1,4 +1,6 @@
 <% provide(:page_title, @project.title) %>
+<% provide(:meta_description, strip_tags(@project.funded_description.truncate(150))) if @project.funded_description %>
+<% provide(:meta_image, image_url(@project.primary_image.url)) if @project.has_images? %>
 
 <header class="project">
   <% if can_manage_chapter?(@project.chapter) %>

@@ -141,6 +141,10 @@ class Project < ActiveRecord::Base
     display_images.first
   end
 
+  def has_images?
+    photos.present?
+  end
+
   def save
     was_new_record = new_record?
     saved = super
