@@ -6,6 +6,9 @@
   <%= stylesheet_link_tag :application, :media => 'all' %>
   <%= csrf_meta_tags %>
 
+  <%= meta_tag :description, t("meta.description"), :name => "description", :property => "og:description" %>
+  <%= meta_tag :image, image_url("logo-160x160.png"), :property => "og:image" %>
+
   <script type="text/javascript" src="http://use.typekit.com/xhz4kzm.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   <!--[if lt IE 9]>

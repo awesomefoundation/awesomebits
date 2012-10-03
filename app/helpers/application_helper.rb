@@ -26,4 +26,14 @@ module ApplicationHelper
     markdown.render(text).html_safe unless text.nil?
   end
 
+  def image_url(image)
+    (URI.parse(root_url) + image_path(image)).to_s
+  end
+
+  def meta_tag(tag_name, content, options = {})
+    content_tag = "meta_#{tag_name}".to_sym
+
+    tag :meta, options.merge(:content => content_for?(content_tag) ? content_for(content_tag) : content)
+  end
+
 end

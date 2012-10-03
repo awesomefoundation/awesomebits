@@ -211,3 +211,5 @@ pt:
         linkedin_url: URL do LinkedIn
         new_password: Nova Senha
         submit: Enviar
+  meta:
+    description: Encaminhando o interesse do Irado no universo, $1,000 de cada vez.
