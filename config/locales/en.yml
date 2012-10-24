@@ -214,9 +214,12 @@ en:
         linkedin_url: LinkedIn URL
         new_password: New Password
         submit: Submit
+        user_image: User Image
     hints:
       project:
         funded_description: Only visible on the funded project page
+      user:
+        user_image: Set your user image at <a href="https://en.gravatar.com/site/signup/%{email}" target="_blank">gravatar.com</a> using your email address above
   activerecord:
     errors:
       models:
