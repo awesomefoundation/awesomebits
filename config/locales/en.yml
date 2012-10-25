@@ -113,9 +113,10 @@ en:
       image-notes: The first image is set as the cover image. Images will be resized to %{dimensions} pixels.
     index:
       filter-button: Filter
+      search: search
       start-date: start date
       end-date: end date
-      short-list-filter: My Short-list
+      short-list-filter: My short-list
       title: "Projects for %{name}"
       export-projects: Export Filtered
       export-all-projects: Export All From Date Range

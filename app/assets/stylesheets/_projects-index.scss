@@ -91,10 +91,10 @@ body.projects-index {
         border: 1px solid rgb(190,190,190);
         @include border-radius(3px);
         display: block;
-        margin: 0px;
+        margin: 1px 0 0 0;
         padding: 5px 40px 5px 10px;
         text-decoration: none;
-        width: 150px;
+        width: 100px;
         z-index: 2;
 
         &:hover {
@@ -179,7 +179,7 @@ body.projects-index {
 
       div.short-list-toggle {
         float: left;
-        margin-right: 20px;
+        margin-right: 10px;
         position: relative;
 
         input[type="checkbox"] {
@@ -193,7 +193,7 @@ body.projects-index {
           border: 1px solid rgb(190,190,190);
           @include border-radius(3px);
           font: normal 12px $sans-serif;
-          height: 22px;
+          height: 21px;
           margin: 0px;
           text-shadow: 0 1px rgba(255,255,255, 0.8);
           padding: 8px 12px 0px 30px;
@@ -210,7 +210,7 @@ body.projects-index {
         }
       }
 
-      div.date-range {
+      div.date-range, div.search {
         float: left;
         margin-right: 10px;
 
@@ -221,11 +221,15 @@ body.projects-index {
         input[type="text"] {
           color: rgb(180,180,180);
           height: 30px;
-          width: 100px;
+          width: 90px;
 
           &:focus {
             color: rgb(55,55,55);
           }
+        }
+
+        input#search {
+          width: 110px;
         }
       }
 
