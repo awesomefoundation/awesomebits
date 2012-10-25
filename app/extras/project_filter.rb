@@ -4,6 +4,11 @@ class ProjectFilter
     @projects = @projects.order(:created_at).reverse_order
   end
 
+  def search(query)
+    @projects = @projects.search(query)
+    self
+  end
+
   def during(start_date, end_date)
     @projects = @projects.during_timeframe(start_date, end_date)
     self

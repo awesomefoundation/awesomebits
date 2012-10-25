@@ -110,6 +110,7 @@ pt:
       save: Salvar
     index:
       filter-button: Filtrar
+      search: procurar
       start-date: data inicial
       end-date: data final
       short-list-filter: Marcados por mim

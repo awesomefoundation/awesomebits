@@ -22,14 +22,19 @@
         <input class="" id="my-short-list" name="short_list" <%= checked_attribute_if(@short_listed) %> type="checkbox">
         <label for="my-short-list"><%= t ".short-list-filter" %></label>
       </div>
+
       <div class="input string optional date-range">
         <label class="string optional" for="filter_start"><%= t ".start-date" %></label>
         <input class="string optional prefilled" id="filter_start" name="start" size="50" type="text" value="<%= @start_date %>">
       </div>
-
       <div class="input string optional date-range">
         <label class="string optional" for="filter_end"><%= t ".end-date" %></label>
         <input class="string optional prefilled" id="filter_end" name="end" size="50" type="text" value="<%= @end_date %>">
+      </div>
+
+      <div class="input string optional search">
+        <label class="string optional" for="search"><%= t ".search" %></label>
+        <input class="string optional prefilled" id="search" name="q" size="50" type="text" value="<%= @q %>">
       </div>
 
       <input name="" type="submit" value="<%= t(".filter-button") %>">

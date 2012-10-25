@@ -14,6 +14,10 @@ class ProjectsController < ApplicationController
     if params[:short_list]
       project_filter.shortlisted_by(current_user)
     end
+    @q = params[:q].to_s.strip
+    unless @q.blank?
+      project_filter.search(@q)
+    end
     respond_to do |format|
       format.html do
         @projects = project_filter.page(params[:page]).result
