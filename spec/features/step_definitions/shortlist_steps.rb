@@ -38,7 +38,7 @@ end
 
 step ':count people/person have/has voted on a/another project in my chapter' do |count|
   @finalist_projects ||= []
-  project = create(:project, :chapter => @current_chapter)
+  project = create(:project, :chapter => @current_chapter, :created_at => count.to_i.days.ago)
   @finalist_projects << [project, count] if count.to_i > 0
   count.to_i.times do |x|
     vote = create(:vote, :project => project, :created_at => x.days.ago)

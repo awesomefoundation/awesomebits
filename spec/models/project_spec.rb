@@ -57,31 +57,6 @@ describe Project do
     end
   end
 
-  context '.voted_on_during_timeframe' do
-    let(:start_date) { Date.parse("2001-01-01") }
-    let(:end_date) { Date.parse("2010-10-10") }
-    let!(:before_start) { create(:vote, :created_at => Date.parse("2000-12-31")) }
-    let!(:before_end) { create(:vote, :created_at => Date.parse("2001-01-02")) }
-    let!(:after_start) { create(:vote, :created_at => Date.parse("2010-10-09")) }
-    let!(:after_end) { create(:vote, :created_at => Date.parse("2010-10-11")) }
-
-    it 'searches between two dates' do
-      actual = Project.voted_on_during_timeframe(start_date, end_date)
-      actual.should_not include(after_end.project)
-      actual.should_not include(before_start.project)
-      actual.should include(after_start.project)
-      actual.should include(before_end.project)
-    end
-
-    it 'defaults to all dates if none are supplied' do
-      actual = Project.voted_on_during_timeframe(nil, nil)
-      actual.should include(after_end.project)
-      actual.should include(before_start.project)
-      actual.should include(after_start.project)
-      actual.should include(before_end.project)
-    end
-  end
-
   context '.during_timeframe' do
     let(:start_date) { Date.parse("2001-01-01") }
     let(:end_date) { Date.parse("2010-10-10") }

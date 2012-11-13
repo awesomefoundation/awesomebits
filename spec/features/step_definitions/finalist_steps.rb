@@ -37,15 +37,18 @@ end
 step 'votes are cast once per day, consecutively leading up to today' do
 end
 
-step 'I filter the finalists to only show yesterday and the day before' do
-  fill_in("start date", :with => 2.day.ago.strftime("%Y-%m-%d"))
-  fill_in("end date", :with => 1.day.ago.strftime("%Y-%m-%d"))
+step 'projects are created the day of the first vote is cast' do
+end
+
+step 'I filter the finalists to only show the day before yesterday' do
+  fill_in("start date", :with => 2.days.ago.strftime("%Y-%m-%d"))
+  fill_in("end date", :with => 2.days.ago.strftime("%Y-%m-%d"))
   click_button("Filter")
 end
 
-step 'I should only see that 3 votes that were cast in that time' do
+step 'I should see that 2 votes were cast on projects created in that time' do
   vote_count = page.all(:css, "table tr td:nth-child(3)").map(&:text).map(&:to_i).sum
-  vote_count.should == 3
+  vote_count.should == 2
 end
 
 step 'I should see the project I shortlisted' do
