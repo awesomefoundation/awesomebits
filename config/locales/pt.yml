@@ -137,7 +137,8 @@ pt:
       subject: "Obrigado pelo envio!"
   sessions:
     new:
-      sign-in: Entrar
+      sign-in: Entrar (Curador/Decano)
+      intro: Esta área do site tem acesso restrito a Curadores e Decanos da Awesome Foundation. Se você é um curador e precisa de acesso, por favor entre diretamente em contato com o decano do seu capítulo.
       forgot-password: Esqueceu sua senha?
   users:
     user:
