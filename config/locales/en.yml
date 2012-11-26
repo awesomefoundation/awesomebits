@@ -137,7 +137,8 @@ en:
       subject: "Thanks for applying!"
   sessions:
     new:
-      sign-in: Sign in
+      sign-in: Trustee and Dean Sign In
+      intro: This section of the website is reserved for Awesome Foundation Trustees and Deans only. If you are a trustee and need access, please get in touch with your chapter's Dean directly.
       forgot-password: Forgot your password?
   users:
     user:
