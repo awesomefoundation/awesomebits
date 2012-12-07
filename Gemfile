@@ -58,6 +58,6 @@ group :test do
 end
 
 group :staging, :production do
-  gem 'newrelic_rpm', '~> 3.3.4'
+  gem 'newrelic_rpm'
   gem 'sprockets-redirect'
 end

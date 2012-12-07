@@ -153,7 +153,7 @@ GEM
       net-ssh (>= 1.99.1)
     net-ssh (2.4.0)
       jruby-pageant (>= 1.0.2)
-    newrelic_rpm (3.3.4.1)
+    newrelic_rpm (3.5.3.25)
     nokogiri (1.5.2)
     paperclip (3.0.4)
       activemodel (>= 3.0.0)
@@ -308,7 +308,7 @@ DEPENDENCIES
   high_voltage
   jquery-rails
   launchy
-  newrelic_rpm (~> 3.3.4)
+  newrelic_rpm
   nokogiri
   paperclip (~> 3.0.3)
   pg (~> 0.13.2)
