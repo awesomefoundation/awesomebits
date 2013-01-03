@@ -3,6 +3,7 @@ html, body {
   color: $base-font-color;
   font: normal 12px/14px $sans-serif;
   height: 100%;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
