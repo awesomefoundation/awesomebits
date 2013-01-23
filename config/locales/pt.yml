@@ -105,6 +105,8 @@ pt:
       about-project: "Eis a minha idéia:"
       use-for-money: "Como usarei o dinheiro:"
       not-answered: Não Respondido
+      images: "Imagens:"
+      image: "Imagen #%{index}"
     new:
       title: Você está pronto para ser Irado!?
       description: Apenas preencha o formulário abaixo com seus dados e detalhes do seu projeto.

@@ -47,6 +47,15 @@
 
   <section class="project-proposal-details">
     <div class="project-pitch">
+      <% if project.has_images? %>
+        <h3><%= t ".images" %></h3>
+        <p>
+        <% project.photos.each_with_index do |image, index| %>
+          <%= link_to t(".image", :index => index+1), image.image.url, :rel => "project-#{project.id}-images", :class => "lightbox", :target => "blank" %>
+        <% end %>
+        </p>
+      <% end %>
+
       <h3><%= t ".about-me" %></h3>
       <%= markdown project.about_me %>
       <h3><%= t ".about-project" %></h3>
