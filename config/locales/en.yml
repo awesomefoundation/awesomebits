@@ -105,6 +105,8 @@ en:
       about-project: "Here's my idea:"
       use-for-money: "How I will use the money:"
       not-answered: Not Answered
+      images: "Images:"
+      image: "Image #%{index}"
     new:
       title: Are you ready to get Awesome!?
       description: Just fill out the application below with information about your self and the details of your project.
