@@ -99,6 +99,7 @@ en:
       awesome: Awesome
       delete: Delete this project
       see-the-rest: See the rest →
+      edit: Edit Project →
       confirm-delete: Really delete this?
       winner: "Winner for %{name}"
       about-me: "A little about me:"

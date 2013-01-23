@@ -99,6 +99,7 @@ pt:
       awesome: Awesome
       delete: Excluir este projeto
       see-the-rest: Veja mais →
+      edit: Editar Projeto →
       confirm-delete: Deseja mesmo excluir?
       winner: "Vencedor do capítulo %{name}"
       about-me: "Um pouco sobre mim:"
