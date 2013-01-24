@@ -51,7 +51,7 @@ class Project < ActiveRecord::Base
   end
 
   def self.by_vote_count
-    select("projects.id, projects.title, COUNT(votes.project_id) as vote_count").
+    select("projects.chapter_id, projects.id, projects.title, COUNT(votes.project_id) as vote_count").
       group("projects.id, projects.title, votes.project_id").
       joins(:users).
       order("vote_count DESC")
