@@ -3,11 +3,11 @@ class ProjectsController < ApplicationController
   before_filter :verify_user_can_edit, :only => [:destroy]
   before_filter :redirect_to_chapter_or_sign_in, :only => [:index], :if => :chapter_missing?
   before_filter :handle_unpublished_projects, :only => [:show]
+  before_filter :find_chapter, :only => [:index, :show]
 
   include ApplicationHelper
 
   def index
-    @chapter = Chapter.find(params[:chapter_id])
     @start_date, @end_date = extract_timeframe
     @short_listed = params[:short_list]
     project_filter = ProjectFilter.new(@chapter.projects).during(@start_date, @end_date)
@@ -129,5 +129,9 @@ class ProjectsController < ApplicationController
         render_404 and return
       end
     end
+  end
+
+  def find_chapter
+    @chapter = Chapter.find(params[:chapter_id])
   end
 end
