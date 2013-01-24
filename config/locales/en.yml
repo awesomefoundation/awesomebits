@@ -99,6 +99,7 @@ en:
       awesome: Awesome
       delete: Delete this project
       see-the-rest: See the rest →
+      view-public-page: View the public page →
       edit: Edit Project →
       confirm-delete: Really delete this?
       winner: "Winner for %{name}"
@@ -123,7 +124,7 @@ en:
       title: "Projects for %{name}"
       export-projects: Export Filtered
       export-all-projects: Export All From Date Range
-    show:
+    public_show:
       edit: Edit Project
       byline-html: "<span class='chapter-name'>%{chapter_name}</span> project created by <span class='project-starter'>%{submitter_name}</span>"
       funder-html: "Funded by <span class='chapter-name'>%{name}</span>"
@@ -131,6 +132,8 @@ en:
       description:
         header: Project Description
       feed-title: Recent Posts
+    show:
+      back-to: 'Back to <a href="%{url}">%{name}</a>'
   emails:
     invitation:
       subject: "You have been invited to the %{name} chapter of the Awesome Foundation!"

@@ -1,0 +1,106 @@
+<% provide(:page_title, @project.title) %>
+<% provide(:meta_description, strip_tags(@project.funded_description.truncate(150))) if @project.funded_description %>
+<% provide(:meta_image, image_url(@project.primary_image.url)) if @project.has_images? %>
+
+<header class="project">
+  <% if can_manage_chapter?(@project.chapter) %>
+    <%= link_to t(".edit"), edit_project_path(@project), :class => 'edit-project' %>
+  <% end %>
+  <h1><%= @project.title %></h1>
+</header>
+
+ <section class="project-gallery" id="project-gallery">
+   <ul class="viewport">
+     <% @project.display_images.each do |image| %>
+       <li class="piece image-wrapper"> <%= image_tag(image.url) %> </li>
+     <% end %>
+   </ul>
+   <% if @project.photos.count > 1 %>
+     <div class="arrows">
+       <a class="arrow left"></a>
+       <a class="arrow right"></a>
+     </div>
+   <% end %>
+   </section>
+
+<section class="project-details">
+  <section class="meta-data">
+    <p><%= t(".byline-html", :chapter_name => link_to(@project.chapter.name, chapter_path(@project.chapter)), :submitter_name => @project.name) %></p>
+    <div class="addthis_toolbox addthis_default_style ">
+      <a class="addthis_button_twitter"></a>
+      <a class="addthis_button_facebook"></a>
+      <a class="addthis_button_google"></a>
+      <a class="addthis_button_email"></a>
+      <a class="addthis_button_compact"></a>
+      <a class="addthis_counter addthis_bubble_style"></a>
+    </div>
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4f46fdff2154a73e"></script>
+  </section>
+
+  <section class="project-description">
+    <% if @project.winner? %>
+      <%= markdown @project.funded_description %>
+
+    <% else %>
+      <h2><%= t ".description.header" %></h2>
+      <%= markdown @project.about_project %>
+
+      <% if @project.extra_answer_1? %>
+        <h2><%= @project.extra_question_1 %></h2>
+        <p><%= @project.extra_answer_1 %></p>
+      <% end %>
+
+      <% if @project.extra_answer_2? %>
+        <h2><%= @project.extra_question_2 %></h2>
+        <p><%= @project.extra_answer_2 %></p>
+      <% end %>
+
+      <% if @project.extra_answer_3? %>
+        <h2><%= @project.extra_question_3 %></h2>
+        <p><%= @project.extra_answer_3 %></p>
+      <% end %>
+    <% end %>
+  </section>
+
+  <section class="project-side-bar">
+    <article class="project-state">
+      <% if @project.winner? %>
+        <div class="state funded">
+          <p><%= t(".funder-html", :name => @project.chapter.name) %> <span class="funded-on">(<%= l @project.funded_on, :format => :funding %>)</span></p>
+        </div>
+      <% else %>
+        <div class="state applied">
+          <p><%= t(".submitted-to-html", :name => @project.chapter.name) %></p>
+        </div>
+      <% end %>
+    </article>
+
+    <% if @project.url? %>
+      <article class="project-site-link">
+        <%= link_to @project.url do %>
+          Visit this project's web site
+          <span>→</span>
+        <% end %>
+      </article>
+    <% end %>
+
+    <% if @project.rss_feed_url? %>
+      <article class="project-rss">
+        <h2><%= t ".feed-title" %></h2>
+        <section class="rss" id="rss-feeds"></section>
+      </article>
+      <% content_for :javascript do -%>
+        <%= render 'shared/rssfeed', rss_feed_url: @project.rss_feed_url %>
+      <% end -%>
+    <% end %>
+
+  </section>
+</section>
+
+<%= content_for :javascript do %>
+  <%= javascript_tag do %>
+    $(document).ready(function(){
+      Slideshow("#project-gallery .piece").run();
+    });
+  <% end %>
+<% end %>

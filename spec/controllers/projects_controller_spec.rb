@@ -12,6 +12,7 @@ describe ProjectsController do
         route_to({:controller => "projects", :action => "index", :id => boston.id, :locale => "en"})
     end
   end
+
   context 'viewing the index when logged out' do
     before do
       get :index
@@ -57,23 +58,26 @@ describe ProjectsController do
     it { should respond_with_content_type(:csv) }
   end
 
-  context 'viewing a project that has not won yet' do
+  context 'viewing a public project page that has not won yet' do
     let!(:project) { create(:project) }
     let!(:user) { create(:user) }
     let!(:role) { create(:role, :user => user) }
+
     context 'while logged in' do
       before do
         sign_in_as user
         get :show, :id => project
       end
-      it { should respond_with(:success) }
+      it { should respond_with(:redirect) }
+      it { should redirect_to(chapter_project_path(project.chapter, project)) }
     end
+
     context 'while not logged in' do
       before do
         sign_out
         get :show, :id => project
       end
-      it { should redirect_to(root_path) }
+      it { should respond_with(:missing) }
     end
   end
 
@@ -82,6 +86,43 @@ describe ProjectsController do
     before do
       get :show, :id => project
     end
+
     it { should respond_with(:success) }
+    it { should render_template("public_show") }
+  end
+
+  context "viewing a private project page" do
+    render_views
+
+    let!(:project) { create(:project) }
+    let!(:trustee) { create(:user) }
+    let!(:admin)   { create(:admin) }
+    
+    context "while not logged in" do 
+      before do 
+        sign_out
+        get :show, :chapter_id => project.chapter,  :id => project
+      end
+
+      it { should redirect_to root_path }
+    end
+    
+    context "while logged in as a trustee" do 
+      before do 
+        sign_in_as trustee
+        get :show, :chapter_id => project.chapter,  :id => project
+      end
+
+      it { should render_template("show") }
+    end
+
+    context "while logged in as a admin" do 
+      before do 
+        sign_in_as admin
+        get :show, :chapter_id => project.chapter,  :id => project
+      end
+
+      it { should render_template("show") }
+    end
   end
 end

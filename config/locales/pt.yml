@@ -99,6 +99,7 @@ pt:
       awesome: Awesome
       delete: Excluir este projeto
       see-the-rest: Veja mais →
+      view-public-page: Ver a página pública →
       edit: Editar Projeto →
       confirm-delete: Deseja mesmo excluir?
       winner: "Vencedor do capítulo %{name}"
@@ -123,7 +124,7 @@ pt:
       title: "Projetos do capítulo %{name}"
       export-projects: Exportar Filtrados
       export-all-projects: Exportar Todos do Período
-    show:
+    public_show:
       edit: Editar Projeto
       byline-html: "Projeto do capítulo <span class='chapter-name'>%{chapter_name}</span> criado por <span class='project-starter'>%{submitter_name}</span>"
       funder-html: "Financiado pelo capítulo <span class='chapter-name'>%{name}</span>"
@@ -131,6 +132,8 @@ pt:
       description:
         header: Descrição do Projeto
       feed-title: Postagens Recentes
+    show:
+      back-to: 'Volta para <a href="%{url}">%{name}</a>'
   emails:
     invitation:
       subject: "Você foi convidado para o capítulo %{name} da Awesome Foundation!"

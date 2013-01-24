@@ -19,7 +19,6 @@ end
 describe 'projects/show' do
   let!(:user) { create(:user) }
   let!(:unfunded_project) { create(:project) }
-  let!(:funded_project) { create(:project, :funded_on => Time.zone.now.to_date, :funded_description => "I am a funded project") }
 
   it 'displays the application text for an unfunded project' do 
     assign(:project, unfunded_project)
@@ -28,10 +27,14 @@ describe 'projects/show' do
     render
     rendered.should have_content(unfunded_project.about_project)
   end
+end
 
+describe 'projects/public_show' do
+  let!(:funded_project) { create(:project, :funded_on => Time.zone.now.to_date, :funded_description => "I am a funded project") }
+    
   it 'displays the funded description for a funded project' do 
     assign(:project, funded_project)
-    view.stubs(:current_user).returns(user)
+    view.stubs(:current_user).returns(Guest.new)
 
     render
     rendered.should have_content(funded_project.funded_description)

@@ -16,7 +16,7 @@ Awesomefoundation::Application.routes.draw do
 
     resources :chapters, :only => [:index, :show, :new, :create, :edit, :update] do
       resources :finalists, :only => [:index]
-      resources :projects,  :only => [:index]
+      resources :projects,  :only => [:index, :show]
       resources :users,     :only => [:index]
     end
 
