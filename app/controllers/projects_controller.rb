@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   before_filter :must_be_logged_in, :except => [:show, :new, :create]
   before_filter :verify_user_can_edit, :only => [:destroy]
   before_filter :redirect_to_chapter_or_sign_in, :only => [:index], :if => :chapter_missing?
-  before_filter :must_be_logged_in_to_see_unpublished_projects, :only => [:show]
+  before_filter :handle_unpublished_projects, :only => [:show]
 
   include ApplicationHelper
 
@@ -56,6 +56,13 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+
+    if public_view?
+      render :action => "public_show"
+
+    else
+      must_be_logged_in || render
+    end
   end
 
   def edit
@@ -110,10 +117,17 @@ class ProjectsController < ApplicationController
     params[:chapter_id].blank?
   end
 
-  def must_be_logged_in_to_see_unpublished_projects
-    if !current_project.try(:winner?) && !current_user.logged_in?
-      flash[:notice] = t("flash.permissions.must-be-logged-in")
-      redirect_to root_url
+  def public_view?
+    params[:chapter_id].blank?
+  end
+
+  def handle_unpublished_projects
+    if public_view? && !current_project.try(:winner?)
+      if current_user.logged_in?
+        redirect_to chapter_project_path(current_project.chapter, current_project) and return
+      else
+        render_404 and return
+      end
     end
   end
 end
