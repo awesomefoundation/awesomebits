@@ -132,6 +132,8 @@ class ProjectsController < ApplicationController
   end
 
   def find_chapter
-    @chapter = Chapter.find(params[:chapter_id])
+    if params[:chapter_id]
+      @chapter = Chapter.find(params[:chapter_id])
+    end
   end
 end
