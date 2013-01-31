@@ -11,8 +11,24 @@ body.projects-index {
   padding: 0px 20px 20px 0px;
   width: 180px;
 
+	@media all and (max-width: $narrow) {
+		float: none;
+		border-right: none;
+		border-bottom: 1px solid rgb(200,200,200);
+		width: 100%;
+		padding: 0px;
+	}
+
   .user-profile-image {
     @extend .user-avatar;
+	@media all and (max-width: $narrow) {
+	  width: 40px;
+	  height: 40px;
+	  img {
+		@include border-radius(20px);
+		max-width: 40px;
+	  }
+	}
   }
 
   h2 {
@@ -65,9 +81,16 @@ body.projects-index {
   float: left;
   width: grid-width(9);
 
+	@media all and (max-width: $narrow) {
+		width: 100%;
+	}
+
   .exports {
     text-align: right;
     margin-bottom: 40px;
+	@media all and (max-width: $narrow) {
+		display: none;
+	}
   }
 
   .application-filters {
@@ -80,6 +103,10 @@ body.projects-index {
     margin-bottom: 10px;
     position: relative;
     width: grid-width(9);
+	@media all and (max-width: $narrow) {
+		width: 100%;
+		@include border-radius(0);
+	}
 
     nav {
       float: left;
@@ -247,12 +274,26 @@ body.projects-index {
     text-transform: uppercase;
   }
 
+	@media all and (max-width: $narrow) {
+		h1, p {
+			padding: 5px 10px;
+		}
+	}
+	
   article.project {
     border: 1px solid rgb(200,200,200);
     background: rgb(255,255,255);
     @include border-radius(4px);
     @include box-shadow(0 1px 6px 0 rgba(0,0,0, 0.15));
     margin-bottom: 40px;
+
+	@media all and (max-width: $narrow) {
+		@include border-radius(0);
+		border-left: 6px solid rgb(200,200,200);
+		border-right: none;
+		@include box-shadow(none);
+		margin-bottom: 0px;
+	}
 
     header {
       @include border-top-radius(4px);
@@ -380,6 +421,14 @@ body.projects-index {
     border: 1px solid $pink;
     @include box-shadow(0 1px 6px 0 rgba($pink, 0.6));
 
+	@media all and (max-width: $narrow) {
+		border: 1px solid rgba($pink, 0.6);
+		border-left: 6px solid $pink;
+		padding-left: -3px;
+		border-right: 0px;
+		@include box-shadow(inset 3px -5px 10px 0px rgba($pink, 0.6));
+	}
+
     div.title {
       a.short-list {
         @include button($pink);
@@ -390,6 +439,14 @@ body.projects-index {
   article.project.winner {
     border: 1px solid $blue;
     @include box-shadow(0 1px 6px 0 rgba($blue, 0.6));
+
+	@media all and (max-width: $narrow) {
+		border: 1px solid rgba($blue, 0.6);
+		border-left: 6px solid $blue;
+		padding-left: -3px;
+		border-right: 0px;
+		@include box-shadow(inset 3px -5px 10px 0px rgba($blue, 0.6));
+	}
 
     div.title {
       a.mark-as-winner {
