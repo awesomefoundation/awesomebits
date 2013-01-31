@@ -1,0 +1,17 @@
+/**
+ * Base mobile styling to apply to all dashboard views
+ *
+ * The idea: two width cutoffs:
+ * 
+ */
+$narrow: 768px;
+
+@media all and (max-width: $narrow) {
+
+	body.projects {
+	  section.container, footer {
+		width: 100%;
+	  }
+	}
+	
+}
