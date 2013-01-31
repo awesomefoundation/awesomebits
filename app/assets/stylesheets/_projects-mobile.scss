@@ -8,9 +8,20 @@ $narrow: 768px;
 
 @media all and (max-width: $narrow) {
 
-	body.projects {
+	body.projects-index, body.finalists-index {
 	  section.container, footer {
 		width: 100%;
+	  }
+	  
+	  header.main {
+		min-width: inherit;
+		nav {
+			width: 100%;
+			padding: 0px 15px;
+			ol {
+				float: none;
+			}
+		}
 	  }
 	}
 	
