@@ -5,7 +5,7 @@
   <%= content_tag :title, page_title(app_name: 'The Awesome Foundation') %>
   <%= stylesheet_link_tag :application, :media => 'all' %>
   <%= csrf_meta_tags %>
-
+  <%= meta_tag :viewport, '', :name => 'viewport' %>
   <%= meta_tag :description, t("meta.description"), :name => "description", :property => "og:description" %>
   <%= meta_tag :image, image_url("logo-160x160.png"), :property => "og:image" %>
 
