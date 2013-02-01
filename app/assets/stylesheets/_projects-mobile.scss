@@ -12,56 +12,55 @@ $phone: 480px;
 
 @media all and (max-width: $narrow) {
 
-	body.projects-index, body.finalists-index {
-		section.container, footer {
-			width: 100%;
-			padding: 10px 0 30px 0;
-		}
+  body.projects-index, body.finalists-index {
+    section.container, footer {
+      width: 100%;
+      padding: 10px 0 30px 0;
+    }
 
-		header.main {
-			min-width: inherit;
-			nav {
-				width: 100%;
-				padding: 0px 15px;
-				ol {
-					float: none;
-					clear: both;
-					display: none;
-				}
-			}
-			.hamburger {
-				display: inline;
-			}
-		}
-	}
-	
+    header.main {
+      min-width: inherit;
+      nav {
+        width: 100%;
+        padding: 0px 15px;
+        ol {
+          float: none;
+          clear: both;
+          display: none;
+        }
+      }
+      .hamburger {
+        display: inline;
+      }
+    }
+  }
 }
 
 .hamburger {
-	display: none;
-	background: url('hamburger-small.png');
-	background-repeat: no-repeat;
-	background-size: 30px 20px;
-	width: 30px + 20px;
-	height: 20px + 20px;
-	background-position: 10px 10px;
-	float: right;
-	margin-top: 15px;
-	margin-right: 20px;
-	border: none;
-	cursor: pointer;
-	padding: 10px;
+  display: none;
+  background: url('hamburger-small.png');
+  background-repeat: no-repeat;
+  background-size: 30px 20px;
+  width: 30px + 20px;
+  height: 20px + 20px;
+  background-position: 10px 10px;
+  float: right;
+  margin-top: 15px;
+  margin-right: 20px;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
 }
 .shownav > ol {
-	display: block !important;
+  display: block !important;
 }
 
 @media all and (max-width: $phone) {
-	body.projects-index, body.finalists-index {
-		header.main {
-			nav a.logo h1 {
-				font-size: 13px;
-			}
-		}
-	}
+  body.projects-index, body.finalists-index {
+    header.main {
+      nav a.logo h1 {
+        font-size: 13px;
+      }
+    }
+  }
 }
