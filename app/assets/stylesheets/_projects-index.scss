@@ -14,20 +14,38 @@ body.projects-index {
 	@media all and (max-width: $narrow) {
 		float: none;
 		border-right: none;
-		border-bottom: 1px solid rgb(200,200,200);
+//		border-bottom: 1px solid rgb(200,200,200);
 		width: 100%;
 		padding: 0px;
+		margin-bottom: 15px;
+
+		.hamburger {
+			display: inline;
+			margin-top: -10px;
+			margin-right: 5px;
+		}
+		
+		ol {
+			display: none;
+			clear: both;
+			border-bottom: none;
+		}
 	}
 
   .user-profile-image {
     @extend .user-avatar;
 	@media all and (max-width: $narrow) {
+	  padding: 0px;
 	  width: 40px;
 	  height: 40px;
 	  img {
 		@include border-radius(20px);
 		max-width: 40px;
 	  }
+	  margin: none;
+	  margin-left: 15px;
+	  margin-top: -12px;
+	  float: left;
 	}
   }
 
@@ -37,6 +55,13 @@ body.projects-index {
     margin: 15px 0px;
     padding-bottom: 30px;
     text-align: center;
+    @media all and (max-width: $narrow) {
+		border-bottom: 1px solid rgb(200,200,200);
+		margin-bottom: 0px;
+		text-align: left;
+		padding-left: 70px;
+		padding-bottom: 23px;
+    }
   }
 
   ol {
@@ -48,12 +73,20 @@ body.projects-index {
       margin-bottom: 15px;
       padding: 0px 0px 15px 0px;
 
+      @media all and (max-width: $narrow) {
+        margin: 0px 0px;
+        padding: 0px;
+      }
+
       &:first-child {
         border-top: none;
       }
 
       &.section-title {
         padding: 15px 0px 5px 0px;
+        @media all and (max-width: $narrow) {
+          padding-left: 15px;
+        }
       }
 
       h3 {
@@ -67,6 +100,9 @@ body.projects-index {
         font: normal 12px/14px $sans-serif;
         padding: 5px 0px 5px 10px;
         text-decoration: none;
+        @media all and (max-width: $narrow) {
+          padding: 12px 20px;
+        }
 
         &:hover {
           background: $pink;
@@ -276,7 +312,7 @@ body.projects-index {
 
 	@media all and (max-width: $narrow) {
 		h1, p {
-			padding: 5px 10px;
+			padding: 5px 15px;
 		}
 	}
 	
