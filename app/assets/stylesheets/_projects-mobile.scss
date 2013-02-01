@@ -14,7 +14,8 @@ $phone: 480px;
 
 	body.projects-index, body.finalists-index {
 		section.container, footer {
-		width: 100%;
+			width: 100%;
+			padding: 10px 0 30px 0;
 		}
 
 		header.main {
@@ -49,6 +50,10 @@ $phone: 480px;
 	margin-right: 20px;
 	border: none;
 	cursor: pointer;
+	padding: 10px;
+}
+.shownav > ol {
+	display: block !important;
 }
 
 @media all and (max-width: $phone) {

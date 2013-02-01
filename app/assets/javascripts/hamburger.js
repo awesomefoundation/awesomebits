@@ -1,5 +1,5 @@
 jQuery(function($) {
 	$('.hamburger').click(function() {
-		$(this).siblings('ol').toggle();
+		$(this).parent().toggleClass('shownav');
 	});
 });
