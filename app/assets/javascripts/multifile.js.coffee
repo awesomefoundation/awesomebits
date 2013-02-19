@@ -2,6 +2,7 @@ $(window).load ->
   $('.first input.multi').live 'change', ->
     clone = $(@parentNode).clone()
     clone.val('')
+    clone.children('input.multi').val('')
     $(this).removeAttr('id')
     $(this).hide()
     filename = $(this).val().split("\\").pop()
