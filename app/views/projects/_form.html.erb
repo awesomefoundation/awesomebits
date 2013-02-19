@@ -6,7 +6,6 @@
 <div class="project-info">
   <%= form.input :title, :maxlength => 50 %>
   <%= form.input :url %>
-  <%= form.input :rss_feed_url %>
 </div>
 <div class="descriptions">
   <%= form.input :about_me, :maxlength => 500, :input_html => { :class => "about-me" }, :disabled => !form.object.new_record?  %>
@@ -66,6 +65,9 @@
   <div class="funded_description">
     <%= form.input :funded_description %>
   </div>
+
+  <%= form.input :rss_feed_url %>
+
 <% end %>
 
 

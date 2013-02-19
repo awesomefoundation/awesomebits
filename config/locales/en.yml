@@ -226,6 +226,7 @@ en:
     hints:
       project:
         funded_description: Only visible on the funded project page
+        rss_feed_url: Links to posts from this feed will be displayed on the funded project page
       user:
         user_image: Set your user image at <a href="https://en.gravatar.com/site/signup/%{email}" target="_blank">gravatar.com</a> using your email address above
   activerecord:
