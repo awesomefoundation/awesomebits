@@ -16,8 +16,9 @@ hide_questions = ->
   $('.extra-questions .extra-question').removeClass('showing')
 
 set_new_questions = (questions) ->
-  show_question_section() if questions.length
-  show_one(question) for question in questions
+  if questions != undefined
+    show_question_section() if questions.length
+    show_one(question) for question in questions
 
 show_question_section = ->
   $('.extra-questions').show()
