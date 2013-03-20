@@ -55,7 +55,7 @@ describe ProjectsController do
       get :index, :chapter_id => chapter, :format => :csv
     end
 
-    it { should respond_with_content_type(:csv) }
+    it { response.header['Content-Type'].should include 'csv' }
   end
 
   context 'viewing a public project page that has not won yet' do

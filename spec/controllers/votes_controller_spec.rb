@@ -12,7 +12,7 @@ describe VotesController do
       post :create, :project_id => project.id
     end
     it { should respond_with(:success) }
-    it { should respond_with_content_type(:json) }
+    it { response.header['Content-Type'].should include 'json' }
   end
 
   context "user can remove vote from project" do
@@ -22,7 +22,7 @@ describe VotesController do
       delete :destroy, :project_id => project.id
     end
     it { should respond_with(:success) }
-    it { should respond_with_content_type(:json) }
+    it { response.header['Content-Type'].should include 'json' }
   end
 
   context "error when user votes for a second time on a project" do
@@ -32,7 +32,7 @@ describe VotesController do
       post :create, :project_id => project.id
     end
     it { should respond_with(400) }
-    it { should respond_with_content_type(:json) }
+    it { response.header['Content-Type'].should include 'json' }
   end
 
   context "error when user trieds to delete a vote that doesn't exist" do
@@ -41,7 +41,7 @@ describe VotesController do
       delete :destroy, :project_id => project.id
     end
     it { should respond_with(400) }
-    it { should respond_with_content_type(:json) }
+    it { response.header['Content-Type'].should include 'json' }
   end
 
 end
