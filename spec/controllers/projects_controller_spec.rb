@@ -83,12 +83,24 @@ describe ProjectsController do
 
   context 'viewing a project that has won while logged out' do
     let!(:project) { create(:project, :funded_on => Date.today) }
-    before do
-      get :show, :id => project
+
+    context "with the correct slug" do 
+      before do
+        get :show, :id => project
+      end
+      
+      it { should respond_with(:success) }
+      it { should render_template("public_show") }
     end
 
-    it { should respond_with(:success) }
-    it { should render_template("public_show") }
+    context "with an incorrect slug" do
+      before do 
+        get :show, :id => "#{project.id}-this-is-a-bad-slug"
+      end
+
+      it { should respond_with(:moved_permanently) }
+      it { should redirect_to(project_path(project)) }
+    end
   end
 
   context "viewing a private project page" do

@@ -78,6 +78,10 @@ class Project < ActiveRecord::Base
     self.class.attributes_for_export.collect { |attr| send(attr).to_s }
   end
 
+  def to_param
+    "#{id}-#{title.parameterize}"
+  end
+
   def shortlisted_by?(user)
     users.include?(user)
   end
