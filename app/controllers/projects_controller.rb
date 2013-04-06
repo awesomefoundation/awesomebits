@@ -58,6 +58,11 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
 
     if public_view?
+      # Ensure the canonical path
+      if project_path(@project) != request.path
+        redirect_to project_path(@project), :status => :moved_permanently and return
+      end
+
       render :action => "public_show"
 
     else
