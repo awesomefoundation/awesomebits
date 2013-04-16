@@ -112,6 +112,7 @@ pt:
     new:
       title: Você está pronto para ser Irado!?
       description: Apenas preencha o formulário abaixo com seus dados e detalhes do seu projeto.
+      apply: "Enviar"
     form:
       save: Salvar
       image-notes: A primeira imagem é usada como imagem de capa. As imagens serão redimensionadas para %{dimensions} pixels.
@@ -197,7 +198,7 @@ pt:
         chapter_id: Selecione o capítulo ao qual quer enviar sua proposta
         rss_feed_url: URL de RSS do projeto
         about_me: Fale-nos um pouco sobre você
-        about_project: Qual é o seu projeto, afinal?
+        about_project: Fale sobre seu projeto incrível!
         use_for_money: Como você vai usar o dinheiro?
       chapter:
         name: Nome
@@ -224,11 +225,11 @@ pt:
         submit: Enviar
         user_image: Imagem do Usuário
       hints:
-      project:
-        funded_description: Only visible on the funded project page
-        rss_feed_url: Links para posts deste feed será exibido na página do projeto financiado
-      user:
-        user_image: Set your user image at <a href="https://en.gravatar.com/site/signup/%{email}" target="_blank">gravatar.com</a> using your email address above
+        project:
+          funded_description: Visível apenas na página do projeto fundado.
+          rss_feed_url: Links para posts deste feed será exibido na página do projeto financiado
+        user:
+          user_image: Defina sua imagem em <a href="https://en.gravatar.com/site/signup/%{email}" target="_blank">gravatar.com</a> usando seu endereço de e-mail informado acima
   activerecord:
     errors:
       models:
