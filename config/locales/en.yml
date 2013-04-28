@@ -115,7 +115,7 @@ en:
       apply: Apply
     form:
       save: Save
-      image-notes: The first image is set as the cover image. Images will be resized to %{dimensions} pixels.
+      image-notes: The top image is set as the cover image. Images will be resized to %{dimensions} pixels.
     index:
       filter-button: Filter
       search: search
