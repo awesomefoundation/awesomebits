@@ -29,9 +29,3 @@ Feature: Manage Promotions
     And there is a trustee in the system
     When I remove trustee from a chapter
     Then I should see the deactivated user
-
-  Scenario: As a non-admin, I should not see the promotion links
-    Given I am logged in as a dean
-    And there is a trustee in the system
-    When I try to promote a user
-    Then I should not see promotion links

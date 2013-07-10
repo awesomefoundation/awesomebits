@@ -23,7 +23,7 @@ class Guest
     false
   end
 
-  def can_remove_users?(chapter)
+  def can_manage_users?(chapter)
     false
   end
 
