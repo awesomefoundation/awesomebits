@@ -45,26 +45,28 @@
 </div>
 
 <section class="chapter-info">
-  <h2><%= t(".trustees.header") %></h2>
-  <section class="trustees">
-    <ol>
-      <% @chapter.users.deans_first.including_role.uniq.each do |user| %>
-      <li>
-        <article class="trustee <%= user.role %>">
-          <%= link_to user.url, :class => :avatar do %>
-            <div class="hat"></div>
-            <div class="trustee-details">
-              <h3><%= user.first_name %> <%= user.last_name %></h3>
-            </div>
-            <div class="avatar">
-              <%= image_tag user.gravatar_url %>
-            </div>
-          <% end %>
-        </article>
-      </li>
-      <% end %>
-    </ol>
-  </section>
+  <% unless @chapter.users.blank? %>
+    <h2><%= t(".trustees.header") %></h2>
+    <section class="trustees">
+      <ol>
+        <% @chapter.users.deans_first.including_role.uniq.each do |user| %>
+        <li>
+          <article class="trustee <%= user.role %>">
+            <%= link_to user.url, :class => :avatar do %>
+              <div class="hat"></div>
+              <div class="trustee-details">
+                <h3><%= user.first_name %> <%= user.last_name %></h3>
+              </div>
+              <div class="avatar">
+                <%= image_tag user.gravatar_url %>
+              </div>
+            <% end %>
+          </article>
+        </li>
+        <% end %>
+      </ol>
+    </section>
+  <% end %>
 
   <section class="description">
     <article class="about">
