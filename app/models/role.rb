@@ -24,7 +24,7 @@ class Role < ActiveRecord::Base
     where(:name => "dean", :chapter_id => chapter).any?
   end
 
-  def self.can_remove_users?(chapter)
+  def self.can_manage_users?(chapter)
     where(:name => "dean", :chapter_id => chapter).any?
   end
 

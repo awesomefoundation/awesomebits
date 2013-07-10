@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
 
   def must_be_able_to_manage_chapter_users(role_id)
     role = Role.find(role_id)
-    if !current_user.try(:admin?) && !current_user.can_remove_users?(role.chapter)
+    if !current_user.try(:admin?) && !current_user.can_manage_users?(role.chapter)
       flash[:notice] = t("flash.permissions.cannot-remove-user")
       redirect_to root_url
     end

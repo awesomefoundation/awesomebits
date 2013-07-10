@@ -11,7 +11,7 @@
   <% end %>
   <td class="chapter-name"><%= user.chapter_name || "-" %></td>
   <td class="role-name"><%= user.role_name || "-" %></td>
-  <% if current_user.can_remove_users?(current_chapter) %>
+  <% if current_user.can_manage_users?(current_chapter) %>
     <td class="promote-demote-dean <%= user.role_name %>">
       <span data-role-id="<%= user.role_id %>">
         <% if user.role_name && current_user.id != user.id %>
@@ -35,7 +35,7 @@
       </span>
     </td>
   <% end %>
-  <% if current_user.can_remove_users?(current_chapter) %>
+  <% if current_user.can_manage_users?(current_chapter) %>
     <td class="remove-trustee">
       <% if user.role_name && user.id != current_user.id %>
         <%= link_to t('.remove_from_chapter'), role_path(user.role_id), :method => :delete, :remote => true, :class => "remove-user", :data => { :confirm => "Are you sure you want to remove?" } %>
