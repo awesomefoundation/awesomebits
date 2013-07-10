@@ -1,7 +1,7 @@
-step "there is a trustee for my chapter in the system" do
-  @trustee_role     = create(:role, :name => 'trustee', :chapter => @current_chapter)
-  @trustee          = @trustee_role.user
-  @trustee_chapter  = @trustee_role.chapter
+step "there is a :role_name for my chapter in the system" do |role_name|
+  instance_variable_set("@#{role_name}_role", create(:role, :name => role_name, :chapter => @current_chapter))
+  instance_variable_set("@#{role_name}", instance_variable_get("@#{role_name}_role").user)
+  instance_variable_set("@#{role_name}_chapter", instance_variable_get("@#{role_name}_role").chapter)
 end
 
 step 'I remove trustee from my chapter' do

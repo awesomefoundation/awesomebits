@@ -13,8 +13,10 @@
         <% end %>
         <th><%= t(".chapter") %></th>
         <th><%= t(".role") %></th>
-        <% if current_user.can_manage_permissions? %>
+        <% if current_user.can_remove_users?(current_chapter) %>
           <th><%= t(".dean") %></th>
+        <% end %>
+        <% if current_user.can_manage_permissions? %>
           <th><%= t(".admin") %></th>
         <% end %>
         <% if current_user.can_remove_users?(current_chapter) %>
