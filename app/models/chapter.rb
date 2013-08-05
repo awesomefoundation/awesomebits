@@ -20,7 +20,7 @@ class Chapter < ActiveRecord::Base
 
   attr_accessible :name, :twitter_url, :facebook_url, :blog_url, :rss_feed_url, :description,
                   :country, :extra_question_1, :extra_question_2, :extra_question_3, :slug,
-                  :email_address, :time_zone
+                  :email_address, :time_zone, :inactive
 
   def should_generate_new_friendly_id?
     slug.blank?
@@ -80,4 +80,19 @@ class Chapter < ActiveRecord::Base
     self[:time_zone] || 'UTC'
   end
 
+  def inactive
+    inactive_at.present?
+  end
+
+  def inactive?
+    inactive
+  end
+
+  def inactive=(bool)
+    if [ 1, '1', true, 'true' ].include? bool
+      self.inactive_at = Time.zone.now
+    else
+      self.inactive_at = nil
+    end
+  end
 end

@@ -81,3 +81,27 @@ describe 'chapters/show' do
     end
   end
 end
+
+describe 'chapters/edit' do 
+  let(:dean) { FactoryGirl.create(:user_with_dean_role) }
+  let(:admin) { FactoryGirl.create(:admin) }
+  let(:chapter) { FactoryGirl.create(:chapter) }
+
+  it 'does not display the inactivity checkbox to deans' do 
+    assign(:chapter, dean.chapters.first)
+    view.stubs(:current_user).returns(dean)
+
+    render
+
+    rendered.should_not have_selector('#chapter_inactive')
+  end
+
+  it 'displays the inactivity checkbox to admins' do 
+    assign(:chapter, chapter)
+    view.stubs(:current_user).returns(admin)
+
+    render
+
+    rendered.should have_selector('#chapter_inactive')
+  end
+end

@@ -177,10 +177,18 @@ section.chapter-form {
       margin-right: 10px;
       @include inline-block;
     }
+
+    &.boolean {
+      @include inline-block;
+    }
   }
 
   select {
     margin: 0px;
     vertical-align: baseline;
+  }
+
+  input.boolean {
+    margin-right: 10px;
   }
 }
