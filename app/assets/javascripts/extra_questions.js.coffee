@@ -1,3 +1,8 @@
+initialize_chapter_questions = ->
+  questions = extra_questions[$('#project_chapter_id').val()]
+  hide_questions()
+  set_new_questions(questions)
+
 update_extra_questions = (event) ->
   element = $(event.currentTarget)
   questions = extra_questions[element.val()]
@@ -45,4 +50,8 @@ next_hidden_answer = ->
   $($('.extra-questions .extra-answer:not(.showing)')[0])
 
 $('#project_chapter_id').change(update_extra_questions)
+
+$(document).ready ->
+  if $('.extra-questions').length
+    initialize_chapter_questions()
 

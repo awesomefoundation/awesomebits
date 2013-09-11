@@ -76,9 +76,6 @@
     $(window).load(function(){
       $('#project_funded_on').datepicker({dateFormat: 'yy-mm-dd', onClose: function(){ $('#project_funded_on').blur() }});
 
-      // Fire the chapter change event to get extra questions to appear
-      $('#project_chapter_id').change();
-
       // Update the remaining character counts on pageload
       $('#project_about_me').keydown();
       $('#project_about_project').keydown();
