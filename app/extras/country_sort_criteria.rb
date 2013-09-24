@@ -9,7 +9,7 @@ class CountrySortCriteria
       if(@country_priority.include? chapter.country)
         "#{@country_priority.index(chapter.country)} #{chapter.name}"
       else
-        chapter.country
+        "#{chapter.country} #{chapter.name}"
       end
     end
   end
