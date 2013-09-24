@@ -51,7 +51,17 @@ class Chapter < ActiveRecord::Base
   end
 
   def self.select_data
-    where("chapters.name = ?", 'Any') + where("chapters.name != ?", 'Any').order(:name)
+    countries = [OpenStruct.new(:name => "Any Chapter", :chapters => where("chapters.name = ?", "Any"))]
+
+    visitable.sort_by(&CountrySortCriteria.new(COUNTRY_PRIORITY)).each do |chapter|
+      if countries.last.try(:name) != chapter.country
+        countries.push OpenStruct.new(:name => chapter.country, :chapters => [])
+      end
+
+      countries.last.chapters.push chapter
+    end
+
+    countries
   end
 
   def any_chapter?
