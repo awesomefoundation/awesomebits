@@ -1,8 +1,8 @@
 COUNTRY_PRIORITY = [
+  "Worldwide",
   "United States",
   "Canada",
-  "Australia",
-  "Worldwide"]
+  ]
 
 COUNTRIES = [
   "Afghanistan", "Aland Islands", "Albania", "Algeria", "American Samoa", "Andorra", "Angola",
