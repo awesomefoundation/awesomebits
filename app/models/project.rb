@@ -47,7 +47,7 @@ class Project < ActiveRecord::Base
   def self.during_timeframe(start_date, end_date)
     start_date ||= 100.years.ago.to_date
     end_date ||= Time.zone.now.to_date
-    where("projects.created_at BETWEEN ? AND ?", start_date, end_date + 1.day)
+    where("projects.created_at BETWEEN ? AND ?", Time.zone.parse(start_date.to_s), Time.zone.parse((end_date + 1.day).to_s))
   end
 
   def self.by_vote_count
