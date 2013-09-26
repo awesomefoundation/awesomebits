@@ -5,6 +5,8 @@ class ProjectsController < ApplicationController
   before_filter :handle_unpublished_projects, :only => [:show]
   before_filter :find_chapter, :only => [:index, :show]
 
+  around_filter :set_time_zone, :only => [:index, :show]
+
   include ApplicationHelper
 
   def index
@@ -139,6 +141,14 @@ class ProjectsController < ApplicationController
   def find_chapter
     if params[:chapter_id]
       @chapter = Chapter.find(params[:chapter_id])
+    end
+  end
+
+  def set_time_zone(&block)
+    if @chapter
+      Time.use_zone(@chapter.time_zone, &block)
+    else
+      yield
     end
   end
 end

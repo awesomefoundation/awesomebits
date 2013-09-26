@@ -1,6 +1,8 @@
 class FinalistsController < ApplicationController
   before_filter :must_be_able_to_view_finalists
 
+  around_filter :set_time_zone
+
   include ApplicationHelper
 
   def index
@@ -22,5 +24,9 @@ class FinalistsController < ApplicationController
       flash[:notice] = t("flash.permissions.cannot-view-finalists")
       redirect_to projects_path
     end
+  end
+
+  def set_time_zone(&block)
+    Time.use_zone(current_chapter.time_zone, &block)
   end
 end
