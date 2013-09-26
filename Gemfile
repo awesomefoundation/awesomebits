@@ -60,4 +60,5 @@ end
 group :staging, :production do
   gem 'newrelic_rpm'
   gem 'sprockets-redirect'
+  gem 'unicorn'
 end
