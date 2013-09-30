@@ -88,7 +88,7 @@ body.chapters-show {
 .chapter-header-wrapper {
   height: 300px;
   margin: 0 auto;
-  padding: 40px 0px;
+  padding: 40px 0px 0px;
   position: relative;
   width: 1020px;
 
@@ -202,7 +202,7 @@ body.chapters-show {
 
 .chapter-info {
   @extend .clearfix;
-  margin: 0 auto 40px;
+  margin: 40px auto 40px;
   width: grid-width(12);
 
   h2 {

@@ -19,6 +19,7 @@
   </div>
 </header>
 
+<% unless @chapter.winning_projects.empty? %>
 <div class="gallery-overflow-wrapper">
   <section class="chapter-header-wrapper jThumbnailScroller">
     <div class="gallery-container jTscrollerContainer">
@@ -43,6 +44,7 @@
     <a href="#" class="nav right jTscrollerNextButton"></a>
   </section>
 </div>
+<% end %>
 
 <section class="chapter-info">
   <section class="description">
