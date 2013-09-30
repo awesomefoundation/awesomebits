@@ -7,6 +7,11 @@
     <% else -%>
       <%= link_to t("layouts.application.sign-in"), sign_in_path %>
     <% end -%>
+
+    <span>·</span>
+
+    <%= link_to "English", url_for(:locale => "en") %>
+    <%= link_to "Português", url_for(:locale => "pt") %>
   </p>
 
   <ol class="social-links">
