@@ -27,8 +27,15 @@ describe 'chapters/show' do
     rendered.should_not have_selector('section.chapter-projects')
   end
 
-  context 'with projects' do
+  it 'does not render the trustee section by default' do 
+    assign(:chapter, chapter)
+    view.stubs(:current_user).returns(nil)
 
+    render
+    rendered.should_not have_selector('section.trustees')
+  end
+
+  context 'with projects' do
     let!(:project) { create(:winning_project, :chapter => chapter) }
 
     it 'renders the project section' do
@@ -37,6 +44,18 @@ describe 'chapters/show' do
 
       render
       rendered.should have_selector('section.chapter-projects')
+    end
+  end
+
+  context 'with trustees' do 
+    let!(:dean) { create(:user_with_dean_role) }
+
+    it 'renders the trustee secton' do
+      assign(:chapter, dean.roles.first.chapter)
+      view.stubs(:current_user).returns(nil)
+
+      render
+      rendered.should have_selector('section.trustees')
     end
   end
 end

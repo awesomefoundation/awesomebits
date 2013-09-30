@@ -58,6 +58,9 @@
     </article>
   </section>
 
+  <% if @chapter.users.empty? %>
+    <div class="divider">
+  <% else %>
   <h2><%= t(".trustees.header") %></h2>
   <section class="trustees">
     <ol>
@@ -78,6 +81,8 @@
       <% end %>
     </ol>
   </section>
+  <% end %>
+
 </section>
 
 <section class="chapter-apply">
