@@ -35,4 +35,8 @@ module ChaptersHelper
   def twitter_link(chapter)
     link_if_not_blank(chapter.twitter_url, "external twitter")
   end
+
+  def about_class(chapter)
+    chapter.rss_feed_url.present? ? "half" : ""
+  end
 end

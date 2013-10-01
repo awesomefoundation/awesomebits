@@ -35,6 +35,15 @@ describe 'chapters/show' do
     rendered.should_not have_selector('section.trustees')
   end
 
+  it 'does not render the news section by default' do
+    assign(:chapter, chapter)
+    view.stubs(:current_user).returns(nil)
+
+    render
+    rendered.should_not have_selector('section.description article.rss-feed')
+    rendered.should_not have_selector('section.description article.about.half')
+  end
+
   context 'with projects' do
     let!(:project) { create(:winning_project, :chapter => chapter) }
 
@@ -56,6 +65,19 @@ describe 'chapters/show' do
 
       render
       rendered.should have_selector('section.trustees')
+    end
+  end
+
+  context 'with rss feed' do
+    before { chapter.update_attribute(:rss_feed_url, 'http://example.com/rss') }
+
+    it 'renders the news section' do 
+      assign(:chapter, chapter)
+      view.stubs(:current_user).returns(nil)
+
+      render
+      rendered.should have_selector('section.description article.rss-feed')
+      rendered.should have_selector('section.description article.about.half')
     end
   end
 end

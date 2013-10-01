@@ -48,14 +48,17 @@
 
 <section class="chapter-info">
   <section class="description">
-    <article class="about">
+    <article class="about <%= about_class(@chapter) %>">
       <h2><%= t(".trustees.about") %></h2>
       <%= markdown @chapter.description %>
     </article>
-    <article class="rss-feed" data-feed-url="<%= @chapter.rss_feed_url %>">
+
+    <% if @chapter.rss_feed_url.present? %>
+    <article class="rss-feed half" data-feed-url="<%= @chapter.rss_feed_url %>">
       <h2><%= t(".trustees.news", :name => @chapter.name) %></h2>
       <section class="rss" id="rss-feeds"></section>
     </article>
+    <% end %>
   </section>
 
   <% if @chapter.users.empty? %>

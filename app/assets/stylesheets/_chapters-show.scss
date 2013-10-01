@@ -326,7 +326,10 @@ body.chapters-show {
 
     article {
       float: left;
-      width: grid-width(6);
+
+      &.half {
+        width: grid-width(6);
+      }
 
       h2 {
         font: normal 18px/22px $sans-serif;
