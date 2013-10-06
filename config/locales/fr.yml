@@ -1,0 +1,241 @@
+fr:
+  number:
+    delimiter: "."
+    separator: ","
+  date:
+    formats:
+      funding: "%B, %Y"
+  flash:
+    permissions:
+      must-be-logged-in: Vous devez être connecté.
+      must-be-admin: Vous devez être administrateur.
+      cannot-remove-user: Vous n'êtes pas autorisé à retirer cet utilisateur.
+      must-be-dean-or-admin: Vous devez être administrateur ou doyen pour accéder à cette page.
+      must-have-chapter: Votre compte n'est associé à aucun chapitre.
+      cannot-view-finalists: "Vous n'êtes pas autorisé à accéder à cet élément."
+      cannot-invite: "Vous n'avez pas la permission d'inviter d'autres personnes."
+      cannot-modify-account: "Vous n'avez pas la permission de modifier ce compte."
+      cannot-mark-winner: "Vous ne pouvez pas marquer ce projet comme lauréat."
+    votes:
+      already-voted: "Vote déjà existant pour ce projet"
+      already-deleted: "Vote déjà supprimé"
+    applications:
+      thanks: "Merci pour votre candidature !"
+    acceptances:
+      cannot: "Ne peut pas accepter l'invitation"
+  layouts:
+    application:
+      main-header: L'Awesome Foundation
+      apply: Postuler
+      dashboard: Tableau de bord
+      blog: Blog
+      chapters: Chapitres
+      chapter_header: Awesome Partout !
+      home: Accueil
+      about_us: A propos
+      about_contact: A propos & Contact
+      faq: FAQ
+      want_to_help: Participer
+      sign-out: Déconnexion
+      sign-in: Connexion
+    sidebar:
+      projects: Projets
+      finalists: Finalistes
+      trustees: Donateurs
+      members: Membres
+      create-chapter: Créer un Chapitre
+      invite-trustee: Inviter un Trustee
+      edit-profile: Editer mon Profil
+      edit-chapter-profile: Editer le Chapitre
+      view-all-users: Voir tous les utilisateurs
+  home:
+    index:
+      title: Rendre l'univers incroyable, 1.000€ à la fois.
+      by: "Par %{name}"
+      what:
+        header: Besoin d'un financement ?
+        body-html: "Vous avez une idée de folie et vous avez besoin de fonds ? Nous offrons <strong>chaque mois 1.000€</strong>. On ne peut pas faire plus simple ! Votre idée reste votre seule propriété. Nous n'en prendrons pas le moindre morceau. Nous voulons juste vous aider à la concrétiser !"
+      call-to-action: Postuler pour une bourse de l'Awesome Foundation !
+      who:
+        header: Awesome est Partout !
+        body: L'Awesome Foundation pour les Arts et les Sciences est un réseau mondial en croissance permanente de personnes qui cherchent à promouvoir l'incroyable dans l'univers. Créé lors de longs jours chauds d'été à Boston en 2009, la Fondation distribue chaque une série de bourses de 1.000€ à des projets et leurs créateurs. L'argent est fourni par les fonds personnels d'une dizaine de “micro-donateurs”, puis donné en cash, chèque ou de doublons d'or. Les chapitres sont autonomes et gérés par les donateurs en fonction de leur zone géographique ou centres d'intérêts.
+      news:
+        header: Awesome News !
+        recent: Articles récents du blog
+        events: Evènements à venir
+      funding-html: "<em class='funding'>%{amount}€</em> Donnés"
+      winner-count-html: "<em class='winners'>%{amount}</em> projets financés"
+      chapter-count-html: "<em class='chapters'>%{count}</em> Chapitres"
+      country-count-html: "<em class='countries'>%{count}</em> Pays"
+  chapters:
+    index:
+      title: Awesome est Partout
+    show:
+      edit: Editer le Chapitre
+      recent_winners: Projets financés récemment
+      see_more: Voir plus d'Awesomeness
+      byline: "Par %{name}"
+      trustees:
+        header: Rencontrer les Donateurs
+        about: A Propos
+        news: "%{name} News"
+      apply-for-grant: Postuler pour une bourse
+    edit:
+      title: Editer les infos du chapitre
+    new:
+      title: Créer un nouveau chapitre
+  finalists:
+    index:
+      title: "Finalistes pour %{name}"
+      filter-button: Filtrer
+      start-date: Date de début
+      end-date: Date de fin
+      table:
+        title: Titre
+        id: ID
+        votes: Votes
+  projects:
+    project:
+      awesome: Awesome
+      delete: Supprimer ce projet
+      see-the-rest: Voir le reste →
+      view-public-page: Voir la page publique →
+      edit: Editer le Projet →
+      confirm-delete: Confirmer la suppression ?
+      winner: "Gagnant pour %{name}"
+      about-me: "A propos de moi :"
+      about-project: "Voici mon idée :"
+      use-for-money: "Comment j'utiliserai l'argent :"
+      not-answered: Pas répondu
+      images: "Images :"
+      image: "Image #%{index}"
+    new:
+      title: Êtes-vous prêt à devenir Awesome !?
+      description: Remplissez simplement le formulaire ci-dessous avec des informations sur vous et sur votre projet.
+      apply: Envoyer
+    form:
+      save: Sauvegarder
+      image-notes: L'image d'en haut sert d'image de couverture. Les images seront redimensionnées à %{dimensions} pixels.
+    index:
+      filter-button: Filtrer
+      search: rechercher
+      start-date: date de début
+      end-date: date de fin
+      short-list-filter: Ma short-list
+      title: "Projets pour %{name}"
+      export-projects: Exporter le filtre
+      export-all-projects: Exporter toute la période
+    public_show:
+      edit: Editer le Projet
+      byline-html: "<span class='chapter-name'>%{chapter_name}</span> projet créé par <span class='project-starter'>%{submitter_name}</span>"
+      funder-html: "Financé par <span class='chapter-name'>%{name}</span>"
+      submitted-to-html: "Dossier envoyé à <span class=''>%{name}</span>"
+      description:
+        header: Description du Projet
+      feed-title: Articles Récents
+    show:
+      back-to: 'Retour à <a href="%{url}">%{name}</a>'
+  emails:
+    invitation:
+      subject: "Vous avez été invité au %chapitre {name} de l'Awesome Foundation !"
+    welcome:
+      subject: "Bienvenue dans le chapitre %{name} !"
+    application:
+      subject: "Merci pour votre participation !"
+  sessions:
+    new:
+      sign-in: Connexion Donateur et Doyen
+      intro: Cette section du site est exclusivement réservée aux Donateurs et Doyens de l'Awesome Foundation. Si vous êtes donateur et que vous avez besoin d'un accès, veuillez directement contacter le Doyen de votre chapitre.
+      forgot-password: Mot de passe oublié ?
+  users:
+    user:
+      promote_to_dean: Promouvoir
+      demote_to_trustee: Rétrograder
+      demote_admin: Rétrograder
+      promote_admin: Promouvoir
+      error_dean_promotion: Promotion du Doyen ratée
+      error_dean_demotion: Rétrogradation du Doyen ratée
+      error_admin_promotion: Promotion de l'Admin ratée
+      error_admin_demotion: Rétrogradation de l'Admin ratée
+      error_removing_user: Echec du retrait de l'utilisateur
+      remove_from_chapter: Echec du retrait du chapitre
+    edit:
+      title: Editer les infos utilisateurs
+    index:
+      title: Membres de l'Awesome Foundation
+      name: Nom
+      email: Email
+      chapter: Chapitre
+      role: Rôle
+      remove: Retirer
+      dean: Doyen
+      admin: Administrateur
+  pages:
+    about_us:
+      title_tag: A Propos
+      meta_description: A Propos de l'Awesome Foundation
+      meta_keywords:
+      headline: "L'Awesome Foundation"
+      sub_headline: "Pour les Arts, les Sciences, et la progression de l'Awesome dans l'univers."
+      our-story: "<p>Nous sommes un réseau mondial, en croissance constante, de personnes dévouée à la promotion de l'incroyable dans l'univers. Créée par de longs jours chauds d'été à Boston en 2009, la Fondation distribue chaque mois une série de bourses de 1.000€ à des projets et à leurs créateurs. L'argent est fourni par les fonds personnels d'une dizaine de “micro-donateurs”, puis donné en cash, chèque ou de doublons d'or. Les chapitres sont autonomes et gérés par les donateurs en fonction de leur zone géographique ou centres d'intérêts.</p>
+    <p>La Fondation donne ces bourses sans aucune contrainte attachée et ne demande aucun droit de propriété sur les projets qu'elle soutient. Il s'agit, d'après les mots de l'un de nos donateurs, d'une bourse de micro-génie pour des flashs de micro-brillance.</p>
+    <p>Depuis son commencement, plusieurs <a href=\"http://awesomefoundation.org/chapters/\">chapitres de l'Awesome Foundation se sont créés dans le monde</a> pour conserver, développer et soutenir l'écosystème mondial de l'incroyable. Les projets ont inclus des efforts dans un large champ de domaines comme de la technologie, l'art, le bien social, et plus encore.</p>
+    <p><a href=\"http://www.youtube.com/watch?v=PPoYzyOn44M\">Nous attendons encore un projet avec des dinosaures (ça vous fait une piste)</a>.</p>"
+      contact: "<p>Vous pouvez nous envoyer un mail à <a href=\"mailto:contact@awesomefoundation.org\">contact@awesomefoundation.org</a>, nous suivre sur Twitter à <a href=\"http://twitter.com/awesomefound\">@awesomefound</a>, ou sur Facebook à <a href=\"http://www.facebook.com/awesomefoundation\">here</a>. Si vous êtes intéressé(e) pour démarrer un chapitre ou en rejoindre un existant si une place se libère, génial ! <a href=\"http://spreadsheets2.google.com/a/awesomefoundation.org/viewform?hl=en&formkey=dFJwaXhNTFp6VG40clU3cFVfWFk0bXc6MQ\">Parlez-nous de vous ici !</a></p>"
+    faq:
+      headline: Info super Awesome
+      sub_headline: Tout ce que vous devez savoir sur la promotion de l'incroyable.
+  simple_form:
+    labels:
+      project:
+        name: Votre nom
+        email: Email
+        phone: Téléphone
+        title: Nom du Projet
+        url: Site web du Projet
+        current_photos-html: "Images actuelles <span>(cliquer-glisser pour réordonner)</span>"
+        new_photos-html: "Envoyer des images de votre projet"
+        chapter_id: Selectionner le chapitre auquel postuler
+        rss_feed_url: Flux RSS du Projet
+        about_me: Parlez-nous de vous
+        about_project: Parlez-nous de votre projet !
+        use_for_money: Comment utiliserez-vous l'argent ?
+      chapter:
+        name: Nom
+        slug: Nom dans l'URL
+        twitter_url: Lien Twitter
+        facebook_url: Lien Facebook
+        blog_url: Lien du Blog
+        rss_feed_url: Lien du Flux RSS
+        description: Description
+        extra_question_1: Question bonus 1
+        extra_question_2: Question bonus 2
+        extra_question_3: Question bonus 3
+        submit: Envoyer
+      user:
+        first_name: Prénom
+        last_name: Nom
+        email: Email
+        bio: Bio
+        url: Site web
+        twitter_username: Compte Twitter
+        facebook_url: Lien Facebook
+        linkedin_url: Lien LinkedIn
+        new_password: Nouveau mot de passe
+        submit: Envoyer
+        user_image: Image Utilisateur
+    hints:
+      project:
+        funded_description: Uniquement visible sur la page des projets financés
+        rss_feed_url: Les liens vers les articles de ce flux ne seront affichés que sur la page des projets financés
+      user:
+        user_image: Réglez votre image utilisateur à <a href="https://en.gravatar.com/site/signup/%{email}" target="_blank">gravatar.com</a> en utilisant l'adresse mail ci-dessus
+  activerecord:
+    errors:
+      models:
+        chapter:
+          attributes:
+            slug:
+              invalid: doit être en minuscules et sans espaces
+  meta:
+    description: Rendre l'univers incroyable, 1.000€ à la fois.
