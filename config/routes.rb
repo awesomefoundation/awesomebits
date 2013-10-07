@@ -5,7 +5,7 @@ Awesomefoundation::Application.routes.draw do
   match "/blog/*path"    => redirect { |params, request| "http://blog.awesomefoundation.org/#{params[:path]}" }, :format => false
   match "/apply"         => redirect("/en/submissions/new")
 
-  scope "(:locale)", :locale => /en|pt/ do
+  scope "(:locale)", :locale => /en|pt|fr/ do
     resource  :session, controller: :sessions, only: [:new, :create, :destroy]
     match "sign_in",  :to => "sessions#new"
     match "sign_out", :to => "sessions#destroy", :via => :delete
