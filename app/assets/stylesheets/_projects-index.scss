@@ -237,7 +237,7 @@ body.projects-index {
 
     form.filter {
       float: right;
-      padding: 10px;
+      padding: 10px 10px 10px 0;
 
       div.short-list-toggle {
         float: left;
@@ -291,11 +291,11 @@ body.projects-index {
         }
 
         input#search {
-          width: 110px;
+          width: 100px;
         }
       }
 
-      input[type="submit"] {
+      input[type="submit"], button[type="submit"] {
         @include button(rgb(230,230,230));
         margin: 0px;
         width: auto;

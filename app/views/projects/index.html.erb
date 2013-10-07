@@ -39,7 +39,9 @@
         <input class="string optional prefilled" id="search" name="q" size="50" type="text" value="<%= @q %>">
       </div>
 
-      <input name="" type="submit" value="<%= t(".filter-button") %>">
+      <button type="submit" title="<%= t(".filter-button") %>">
+        <span class="icon-search"></span>
+      </button>
     </form>
   </section>
   <p class="exports">
