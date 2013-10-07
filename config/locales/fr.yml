@@ -63,7 +63,7 @@ fr:
         header: Awesome News !
         recent: Articles récents du blog
         events: Evènements à venir
-      funding-html: "<em class='funding'>%{amount}€</em> Donnés"
+      funding-html: "<em class='funding'>%{amount}$</em> Donnés"
       winner-count-html: "<em class='winners'>%{amount}</em> projets financés"
       chapter-count-html: "<em class='chapters'>%{count}</em> Chapitres"
       country-count-html: "<em class='countries'>%{count}</em> Pays"
