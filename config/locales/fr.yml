@@ -57,8 +57,8 @@ fr:
         body-html: "Vous avez une idée de folie et vous avez besoin de fonds ? Nous offrons <strong>chaque mois 1.000€</strong>. On ne peut pas faire plus simple ! Votre idée reste votre seule propriété. Nous n'en prendrons pas le moindre morceau. Nous voulons juste vous aider à la concrétiser !"
       call-to-action: Postuler pour une bourse de l'Awesome Foundation !
       who:
-        header: Awesome est Partout !
-        body: L'Awesome Foundation pour les Arts et les Sciences est un réseau mondial en croissance permanente de personnes qui cherchent à promouvoir l'incroyable dans l'univers. Créé lors de longs jours chauds d'été à Boston en 2009, la Fondation distribue chaque une série de bourses de 1.000€ à des projets et leurs créateurs. L'argent est fourni par les fonds personnels d'une dizaine de “micro-donateurs”, puis donné en cash, chèque ou de doublons d'or. Les chapitres sont autonomes et gérés par les donateurs en fonction de leur zone géographique ou centres d'intérêts.
+        header: Awesome Partout !
+        body: L'Awesome Foundation pour les Arts et les Sciences est un réseau mondial en croissance permanente de personnes qui cherchent à promouvoir l'incroyable dans l'univers. Créée lors de longs jours chauds d'été à Boston en 2009, la Fondation distribue chaque mois une série de bourses de 1.000€ à des projets et leurs créateurs. L'argent est fourni par les fonds personnels d'une dizaine de “micro-donateurs”, puis donné en cash, chèque ou de doublons d'or. Les chapitres sont autonomes et gérés par les donateurs en fonction de leur zone géographique ou centres d'intérêts.
       news:
         header: Awesome News !
         recent: Articles récents du blog
@@ -69,7 +69,7 @@ fr:
       country-count-html: "<em class='countries'>%{count}</em> Pays"
   chapters:
     index:
-      title: Awesome est Partout
+      title: Awesome Partout
     show:
       edit: Editer le Chapitre
       recent_winners: Projets financés récemment
@@ -127,7 +127,7 @@ fr:
       export-all-projects: Exporter toute la période
     public_show:
       edit: Editer le Projet
-      byline-html: "<span class='chapter-name'>%{chapter_name}</span> projet créé par <span class='project-starter'>%{submitter_name}</span>"
+      byline-html: "Un projet <span class='chapter-name'>%{chapter_name}</span> créé par <span class='project-starter'>%{submitter_name}</span>"
       funder-html: "Financé par <span class='chapter-name'>%{name}</span>"
       submitted-to-html: "Dossier envoyé à <span class=''>%{name}</span>"
       description:
@@ -176,12 +176,14 @@ fr:
       meta_description: A Propos de l'Awesome Foundation
       meta_keywords:
       headline: "L'Awesome Foundation"
-      sub_headline: "Pour les Arts, les Sciences, et la progression de l'Awesome dans l'univers."
-      our-story: "<p>Nous sommes un réseau mondial, en croissance constante, de personnes dévouée à la promotion de l'incroyable dans l'univers. Créée par de longs jours chauds d'été à Boston en 2009, la Fondation distribue chaque mois une série de bourses de 1.000€ à des projets et à leurs créateurs. L'argent est fourni par les fonds personnels d'une dizaine de “micro-donateurs”, puis donné en cash, chèque ou de doublons d'or. Les chapitres sont autonomes et gérés par les donateurs en fonction de leur zone géographique ou centres d'intérêts.</p>
-    <p>La Fondation donne ces bourses sans aucune contrainte attachée et ne demande aucun droit de propriété sur les projets qu'elle soutient. Il s'agit, d'après les mots de l'un de nos donateurs, d'une bourse de micro-génie pour des flashs de micro-brillance.</p>
+      sub_headline: "Pour les Arts, les Sciences, et la promotion de l'incroyable dans l'univers."
+      our-story-title: Notre histoire
+      our-story: "<p>Nous sommes un réseau mondial en croissance permanente de personnes qui cherchent à promouvoir l'incroyable dans l'univers. Créée par de longs jours chauds d'été à Boston en 2009, la Fondation distribue chaque mois une série de bourses de 1.000€ à des projets et à leurs créateurs. L'argent est fourni par les fonds personnels d'une dizaine de “micro-donateurs”, puis donné en cash, chèque ou de doublons d'or. Les chapitres sont autonomes et gérés par les donateurs en fonction de leur zone géographique ou centres d'intérêts.</p>
+    <p>La Fondation donne ces bourses sans aucune contrepartie cachée et ne demande aucun droit de propriété sur les projets qu'elle soutient. Il s'agit, d'après les mots de l'un de nos donateurs, d'une bourse de micro-génie pour des flashs de micro-brillance.</p>
     <p>Depuis son commencement, plusieurs <a href=\"http://awesomefoundation.org/chapters/\">chapitres de l'Awesome Foundation se sont créés dans le monde</a> pour conserver, développer et soutenir l'écosystème mondial de l'incroyable. Les projets ont inclus des efforts dans un large champ de domaines comme de la technologie, l'art, le bien social, et plus encore.</p>
-    <p><a href=\"http://www.youtube.com/watch?v=PPoYzyOn44M\">Nous attendons encore un projet avec des dinosaures (ça vous fait une piste)</a>.</p>"
-      contact: "<p>Vous pouvez nous envoyer un mail à <a href=\"mailto:contact@awesomefoundation.org\">contact@awesomefoundation.org</a>, nous suivre sur Twitter à <a href=\"http://twitter.com/awesomefound\">@awesomefound</a>, ou sur Facebook à <a href=\"http://www.facebook.com/awesomefoundation\">here</a>. Si vous êtes intéressé(e) pour démarrer un chapitre ou en rejoindre un existant si une place se libère, génial ! <a href=\"http://spreadsheets2.google.com/a/awesomefoundation.org/viewform?hl=en&formkey=dFJwaXhNTFp6VG40clU3cFVfWFk0bXc6MQ\">Parlez-nous de vous ici !</a></p>"
+    <p><a href=\"http://www.youtube.com/watch?v=PPoYzyOn44M\">Nous attendons toujours un projet avec des dinosaures (voici une piste)</a>.</p>"
+      contact-title: Nous contacter
+      contact: "<p>Vous pouvez nous envoyer un mail à <a href=\"mailto:contact@awesomefoundation.org\">contact@awesomefoundation.org</a>, nous suivre sur Twitter à <a href=\"http://twitter.com/awesomefound\">@awesomefound</a>, ou sur Facebook <a href=\"http://www.facebook.com/awesomefoundation\">ici</a>. Si vous êtes intéressé(e) pour démarrer un chapitre ou en rejoindre un existant si une place se libère, génial ! <a href=\"http://spreadsheets2.google.com/a/awesomefoundation.org/viewform?hl=en&formkey=dFJwaXhNTFp6VG40clU3cFVfWFk0bXc6MQ\">Parlez-nous de vous ici !</a></p>"
     faq:
       headline: Info super Awesome
       sub_headline: Tout ce que vous devez savoir sur la promotion de l'incroyable.
@@ -229,7 +231,7 @@ fr:
         funded_description: Uniquement visible sur la page des projets financés
         rss_feed_url: Les liens vers les articles de ce flux ne seront affichés que sur la page des projets financés
       user:
-        user_image: Réglez votre image utilisateur à <a href="https://en.gravatar.com/site/signup/%{email}" target="_blank">gravatar.com</a> en utilisant l'adresse mail ci-dessus
+        user_image: Réglez votre image utilisateur à <a href="https://fr.gravatar.com/site/signup/%{email}" target="_blank">gravatar.com</a> en utilisant l'adresse mail ci-dessus
   activerecord:
     errors:
       models:
