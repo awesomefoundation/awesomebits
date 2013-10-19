@@ -6,6 +6,14 @@ GIT
       actionpack (~> 3.0)
       activemodel (~> 3.0)
 
+GIT
+  remote: https://github.com/thoughtbot/capybara-webkit.git
+  revision: da93136a9c6fab730706a6d86b3b11f263b6046f
+  specs:
+    capybara-webkit (0.12.0)
+      capybara (>= 1.0.0, < 1.2)
+      json
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -55,8 +63,6 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 2.0)
       xpath (~> 0.1.4)
-    capybara-webkit (0.7.1)
-      capybara (>= 1.0.0, < 1.2)
     childprocess (0.3.2)
       ffi (~> 1.0.6)
     clearance (0.16.2)
@@ -302,7 +308,7 @@ DEPENDENCIES
   bourbon (~> 1.4.0)
   bourne
   capybara
-  capybara-webkit (= 0.7.1)
+  capybara-webkit!
   clearance (~> 0.16.2)
   coffee-rails
   copycopter_client
