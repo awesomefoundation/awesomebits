@@ -12,4 +12,4 @@ user.update_attribute(:admin, true)
 user.update_password("gnarly")
 
 # Set up the "Any" Chapter
-Chapter.find_or_create_by_name("Any", :description => "Any Chapter", :country => COUNTRY_PRIORITY.first)
+Chapter.find_or_create_by_name("Any", description: "Any Chapter", country: COUNTRY_PRIORITY.first)

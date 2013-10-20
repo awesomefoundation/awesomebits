@@ -6,7 +6,7 @@ class AddSlugsToChapters < ActiveRecord::Migration
       slug = chapter["name"].downcase.gsub(/[^a-z]+/, "-")
       execute("UPDATE chapters SET slug = '#{slug}' WHERE id = #{id}")
     end
-    change_column :chapters, :slug, :string, :null => false
+    change_column :chapters, :slug, :string, null: false
     add_index :chapters, :slug, unique: true
   end
 
