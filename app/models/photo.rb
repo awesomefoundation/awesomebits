@@ -11,4 +11,6 @@ class Photo < ActiveRecord::Base
                     :default_url => "/assets/no-image-:style.png"
 
   attr_accessible :image
+
+  validates_attachment :image, content_type: {'image/jpeg', 'image/jpg', 'image/png', 'image/gif'}, size: {in: 0..1000.kilobytes}, message: 'supports jpeg and png files up to 1MB'
 end
