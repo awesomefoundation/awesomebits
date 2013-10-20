@@ -10,6 +10,7 @@ group :assets do
   gem 'uglifier'
 end
 
+gem 'coveralls', require: false
 gem 'country_select'
 gem 'pg', '~> 0.13.2'
 gem 'texticle', '~> 2.0', :require => 'texticle/rails'
