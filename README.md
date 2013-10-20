@@ -1,6 +1,8 @@
 AwesomeBits
 ===========
 
+[![Coverage Status](https://coveralls.io/repos/awesomefoundation/awesomebits/badge.png)](https://coveralls.io/r/awesomefoundation/awesomebits)
+
 Countries
 ---------
 
