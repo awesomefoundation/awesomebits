@@ -11,4 +11,6 @@ class Photo < ActiveRecord::Base
                     :default_url => "/assets/no-image-:style.png"
 
   attr_accessible :image
+
+  validates_attachment :image, content_type: {content_type: ['image/jpeg', 'image/jpg', 'image/png', 'image/gif']}
 end
