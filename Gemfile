@@ -12,7 +12,7 @@ end
 
 gem 'country_select'
 gem 'pg', '~> 0.13.2'
-gem 'texticle', '~> 2.0', :require => 'texticle/rails'
+gem 'texticle', '~> 2.0', require: 'texticle/rails'
 gem 'jquery-rails'
 gem 'clearance', '~> 0.16.2'
 gem 'thin'
@@ -24,7 +24,7 @@ gem 'formtastic'
 gem 'flutie'
 gem 'bourbon', '~> 1.4.0'
 gem 'copycopter_client'
-gem "simple_form", :git => "https://github.com/plataformatec/simple_form.git"
+gem "simple_form", git: "https://github.com/plataformatec/simple_form.git"
 gem 'nokogiri'
 gem "pry"
 gem "pry-nav"
@@ -39,7 +39,7 @@ group :development, :test do
   gem "ruby-debug19"
   gem "sham_rack"
   gem "tddium"
-  gem "evergreen", :require => "evergreen/rails"
+  gem "evergreen", require: "evergreen/rails"
 end
 
 group :test do
