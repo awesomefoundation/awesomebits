@@ -80,7 +80,7 @@ describe User do
     end
   end
 
-  context "#can_remove_users?" do
+  context "#can_manage_users?" do
     let(:user) { build(:user) }
     it 'returns true if the user is an admin' do
       user.admin = true
@@ -88,9 +88,9 @@ describe User do
     end
     it 'asks the roles if it can manage if not an admin' do
       user.admin = false
-      user.roles.stubs(:can_remove_users?)
-      user.can_remove_users?(:chapter)
-      user.roles.should have_received(:can_remove_users?)
+      user.roles.stubs(:can_manage_users?)
+      user.can_manage_users?(:chapter)
+      user.roles.should have_received(:can_manage_users?)
     end
   end
 

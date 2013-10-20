@@ -70,18 +70,18 @@ describe Role do
     end
   end
 
-  context ".can_remove_users?" do
+  context ".can_manage_users?" do
     let(:role) { create(:role, :name => "dean") }
     let!(:chapter) { role.chapter }
     let!(:other_chapter) { create(:chapter) }
     it 'returns true when we have dean role for this chapter' do
-      Role.can_remove_users?(chapter).should be_true
+      Role.can_manage_users?(chapter).should be_true
     end
 
     it 'returns false if chapter has no dean role' do
-      Role.can_remove_users?(other_chapter).should be_false
+      Role.can_manage_users?(other_chapter).should be_false
       Role.delete_all
-      Role.can_remove_users?(chapter).should be_false
+      Role.can_manage_users?(chapter).should be_false
     end
   end
 
