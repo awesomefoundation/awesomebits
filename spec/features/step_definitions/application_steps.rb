@@ -13,44 +13,44 @@ step 'I submit a project to the :name chapter' do
 end
 
 step 'I fill in the application form' do
-  fill_in("Your name", :with => "Mr. Awesome")
-  fill_in("Project title", :with => "Awesomeness")
-  fill_in("Project website", :with => "http://awesome.com")
-  fill_in("Email", :with => "awesome@awesome.com")
-  fill_in("Phone", :with => "")
-  fill_in("project_about_me", :with => "I am awesome.")
-  fill_in("project_about_project", :with => "I want to make awesomeness.")
-  fill_in("project_use_for_money", :with => "I'll spend it on stuff. Obviously.")
-  select("Any", :from => "Select chapter to apply to")
+  fill_in("Your name", with: "Mr. Awesome")
+  fill_in("Project title", with: "Awesomeness")
+  fill_in("Project website", with: "http://awesome.com")
+  fill_in("Email", with: "awesome@awesome.com")
+  fill_in("Phone", with: "")
+  fill_in("project_about_me", with: "I am awesome.")
+  fill_in("project_about_project", with: "I want to make awesomeness.")
+  fill_in("project_use_for_money", with: "I'll spend it on stuff. Obviously.")
+  select("Any", from: "Select chapter to apply to")
 end
 
 step 'I should see them on the application form' do
   click_link("Apply")
-  select(@current_chapter.name, :from => "Select chapter to apply to")
-  fill_in("New Stuff 1", :with => "Something")
-  fill_in("New Stuff 2", :with => "Something")
-  fill_in("New Stuff 3", :with => "Something")
+  select(@current_chapter.name, from: "Select chapter to apply to")
+  fill_in("New Stuff 1", with: "Something")
+  fill_in("New Stuff 2", with: "Something")
+  fill_in("New Stuff 3", with: "Something")
   click_button("Apply")
 end
 
 step 'I submit a project to the :name chapter with the extra questions answered' do
   @project_title = "Crusades!"
   click_link("Apply")
-  fill_in("Your name", :with => "Arthur")
-  fill_in("Project title", :with => @project_title)
-  fill_in("Project website", :with => "http://awesome.com")
-  fill_in("Email", :with => "awesome@awesome.com")
-  fill_in("Phone", :with => "")
-  fill_in("project_about_me", :with => "I am awesome.")
-  fill_in("project_about_project", :with => "I want to make awesomeness.")
-  fill_in("project_use_for_money", :with => "Buying stuff.")
-  select(@current_chapter.name, :from => "Select chapter to apply to")
+  fill_in("Your name", with: "Arthur")
+  fill_in("Project title", with: @project_title)
+  fill_in("Project website", with: "http://awesome.com")
+  fill_in("Email", with: "awesome@awesome.com")
+  fill_in("Phone", with: "")
+  fill_in("project_about_me", with: "I am awesome.")
+  fill_in("project_about_project", with: "I want to make awesomeness.")
+  fill_in("project_use_for_money", with: "Buying stuff.")
+  select(@current_chapter.name, from: "Select chapter to apply to")
   @extra_answer_1 = "Arthur of Camelot."
-  fill_in(@extra_question_1, :with => @extra_answer_1)
+  fill_in(@extra_question_1, with: @extra_answer_1)
   @extra_answer_2 = "I seek the Grail."
-  fill_in(@extra_question_2, :with => @extra_answer_2)
+  fill_in(@extra_question_2, with: @extra_answer_2)
   @extra_answer_3 = "What do you mean? An African or European swallow?"
-  fill_in(@extra_question_3, :with => @extra_answer_3)
+  fill_in(@extra_question_3, with: @extra_answer_3)
   click_button("Apply")
 end
 
@@ -76,15 +76,15 @@ end
 
 step 'I fix the error and resubmit' do
   click_link("Apply")
-  fill_in("Your name", :with => "Mr. Awesome")
-  fill_in("Project title", :with => "Awesomeness")
-  fill_in("Project website", :with => "http://awesome.com")
-  fill_in("Email", :with => "awesome@awesome.com")
-  fill_in("Phone", :with => "")
-  fill_in("project_about_me", :with => "I am awesome.")
-  fill_in("project_about_project", :with => "I want to make awesomeness.")
-  fill_in("project_use_for_money", :with => "Buying stuff.")
-  select("Any", :from => "Select chapter to apply to")
+  fill_in("Your name", with: "Mr. Awesome")
+  fill_in("Project title", with: "Awesomeness")
+  fill_in("Project website", with: "http://awesome.com")
+  fill_in("Email", with: "awesome@awesome.com")
+  fill_in("Phone", with: "")
+  fill_in("project_about_me", with: "I am awesome.")
+  fill_in("project_about_project", with: "I want to make awesomeness.")
+  fill_in("project_use_for_money", with: "Buying stuff.")
+  select("Any", from: "Select chapter to apply to")
   click_button("Apply")
 end
 

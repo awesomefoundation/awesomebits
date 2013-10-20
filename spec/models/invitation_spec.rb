@@ -15,7 +15,7 @@ describe Invitation do
   context "#save" do
     let(:user) { create(:user) }
     let(:chapter) { create(:chapter) }
-    let(:invitation) { build(:invitation, :inviter => user, :chapter => chapter) }
+    let(:invitation) { build(:invitation, inviter: user, chapter: chapter) }
     it 'should not be valid if the inviter cannot invite to this chapter' do
       invitation.should_not be_valid
     end
@@ -37,8 +37,8 @@ describe Invitation do
   end
 
   context "#accept" do
-    let(:invitation) { create(:invitation, :first_name => "Joe", :last_name => "Doe") }
-    let(:attributes) { {:first_name => "Jane", :password => "12345"} }
+    let(:invitation) { create(:invitation, first_name: "Joe", last_name: "Doe") }
+    let(:attributes) { {first_name: "Jane", password: "12345"} }
     let(:fake_user_factory) { FakeUserFactory.new }
     let(:fake_mailer) { FakeMailer.new }
 

@@ -1,13 +1,13 @@
 step 'I create a new chapter' do
   click_link("Create a Chapter")
   @chapter_name = "Another Awesome Chapter"
-  fill_in("Name", :with => @chapter_name)
-  fill_in("Twitter URL", :with => "http://twitter.com/awesomefound")
-  fill_in("Facebook URL", :with => "http://twitter.com/awesomefound")
-  fill_in("Blog URL", :with => "http://twitter.com/awesomefound")
-  fill_in("RSS Feed URL", :with => "http://awesomefoundation.org/blog/feed/")
-  fill_in("Description", :with => "http://twitter.com/awesomefound")
-  select("United States", :from => "Country")
+  fill_in("Name", with: @chapter_name)
+  fill_in("Twitter URL", with: "http://twitter.com/awesomefound")
+  fill_in("Facebook URL", with: "http://twitter.com/awesomefound")
+  fill_in("Blog URL", with: "http://twitter.com/awesomefound")
+  fill_in("RSS Feed URL", with: "http://awesomefoundation.org/blog/feed/")
+  fill_in("Description", with: "http://twitter.com/awesomefound")
+  select("United States", from: "Country")
   click_button("Create Chapter")
 end
 
@@ -25,7 +25,7 @@ step 'I should see the new chapter form with errors' do
 end
 
 step 'there is a chapter in the system' do
-  @current_chapter = create(:chapter, :rss_feed_url => Rails.root.join('spec', 'support', 'feed.xml').to_s)
+  @current_chapter = create(:chapter, rss_feed_url: Rails.root.join('spec', 'support', 'feed.xml').to_s)
 end
 
 step 'I go to the chapter page' do
@@ -34,18 +34,18 @@ end
 
 step 'I enter new questions for applicants to answer' do
   @extra_question_1 = "What is your name?"
-  fill_in("Extra question 1", :with => @extra_question_1)
+  fill_in("Extra question 1", with: @extra_question_1)
   @extra_question_2 = "What is your quest?"
-  fill_in("Extra question 2", :with => @extra_question_2)
+  fill_in("Extra question 2", with: @extra_question_2)
   @extra_question_3 = "What is the airspeed velocity of an unladen swallow?"
-  fill_in("Extra question 3", :with => @extra_question_3)
+  fill_in("Extra question 3", with: @extra_question_3)
   click_button("Update")
 end
 
 step 'I enter different questions for applicants to answer' do
-  fill_in("Extra question 1", :with => "New Stuff 1")
-  fill_in("Extra question 2", :with => "New Stuff 2")
-  fill_in("Extra question 3", :with => "New Stuff 3")
+  fill_in("Extra question 1", with: "New Stuff 1")
+  fill_in("Extra question 2", with: "New Stuff 2")
+  fill_in("Extra question 3", with: "New Stuff 3")
   click_button("Update")
 end
 
@@ -72,13 +72,13 @@ step 'I edit a chapter' do
   @new_blog_url = "http://blog.com/awesomefound"
   @new_rss_feed_url = "http://rss.com/awesomefound"
   @new_description = "This is a description of the chapter."
-  fill_in("Name",           :with => @new_chapter_name)
-  fill_in("Twitter URL",    :with => @new_twitter_url)
-  fill_in("Facebook URL",   :with => @new_facebook_url)
-  fill_in("Email Address",  :with => @new_email_address)
-  fill_in("Blog URL",       :with => @new_blog_url)
-  fill_in("RSS Feed URL",   :with => @new_rss_feed_url)
-  fill_in("Description",    :with => @new_description)
+  fill_in("Name",           with: @new_chapter_name)
+  fill_in("Twitter URL",    with: @new_twitter_url)
+  fill_in("Facebook URL",   with: @new_facebook_url)
+  fill_in("Email Address",  with: @new_email_address)
+  fill_in("Blog URL",       with: @new_blog_url)
+  fill_in("RSS Feed URL",   with: @new_rss_feed_url)
+  fill_in("Description",    with: @new_description)
   click_button("Update Chapter")
 end
 

@@ -18,8 +18,8 @@ step 'a project was created on each of the last 7 days for my chapter' do
   @my_projects = []
   7.times do |x|
     @my_projects << create(:project,
-                           :chapter => @current_chapter,
-                           :created_at => x.days.ago)
+                           chapter: @current_chapter,
+                           created_at: x.days.ago)
   end
 end
 
@@ -27,10 +27,10 @@ step 'a project was created on each of the last 50 days for my chapter and I vot
   @my_projects = []
   50.times do |x|
     @my_projects << create(:project,
-                           :chapter => @current_chapter,
-                           :created_at => x.days.ago)
+                           chapter: @current_chapter,
+                           created_at: x.days.ago)
 
-    create(:vote, :project => @my_projects.last, :user => @current_user)
+    create(:vote, project: @my_projects.last, user: @current_user)
   end
 end
 
@@ -39,8 +39,8 @@ step 'a project was created on each of the last 7 days for one chapter' do
   @my_projects = []
   7.times do |x|
     @my_projects << create(:project,
-                           :chapter => @my_chapter,
-                           :created_at => x.days.ago)
+                           chapter: @my_chapter,
+                           created_at: x.days.ago)
   end
 end
 
@@ -49,8 +49,8 @@ step 'a project was created on each of the last 7 days for a different chapter' 
   @other_projects = []
   7.times do |x|
     @other_projects << create(:project,
-                              :chapter => @other_chapter,
-                              :created_at => x.days.ago)
+                              chapter: @other_chapter,
+                              created_at: x.days.ago)
   end
 end
 
@@ -59,14 +59,14 @@ step 'a project was created on each of the last 7 days for any chapter' do
   @any_projects = []
   7.times do |x|
     @any_projects << create(:project,
-                            :chapter => any_chapter,
-                            :created_at => x.days.ago)
+                            chapter: any_chapter,
+                            created_at: x.days.ago)
   end
 end
 
 step 'I want to see my projects for the past 3 days' do
-  fill_in("end date", :with => Time.now.strftime("%Y-%m-%d"))
-  fill_in("start date", :with => (3.days.ago).strftime("%Y-%m-%d"))
+  fill_in("end date", with: Time.now.strftime("%Y-%m-%d"))
+  fill_in("start date", with: (3.days.ago).strftime("%Y-%m-%d"))
   click_button("Filter")
 end
 
@@ -132,15 +132,15 @@ end
 
 step 'there is/are :count winning project(s)' do |count|
   count = count.to_i
-  @projects = (1..count).map{|x| create(:project_with_rss_feed, :funded_on => x.days.ago) }
+  @projects = (1..count).map{|x| create(:project_with_rss_feed, funded_on: x.days.ago) }
 end
 
 step 'there is 1 winning project in my chapter' do
-  @project = create(:winning_project, :chapter => @current_chapter)
+  @project = create(:winning_project, chapter: @current_chapter)
 end
 
 step 'there are enough winning projects in my chapter to spread over two pages' do
-  create_list(:winning_project, Project.per_page + 1, :chapter => @current_chapter)
+  create_list(:winning_project, Project.per_page + 1, chapter: @current_chapter)
 end
 
 step 'I edit that winning project' do
@@ -175,20 +175,20 @@ end
 
 step '5 projects have won for this chapter' do
   @winning_projects = (1..5).map do |x|
-    create(:project, :chapter => @current_chapter, :funded_on => x.days.ago)
+    create(:project, chapter: @current_chapter, funded_on: x.days.ago)
   end
 end
 
 step '5 projects have not won for this chapter' do
   @not_winning_projects = (1..5).map do |x|
-    create(:project, :chapter => @current_chapter)
+    create(:project, chapter: @current_chapter)
   end
 end
 
 step '5 projects have won, but not for this chapter' do
   @other_chapter = create(:chapter)
   @winning_projects_for_other_chapter = (1..5).map do |x|
-    create(:project, :chapter => @other_chapter)
+    create(:project, chapter: @other_chapter)
   end
 end
 
@@ -205,7 +205,7 @@ step 'I should see only those 5 winning projects for this chapter listed' do
 end
 
 step 'someone has submitted spam to my chapter' do
-  @spam_project = create(:project, :chapter => @current_chapter)
+  @spam_project = create(:project, chapter: @current_chapter)
 end
 
 step 'I go to the projects list' do
@@ -231,8 +231,8 @@ end
 
 step 'that chapter has 5 winning projects' do
   @winning_projects = (1..5).map do |x|
-    p = build(:project, :chapter => @current_chapter, :funded_on => x.months.ago)
-    p.photos = [Photo.new(:image => File.new(Rails.root.join("spec", "support", "fixtures", "1.JPG")))]
+    p = build(:project, chapter: @current_chapter, funded_on: x.months.ago)
+    p.photos = [Photo.new(image: File.new(Rails.root.join("spec", "support", "fixtures", "1.JPG")))]
     p.save
     p
   end
@@ -246,7 +246,7 @@ end
 
 step 'I should see when each has won' do
   @winning_projects.each_with_index do |project, x|
-    page.should have_css(".image-wrapper span:contains('#{I18n.l project.funded_on.to_date, :format => :funding}')")
+    page.should have_css(".image-wrapper span:contains('#{I18n.l project.funded_on.to_date, format: :funding}')")
   end
 end
 

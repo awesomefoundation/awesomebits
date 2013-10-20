@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe 'projects/index' do
-  let!(:role) { create(:role, :name => "trustee") }
+  let!(:role) { create(:role, name: "trustee") }
   let!(:user) { role.user }
-  let!(:project) { create(:project, :extra_question_1 => "Extra Question 1", :extra_answer_1 => "Extra Answer 1") }
+  let!(:project) { create(:project, extra_question_1: "Extra Question 1", extra_answer_1: "Extra Answer 1") }
 
   it 'displays extra questions and answers' do 
     assign(:chapter, project.chapter)
@@ -30,7 +30,7 @@ describe 'projects/show' do
 end
 
 describe 'projects/public_show' do
-  let!(:funded_project) { create(:project, :funded_on => Time.zone.now.to_date, :funded_description => "I am a funded project") }
+  let!(:funded_project) { create(:project, funded_on: Time.zone.now.to_date, funded_description: "I am a funded project") }
     
   it 'displays the funded description for a funded project' do 
     assign(:project, funded_project)

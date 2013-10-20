@@ -9,7 +9,7 @@ step 'I export all projects' do
 end
 
 step 'I should not see the export all link' do
-  page.should_not have_css('p', :text => 'Export All From Date Range')
+  page.should_not have_css('p', text: 'Export All From Date Range')
 end
 
 step 'I filter to the last :num_days day(s)' do |num_days|
@@ -19,6 +19,6 @@ step 'I filter to the last :num_days day(s)' do |num_days|
 end
 
 step 'I should receive a CSV file with :num_projects projects' do |num_projects|
-  csv = CSV.parse(page.source, :col_sep => ",")
+  csv = CSV.parse(page.source, col_sep: ",")
   csv.count.should == (HEADER_COUNT + num_projects.to_i)
 end

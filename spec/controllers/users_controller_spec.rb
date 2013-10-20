@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe UsersController do
   context "signed in as admin user" do
-    let(:user) { create(:user, :admin => true) }
+    let(:user) { create(:user, admin: true) }
     before do
       sign_in_as user
       get :index

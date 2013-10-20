@@ -18,7 +18,7 @@ describe InvitationsController do
   context 'logged in as a trustee' do
     let(:other_chapter) { create(:chapter) }
     let(:user) { create(:user) }
-    let(:role) { create(:role, :user => user, :chapter => chapter, :name => "trustee") }
+    let(:role) { create(:role, user: user, chapter: chapter, name: "trustee") }
     context 'GET to #new' do
       before do
         sign_in_as user
@@ -33,7 +33,7 @@ describe InvitationsController do
 
   context 'logged in as a dean' do
     let(:user) { role.user }
-    let(:role) { create(:role, :name => "dean") }
+    let(:role) { create(:role, name: "dean") }
     context 'GET to #new' do
       before do
         sign_in_as user

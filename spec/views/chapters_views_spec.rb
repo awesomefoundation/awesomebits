@@ -8,7 +8,7 @@ describe 'chapters/show' do
     view.stubs(:current_user).returns(nil)
 
     render
-    rendered.should have_selector('header div.title a.apply-chapter', :text => t('chapters.show.apply-for-grant'))
+    rendered.should have_selector('header div.title a.apply-chapter', text: t('chapters.show.apply-for-grant'))
   end
 
   it 'renders an apply button at the bottom of the page' do 
@@ -16,7 +16,7 @@ describe 'chapters/show' do
     view.stubs(:current_user).returns(nil)
 
     render
-    rendered.should have_selector('section.chapter-apply a', :text => t('chapters.show.apply-for-grant'))
+    rendered.should have_selector('section.chapter-apply a', text: t('chapters.show.apply-for-grant'))
   end
 
   it 'does not render the project section by default' do
@@ -45,7 +45,7 @@ describe 'chapters/show' do
   end
 
   context 'with projects' do
-    let!(:project) { create(:winning_project, :chapter => chapter) }
+    let!(:project) { create(:winning_project, chapter: chapter) }
 
     it 'renders the project section' do
       assign(:chapter, chapter)

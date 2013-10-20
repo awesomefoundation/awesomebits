@@ -12,7 +12,7 @@ describe User do
   context "#trustee?" do
     let(:user){ build(:user) }
     let(:chapter){ build(:chapter) }
-    let(:role){ build(:role, :user => user, :chapter => chapter) }
+    let(:role){ build(:role, user: user, chapter: chapter) }
     before do
       user.roles = [role]
     end
@@ -158,8 +158,8 @@ describe User do
 
   context ".deans_first" do
     let(:chapter){ create(:chapter) }
-    let!(:trustee){ create(:role, :chapter => chapter) }
-    let!(:dean){ create(:role, :name => "dean", :chapter => chapter) }
+    let!(:trustee){ create(:role, chapter: chapter) }
+    let!(:dean){ create(:role, name: "dean", chapter: chapter) }
     it 'orders the users so deans are first' do
       chapter.users.deans_first.should == [dean.user, trustee.user]
     end
@@ -167,18 +167,18 @@ describe User do
 
   context ".including_role" do
     let(:chapter){ create(:chapter) }
-    let!(:trustee){ create(:role, :chapter => chapter) }
-    let!(:dean){ create(:role, :name => "dean", :chapter => chapter) }
+    let!(:trustee){ create(:role, chapter: chapter) }
+    let!(:dean){ create(:role, name: "dean", chapter: chapter) }
     it 'includes the role name on the records' do
-      User.including_role.where(:id => dean.user.id).first.role.should == "dean"
-      User.including_role.where(:id => trustee.user.id).first.role.should == "trustee"
+      User.including_role.where(id: dean.user.id).first.role.should == "dean"
+      User.including_role.where(id: trustee.user.id).first.role.should == "trustee"
     end
   end
 
   context ".all_with_chapter" do
     let!(:chapter) { create(:chapter) }
     let!(:trustee) { create(:user) }
-    let!(:role) { create(:role, :user => trustee, :chapter => chapter) }
+    let!(:role) { create(:role, user: trustee, chapter: chapter) }
     let!(:admin) { create(:user) }
     it 'includes all users' do
       User.all_with_chapter(nil).should == [trustee, admin]

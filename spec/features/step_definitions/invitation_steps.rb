@@ -1,22 +1,22 @@
 step 'I invite a new trustee to the :name chapter' do |name|
-  @chapter = create(:chapter, :name => name)
+  @chapter = create(:chapter, name: name)
   visit projects_path
   click_link("Invite a Trustee")
-  fill_in("First name", :with => "Joe")
-  fill_in("Last name", :with => "Schmoe")
-  select(@chapter.name, :from => "Select a chapter")
+  fill_in("First name", with: "Joe")
+  fill_in("Last name", with: "Schmoe")
+  select(@chapter.name, from: "Select a chapter")
   @invitation_address = generate(:email)
-  fill_in("Email", :with => @invitation_address)
+  fill_in("Email", with: @invitation_address)
   click_button("Invite")
 end
 
 step 'I invite the same trustee to the :name chapter' do |name|
   visit projects_path
   click_link("Invite a Trustee")
-  fill_in("First name", :with => "Joe")
-  fill_in("Last name", :with => "Schmoe")
-  select(@chapter.name, :from => "Select a chapter")
-  fill_in("Email", :with => @invitation_address)
+  fill_in("First name", with: "Joe")
+  fill_in("Last name", with: "Schmoe")
+  select(@chapter.name, from: "Select a chapter")
+  fill_in("Email", with: @invitation_address)
   click_button("Invite")
 end
 
@@ -24,11 +24,11 @@ step 'I invite a new trustee to a different chapter' do |name|
   @chapter = create(:chapter)
   visit projects_path
   click_link("Invite a Trustee")
-  fill_in("First name", :with => "Joe")
-  fill_in("Last name", :with => "Schmoe")
-  select(@chapter.name, :from => "Select a chapter")
+  fill_in("First name", with: "Joe")
+  fill_in("Last name", with: "Schmoe")
+  select(@chapter.name, from: "Select a chapter")
   @invitation_address = generate(:email)
-  fill_in("Email", :with => @invitation_address)
+  fill_in("Email", with: @invitation_address)
   click_button("Invite")
 end
 
@@ -51,10 +51,10 @@ end
 step 'I invite a new trustee to my chapter' do |name|
   visit projects_path
   click_link("Invite a Trustee")
-  fill_in("First name", :with => "Joe")
-  fill_in("Last name", :with => "Schmoe")
+  fill_in("First name", with: "Joe")
+  fill_in("Last name", with: "Schmoe")
   @invitation_address = generate(:email)
-  fill_in("Email", :with => @invitation_address)
+  fill_in("Email", with: @invitation_address)
   click_button("Invite")
 end
 
@@ -92,9 +92,9 @@ end
 step 'they accept the invitation' do
   accept_url = @invitation_email.body.to_s.scan(%r{https?://\S*}).first
   visit(accept_url)
-  fill_in("First name", :with => "Joe")
-  fill_in("Last name", :with => "Schmoe")
-  fill_in("Password", :with => "12345")
+  fill_in("First name", with: "Joe")
+  fill_in("Last name", with: "Schmoe")
+  fill_in("Password", with: "12345")
   click_button("Accept the invitation!")
 end
 

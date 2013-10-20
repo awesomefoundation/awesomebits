@@ -12,7 +12,7 @@ step 'I remove trustee from a chapter' do
 end
 
 step 'I should see the deactivated user' do
-  page.should have_selector(".remove-trustee", :text => '-')
+  page.should have_selector(".remove-trustee", text: '-')
 end
 
 step 'I should see the new admin' do

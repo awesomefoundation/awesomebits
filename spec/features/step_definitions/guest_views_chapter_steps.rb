@@ -2,22 +2,22 @@ step 'there are 5 trustees' do
   @trustees = (1..5).map { create(:user) }
   @trustees.each do |trustee|
     create(:role,
-           :user => trustee,
-           :name => 'trustee',
-           :chapter => @current_chapter)
+           user: trustee,
+           name: 'trustee',
+           chapter: @current_chapter)
   end
 end
 
 step 'I should see the trustees' do
   @trustees.each do |trustee|
-    page.should have_selector(".trustee-details h3", :text => "#{trustee.first_name} #{trustee.last_name}")
+    page.should have_selector(".trustee-details h3", text: "#{trustee.first_name} #{trustee.last_name}")
   end
 end
 
 step 'there is a trustee' do
   @chapter = create(:chapter)
-  @trustee = create(:user, :url => 'http://www.myawesomeblog.com')
-  @role = create(:role, :user => @trustee, :chapter => @chapter)
+  @trustee = create(:user, url: 'http://www.myawesomeblog.com')
+  @role = create(:role, user: @trustee, chapter: @chapter)
 end
 
 step 'I should be able to click on a trustee' do

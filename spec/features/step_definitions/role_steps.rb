@@ -27,6 +27,6 @@ end
 
 step 'I am a trustee for another chapter as well' do
   @other_current_chapter = create(:chapter)
-  create(:role, :chapter => @other_current_chapter,
-                :user => @current_user)
+  create(:role, chapter: @other_current_chapter,
+                user: @current_user)
 end

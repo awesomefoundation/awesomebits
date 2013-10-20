@@ -38,28 +38,28 @@ end
 
 step ':count people/person have/has voted on a/another project in my chapter' do |count|
   @finalist_projects ||= []
-  project = create(:project, :chapter => @current_chapter, :created_at => count.to_i.days.ago)
+  project = create(:project, chapter: @current_chapter, created_at: count.to_i.days.ago)
   @finalist_projects << [project, count] if count.to_i > 0
   count.to_i.times do |x|
-    vote = create(:vote, :project => project, :created_at => x.days.ago)
-    create(:role, :user => vote.user, :chapter => @current_chapter)
+    vote = create(:vote, project: project, created_at: x.days.ago)
+    create(:role, user: vote.user, chapter: @current_chapter)
   end
 end
 
 step 'there are some projects for this month with votes' do
-  role = create(:role, :chapter => @current_chapter)
+  role = create(:role, chapter: @current_chapter)
   3.times do
-    project = create(:project, :chapter => @current_chapter)
-    create(:vote, :user => role.user, :project => project)
+    project = create(:project, chapter: @current_chapter)
+    create(:vote, user: role.user, project: project)
   end
 end
 
 step 'there are some projects in the "Any" chapter for this month with votes' do
-  @any_chapter = Chapter.where(:name => "Any").first
-  role = create(:role, :chapter => @current_chapter)
+  @any_chapter = Chapter.where(name: "Any").first
+  role = create(:role, chapter: @current_chapter)
   3.times do
-    project = create(:project, :chapter => @any_chapter)
-    create(:vote, :user => role.user, :project => project)
+    project = create(:project, chapter: @any_chapter)
+    create(:vote, user: role.user, project: project)
   end
 end
 
@@ -78,14 +78,14 @@ step 'I view only my shortlisted projects' do
 end
 
 step 'I should only see my shortlisted projects' do
-  page.should have_css('article.project', :visible => true, :count => 1)
-  page.all(:css, "article.project", :visible => true).each do |el|
+  page.should have_css('article.project', visible: true, count: 1)
+  page.all(:css, "article.project", visible: true).each do |el|
     el['class'].should include('shortlisted')
   end
 end
 
 step 'I should see no projects' do
-  page.should have_no_css('article.project', :visible => true)
+  page.should have_no_css('article.project', visible: true)
 end
 
 step 'the shortlisted filter should be on' do

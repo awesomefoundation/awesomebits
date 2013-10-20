@@ -29,19 +29,19 @@ describe Role do
 
   context ".can_invite?" do
     it 'returns true when any role is a dean role' do
-      create(:role, :name => "dean")
+      create(:role, name: "dean")
       Role.can_invite?.should be_true
     end
 
     it 'return false if no roles are dean roles' do
       Role.delete_all
-      create(:role, :name => "trustee")
+      create(:role, name: "trustee")
       Role.can_invite?.should be_false
     end
   end
 
   context ".can_invite_to_chapter?" do
-    let(:role) { create(:role, :name => "dean") }
+    let(:role) { create(:role, name: "dean") }
     let!(:chapter) { role.chapter }
     let!(:other_chapter) { create(:chapter) }
     it 'returns true when we have dean role for this chapter' do
@@ -56,7 +56,7 @@ describe Role do
   end
 
   context ".can_manage_chapter?" do
-    let(:role) { create(:role, :name => "dean") }
+    let(:role) { create(:role, name: "dean") }
     let!(:chapter) { role.chapter }
     let!(:other_chapter) { create(:chapter) }
     it 'returns true when we have dean role for this chapter' do
@@ -71,7 +71,7 @@ describe Role do
   end
 
   context ".can_remove_users?" do
-    let(:role) { create(:role, :name => "dean") }
+    let(:role) { create(:role, name: "dean") }
     let!(:chapter) { role.chapter }
     let!(:other_chapter) { create(:chapter) }
     it 'returns true when we have dean role for this chapter' do
@@ -86,7 +86,7 @@ describe Role do
   end
 
   context ".can_view_finalists_for?" do
-    let(:role) { create(:role, :name => "trustee") }
+    let(:role) { create(:role, name: "trustee") }
     let!(:chapter) { role.chapter }
     let!(:other_chapter) { create(:chapter) }
 
@@ -102,9 +102,9 @@ describe Role do
   end
 
   context ".can_mark_winner?" do
-    let(:role) { create(:role, :name => "dean") }
+    let(:role) { create(:role, name: "dean") }
     let!(:chapter) { role.chapter }
-    let!(:project) { create(:project, :chapter => chapter) }
+    let!(:project) { create(:project, chapter: chapter) }
     let!(:other_project) { create(:project) }
     it 'returns true when we have dean role for this chapter' do
       Role.can_mark_winner?(project).should be_true
@@ -118,9 +118,9 @@ describe Role do
   end
 
   context ".can_edit_project?" do
-    let(:role) { create(:role, :name => "dean") }
+    let(:role) { create(:role, name: "dean") }
     let!(:chapter) { role.chapter }
-    let!(:project) { create(:project, :chapter => chapter) }
+    let!(:project) { create(:project, chapter: chapter) }
     let!(:other_project) { create(:project) }
     it 'returns true when we have dean role for this chapter' do
       Role.can_edit_project?(project).should be_true

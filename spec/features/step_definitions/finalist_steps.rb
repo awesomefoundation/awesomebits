@@ -41,8 +41,8 @@ step 'projects are created the day of the first vote is cast' do
 end
 
 step 'I filter the finalists to only show the day before yesterday' do
-  fill_in("start date", :with => 2.days.ago.strftime("%Y-%m-%d"))
-  fill_in("end date", :with => 2.days.ago.strftime("%Y-%m-%d"))
+  fill_in("start date", with: 2.days.ago.strftime("%Y-%m-%d"))
+  fill_in("end date", with: 2.days.ago.strftime("%Y-%m-%d"))
   click_button("Filter")
 end
 

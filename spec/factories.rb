@@ -9,7 +9,7 @@ FactoryGirl.define do
     country { "United States" }
   end
 
-  factory :user, :aliases => [:inviter, :invitee] do
+  factory :user, aliases: [:inviter, :invitee] do
     first_name "Joe"
     last_name "Schmoe"
     email
@@ -21,7 +21,7 @@ FactoryGirl.define do
 
     factory :user_with_dean_role do
       after(:create) do |user|
-        FactoryGirl.create(:role, :user => user, :name => "dean")
+        FactoryGirl.create(:role, user: user, name: "dean")
         user.reload
       end
     end
@@ -38,7 +38,7 @@ FactoryGirl.define do
 
   factory :invitation do
     email
-    association :inviter, :factory => :user_with_dean_role
+    association :inviter, factory: :user_with_dean_role
 
     after(:build) do |invitation, proxy|
       invitation.chapter = invitation.inviter.chapters.first

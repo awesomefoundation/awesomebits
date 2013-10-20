@@ -25,16 +25,16 @@ describe Project do
   end
 
   context '#chapter_name' do
-    let(:chapter) { create :chapter, :name => 'Test chapter' }
-    let(:project) { create :project, :chapter => chapter }
+    let(:chapter) { create :chapter, name: 'Test chapter' }
+    let(:project) { create :project, chapter: chapter }
     it 'should delegate to chapter' do
       project.chapter_name.should == 'Test chapter'
     end
   end
 
   context '.winner_count' do
-    let!(:winners) { (1..2).map{|x| create(:project, :funded_on => Date.today) } }
-    let!(:non_winners){ (1..3).map{|x| create(:project, :funded_on => nil) } }
+    let!(:winners) { (1..2).map{|x| create(:project, funded_on: Date.today) } }
+    let!(:non_winners){ (1..3).map{|x| create(:project, funded_on: nil) } }
     it 'counts the winners' do
       Project.winner_count.should == 2
     end
@@ -45,9 +45,9 @@ describe Project do
     let(:user){ role.user }
     let(:chapter){ role.chapter }
     let(:any_chapter){ Chapter.find_by_name("Any") }
-    let!(:good_project){ create(:project, :chapter => chapter) }
+    let!(:good_project){ create(:project, chapter: chapter) }
     let!(:bad_project){ create(:project) }
-    let!(:any_project){ create(:project, :chapter => any_chapter) }
+    let!(:any_project){ create(:project, chapter: any_chapter) }
 
     it 'finds the projects a user has access to' do
       projects = Project.visible_to(user).all
@@ -60,10 +60,10 @@ describe Project do
   context '.during_timeframe' do
     let(:start_date) { Date.parse("2001-01-01") }
     let(:end_date) { Date.parse("2010-10-10") }
-    let!(:before_start) { create(:project, :created_at => Date.parse("2000-12-31")) }
-    let!(:before_end) { create(:project, :created_at => Date.parse("2001-01-02")) }
-    let!(:after_start) { create(:project, :created_at => Date.parse("2010-10-09")) }
-    let!(:after_end) { create(:project, :created_at => Date.parse("2010-10-11")) }
+    let!(:before_start) { create(:project, created_at: Date.parse("2000-12-31")) }
+    let!(:before_end) { create(:project, created_at: Date.parse("2001-01-02")) }
+    let!(:after_start) { create(:project, created_at: Date.parse("2010-10-09")) }
+    let!(:after_end) { create(:project, created_at: Date.parse("2010-10-11")) }
 
     it 'searches between two dates' do
       actual = Project.during_timeframe(start_date, end_date)
@@ -99,18 +99,18 @@ describe Project do
 
   context '.voted_for_by_members_of' do
     let(:boston){ create(:chapter) }
-    let(:boston_project) { create(:project, :chapter => boston) }
+    let(:boston_project) { create(:project, chapter: boston) }
     let(:boston_trustee) { create(:user) }
-    let!(:boston_role) { create(:role, :user => boston_trustee, :chapter => boston) }
+    let!(:boston_role) { create(:role, user: boston_trustee, chapter: boston) }
     let!(:boston_vote) do
-      create(:vote, :project => boston_project, :user => boston_trustee)
+      create(:vote, project: boston_project, user: boston_trustee)
     end
     let(:chicago){ create(:chapter) }
-    let(:chicago_project) { create(:project, :chapter => chicago) }
+    let(:chicago_project) { create(:project, chapter: chicago) }
     let(:chicago_trustee) { create(:user) }
-    let!(:chicago_role) { create(:role, :user => chicago_trustee, :chapter => chicago) }
+    let!(:chicago_role) { create(:role, user: chicago_trustee, chapter: chicago) }
     let!(:chicago_vote) do
-      create(:vote, :project => chicago_project, :user => chicago_trustee)
+      create(:vote, project: chicago_project, user: chicago_trustee)
     end
 
     it 'returns the projects that the given chapter has voted on' do
@@ -121,13 +121,13 @@ describe Project do
 
   context '.by_vote_count' do
     let(:chapter) { create(:chapter) }
-    let(:projects) { [create(:project, :chapter => chapter),
-                      create(:project, :chapter => chapter),
-                      create(:project, :chapter => chapter)] }
+    let(:projects) { [create(:project, chapter: chapter),
+                      create(:project, chapter: chapter),
+                      create(:project, chapter: chapter)] }
     before do
-      2.times{ create(:vote, :project => projects[1]) }
-      1.times{ create(:vote, :project => projects[2]) }
-      0.times{ create(:vote, :project => projects[0]) }
+      2.times{ create(:vote, project: projects[1]) }
+      1.times{ create(:vote, project: projects[2]) }
+      0.times{ create(:vote, project: projects[0]) }
     end
 
     it 'returns the projects in descending order of vote_count' do
@@ -142,8 +142,8 @@ describe Project do
 
   context '.recent_winners' do
     let!(:loser) { create(:project) }
-    let!(:old_winner) { create(:project, :funded_on => 2.days.ago) }
-    let!(:new_winner) { create(:project, :funded_on => 1.days.ago) }
+    let!(:old_winner) { create(:project, funded_on: 2.days.ago) }
+    let!(:new_winner) { create(:project, funded_on: 1.days.ago) }
     it 'returns projects by descending funding date' do
       Project.recent_winners.all.should == [new_winner, old_winner]
     end
@@ -202,7 +202,7 @@ describe Project do
   end
 
   context "#in_any_chapter?" do
-    let(:project){ build(:project, :chapter => Chapter.where(:name == "Any").first) }
+    let(:project){ build(:project, chapter: Chapter.where(:name == "Any").first) }
     let(:other_project) { build(:project) }
 
     it 'is true when the project is in the Any chapter' do
@@ -235,9 +235,9 @@ describe Project do
 
   context '#photo_order' do
     let(:project) { create(:project) }
-    let(:photo1)  { create(:photo, :project => project) }
-    let(:photo2)  { create(:photo, :project => project) }
-    let(:photo3)  { create(:photo, :project => project) }
+    let(:photo1)  { create(:photo, project: project) }
+    let(:photo2)  { create(:photo, project: project) }
+    let(:photo3)  { create(:photo, project: project) }
 
     it "returns a string of the photos' ids in order" do
       project.photos = [photo1, photo2, photo3]
@@ -248,9 +248,9 @@ describe Project do
 
   context '#photo_order=' do
     let(:project){ create(:project) }
-    let(:photo1) { create(:photo, :project => project) }
-    let(:photo2) { create(:photo, :project => project) }
-    let(:photo3) { create(:photo, :project => project) }
+    let(:photo1) { create(:photo, project: project) }
+    let(:photo2) { create(:photo, project: project) }
+    let(:photo3) { create(:photo, project: project) }
 
     it 'sets the order of the photos based on their position in the string' do
       project.photo_order = [photo2.id, photo3.id, photo1.id].map(&:to_s).join(" ")
@@ -288,16 +288,16 @@ end
 describe Project, 'csv_export' do
   let!(:project) do
     create :project,
-    :name => 'Name',
-    :url => 'http://example.com',
-    :email => 'mail@example.com',
-    :phone => '555-555-5555',
-    :about_me => 'About me',
-    :about_project => 'About project',
-    :title => 'Title',
-    :funded_on => Date.new(2012,1,1),
-    :rss_feed_url => 'http://example.com/rss',
-    :use_for_money => 'Fun'
+    name: 'Name',
+    url: 'http://example.com',
+    email: 'mail@example.com',
+    phone: '555-555-5555',
+    about_me: 'About me',
+    about_project: 'About project',
+    title: 'Title',
+    funded_on: Date.new(2012,1,1),
+    rss_feed_url: 'http://example.com/rss',
+    use_for_money: 'Fun'
   end
   subject { Project.csv_export([project]) }
   let(:parsed)  { CSV.parse(subject).to_a }

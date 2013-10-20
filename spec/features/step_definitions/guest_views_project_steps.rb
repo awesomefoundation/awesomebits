@@ -1,7 +1,7 @@
 step 'there is a project with :count photo(s)' do |count|
   @chapter = create(:chapter)
-  @project = create(:project, :chapter => @chapter, :funded_on => 1.days.ago)
-  create_list(:photo, count.to_i,  :project => @project)
+  @project = create(:project, chapter: @chapter, funded_on: 1.days.ago)
+  create_list(:photo, count.to_i,  project: @project)
 end
 
 step 'I view the project' do
