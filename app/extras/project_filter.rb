@@ -15,7 +15,7 @@ class ProjectFilter
   end
 
   def page(page_number, per_page = Project.per_page)
-    @projects = @projects.paginate(:page => page_number, :per_page => per_page)
+    @projects = @projects.paginate(page: page_number, per_page: per_page)
     self
   end
 

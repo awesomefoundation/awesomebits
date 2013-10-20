@@ -5,9 +5,9 @@ class Chapter < ActiveRecord::Base
   friendly_id :name, use: :slugged
 
   has_many :roles
-  has_many :users, :through => :roles
+  has_many :users, through: :roles
   has_many :projects
-  has_many :winning_projects, :class_name => "Project", :conditions => "funded_on IS NOT NULL", :order => "funded_on DESC"
+  has_many :winning_projects, class_name: "Project", conditions: "funded_on IS NOT NULL", order: "funded_on DESC"
   has_many :invitations
 
   validates_presence_of :name
@@ -16,7 +16,7 @@ class Chapter < ActiveRecord::Base
   validates_presence_of :slug
   validates_uniqueness_of :name
 
-  validates_format_of :slug, :with => /\A[a-z0-9-]+\Z/
+  validates_format_of :slug, with: /\A[a-z0-9-]+\Z/
 
   attr_accessible :name, :twitter_url, :facebook_url, :blog_url, :rss_feed_url, :description,
                   :country, :extra_question_1, :extra_question_2, :extra_question_3, :slug,
@@ -51,11 +51,11 @@ class Chapter < ActiveRecord::Base
   end
 
   def self.select_data
-    countries = [OpenStruct.new(:name => "Any Chapter", :chapters => where("chapters.name = ?", "Any"))]
+    countries = [OpenStruct.new(name: "Any Chapter", chapters: where("chapters.name = ?", "Any"))]
 
     visitable.sort_by(&CountrySortCriteria.new(COUNTRY_PRIORITY)).each do |chapter|
       if countries.last.try(:name) != chapter.country
-        countries.push OpenStruct.new(:name => chapter.country, :chapters => [])
+        countries.push OpenStruct.new(name: chapter.country, chapters: [])
       end
 
       countries.last.chapters.push chapter

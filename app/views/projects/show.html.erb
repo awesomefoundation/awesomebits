@@ -3,14 +3,14 @@
 <% content_for(:extra_body_classes, 'projects-index') %>
 
 <section class="admin-panel">
-  <%= render 'shared/sidebar', :chapter => @project.chapter %>
+  <%= render 'shared/sidebar', chapter: @project.chapter %>
 </section>
 
 <section class="applications">
-  <h1><%= t "projects.index.title", :name => @project.chapter.name %></h1>
+  <h1><%= t "projects.index.title", name: @project.chapter.name %></h1>
 
   <p>
-    <%= raw t ".back-to", :name => @project.chapter.name, :url => chapter_projects_path(@project.chapter) %>
+    <%= raw t ".back-to", name: @project.chapter.name, url: chapter_projects_path(@project.chapter) %>
   </p>
 
   <%= render @project %>

@@ -1,11 +1,11 @@
 class ProjectsController < ApplicationController
-  before_filter :must_be_logged_in, :except => [:show, :new, :create]
-  before_filter :verify_user_can_edit, :only => [:destroy]
-  before_filter :redirect_to_chapter_or_sign_in, :only => [:index], :if => :chapter_missing?
-  before_filter :handle_unpublished_projects, :only => [:show]
-  before_filter :find_chapter, :only => [:index, :show]
+  before_filter :must_be_logged_in, except: [:show, :new, :create]
+  before_filter :verify_user_can_edit, only: [:destroy]
+  before_filter :redirect_to_chapter_or_sign_in, only: [:index], if: :chapter_missing?
+  before_filter :handle_unpublished_projects, only: [:show]
+  before_filter :find_chapter, only: [:index, :show]
 
-  around_filter :set_time_zone, :only => [:index, :show]
+  around_filter :set_time_zone, only: [:index, :show]
 
   include ApplicationHelper
 
@@ -33,7 +33,7 @@ class ProjectsController < ApplicationController
         end
 
         headers["Content-Disposition"] = "attachment; filename=#{@chapter.slug}_export.csv"
-        render :text => Project.csv_export(@projects), :content_type => 'text/csv'
+        render text: Project.csv_export(@projects), content_type: 'text/csv'
       end
     end
   end
@@ -62,10 +62,10 @@ class ProjectsController < ApplicationController
     if public_view?
       # Ensure the canonical path
       if project_path(@project) != request.path
-        redirect_to project_path(@project), :status => :moved_permanently and return
+        redirect_to project_path(@project), status: :moved_permanently and return
       end
 
-      render :action => "public_show"
+      render action: "public_show"
 
     else
       must_be_logged_in || render

@@ -1,14 +1,14 @@
 <article class="project <%= "shortlisted" if project.shortlisted_by?(current_user) %> <%= "winner" if project.winner? %>" data-id="<%= project.id %>">
   <header>
     <div class="title">
-      <%= link_to project.title, chapter_project_path(project.chapter, project), :class => "title" %></a>
+      <%= link_to project.title, chapter_project_path(project.chapter, project), class: "title" %></a>
       <% if current_user.can_mark_winner?(project) %>
         <%= show_winner_buttons_for(project) %>
       <% end %>
       <% if project.shortlisted_by?(current_user) %>
-        <%= link_to t(".awesome"), project_vote_path(project), :method => :delete, :remote => true, :class => "short-list" %>
+        <%= link_to t(".awesome"), project_vote_path(project), method: :delete, remote: true, class: "short-list" %>
       <% else %>
-        <%= link_to t(".awesome"), project_vote_path(project), :method => :post, :remote => true, :class => "short-list" %>
+        <%= link_to t(".awesome"), project_vote_path(project), method: :post, remote: true, class: "short-list" %>
       <% end %>
     </div>
       
@@ -16,12 +16,12 @@
       <%= project.created_at %> (<%= project.chapter.name %>)
 
       <% if project.winner? %>
-        · <%= link_to t(".view-public-page"), project_path(project), :target => "blank" %> 
+        · <%= link_to t(".view-public-page"), project_path(project), target: "blank" %> 
       <% end %>
 
       <% if current_user.can_edit_project?(project) -%>
         <span class="spam">
-          <%= link_to t(".delete"), project_path(project), :method => :delete, :data => { :confirm => t(".confirm-delete") }, :class => 'delete-spam' %>
+          <%= link_to t(".delete"), project_path(project), method: :delete, data: { confirm: t(".confirm-delete") }, class: 'delete-spam' %>
         </span>
       <% end -%>
     </section>
@@ -55,7 +55,7 @@
         <h3><%= t ".images" %></h3>
         <p>
         <% project.photos.each_with_index do |image, index| %>
-          <%= link_to t(".image", :index => index+1), image.image.url, :rel => "project-#{project.id}-images", :class => "lightbox", :target => "blank" %>
+          <%= link_to t(".image", index: index+1), image.image.url, rel: "project-#{project.id}-images", class: "lightbox", target: "blank" %>
         <% end %>
         </p>
       <% end %>
@@ -77,7 +77,7 @@
 
     <div class="details-toggle">
     </div>
-    <%= link_to edit_project_path(project), :class => "see-more" do %>
+    <%= link_to edit_project_path(project), class: "see-more" do %>
       <p><%= t ".edit" %></p>
     <% end %>
   </section>

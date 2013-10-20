@@ -1,6 +1,6 @@
 module ProjectsHelper
   def selectable_chapters_for(user)
-    any_chapter = Chapter.where(:name => "Any").first
+    any_chapter = Chapter.where(name: "Any").first
     if user.admin?
       [any_chapter] + Chapter.where("name != 'Any'").order(:name)
     else
@@ -15,7 +15,7 @@ module ProjectsHelper
       winnable_chapters = [@chapter]
     end
     winnable_chapters.map do |chapter|
-      link_to(t(".winner", :name => chapter.name), project_winner_path(project, :chapter_id => chapter.id), :remote => true, :method => (project.winner? ? :delete : :post), :class => "mark-as-winner chapter-#{chapter.id}")
+      link_to(t(".winner", name: chapter.name), project_winner_path(project, chapter_id: chapter.id), remote: true, method: (project.winner? ? :delete : :post), class: "mark-as-winner chapter-#{chapter.id}")
     end.join("").html_safe
   end
 

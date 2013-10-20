@@ -1,7 +1,7 @@
 class ChaptersController < ApplicationController
-  before_filter :ensure_lowercase_id, :only => [:show, :edit]
-  before_filter :must_be_admin, :only => [:new, :create]
-  before_filter :must_be_able_to_manage_chapter, :only => [:edit, :update]
+  before_filter :ensure_lowercase_id, only: [:show, :edit]
+  before_filter :must_be_admin, only: [:new, :create]
+  before_filter :must_be_able_to_manage_chapter, only: [:edit, :update]
 
   def index
     @chapters = Chapter.visitable.all.sort_by(&CountrySortCriteria.new(COUNTRY_PRIORITY))
@@ -41,7 +41,7 @@ class ChaptersController < ApplicationController
 
   def ensure_lowercase_id
     if params[:id].match(/[A-Z]+/)
-      redirect_to(:id => params[:id].parameterize, :status => :moved_permanently) && return
+      redirect_to(id: params[:id].parameterize, status: :moved_permanently) && return
     end
   end
 end

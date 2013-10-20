@@ -4,19 +4,19 @@
   <%= form.input :phone %>
 </div>
 <div class="project-info">
-  <%= form.input :title, :maxlength => 50 %>
+  <%= form.input :title, maxlength: 50 %>
   <%= form.input :url %>
 </div>
 <div class="descriptions">
-  <%= form.input :about_me, :maxlength => 500, :input_html => { :class => "about-me" }, :disabled => !form.object.new_record?  %>
+  <%= form.input :about_me, maxlength: 500, input_html: { class: "about-me" }, disabled: !form.object.new_record?  %>
   <div class="chars_left">
     You have <span id="project_about_me_chars_left">500</span> chars left
   </div>
-  <%= form.input :about_project, :maxlength => 2000, :input_html => { :class => "project-desc" }, :disabled => !form.object.new_record? %>
+  <%= form.input :about_project, maxlength: 2000, input_html: { class: "project-desc" }, disabled: !form.object.new_record? %>
   <div class="chars_left">
     You have <span id="project_about_project_chars_left">2000</span> chars left
   </div>
-  <%= form.input :use_for_money, :maxlength => 500, :input_html => { :class => "project-use-for-money" }, :disabled => !form.object.new_record?  %>
+  <%= form.input :use_for_money, maxlength: 500, input_html: { class: "project-use-for-money" }, disabled: !form.object.new_record?  %>
   <div class="chars_left">
     You have <span id="project_use_for_money_chars_left">500</span> chars left
   </div>
@@ -26,7 +26,7 @@
     <section class="current-images">
     <label><%= t "simple_form.labels.project.current_photos-html" %></label>
       <ul class="old-photos">
-        <%= form.input :photo_order, :as => :hidden %>
+        <%= form.input :photo_order, as: :hidden %>
         <% form.object.photos.each do |photo| %>
           <li data-id="<%= photo.id %>">
             <span><%= photo.image_file_name %></span>
@@ -43,23 +43,23 @@
       <a href="#" class="remove-image" data-remove="true">remove</a>
     </div>
 
-    <div><%= t(".image-notes", :dimensions => Photo::MAIN_DIMENSIONS) %></div>
+    <div><%= t(".image-notes", dimensions: Photo::MAIN_DIMENSIONS) %></div>
 
   </div>
 </div>
-<%= form.input :chapter_id, :collection => Chapter.select_data, :prompt => '- Select -', :as => :grouped_select, :group_method => :chapters, :group_label_method => :name, :label_method => :name %>
+<%= form.input :chapter_id, collection: Chapter.select_data, prompt: '- Select -', as: :grouped_select, group_method: :chapters, group_label_method: :name, label_method: :name %>
 <div class="extra-questions" style="display:none">
-  <%= form.input :extra_question_1, :as => :hidden, :wrapper_html => {:class => "extra-question"}  %>
-  <%= form.input :extra_question_2, :as => :hidden, :wrapper_html => {:class => "extra-question"}  %>
-  <%= form.input :extra_question_3, :as => :hidden, :wrapper_html => {:class => "extra-question"}  %>
-  <%= form.input :extra_answer_1, :wrapper_html => {:class => "extra-answer"} %>
-  <%= form.input :extra_answer_2, :wrapper_html => {:class => "extra-answer"} %>
-  <%= form.input :extra_answer_3, :wrapper_html => {:class => "extra-answer"} %>
+  <%= form.input :extra_question_1, as: :hidden, wrapper_html: {class: "extra-question"}  %>
+  <%= form.input :extra_question_2, as: :hidden, wrapper_html: {class: "extra-question"}  %>
+  <%= form.input :extra_question_3, as: :hidden, wrapper_html: {class: "extra-question"}  %>
+  <%= form.input :extra_answer_1, wrapper_html: {class: "extra-answer"} %>
+  <%= form.input :extra_answer_2, wrapper_html: {class: "extra-answer"} %>
+  <%= form.input :extra_answer_3, wrapper_html: {class: "extra-answer"} %>
 </div>
 
 <% if current_user.can_edit_project?(project) %>
   <div class="funded_on">
-    <%= form.input :funded_on, :as => :string %>
+    <%= form.input :funded_on, as: :string %>
   </div>
 
   <div class="funded_description">

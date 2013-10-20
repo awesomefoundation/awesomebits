@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options(options={})
-    { :locale => I18n.locale }
+    { locale: I18n.locale }
   end
 
   def fix_chapter_ids
@@ -60,8 +60,8 @@ class ApplicationController < ActionController::Base
 
   def render_404
     respond_to do |format|
-      format.html { render :status => 404, :template => "errors/not_found" }
-      format.all { render :nothing => true, :status => 404 }
+      format.html { render status: 404, template: "errors/not_found" }
+      format.all { render nothing: true, status: 404 }
     end
   end
 end

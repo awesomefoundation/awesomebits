@@ -17,12 +17,12 @@ module ApplicationHelper
   end
 
   def funding_amount_for(winner_count)
-    number_with_delimiter(winner_count * 1000, :delimiter => I18n.t("number.delimiter"),
-                                               :separator => I18n.t("number.separator"))
+    number_with_delimiter(winner_count * 1000, delimiter: I18n.t("number.delimiter"),
+                                               separator: I18n.t("number.separator"))
   end
 
   def markdown(text)
-    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true)
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, space_after_headers: true)
     markdown.render(text).html_safe unless text.nil?
   end
 
@@ -33,7 +33,7 @@ module ApplicationHelper
   def meta_tag(tag_name, content, options = {})
     content_tag = "meta_#{tag_name}".to_sym
 
-    tag :meta, options.merge(:content => content_for?(content_tag) ? content_for(content_tag) : content)
+    tag :meta, options.merge(content: content_for?(content_tag) ? content_for(content_tag) : content)
   end
 
 end

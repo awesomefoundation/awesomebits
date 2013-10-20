@@ -20,8 +20,8 @@ class InvitationsController < ApplicationController
   private
 
   def find_invitation(attributes)
-    invitation = Invitation.where(:email => attributes[:email]).
-                            where(:chapter_id => attributes[:chapter_id]).
+    invitation = Invitation.where(email: attributes[:email]).
+                            where(chapter_id: attributes[:chapter_id]).
                             first
     invitation ||= Invitation.new
     invitation.attributes = attributes

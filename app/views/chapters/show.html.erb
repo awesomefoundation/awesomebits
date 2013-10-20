@@ -7,10 +7,10 @@
     </h1>
 
     <% if can_manage_chapter?(@chapter) %>
-      <%= link_to "Edit Chapter", edit_chapter_path(@chapter), :class => 'edit-chapter' %>
+      <%= link_to "Edit Chapter", edit_chapter_path(@chapter), class: 'edit-chapter' %>
     <% end %>
 
-    <%= link_to t(".apply-for-grant"), new_submission_path(:chapter => @chapter), :class => 'apply-chapter' %>
+    <%= link_to t(".apply-for-grant"), new_submission_path(chapter: @chapter), class: 'apply-chapter' %>
 
     <%= email_link @chapter %>
     <%= blog_link @chapter %>
@@ -30,8 +30,8 @@
               <div class="image-wrapper">
                 <div class="project-name">
                   <h2><%= project.title %></h2>
-                  <span><%= t(".byline", :name => project.name) %> </span>
-                  <span><%= l project.funded_on, :format => :funding %></span>
+                  <span><%= t(".byline", name: project.name) %> </span>
+                  <span><%= l project.funded_on, format: :funding %></span>
                 </div>
                 <%= image_tag(project.primary_image.url(:index)) %>
               </div>
@@ -55,7 +55,7 @@
 
     <% if @chapter.rss_feed_url.present? %>
     <article class="rss-feed half" data-feed-url="<%= @chapter.rss_feed_url %>">
-      <h2><%= t(".trustees.news", :name => @chapter.name) %></h2>
+      <h2><%= t(".trustees.news", name: @chapter.name) %></h2>
       <section class="rss" id="rss-feeds"></section>
     </article>
     <% end %>
@@ -70,7 +70,7 @@
       <% @chapter.users.deans_first.including_role.uniq.each do |user| %>
       <li>
         <article class="trustee <%= user.role %>">
-          <%= link_to user.url, :class => :avatar do %>
+          <%= link_to user.url, class: :avatar do %>
             <div class="hat"></div>
             <div class="trustee-details">
               <h3><%= user.first_name %> <%= user.last_name %></h3>
@@ -89,7 +89,7 @@
 </section>
 
 <section class="chapter-apply">
-  <%= link_to t(".apply-for-grant"), new_submission_path(:chapter => @chapter) %>
+  <%= link_to t(".apply-for-grant"), new_submission_path(chapter: @chapter) %>
 </section>
 
 <% content_for :javascript do -%>

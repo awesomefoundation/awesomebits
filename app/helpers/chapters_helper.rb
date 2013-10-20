@@ -14,13 +14,13 @@ module ChaptersHelper
 
   def link_if_not_blank(url, css_class)
     if url.present?
-      link_to("", url, :class => css_class)
+      link_to("", url, class: css_class)
     end
   end
 
   def email_link(chapter)
     if chapter.email_address.present?
-      mail_to chapter.email_address, '', :class => [:external, :email]
+      mail_to chapter.email_address, '', class: [:external, :email]
     end
   end
 

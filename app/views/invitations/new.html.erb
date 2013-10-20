@@ -2,12 +2,12 @@
   <h1>Invite a new trustee</h1>
   <%= simple_form_for  @invitation do |form| %>
     <% if show_chapters_dropdown? %>
-      <%= form.input :chapter_id, :as => :select, :collection => invitable_chapters, :group_method => :name, :label => "Select a chapter", :prompt => "- Select -" %>
+      <%= form.input :chapter_id, as: :select, collection: invitable_chapters, group_method: :name, label: "Select a chapter", prompt: "- Select -" %>
     <% else %>
       <p>Trustee will be invited to:
         <span><%= primary_invitable_chapter.name %></span>
       </p>
-      <%= form.input :chapter_id, :as => :hidden, :input_html => { :value => primary_invitable_chapter.id } %>
+      <%= form.input :chapter_id, as: :hidden, input_html: { value: primary_invitable_chapter.id } %>
     <% end %>
     <div class="invitee-name">
       <%= form.input :first_name %>

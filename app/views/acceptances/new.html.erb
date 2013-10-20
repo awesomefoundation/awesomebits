@@ -1,4 +1,4 @@
-<%= simple_form_for @invitation, :url => invitation_acceptances_path(@invitation), :method => :post do |form| %>
+<%= simple_form_for @invitation, url: invitation_acceptances_path(@invitation), method: :post do |form| %>
   <%= form.input :first_name %>
   <%= form.input :last_name %>
   <%= form.input :password %>

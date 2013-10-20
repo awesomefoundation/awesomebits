@@ -1,6 +1,6 @@
 <section class="project-form">
-<%= simple_form_for @project, :html => { :multipart => true } do |form| %>
-    <%= render 'form', :project => @project, :form => form %>
+<%= simple_form_for @project, html: { multipart: true } do |form| %>
+    <%= render 'form', project: @project, form: form %>
     <%= submit_tag t("projects.form.save") %>
   <% end %>
 </section>

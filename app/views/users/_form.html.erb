@@ -4,11 +4,11 @@
   <%= form.input :last_name %>
   <%= form.input :email %>
   <%= form.input :url %>
-  <%= form.input :new_password, :as => :password, :label => t(:'simple_form.labels.user.new_password') %>
+  <%= form.input :new_password, as: :password, label: t(:'simple_form.labels.user.new_password') %>
 
   <%= form.label t(:'simple_form.labels.user.user_image') %>
   <div><%= image_tag(user.gravatar_url) %></div>
-  <%= form.hint  t(:'simple_form.hints.user.user_image', :email => user.email) %>
+  <%= form.hint  t(:'simple_form.hints.user.user_image', email: user.email) %>
 
   <%= form.button :submit %>
 <% end %>

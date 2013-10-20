@@ -3,21 +3,21 @@
     <%= link_to t("layouts.application.about_contact"), about_us_path %>
     <%= link_to t("layouts.application.faq"), faq_path %>
     <% if signed_in? -%>
-      <%= link_to t("layouts.application.sign-out"), sign_out_path, :method => :delete %>
+      <%= link_to t("layouts.application.sign-out"), sign_out_path, method: :delete %>
     <% else -%>
       <%= link_to t("layouts.application.sign-in"), sign_in_path %>
     <% end -%>
 
     <span>·</span>
 
-    <%= link_to "English", url_for(:locale => "en") %>
-    <%= link_to "Français", url_for(:locale => "fr") %>
-    <%= link_to "Português", url_for(:locale => "pt") %>
+    <%= link_to "English", url_for(locale: "en") %>
+    <%= link_to "Français", url_for(locale: "fr") %>
+    <%= link_to "Português", url_for(locale: "pt") %>
   </p>
 
   <ol class="social-links">
-    <li><%= link_to "", "http://twitter.com/awesomefound", :class => :twitter %></li>
-    <li><%= link_to "", "http://facebook.com/awesomefoundation", :class => :facebook %></li>
-    <li><%= link_to "", "http://blog.awesomefoundation.org", :class => :blog %></li>
+    <li><%= link_to "", "http://twitter.com/awesomefound", class: :twitter %></li>
+    <li><%= link_to "", "http://facebook.com/awesomefoundation", class: :facebook %></li>
+    <li><%= link_to "", "http://blog.awesomefoundation.org", class: :blog %></li>
   </ol>
 </footer>

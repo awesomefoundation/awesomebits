@@ -4,7 +4,7 @@
 
 <header class="project">
   <% if can_manage_chapter?(@project.chapter) %>
-    <%= link_to t(".edit"), edit_project_path(@project), :class => 'edit-project' %>
+    <%= link_to t(".edit"), edit_project_path(@project), class: 'edit-project' %>
   <% end %>
   <h1><%= @project.title %></h1>
 </header>
@@ -25,7 +25,7 @@
 
 <section class="project-details">
   <section class="meta-data">
-    <p><%= t(".byline-html", :chapter_name => link_to(@project.chapter.name, chapter_path(@project.chapter)), :submitter_name => @project.name) %></p>
+    <p><%= t(".byline-html", chapter_name: link_to(@project.chapter.name, chapter_path(@project.chapter)), submitter_name: @project.name) %></p>
     <div class="addthis_toolbox addthis_default_style ">
       <a class="addthis_button_twitter"></a>
       <a class="addthis_button_facebook"></a>
@@ -66,11 +66,11 @@
     <article class="project-state">
       <% if @project.winner? %>
         <div class="state funded">
-          <p><%= t(".funder-html", :name => @project.chapter.name) %> <span class="funded-on">(<%= l @project.funded_on, :format => :funding %>)</span></p>
+          <p><%= t(".funder-html", name: @project.chapter.name) %> <span class="funded-on">(<%= l @project.funded_on, format: :funding %>)</span></p>
         </div>
       <% else %>
         <div class="state applied">
-          <p><%= t(".submitted-to-html", :name => @project.chapter.name) %></p>
+          <p><%= t(".submitted-to-html", name: @project.chapter.name) %></p>
         </div>
       <% end %>
     </article>

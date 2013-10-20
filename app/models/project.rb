@@ -3,8 +3,8 @@ require "texticle/searchable"
 class Project < ActiveRecord::Base
   belongs_to :chapter
   has_many :votes
-  has_many :users, :through => :votes
-  has_many :photos, :order => "photos.sort_order asc, photos.id asc"
+  has_many :users, through: :votes
+  has_many :photos, order: "photos.sort_order asc, photos.id asc"
 
   attr_accessible :name, :title, :url, :email, :phone, :about_me, :about_project,
                   :chapter_id, :extra_question_1, :extra_question_2, :extra_question_3,
@@ -19,7 +19,7 @@ class Project < ActiveRecord::Base
   validates_presence_of :use_for_money
   validates_presence_of :chapter_id
 
-  delegate :name, :to => :chapter, :prefix => true
+  delegate :name, to: :chapter, prefix: true
 
   before_save :ensure_funded_description
 
@@ -41,7 +41,7 @@ class Project < ActiveRecord::Base
   end
 
   def self.voted_for_by_members_of(chapter)
-    joins(:users => :chapters).where("chapters.id = #{chapter.id} OR chapters.name = 'Any'")
+    joins(users: :chapters).where("chapters.id = #{chapter.id} OR chapters.name = 'Any'")
   end
 
   def self.during_timeframe(start_date, end_date)
@@ -127,7 +127,7 @@ class Project < ActiveRecord::Base
 
   def new_photos=(photos)
     photos.each do |photo|
-      new_photo = self.photos.build(:image => photo)
+      new_photo = self.photos.build(image: photo)
       if persisted?
         new_photo.save
       end

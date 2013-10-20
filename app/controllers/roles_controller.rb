@@ -4,6 +4,6 @@ class RolesController < ApplicationController
   def destroy
     role = Role.find(params[:id])
     role.destroy
-    render :json => { :role_id => role.id }
+    render json: { role_id: role.id }
   end
 end

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_filter :must_be_logged_in
-  before_filter :ensure_chapter, :only => [:index]
-  before_filter :ensure_current_user_or_admin, :only => [:update, :edit]
+  before_filter :ensure_chapter, only: [:index]
+  before_filter :ensure_current_user_or_admin, only: [:update, :edit]
 
   def index
     @users = User.all_with_chapter(params[:chapter_id])

@@ -1,13 +1,13 @@
 <%= simple_form_for chapter do |form| -%>
   <%= form.input :name %>
   <%= form.input :slug %>
-  <%= form.input :twitter_url, :label => "Twitter URL" %>
-  <%= form.input :facebook_url, :label => "Facebook URL" %>
-  <%= form.input :email_address, :label => "Email Address" %>
-  <%= form.input :blog_url, :label => "Blog URL" %>
-  <%= form.input :rss_feed_url, :label => "RSS Feed URL" %>
+  <%= form.input :twitter_url, label: "Twitter URL" %>
+  <%= form.input :facebook_url, label: "Facebook URL" %>
+  <%= form.input :email_address, label: "Email Address" %>
+  <%= form.input :blog_url, label: "Blog URL" %>
+  <%= form.input :rss_feed_url, label: "RSS Feed URL" %>
   <%= form.input :description %>
-  <%= form.input :country, :priority => COUNTRY_PRIORITY %>
+  <%= form.input :country, priority: COUNTRY_PRIORITY %>
   <%= form.input :time_zone %>
   <%= form.input :extra_question_1 %>
   <%= form.input :extra_question_2 %>

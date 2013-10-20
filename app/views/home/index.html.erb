@@ -2,10 +2,10 @@
   <section class="awesome-projects">
   <% @projects[0..5].each do |project| %>
     <article class="project project-<%= project.id %>">
-      <%= link_to project, :class => "image-wrapper" do %>
+      <%= link_to project, class: "image-wrapper" do %>
         <div class="project-name">
           <h2><%= project.title %></h2>
-          <p><%= t ".by", :name => project.name %></p>
+          <p><%= t ".by", name: project.name %></p>
         </div>
         <div class="funding-chapter">
           <h3><%= image_tag("location_pin_small.png") %> <%= project.chapter.name %></h3>
@@ -27,10 +27,10 @@
 
   <% (@projects[6..11] || []).each do |project| %>
     <article class="project project-<%= project.id %>">
-      <%= link_to project, :class => "image-wrapper" do %>
+      <%= link_to project, class: "image-wrapper" do %>
         <div class="project-name">
           <h2><%= project.title %></h2>
-          <p><%= t ".by", :name => project.name %></p>
+          <p><%= t ".by", name: project.name %></p>
         </div>
         <div class="funding-chapter">
           <h3><%= image_tag("location_pin_small.png") %> <%= project.chapter.name %></h3>
@@ -44,7 +44,7 @@
 
 <section class="what-how">
   <hgroup>
-    <h2><%= t(".funding-html", :amount => funding_amount_for(Project.winner_count)) %> <span class="divider"></span> <%= t(".winner-count-html", :amount => Project.winner_count) %></h2>
+    <h2><%= t(".funding-html", amount: funding_amount_for(Project.winner_count)) %> <span class="divider"></span> <%= t(".winner-count-html", amount: Project.winner_count) %></h2>
   </hgroup>
   <div class="need-funding">
     <div class="description">
@@ -65,7 +65,7 @@
 
 <section class ="who-where">
   <hgroup>
-    <h2><%= t(".chapter-count-html", :count => Chapter.count) %> <span class="divider"></span> <%= t(".country-count-html", :count => Chapter.country_count) %></h2>
+    <h2><%= t(".chapter-count-html", count: Chapter.count) %> <span class="divider"></span> <%= t(".country-count-html", count: Chapter.country_count) %></h2>
   </hgroup>
 
   <div class="about-preview">
@@ -90,7 +90,7 @@
 
 <section class="awesome-chapters">
   <% @chapters.each do |chapter| %>
-      <%= link_to chapter, :class => "image-wrapper" do %>
+      <%= link_to chapter, class: "image-wrapper" do %>
         <%= chapter.name %>
       <% end %>
   <% end %>
