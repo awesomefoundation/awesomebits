@@ -350,6 +350,7 @@ DEPENDENCIES
   sham_rack
   shoulda-matchers
   simple_form!
+  simplecov
   sprockets-redirect
   tddium
   texticle (~> 2.0)

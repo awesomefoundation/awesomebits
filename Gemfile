@@ -10,6 +10,7 @@ group :assets do
   gem 'uglifier'
 end
 
+gem 'simplecov'
 gem 'coveralls', require: false
 gem 'country_select'
 gem 'pg', '~> 0.13.2'
