@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe ProjectFilter do
   it 'filters the projects to the specified timeframe' do
-    start_date = 3.days.ago
-    end_date = 1.days.ago
+    start_date = 3.days.ago.to_s(:db)
+    end_date = 1.days.ago.to_s(:db)
     matching_project = create(:project, :created_at => 2.days.ago)
     non_matching_project = create(:project, :created_at => 6.days.ago)
     project_filter = ProjectFilter.new(Project)

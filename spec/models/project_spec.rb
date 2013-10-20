@@ -58,8 +58,8 @@ describe Project do
   end
 
   context '.during_timeframe' do
-    let(:start_date) { Date.parse("2001-01-01") }
-    let(:end_date) { Date.parse("2010-10-10") }
+    let(:start_date) { "2001-01-01" }
+    let(:end_date) { "2010-10-10" }
     let!(:before_start) { create(:project, :created_at => Date.parse("2000-12-31")) }
     let!(:before_end) { create(:project, :created_at => Date.parse("2001-01-02")) }
     let!(:after_start) { create(:project, :created_at => Date.parse("2010-10-09")) }
