@@ -47,7 +47,6 @@ class Project < ActiveRecord::Base
   def self.during_timeframe(start_date, end_date)
     start_date = 100.years.ago.strftime('%Y-%m-%d') if start_date.blank?
     end_date   = Time.zone.now.strftime('%Y-%m-%d') if end_date.blank?
-    binding.pry
     where("projects.created_at BETWEEN ? AND ?", Time.zone.parse(start_date.to_s), Time.zone.parse(end_date.to_s) + 1.day)
   end
 
