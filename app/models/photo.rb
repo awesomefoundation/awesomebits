@@ -12,5 +12,5 @@ class Photo < ActiveRecord::Base
 
   attr_accessible :image
 
-  validates_attachment :image, content_type: {'image/jpeg', 'image/jpg', 'image/png', 'image/gif'}, size: {in: 0..1000.kilobytes}, message: 'supports jpeg and png files up to 1MB'
+  validates_attachment :image, content_type: {content_type: ['image/jpeg', 'image/jpg', 'image/png', 'image/gif']}
 end
