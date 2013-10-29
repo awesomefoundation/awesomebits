@@ -18,6 +18,18 @@ Much of the AwesomeBits interface has been localized. Localization files are
 in the config/locales/ directory with a separate file for each language.
 
 
+Images
+------
+
+Images are resized dynamically via the [Magickly gem](http://magickly.afeld.me). 
+In order to display images properly, you must have a Magickly installation running
+and you must set the MAGICKLY_HOST environment variable to point to that host. 
+
+e.g. If you are running Magickly localy on port 8888, run AwesomeBits using the command: 
+
+  MAGICKLY_HOST=http://localhost:8888 thin start
+
+
 License
 -------
 
