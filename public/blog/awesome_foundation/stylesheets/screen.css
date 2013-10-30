@@ -6,7 +6,7 @@ ol, ul {
   list-style: none; }
 
 div, p, em, strong {
-  color: #646464;
+  color: #2E2E2E;
   line-height: 20px; }
 
 strong, strong > em {
@@ -89,7 +89,7 @@ section.bread-crumbs {
           color: #ff4b7e;
           text-decoration: none; }
     .post header p.date {
-      color: #646464;
+      color: #2E2E2E;
       font: normal 14px/16px Georgia, Cambria, serif; }
   .post div.post-hero {
     background: white;
@@ -124,7 +124,7 @@ section.bread-crumbs {
       color: #227aff;
       text-decoration: none; }
   .post p {
-    color: #646464;
+    color: #2E2E2E;
     font: normal 14px/20px "museo-sans", "brandon-grotesque", "proxima-nova", "Open Sans", "helvetica neue", sans-serif;
     margin: 0px; }
     .post p span {
