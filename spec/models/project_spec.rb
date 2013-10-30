@@ -283,6 +283,39 @@ describe Project do
       Chapter.per_page.should == 30
     end
   end
+
+  context "url validation" do
+    let(:project) { build(:project) }
+
+    it 'leaves the url alone if it has a scheme' do 
+      project.url = "https://example.com"
+      project.valid?
+
+      project.url.should == "https://example.com"
+    end
+
+    it 'leaves the rss feed url alone if it has a scheme' do 
+      project.rss_feed_url = "https://example.com/rss"
+      project.valid?
+
+      project.rss_feed_url.should == "https://example.com/rss"
+    end
+
+    it 'adds a url scheme if it does not have one' do 
+      project.url = "example.com"
+      project.valid?
+
+      project.url.should == "http://example.com"
+    end
+
+    it 'adds a rss feed url scheme if it does not have one' do 
+      project.rss_feed_url = "example.com/rss"
+      project.valid?
+
+      project.rss_feed_url.should == "http://example.com/rss"
+    end
+  end
+
 end
 
 describe Project, 'csv_export' do
