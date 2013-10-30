@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.13'
+gem 'rails', '3.2.14'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -46,7 +46,8 @@ group :test do
   gem "turnip"
   gem "capybara"
   gem "database_cleaner"
-  gem "capybara-webkit", "0.7.1"
+  gem 'capybara-webkit', :git => "https://github.com/thoughtbot/capybara-webkit.git"
+  #gem "capybara-webkit", "0.7.1"
   gem "factory_girl_rails"
   gem "bourne"
   gem "timecop"
