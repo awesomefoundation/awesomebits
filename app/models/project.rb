@@ -136,9 +136,9 @@ class Project < ActiveRecord::Base
 
   def display_images
     if photos.empty?
-      [Photo.new.image]
+      [Photo.new]
     else
-      photos.map(&:image)
+      photos
     end
   end
 

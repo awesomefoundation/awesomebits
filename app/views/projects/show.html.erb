@@ -20,7 +20,7 @@
 <% content_for :javascript do %>
   <% javascript_tag do %>
     $(window).load(function(){
-      $('a.lightbox').colorbox();
+      $('a.lightbox').colorbox({iframe: true, innerWidth: 940, innerHeight: 470});
     });
   <% end %>
 <% end %>

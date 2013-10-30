@@ -270,7 +270,7 @@ describe Project do
     it "returns the photos if there are any" do
       photo = create(:photo)
       project.photos = [photo]
-      project.display_images.map(&:url).should == [photo.image.url]
+      project.display_images.map(&:url).should == [photo.url]
     end
 
     it "returns a new photo if there aren't any" do
