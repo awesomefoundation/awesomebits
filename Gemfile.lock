@@ -160,7 +160,7 @@ GEM
       net-ssh (>= 1.99.1)
     net-ssh (2.4.0)
       jruby-pageant (>= 1.0.2)
-    newrelic_rpm (3.5.3.25)
+    newrelic_rpm (3.6.8.168)
     nokogiri (1.5.2)
     paperclip (3.0.4)
       activemodel (>= 3.0.0)
