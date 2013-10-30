@@ -6,6 +6,9 @@ require 'turnip'
 require 'turnip/capybara'
 require 'database_cleaner'
 require 'paperclip/matchers'
+require 'coveralls'
+require 'json'
+Coveralls.wear!
 
 DatabaseCleaner.strategy = :truncation
 Capybara.javascript_driver = :webkit

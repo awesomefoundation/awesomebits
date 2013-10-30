@@ -1,6 +1,8 @@
 AwesomeBits
 ===========
 
+[![Coverage Status](https://coveralls.io/repos/awesomefoundation/awesomebits/badge.png)](https://coveralls.io/r/awesomefoundation/awesomebits)[![Build Status](https://travis-ci.org/awesomefoundation/awesomebits.png?branch=master)](https://travis-ci.org/awesomefoundation/awesomebits)[![Code Climate](https://codeclimate.com/github/awesomefoundation/awesomebits.png)](https://codeclimate.com/github/awesomefoundation/awesomebits)
+
 Countries
 ---------
 
