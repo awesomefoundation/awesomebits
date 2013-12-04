@@ -1,0 +1,320 @@
+he:
+  clearance_mailer:
+    change_password:
+      opening:
+        "מישהו, בתקווה שזה אתה, ביקש שנשלח לך לינק לשינוי הסיסמא:"
+      closing:
+        "אם אתה לא בקשתה, תתעלם מהודעה זו. הסיסמא לא תשתנה."
+  flashes:
+    failure_when_forbidden:
+      "בדוק שוב את הכתובת או שתנסה לשלוח את הטופס שוב."
+    failure_after_update:
+      "סיסמא לא יכולה להיות ריקה."
+    failure_after_create:
+      "דואר אלקטרוני או סיסמא שגויים."
+  helpers:
+    submit:
+      chapter:
+        update: "עדכן מעגל"
+      password:
+        submit: 'שנה סיסמא'
+      password_reset:
+        submit: 'שמור סיסמא'
+      session:
+        submit: 'התחבר'
+      user:
+        create: 'הרשם'
+    label:
+      session:
+        email: 'כתובת דואר אלקטרוני'
+        password: 'סיסמא'
+        submit: 'התחבר'
+      password: 
+        email:
+          'כתובת דואר אלקטרוני'
+      password_reset:
+        password:
+          'בחר סיסמא'
+  layouts:
+    application:
+      sign_in:
+        'התחבר'
+      sign_out:
+        'התנתק'
+  passwords:
+    create:
+      description:
+        "אתה תקבל מייל בדקות הקרובות שבו יהיו הוראות לשינוי הסיסמא שלך."
+    edit:
+      description:
+        'על מנת לשנות את הסיסמא שלך, אנא כתוב את הסיסמא החדש למטה:'
+      title:
+        'שינוי סיסמא'
+    new:
+      description:
+        "על מנת שתקבל את הסיסמא החדשה שלך, אנא כתוב את כתובת הדואר האלקטרוני שלך."
+      title:
+        'שנה סיסמא'
+  sessions:
+    form:
+      forgot_password: 'שכחתי סיסמא'
+      sign_up: 'הרשם'
+    new:
+      title: 'התחבר'
+  users:
+    new:
+      title: 'הרשמה'
+      sign_in: 'התחבר'
+
+  number:
+    delimiter: ","
+    separator: "."
+  date:
+    formats:
+      funding: "%B, %Y"
+  flash:
+    permissions:
+      must-be-logged-in: אתה חייב להיות מחובר.
+      must-be-admin: אתה חייב להיות מנהל.
+      cannot-remove-user: אין לך הרשאות למחוק משתמש.
+      must-be-dean-or-admin: אתה חייב להיות דיקן או אדמין
+      must-have-chapter: אתה חייב שיהיה לך מעגל אחד או יותר
+      cannot-view-finalists: "אין לך הרשאות לראות עמוד זה"
+      cannot-invite: "אין לך הרשאות להזמין אנשים"
+      cannot-modify-account: "אין לך הרשאות לשנות חשבון זה."
+      cannot-mark-winner: "אתה לא יכול לבחור את המנצח"
+    votes:
+      already-voted: "הצבעת כבר לפרויקט זה"
+      already-deleted: "הצבעתך נמחקה כבר"
+    applications:
+      thanks: "תודה רבה שהצטרפת!"
+    acceptances:
+      cannot: "לא נוכל לאשר הזמנה זו"
+  layouts:
+    application:
+      main-header: קרן בקטנה
+      apply: הגשת מועמדות
+      dashboard: ניהול
+      blog: בלוג
+      chapters: מעגלים
+      chapter_header: Awesome Everywhere!
+      home: עמוד בית
+      about_us: אודותינו
+      about_contact: צור קשר
+      faq: FAQ
+      want_to_help: הצטרף
+      sign-out: התנתק
+      sign-in: התחבר
+    sidebar:
+      projects: פרויקטים
+      finalists: העולים לגמר
+      trustees: נאמנים
+      members: חברי קבוצה
+      create-chapter: צור מעגל
+      invite-trustee: הוסף נאמן
+      edit-profile: ערוך פרטים
+      edit-chapter-profile: ערוך פרטי מעגל
+      view-all-users: צפה ברשימת כל המשתמשים
+  home:
+    index:
+      title: מקדמים את המגניבות בעולם, 1000$ כל זמן.
+      by: "By %{name}"
+      what:
+        header: צריך מימון?
+        body-html: "Have a crazy brilliant idea that needs funding? We award <strong>$1,000 grants every month</strong>. It couldn't be simpler! Your idea is yours alone. We don't want a stake in it. We just want to help you make it happen!"
+      call-to-action: הגש מועמדות לפרויקט בקרן בקטנה!
+      who:
+        header: Awesome is Everywhere!
+        body: The Awesome Foundation for the Arts and Sciences is an ever-growing, worldwide network of people devoted to forwarding the interest of awesomeness in the universe. Created in the long hot summer days of 2009 in Boston, the Foundation distributes a series of monthly $1,000 grants to projects and their creators. The money is pooled together from the coffers of ten or so self-organizing “micro-trustees” and given upfront in cash, check, or gold doubloons. The chapters are autonomous and organized by the trustees around geographic areas or topics of interest.
+      news:
+        header: חדשות!
+        recent: פוסטים אחרונים
+        events: אירועים עתידדים
+      funding-html: "<em class='funding'>$%{amount}</em> ניתרמו"
+      winner-count-html: "<em class='winners'>%{amount}</em> פרויקטים שמומנו"
+      chapter-count-html: "<em class='chapters'>%{count}</em> מעגלים"
+      country-count-html: "<em class='countries'>%{count}</em> Countries"
+  chapters:
+    index:
+      title: Awesome is Everywhere
+    show:
+      edit: ערוך מעגל
+      recent_winners: Recently funded projects
+      see_more: See more Awesomeness
+      byline: "By %{name}"
+      trustees:
+        header: הכר את הנאמנים
+        about: אודותינו
+        news: "חדשות של %{name}"
+      apply-for-grant: הגש בקשה למענק
+    edit:
+      title: ערוך את פרטי המעגל
+    new:
+      title: צור מעגל חדש
+  finalists:
+    index:
+      title: "Finalists for %{name}"
+      filter-button: סנן
+      start-date: תאריך התחלה
+      end-date: תאריך סיום
+      table:
+        title: כותרת
+        id: מזהה
+        votes: הצבעות
+  projects:
+    project:
+      awesome: הצביע
+      delete: מחק פרויקט
+      see-the-rest: ראה את השאר
+      view-public-page: ראה את העמוד הציבורי
+      edit: ערוך פרויקט
+      confirm-delete: האם אתה בטוח שאתה רוצה למחוק פרויקט זה?
+      winner: "בחר כמנצח ב%{name}"
+      about-me: "קצת אודותיי:"
+      about-project: "הרעיון שלי:"
+      use-for-money: "איך אשתמש בכסף?"
+      not-answered: Not Answered
+      images: "תמונות:"
+      image: "תמונה #%{index}"
+    new:
+      title: האם אתה מוכן להיות מגניב?
+      description: מלא את הטופס למטה עם פרטים אודותייך ואודות הפרויקט שלך
+      apply: שלח
+    form:
+      save: שמור
+      image-notes: The top image is set as the cover image. Images will be resized to %{dimensions} pixels.
+    index:
+      filter-button: סנן
+      search: חפש
+      start-date: זמן התחלה
+      end-date: זמן סיום
+      short-list-filter: My short-list
+      title: "פרויקטים ל%{name}"
+      export-projects: ייצא סוננו
+      export-all-projects: סנן את כל הפרויקטים
+    public_show:
+      edit: ערוך פרויקט
+      byline-html: "<span class='chapter-name'>%{chapter_name}</span> project created by <span class='project-starter'>%{submitter_name}</span>"
+      funder-html: "Funded by <span class='chapter-name'>%{name}</span>"
+      submitted-to-html: "Project application submitted to <span class=''>%{name}</span>"
+      description:
+        header: תיאור הפרויקט
+      feed-title: פוסטים אחרונים
+    show:
+      back-to: 'חזור ל <a href="%{url}">%{name}</a>'
+  emails:
+    invitation:
+      subject: "הוזמנת למעגל %{name} בקרן בקרטנה!"
+    welcome:
+      subject: "ברוך הבאים ל%{name}"
+    application:
+      subject: "תודה רבה שהגשת את מועמדותך!"
+  invitations:
+    new:
+      invite_trustee: "הזמן נאמן חדש"
+      select_chapter: "בחר מעגל"
+      select: "בחר"
+      will_be_invited_to: "הנאמן יצטרף ל:"
+      invite_button: "הזמן"
+  sessions:
+    new:
+      sign-in: התחברות דיקנים ונאמנים
+      intro: אזור זה של האתר הוא לדיקנים ונאמנים בלבד. אם אתה נאמן ואתה צריך הרשאות צור קשר עם דיקן המעגל שלך.
+      forgot_password: שכחת את הסיסמא?
+  users:
+    user:
+      promote_to_dean: קדם
+      demote_to_trustee: הורד בדרגה
+      demote_admin: הורד בדרגה
+      promote_admin: קדם
+      error_dean_promotion: קידום לדיקן נכשל
+      error_dean_demotion: הורדת בדרגה של דיקן נכשלה
+      error_admin_promotion: קידום מנהל נכשל
+      error_admin_demotion: הורדת בדרגה של מנהל נכשל
+      error_removing_user: מחיקת משתמש נכשלה
+      remove_from_chapter: מחק
+    edit:
+      title: ערוך פרטי משתמש
+
+    index:
+      title: חברי צוות
+      name: שם
+      email: כתובת מייל
+      chapter: מעגל
+      role: תפקיד
+      remove: מחק
+      dean: דיקן
+      admin: מהבל
+  pages:
+    about_us:
+      title_tag: אודותינו
+      meta_description: אודות קרן בקטנה
+      meta_keywords: ""
+      headline: "קרן בקטנה"
+      sub_headline: "For the Arts and Sciences and the advancement of Awesomeness in the universe."
+      our-story-title: "הסיפור שלנו"
+      our-story: "<p>We are an ever-growing, worldwide network of people devoted to forwarding the interest of awesomeness in the universe. Created in the long hot summer days of 2009 in Boston, the Foundation distributes a series of monthly $1,000 grants to projects and their creators. The money is pooled together from the coffers of ten or so self-organizing “micro-trustees” and given upfront in cash, check, or gold doubloons. The chapters are autonomous and organized by the trustees around geographic areas or topics of interest.</p>
+    <p>The Foundation provides these grants with no strings attached and claims no ownership over the projects it supports. It is, in the words of one of our trustees, a micro-genius grant for flashes of micro-brilliance.</p>
+    <p>Since its humble beginnings, many <a href=\"http://awesomefoundation.org/chapters/\">Awesome Foundation chapters have sprung up globally</a> to conserve, sustain, and support the worldwide ecosystem of awesomeness. Projects have included efforts in a wide range of areas including technology, arts, social good, and beyond.</p>
+    <p><a href=\"http://www.youtube.com/watch?v=PPoYzyOn44M\">We’re still waiting for something with dinosaurs (hint, hint)</a>.</p>"
+      contact-title: צור איתנו קשר
+      contact: "<p>You can drop us an email at <a href=\"mailto:contact@awesomefoundation.org\">contact@awesomefoundation.org</a>, follow us on Twitter at <a href=\"http://twitter.com/awesomefound\">@awesomefound</a>, or track us on Facebook <a href=\"http://www.facebook.com/awesomefoundation\">here</a>. If you’re interested in helping to start a chapter or joining an existing one if a spot opens up, great! <a href=\"http://spreadsheets2.google.com/a/awesomefoundation.org/viewform?hl=en&formkey=dFJwaXhNTFp6VG40clU3cFVfWFk0bXc6MQ\">Tell us about yourself here!</a></p>"
+    faq:
+      headline: Super awesome info
+      sub_headline: Everything you need to know about advancing awesomeness.
+  simple_form:
+    labels:
+      project:
+        name: שם
+        email: כתובת דואר אלקטרוני
+        phone: מספר טלפון
+        title: שם הפרויקט
+        url: כתובת האתר
+        current_photos-html: "תמונות <span>(גרור כדי לשנות את הסדר)</span>"
+        new_photos-html: "העלה   תמונה לפרויקט שלך"
+        chapter_id: בחר מעגל אליו תרצה להצטרף
+        rss_feed_url: כתובת RSS של הפרויקט
+        about_me: ספר לנו קצת עלייך
+        about_project: ספר לנו על הפרויקט המגניב שלך!
+        use_for_money: איך תשתמש בכסף?
+      chapter:
+        name: שם
+        slug: שם שיופיע בכתובת (באנגלית)
+        twitter_url: כתובת Twitter
+        facebook_url: כתובת Facebook
+        blog_url: כתובת בלוג
+        rss_feed_url: כתובת RSS
+        description: תיאור
+        extra_question_1: שאלה נוספת 1
+        extra_question_2: שאלה נוספת 2
+        extra_question_3: שאלה נוספת 3
+        submit: שלח
+      user:
+        first_name: שם פרטי
+        last_name: שם משפחה
+        email: כתובת דואר אלקטרוני
+        bio: ביוגרפיה
+        url: כתובת האתר
+        twitter_username: שם המתשמש שלך בTwitter
+        facebook_url: כתובת Facebook
+        linkedin_url: כתובת LinkedIn
+        new_password: סיסמא חדשה
+        submit: שלח
+        user_image: תמונת פרופיל
+    hints:
+      project:
+        funded_description: יוצג בעמוד של הפרויקט הממומן
+        rss_feed_url: קישורים לפוסטים שלך מהכתובת הזה יוצגו בעמוד של הפרויקט
+      user:
+        user_image: Set your user image at <a href="https://en.gravatar.com/site/signup/%{email}" target="_blank">gravatar.com</a> using your email address above
+  activerecord:
+    errors:
+      models:
+        chapter:
+          attributes:
+            slug:
+              invalid: חייב להיות אותיות קטנות באנגלית, ללא רווחים.
+  meta:
+    title: קרן בקטנה
+    direction: rtl
+    description: מקדמים את המגניבות בעולם, 1000$ כל פעם.

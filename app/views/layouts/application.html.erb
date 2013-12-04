@@ -2,8 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <%= content_tag :title, page_title(app_name: 'The Awesome Foundation') %>
+  <%= content_tag :title, page_title(app_name: t("meta.title")) %>
   <%= stylesheet_link_tag :application, :media => 'all' %>
+  <%= stylesheet_link_tag t("meta.direction"), :media => 'all' %>
   <%= csrf_meta_tags %>
   <%= meta_tag :viewport, '', :name => 'viewport' %>
   <%= meta_tag :description, t("meta.description"), :name => "description", :property => "og:description" %>

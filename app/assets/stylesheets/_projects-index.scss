@@ -6,7 +6,7 @@ body.projects-index {
 
 .admin-panel {
   border-right: 1px solid rgb(200,200,200);
-  float: left;
+
   margin-right: 39px;
   padding: 0px 20px 20px 0px;
   width: 180px;
@@ -23,6 +23,7 @@ body.projects-index {
       margin-top: -10px;
       margin-right: 5px;
     }
+
     
     ol {
       display: none;
@@ -44,7 +45,6 @@ body.projects-index {
       margin: none;
       margin-left: 15px;
       margin-top: -12px;
-      float: left;
     }
   }
 
@@ -113,7 +113,6 @@ body.projects-index {
 }
 
 .applications {
-  float: left;
   width: grid-width(9);
 
   @media all and (max-width: $narrow) {
@@ -144,7 +143,6 @@ body.projects-index {
     }
 
     nav {
-      float: left;
       padding: 10px;
       position: relative;
 
@@ -236,12 +234,9 @@ body.projects-index {
     }
 
     form.filter {
-      float: right;
       padding: 10px 10px 10px 0;
 
       div.short-list-toggle {
-        float: left;
-        margin-right: 10px;
         position: relative;
 
         input[type="checkbox"] {
@@ -273,8 +268,6 @@ body.projects-index {
       }
 
       div.date-range, div.search {
-        float: left;
-        margin-right: 10px;
 
         label {
           display: none;
@@ -297,7 +290,8 @@ body.projects-index {
 
       input[type="submit"], button[type="submit"] {
         @include button(rgb(230,230,230));
-        margin: 0px;
+        margin-top: 0px;
+        margin-bottom: 0px;
         width: auto;
       }
     }
@@ -340,7 +334,6 @@ body.projects-index {
 
         a {
           color: $base-font-color;
-          float: left;
           font: bold 24px $sans-serif;
           text-decoration: none;
 
@@ -352,8 +345,6 @@ body.projects-index {
         a.short-list,
         a.mark-as-winner {
           @include button(rgb(240,240,240));
-          float: right;
-          margin-left: 10px;
           text-decoration: none;
 
           &.short-list:hover {
@@ -380,7 +371,6 @@ body.projects-index {
         padding: 10px;
 
         .spam {
-          float: right;
           margin: 0px;
 
           a {

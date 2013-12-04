@@ -1,0 +1,124 @@
+/* RTL scss */
+
+
+//
+// Homepage
+// 
+
+header.main nav {
+  .fast-forward {
+    float: left;
+  }
+
+  h1 {
+    float: left;
+  }
+
+  ol {
+    float: right;
+
+    li { 
+      float: left;
+    }
+  }
+}
+
+//
+// Chapter page
+// 
+
+body.chapters-show {
+   .title {
+      h1 {
+        float: left;
+      }
+
+      a.edit-chapter {
+        float: right; 
+      }
+
+      a.apply-chapter {
+        float: right; 
+      }
+
+      a.external {
+        float: right;
+      }
+   }
+
+   .chapter-projects {
+
+      .project {
+        float: left;
+      }
+
+   }
+
+
+   .chapter-info {
+      .trustees {
+        ol li {
+            float: left;
+        }
+      }
+
+      .description article {
+        float: left;
+      }
+      
+   }
+}
+
+
+//
+// Administration Panel
+//
+.admin-panel {
+  float: left;
+
+}
+
+.applications {
+  float: right;
+
+
+  .application-filters {
+    nav {
+      float: left;
+    } 
+
+    form.filter {
+      float: right;
+
+      div.short-list-toggle {
+        float: left;
+        margin-right: 10px;
+      }
+
+      div.date-range, div.search {
+        float: left;
+        margin-right: 10px;
+      }
+
+    }
+
+  }
+
+  article.project header {
+    div.title {
+      a {
+        float: left;
+      }
+
+      a.short-list, a.mark-as-winner { 
+        float: right;
+        margin-left: 10px;
+      }
+    }
+
+    .meta-data .spam { 
+      float: right;
+    }
+  }
+
+}

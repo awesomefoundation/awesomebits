@@ -1,11 +1,12 @@
 Awesomefoundation::Application.routes.draw do
-  match "/blog/contact/" => redirect("/en/contact")
-  match "/blog/about/"   => redirect("/en/about_us")
+  locale = I18n.default_locale.to_s
+  match "/blog/contact/" => redirect("/#{locale}/contact")
+  match "/blog/about/"   => redirect("/#{locale}/about_us")
   match "/blog"          => redirect("http://blog.awesomefoundation.org")
   match "/blog/*path"    => redirect { |params, request| "http://blog.awesomefoundation.org/#{params[:path]}" }, :format => false
-  match "/apply"         => redirect("/en/submissions/new")
+  match "/apply"         => redirect("/#{locale}/submissions/new")
 
-  scope "(:locale)", :locale => /en|pt|fr/ do
+  scope "(:locale)", :locale => /he|en|pt|fr/ do
     resource  :session, controller: :sessions, only: [:new, :create, :destroy]
     match "sign_in",  :to => "sessions#new"
     match "sign_out", :to => "sessions#destroy", :via => :delete
