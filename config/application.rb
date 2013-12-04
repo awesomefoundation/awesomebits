@@ -57,10 +57,13 @@ module Awesomefoundation
     config.assets.enabled = true
 
     # Version of your assets, change this if you want to expire all your assets
-    config.assets.version = '1.0'
+    config.assets.version = '1.1'
 
     # Add to assets path
     config.assets.paths << Rails.root.join("vendor", "assets", "colorbox")
+
+    # Add the ltr and rtl css to precompilation
+    config.assets.precompile += %w( ltr.scss rtl.scss )
 
     # Use our own app as the handler for errors.
     config.exceptions_app = self.routes
