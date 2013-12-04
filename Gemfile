@@ -41,6 +41,7 @@ gem "friendly_id", "~> 4.0.9"
 gem 'airbrake'
 gem 'redcarpet'
 gem 'honeypot-captcha'
+gem "faker"
 
 group :development, :test do
   gem "rspec-rails"
