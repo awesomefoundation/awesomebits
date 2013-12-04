@@ -1,33 +1,24 @@
 /* RTL scss */
 
 
-html { 
-  direction: rtl;
-}
-
-
-th {
-  text-align: right;
-}
-
 //
 // Homepage
 // 
 
 header.main nav {
   .fast-forward {
-    float: right;
+    float: left;
   }
 
   h1 {
-    float: right;
+    float: left;
   }
 
   ol {
-    float: left;
+    float: right;
 
     li { 
-      float: right;
+      float: left;
     }
   }
 }
@@ -39,26 +30,26 @@ header.main nav {
 body.chapters-show {
    .title {
       h1 {
-        float: right;
+        float: left;
       }
 
       a.edit-chapter {
-        float: left; 
+        float: right; 
       }
 
       a.apply-chapter {
-        float: left; 
+        float: right; 
       }
 
       a.external {
-        float: left;
+        float: right;
       }
    }
 
    .chapter-projects {
 
       .project {
-        float: right;
+        float: left;
       }
 
    }
@@ -67,12 +58,12 @@ body.chapters-show {
    .chapter-info {
       .trustees {
         ol li {
-            float: right;
+            float: left;
         }
       }
 
       .description article {
-        float: right;
+        float: left;
       }
       
    }
@@ -93,25 +84,20 @@ body.chapters-show {
 
   .application-filters {
     nav {
-      float: right;
+      float: left;
     } 
 
     form.filter {
-      float: left;
+      float: right;
 
       div.short-list-toggle {
-        float: right;
-        margin-left: 10px;
+        float: left;
+        margin-right: 10px;
       }
 
       div.date-range, div.search {
-        float: right;
-        margin-left: 10px;
-      }
-
-      // Wasn't on ltr
-      button[type="submit"], input[type="submit"] {
-        margin-left: 5px;
+        float: left;
+        margin-right: 10px;
       }
 
     }
@@ -121,17 +107,17 @@ body.chapters-show {
   article.project header {
     div.title {
       a {
-        float: right;
+        float: left;
       }
 
       a.short-list, a.mark-as-winner { 
-        float: left;
-        margin-right: 10px;
+        float: right;
+        margin-left: 10px;
       }
     }
 
     .meta-data .spam { 
-      float: left;
+      float: right;
     }
   }
 
