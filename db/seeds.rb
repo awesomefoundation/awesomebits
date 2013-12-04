@@ -1,15 +1,25 @@
-def create_user_with_role(name, role, mail, chapter)
+#
+# => rake db:drop db:create db:migrate db:seed
+# 
+
+Chapter.delete_all
+User.delete_all
+Project.delete_all
+
+def create_user_with_role(name, role, mail, chapters)
   dean = User.find_or_create_by_first_name_and_last_name_and_email(name, role, mail)
   dean.update_password(role)
   dean.save!
 
-  dean_role = Role.new
-  dean_role.name = role
-  dean_role.user = dean
-  dean_role.chapter = chapter
-  dean_role.save!
+  chapters.each do |chapter|
+    dean_role = Role.new
+    dean_role.name = role
+    dean_role.user = dean
+    dean_role.chapter = chapter
+    dean_role.save!
 
-  dean.roles << dean_role
+    dean.roles << dean_role
+  end
 
   dean
 end
@@ -44,11 +54,16 @@ any_chapter.save!
 test_chapter = Chapter.find_or_create_by_name("Test Chapter", :description => "Test Chapter", :country => COUNTRY_PRIORITY.second)
 test_chapter.save!
 
+great_chapter = Chapter.find_or_create_by_name("Great Chapter", :description => "Great Chapter", :country => COUNTRY_PRIORITY.third)
+great_chapter.save!
+
 # Create a sample dean and trusteer chapters
-dean = create_user_with_role "Yosy", "dean", "yosy102@gmail.com", test_chapter
-trusteer = create_user_with_role "Yosy", "trusteer", "yosy103@gmail.com", test_chapter
+dean = create_user_with_role "Yosy", "dean", "yosy102@gmail.com", [test_chapter]
+trusteer = create_user_with_role "Yosy", "trusteer", "yosy103@gmail.com", [test_chapter]
+great_dean = create_user_with_role "Great Dean", "dean", "yosy_dean@gmail.com", [great_chapter]
 
 
 # Create a sample projects for any chapter and test chapter
 create_projects_for_chapter test_chapter, 10
 create_projects_for_chapter any_chapter, 2
+create_projects_for_chapter great_chapter, 20
