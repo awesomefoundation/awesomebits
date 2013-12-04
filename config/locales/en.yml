@@ -240,4 +240,6 @@ en:
             slug:
               invalid: must be lowercase and can not contain spaces
   meta:
+    title: The Awesome Foundation
+    direction: ltr
     description: Forwarding the interest of Awesome in the universe, $1,000 at a time.
