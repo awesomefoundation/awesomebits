@@ -190,14 +190,14 @@ he:
   simple_form:
     labels:
       project:
-        name: השם שלך
+        name: שם
         email: כתובת דואר אלקטרוני
         phone: מספר טלפון
-        title: כותרת הפרויקט
+        title: שם הפרויקט
         url: כתובת האתר
         current_photos-html: "תמונות <span>(גרור כדי לשנות את הסדר)</span>"
         new_photos-html: "העלה תמונה לפרויקט שלך"
-        chapter_id: בחור מעגל אליו תרצה להצטרף
+        chapter_id: בחר מעגל אליו תרצה להצטרף
         rss_feed_url: כתובת RSS של הפרויקט
         about_me: ספר לנו קצת עלייך
         about_project: ספר לנו על הפרויקט המגניב שלך!
