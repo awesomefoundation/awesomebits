@@ -50,6 +50,7 @@ GEM
       builder
     archive-tar-minitar (0.5.2)
     arel (3.0.2)
+    bcrypt-ruby (3.1.2)
     binding_of_caller (0.6.7)
     bourbon (1.4.0)
       sass (>= 3.1)
@@ -65,9 +66,10 @@ GEM
       xpath (~> 0.1.4)
     childprocess (0.3.2)
       ffi (~> 1.0.6)
-    clearance (0.16.2)
-      diesel (~> 0.1.5)
-      rails (>= 3.0)
+    clearance (1.1.0)
+      bcrypt-ruby
+      email_validator (~> 1.4)
+      rails (>= 3.1)
     cocaine (0.2.1)
     coderay (1.0.6)
     coffee-rails (3.2.2)
@@ -84,12 +86,12 @@ GEM
     country_select (0.0.2)
     daemons (1.1.8)
     database_cleaner (0.7.2)
-    diesel (0.1.5)
-      railties
     diff-lcs (1.2.1)
     email_spec (1.2.1)
       mail (~> 2.2)
       rspec (~> 2.0)
+    email_validator (1.4.0)
+      activemodel
     erubis (2.7.0)
     eventmachine (0.12.10)
     evergreen (1.0.0)
@@ -311,7 +313,7 @@ DEPENDENCIES
   bourne
   capybara
   capybara-webkit!
-  clearance (~> 0.16.2)
+  clearance (~> 1.1.0)
   coffee-rails
   copycopter_client
   country_select

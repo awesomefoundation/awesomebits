@@ -1,4 +1,71 @@
 he:
+  clearance_mailer:
+    change_password:
+      opening:
+        "מישהו, בתקווה שזה אתה, ביקש שנשלח לך לינק לשינוי הסיסמא:"
+      closing:
+        "אם אתה לא בקשתה, תתעלם מהודעה זו. הסיסמא לא תשתנה."
+  flashes:
+    failure_when_forbidden:
+      "בדוק שוב את הכתובת או שתנסה לשלוח את הטופס שוב."
+    failure_after_update:
+      "סיסמא לא יכולה להיות ריקה."
+    failure_after_create:
+      "דואר אלקטרוני או סיסמא שגויים."
+  helpers:
+    submit:
+      chapter:
+        update: "עדכן מעגל"
+      password:
+        submit: 'שנה סיסמא'
+      password_reset:
+        submit: 'שמור סיסמא'
+      session:
+        submit: 'התחבר'
+      user:
+        create: 'הרשם'
+    label:
+      session:
+        email: 'כתובת דואר אלקטרוני'
+        password: 'סיסמא'
+        submit: 'התחבר'
+      password: 
+        email:
+          'כתובת דואר אלקטרוני'
+      password_reset:
+        password:
+          'בחר סיסמא'
+  layouts:
+    application:
+      sign_in:
+        'התחבר'
+      sign_out:
+        'התנתק'
+  passwords:
+    create:
+      description:
+        "אתה תקבל מייל בדקות הקרובות שבו יהיו הוראות לשינוי הסיסמא שלך."
+    edit:
+      description:
+        'על מנת לשנות את הסיסמא שלך, אנא כתוב את הסיסמא החדש למטה:'
+      title:
+        'שינוי סיסמא'
+    new:
+      description:
+        "על מנת שתקבל את הסיסמא החדשה שלך, אנא כתוב את כתובת הדואר האלקטרוני שלך."
+      title:
+        'שנה סיסמא'
+  sessions:
+    form:
+      forgot_password: 'שכחתי סיסמא'
+      sign_up: 'הרשם'
+    new:
+      title: 'התחבר'
+  users:
+    new:
+      title: 'הרשמה'
+      sign_in: 'התחבר'
+
   number:
     delimiter: ","
     separator: "."
@@ -153,7 +220,7 @@ he:
     new:
       sign-in: התחברות דיקנים ונאמנים
       intro: אזור זה של האתר הוא לדיקנים ונאמנים בלבד. אם אתה נאמן ואתה צריך הרשאות צור קשר עם דיקן המעגל שלך.
-      forgot-password: שכחת את הסיסמא?
+      forgot_password: שכחת את הסיסמא?
   users:
     user:
       promote_to_dean: קדם
