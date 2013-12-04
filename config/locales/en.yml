@@ -142,6 +142,13 @@ en:
       subject: "Welcome to the %{name} chapter!"
     application:
       subject: "Thanks for applying!"
+  invitations:
+    new:
+      invite_trustee: "Invite a new trustee"
+      select_chapter: "Select a chapter"
+      select: "Select"
+      will_be_invited_to: "Trustee will be invited to:"
+      invite_button: "Invite"
   sessions:
     new:
       sign-in: Trustee and Dean Sign In

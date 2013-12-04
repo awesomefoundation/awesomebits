@@ -22,7 +22,6 @@ header.main {
 
       img.fast-forward {
         display: block;
-        float: left;
         height: 30px;
         margin: 20px 0px 0px 0px;
         position: relative;
@@ -31,7 +30,6 @@ header.main {
 
       h1 {
         color: rgb(255,255,255);
-        float: left;
         font: bold 18px/22px $sans-serif;
         margin: 18px 0px 0px 0px;
         padding: 6px 12px;
@@ -51,12 +49,10 @@ header.main {
     }
 
     ol {
-      float: right;
       height: 100%;
       margin: 0;
 
       li {
-        float: left;
         list-style: none;
         margin: 28px 0px 20px 2px;
 

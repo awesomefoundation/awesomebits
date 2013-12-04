@@ -79,7 +79,7 @@ he:
         header: הכר את הנאמנים
         about: אודותינו
         news: "חדשות של %{name}"
-      apply-for-grant: Apply For a Grant
+      apply-for-grant: הגש בקשה למענק
     edit:
       title: ערוך את פרטי המעגל
     new:
@@ -92,7 +92,7 @@ he:
       end-date: תאריך סיום
       table:
         title: כותרת
-        id: מזהה יחודי
+        id: מזהה
         votes: הצבעות
   projects:
     project:
@@ -102,7 +102,7 @@ he:
       view-public-page: ראה את העמוד הציבורי
       edit: ערוך פרויקט
       confirm-delete: האם אתה בטוח שאתה רוצה למחוק פרויקט זה?
-      winner: "המנצח ב%{name}"
+      winner: "בחר כמנצח ב%{name}"
       about-me: "קצת אודותיי:"
       about-project: "הרעיון שלי:"
       use-for-money: "איך אשתמש בכסף?"
@@ -142,6 +142,13 @@ he:
       subject: "ברוך הבאים ל%{name}"
     application:
       subject: "תודה רבה שהגשת את מועמדותך!"
+  invitations:
+    new:
+      invite_trustee: "הזמן נאמן חדש"
+      select_chapter: "בחר מעגל"
+      select: "בחר"
+      will_be_invited_to: "הנאמן יצטרף ל:"
+      invite_button: "הזמן"
   sessions:
     new:
       sign-in: התחברות דיקנים ונאמנים
@@ -161,8 +168,9 @@ he:
       remove_from_chapter: מחק
     edit:
       title: ערוך פרטי משתמש
+
     index:
-      title: חברי צוות בקרן בקטנה
+      title: חברי צוות
       name: שם
       email: כתובת מייל
       chapter: מעגל
@@ -196,7 +204,7 @@ he:
         title: שם הפרויקט
         url: כתובת האתר
         current_photos-html: "תמונות <span>(גרור כדי לשנות את הסדר)</span>"
-        new_photos-html: "העלה תמונה לפרויקט שלך"
+        new_photos-html: "העלה   תמונה לפרויקט שלך"
         chapter_id: בחר מעגל אליו תרצה להצטרף
         rss_feed_url: כתובת RSS של הפרויקט
         about_me: ספר לנו קצת עלייך

@@ -1,10 +1,10 @@
 <section class="invitation-form">
-  <h1>Invite a new trustee</h1>
+  <h1><%= t(".invite_trustee")%></h1>
   <%= simple_form_for  @invitation do |form| %>
     <% if show_chapters_dropdown? %>
-      <%= form.input :chapter_id, :as => :select, :collection => invitable_chapters, :group_method => :name, :label => "Select a chapter", :prompt => "- Select -" %>
+      <%= form.input :chapter_id, :as => :select, :collection => invitable_chapters, :group_method => :name, :label =>t(".select_chapter"), :prompt => "- #{t(".select")} -" %>
     <% else %>
-      <p>Trustee will be invited to:
+      <p><%= t(".will_be_invited_to") %>
         <span><%= primary_invitable_chapter.name %></span>
       </p>
       <%= form.input :chapter_id, :as => :hidden, :input_html => { :value => primary_invitable_chapter.id } %>
@@ -14,6 +14,6 @@
       <%= form.input :last_name %>
     </div>
     <%= form.input :email %>
-    <%= submit_tag "Invite" %>
+    <%= submit_tag t(".invite_button") %>
   <% end %>
 </section>

@@ -1,0 +1,141 @@
+/* RTL scss */
+
+// MARGIN: TOP RIGHT BOTTOM LEFT
+// MARGIN: TOP (RIGHT AND LEFT) BOTTOM
+
+
+
+html { 
+  direction: rtl;
+}
+
+th {
+  text-align: right;
+}
+
+//
+// Homepage
+// 
+
+header.main nav {
+  .fast-forward {
+    float: right;
+  }
+
+  h1 {
+    float: right;
+  }
+
+  ol {
+    float: left;
+
+    li { 
+      float: right;
+    }
+  }
+}
+
+//
+// Chapter page
+// 
+
+body.chapters-show {
+   .title {
+      h1 {
+        float: right;
+      }
+
+      a.edit-chapter {
+        float: left; 
+      }
+
+      a.apply-chapter {
+        float: left; 
+      }
+
+      a.external {
+        float: left;
+      }
+   }
+
+   .chapter-projects {
+
+      .project {
+        float: right;
+      }
+
+   }
+
+
+   .chapter-info {
+      .trustees {
+        ol li {
+            float: right;
+        }
+      }
+
+      .description article {
+        float: right;
+      }
+      
+   }
+}
+
+
+//
+// Administration Panel
+//
+.admin-panel {
+  float: left;
+
+}
+
+.applications {
+  float: right;
+
+
+  .application-filters {
+    nav {
+      float: right;
+    } 
+
+    form.filter {
+      float: left;
+
+      div.short-list-toggle {
+        float: right;
+        margin-left: 10px;
+      }
+
+      div.date-range, div.search {
+        float: right;
+        margin-left: 10px;
+      }
+
+      // Wasn't on ltr
+      button[type="submit"], input[type="submit"] {
+        margin-left: 5px;
+      }
+
+    }
+
+  }
+
+  article.project header {
+    div.title {
+      a {
+        float: right;
+      }
+
+      a.short-list, a.mark-as-winner { 
+        float: left;
+        margin-right: 10px;
+      }
+    }
+
+    .meta-data .spam { 
+      float: left;
+    }
+  }
+
+}

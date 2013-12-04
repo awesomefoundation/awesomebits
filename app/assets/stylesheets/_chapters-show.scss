@@ -20,7 +20,6 @@ body.chapters-show {
 
       h1 {
         color: rgba(55,55,55, 1);
-        float: left;
         font: 900 38px/44px $sans-serif;
         margin: 0px;
         text-transform: uppercase;
@@ -28,7 +27,6 @@ body.chapters-show {
 
       a.edit-chapter {
         @include button(rgb(240,240,240));
-        float: right;
         margin: 10px 0px 0px 10px;
         text-decoration: none;
         padding: 7px 12px 6px;
@@ -36,7 +34,6 @@ body.chapters-show {
 
       a.apply-chapter {
         @include button(pill, $button-pink);
-        float: right;
         margin: 12px 0px 0px 10px;
         text-decoration: none;
         padding: 7px 12px 6px;
@@ -45,7 +42,6 @@ body.chapters-show {
       a.external {
         background: transparent;
         display: block;
-        float: right;
         height: 25px;
         margin: 12px 0px 0px 10px;
         opacity: 0.7;
@@ -141,7 +137,6 @@ body.chapters-show {
     .project {
       background: transparent;
       height: auto;
-      float: left;
       margin: 0px;
       overflow: hidden;
       width: 510px;
@@ -227,7 +222,6 @@ body.chapters-show {
       margin: 0px;
 
       li {
-        float: left;
         list-style: none;
         margin: 0 $gw-gutter $gw-gutter 0;
         width: grid-width(2);
@@ -325,7 +319,6 @@ body.chapters-show {
     width: grid-width(12);
 
     article {
-      float: left;
 
       &.half {
         width: grid-width(6);
