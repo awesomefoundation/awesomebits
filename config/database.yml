@@ -1,19 +1,19 @@
 production: &default
   adapter: postgresql
-  database: awesomefoundation_production
+  database: kerenfund_production
   pool: 5
   timeout: 5000
 
 development: &default
   adapter: postgresql
-  database: awesomefoundation_development
+  database: kerenfund_development
   pool: 5
   timeout: 5000
   host: localhost
 
 test: &test
   <<: *default
-  database: awesomefoundation_test
+  database: kerenfund_test
   min_messages: warning
 
 cucumber:

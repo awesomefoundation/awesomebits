@@ -1,5 +1,12 @@
 source 'http://rubygems.org'
 
+# Fix for simple_form encoding installation problem
+# http://stackoverflow.com/questions/7095845/when-run-bundle-get-invalid-byte-sequence-in-us-ascii
+if RUBY_VERSION =~ /1.9/
+    Encoding.default_external = Encoding::UTF_8
+    Encoding.default_internal = Encoding::UTF_8
+end
+
 gem 'rails', '3.2.14'
 
 # Gems used only for assets and not required
@@ -64,3 +71,6 @@ group :staging, :production do
   gem 'sprockets-redirect'
   gem 'unicorn'
 end
+
+
+ruby "1.9.2"
