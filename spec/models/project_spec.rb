@@ -144,7 +144,8 @@ describe Project do
     let!(:loser) { create(:project) }
     let!(:old_winner) { create(:project, :funded_on => 2.days.ago) }
     let!(:new_winner) { create(:project, :funded_on => 1.days.ago) }
-    it 'returns projects by descending funding date' do
+    let!(:ignored_winner) { create(:project, :funded_on => 1.week.ago, :chapter_id => new_winner.chapter_id) }
+    it 'returns one project per chapter  by descending funding date' do
       Project.recent_winners.all.should == [new_winner, old_winner]
     end
   end
