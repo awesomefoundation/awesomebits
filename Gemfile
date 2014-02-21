@@ -31,7 +31,6 @@ gem "pry-nav"
 gem "pry-stack_explorer"
 gem "will_paginate", "~> 3.0.3"
 gem "friendly_id", "~> 4.0.9"
-gem 'airbrake'
 gem 'redcarpet'
 gem 'honeypot-captcha'
 
