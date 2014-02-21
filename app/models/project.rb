@@ -61,7 +61,8 @@ class Project < ActiveRecord::Base
   end
 
   def self.recent_winners
-    where('projects.funded_on is not null').order(:funded_on).reverse_order
+    subquery = select("DISTINCT ON (chapter_id) projects.*").where("projects.funded_on IS NOT NULL").order(:chapter_id, :funded_on).reverse_order
+    select("*").from("(#{subquery.to_sql}) AS distinct_chapters").order(:funded_on).reverse_order
   end
 
   def self.csv_export(projects)
