@@ -54,8 +54,6 @@ group :test do
   gem "shoulda-matchers"
   gem "launchy"
   gem "email_spec"
-  gem "database_cleaner"
-  gem "sham_rack"
 end
 
 group :staging, :production do
