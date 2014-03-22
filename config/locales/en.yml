@@ -115,7 +115,7 @@ en:
       apply: Apply
     form:
       save: Save
-      image-notes: The top image is set as the cover image. Images will be resized to %{dimensions} pixels.
+      image-notes: The top image is set as the cover image. Images will be resized to %{dimensions} pixels. If you get an error message, please try again with fewer or smaller files.
     index:
       filter-button: Filter
       search: search
@@ -183,7 +183,7 @@ en:
     <p>Since its humble beginnings, many <a href=\"http://awesomefoundation.org/chapters/\">Awesome Foundation chapters have sprung up globally</a> to conserve, sustain, and support the worldwide ecosystem of awesomeness. Projects have included efforts in a wide range of areas including technology, arts, social good, and beyond.</p>
     <p><a href=\"http://www.youtube.com/watch?v=PPoYzyOn44M\">We’re still waiting for something with dinosaurs (hint, hint)</a>.</p>"
       contact-title: Contact Us
-      contact: "<p>You can drop us an email at <a href=\"mailto:contact@awesomefoundation.org\">contact@awesomefoundation.org</a>, follow us on Twitter at <a href=\"http://twitter.com/awesomefound\">@awesomefound</a>, or track us on Facebook <a href=\"http://www.facebook.com/awesomefoundation\">here</a>. If you’re interested in helping to start a chapter or joining an existing one if a spot opens up, great! <a href=\"http://spreadsheets2.google.com/a/awesomefoundation.org/viewform?hl=en&formkey=dFJwaXhNTFp6VG40clU3cFVfWFk0bXc6MQ\">Tell us about yourself here!</a></p>"
+      contact: "<p>You can drop us an e-mail at <a href=\"mailto:contact@awesomefoundation.org\">contact@awesomefoundation.org</a>, follow us on Twitter at <a href=\"http://twitter.com/awesomefound\">@awesomefound</a>, or track us on Facebook <a href=\"http://www.facebook.com/awesomefoundation\">here</a>. Or, if you’re trying to reach a specific chapter, you can use the e-mail link at the top of their page in the \"Chapters\" section.</p><p>If you’re interested in starting a chapter, which involves assembling a group of ten \"trustees\" willing to each contribute $100 every month toward the $1000 grant, please get in touch at <a href=\"mailto:join@awesomefoundation.org\">join@awesomefoundation.org</a>."
     faq:
       headline: Super awesome info
       sub_headline: Everything you need to know about advancing awesomeness.
