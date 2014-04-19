@@ -315,6 +315,13 @@ describe Project do
 
       project.rss_feed_url.should == "http://example.com/rss"
     end
+
+    it 'leaves the url bank if it is blank' do
+      project.url = ''
+      project.valid?
+
+      project.url.should == ''
+    end
   end
 
 end

@@ -180,7 +180,9 @@ class Project < ActiveRecord::Base
 
     if rss_feed_url.present? && ! rss_feed_url.match(/:\/\//)
       self.rss_feed_url = "http://#{rss_feed_url}"
-    end     
+    end
+
+    true
   end
 
   # before save
