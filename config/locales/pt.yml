@@ -115,7 +115,7 @@ pt:
       apply: "Enviar"
     form:
       save: Salvar
-      image-notes: A primeira imagem é usada como imagem de capa. As imagens serão redimensionadas para %{dimensions} pixels.
+      image-notes: A primeira imagem é usada como imagem de capa. As imagens serão redimensionadas para %{dimensions} pixels. Se você receber uma mensagem de erro, por favor tente novamente com menos arquivos ou arquivos menores. 
     index:
       filter-button: Filtrar
       search: buscar
@@ -183,7 +183,7 @@ pt:
     <p>Desde sua humilde origem, muitos <a href=\"http://awesomefoundation.org/chapters/\">capítulos da Awesome Foundation floresceram mundialmente</a> para conservar, manter, e apoiar o ecosistema global do irado. Projetos tem envidado esforços numa ampla gama de áreas incluindo tecnologia, artes, bem social, e além.</p>
     <p><a href=\"http://www.youtube.com/watch?v=PPoYzyOn44M\">Ainda estamos esperando por algo ligado a dinossauros (não é uma dica... ou é?)</a>.</p>"
       contact-title: Contactar-nos
-      contact: "<p>Você pode nos deixar um e-mail em <a href=\"mailto:contact@awesomefoundation.org\">contact@awesomefoundation.org</a>, nos seguir no Twitter em <a href=\"http://twitter.com/awesomefound\">@awesomefound</a>, ou nos acompanhar no Facebook <a href=\"http://www.facebook.com/awesomefoundation\">aqui</a>. Se você estiver interessado em ajudar a iniciar um capítulo ou juntar-se a algum quando abrir uma vaga, beleza! <a href=\"http://spreadsheets2.google.com/a/awesomefoundation.org/viewform?hl=en&formkey=dFJwaXhNTFp6VG40clU3cFVfWFk0bXc6MQ\">Fale-nos sobre você aqui!</a></p>"
+      contact: "<p>Você pode nos deixar um e-mail em <a href=\"mailto:contact@awesomefoundation.org\">contact@awesomefoundation.org</a>, nos seguir no Twitter em <a href=\"http://twitter.com/awesomefound\">@awesomefound</a>, ou nos acompanhar no Facebook <a href=\"http://www.facebook.com/awesomefoundation\">aqui</a>. Se você estiver interessado em contactar um capítulo específico, basta acessar a página do mesmo na seção \"Capítulos\" e clicar no ícone de e-mail na parte superior da página.</p> <p>Se você está inteteressado em começar um novo capítulo, o que envolve montar um grupo de 10 \"curadores\" dispostos a contribuir, cada um, com a quantia de US$ 100 por mês para o grant de U$ 1000, por favor, entre em contato pelo e-mail <a href=\"mailto:join@awesomefoundation.org\">join@awesomefoundation.org</a>."
     faq:
       headline: Informações super iradas
       sub_headline: Tudo o que você precisa saber sobre tornar irado.
