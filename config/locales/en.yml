@@ -202,6 +202,8 @@ en:
         about_me: Tell us a little about yourself
         about_project: Tell us about your awesome project!
         use_for_money: How will you use the money?
+        funded_on: Funded On
+        funded_description: Funded Description
       chapter:
         name: Name
         slug: Name in the URL
