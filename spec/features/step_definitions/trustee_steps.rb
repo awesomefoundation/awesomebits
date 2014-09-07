@@ -64,7 +64,7 @@ step "I update my password" do
   @updated_password = "BaxterRocks"
   visit chapter_projects_path(@current_chapter)
   click_link("Edit My Profile")
-  fill_in("New password", :with => @updated_password)
+  fill_in("user_new_password", :with => @updated_password)
   click_button("Update User")
 end
 
