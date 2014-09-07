@@ -53,7 +53,7 @@ step 'I invite a new trustee to my chapter' do |name|
   click_link("Invite a Trustee")
   fill_in("First name", :with => "Joe")
   fill_in("Last name", :with => "Schmoe")
-  @invitation_address = generate(:email)
+  @invitation_address = FactoryGirl.generate(:email)
   fill_in("Email", :with => @invitation_address)
   click_button("Invite")
 end
