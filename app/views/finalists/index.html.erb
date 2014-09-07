@@ -39,12 +39,14 @@
       <th><%= t ".table.title" %></th>
       <th><%= t ".table.id " %></th>
       <th><%= t ".table.votes" %></th>
+      <th>Who voted?</th>
     </tr>
     <% @projects.each do |project| %>
       <tr class="finalist" data-count="<%= project.vote_count %>" data-id="<%= project.id %>">
         <td><%= link_to project.title, chapter_project_path(project.chapter, project) %></td>
         <td><%= project.id %></td>
         <td><%= project.vote_count %></td>
+        <td><%= project.vote_names %></td>
       </tr>
     <% end %>
   </table>
