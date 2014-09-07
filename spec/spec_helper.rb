@@ -15,6 +15,8 @@ Capybara.javascript_driver = :webkit
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|
+  config.include Capybara::DSL
+
   config.mock_with :mocha
   config.after(:each){ DatabaseCleaner.clean }
   config.before(:each){ create(:chapter, :name => "Any") }
