@@ -39,7 +39,6 @@ GEM
     addressable (2.2.8)
     archive-tar-minitar (0.5.2)
     arel (3.0.3)
-    binding_of_caller (0.6.7)
     bourbon (1.4.0)
       sass (>= 3.1)
     bourne (1.4.0)
@@ -167,9 +166,6 @@ GEM
       method_source (~> 0.7.1)
       slop (>= 2.4.4, < 3)
     pry-nav (0.2.1)
-      pry (~> 0.9.9)
-    pry-stack_explorer (0.4.2)
-      binding_of_caller (~> 0.6.2)
       pry (~> 0.9.9)
     rack (1.4.5)
     rack-cache (1.2)
@@ -327,7 +323,6 @@ DEPENDENCIES
   pg (~> 0.13.2)
   pry
   pry-nav
-  pry-stack_explorer
   rails (= 3.2.17)
   rails_12factor
   redcarpet
