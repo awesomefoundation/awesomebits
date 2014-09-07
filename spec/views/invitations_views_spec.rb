@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe 'invitations/new' do
 
-  let!(:role) { create(:role, :name => 'dean') }
+  let!(:role) { FactoryGirl.create(:role, :name => 'dean') }
   let!(:user) { role.user }
   let!(:chapter) { role.chapter }
-  let!(:another_role) { create(:role, :name => 'dean', :user => user) }
+  let!(:another_role) { FactoryGirl.create(:role, :name => 'dean', :user => user) }
   let!(:another_chapter) { another_role.chapter }
   let!(:invitation) { Invitation.new }
 

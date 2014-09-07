@@ -1,7 +1,7 @@
 step 'there are 5 trustees' do
-  @trustees = (1..5).map { create(:user) }
+  @trustees = (1..5).map { FactoryGirl.create(:user) }
   @trustees.each do |trustee|
-    create(:role,
+    FactoryGirl.create(:role,
                        :user => trustee,
                        :name => 'trustee',
                        :chapter => @current_chapter)

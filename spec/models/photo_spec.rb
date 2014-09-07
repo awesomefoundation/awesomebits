@@ -6,7 +6,7 @@ describe Photo do
   it { should have_attached_file :image }
 
   context 'with an image' do 
-    let(:photo) { create(:photo) }
+    let(:photo) { FactoryGirl.create(:photo) }
 
     it "returns the base photo url as the original photo" do 
       photo.url.should == photo.image.url(:original, :timestamp => false)

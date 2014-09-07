@@ -1,5 +1,5 @@
 step 'I invite a new trustee to the :name chapter' do |name|
-  @chapter = create(:chapter, :name => name)
+  @chapter = FactoryGirl.create(:chapter, :name => name)
   visit projects_path
   click_link("Invite a Trustee")
   fill_in("First name", :with => "Joe")
@@ -21,7 +21,7 @@ step 'I invite the same trustee to the :name chapter' do |name|
 end
 
 step 'I invite a new trustee to a different chapter' do |name|
-  @chapter = create(:chapter)
+  @chapter = FactoryGirl.create(:chapter)
   visit projects_path
   click_link("Invite a Trustee")
   fill_in("First name", :with => "Joe")
@@ -59,7 +59,7 @@ step 'I invite a new trustee to my chapter' do |name|
 end
 
 step 'I try to invite a new trustee to a chapter I am not dean of' do
-  @inaccessible_chapter = create(:chapter)
+  @inaccessible_chapter = FactoryGirl.create(:chapter)
   visit new_invitation_path
 end
 

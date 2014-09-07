@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe UsersController do
   context "signed in as admin user" do
-    let(:user) { create(:user, :admin => true) }
+    let(:user) { FactoryGirl.create(:user, :admin => true) }
     before do
       sign_in_as user
       get :index
@@ -10,7 +10,7 @@ describe UsersController do
     it { should respond_with(:success) }
   end
   context "signed in as non-admin user" do
-    let(:role) { create(:role) }
+    let(:role) { FactoryGirl.create(:role) }
     let(:user) { role.user }
     let(:chapter) { role.chapter }
     before do

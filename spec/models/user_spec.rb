@@ -10,9 +10,9 @@ describe User do
   it { should have_many(:projects).through(:votes) }
 
   context "#trustee?" do
-    let(:user){ build(:user) }
-    let(:chapter){ build(:chapter) }
-    let(:role){ build(:role, :user => user, :chapter => chapter) }
+    let(:user){ FactoryGirl.build(:user) }
+    let(:chapter){ FactoryGirl.build(:chapter) }
+    let(:role){ FactoryGirl.build(:role, :user => user, :chapter => chapter) }
     before do
       user.roles = [role]
     end
@@ -39,7 +39,7 @@ describe User do
   end
 
   context '#can_invite?' do
-    let(:user) { build(:user) }
+    let(:user) { FactoryGirl.build(:user) }
     it 'returns true if the user is an admin' do
       user.admin = true
       user.can_invite?.should be_true
@@ -53,7 +53,7 @@ describe User do
   end
 
   context '#can_invite_to_chapter?' do
-    let(:user) { build(:user) }
+    let(:user) { FactoryGirl.build(:user) }
     it 'returns true if the user is an admin' do
       user.admin = true
       user.can_invite_to_chapter?(:chapter).should be_true
@@ -67,7 +67,7 @@ describe User do
   end
 
   context "#can_manage_chapter?" do
-    let(:user) { build(:user) }
+    let(:user) { FactoryGirl.build(:user) }
     it 'returns true if the user is an admin' do
       user.admin = true
       user.can_manage_chapter?(:chapter).should be_true
@@ -81,7 +81,7 @@ describe User do
   end
 
   context "#can_manage_users?" do
-    let(:user) { build(:user) }
+    let(:user) { FactoryGirl.build(:user) }
     it 'returns true if the user is an admin' do
       user.admin = true
       user.can_manage_chapter?(:chapter).should be_true
@@ -95,7 +95,7 @@ describe User do
   end
 
   context "#can_view_finalists_for?" do
-    let(:user) { build(:user) }
+    let(:user) { FactoryGirl.build(:user) }
     it 'returns true if the user is an admin' do
       user.admin = true
       user.can_view_finalists_for?(:chapter).should be_true
@@ -109,7 +109,7 @@ describe User do
   end
 
   context "#can_edit_project?" do
-    let(:user) { build(:user) }
+    let(:user) { FactoryGirl.build(:user) }
     it 'returns true if the user is an admin' do
       user.admin = true
       user.can_edit_project?(:chapter).should be_true
@@ -123,7 +123,7 @@ describe User do
   end
 
   context "#can_edit_all_profiles?" do
-    let(:user) { build(:user) }
+    let(:user) { FactoryGirl.build(:user) }
     it 'returns true if the user is an admin' do
       user.admin = true
       user.can_edit_all_profiles?.should be_true
@@ -135,7 +135,7 @@ describe User do
   end
 
   context "#can_mark_winner?" do
-    let(:user) { build(:user) }
+    let(:user) { FactoryGirl.build(:user) }
     let(:project) { stub }
     it 'returns true if the user is an admin' do
       project.stubs(:in_any_chapter?).returns(false)
@@ -157,18 +157,18 @@ describe User do
   end
 
   context ".deans_first" do
-    let(:chapter){ create(:chapter) }
-    let!(:trustee){ create(:role, :chapter => chapter) }
-    let!(:dean){ create(:role, :name => "dean", :chapter => chapter) }
+    let(:chapter){ FactoryGirl.create(:chapter) }
+    let!(:trustee){ FactoryGirl.create(:role, :chapter => chapter) }
+    let!(:dean){ FactoryGirl.create(:role, :name => "dean", :chapter => chapter) }
     it 'orders the users so deans are first' do
       chapter.users.deans_first.should == [dean.user, trustee.user]
     end
   end
 
   context ".including_role" do
-    let(:chapter){ create(:chapter) }
-    let!(:trustee){ create(:role, :chapter => chapter) }
-    let!(:dean){ create(:role, :name => "dean", :chapter => chapter) }
+    let(:chapter){ FactoryGirl.create(:chapter) }
+    let!(:trustee){ FactoryGirl.create(:role, :chapter => chapter) }
+    let!(:dean){ FactoryGirl.create(:role, :name => "dean", :chapter => chapter) }
     it 'includes the role name on the records' do
       User.including_role.where(:id => dean.user.id).first.role.should == "dean"
       User.including_role.where(:id => trustee.user.id).first.role.should == "trustee"
@@ -176,10 +176,10 @@ describe User do
   end
 
   context ".all_with_chapter" do
-    let!(:chapter) { create(:chapter) }
-    let!(:trustee) { create(:user) }
-    let!(:role) { create(:role, :user => trustee, :chapter => chapter) }
-    let!(:admin) { create(:user) }
+    let!(:chapter) { FactoryGirl.create(:chapter) }
+    let!(:trustee) { FactoryGirl.create(:user) }
+    let!(:role) { FactoryGirl.create(:role, :user => trustee, :chapter => chapter) }
+    let!(:admin) { FactoryGirl.create(:user) }
     it 'includes all users' do
       User.all_with_chapter(nil).should == [trustee, admin]
     end
