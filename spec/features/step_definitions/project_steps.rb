@@ -140,7 +140,7 @@ step 'there is 1 winning project in my chapter' do
 end
 
 step 'there are enough winning projects in my chapter to spread over two pages' do
-  create_list(:winning_project, Project.per_page + 1, :chapter => @current_chapter)
+  FactoryGirl.create_list(:winning_project, Project.per_page + 1, :chapter => @current_chapter)
 end
 
 step 'I edit that winning project' do

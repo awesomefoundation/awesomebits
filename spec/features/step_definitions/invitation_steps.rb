@@ -5,7 +5,7 @@ step 'I invite a new trustee to the :name chapter' do |name|
   fill_in("First name", :with => "Joe")
   fill_in("Last name", :with => "Schmoe")
   select(@chapter.name, :from => "Select a chapter")
-  @invitation_address = generate(:email)
+  @invitation_address = FactoryGirl.generate(:email)
   fill_in("Email", :with => @invitation_address)
   click_button("Invite")
 end
@@ -27,7 +27,7 @@ step 'I invite a new trustee to a different chapter' do |name|
   fill_in("First name", :with => "Joe")
   fill_in("Last name", :with => "Schmoe")
   select(@chapter.name, :from => "Select a chapter")
-  @invitation_address = generate(:email)
+  @invitation_address = FactoryGirl.generate(:email)
   fill_in("Email", :with => @invitation_address)
   click_button("Invite")
 end
