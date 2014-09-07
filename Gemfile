@@ -26,9 +26,6 @@ gem 'bourbon', '~> 1.4.0'
 gem 'copycopter_client'
 gem "simple_form", :git => "https://github.com/plataformatec/simple_form.git"
 gem 'nokogiri'
-gem "pry"
-gem "pry-nav"
-gem "pry-stack_explorer"
 gem "will_paginate", "~> 3.0.3"
 gem "friendly_id", "~> 4.0.9"
 gem 'redcarpet'
@@ -40,6 +37,8 @@ group :development, :test do
   gem "sham_rack"
   gem "tddium"
   gem "evergreen", :require => "evergreen/rails"
+  gem "pry"
+  gem "pry-nav"
 end
 
 group :test do
