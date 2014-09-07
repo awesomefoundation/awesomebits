@@ -45,5 +45,5 @@ step "the files I attached should have been uploaded" do
   click_link("Dashboard")
   step 'I look at the projects for the "Any" chapter'
   page.find('.applications a.title').click
-  page.all(".viewport img[src*='logo.png']").should have(2).images
+  page.all("a[rel='project-1-images']").count.should == 2
 end
