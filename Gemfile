@@ -48,6 +48,7 @@ group :test do
   gem "database_cleaner"
   gem "capybara-webkit", "0.9.0"
   gem "factory_girl_rails"
+  gem "faker"
   gem "bourne"
   gem "timecop"
   gem "shoulda-matchers"
