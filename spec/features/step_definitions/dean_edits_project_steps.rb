@@ -1,5 +1,5 @@
 step 'I set the winning date to be February, 2008' do
-  fill_in("Funded on", :with => "2008-02-01")
+  fill_in("project_funded_on", :with => "2008-02-01")
   click_button("Save")
 end
 

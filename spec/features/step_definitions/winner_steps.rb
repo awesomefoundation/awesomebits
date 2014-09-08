@@ -18,7 +18,6 @@ end
 step 'the project is no longer visible to the public' do
   click_link("Sign out")
   visit(project_path(@winning_project))
-  page.should have_no_css("body.projects")
   page.should have_no_content(@winning_project.title)
 end
 

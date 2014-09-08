@@ -58,15 +58,16 @@ step 'a project was created on each of the last 7 days for any chapter' do
   any_chapter = Chapter.find_by_name("Any") || raise("'Any' chapter not found")
   @any_projects = []
   7.times do |x|
-    @any_projects << create(:project,
-                            :chapter => any_chapter,
-                            :created_at => x.days.ago)
+    @any_projects << FactoryGirl.create(:project, {
+      :chapter => any_chapter,
+      :created_at => x.days.ago
+    })
   end
 end
 
 step 'I want to see my projects for the past 3 days' do
-  fill_in("end date", :with => Time.now.strftime("%Y-%m-%d"))
-  fill_in("start date", :with => (3.days.ago).strftime("%Y-%m-%d"))
+  fill_in("end date", :with => Time.now.utc.strftime("%Y-%m-%d"))
+  fill_in("start date", :with => (3.days.ago.utc).strftime("%Y-%m-%d"))
   click_button("Filter")
 end
 

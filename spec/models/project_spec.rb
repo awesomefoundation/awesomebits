@@ -170,12 +170,12 @@ describe Project do
       project.chapter.should == other_chapter
     end
 
-    it 'populates the funded description' do 
+    it 'populates the funded description' do
       project.declare_winner!
       project.funded_description.should == project.about_project
     end
 
-    it 'does not replace an existing funded description' do 
+    it 'does not replace an existing funded description' do
       project.funded_description = 'I am funded'
       project.declare_winner!
       project.funded_description.should == 'I am funded'
@@ -288,28 +288,28 @@ describe Project do
   context "url validation" do
     let(:project) { build(:project) }
 
-    it 'leaves the url alone if it has a scheme' do 
+    it 'leaves the url alone if it has a scheme' do
       project.url = "https://example.com"
       project.valid?
 
       project.url.should == "https://example.com"
     end
 
-    it 'leaves the rss feed url alone if it has a scheme' do 
+    it 'leaves the rss feed url alone if it has a scheme' do
       project.rss_feed_url = "https://example.com/rss"
       project.valid?
 
       project.rss_feed_url.should == "https://example.com/rss"
     end
 
-    it 'adds a url scheme if it does not have one' do 
+    it 'adds a url scheme if it does not have one' do
       project.url = "example.com"
       project.valid?
 
       project.url.should == "http://example.com"
     end
 
-    it 'adds a rss feed url scheme if it does not have one' do 
+    it 'adds a rss feed url scheme if it does not have one' do
       project.rss_feed_url = "example.com/rss"
       project.valid?
 

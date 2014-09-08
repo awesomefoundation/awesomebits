@@ -47,6 +47,9 @@ class Project < ActiveRecord::Base
   end
 
   def self.during_timeframe(start_date, end_date)
+    # FIXME the database stores dates in UTC, whereas we parse the dates
+    # provided in the local zone. This can result in mismatches when the
+    # overlap crosses midnight.
     start_date = 100.years.ago.strftime('%Y-%m-%d') if start_date.blank?
     end_date   = Time.zone.now.strftime('%Y-%m-%d') if end_date.blank?
 
