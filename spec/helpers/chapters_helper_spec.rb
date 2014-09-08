@@ -20,7 +20,7 @@ end
 
 describe ChaptersHelper, '#link_if_not_blank' do
 
-  let!(:chapter) {create(:chapter, twitter_url: "http://twitter.com/awesomefound")}
+  let!(:chapter) { FactoryGirl.create(:chapter, twitter_url: "http://twitter.com/awesomefound")}
 
   it 'returns nil if the url is not present' do
     helper.link_if_not_blank(chapter.facebook_url, "classes").should be_nil

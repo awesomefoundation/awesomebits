@@ -45,10 +45,10 @@ describe ProjectsController do
   end
 
   context 'downloading the csv report' do
-    let!(:project)  { create :project }
-    let!(:user)     { create :user }
-    let!(:chapter)  { create :chapter }
-    let!(:role)     { create :role, :user => user, :chapter => chapter }
+    let!(:project)  { FactoryGirl.create :project }
+    let!(:user)     { FactoryGirl.create :user }
+    let!(:chapter)  { FactoryGirl.create :chapter }
+    let!(:role)     { FactoryGirl.create :role, :user => user, :chapter => chapter }
 
     before do
       sign_in_as user

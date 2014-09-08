@@ -25,8 +25,8 @@ describe Project do
   end
 
   context '#chapter_name' do
-    let(:chapter) { create :chapter, :name => 'Test chapter' }
-    let(:project) { create :project, :chapter => chapter }
+    let(:chapter) { FactoryGirl.create :chapter, :name => 'Test chapter' }
+    let(:project) { FactoryGirl.create :project, :chapter => chapter }
     it 'should delegate to chapter' do
       project.chapter_name.should == 'Test chapter'
     end
@@ -121,7 +121,7 @@ describe Project do
 
   context '.by_vote_count' do
     let(:chapter) { FactoryGirl.create(:chapter) }
-    let(:projects) { [create(:project, :chapter => chapter),
+    let(:projects) { [FactoryGirl.create(:project, :chapter => chapter),
                       FactoryGirl.create(:project, :chapter => chapter),
                       FactoryGirl.create(:project, :chapter => chapter)] }
     before do
@@ -267,7 +267,7 @@ describe Project do
   end
 
   context '#display_images' do
-    let(:project) { build_stubbed(:project) }
+    let(:project) { FactoryGirl.build_stubbed(:project) }
     it "returns the photos if there are any" do
       photo = FactoryGirl.create(:photo)
       project.photos = [photo]
@@ -328,7 +328,7 @@ end
 
 describe Project, 'csv_export' do
   let!(:project) do
-    create :project,
+    FactoryGirl.create :project,
     :name => 'Name',
     :url => 'http://example.com',
     :email => 'mail@example.com',
