@@ -1,6 +1,12 @@
 language: ruby
 rvm:
   - 1.9.3
+# Get the headless webkit running on Travis
+# http://stackoverflow.com/questions/11448806/headless-gem-webkit-server-cannot-connect-to-x-server
+before_install:
+  - "echo 'gem: --no-document' > ~/.gemrc"
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
 before_script:
   - RAILS_ENV=test bundle exec rake db:create
   - RAILS_ENV=test bundle exec rake db:migrate --trace
