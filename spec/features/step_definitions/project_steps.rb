@@ -111,18 +111,16 @@ end
 
 step 'I view the project in the admin area' do
   visit(chapter_projects_path(@current_chapter))
-  title = find(:css, "a.title:contains('#{@project_title}')")
-  title.find(:xpath, "./../../..").find(:css, "a.see-more").click
 end
 
 step 'I should see the questions and my answers to them' do
-  question_1 = page.find(:css, ".project-description h2:contains('#{@extra_question_1}')").find(:xpath, "./..")
+  question_1 = page.find(:css, ".project-pitch h3:contains('#{@extra_question_1}')").find(:xpath, "./..")
   question_1.should have_css("p:contains('#{@extra_answer_1}')")
 
-  question_2 = page.find(:css, ".project-description h2:contains('#{@extra_question_2}')").find(:xpath, "./..")
+  question_2 = page.find(:css, ".project-pitch h3:contains('#{@extra_question_2}')").find(:xpath, "./..")
   question_2.should have_css("p:contains('#{@extra_answer_2}')")
 
-  question_3 = page.find(:css, ".project-description h2:contains('#{@extra_question_3}')").find(:xpath, "./..")
+  question_3 = page.find(:css, ".project-pitch h3:contains('#{@extra_question_3}')").find(:xpath, "./..")
   question_3.should have_css("p:contains('#{@extra_answer_3}')")
 end
 
