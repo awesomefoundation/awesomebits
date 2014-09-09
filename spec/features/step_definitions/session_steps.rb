@@ -1,5 +1,5 @@
 step "I am logged in as an admin" do
-  @current_user = create(:user, :admin => true, :password => "12345")
+  @current_user = FactoryGirl.create(:user, :admin => true, :password => "12345")
   visit sign_in_path
   fill_in("Email", :with => @current_user.email)
   fill_in("Password", :with => "12345")
@@ -14,9 +14,9 @@ step "I log back in" do
 end
 
 step "I am logged in as a dean" do
-  @current_chapter = create(:chapter)
-  @current_user = create(:user, :password => "12345")
-  @current_role = create(:role,
+  @current_chapter = FactoryGirl.create(:chapter)
+  @current_user = FactoryGirl.create(:user, :password => "12345")
+  @current_role = FactoryGirl.create(:role,
                          :user => @current_user,
                          :chapter => @current_chapter,
                          :name => "dean")
@@ -27,14 +27,14 @@ step "I am logged in as a dean" do
 end
 
 step "I am logged in as a dean for 2 chapters" do
-  @current_chapter = create(:chapter)
-  @other_chapter = create(:chapter)
-  @current_user = create(:user, :password => "12345")
-  @current_role = create(:role,
+  @current_chapter = FactoryGirl.create(:chapter)
+  @other_chapter = FactoryGirl.create(:chapter)
+  @current_user = FactoryGirl.create(:user, :password => "12345")
+  @current_role = FactoryGirl.create(:role,
                          :user => @current_user,
                          :chapter => @current_chapter,
                          :name => "dean")
-  @other_role = create(:role,
+  @other_role = FactoryGirl.create(:role,
                        :user => @current_user,
                        :chapter => @other_chapter,
                        :name => "dean")
@@ -45,9 +45,9 @@ step "I am logged in as a dean for 2 chapters" do
 end
 
 step "I am logged in as a dean for only one chapter" do
-  @current_chapter = create(:chapter)
-  @current_user = create(:user, :password => "12345")
-  @current_role = create(:role,
+  @current_chapter = FactoryGirl.create(:chapter)
+  @current_user = FactoryGirl.create(:user, :password => "12345")
+  @current_role = FactoryGirl.create(:role,
                          :user => @current_user,
                          :chapter => @current_chapter,
                          :name => "dean")
@@ -58,9 +58,9 @@ step "I am logged in as a dean for only one chapter" do
 end
 
 step "I am logged in as a trustee" do |name|
-  @current_chapter = create(:chapter)
-  @current_user = create(:user, :password => "12345")
-  @current_role = create(:role,
+  @current_chapter = FactoryGirl.create(:chapter)
+  @current_user = FactoryGirl.create(:user, :password => "12345")
+  @current_role = FactoryGirl.create(:role,
                          :user => @current_user,
                          :chapter => @current_chapter,
                          :name => "trustee")
@@ -82,7 +82,7 @@ step "the trustee can log in" do
 end
 
 step "I log in as a trustee with no chapter" do
-  @current_user = create(:user, :password => "12345")
+  @current_user = FactoryGirl.create(:user, :password => "12345")
 
   visit sign_in_path
   fill_in("Email", :with => @current_user.email)

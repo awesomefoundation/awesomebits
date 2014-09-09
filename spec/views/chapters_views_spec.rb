@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'chapters/show' do 
-  let!(:chapter) { create(:chapter) }
+  let!(:chapter) { FactoryGirl.create(:chapter) }
 
   it 'renders an apply button in the header' do
     assign(:chapter, chapter)
@@ -45,7 +45,7 @@ describe 'chapters/show' do
   end
 
   context 'with projects' do
-    let!(:project) { create(:winning_project, :chapter => chapter) }
+    let!(:project) { FactoryGirl.create(:winning_project, :chapter => chapter) }
 
     it 'renders the project section' do
       assign(:chapter, chapter)
@@ -57,7 +57,7 @@ describe 'chapters/show' do
   end
 
   context 'with trustees' do 
-    let!(:dean) { create(:user_with_dean_role) }
+    let!(:dean) { FactoryGirl.create(:user_with_dean_role) }
 
     it 'renders the trustee secton' do
       assign(:chapter, dean.roles.first.chapter)

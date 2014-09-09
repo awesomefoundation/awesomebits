@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe CountrySortCriteria do
 
-  let(:chapter1) { create(:chapter, :name => 'Salzburg', :country => 'Austria') }
-  let(:chapter2) { create(:chapter, :name => 'Los Angeles', :country => 'United States') }
-  let(:chapter3) { create(:chapter, :name => 'Sydney', :country => 'Australia') }
-  let(:chapter4) { create(:chapter, :name => 'Boston', :country => 'United States') }
+  let(:chapter1) { FactoryGirl.create(:chapter, :name => 'Salzburg', :country => 'Austria') }
+  let(:chapter2) { FactoryGirl.create(:chapter, :name => 'Los Angeles', :country => 'United States') }
+  let(:chapter3) { FactoryGirl.create(:chapter, :name => 'Sydney', :country => 'Australia') }
+  let(:chapter4) { FactoryGirl.create(:chapter, :name => 'Boston', :country => 'United States') }
   let(:chapters) { [chapter1, chapter2, chapter3, chapter4] }
 
   context "given an array of chapters" do

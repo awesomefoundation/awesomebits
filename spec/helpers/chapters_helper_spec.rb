@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe ChaptersHelper, '#can_manage_chapter?' do
 
-  let!(:role) { create(:role, :name => 'dean') }
+  let!(:role) { FactoryGirl.create(:role, :name => 'dean') }
   let!(:user) { role.user }
   let!(:chapter) { role.chapter }
 
@@ -20,7 +20,7 @@ end
 
 describe ChaptersHelper, '#link_if_not_blank' do
 
-  let!(:chapter) {create(:chapter, twitter_url: "http://twitter.com/awesomefound")}
+  let!(:chapter) { FactoryGirl.create(:chapter, twitter_url: "http://twitter.com/awesomefound")}
 
   it 'returns nil if the url is not present' do
     helper.link_if_not_blank(chapter.facebook_url, "classes").should be_nil
@@ -36,12 +36,12 @@ end
 describe ChaptersHelper, '#email_link' do
   
   context "when email is blank" do 
-    let!(:chapter) { create(:chapter) }
+    let!(:chapter) { FactoryGirl.create(:chapter) }
     it { helper.email_link(chapter).should be_nil }
   end
 
   context "when email is present" do
-    let!(:chapter) { create(:chapter, email_address: "chapter@example.com") }
+    let!(:chapter) { FactoryGirl.create(:chapter, email_address: "chapter@example.com") }
     it { helper.email_link(chapter).should_not be_nil }
   end
 
