@@ -32,7 +32,7 @@ step 'I invite a new trustee to a different chapter' do |name|
   click_button("Invite")
 end
 
-step 'I try to invite a new trustee to my chapter anyway' do |name|
+step 'I try to invite a new trustee to my chapter anyway' do
   visit new_invitation_path
 end
 
@@ -48,7 +48,7 @@ step 'I should not see a link to invite other trustees' do
   page.should have_no_css(".admin-panel a:contains('Invite a trustee')")
 end
 
-step 'I invite a new trustee to my chapter' do |name|
+step 'I invite a new trustee to my chapter' do
   visit projects_path
   click_link("Invite a Trustee")
   fill_in("First name", :with => "Joe")

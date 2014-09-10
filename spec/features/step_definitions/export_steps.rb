@@ -13,8 +13,8 @@ step 'I should not see the export all link' do
 end
 
 step 'I filter to the last :num_days day(s)' do |num_days|
-  fill_in("start date", with: (num_days.to_i.days.ago).strftime("%Y-%m-%d"))
-  fill_in("end date", with: Time.now.strftime("%Y-%m-%d"))
+  fill_in("start date", with: (num_days.to_i.days.ago).utc.strftime("%Y-%m-%d"))
+  fill_in("end date", with: Time.now.utc.strftime("%Y-%m-%d"))
   click_button "Filter"
 end
 

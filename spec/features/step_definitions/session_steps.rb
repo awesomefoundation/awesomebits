@@ -57,7 +57,7 @@ step "I am logged in as a dean for only one chapter" do
   click_button("Sign in")
 end
 
-step "I am logged in as a trustee" do |name|
+step "I am logged in as a trustee" do |name = Faker::Name.name|
   @current_chapter = FactoryGirl.create(:chapter)
   @current_user = FactoryGirl.create(:user, :password => "12345")
   @current_role = FactoryGirl.create(:role,

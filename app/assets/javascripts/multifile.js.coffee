@@ -1,4 +1,4 @@
-$(window).load ->
+$(document).ready ->
   $('.first input.multi').live 'change', ->
     clone = $(@parentNode).clone()
     clone.val('')

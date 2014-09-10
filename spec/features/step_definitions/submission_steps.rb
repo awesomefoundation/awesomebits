@@ -15,7 +15,7 @@ step "I should see the amount of characters remaining" do
 end
 
 step "I attach a/another file to the submission" do
-  page.attach_file('project_new_photos', "./app/assets/images/logo.png")
+  page.attach_file('project_new_photos', File.expand_path("./app/assets/images/logo.png"))
 end
 
 step "I should see the attachment was recognized" do
@@ -45,5 +45,5 @@ step "the files I attached should have been uploaded" do
   click_link("Dashboard")
   step 'I look at the projects for the "Any" chapter'
   page.find('.applications a.title').click
-  page.all(".viewport img[src*='logo.png']").should have(2).images
+  page.all("a[rel='project-1-images']").count.should == 2
 end
