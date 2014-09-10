@@ -22,8 +22,8 @@ describe ProjectsController do
   end
 
   context 'attempting to delete a project as a trustee who is not the dean or an admin' do
-    let(:user) { create(:user) }
-    let(:project) { create(:project) }
+    let(:user) { FactoryGirl.create(:user) }
+    let(:project) { FactoryGirl.create(:project) }
     before do
       sign_in_as user
       delete :destroy, :id => project
@@ -32,9 +32,9 @@ describe ProjectsController do
   end
 
   context 'viewing the index without a chapter' do
-    let(:chapter) { create(:chapter) }
-    let(:user) { create(:user) }
-    let!(:role) { create(:role, :user => user, :chapter => chapter) }
+    let(:chapter) { FactoryGirl.create(:chapter) }
+    let(:user) { FactoryGirl.create(:user) }
+    let!(:role) { FactoryGirl.create(:role, :user => user, :chapter => chapter) }
 
     before do
       sign_in_as user
@@ -45,10 +45,10 @@ describe ProjectsController do
   end
 
   context 'downloading the csv report' do
-    let!(:project)  { create :project }
-    let!(:user)     { create :user }
-    let!(:chapter)  { create :chapter }
-    let!(:role)     { create :role, :user => user, :chapter => chapter }
+    let!(:project)  { FactoryGirl.create :project }
+    let!(:user)     { FactoryGirl.create :user }
+    let!(:chapter)  { FactoryGirl.create :chapter }
+    let!(:role)     { FactoryGirl.create :role, :user => user, :chapter => chapter }
 
     before do
       sign_in_as user
@@ -59,9 +59,9 @@ describe ProjectsController do
   end
 
   context 'viewing a public project page that has not won yet' do
-    let!(:project) { create(:project) }
-    let!(:user) { create(:user) }
-    let!(:role) { create(:role, :user => user) }
+    let!(:project) { FactoryGirl.create(:project) }
+    let!(:user) { FactoryGirl.create(:user) }
+    let!(:role) { FactoryGirl.create(:role, :user => user) }
 
     context 'while logged in' do
       before do
@@ -82,7 +82,7 @@ describe ProjectsController do
   end
 
   context 'viewing a project that has won while logged out' do
-    let!(:project) { create(:project, :funded_on => Date.today) }
+    let!(:project) { FactoryGirl.create(:project, :funded_on => Date.today) }
 
     context "with the correct slug" do 
       before do
@@ -106,9 +106,9 @@ describe ProjectsController do
   context "viewing a private project page" do
     render_views
 
-    let!(:project) { create(:project) }
-    let!(:trustee) { create(:user) }
-    let!(:admin)   { create(:admin) }
+    let!(:project) { FactoryGirl.create(:project) }
+    let!(:trustee) { FactoryGirl.create(:user) }
+    let!(:admin)   { FactoryGirl.create(:admin) }
     
     context "while not logged in" do 
       before do 

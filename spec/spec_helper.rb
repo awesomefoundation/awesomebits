@@ -18,8 +18,7 @@ Dir[Rails.root.join("spec/features/step_definitions**/*.rb")].each {|f| require 
 RSpec.configure do |config|
   config.mock_with :mocha
   config.after(:each){ DatabaseCleaner.clean }
-  config.before(:each){ create(:chapter, :name => "Any") }
+  config.before(:each){ FactoryGirl.create(:chapter, :name => "Any") }
   config.before(:each){ ActionMailer::Base.deliveries.clear }
   config.include(Paperclip::Shoulda::Matchers)
-  config.include(FactoryGirl::Syntax::Methods)
 end

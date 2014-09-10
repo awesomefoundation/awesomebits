@@ -15,7 +15,7 @@ step "I should see the amount of characters remaining" do
 end
 
 step "I attach a/another file to the submission" do
-  page.attach_file('project_new_photos', "./app/assets/images/logo.png")
+  page.attach_file('project_new_photos', File.expand_path("./app/assets/images/logo.png"))
 end
 
 step "I should see the attachment was recognized" do

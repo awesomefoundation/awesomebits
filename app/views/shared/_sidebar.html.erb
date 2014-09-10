@@ -17,6 +17,9 @@
   <% if current_user.admin? %>
     <li><%= link_to t("layouts.sidebar.view-all-users"), users_path %></li>
   <% end %>
+
+  <li><%= link_to t("layouts.sidebar.trustee-resources"), "http://wiki.awesomestudies.org", :target => "_blank" %></li>
+
   <li class="section-title">
     <h3><%= chapter.name %></h3>
   </li>

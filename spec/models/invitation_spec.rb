@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Invitation do
   context "validations" do
-    before{ create(:invitation) }
+    before{ FactoryGirl.create(:invitation) }
     it { should belong_to(:inviter) }
     it { should belong_to(:invitee) }
     it { should belong_to(:chapter) }
@@ -13,16 +13,16 @@ describe Invitation do
   end
 
   context "#save" do
-    let(:user) { create(:user) }
-    let(:chapter) { create(:chapter) }
-    let(:invitation) { build(:invitation, :inviter => user, :chapter => chapter) }
+    let(:user) { FactoryGirl.create(:user) }
+    let(:chapter) { FactoryGirl.create(:chapter) }
+    let(:invitation) { FactoryGirl.build(:invitation, :inviter => user, :chapter => chapter) }
     it 'should not be valid if the inviter cannot invite to this chapter' do
       invitation.should_not be_valid
     end
   end
 
   context "#send_invitation" do
-    let(:invitation) { build(:invitation) }
+    let(:invitation) { FactoryGirl.build(:invitation) }
     let(:fake_mailer) { FakeMailer.new }
     around do |example|
       old_mailer, invitation.mailer = invitation.mailer, fake_mailer
@@ -37,7 +37,7 @@ describe Invitation do
   end
 
   context "#accept" do
-    let(:invitation) { create(:invitation, :first_name => "Joe", :last_name => "Doe") }
+    let(:invitation) { FactoryGirl.create(:invitation, :first_name => "Joe", :last_name => "Doe") }
     let(:attributes) { {:first_name => "Jane", :password => "12345"} }
     let(:fake_user_factory) { FakeUserFactory.new }
     let(:fake_mailer) { FakeMailer.new }
