@@ -30,7 +30,7 @@ step 'I should only see the projects with votes in my chapter' do
 end
 
 step 'they should be in descending order of vote count' do
-  counts = page.all("tr.finalist td:nth-child(4)").map(&:text)
+  counts = page.all("tr.finalist td.vote-count").map(&:text)
   counts.should == counts.sort.reverse
 end
 
@@ -47,7 +47,7 @@ step 'I filter the finalists to only show the day before yesterday' do
 end
 
 step 'I should see that 2 votes were cast on projects created in that time' do
-  vote_count = page.all(:css, "table tr td:nth-child(4)").map(&:text).map(&:to_i).sum
+  vote_count = page.all(:css, "table tr td.vote-count").map(&:text).map(&:to_i).sum
   vote_count.should == 2
 end
 
