@@ -94,7 +94,7 @@ end
 
 step 'I look at the projects for the "Any" chapter' do
   page.find(:css, "a.chapter-selection").click
-  page.find(:css, "ol.chapter-selector li a:contains('Any')").click
+  page.find(:css, "ol.chapter-selector li a", text: "Any").click
   @viewing_projects = @any_projects
 end
 

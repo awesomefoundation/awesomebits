@@ -1,5 +1,6 @@
 step 'I shortlist a project' do
-  project_element = page.find(:css, "article.project")
+  # just choose the first project
+  project_element = page.find(:css, "article.project", match: :first)
   @shortlisted_project_id = project_element['data-id'].to_i
   project_element.find(:css, "header a.short-list").click
 end
