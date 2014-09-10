@@ -1,0 +1,4 @@
+test:
+  adapter: postgresql
+  database: awesomefoundation_test
+  username: postgres

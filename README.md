@@ -1,3 +1,6 @@
+[![Build
+Status](https://travis-ci.org/awesomefoundation/awesomebits.svg)](https://travis-ci.org/awesomefoundation/awesomebits)
+
 AwesomeBits
 ===========
 

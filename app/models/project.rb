@@ -53,7 +53,11 @@ class Project < ActiveRecord::Base
     start_date = 100.years.ago.strftime('%Y-%m-%d') if start_date.blank?
     end_date   = Time.zone.now.strftime('%Y-%m-%d') if end_date.blank?
 
-    where("projects.created_at BETWEEN ? AND ?", Time.zone.parse(start_date), Time.zone.parse(end_date) + 1.day)
+    where(
+      "projects.created_at > ? AND projects.created_at < ?",
+      Time.zone.parse(start_date),
+      Time.zone.parse(end_date) + 1.day
+    )
   end
 
   def self.by_vote_count
