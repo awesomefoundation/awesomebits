@@ -48,9 +48,9 @@ $(".mark-as-winner")
   .bind("ajax:success", mark_as_winner_success)
   .bind("ajax:failure", mark_as_winner_failure)
 
-$('#project_about_me').keydown(display_remaining_chars)
-$('#project_about_project').keydown(display_remaining_chars)
-$('#project_use_for_money').keydown(display_remaining_chars)
+$('#project_about_me').keyup(display_remaining_chars)
+$('#project_about_project').keyup(display_remaining_chars)
+$('#project_use_for_money').keyup(display_remaining_chars)
 
 populate_funded_description = ->
   funded_description = $('#project_funded_description')
