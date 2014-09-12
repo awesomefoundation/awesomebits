@@ -13,8 +13,9 @@ end
 gem 'country_select'
 gem 'pg'
 gem 'textacular'
-gem 'jquery-rails'
-gem 'jquery-ui-rails'
+# upgrading jquery-ui breaks some styling
+gem 'jquery-rails', "2.0.2"
+gem 'jquery-ui-rails', "2.0.2"
 gem 'clearance'
 gem 'thin'
 gem 'sass'
