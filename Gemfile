@@ -14,6 +14,7 @@ gem 'country_select'
 gem 'pg'
 gem 'textacular'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'clearance'
 gem 'thin'
 gem 'sass'
@@ -21,7 +22,10 @@ gem 'high_voltage'
 gem 'paperclip'
 gem 'fog'
 gem 'formtastic'
-gem 'flutie'
+# later versions of flutie are missing the stylesheet
+# if someone wants to remove that reference while preserving the design,
+# go for it
+gem 'flutie', "1.3.3"
 gem 'bourbon'
 gem 'copycopter_client'
 gem "simple_form", "~> 2.1.1"
