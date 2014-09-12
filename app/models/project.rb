@@ -1,4 +1,4 @@
-require "texticle/searchable"
+require "textacular/searchable"
 
 class Project < ActiveRecord::Base
   belongs_to :chapter
@@ -20,6 +20,7 @@ class Project < ActiveRecord::Base
   validates_presence_of :about_project
   validates_presence_of :use_for_money
   validates_presence_of :chapter_id
+
 
   delegate :name, :to => :chapter, :prefix => true
 

@@ -2,19 +2,21 @@ class Photo < ActiveRecord::Base
   MAIN_DIMENSIONS = "940x470"
 
   belongs_to :project
-  has_attached_file :image,
-                    :default_url => "/assets/no-image-:style.png"
+  has_attached_file :image, :default_url => "/assets/no-image-:style.png"
+  validates_attachment_content_type :image, :content_type => [
+    "image/jpg", "image/jpeg", "image/png", "image/gif"
+  ]
 
   attr_accessible :image
 
   # Build a URL to dynamically resize application images via an external service
-  # Currently using http://magickly.afeld.me/ 
+  # Currently using http://magickly.afeld.me/
   def url(size = nil)
     case size
 
     when :main
       image.present? ? cropped_image_url("#{MAIN_DIMENSIONS}#") : image.url(:main)
-      
+
     when :index
       image.present? ? cropped_image_url("500x300#") : image.url(:index)
 
