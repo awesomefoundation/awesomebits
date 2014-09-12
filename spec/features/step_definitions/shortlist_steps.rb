@@ -70,7 +70,10 @@ end
 
 step 'I view the list of projects for this month in the "Any" chapter' do
   visit(projects_path)
-  page.find(:css, ".chapter-selector a:contains('Any')").click
+  # make the menu visible
+  page.find(".chapter-selection").click
+  # then click it
+  page.find(".chapter-selector a", :text => "Any").click
 end
 
 step 'I view only my shortlisted projects' do

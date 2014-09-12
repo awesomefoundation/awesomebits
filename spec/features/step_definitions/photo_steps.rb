@@ -14,7 +14,8 @@ end
 
 step 'I set the last image to be first' do
   photo_ids = @project.photos.map(&:id)
-  find("input[name='project[photo_order]']").set([photo_ids[2], photo_ids[0], photo_ids[1]].join(" "))
+  # the input is hidden, but it's easier to set it than to deal with drag/drop
+  find("#project_photo_order", visible: false).set([photo_ids[2], photo_ids[0], photo_ids[1]].join(" "))
   click_button("Save")
 end
 
