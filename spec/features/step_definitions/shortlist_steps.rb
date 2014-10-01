@@ -1,5 +1,6 @@
 step 'I shortlist a project' do
-  project_element = page.find(:css, "article.project")
+  # just choose the first project
+  project_element = page.find(:css, "article.project", match: :first)
   @shortlisted_project_id = project_element['data-id'].to_i
   project_element.find(:css, "header a.short-list").click
 end
@@ -69,7 +70,10 @@ end
 
 step 'I view the list of projects for this month in the "Any" chapter' do
   visit(projects_path)
-  page.find(:css, ".chapter-selector a:contains('Any')").click
+  # make the menu visible
+  page.find(".chapter-selection").click
+  # then click it
+  page.find(".chapter-selector a", :text => "Any").click
 end
 
 step 'I view only my shortlisted projects' do

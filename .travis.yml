@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - 1.9.3
+  - 2.1.1
 # Get the headless webkit running on Travis
 # http://stackoverflow.com/questions/11448806/headless-gem-webkit-server-cannot-connect-to-x-server
 before_install:

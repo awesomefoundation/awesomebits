@@ -94,7 +94,7 @@ end
 
 step 'I look at the projects for the "Any" chapter' do
   page.find(:css, "a.chapter-selection").click
-  page.find(:css, "ol.chapter-selector li a:contains('Any')").click
+  page.find(:css, "ol.chapter-selector li a", text: "Any").click
   @viewing_projects = @any_projects
 end
 
@@ -115,14 +115,14 @@ step 'I view the project in the admin area' do
 end
 
 step 'I should see the questions and my answers to them' do
-  question_1 = page.find(:css, ".project-pitch h3:contains('#{@extra_question_1}')").find(:xpath, "./..")
-  question_1.should have_css("p:contains('#{@extra_answer_1}')")
+  question_1 = page.find(:css, ".project-pitch h3", text: @extra_question_1).find(:xpath, "./..")
+  question_1.should have_css("p", text: @extra_answer_1)
 
-  question_2 = page.find(:css, ".project-pitch h3:contains('#{@extra_question_2}')").find(:xpath, "./..")
-  question_2.should have_css("p:contains('#{@extra_answer_2}')")
+  question_2 = page.find(:css, ".project-pitch h3", text: @extra_question_2).find(:xpath, "./..")
+  question_2.should have_css("p", text: @extra_answer_2)
 
-  question_3 = page.find(:css, ".project-pitch h3:contains('#{@extra_question_3}')").find(:xpath, "./..")
-  question_3.should have_css("p:contains('#{@extra_answer_3}')")
+  question_3 = page.find(:css, ".project-pitch h3", text: @extra_question_3).find(:xpath, "./..")
+  question_3.should have_css("p", @extra_answer_3)
 end
 
 step 'I go to the recently submitted project' do
