@@ -1,11 +1,11 @@
 step 'I pick a winner' do
-  project = page.find("article.project")
+  project = page.find("article.project", match: :first)
   @winning_project = Project.find(project['data-id'])
   project.find(".mark-as-winner").click
 end
 
 step 'I pick a winner for my chapter' do
-  project = page.find("article.project")
+  project = page.find("article.project", match: :first)
   @winning_project = Project.find(project['data-id'])
   project.find(".mark-as-winner.chapter-#{@current_chapter.id}").click
 end
@@ -39,5 +39,5 @@ end
 
 step 'the winning project should belong to my chapter' do
   visit(project_path(@winning_project))
-  page.should have_css(".meta-data p:contains('#{@current_chapter.name} project')")
+  page.should have_css(".meta-data p", text: "#{@current_chapter.name} project")
 end

@@ -1,13 +1,9 @@
 RSpec::Matchers.define :show_the_flash do |expected|
-  chain :containing do |message|
-    @message = message
-  end
-
   match do |actual|
-    actual.should have_css("#flash #flash_#{expected}:contains('#{@message}')")
+    actual.should have_selector("#flash #flash_#{expected}")
   end
 
   failure_message_for_should do |actual|
-    %[Expected this content:\n#{actual.body}\n to have CSS matching "#flash #flash_#{expected}:contains('#{@message}')"]
+    %[Expected this content:\n#{actual.body}\n to have an element matching "#flash #flash_#{expected}"]
   end
 end

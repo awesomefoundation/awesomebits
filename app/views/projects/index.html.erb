@@ -11,7 +11,7 @@
       <%= link_to '#', :class => 'chapter-selection' do %>
         <span><%= @chapter.name %></span>
         <span class="arrow"></span>
-      <% end -%>
+      <% end %>
       <ol class="chapter-selector">
         <% selectable_chapters_for(current_user).each do |chapter| %>
           <li><%= link_to chapter.name, chapter_projects_path(chapter) %></li>

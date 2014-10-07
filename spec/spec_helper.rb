@@ -16,6 +16,8 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 Dir[Rails.root.join("spec/features/step_definitions**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|
+  config.include Capybara::DSL
+
   config.mock_with :mocha
   config.after(:each){ DatabaseCleaner.clean }
   config.before(:each){ FactoryGirl.create(:chapter, :name => "Any") }

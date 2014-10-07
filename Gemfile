@@ -33,19 +33,19 @@ gem 'honeypot-captcha'
 
 group :development, :test do
   gem "rspec-rails"
-  gem "ruby-debug19"
+  gem "byebug"
   gem "sham_rack"
   gem "tddium"
-  gem "evergreen", :require => "evergreen/rails"
   gem "pry"
   gem "pry-nav"
+  gem "evergreen", "~> 1.1.3", :require => "evergreen/rails"
 end
 
 group :test do
   gem "turnip"
   gem "capybara"
   gem "database_cleaner"
-  gem "capybara-webkit", "0.9.0"
+  gem "capybara-webkit", "~> 1.3.0"
   gem "factory_girl_rails"
   gem "faker"
   gem "bourne"

@@ -1,13 +1,13 @@
 step 'I create a new chapter' do
   click_link("Create a Chapter")
   @chapter_name = "Another Awesome Chapter"
-  fill_in("Name", :with => @chapter_name)
+  fill_in("chapter_name", :with => @chapter_name)
   fill_in("Twitter URL", :with => "http://twitter.com/awesomefound")
   fill_in("Facebook URL", :with => "http://twitter.com/awesomefound")
   fill_in("Blog URL", :with => "http://twitter.com/awesomefound")
   fill_in("RSS Feed URL", :with => "http://awesomefoundation.org/blog/feed/")
   fill_in("Description", :with => "http://twitter.com/awesomefound")
-  select("United States", :from => "Country")
+  select("United States", :from => "Country", match: :first)
   click_button("Create Chapter")
 end
 
@@ -63,7 +63,7 @@ end
 
 step 'I edit a chapter' do
   visit(chapters_url)
-  click_link(@current_chapter.name)
+  click_link(@current_chapter.name, match: :first)
   click_link('Edit Chapter')
   @new_chapter_name = "Montecito"
   @new_twitter_url = "http://twitter.com/awesomefound"
@@ -72,7 +72,7 @@ step 'I edit a chapter' do
   @new_blog_url = "http://blog.com/awesomefound"
   @new_rss_feed_url = "http://rss.com/awesomefound"
   @new_description = "This is a description of the chapter."
-  fill_in("Name",           :with => @new_chapter_name)
+  fill_in("chapter_name",   :with => @new_chapter_name)
   fill_in("Twitter URL",    :with => @new_twitter_url)
   fill_in("Facebook URL",   :with => @new_facebook_url)
   fill_in("Email Address",  :with => @new_email_address)
