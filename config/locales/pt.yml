@@ -4,7 +4,7 @@ pt:
     separator: ","
   date:
     formats:
-      funding: "%B, %Y"
+      funding: "%B %Y"
   flash:
     permissions:
       must-be-logged-in: Você deve estar autenticado.
