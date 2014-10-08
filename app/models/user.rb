@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   include Clearance::User
   attr_accessible :first_name, :last_name, :email, :bio, :url, :last_viewed_chapter_id
 
+  before_validation UrlNormalizer.new(:url)
+
   validates_presence_of :first_name
   validates_presence_of :last_name
   validates_presence_of :email
