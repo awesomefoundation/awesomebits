@@ -11,10 +11,6 @@
   <%= form.input :url, :as => :string %>
 </div>
 <div class="descriptions">
-  <%= form.input :about_me, :maxlength => 500, :input_html => { :class => "about-me" }, :disabled => !form.object.new_record?  %>
-  <div class="chars_left">
-    You have <span id="project_about_me_chars_left">500</span> chars left
-  </div>
   <%= form.input :about_project, :maxlength => 2000, :input_html => { :class => "project-desc" }, :disabled => !form.object.new_record? %>
   <div class="chars_left">
     You have <span id="project_about_project_chars_left">2000</span> chars left
@@ -22,6 +18,10 @@
   <%= form.input :use_for_money, :maxlength => 500, :input_html => { :class => "project-use-for-money" }, :disabled => !form.object.new_record?  %>
   <div class="chars_left">
     You have <span id="project_use_for_money_chars_left">500</span> chars left
+  </div>
+  <%= form.input :about_me, :maxlength => 500, :input_html => { :class => "about-me" }, :disabled => !form.object.new_record?  %>
+  <div class="chars_left">
+    You have <span id="project_about_me_chars_left">500</span> chars left
   </div>
 </div>
 <div class="image-upload">

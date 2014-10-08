@@ -60,12 +60,12 @@
         </p>
       <% end %>
 
-      <h3><%= t ".about-me" %></h3>
-      <%= markdown project.about_me %>
       <h3><%= t ".about-project" %></h3>
       <%= markdown project.about_project %>
       <h3><%= t ".use-for-money" %></h3>
       <%= markdown project.use_for_money %>
+      <h3><%= t ".about-me" %></h3>
+      <%= markdown project.about_me %>
 
       <% 1.upto(Chapter::EXTRA_QUESTIONS_COUNT) do |num| -%>
         <% if project.extra_question(num).present? %>
