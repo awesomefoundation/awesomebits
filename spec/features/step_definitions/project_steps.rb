@@ -168,7 +168,7 @@ step 'I should see the page describing it and all its details' do
   page.should have_css(".project-details .chapter-name a:contains('#{project.chapter.name}')")
   page.should have_css(".project-details .project-starter:contains('#{project.name}')")
   page.should have_css(".project-details p:contains('#{project.about_project}')")
-  page.should have_css(".project-side-bar .funded-on:contains('(#{project.funded_on.strftime("%B, %Y")})')")
+  page.should have_css(".project-side-bar .funded-on:contains('(#{project.funded_on.strftime("%B %Y")})')")
   page.should have_css(".project-side-bar .project-site-link a[href='#{project.url}']")
 end
 

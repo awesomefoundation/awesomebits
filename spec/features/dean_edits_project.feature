@@ -18,6 +18,6 @@ Feature: Dean edits a project
     Given I am logged in as a dean
     And there is 1 winning project in my chapter
     When I edit that winning project
-    And I set the winning date to be February, 2008
+    And I set the winning date to be February 2008
     And I go to the public page for that project
-    Then I should see the project was funded in February, 2008
+    Then I should see the project was funded in February 2008
