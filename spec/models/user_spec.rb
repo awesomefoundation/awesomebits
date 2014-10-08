@@ -188,4 +188,29 @@ describe User do
     end
   end
 
+  context "url validation" do
+    let(:user){ FactoryGirl.build(:user) }
+
+    it 'adds a url scheme if it does not have one' do
+      user.url = 'example.com'
+      user.valid?
+
+      user.url.should == 'http://example.com'
+    end
+
+    it 'leaves the scheme alone if it has one' do
+      user.url = 'https://example.com'
+      user.valid?
+
+      user.url.should == 'https://example.com'
+    end
+
+    it 'leaves the url blank if it is blank' do
+      user.url = ''
+      user.valid?
+
+      user.url.should == ''
+    end
+  end
+
 end
