@@ -11,7 +11,7 @@ class Project < ActiveRecord::Base
                   :extra_answer_1, :extra_answer_2, :extra_answer_3,
                   :new_photos, :photo_order, :rss_feed_url, :use_for_money, :funded_on, :funded_description
 
-  before_validation :ensure_valid_urls
+  before_validation UrlNormalizer.new(:url, :rss_feed_url)
 
   validates_presence_of :name
   validates_presence_of :title
@@ -178,19 +178,6 @@ class Project < ActiveRecord::Base
   end
 
   protected
-
-  # before validation
-  def ensure_valid_urls
-    if url.present? && ! url.match(/:\/\//)
-      self.url = "http://#{url}"
-    end
-
-    if rss_feed_url.present? && ! rss_feed_url.match(/:\/\//)
-      self.rss_feed_url = "http://#{rss_feed_url}"
-    end
-
-    true
-  end
 
   # before save
   def ensure_funded_description
