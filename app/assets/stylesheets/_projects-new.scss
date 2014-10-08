@@ -14,6 +14,7 @@
 
 .project-form {
   form {
+    .project-section,
     .descriptions,
     .image-upload,
     .personal-info,
@@ -23,6 +24,10 @@
       border-bottom: 1px solid rgb(200,200,200);
       margin-bottom: 30px;
       padding-bottom: 20px;
+    }
+
+    .chapter-select {
+      padding-bottom: 10px;
     }
 
     div.input {
