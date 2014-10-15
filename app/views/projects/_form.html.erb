@@ -24,6 +24,7 @@
     You have <span id="project_about_me_chars_left">500</span> chars left
   </div>
 </div>
+
 <div class="image-upload">
   <% if form.object.photos.present? %>
     <section class="current-images">
@@ -42,14 +43,22 @@
   <div class="input file optional">
     <label class="file optional"><%= t "simple_form.labels.project.new_photos-html" %></label>
     <div class="multi-input first noremove" data-num-files="5">
-      <input class="file optional multi new_photo" id="project_new_photos" name="project[new_photos][]" type="file" value="" accept="image/*">
+      <% if params[:new_uploader] %>
+        <%= form.s3_file_field :new_photos, :class => "s3_upload_field", :name => "project[new_photo_direct_upload_urls][]", :accept => "image/*"  %>
+      <% else %>
+        <input class="file optional multi new_photo" id="project_new_photos" name="project[new_photos][]" type="file" value="" accept="image/*">
+      <% end %>
       <a href="#" class="remove-image" data-remove="true">remove</a>
+      <i class="upload-status icon-spin icon-spinner"></i>
+      <p class="filename"></p>
+      <div class="progress-meter"></div>
     </div>
 
     <div><%= t(".image-notes", :dimensions => Photo::MAIN_DIMENSIONS) %></div>
 
   </div>
 </div>
+
 <div class="extra-questions" style="display:none">
   <%= form.input :extra_question_1, :as => :hidden, :wrapper_html => {:class => "extra-question"}  %>
   <%= form.input :extra_question_2, :as => :hidden, :wrapper_html => {:class => "extra-question"}  %>

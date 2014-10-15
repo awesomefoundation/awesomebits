@@ -1,3 +1,5 @@
+//= require s3_file_field
+
 shortlist_before_send = (event, data, xhr) ->
   xhr.type = $(event.currentTarget).attr('data-method').toUpperCase()
 
