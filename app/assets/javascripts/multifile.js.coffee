@@ -7,6 +7,11 @@ decrement_file_counter = (element) ->
       element.hide()
 
 $(document).ready ->
+  $('.input.file').find('.toggle-uploader a').click ->
+    $('.input.file *[data-remove="true"]').click()
+    $('.input.file').toggle()
+    return false
+
   $('.first input.multi').live 'change', ->
     clone = $(@parentNode).clone()
     clone.val('')

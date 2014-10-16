@@ -117,6 +117,8 @@ en:
     form:
       save: Save
       image-notes: The top image is set as the cover image. Images will be resized to %{dimensions} pixels. If you get an error message, please try again with fewer or smaller files.
+      use-classic-uploader: Switch to the classic uploader
+      use-default-uploader: Switch to the default uploader
     index:
       filter-button: Filter
       search: search

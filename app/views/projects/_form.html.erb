@@ -40,23 +40,12 @@
       </ul>
     </section>
   <% end %>
-  <div class="input file optional">
-    <label class="file optional"><%= t "simple_form.labels.project.new_photos-html" %></label>
-    <div class="multi-input first noremove" data-num-files="5">
-      <% if params[:new_uploader] %>
-        <%= form.s3_file_field :new_photos, :class => "s3_upload_field", :name => "project[new_photo_direct_upload_urls][]", :accept => "image/*"  %>
-      <% else %>
-        <input class="file optional multi new_photo" id="project_new_photos" name="project[new_photos][]" type="file" value="" accept="image/*">
-      <% end %>
-      <a href="#" class="remove-image" data-remove="true">remove</a>
-      <i class="upload-status icon-spin icon-spinner"></i>
-      <p class="filename"></p>
-      <div class="progress-meter"></div>
-    </div>
 
-    <div><%= t(".image-notes", :dimensions => Photo::MAIN_DIMENSIONS) %></div>
+  <% if s3_uploader_available? %>
+    <%= render :partial => "image_form", :locals => { :form => form, :upload_mechanism => :s3 } %>
+  <% end %>
+  <%= render :partial => "image_form", :locals => { :form => form, :upload_mechanism => :classic } %>
 
-  </div>
 </div>
 
 <div class="extra-questions" style="display:none">
