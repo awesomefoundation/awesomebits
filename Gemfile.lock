@@ -55,6 +55,8 @@ GEM
     capybara-webkit (1.3.0)
       capybara (>= 2.0.2, < 2.5.0)
       json
+    celluloid (0.15.2)
+      timers (~> 1.1.0)
     clearance (0.16.2)
       diesel (~> 0.1.5)
       rails (>= 3.0)
@@ -237,6 +239,8 @@ GEM
     sprockets-redirect (0.1.0)
       activesupport (>= 3.1.0)
       rack
+    sucker_punch (1.2.1)
+      celluloid (~> 0.15.2)
     tddium (1.4.4)
       highline
       json
@@ -255,6 +259,7 @@ GEM
     thor (0.18.1)
     tilt (1.4.1)
     timecop (0.3.5)
+    timers (1.1.0)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -315,6 +320,7 @@ DEPENDENCIES
   shoulda-matchers
   simple_form!
   sprockets-redirect
+  sucker_punch (~> 1.0)
   tddium
   texticle (~> 2.0)
   thin
