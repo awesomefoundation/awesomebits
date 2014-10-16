@@ -18,4 +18,26 @@ describe Photo do
       photo.url(:main).should match(/#{CGI.escape(photo.url)}/)
     end
   end
+
+  context 'with a direct upload url' do
+    before(:each) do
+      Fog.mock!
+      Fog::Mock.reset
+    end
+
+    let(:uploaded_image) { FogFactory.new.create_png_file }
+    let(:photo) { FactoryGirl.build(:photo, :image => nil) }
+    
+    it "copies a direct upload url to the correct destination" do
+      photo.fog_config = FogFactory.fog_config
+      photo.direct_upload_url = uploaded_image.public_url
+      photo.save
+
+      photo.image.should_not be_nil
+      photo.image.size.should == uploaded_image.content_length
+      photo.image.updated_at.should == Time.parse(uploaded_image.last_modified).to_i
+      photo.image.content_type.should == uploaded_image.content_type
+      File.basename(photo.url).should == File.basename(uploaded_image.public_url)
+    end
+  end
 end

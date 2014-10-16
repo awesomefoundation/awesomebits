@@ -11,6 +11,9 @@ class Photo < ActiveRecord::Base
     DirectUploadJob.new.async.perform(self)
   end
 
+  cattr_accessor :fog_config
+  self.fog_config = Rails.configuration.fog
+
   # Build a URL to dynamically resize application images via an external service
   # Currently using http://magickly.afeld.me/ 
   def url(size = nil)
@@ -32,7 +35,7 @@ class Photo < ActiveRecord::Base
       set_attributes_from_direct_upload
 
       if uploaded_file = bucket.files.get(direct_upload_path)
-        uploaded_file.copy(Rails.configuration.fog.bucket, image.path)
+        uploaded_file.copy(fog_config.bucket, image.path)
 
         destination_file = bucket.files.get(image.path)
         destination_file.public = true
@@ -77,11 +80,11 @@ class Photo < ActiveRecord::Base
   end
 
   def fog
-    @fog ||= Fog::Storage.new(Rails.configuration.fog.credentials)
+    @fog ||= Fog::Storage.new(fog_config.credentials)
   end
 
   def bucket
-    @bucket ||= fog.directories.get(Rails.configuration.fog.bucket)
+    @bucket ||= fog.directories.get(fog_config.bucket)
   end
 
   def set_attributes_from_direct_upload
