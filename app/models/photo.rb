@@ -7,7 +7,9 @@ class Photo < ActiveRecord::Base
 
   attr_accessible :image, :direct_upload_url
 
-  after_create :transfer_from_direct_upload
+  after_create do
+    DirectUploadJob.new.async.perform(self)
+  end
 
   # Build a URL to dynamically resize application images via an external service
   # Currently using http://magickly.afeld.me/ 
