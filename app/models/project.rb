@@ -25,6 +25,7 @@ class Project < ActiveRecord::Base
 
   before_save :ensure_funded_description
 
+  # For dependency injection
   cattr_accessor :mailer
   self.mailer = ProjectMailer
 
@@ -164,7 +165,7 @@ class Project < ActiveRecord::Base
     was_new_record = new_record?
     saved = super
     if saved && was_new_record
-      mailer.new_application(self).deliver
+      ProjectMailerJob.new.async.perform(self)
     end
     saved
   end

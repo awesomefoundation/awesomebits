@@ -32,6 +32,7 @@ gem "will_paginate", "~> 3.0.3"
 gem "friendly_id", "~> 4.0.9"
 gem 'redcarpet'
 gem 'honeypot-captcha'
+gem 'sucker_punch', '~> 1.0'
 
 group :development, :test do
   gem "rspec-rails"
