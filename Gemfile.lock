@@ -80,6 +80,9 @@ GEM
     diesel (0.1.5)
       railties
     diff-lcs (1.2.5)
+    dotenv (1.0.2)
+    dotenv-rails (1.0.2)
+      dotenv (= 1.0.2)
     email_spec (1.2.1)
       mail (~> 2.2)
       rspec (~> 2.0)
@@ -300,6 +303,7 @@ DEPENDENCIES
   copycopter_client
   country_select
   database_cleaner
+  dotenv-rails
   email_spec
   evergreen (~> 1.1.3)
   factory_girl_rails

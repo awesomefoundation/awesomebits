@@ -4,6 +4,20 @@ Status](https://travis-ci.org/awesomefoundation/awesomebits.svg)](https://travis
 AwesomeBits
 ===========
 
+Configuration
+-------------
+
+### Environment Variables
+
+In order to set environment variables (for example, to enable S3 in your development environment),
+create a file called `.env` in the main project directory. This file will look like this:
+
+```shell
+AWS_ACCESS_KEY_ID=XXX
+AWS_SECRET_ACCESS_KEY=YYY
+AWS_BUCKET=your-bucket-name
+```
+
 Countries
 ---------
 
@@ -28,9 +42,11 @@ Images are resized dynamically via the [Magickly gem](http://magickly.afeld.me).
 In order to display images properly, you must have a Magickly installation running
 and you must set the MAGICKLY_HOST environment variable to point to that host. 
 
-e.g. If you are running Magickly localy on port 8888, run AwesomeBits using the command: 
+e.g. If you are running Magickly localy on port 8888, add the following line to your `.env` file:
 
-  MAGICKLY_HOST=http://localhost:8888 thin start
+```shell
+MAGICKLY_HOST=http://localhost:8888
+```
 
 
 License
