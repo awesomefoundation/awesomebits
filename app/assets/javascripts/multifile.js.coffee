@@ -1,5 +1,3 @@
-window.awesomeEnvironment.remainingUploads = 0
-
 decrement_file_counter = (element) -> 
   if remaining = element.data('num-files')
     remaining = remaining - 1

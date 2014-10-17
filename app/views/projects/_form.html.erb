@@ -73,6 +73,8 @@
 
 <% content_for :javascript do %>
   <%= javascript_tag do %>
+    window.awesomeEnvironment.remainingUploads = 0;
+
     $(window).load(function(){
       $('#project_funded_on').datepicker({dateFormat: 'yy-mm-dd', onClose: function(){ $('#project_funded_on').blur() }});
 
