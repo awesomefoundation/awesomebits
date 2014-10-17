@@ -9,7 +9,8 @@ class Project < ActiveRecord::Base
   attr_accessible :name, :title, :url, :email, :phone, :about_me, :about_project,
                   :chapter_id, :extra_question_1, :extra_question_2, :extra_question_3,
                   :extra_answer_1, :extra_answer_2, :extra_answer_3,
-                  :new_photos, :photo_order, :rss_feed_url, :use_for_money, :funded_on, :funded_description
+                  :new_photos, :photo_order, :rss_feed_url, :use_for_money, :funded_on, :funded_description,
+                  :new_photo_direct_upload_urls
 
   before_validation UrlNormalizer.new(:url, :rss_feed_url)
 
@@ -139,6 +140,15 @@ class Project < ActiveRecord::Base
   def new_photos=(photos)
     photos.each do |photo|
       new_photo = self.photos.build(:image => photo)
+      if persisted?
+        new_photo.save
+      end
+    end
+  end
+
+  def new_photo_direct_upload_urls=(urls)
+    urls.each do |url|
+      new_photo = self.photos.build(:direct_upload_url => url)
       if persisted?
         new_photo.save
       end

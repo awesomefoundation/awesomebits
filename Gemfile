@@ -33,6 +33,7 @@ gem "friendly_id", "~> 4.0.9"
 gem 'redcarpet'
 gem 'honeypot-captcha'
 gem 'sucker_punch', '~> 1.0'
+gem 's3_file_field'
 
 group :development, :test do
   gem "rspec-rails"
@@ -42,6 +43,7 @@ group :development, :test do
   gem "pry"
   gem "pry-nav"
   gem "evergreen", "~> 1.1.3", :require => "evergreen/rails"
+  gem "dotenv-rails"
 end
 
 group :test do

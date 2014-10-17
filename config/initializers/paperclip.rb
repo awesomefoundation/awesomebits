@@ -1,5 +1,9 @@
-if %w(development test cucumber performance).include?(Rails.env)
+if %w(test cucumber performance).include?(Rails.env)
   s3_decision = {}
+
+elsif Rails.env == "development" && !ENV['AWS_BUCKET']
+  s3_decision = {}
+
 else
   s3_decision = {
     storage:         :fog,

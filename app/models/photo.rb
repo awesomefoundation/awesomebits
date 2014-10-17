@@ -5,7 +5,14 @@ class Photo < ActiveRecord::Base
   has_attached_file :image,
                     :default_url => "/assets/no-image-:style.png"
 
-  attr_accessible :image
+  attr_accessible :image, :direct_upload_url
+
+  after_create do
+    DirectUploadJob.new.async.perform(self)
+  end
+
+  cattr_accessor :fog_config
+  self.fog_config = Rails.configuration.fog
 
   # Build a URL to dynamically resize application images via an external service
   # Currently using http://magickly.afeld.me/ 
@@ -20,6 +27,26 @@ class Photo < ActiveRecord::Base
 
     else
       image_url
+    end
+  end
+
+  def transfer_from_direct_upload
+    if persisted? && direct_upload_url.present?
+      set_attributes_from_direct_upload
+
+      if uploaded_file = bucket.files.get(direct_upload_path)
+        uploaded_file.copy(fog_config.bucket, image.path)
+
+        destination_file = bucket.files.get(image.path)
+        destination_file.public = true
+        destination_file.save
+
+        uploaded_file.destroy
+
+        self.direct_upload_url = nil
+
+        save
+      end
     end
   end
 
@@ -50,5 +77,26 @@ class Photo < ActiveRecord::Base
     uri.port   ||= base_uri.port
 
     uri.to_s
+  end
+
+  def fog
+    @fog ||= Fog::Storage.new(fog_config.credentials)
+  end
+
+  def bucket
+    @bucket ||= fog.directories.get(fog_config.bucket)
+  end
+
+  def set_attributes_from_direct_upload
+    file = bucket.files.get(direct_upload_path)
+
+    self.image_file_name = File.basename(direct_upload_path)
+    self.image_content_type = file.content_type
+    self.image_file_size = file.content_length
+    self.image_updated_at = file.last_modified
+  end
+
+  def direct_upload_path
+    URI(direct_upload_url).path[1..-1]
   end
 end

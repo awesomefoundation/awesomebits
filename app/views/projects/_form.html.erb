@@ -24,6 +24,7 @@
     You have <span id="project_about_me_chars_left">500</span> chars left
   </div>
 </div>
+
 <div class="image-upload">
   <% if form.object.photos.present? %>
     <section class="current-images">
@@ -39,17 +40,14 @@
       </ul>
     </section>
   <% end %>
-  <div class="input file optional">
-    <label class="file optional"><%= t "simple_form.labels.project.new_photos-html" %></label>
-    <div class="multi-input first noremove" data-num-files="5">
-      <input class="file optional multi new_photo" id="project_new_photos" name="project[new_photos][]" type="file" value="" accept="image/*">
-      <a href="#" class="remove-image" data-remove="true">remove</a>
-    </div>
 
-    <div><%= t(".image-notes", :dimensions => Photo::MAIN_DIMENSIONS) %></div>
+  <% if s3_uploader_available? %>
+    <%= render :partial => "image_form", :locals => { :form => form, :upload_mechanism => :s3 } %>
+  <% end %>
+  <%= render :partial => "image_form", :locals => { :form => form, :upload_mechanism => :classic } %>
 
-  </div>
 </div>
+
 <div class="extra-questions" style="display:none">
   <%= form.input :extra_question_1, :as => :hidden, :wrapper_html => {:class => "extra-question"}  %>
   <%= form.input :extra_question_2, :as => :hidden, :wrapper_html => {:class => "extra-question"}  %>

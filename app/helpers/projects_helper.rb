@@ -26,4 +26,22 @@ module ProjectsHelper
       ''
     end
   end
+
+  def s3_uploader_available?
+    ENV['AWS_BUCKET'].present?
+  end
+
+  def display_uploader?(uploader)
+    if s3_uploader_available?
+      if params[:uploader]
+        uploader.to_s == params[:uploader]
+
+      else
+        uploader.to_s == "s3"
+      end
+
+    else
+      uploader.to_s == "classic"
+    end
+  end
 end

@@ -113,6 +113,11 @@
         }
       }
 
+      .toggle-uploader {
+        margin-top: 1em;
+        text-align: right;
+      }
+
       .multi-input {
         background: rgb(255,255,255);
         border-top: 1px solid rgb(200,200,200);
@@ -142,7 +147,6 @@
           margin-bottom: 0;
         }
 
-
         a.remove-image {
           color: $base-font-color;
           float: right;
@@ -152,6 +156,21 @@
           &:hover {
             color: $pink;
           }
+        }
+
+        i.upload-status {
+          display: none;
+          float: left;
+          margin-top: 2px;
+          margin-right: 5px;
+        }
+
+        .progress-meter {
+          display: none;
+          background: #ddd;
+          height: 1px;
+          margin-top: 1px;
+          width: 0;
         }
       }
     }
