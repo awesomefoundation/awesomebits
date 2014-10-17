@@ -90,13 +90,15 @@ class Photo < ActiveRecord::Base
   def set_attributes_from_direct_upload
     file = bucket.files.get(direct_upload_path)
 
-    self.image_file_name = File.basename(direct_upload_path)
+    self.image_file_name = File.basename(direct_upload_path).tr(' ', '_')
     self.image_content_type = file.content_type
     self.image_file_size = file.content_length
     self.image_updated_at = file.last_modified
   end
 
+  # S3 URLs come in with spaces escaped, so we have to unescape them to get the
+  # actual path in the bucket.
   def direct_upload_path
-    URI(direct_upload_url).path[1..-1]
+    CGI.unescape(URI(direct_upload_url).path[1..-1])
   end
 end

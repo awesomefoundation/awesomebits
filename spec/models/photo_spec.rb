@@ -26,6 +26,7 @@ describe Photo do
     end
 
     let(:uploaded_image) { FogFactory.new.create_png_file }
+    let(:uploaded_image_with_space) { FogFactory.new.create_png_file(:key => "with space.png") }
     let(:photo) { FactoryGirl.build(:photo, :image => nil) }
     
     it "copies a direct upload url to the correct destination" do
@@ -38,6 +39,15 @@ describe Photo do
       photo.image.updated_at.should == Time.parse(uploaded_image.last_modified).to_i
       photo.image.content_type.should == uploaded_image.content_type
       File.basename(photo.url).should == File.basename(uploaded_image.public_url)
+    end
+
+    it "handles images with escaped spaces in its name" do
+      photo.fog_config = FogFactory.fog_config
+      photo.direct_upload_url = uploaded_image_with_space.public_url
+      photo.save
+
+      photo.image.should_not be_nil
+      File.basename(photo.url).should == "with_space.png"
     end
   end
 end
