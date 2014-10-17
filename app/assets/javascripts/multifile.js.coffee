@@ -1,3 +1,5 @@
+window.awesomeEnvironment.remainingUploads = 0
+
 decrement_file_counter = (element) -> 
   if remaining = element.data('num-files')
     remaining = remaining - 1
@@ -54,7 +56,12 @@ $(document).ready ->
         # Limit the number of files we're allowed to attach
         decrement_file_counter(parent)
 
+        window.awesomeEnvironment.remainingUploads += 1
+
         data.submit()
+
+      always: (e, data) ->
+        window.awesomeEnvironment.remainingUploads -= 1
 
       done: (e, data) ->
         clone = $("#upload-#{data.files[0].unique_id}")
@@ -94,3 +101,8 @@ $(document).ready ->
       if first.data('num-files') != undefined
         first.data('num-files', first.data('num-files') + 1)
         first.show()
+
+  $('.project-form form').bind 'submit', (event) ->
+    if window.awesomeEnvironment.remainingUploads > 0
+      alert($('.project-form form').data('uploading-alert-text'))
+      return false

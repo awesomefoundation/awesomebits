@@ -96,6 +96,7 @@ en:
         id: ID
         votes: Votes
   projects:
+    wait-for-uploads-to-complete: Please wait for your images to finish uploading before submitting your application.
     project:
       awesome: Awesome
       delete: Delete this project
