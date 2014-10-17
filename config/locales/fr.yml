@@ -96,6 +96,7 @@ fr:
         id: ID
         votes: Votes
   projects:
+    wait-for-uploads-to-complete: "Veuillez attendre la fin du chargement de vos images pour envoyer votre candidature."
     project:
       awesome: Awesome
       delete: Supprimer ce projet
@@ -117,6 +118,8 @@ fr:
     form:
       save: Sauvegarder
       image-notes: "L'image d'en haut sert d'image de couverture. Les images seront redimensionnées à %{dimensions} pixels. En cas d'erreur, merci de réessayer avec de plus petites images."
+      use-classic-uploader: "Passer au chargeur de fichiers classique"
+      use-default-uploader: "Passer au chargeur de fichiers par défaut"
     index:
       filter-button: Filtrer
       search: rechercher
