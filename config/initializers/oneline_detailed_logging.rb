@@ -61,20 +61,3 @@ ActiveSupport::Notifications.subscribe "process_action.action_controller" do |na
 
   Rails.logger.warn(m)
 end
-
-require "action_view/log_subscriber"
-
-module ActionView
-  class LogSubscriber
-    def info(msg)
-      debug(msg)
-    end
-
-    def render_partial(event)
-      # Silencing
-    end
-    def render_collection(event)
-      # Silencing
-    end
-  end
-end
