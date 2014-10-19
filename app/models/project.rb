@@ -148,9 +148,11 @@ class Project < ActiveRecord::Base
 
   def new_photo_direct_upload_urls=(urls)
     urls.each do |url|
-      new_photo = self.photos.build(:direct_upload_url => url)
-      if persisted?
-        new_photo.save
+      if url.present?
+        new_photo = self.photos.build(:direct_upload_url => url)
+        if persisted?
+          new_photo.save
+        end
       end
     end
   end
