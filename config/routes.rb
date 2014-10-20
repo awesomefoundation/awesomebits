@@ -43,4 +43,8 @@ Awesomefoundation::Application.routes.draw do
   end
 
   match "/404", :to => "errors#not_found"
+
+  # All other routes are considered 404s. ActionController::RoutingError 
+  # will catch them, but that fills our logs with noisy exceptions.
+  match '*url', :to => 'errors#not_found', :via => [:get]
 end
