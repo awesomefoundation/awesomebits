@@ -19,6 +19,14 @@ describe Photo do
     end
   end
 
+  context 'with an image with a utf-8 encoded filename' do
+    let(:photo) { FactoryGirl.create(:utf8_photo) }
+
+    it "returns a dynamic photo url that is escaped properly" do
+      photo.url(:main).should match(/#{CGI.escape(URI.unescape(photo.url))}/)
+    end
+  end
+
   context 'with a direct upload url' do
     before(:each) do
       Fog.mock!

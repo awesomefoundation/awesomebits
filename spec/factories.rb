@@ -72,5 +72,9 @@ FactoryGirl.define do
   factory :photo do
     project
     image { File.new(Rails.root.join("spec", "support", "fixtures", "1.JPG")) }
+
+    factory :utf8_photo do
+      image { File.new(Rails.root.join("spec", "support", "fixtures", "מדהים.png"))}
+    end
   end
 end
