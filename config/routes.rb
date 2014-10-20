@@ -44,6 +44,11 @@ Awesomefoundation::Application.routes.draw do
 
   match "/404", :to => "errors#not_found"
 
+  # With the catchall route, explicitly mount Evergreen
+  if Rails.env.development? || Rails.env.test?
+    mount Evergreen::Application, :at => '/evergreen'
+  end
+
   # All other routes are considered 404s. ActionController::RoutingError 
   # will catch them, but that fills our logs with noisy exceptions.
   match '*url', :to => 'errors#not_found', :via => [:get]
