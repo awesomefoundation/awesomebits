@@ -96,6 +96,7 @@ pt:
         id: ID
         votes: Votos
   projects:
+    wait-for-uploads-to-complete: Por favor aguarde o upload de suas imagens terminar antes de submeter seu application.
     project:
       awesome: Awesome
       delete: Excluir este projeto
@@ -117,6 +118,8 @@ pt:
     form:
       save: Salvar
       image-notes: A primeira imagem é usada como imagem de capa. As imagens serão redimensionadas para %{dimensions} pixels. Se você receber uma mensagem de erro, por favor tente novamente com menos arquivos ou arquivos menores. 
+      use-classic-uploader: Troque para o upload clássico
+      use-default-uploader: Troque para o upload padrão
     index:
       filter-button: Filtrar
       search: buscar
