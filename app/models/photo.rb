@@ -65,7 +65,10 @@ class Photo < ActiveRecord::Base
   end
 
   def image_path(crop)
-    [ "src", image_with_host(image_url), "thumb", crop ].collect { |part| CGI.escape(part) }.join("/")
+    # We unescape before re-escaping because the URL that comes from Paperclip is already
+    # escaped, so without unescaping, we'd be double-escaping the URL, which causes problems
+    # especially with UTF-8 encoded filenames.
+    [ "src", URI.unescape(image_with_host(image_url)), "thumb", crop ].collect { |part| CGI.escape(part) }.join("/")
   end
 
   def image_with_host(image_url)
