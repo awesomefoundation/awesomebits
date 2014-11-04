@@ -7,6 +7,9 @@ Awesomefoundation::Application.routes.draw do
 
   scope "(:locale)", :locale => /en|pt|fr|ru/ do
     resource  :session, controller: :sessions, only: [:new, :create, :destroy]
+
+    resources :passwords, :controller => 'clearance/passwords', :only => [:new, :create]
+
     match "sign_in",  :to => "sessions#new"
     match "sign_out", :to => "sessions#destroy", :via => :delete
 
