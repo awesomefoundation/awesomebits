@@ -35,6 +35,7 @@ describe Photo do
 
     let(:uploaded_image) { FogFactory.new.create_png_file }
     let(:uploaded_image_with_space) { FogFactory.new.create_png_file(:key => "with space.png") }
+    let(:uploaded_image_with_restricted_character) { FogFactory.new.create_png_file(:key => "with[bracket].png") }
     let(:photo) { FactoryGirl.build(:photo, :image => nil) }
     
     it "copies a direct upload url to the correct destination" do
@@ -56,6 +57,15 @@ describe Photo do
 
       photo.image.should_not be_nil
       File.basename(photo.url).should == "with_space.png"
+    end
+
+    it "handles images with restricted characters in its name" do
+      photo.fog_config = FogFactory.fog_config
+      photo.direct_upload_url = uploaded_image_with_restricted_character.public_url
+      photo.save
+
+      photo.image.should_not be_nil
+      File.basename(photo.url).should == "with_bracket_.png"
     end
   end
 end

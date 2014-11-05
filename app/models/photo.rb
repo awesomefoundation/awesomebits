@@ -93,7 +93,7 @@ class Photo < ActiveRecord::Base
   def set_attributes_from_direct_upload
     file = bucket.files.get(direct_upload_path)
 
-    self.image_file_name = File.basename(direct_upload_path).tr(' ', '_')
+    self.image_file_name = File.basename(direct_upload_path).gsub(image.options[:restricted_characters], "_")
     self.image_content_type = file.content_type
     self.image_file_size = file.content_length
     self.image_updated_at = file.last_modified
