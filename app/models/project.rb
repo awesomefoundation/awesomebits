@@ -139,9 +139,11 @@ class Project < ActiveRecord::Base
 
   def new_photos=(photos)
     photos.each do |photo|
-      new_photo = self.photos.build(:image => photo)
-      if persisted?
-        new_photo.save
+      if photo.present?
+        new_photo = self.photos.build(:image => photo)
+        if persisted?
+          new_photo.save
+        end
       end
     end
   end
