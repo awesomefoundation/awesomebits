@@ -15,9 +15,6 @@
         <a href="http://www.awesomefoundation.org/chapters" class="chapters">Chapters</a>
       </li>
       <li>
-        <a href="http://blog.awesomefoundation.org/" class="blog">Blog</a>
-      </li>
-      <li>
         <a href="http://www.awesomefoundation.org/apply" class="apply">Apply</a>
       </li>
     </ol>
