@@ -15,13 +15,13 @@ class Photo < ActiveRecord::Base
   self.fog_config = Rails.configuration.fog
 
   # Build a URL to dynamically resize application images via an external service
-  # Currently using http://magickly.afeld.me/ 
+  # Currently using http://magickly.afeld.me/
   def url(size = nil)
     case size
 
     when :main
       image.present? ? cropped_image_url("#{MAIN_DIMENSIONS}#") : image.url(:main)
-      
+
     when :index
       image.present? ? cropped_image_url("500x300#") : image.url(:index)
 
@@ -68,7 +68,7 @@ class Photo < ActiveRecord::Base
     # We unescape before re-escaping because the URL that comes from Paperclip is already
     # escaped, so without unescaping, we'd be double-escaping the URL, which causes problems
     # especially with UTF-8 encoded filenames.
-    [ "src", URI.unescape(image_with_host(image_url)), "thumb", crop ].collect { |part| CGI.escape(part) }.join("/")
+    [ "src", URI.unescape(image_with_host(image_url)), "output", "jpg", "thumb", crop ].collect { |part| CGI.escape(part) }.join("/")
   end
 
   def image_with_host(image_url)
