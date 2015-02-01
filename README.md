@@ -32,7 +32,12 @@ Localization
 ------------
 
 Much of the AwesomeBits interface has been localized. Localization files are 
-in the config/locales/ directory with a separate file for each language.
+stored in two places, depending on the type of content being localized:
+
+* Discrete srings and localizations are stored in config/locales/ directory
+  with a separate file for each language
+* Partials with localized content are stored in the app/views/locales/
+  directory with the locale in the names of the file (i.e. _about_us.en.md)
 
 
 Images
