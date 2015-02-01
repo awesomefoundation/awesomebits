@@ -39,10 +39,16 @@
       }
     }
 
+    h1 {
+      color: $base-font-color;
+      text-transform: uppercase;
+    }
+
     h2 {
       color: $base-font-color;
       font: normal 18px/22px $sans-serif;
       margin-bottom: 15px;
+      margin-top: 1.5em;
       text-transform: uppercase;
     }
 

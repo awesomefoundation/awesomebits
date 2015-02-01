@@ -5,14 +5,15 @@
     <h1><%= t(".headline") %></h1>
     <h2><%= t(".sub_headline") %></h2>
   </header>
+
   <div class="wrapper">
     <section class="our-story">
       <h2><%= t(".our-story-title") %></h2>
-      <%= t(".our-story").html_safe %>
+      <%= render("locales/about_us").html_safe %>
     </section>
     <section class="contact">
       <h2><%= t(".contact-title") %></h2>
-      <%= t(".contact").html_safe %>
+      <%= render("locales/contact").html_safe %>
     </section>
   </div>
 </section>
