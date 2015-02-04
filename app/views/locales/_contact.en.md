@@ -1,5 +1,7 @@
-## Contact Us
+# Contact
 
-You can drop us an e-mail at <a href="mailto:contact@awesomefoundation.org">contact@awesomefoundation.org</a>, follow us on Twitter at <a href="http://twitter.com/awesomefound">@awesomefound</a>, or track us on Facebook <a href="http://www.facebook.com/awesomefoundation">here</a>. Or, if you're trying to reach a specific chapter, you can use the e-mail link at the top of their page in the "Chapters" section.
+Got an awesome idea? [Apply for a grant!](<%= new_submission_path %>)
 
-If you're interested in starting a chapter, which involves assembling a group of ten "trustees" willing to each contribute $100 every month toward the $1000 grant, please get in touch at <a href="mailto:join@awesomefoundation.org">join@awesomefoundation.org</a>.
+To reach a specific chapter, please use the e-mail link at the top of the chapter's page, under the Chapters section of this site. Or, for general global inquiries, you can drop us a line at contact@awesomefoundation.org (we are unable to provide updates or feedback with regard to applications at this address). You can also connect with us on [Twitter](https://twitter.com/awesomefound) and [Facebook](https://www.facebook.com/awesomefoundation).
+
+If you're interested in starting your own chapter, which involves assembling a group of at least ten "trustees" willing to each contribute $100 (or the local equivalent) every month toward the grant, please get in touch at join@awesomefoundation.org.
