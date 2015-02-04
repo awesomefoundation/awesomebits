@@ -182,8 +182,9 @@ en:
       headline: "The Awesome Foundation"
       sub_headline: "For the Arts and Sciences and the advancement of Awesomeness in the universe."
     faq:
-      headline: Super awesome info
-      sub_headline: Everything you need to know about advancing awesomeness.
+      title_tag: FAQ
+      headline: Frequently Asked Questions
+      sub_headline: Everything you need to know about advancing awesomeness
   simple_form:
     labels:
       project:
