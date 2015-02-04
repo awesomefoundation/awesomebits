@@ -34,6 +34,7 @@ gem 'redcarpet'
 gem 'honeypot-captcha'
 gem 'sucker_punch', '~> 1.0'
 gem 's3_file_field'
+gem 'html_pipeline_rails'
 
 group :development, :test do
   gem "rspec-rails"
