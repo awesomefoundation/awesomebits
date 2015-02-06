@@ -1,9 +1,15 @@
-## Notre histoire
+## A propos
 
-Nous sommes un réseau mondial en croissance permanente de personnes qui cherchent à promouvoir l'incroyable dans l'univers. Créée par de longs jours chauds d'été à Boston en 2009, la Fondation distribue chaque mois une série de bourses de 1.000€ à des projets et à leurs créateurs. L'argent est fourni par les fonds personnels d'une dizaine de "micro-donateurs", puis donné en cash, chèque ou de doublons d'or. Les chapitres sont autonomes et gérés par les donateurs en fonction de leur zone géographique ou centres d'intérêts.
+L’Awesome Foundation est une communauté internationale qui cherche à faire progresser ce qu’il y a de génial (awesome) dans l’univers, 1000$ à la fois. Chaque branche est parfaitement autonome et soutient des projets géniaux à travers des micro-bourses, généralement distribuées une fois par mois. Ces micro-bourses de 1000$ - ou l’équivalent en monnaie locale - viennent des poches des « membres » de la branche, et sont remises sans aucune condition à des individus ou à des groupes qui travaillent sur des projets géniaux.
 
-La Fondation donne ces bourses sans aucune contrepartie cachée et ne demande aucun droit de propriété sur les projets qu'elle soutient. Il s'agit, d'après les mots de l'un de nos donateurs, d'une bourse de micro-génie pour des flashs de micro-brillance.
+## Que veut dire « génial » ?
 
-Depuis son commencement, plusieurs <a href="http://awesomefoundation.org/chapters/">chapitres de l'Awesome Foundation se sont créés dans le monde</a> pour conserver, développer et soutenir l'écosystème mondial de l'incroyable. Les projets ont inclus des efforts dans un large champ de domaines comme de la technologie, l'art, le bien social, et plus encore.
+Chaque branche définit elle-même ce qui est « génial ». C’est pourquoi les projets géniaux incluent des initiatives dans de nombreux domaines, comme les arts, la technologie, le développement local, et bien d’autres. Beaucoup de projets géniaux sont innovants ou expérimentaux, et provoquent la surprise ou la joie. Ce qui est génial surprend parfois et inspire souvent. Parcourez les pages des branches sur ce site pour découvrir les bourses et vous comprendrez ce que ça veut dire ! [Nous attendons toujours un projet avec des dinosaures (indice, indice)](http://www.youtube.com/watch?v=PPoYzyOn44M).
 
-<a href="http://www.youtube.com/watch?v=PPoYzyOn44M">Nous attendons toujours un projet avec des dinosaures (voici une piste)</a>.
+## Qui est au courant que ça existe ?
+
+Depuis nos modestes débuts en 2009, de nombreux médias se sont intéressés à notre projet. Parmi nos préférées figurent la [BBC](http://www.bbc.com/news/magazine-23469438), [CBC](http://www.cbc.ca/player/Radio/Local+Shows/Ontario/In+Town+and+Out/ID/2509176460/), [WGBH](http://blogs.wgbh.org/innovation-hub/2014/6/13/giving-money-away-step-aside-bill-gates/), [Chronicle of Philanthropy](http://philanthropy.com/article/A-Quirky-Grass-Roots-Effort/131683/), et le [Boston Globe](http://www.boston.com/business/technology/articles/2011/10/10/tiny_grants_keep_awesome_ideas_coming/).
+
+## Comment est-ce que ça marche ? Auprès de quelle branche postuler ? Quand aurai-je une réponse ?
+
+Pour les réponses à ces questions et aux autres questions fréquentes, veuillez consulter notre [Foire aux Questions](<%= faq_path %>).
