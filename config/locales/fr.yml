@@ -182,8 +182,8 @@ fr:
       headline: "L'Awesome Foundation"
       sub_headline: "Pour les Arts, les Sciences, et la promotion de l'incroyable dans l'univers."
     faq:
-      title_tag: FAQ
-      headline: Info super Awesome
+      title_tag: Foire aux Questions
+      headline: Foire aux Questions (FAQ)
       sub_headline: Tout ce que vous devez savoir sur la promotion de l'incroyable.
   simple_form:
     labels:
