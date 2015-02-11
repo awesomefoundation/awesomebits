@@ -175,6 +175,7 @@ GEM
     json_pure (1.8.1)
     launchy (2.1.0)
       addressable (~> 2.2.6)
+    magnific-popup-rails (0.9.9.1)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -347,6 +348,7 @@ DEPENDENCIES
   html_pipeline_rails
   jquery-rails
   launchy
+  magnific-popup-rails
   newrelic_rpm
   nokogiri
   paperclip (~> 3.0.3)

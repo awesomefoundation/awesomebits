@@ -1,0 +1,15 @@
+<% content_for :javascript do %>
+  <% javascript_tag do %>
+    $(document).ready(function() {
+      $('.gallery').each(function() {
+        $(this).magnificPopup({
+          delegate: 'a',
+          type: 'image',
+          gallery: {
+            enabled: true
+          }
+        });
+      });
+    });
+  <% end %>
+<% end %>
