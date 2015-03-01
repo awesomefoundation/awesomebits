@@ -1,4 +1,4 @@
-### Isso é real ?
+### Isso √© real ?
 
 Sim.
 Yes.
@@ -6,43 +6,43 @@ Yes.
 
 ### De onde vem o dinheiro?
 
-Cada capÌtulo fornece os seus próprios prêmios ou doações. Normalmente, dez "curadores" contribuem individualmente com $100 USD (ou o equivalente em moeda local) para um prêmio mensal (às vezes bimestral), embora alguns capítulos possuam mais curadores rateando o custo do prêmio.
+Cada cap√≠tulo fornece os seus pr√≥prios pr√™mios ou doa√ß√µes. Normalmente, dez "curadores" contribuem individualmente com $100 USD (ou o equivalente em moeda local) para um pr√™mio mensal (√†s vezes bimestral), embora alguns cap√≠tulos possuam mais curadores rateando o custo do pr√™mio.
 
 
-### Isto é um investimento ou empréstimo?
+### Isto √© um investimento ou empr√©stimo?
 
-Nenhum dos dois. É uma doação. Todos os capítulos fornecem doações sem restrições e sem requerer qualquer direito de propriedade sobre os projetos que apoiam. Nós também não esperamos que o valor seja reembolsado.
+Nenhum dos dois. √â uma doa√ß√£o. Todos os cap√≠tulos fornecem doa√ß√µes sem restri√ß√µes e sem requerer qualquer direito de propriedade sobre os projetos que apoiam. N√≥s tamb√©m n√£o esperamos que o valor seja reembolsado.
 
 
-### Como vocês estão organizados?
+### Como voc√™s est√£o organizados?
 
-Muito livremente, com cada capítulo operando de forma totalmente independente, e quase sem registro formal como organizaçõs. A maioria dos capÌtulos é geográfica, mas alguns são organizados por meio de linhas temáticas. Uma pequena comunidade de voluntários cuida da infraestrutura global compartilhada.
+Muito livremente, com cada cap√≠tulo operando de forma totalmente independente, e quase sem registro formal como organiza√ß√µs. A maioria dos cap√åtulos √© geogr√°fica, mas alguns s√£o organizados por meio de linhas tem√°ticas. Uma pequena comunidade de volunt√°rios cuida da infraestrutura global compartilhada.
 
 
 ### Quem pode se candidatar?
 
-Qualquer pessoa pode receber um prêmio ou doação: indivíduos, grupos e organizaçõees. Se você consegue preencher o formulário de inscrição, você pode se candidatar.
+Qualquer pessoa pode receber um pr√™mio ou doa√ß√£o: indiv√≠duos, grupos e organiza√ß√µees. Se voc√™ consegue preencher o formul√°rio de inscri√ß√£o, voc√™ pode se candidatar.
 
 
-### Você vai apoiar o meu projeto?
+### Voc√™ vai apoiar o meu projeto?
 
-A única maneira de saber com certeza se um capítulo irá apoiar o seu projeto é submeter sua proposta &#151; é rapidinho! Mesmo considerando que cada capítulo é diferente, alguns tipos de projetos geralmente não são suportados &#151;, como projetos que tragam apenas benefícios pessoais ou que tenham um impacto pequeno sobre uma comunidade ou até mesmo esforços existentes pros quais uma pequena doação não faria uma diferença significativa.
+A √∫nica maneira de saber com certeza se um cap√≠tulo ir√° apoiar o seu projeto √© submeter sua proposta &#151; √© rapidinho! Mesmo considerando que cada cap√≠tulo √© diferente, alguns tipos de projetos geralmente n√£o s√£o suportados &#151;, como projetos que tragam apenas benef√≠cios pessoais ou que tenham um impacto pequeno sobre uma comunidade ou at√© mesmo esfor√ßos existentes pros quais uma pequena doa√ß√£o n√£o faria uma diferen√ßa significativa.
 
 
-### Para qual capítulo devo enviar minha proposta?
+### Para qual cap√≠tulo devo enviar minha proposta?
 
-A maioria dos capÌtulos mostra uma forte preferência por projetos que contribuam para a cidade ou comunidade onde o capítulo está baseado, embora alguns ocasionalmente consideram pedidos de mais longe. Tente [candidatar-se a um capítulo perto de você](<%= chapters_url %>), em um local onde você tem raízes, ou que você acha que tem um interesse particular na sua proposta. Se isso não for possível, você pode selecionar "Qualquer" no campo "Capítulo" no formulário, ou candidatar-se a um ou mais capítulos temáticos.
+A maioria dos cap√≠tulos mostra uma forte prefer√™ncia por projetos que contribuam para a cidade ou comunidade onde o cap√≠tulo est√° baseado, embora alguns ocasionalmente consideram pedidos de mais longe. Tente [candidatar-se a um cap√≠tulo perto de voc√™](<%= chapters_url %>), em um local onde voc√™ tem ra√≠zes, ou que voc√™ acha que tem um interesse particular na sua proposta. Se isso n√£o for poss√≠vel, voc√™ pode selecionar "Qualquer" no campo "Cap√≠tulo" no formul√°rio, ou candidatar-se a um ou mais cap√≠tulos tem√°ticos.
 
-### Posso concorrer em mais de um capÌtulo?
+### Posso concorrer em mais de um cap√åtulo?
 
-Sim, se você acha que mais de um capítulo pode estar interessado em seu projeto. No entanto, nós encorajamos mencionar na sua proposta em qual(is) outro(s) capítulo(s) você está concorrendo.
+Sim, se voc√™ acha que mais de um cap√≠tulo pode estar interessado em seu projeto. No entanto, n√≥s encorajamos mencionar na sua proposta em qual(is) outro(s) cap√≠tulo(s) voc√™ est√° concorrendo.
 
 
 ### Quando terei resposta?
 
-A maioria dos capítulos se reúne mensalmente para avaliar os pedidos e decidir o projeto escolhido &#151; embora alguns capítulos decidam em eventos com presentação ao vivo "pitch" aberto ao público. Se você ainda não obteve retorno após alguns meses, é provável que o seu projeto não tenha sido selecionado. A maioria dos capítulos continua considerando os pedidos de meses anteriores, porém não há necessidade de enviar seu projeto de novo a menos que sua proposta tenha mudado.
+A maioria dos cap√≠tulos se re√∫ne mensalmente para avaliar os pedidos e decidir o projeto escolhido &#151; embora alguns cap√≠tulos decidam em eventos com presenta√ß√£o ao vivo "pitch" aberto ao p√∫blico. Se voc√™ ainda n√£o obteve retorno ap√≥s alguns meses, √© prov√°vel que o seu projeto n√£o tenha sido selecionado. A maioria dos cap√≠tulos continua considerando os pedidos de meses anteriores, por√©m n√£o h√° necessidade de enviar seu projeto de novo a menos que sua proposta tenha mudado.
  
 
 ### Como posso participar?
 
-Nós adoraríamos que você pudesse ajudar! Em primeiro lugar, se você conhece alguém com ideias incríveis que precisam de apoio, pode nos apresentar. Mas se você quiser contribuir mais e se tornar um curador, é só entrar em contato com o capítulo local. Se não houver um capítulo local, e quiser iniciar um, mande uma mensagem para join@awesomefoundation.org.
+N√≥s adorar√≠amos que voc√™ pudesse ajudar! Em primeiro lugar, se voc√™ conhece algu√©m com ideias incr√≠veis que precisam de apoio, pode nos apresentar. Mas se voc√™ quiser contribuir mais e se tornar um curador, √© s√≥ entrar em contato com o cap√≠tulo local. Se n√£o houver um cap√≠tulo local, e quiser iniciar um, mande uma mensagem para join@awesomefoundation.org.
