@@ -1,9 +1,18 @@
-## Nossa história
+# Sobre nós
 
-Somos uma rede mundial, em franca expansão, de pessoas dedicadas a tornar o universo mais irado. Criada nos longos e quentes dias do verão de 2009 em Boston, a fundação distribui séries de apoios financeiros mensais de $1,000 a projetos e seus criadores. O dinheiro vem direto dos cofres de dez membros “micro-curadores” auto-organizados e doados em dinheiro, cheque ou moedas de ouro. Os capítulos são autônomos e organizados pelos curadores, organizados por áreas geográficas ou por tópicos de interesse.
+A Awesome Foundation, ou Fundação Irada, é uma comunidade global dedicada a disseminar projetos irados pelo universo, em passos de $1000 USD.
 
-A Fundação oferece estes apoios financeiros sem compromisso e sem obter qualquer participação nos projetos apoiados. Isto é, nas palavras de um de nossos curadores, um mini-apoio genial a lampejos de brilhantismo.
+Cada capítulo é 100% autônomo para apoiar projetos irados através de pequenos prêmios ou doações, geralmente escolhidos uma vez por mês ou bimestralmente. Esta pequena doação, de $1000 USD ou o valor equivalente em moeda local, é coletada a partir de doações individuais (pessoa física) dos "curadores" e é entregue sem pedir qualquer contrapartida às pessoas ou grupos desenvolvendo os projetos irados.
 
-Desde sua humilde origem, muitos <a href="http://awesomefoundation.org/chapters/">capítulos da Awesome Foundation floresceram mundialmente</a> para conservar, manter, e apoiar o ecosistema global do irado. Projetos tem envidado esforços numa ampla gama de áreas incluindo tecnologia, artes, bem social, e além.
+## Como assim "irado" (ou "awesome")?
 
-<a href="http://www.youtube.com/watch?v=PPoYzyOn44M">Ainda estamos esperando por algo ligado a dinossauros (não é uma dica... ou é?)</a>.
+Cada capítulo tem sua própria interpretação do que é irado. Dessa forma, projetos irados podem ser de diversas áreas, como por exemplo incluindo artes, tecnologia, projetos sociais, dentre outras. Muitos projetos irados tem algum caráter de inovação, experimentação e causam surpresa e podem deixar as pessoas de queixo caído, alegres, felizes. O irado muitas vezes é desafiador e inspirador. Se delicie com os projetos premiados pelas páginas dos capítulos aqui no site para ter um gostinho do que nos move! [Ah, ainda estamos esperando por algum projeto com dinossauros. Fica a dica ;-)](http://www.youtube.com/watch?v=PPoYzyOn44M).
+
+## Quem mais sabe sobre nós?
+
+Nós tivemos diversas coberturas de mídia desde a nossa humilde fundação em 2009. Algumas das nossas reportagens favoritas foram: [BBC](http://www.bbc.com/news/magazine-23469438), [CBC](http://www.cbc.ca/player/Radio/Local+Shows/Ontario/In+Town+and+Out/ID/2509176460/), [WGBH](http://blogs.wgbh.org/innovation-hub/2014/6/13/giving-money-away-step-aside-bill-gates/), [Chronicle of Philanthropy](http://philanthropy.com/article/A-Quirky-Grass-Roots-Effort/131683/), and [The Boston Globe](http://www.boston.com/business/technology/articles/2011/10/10/tiny_grants_keep_awesome_ideas_coming/).
+
+## Como isso tudo funciona? Pra qual capítulo eu devo mandar meu projeto? Quando eu vou ter uma resposta?
+
+Para respostas para estas ou outras perguntas frequentes, por favor visite nosso [FAQ](<%= faq_path %>).
+
