@@ -60,8 +60,8 @@
     $(window).load(function(){
       $('#filter_start').datepicker({dateFormat: 'yy-mm-dd', onClose: function(){ $('#filter_start').blur() }});
       $('#filter_end').datepicker({dateFormat: 'yy-mm-dd', onClose: function(){ $('#filter_end').blur() }});
-
-      $('a.lightbox').colorbox({iframe: true, innerWidth: 940, innerHeight: 470});
     });
   <% end %>
 <% end %>
+
+<%= render "shared/lightbox" %>

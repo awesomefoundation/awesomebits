@@ -53,9 +53,9 @@
     <div class="project-pitch">
       <% if project.has_images? %>
         <h3><%= t ".images" %></h3>
-        <p>
+        <p class="gallery">
         <% project.photos.each_with_index do |image, index| %>
-          <%= link_to t(".image", :index => index+1), image.url(:main), :rel => "project-#{project.id}-images", :class => "lightbox", :target => "blank" %>
+          <%= link_to t(".image", :index => index+1), image.url, :rel => "project-#{project.id}-images", :class => "lightbox", :target => "blank" %>
         <% end %>
         </p>
       <% end %>
