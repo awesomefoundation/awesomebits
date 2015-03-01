@@ -1,7 +1,6 @@
 ### Isso é real ?
 
 Sim.
-Yes.
 
 
 ### De onde vem o dinheiro?
