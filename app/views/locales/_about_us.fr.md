@@ -1,4 +1,4 @@
-## A propos
+# A propos
 
 L’Awesome Foundation est une communauté internationale qui cherche à faire progresser ce qu’il y a de génial (awesome) dans l’univers, 1000$ à la fois. Chaque branche est parfaitement autonome et soutient des projets géniaux à travers des micro-bourses, généralement distribuées une fois par mois. Ces micro-bourses de 1000$ - ou l’équivalent en monnaie locale - viennent des poches des « membres » de la branche, et sont remises sans aucune condition à des individus ou à des groupes qui travaillent sur des projets géniaux.
 

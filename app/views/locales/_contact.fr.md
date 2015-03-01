@@ -1,4 +1,4 @@
-## Contacts
+# Contacts
 
 Vous avez une idée géniale ? [Postulez à une bourse !](<%= new_submission_path %>)
 

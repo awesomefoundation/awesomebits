@@ -1,4 +1,4 @@
-## Связаться с нами
+# Связаться с нами
 
 Вы можете связаться с нами по имейлу <a href="mailto:contact@awesomefoundation.org">contact@awesomefoundation.org</a>, подписаться на наш Twitter <a href="http://twitter.com/awesomefound">@awesomefound</a> или следить за обновлениями на Facebook <a href="http://www.facebook.com/awesomefoundation">here</a>. Если Вы хотите связаться с определенным разделом, используйте ссылку на имейл наверху главной страницы раздела "Chapters".
 
