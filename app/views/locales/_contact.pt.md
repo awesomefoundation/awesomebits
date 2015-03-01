@@ -1,5 +1,7 @@
-## Contactar-nos
+# Contact
 
-Você pode nos deixar um e-mail em <a href="mailto:contact@awesomefoundation.org">contact@awesomefoundation.org</a>, nos seguir no Twitter em <a href="http://twitter.com/awesomefound">@awesomefound</a>, ou nos acompanhar no Facebook <a href="http://www.facebook.com/awesomefoundation">aqui</a>. Se você estiver interessado em contactar um capítulo específico, basta acessar a página do mesmo na seção "Capítulos" e clicar no ícone de e-mail na parte superior da página.
+Tem uma ideia irada? [Concorra ao nosso prêmio!](<%= new_submission_path %>)
 
-Se você está inteteressado em começar um novo capítulo, o que envolve montar um grupo de 10 "curadores" dispostos a contribuir, cada um, com a quantia de US$ 100 por mês para o grant de U$ 1000, por favor, entre em contato pelo e-mail <a href="mailto:join@awesomefoundation.org">join@awesomefoundation.org</a>.
+Para contatar um capítulo específico, favor escrever para o e-mail que aparece no topo da página do capítulo em questão, em baixo da sessão Capítulos aqui do site. Para perguntas para a comunidade global, é só escrever para contact@awesomefoundation.org (Ah. Não é possível dar notícias sobre a sua proposta neste endereço). Você também pode se conectar com a gente através do [Twitter](https://twitter.com/awesomefound) and [Facebook](https://www.facebook.com/awesomefoundation).
+
+Se você quiser abrir seu próprio capítulo, que significa juntar um grupo de pelo menos 10 "curadores" dispostos a contribuir com aproximadamente USD$100 (ou o equivalente em moeda local) a cada mês (ou bimestralmente) para compor o prêmio, favor entrar em contato via join@awesomefoundation.org. 

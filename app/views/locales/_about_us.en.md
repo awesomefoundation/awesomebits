@@ -1,9 +1,17 @@
-## Our Story
+# About Us
 
-We are an ever-growing, worldwide network of people devoted to forwarding the interest of awesomeness in the universe. Created in the long hot summer days of 2009 in Boston, the Foundation distributes a series of monthly $1,000 grants to projects and their creators. The money is pooled together from the coffers of ten or so self-organizing "micro-trustees" and given upfront in cash, check, or gold doubloons. The chapters are autonomous and organized by the trustees around geographic areas or topics of interest.
+The Awesome Foundation is a global community advancing the interest of awesome in the universe, $1000 at a time.
 
-The Foundation provides these grants with no strings attached and claims no ownership over the projects it supports. It is, in the words of one of our trustees, a micro-genius grant for flashes of micro-brilliance.
+Each fully autonomous chapter supports awesome projects through micro-grants, usually given out monthly. These micro-grants, $1000 or the local equivalent, come out of pockets of the chapter's "trustees" and are given on a no-strings-attached basis to people and groups working on awesome projects.
 
-Since its humble beginnings, many <a href="http://awesomefoundation.org/chapters/">Awesome Foundation chapters have sprung up globally</a> to conserve, sustain, and support the worldwide ecosystem of awesomeness. Projects have included efforts in a wide range of areas including technology, arts, social good, and beyond.
+## What do you mean by "awesome?"
 
-<a href="http://www.youtube.com/watch?v=PPoYzyOn44M">We're still waiting for something with dinosaurs (hint, hint)</a>.
+Every chapter interprets "awesome" for itself. As such, awesome projects include initiatives in a wide range of areas including arts, technology, community development, and more. Many awesome projects are novel or experimental, and evoke surprise and delight. Awesome sometimes challenges and often inspires. Browse some grants on the chapter pages of this site to see what we mean! [We're still waiting for something with dinosaurs (hint, hint)](http://www.youtube.com/watch?v=PPoYzyOn44M).
+
+## Does anyone else know about this?
+
+We've had lots of great media coverage since our humble beginnings in 2009. Some of our favourite pieces have been from [BBC](http://www.bbc.com/news/magazine-23469438), [CBC](http://www.cbc.ca/player/Radio/Local+Shows/Ontario/In+Town+and+Out/ID/2509176460/), [WGBH](http://blogs.wgbh.org/innovation-hub/2014/6/13/giving-money-away-step-aside-bill-gates/), [Chronicle of Philanthropy](http://philanthropy.com/article/A-Quirky-Grass-Roots-Effort/131683/), and [The Boston Globe](http://www.boston.com/business/technology/articles/2011/10/10/tiny_grants_keep_awesome_ideas_coming/).
+
+## How does it all work? Which chapter should I apply to? When will I hear back?
+
+For answers to these and other frequently asked questions, please visit our [FAQ](<%= faq_path %>).
