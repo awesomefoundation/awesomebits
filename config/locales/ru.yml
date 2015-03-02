@@ -182,7 +182,6 @@ ru:
     faq:
       title_tag: Часто задаваемые вопросы
       headline: Невероятно потрясающая информация
-      sub_headline: Всё, что нужно знать о потрясающих идеях.
   simple_form:
     labels:
       project:
