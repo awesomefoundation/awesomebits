@@ -182,7 +182,6 @@ en:
     faq:
       title_tag: FAQ
       headline: Frequently Asked Questions
-      sub_headline: Everything you need to know about advancing awesomeness
   simple_form:
     labels:
       project:

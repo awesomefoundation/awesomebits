@@ -182,7 +182,6 @@ fr:
     faq:
       title_tag: Foire aux Questions
       headline: Foire aux Questions (FAQ)
-      sub_headline: Tout ce que vous devez savoir sur la promotion de ce qu’il y a de génial dans l’univers
   simple_form:
     labels:
       project:

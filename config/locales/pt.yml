@@ -182,7 +182,6 @@ pt:
     faq:
       title_tag: Perguntas Frequentes
       headline: Informações super iradas
-      sub_headline: Tudo o que você precisa saber sobre tornar irado.
   simple_form:
     labels:
       project:
