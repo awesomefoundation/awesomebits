@@ -54,10 +54,13 @@ class Chapter < ActiveRecord::Base
     end
   end
 
-  def self.select_data
+  # Scope can be :active or :all
+  def self.select_data(scope = :active)
     countries = [OpenStruct.new(:name => "Any Chapter", :chapters => where("chapters.name = ?", "Any"))]
 
-    active.visitable.sort_by(&CountrySortCriteria.new(COUNTRY_PRIORITY)).each do |chapter|
+    selection = scope == :all ? visitable : active.visitable
+
+    selection.sort_by(&CountrySortCriteria.new(COUNTRY_PRIORITY)).each do |chapter|
       if countries.last.try(:name) != chapter.country
         countries.push OpenStruct.new(:name => chapter.country, :chapters => [])
       end

@@ -1,5 +1,5 @@
 <div class="project-section chapter-select">
-  <%= form.input :chapter_id, :collection => Chapter.select_data, :prompt => '- Select -', :as => :grouped_select, :group_method => :chapters, :group_label_method => :name, :label_method => :name %>
+  <%= form.input :chapter_id, :collection => Chapter.select_data(@project.new_record? ? :active : :all), :prompt => '- Select -', :as => :grouped_select, :group_method => :chapters, :group_label_method => :name, :label_method => :name %>
 </div>
 <div class="personal-info">
   <%= form.input :name %>

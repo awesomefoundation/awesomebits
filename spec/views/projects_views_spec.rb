@@ -41,16 +41,31 @@ describe 'projects/public_show' do
   end
 end
 
-describe 'projects/new' do
+describe 'projects/_form' do
   let!(:active_chapter) { FactoryGirl.create(:chapter) }
   let!(:inactive_chapter) { FactoryGirl.create(:inactive_chapter) }
 
-  it 'does not show inactive chapters' do
-    assign(:project, Project.new)
+  before do
     view.stubs(:current_user).returns(Guest.new)
+  end
 
-    render
-    rendered.should     have_content(active_chapter.name)
-    rendered.should_not have_content(inactive_chapter.name)
+  context 'projects/new' do
+    it 'does not show inactive chapters' do
+      assign(:project, Project.new)
+
+      render :template => 'projects/new'
+      rendered.should     have_content(active_chapter.name)
+      rendered.should_not have_content(inactive_chapter.name)
+    end
+  end
+
+  context 'projects/edit' do
+    it 'shows inactive chapters' do
+      assign(:project, FactoryGirl.create(:project, :chapter => inactive_chapter))
+
+      render :template => 'projects/edit'
+      rendered.should have_content(active_chapter.name)
+      rendered.should have_content(inactive_chapter.name)
+    end
   end
 end
