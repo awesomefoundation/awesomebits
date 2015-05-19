@@ -8,6 +8,10 @@ module ChaptersHelper
     end
   end
 
+  def can_apply_to_chapter?(chapter)
+    chapter.active?
+  end
+
   def extra_questions_json(chapter)
     [chapter.extra_question_1, chapter.extra_question_2, chapter.extra_question_3].reject(&:blank?).to_json.html_safe
   end

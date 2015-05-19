@@ -217,7 +217,6 @@ body.chapters-show {
 
   .trustees {
     border-top: 1px solid rgb(200,200,200);
-    border-bottom: 1px solid rgb(200,200,200);
     margin-bottom: 40px;
     padding: 40px 0px 40px;
     width: grid-width(12);
@@ -387,19 +386,26 @@ body.chapters-show {
 
 .chapter-apply {
   @extend .clearfix;
+  padding-top: 40px;
+  border-top: 1px solid rgb(200,200,200);
+  width: grid-width(12);
   margin: 0 auto;
-  width: grid-width(6);
 
-  a {
-    @include button(pill, $button-pink);
-    font: normal 18px/22px $sans-serif;
-    width: 100%;
-    display: block;
+  .apply-button {
+    margin: 0 auto;
+    width: grid-width(6);
 
-    text: {
-      decoration: none;
-      align: center;
-      transform: uppercase;
+    a {
+      @include button(pill, $button-pink);
+      font: normal 18px/22px $sans-serif;
+      width: 100%;
+      display: block;
+
+      text: {
+        decoration: none;
+        align: center;
+        transform: uppercase;
+      }
     }
   }
 }

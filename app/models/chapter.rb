@@ -103,6 +103,10 @@ class Chapter < ActiveRecord::Base
     inactive
   end
 
+  def active?
+    inactive_at.nil?
+  end
+
   def inactive=(bool)
     if [ 1, '1', true, 'true' ].include? bool
       self.inactive_at = Time.zone.now

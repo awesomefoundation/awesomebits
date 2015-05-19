@@ -3,20 +3,34 @@ require 'spec_helper'
 describe 'chapters/show' do 
   let!(:chapter) { FactoryGirl.create(:chapter) }
 
-  it 'renders an apply button in the header' do
-    assign(:chapter, chapter)
-    view.stubs(:current_user).returns(nil)
+  context 'an active chapter' do
+    before do
+      assign(:chapter, chapter)
+      view.stubs(:current_user).returns(nil)
 
-    render
-    rendered.should have_selector('header div.title a.apply-chapter', :text => t('chapters.show.apply-for-grant'))
+      render
+    end
+
+    it 'renders an apply button in the header' do
+      rendered.should have_selector('header div.title a.apply-chapter', :text => t('chapters.show.apply-for-grant'))
+    end
+
+    it 'renders an apply button at the bottom of the page' do
+      rendered.should have_selector('section.chapter-apply a', :text => t('chapters.show.apply-for-grant'))
+    end
   end
 
-  it 'renders an apply button at the bottom of the page' do 
-    assign(:chapter, chapter)
-    view.stubs(:current_user).returns(nil)
+  context 'an inactive chapter' do
+    before do
+      assign(:chapter, FactoryGirl.build(:inactive_chapter))
+      view.stubs(:current_user).returns(nil)
 
-    render
-    rendered.should have_selector('section.chapter-apply a', :text => t('chapters.show.apply-for-grant'))
+      render
+    end
+
+    it 'does not render any apply buttons' do
+      rendered.should_not have_content(t('chapters.show.apply-for-grant'))
+    end
   end
 
   it 'does not render the project section by default' do
