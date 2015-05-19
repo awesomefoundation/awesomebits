@@ -34,6 +34,10 @@ class Chapter < ActiveRecord::Base
     where("chapters.name != ?", "Any")
   end
 
+  def self.active
+    where(:inactive_at => nil)
+  end
+
   def self.for_display
     select("(case chapters.name when 'Any' then '0 Any' end) as sort_name, chapters.*").
     order("sort_name, chapters.name")
@@ -53,7 +57,7 @@ class Chapter < ActiveRecord::Base
   def self.select_data
     countries = [OpenStruct.new(:name => "Any Chapter", :chapters => where("chapters.name = ?", "Any"))]
 
-    visitable.sort_by(&CountrySortCriteria.new(COUNTRY_PRIORITY)).each do |chapter|
+    active.visitable.sort_by(&CountrySortCriteria.new(COUNTRY_PRIORITY)).each do |chapter|
       if countries.last.try(:name) != chapter.country
         countries.push OpenStruct.new(:name => chapter.country, :chapters => [])
       end

@@ -40,3 +40,17 @@ describe 'projects/public_show' do
     rendered.should have_content(funded_project.funded_description)
   end
 end
+
+describe 'projects/new' do
+  let!(:active_chapter) { FactoryGirl.create(:chapter) }
+  let!(:inactive_chapter) { FactoryGirl.create(:inactive_chapter) }
+
+  it 'does not show inactive chapters' do
+    assign(:project, Project.new)
+    view.stubs(:current_user).returns(Guest.new)
+
+    render
+    rendered.should     have_content(active_chapter.name)
+    rendered.should_not have_content(inactive_chapter.name)
+  end
+end
