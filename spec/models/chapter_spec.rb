@@ -133,4 +133,18 @@ describe Chapter do
       Chapter.current_chapter_for_user(user).should be_nil
     end
   end
+
+  context '.name' do
+    it 'returns the name for an active chapter' do
+      chapter = FactoryGirl.build(:chapter, :name => 'Active Chapter')
+
+      chapter.name.should == 'Active Chapter'
+    end
+
+    it 'indicates that an inactive chapter is Inactive' do
+      chapter = FactoryGirl.build(:inactive_chapter, :name => 'Inactive Chapter')
+
+      chapter.name.should == 'Inactive Chapter (Inactive)'
+    end
+  end
 end

@@ -5,6 +5,8 @@ en:
   date:
     formats:
       funding: "%B %Y"
+  word:
+    inactive: Inactive
   flash:
     permissions:
       must-be-logged-in: You must be logged in.

@@ -83,6 +83,14 @@ class Chapter < ActiveRecord::Base
     end
   end
 
+  def name
+    if inactive?
+      "#{self[:name]} (#{I18n.t('word.inactive')})"
+    else
+      self[:name]
+    end
+  end
+
   def time_zone
     self[:time_zone] || 'UTC'
   end
