@@ -7,4 +7,4 @@ Feature: A guest views the homepage
     Then I should see those 5 chapters
     And I should see those 5 winning projects in their proper order
     And I should see that 5 projects have been funded for $5000
-    And I should see that the 6 chapters, including Any, are spread across 4 countries
+    And I should see that the 5 chapters, not including Any, are spread across 4 countries

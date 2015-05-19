@@ -65,7 +65,7 @@
 
 <section class ="who-where">
   <hgroup>
-    <h2><%= t(".chapter-count-html", :count => Chapter.count) %> <span class="divider"></span> <%= t(".country-count-html", :count => Chapter.country_count) %></h2>
+    <h2><%= t(".chapter-count-html", :count => Chapter.active.visitable.count) %> <span class="divider"></span> <%= t(".country-count-html", :count => Chapter.country_count) %></h2>
   </hgroup>
 
   <div class="about-preview">
