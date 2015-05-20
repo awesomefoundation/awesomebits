@@ -3,6 +3,9 @@ class ChaptersController < ApplicationController
   before_filter :must_be_admin, :only => [:new, :create]
   before_filter :must_be_able_to_manage_chapter, :only => [:edit, :update]
 
+  # Display all chapters (including inactive ones) to ensure that
+  # everything gets crawled for SEO purposes. This can be rethought
+  # in the future if needed.
   def index
     @chapters = Chapter.visitable.all.sort_by(&CountrySortCriteria.new(COUNTRY_PRIORITY))
   end
