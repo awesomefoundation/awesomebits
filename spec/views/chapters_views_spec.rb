@@ -18,6 +18,10 @@ describe 'chapters/show' do
     it 'renders an apply button at the bottom of the page' do
       rendered.should have_selector('section.chapter-apply a', :text => t('chapters.show.apply-for-grant'))
     end
+
+    it 'should not display the inactive chapter notice' do
+      rendered.should_not have_selector('.inactive-notice')
+    end
   end
 
   context 'an inactive chapter' do
@@ -30,6 +34,10 @@ describe 'chapters/show' do
 
     it 'does not render any apply buttons' do
       rendered.should_not have_content(t('chapters.show.apply-for-grant'))
+    end
+
+    it 'displays the inactive notice' do
+      rendered.should have_selector('.inactive-notice')
     end
   end
 

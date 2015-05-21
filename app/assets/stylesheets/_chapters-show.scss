@@ -12,6 +12,15 @@ body.chapters-show {
       width: grid-width(12);
     }
 
+    .inactive-notice {
+      margin-top: 2em;
+      border: $pink solid 2px;
+      background: #fff;
+      padding: 10px;
+      color: $lighter-base-font-color;
+      font: normal 14px/22px $sans-serif;
+    }
+
     .title {
       @extend .clearfix;
       margin: 0 auto;

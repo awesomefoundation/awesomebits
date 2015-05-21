@@ -19,6 +19,13 @@
     <%= facebook_link @chapter %>
     <%= twitter_link @chapter %>
   </div>
+
+  <% if @chapter.inactive? %>
+    <p class="inactive-notice">
+      <strong><%= t(".inactive-chapter") %></strong>
+      <%= t(".inactive-chapter-reason").html_safe %>
+    </p>
+  <% end %>
 </header>
 
 <% unless @chapter.winning_projects.empty? %>
