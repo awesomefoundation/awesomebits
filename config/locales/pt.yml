@@ -6,7 +6,7 @@ pt:
     formats:
       funding: "%B %Y"
   word:
-    inactive: Inactive
+    inactive: Inativo
   flash:
     permissions:
       must-be-logged-in: Você deve estar autenticado.
@@ -210,6 +210,7 @@ pt:
         extra_question_1: Questão extra 1
         extra_question_2: Questão extra 2
         extra_question_3: Questão extra 3
+        inactive: Este capítulo está inativo
         submit: Enviar
       user:
         first_name: Nome
