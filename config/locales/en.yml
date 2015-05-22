@@ -5,6 +5,8 @@ en:
   date:
     formats:
       funding: "%B %Y"
+  word:
+    inactive: Inactive
   flash:
     permissions:
       must-be-logged-in: You must be logged in.
@@ -81,6 +83,8 @@ en:
         about: About Us
         news: "%{name} News"
       apply-for-grant: Apply For a Grant
+      inactive-chapter: This chapter is currently inactive.
+      inactive-chapter-reason: An inactive chapter is one that has not given a grant in six months. If you are interested in re-starting this chapter, please <a href="mailto:join@awesomefoundation.org">contact us</a>.
     edit:
       title: Edit chapter information
     new:
@@ -210,6 +214,7 @@ en:
         extra_question_1: Extra question 1
         extra_question_2: Extra question 2
         extra_question_3: Extra question 3
+        inactive: This chapter is inactive
         submit: Submit
       user:
         first_name: First name

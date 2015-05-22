@@ -5,6 +5,8 @@ pt:
   date:
     formats:
       funding: "%B %Y"
+  word:
+    inactive: Inativo
   flash:
     permissions:
       must-be-logged-in: Você deve estar autenticado.
@@ -81,6 +83,8 @@ pt:
         about: Sobre Nós
         news: "Notícias do capítulo %{name}"
       apply-for-grant: Envie Sua Proposta
+      inactive-chapter: Este capítulo está inativo.
+      inactive-chapter-reason: Um capítulo é considerado inativo quando não tiver apoiado projetos em um período de seis meses. Se você estiver interessado em reiniciar este capítulo, por favor <a href="mailto:join@awesomefoundation.org">entre em contato</a>.
     edit:
       title: Editar informações do capítulo
     new:
@@ -208,6 +212,7 @@ pt:
         extra_question_1: Questão extra 1
         extra_question_2: Questão extra 2
         extra_question_3: Questão extra 3
+        inactive: Este capítulo está inativo
         submit: Enviar
       user:
         first_name: Nome

@@ -20,7 +20,7 @@ class Chapter < ActiveRecord::Base
 
   attr_accessible :name, :twitter_url, :facebook_url, :blog_url, :rss_feed_url, :description,
                   :country, :extra_question_1, :extra_question_2, :extra_question_3, :slug,
-                  :email_address, :time_zone
+                  :email_address, :time_zone, :inactive
 
   def should_generate_new_friendly_id?
     slug.blank?
@@ -32,6 +32,10 @@ class Chapter < ActiveRecord::Base
 
   def self.visitable
     where("chapters.name != ?", "Any")
+  end
+
+  def self.active
+    where(:inactive_at => nil)
   end
 
   def self.for_display
@@ -50,10 +54,13 @@ class Chapter < ActiveRecord::Base
     end
   end
 
-  def self.select_data
+  # Scope can be :active or :all
+  def self.select_data(scope = :active)
     countries = [OpenStruct.new(:name => "Any Chapter", :chapters => where("chapters.name = ?", "Any"))]
 
-    visitable.sort_by(&CountrySortCriteria.new(COUNTRY_PRIORITY)).each do |chapter|
+    selection = scope == :all ? visitable : active.visitable
+
+    selection.sort_by(&CountrySortCriteria.new(COUNTRY_PRIORITY)).each do |chapter|
       if countries.last.try(:name) != chapter.country
         countries.push OpenStruct.new(:name => chapter.country, :chapters => [])
       end
@@ -76,8 +83,35 @@ class Chapter < ActiveRecord::Base
     end
   end
 
+  def name
+    if inactive?
+      "#{self[:name]} (#{I18n.t('word.inactive')})"
+    else
+      self[:name]
+    end
+  end
+
   def time_zone
     self[:time_zone] || 'UTC'
   end
 
+  def inactive
+    inactive_at.present?
+  end
+
+  def inactive?
+    inactive
+  end
+
+  def active?
+    inactive_at.nil?
+  end
+
+  def inactive=(bool)
+    if [ 1, '1', true, 'true' ].include? bool
+      self.inactive_at = Time.zone.now
+    else
+      self.inactive_at = nil
+    end
+  end
 end

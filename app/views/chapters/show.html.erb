@@ -10,13 +10,22 @@
       <%= link_to "Edit Chapter", edit_chapter_path(@chapter), :class => 'edit-chapter' %>
     <% end %>
 
-    <%= link_to t(".apply-for-grant"), new_submission_path(:chapter => @chapter), :class => 'apply-chapter' %>
+    <% if can_apply_to_chapter?(@chapter) %>
+      <%= link_to t(".apply-for-grant"), new_submission_path(:chapter => @chapter), :class => 'apply-chapter' %>
+    <% end %>
 
     <%= email_link @chapter %>
     <%= blog_link @chapter %>
     <%= facebook_link @chapter %>
     <%= twitter_link @chapter %>
   </div>
+
+  <% if @chapter.inactive? %>
+    <p class="inactive-notice">
+      <strong><%= t(".inactive-chapter") %></strong>
+      <%= t(".inactive-chapter-reason").html_safe %>
+    </p>
+  <% end %>
 </header>
 
 <% unless @chapter.winning_projects.empty? %>
@@ -61,9 +70,7 @@
     <% end %>
   </section>
 
-  <% if @chapter.users.empty? %>
-    <div class="divider">
-  <% else %>
+  <% if @chapter.users.present? %>
   <h2><%= t(".trustees.header") %></h2>
   <section class="trustees">
     <ol>
@@ -88,9 +95,13 @@
 
 </section>
 
-<section class="chapter-apply">
-  <%= link_to t(".apply-for-grant"), new_submission_path(:chapter => @chapter) %>
-</section>
+<% if can_apply_to_chapter?(@chapter) %>
+  <section class="chapter-apply">
+    <div class="apply-button">
+      <%= link_to t(".apply-for-grant"), new_submission_path(:chapter => @chapter) %>
+    </div>
+  </section>
+<% end %>
 
 <% content_for :javascript do -%>
   <%= render 'shared/rssfeed', rss_feed_url: @chapter.rss_feed_url %>

@@ -5,6 +5,8 @@ ru:
   date:
     formats:
       funding: "%B %Y"
+  word:
+    inactive: Inactive
   flash:
     permissions:
       must-be-logged-in: Вы должны авторизоваться.
@@ -81,6 +83,8 @@ ru:
         about: О нас
         news: "%{name}, в новостях"
       apply-for-grant: Подать заявку на грант
+      inactive-chapter: This chapter is currently inactive.
+      inactive-chapter-reason: An inactive chapter is one that has not given a grant in six months. If you are interested in re-starting this chapter, please <a href="mailto:join@awesomefoundation.org">contact us</a>.
     edit:
       title: Изменить информацию о разделе
     new:

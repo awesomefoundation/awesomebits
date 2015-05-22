@@ -21,7 +21,7 @@
   <div class="inner-wrapper">
     <h1><%= t("layouts.application.chapter_header") %></h1>
     <section class="chapters">
-      <% Chapter.visitable.sort_by(&CountrySortCriteria.new(COUNTRY_PRIORITY)).each do |chapter| %>
+      <% Chapter.active.visitable.sort_by(&CountrySortCriteria.new(COUNTRY_PRIORITY)).each do |chapter| %>
         <% if display_country?(chapter.country) %>
           <% unless @first_country %>
             </article>

@@ -1,4 +1,10 @@
 <%= simple_form_for chapter do |form| -%>
+  <% if current_user.can_create_chapters? %>
+    <div class="chapter-admin">
+      <%= form.input :inactive, :as => :boolean %>
+    </div>
+  <% end %>
+
   <%= form.input :name %>
   <%= form.input :slug %>
   <%= form.input :twitter_url, :label => "Twitter URL" %>
@@ -12,5 +18,6 @@
   <%= form.input :extra_question_1 %>
   <%= form.input :extra_question_2 %>
   <%= form.input :extra_question_3 %>
+
   <%= form.button :submit %>
 <% end -%>

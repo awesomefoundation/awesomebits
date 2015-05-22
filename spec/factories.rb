@@ -7,6 +7,10 @@ FactoryGirl.define do
     name { "Chapter for Generic Location ##{FactoryGirl.generate(:index)}" }
     description { "This is a description." }
     country { "United States" }
+
+    factory :inactive_chapter do
+      inactive_at { Time.zone.now }
+    end
   end
 
   factory :user, :aliases => [:inviter, :invitee] do

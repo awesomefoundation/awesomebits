@@ -115,7 +115,7 @@ step 'I should see those 5 chapters' do
   end
 end
 
-step 'I should see that the 6 chapters, including Any, are spread across 4 countries' do
-  page.should have_css(".who-where h2 .chapters:contains('6')")
+step 'I should see that the 5 chapters, not including Any, are spread across 4 countries' do
+  page.should have_css(".who-where h2 .chapters:contains('5')")
   page.should have_css(".who-where h2 .countries:contains('4')")
 end

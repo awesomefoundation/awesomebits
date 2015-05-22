@@ -5,6 +5,8 @@ fr:
   date:
     formats:
       funding: "%B %Y"
+  word:
+    inactive: Non-active
   flash:
     permissions:
       must-be-logged-in: Vous devez être connecté.
@@ -81,6 +83,8 @@ fr:
         about: A Propos
         news: "%{name} News"
       apply-for-grant: Postuler à une bourse
+      inactive-chapter: Cette branche n'est actuellement non-active.
+      inactive-chapter-reason: Une branche non-active est une branche qui n’a pas remis de bourse au cours des six derniers mois. Veuillez <a href="mailto:join@awesomefoundation.org">nous contacter</a> si cela vous intéresse de relancer cette branche.
     edit:
       title: Editer les infos de la branche
     new:
@@ -208,6 +212,7 @@ fr:
         extra_question_1: Question bonus 1
         extra_question_2: Question bonus 2
         extra_question_3: Question bonus 3
+        inactive: Cette branche n'est pas active
         submit: Envoyer
       user:
         first_name: Prénom
