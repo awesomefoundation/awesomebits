@@ -78,7 +78,7 @@ es:
       recent_winners: Proyectos recientemente becados 
       see_more: Ver más cosas impresionantes
       byline: "Por %{name}"
-      administradores:
+      trustees:
         header: Conoce a los Administradores
         about: Acerca de Nosotros
         news: "%{name} Noticias"
