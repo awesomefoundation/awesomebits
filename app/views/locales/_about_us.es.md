@@ -6,7 +6,7 @@ Cada capítulo autónomo apoya proyectos impresionantes por medio de microbecas,
 
 ## ¿Qué quieres decir con "impresionante?"
 
-Cada capítulo interpreta "impresionante" por sí mismo.  Como tal, los proyectos impresionantes incluyen iniciativas en una amplia gama de áreas incluyendo artes, tecnología, desarrollo comunitario y más. Muchos proyectos impresionantes son innovadores o experimentales y evocan sorpresa y deleite. Lo impresionante en ocasiones ofrece retos y frecuentemente inspira.  Revisa algunas de los becas en las páginas de los capítulos en este sitio web para que veas lo que queremos decir.   We're still waiting for something with dinosaurs [(hint, hint)](http://www.youtube.com/watch?v=PPoYzyOn44M).
+Cada capítulo interpreta "impresionante" por sí mismo.  Como tal, los proyectos impresionantes incluyen iniciativas en una amplia gama de áreas incluyendo artes, tecnología, desarrollo comunitario y más. Muchos proyectos impresionantes son innovadores o experimentales y evocan sorpresa y deleite. Lo impresionante en ocasiones ofrece retos y frecuentemente inspira.  Revisa algunas de los becas en las páginas de los capítulos en este sitio web para que veas lo que queremos decir. [Todavía estamos esperando algo con los dinosaurios (pista, pista)](http://www.youtube.com/watch?v=PPoYzyOn44M).
 
 ## ¿Alguien más sabe de esto?
 
