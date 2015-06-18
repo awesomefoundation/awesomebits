@@ -7,7 +7,7 @@
     </h1>
 
     <% if can_manage_chapter?(@chapter) %>
-      <%= link_to "Edit Chapter", edit_chapter_path(@chapter), :class => 'edit-chapter' %>
+      <%= link_to t(".edit"), edit_chapter_path(@chapter), :class => 'edit-chapter' %>
     <% end %>
 
     <% if can_apply_to_chapter?(@chapter) %>
