@@ -1,0 +1,245 @@
+es:
+  number:
+    delimiter: ","
+    separator: "."
+  date:
+    formats:
+      funding: "%B %Y"
+  word:
+    inactive: Inactivo
+  flash:
+    permissions:
+      must-be-logged-in: Debes estar conectado.
+      must-be-admin: Debes ser un administrador.
+      cannot-remove-user: No tienes permiso para remover a este usuario.
+      must-be-dean-or-admin: Debes ser un administrador o decano para tener acceso a esta página.
+      must-have-chapter: Tu cuenta no está asociada a ninguno de los capítulos. 
+      cannot-view-finalists: "No tienes permiso para ver esto."
+      cannot-invite: "No tienes permiso para invitar a otros."
+      cannot-modify-account: "No tienes permiso para modificar esta cuenta."
+      cannot-mark-winner: "No puedes marcar eso como ganador."
+    votes:
+      already-voted: "Ya existe un voto para este proyecto"
+      already-deleted: "El voto ya ha sido borrado"
+    applications:
+      thanks: "¡Gracias por solicitar!"
+    acceptances:
+      cannot: "La invitación no fue aceptada"
+  layouts:
+    application:
+      main-header: The Awesome Foundation
+      apply: Solicitar
+      dashboard: Tablero de mandos
+      blog: Blog
+      capítulos: Capítulos
+      chapter_header: ¡Impresionante dondequiera!
+      home: Página inicial
+      about_us: Acerca de nosotros
+      about_contact: Acerca & Contacto
+      faq: FAQ
+      want_to_help: Participa
+      sign-out: Salir
+      sign-in: Iniciar
+    sidebar:
+      projects: Proyectos
+      finalists: Finalistas
+      trustees: Administradores
+      members: Miembros
+      create-chapter: Crear un Capítulo
+      invite-trustee: Invitar a un administrador
+      edit-profile: Editar mi perfil
+      edit-chapter-profile: Editar el perfil del capítulo 
+      view-all-users: Ver a todos los usuarios
+      trustee-resources: Recursos para los administradores
+  home:
+    index:
+      title: promoviendo el interés por lo impresionante en el universo, $1,000 a la vez.
+      by: "Por %{name}"
+      what:
+        header: ¿Necesita fondos? 
+        body-html: "¿Tiene una brillante idea loca que necesita fondos? Otorgamos <strong>becas de $1,000 cada mes </strong>. ¡No podía ser más sencillo! Tu idea es solo tuya.  No queremos ninguna parte de ella. ¡Solo queremos ayudarte a  hacerla realidad!"
+      call-to-action: ¡Solicita una beca del Awesome Foundation ahora!
+      who:
+        header: ¡Awesome está en todas partes!
+        body: La fundación Awesome Foundation for the Arts and Sciences es una red siempre en crecimiento a nivel mundial de personas dedicadas a promover los intereses de lo impresionante en el universo. Creadoi durante el largo y ardiente verano del 2009 en Boston, la Fundación distribuye una serie de becas de $1,000 a proyectos y a sus creadores. El dinero es recaudado de las arcas de unos diez “microadministradores” autoorganizados y entregado por adelantado en efectivo, cheque o  doblones de oro.  Los capítulos son autónomos y organizados por los administradores por áreas geográficas o temas de interés. 
+      news:
+        header: ¡Noticias impresionantes!
+        recent:  Entradas recientes al blog
+        events: Eventos próximos 
+      funding-html: "<em class='funding'>$%{amount}</em> Otorgado"
+      winner-count-html: "<em class='winners'>%{amount}</em> proyectos becados"
+      chapter-count-html: "<em class='capítulos'>%{count}</em> Capítulos"
+      country-count-html: "<em class='countries'>%{count}</em> Países"
+  chapters:
+    index:
+      title: ¡Awesome está en todas partes!
+    show:
+      edit: Editar capítulo
+      recent_winners: Proyectos recientemente becados 
+      see_more: Ver más cosas impresionantes
+      byline: "Por %{name}"
+      administradores:
+        header: Conoce a los Administradores
+        about: Acerca de Nosotros
+        news: "%{name} Noticias"
+      apply-for-grant: Solicita una beca
+      inactive-chapter: Este capítulo está inactivo.
+      inactive-chapter-reason: Un capítulo inactivo es uno que no ha otorgado una beca en seis meses. Si estás interesado en reiniciar este capítulo, por favor <a href="mailto:join@awesomefoundation.org">comunícate con nosotros</a>.
+    edit:
+      title: Editar información del capítulo
+    new:
+      title: Crear un capítulo nuevo 
+  finalists:
+    index:
+      title: "Finalistas para %{name}"
+      filter-button: Filtro
+      start-date: fecha de inicio
+      end-date: fecha final
+      table:
+        title: Título
+        id: Identificación
+        votes: Votos
+  projects:
+    wait-for-uploads-to-complete: Por favor espera a que tus imágenes terminen de subir antes de someter tu solicitud.
+    project:
+      awesome: Impresionante
+      delete: Elimina este proyecto
+      see-the-rest: Vea el resto  →
+      view-public-page: Vea la página pública →
+      edit: Edita el proyecto →
+      confirm-delete: ¿Realmente quieres borrar esto?
+      winner: "Ganador para %{name}"
+      about-me: "Un poco sobre mí:"
+      about-project: "Aquí está mi idea:"
+      use-for-money: "Cómo utilizaré el dinero:"
+      not-answered: No se ha respondido
+      images: "Imágenes:"
+      image: "Imagen #%{index}"
+    new:
+      title: ¿Estás listo para ser impresionante!?
+      description:  Simplemente completa la solicitud a continuación con información sobre tí y los detalles de tu proyecto.
+      apply: Solicita
+    form:
+      save: Guarda
+      image-notes: La imagen superior está fijada como la imagen de la cubierta. El tamaño de las imágenes será ajustado a %{dimensions} pixels. Si recibes un mensaje de error, por favor intenta nuevamente con menos archivos o archivos más pequeños.   
+      use-classic-uploader: Cambia al cargador de archivos clásico
+      use-default-uploader: Cambia al cargador de archivos estándar
+    index:
+      filter-button: Filtro
+      search: Busca
+      start-date: Fecha de inicio
+      end-date: fecha final
+      short-list-filter: Mi lista de selecciones
+      title: "Proyectos para %{name}"
+      export-projects: Export Filtered
+      export-all-projects: Exportar todo del plazo de fechas
+    public_show:
+      edit: Editar proyecto
+      byline-html: "<span class='chapter-name'>%{chapter_name}</span> proyecto creado por <span class='proyecto-starter'>%{submitter_name}</span>"
+      funder-html: "Fondos becados por <span class='chapter-name'>%{name}</span>"
+      submitted-to-html: "Solicitud del proyecto sometido a <span class=''>%{name}</span>"
+      description:
+        header: Descripción del proyecto
+      feed-title: Entradas recientes
+    show:
+      back-to: 'Regreso a <a href="%{url}">%{name}</a>'
+  emails:
+    invitation:
+      subject: "Has sido invitado al capítulo de %{name} del Awesome Foundation!"
+    welcome:
+      subject: "¡Bienvenido al capítulo %{name}!"
+    application:
+      subject: "¡Gracias por solicitar!"
+  sessions:
+    new:
+      sign-in: Registro de Administrador y Decano
+      intro: Esta sección del sitio web está reservada para los Administradores y Decanos del   Awesome Foundation solamente. Si eres un administrador y necesitas acceso,por favor comunícate directamente con el decano de tu capítulo.  
+      forgot-password: ¿Se te olvidó tu contraseña?
+  users:
+    user:
+      promote_to_dean: Promover
+      demote_to_trustee: Degradar
+      demote_admin: Degradar
+      promote_admin: Promover
+      error_dean_promotion: Promoción de decano falló
+      error_dean_demotion: Degradación de decano falló
+      error_admin_promotion: Promoción de administrador falló
+      error_admin_demotion: Degradación de decano falló
+      error_removing_user: Error al remover al usuario
+      remove_from_chapter: Remover
+    edit:
+      title: Editar información del usuario
+    index:
+      title: Miembros del Awesome Foundation  
+      name: Nombre
+      email: Correo Electrónico
+      chapter: Capítulo
+      role: Posición
+      remove: Remover
+      dean: Decano
+      admin: Administrador
+  pages:
+    about_us:
+      title_tag: Acerca de nosotros
+      meta_description: Acerca de Awesome Foundation
+      meta_keywords:
+    faq:
+      title_tag: FAQ
+      headline: Preguntas frecuentes
+  simple_form:
+    labels:
+      project:
+        name: Tu nombre
+        email: Correo electrónico
+        phone: Número de teléfono
+        title: Título del proyecto
+        url: Sitio web del proyecto
+        current_photos-html: "Imágenes actuales <span>(drag to re-order)</span>"
+        new_photos-html: "Sube imágenes de tu proyecto"
+        chapter_id: Selecciona el capítulo al que deseas solicitar 
+        rss_feed_url: RSS feed url del proyecto
+        about_me: Cuéntanos un poco sobre tí
+        about_project: ¡Cuéntanos acerca de tu impresionante proyecto!
+        use_for_money: ¿Cómo utilizarás el dinero?
+        funded_on: Becado en
+        funded_description: Descripción de lo becado 
+      chapter:
+        name: Nombre
+        slug: Nombre en el URL
+        twitter_url: Twitter URL
+        facebook_url: Facebook URL
+        blog_url: Blog URL
+        rss_feed_url: RSS Feed URL
+        description: Descripción
+        extra_question_1: Pregunta adicional 1
+        extra_question_2: Pregunta adicional 2
+        extra_question_3: Pregunta adicional 3
+        inactive: Este capítulo está inactivo
+        submit: Someter
+      user:
+        first_name: Primer nombre
+        last_name: Apellido
+        email: Correo electrónico
+        bio: Biografía
+        url: Website URL
+        twitter_username: Twitter username
+        facebook_url: Facebook URL
+        linkedin_url: LinkedIn URL
+        new_password: Nueva contraseña
+        submit: Someter
+        user_image: Imagen del usuario
+    hints:
+      project:
+        funded_description: Solo visible en la página del proyecto becado
+        rss_feed_url: Enlaces a entradas desde esta transmisión estarán exhibidas en la página del proyecto becado 
+      user:
+        user_image: Fija tu imagen de usuario en <a href="https://en.gravatar.com/site/signup/%{email}" target="_blank">gravatar.com</a> usando la dirección de tu correo electrónico indicado previamente
+  activerecord:
+    errors:
+      models:
+        chapter:
+          attributes:
+            slug:
+              invalid: debe ser en letras minúsculas y no puede contener espacios
+  meta:
+    description: Promover los intereses de lo impresionante en el universo, $1,000 a la vez. 
