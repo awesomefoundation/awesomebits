@@ -164,15 +164,8 @@ describe ProjectsController do
         expect(project.archived_by_user_id).to eq(user.id)
       end
 
-      it "responds with useful JSON" do
-        data = JSON.parse(response.body)
-        expect(data).to include(
-          "archived_reason" => reason,
-          "archived_by" => user.name,
-          "project_id" => project.id
-        )
-        # dates in JSON are the worst
-        expect(Time.parse(data["archived_at"]).to_i).to eq(project.reload.archived_at.to_i)
+      it "redirects to the appropriate place in the projects page" do
+        expect(response).to redirect_to(chapter_projects_path(project.chapter_id, anchor: "project#{project.id}"))
       end
     end
   end
@@ -202,10 +195,8 @@ describe ProjectsController do
         expect(project).not_to be_archived
       end
 
-      it "responds with useful JSON" do
-        expect(JSON.parse(response.body)).to eq(
-          "project_id" => project.id
-        )
+      it "redirects to the appropriate place in the projects page" do
+        expect(response).to redirect_to(chapter_projects_path(project.chapter_id, anchor: "project#{project.id}"))
       end
     end
   end
