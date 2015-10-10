@@ -33,6 +33,7 @@ Awesomefoundation::Application.routes.draw do
 
     resources :projects do
       put "archive"
+      put "unarchive"
       resource :winner, :only => [:create, :destroy]
       resource :vote, :only => [:create, :destroy]
     end
