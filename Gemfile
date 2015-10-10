@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.1.1'
+ruby '2.1.7'
 
 gem 'rails', '3.2.22'
 
@@ -26,7 +26,7 @@ gem 'formtastic'
 gem 'flutie'
 gem 'bourbon', '~> 1.4.0'
 gem 'copycopter_client'
-gem "simple_form", :git => "https://github.com/plataformatec/simple_form.git"
+gem "simple_form", "~> 2.1.3"
 gem 'nokogiri'
 gem "will_paginate", "~> 3.0.3"
 gem "friendly_id", "~> 4.0.9"
@@ -36,6 +36,7 @@ gem 'sucker_punch', '~> 1.0'
 gem 's3_file_field'
 gem 'html_pipeline_rails'
 gem 'magnific-popup-rails'
+gem 'therubyracer'
 
 group :development, :test do
   gem "rspec-rails"

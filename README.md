@@ -7,6 +7,35 @@ AwesomeBits
 Configuration
 -------------
 
+### Docker
+
+To start developing this project quickly, feel free to use the [docker-compose](https://docs.docker.com/compose/) workflow. This will install a local Postgres database in a Docker container, and the Rails app in another container.   
+
+#### Installing the Docker runtime
+
+##### Linux: Use the Native Docker Engine
+
+If you're developing on a Linux system, follow [these instructions](https://docs.docker.com/installation/) to install Docker natively on your system. You will also need to install [Docker Compose](https://docs.docker.com/compose/install/).
+
+##### Mac or Windows: Install Docker Machine
+
+If you're developing from a Mac or Windows machine, you will need to use [Docker Machine](https://docs.docker.com/machine/) to run the Docker engine in a Linux VM and proxy commands to it. You can install Docker Machine via the [Docker Toolbox](https://www.docker.com/toolbox). The Docker toolbox will also install [Docker Compose](https://docs.docker.com/compose/).
+
+Once you have Docker Machine installed, you'll need to create a new machine for this project. Assuming you have [Virtualbox](https://www.virtualbox.org/wiki/Downloads) installed, you'd run the following:
+
+```bash
+docker-machine create -d virtualbox awesomebits
+eval $(docker-machine env awesomebits)
+```
+
+#### Starting the Docker Compose environment
+
+Once you have the Docker engine and [Docker Compose](https://docs.docker.com/compose/install/) installed, you should be able to launch the two docker containers with the following command:
+
+```bash
+docker-compose up
+```
+
 ### Environment Variables
 
 In order to set environment variables (for example, to enable S3 in your development environment),
