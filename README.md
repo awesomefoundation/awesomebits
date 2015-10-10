@@ -36,6 +36,8 @@ Once you have the Docker engine and [Docker Compose](https://docs.docker.com/com
 docker-compose up
 ```
 
+![Docker Compose Up Success](doc/awesomebits-docker-compose-up.gif)
+
 ### Environment Variables
 
 In order to set environment variables (for example, to enable S3 in your development environment),
