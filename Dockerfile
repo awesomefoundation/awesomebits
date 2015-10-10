@@ -1,4 +1,4 @@
-FROM ruby:2.1
+FROM ruby:2.1.7
 
 RUN apt-get update -qq \
   && apt-get install -y build-essential libpq-dev libqtwebkit-dev qt4-qmake
@@ -9,4 +9,4 @@ ADD Gemfile.lock /app/Gemfile.lock
 RUN bundle install
 ADD . /app
 
-ENTRYPOINT ["/app/docker-entrypoint.sh"]
+CMD ["/app/docker-runapp.sh"]
