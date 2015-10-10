@@ -345,6 +345,21 @@ describe Project do
       expect(project).to be_archived
     end
   end
+
+  describe "#unarchive! / #archived?" do
+    let(:project) {
+      FactoryGirl.create(:project, {
+        archived_reason: Faker::Company.bs,
+        archived_by_user_id: 123
+      })
+    }
+
+    it "saves the reason" do
+      expect(project).to be_archived
+      project.unarchive!
+      expect(project).not_to be_archived
+    end
+  end
 end
 
 describe Project, 'csv_export' do

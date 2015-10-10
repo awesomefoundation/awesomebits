@@ -173,4 +173,37 @@ describe ProjectsController do
       end
     end
   end
+
+  describe "#unarchive" do
+    let(:user) { FactoryGirl.create(:user) }
+    let(:reason) { Faker::Company.bs }
+    let(:project) { FactoryGirl.create(:project) }
+    before do
+      sign_in_as user
+      project.archive!(reason, user)
+    end
+
+    it "throws a RecordNotFound if the project doesn't exist" do
+      expect {
+        put :unarchive, id: Time.now.to_i
+      }.to raise_exception(ActiveRecord::RecordNotFound)
+    end
+
+    context "with a legit project" do
+      before :each do
+        put :unarchive, id: project.id, unarchived_reason: reason
+      end
+
+      it "unarchives the project" do
+        project.reload
+        expect(project).not_to be_archived
+      end
+
+      it "responds with useful JSON" do
+        expect(JSON.parse(response.body)).to eq(
+          "project_id" => project.id
+        )
+      end
+    end
+  end
 end

@@ -201,6 +201,13 @@ class Project < ActiveRecord::Base
     )
   end
 
+  def unarchive!
+    update_attributes(
+      archived_reason: nil,
+      archived_by_user_id: nil
+    )
+  end
+
   def archived?
     !!archived_reason
   end

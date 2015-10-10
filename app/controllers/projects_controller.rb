@@ -95,6 +95,14 @@ class ProjectsController < ApplicationController
     }
   end
 
+  def unarchive
+    @project = Project.find(params[:id])
+    @project.unarchive!
+    render :json => {
+      project_id: @project.id
+    }
+  end
+
   def destroy
     @project = Project.find(params[:id])
     @project.destroy
