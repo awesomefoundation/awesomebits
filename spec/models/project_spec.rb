@@ -324,6 +324,27 @@ describe Project do
     end
   end
 
+  describe "#archive! / #archived?" do
+    let(:project) { FactoryGirl.create(:project) }
+    let(:user) { FactoryGirl.create(:user) }
+    let(:reason) { Faker::Company.bs }
+
+    it "saves the reason" do
+      project.archive!(reason, user)
+      expect(project.reload.archived_reason).to eq(reason)
+    end
+
+    it "saves the user id" do
+      project.archive!(reason, user)
+      expect(project.reload.archived_by_user).to eq(user)
+    end
+
+    it "makes it archived" do
+      expect(project).not_to be_archived
+      project.archive!(reason, user)
+      expect(project).to be_archived
+    end
+  end
 end
 
 describe Project, 'csv_export' do

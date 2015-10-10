@@ -2,6 +2,7 @@ require "texticle/searchable"
 
 class Project < ActiveRecord::Base
   belongs_to :chapter
+  belongs_to :archived_by_user, class_name: "User"
   has_many :votes
   has_many :users, :through => :votes
   has_many :photos, :order => "photos.sort_order asc, photos.id asc"
@@ -10,7 +11,8 @@ class Project < ActiveRecord::Base
                   :chapter_id, :extra_question_1, :extra_question_2, :extra_question_3,
                   :extra_answer_1, :extra_answer_2, :extra_answer_3,
                   :new_photos, :photo_order, :rss_feed_url, :use_for_money, :funded_on, :funded_description,
-                  :new_photo_direct_upload_urls
+                  :new_photo_direct_upload_urls,
+                  :archived_by_user_id, :archived_reason
 
   before_validation UrlNormalizer.new(:url, :rss_feed_url)
 
@@ -190,6 +192,17 @@ class Project < ActiveRecord::Base
 
   def extra_answer(num)
     (answer = read_attribute("extra_answer_#{num}".to_sym)) && answer.present? ? answer : nil
+  end
+
+  def archive!(reason, user)
+    update_attributes(
+      archived_reason: reason,
+      archived_by_user_id: user.id
+    )
+  end
+
+  def archived?
+    !!archived_reason
   end
 
   protected
