@@ -344,17 +344,25 @@ describe Project do
       project.archive!(reason, user)
       expect(project).to be_archived
     end
+
+    it "saves the time" do
+      Timecop.freeze(Time.now) do
+        project.archive!(reason, user)
+        expect(project.archived_at).to eq(Time.now)
+      end
+    end
   end
 
   describe "#unarchive! / #archived?" do
     let(:project) {
       FactoryGirl.create(:project, {
         archived_reason: Faker::Company.bs,
-        archived_by_user_id: 123
+        archived_by_user_id: 123,
+        archived_at: Time.now
       })
     }
 
-    it "saves the reason" do
+    it "unarchives it" do
       expect(project).to be_archived
       project.unarchive!
       expect(project).not_to be_archived

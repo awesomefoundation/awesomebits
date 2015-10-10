@@ -165,11 +165,14 @@ describe ProjectsController do
       end
 
       it "responds with useful JSON" do
-        expect(JSON.parse(response.body)).to eq(
+        data = JSON.parse(response.body)
+        expect(data).to include(
           "archived_reason" => reason,
           "archived_by" => user.name,
           "project_id" => project.id
         )
+        # dates in JSON are the worst
+        expect(Time.parse(data["archived_at"]).to_i).to eq(project.reload.archived_at.to_i)
       end
     end
   end

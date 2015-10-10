@@ -12,7 +12,7 @@ class Project < ActiveRecord::Base
                   :extra_answer_1, :extra_answer_2, :extra_answer_3,
                   :new_photos, :photo_order, :rss_feed_url, :use_for_money, :funded_on, :funded_description,
                   :new_photo_direct_upload_urls,
-                  :archived_by_user_id, :archived_reason
+                  :archived_by_user_id, :archived_reason, :archived_at
 
   before_validation UrlNormalizer.new(:url, :rss_feed_url)
 
@@ -197,19 +197,21 @@ class Project < ActiveRecord::Base
   def archive!(reason, user)
     update_attributes(
       archived_reason: reason,
-      archived_by_user_id: user.id
+      archived_by_user_id: user.id,
+      archived_at: Time.now
     )
   end
 
   def unarchive!
     update_attributes(
       archived_reason: nil,
-      archived_by_user_id: nil
+      archived_by_user_id: nil,
+      archived_at: nil
     )
   end
 
   def archived?
-    !!archived_reason
+    !!archived_at
   end
 
   protected
