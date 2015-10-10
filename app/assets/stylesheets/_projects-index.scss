@@ -23,7 +23,7 @@ body.projects-index {
       margin-top: -10px;
       margin-right: 5px;
     }
-    
+
     ol {
       display: none;
       clear: both;
@@ -314,7 +314,7 @@ body.projects-index {
       padding: 5px 15px;
     }
   }
-  
+
   article.project {
     border: 1px solid rgb(200,200,200);
     background: rgb(255,255,255);
@@ -378,6 +378,26 @@ body.projects-index {
       .meta-data {
         border-bottom: 1px solid rgb(200,200,200);
         padding: 10px;
+
+        .archive-form, .unarchive-form {
+          &.archive-form {
+            display: none;
+          }
+
+          input.reason {
+            width: 200px;
+          }
+
+          input.archive-action {
+            height: 30px;
+            font-size: 1.2em;
+            width: 80px;
+            background-color: gray;
+            /* color: black; */
+            margin: 0;
+            padding: 0;
+          }
+        }
 
         .spam {
           float: right;

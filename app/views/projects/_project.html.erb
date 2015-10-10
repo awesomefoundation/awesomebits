@@ -1,84 +1,110 @@
-<article class="project <%= "shortlisted" if project.shortlisted_by?(current_user) %> <%= "winner" if project.winner? %>" data-id="<%= project.id %>">
+<article class="project <%= "shortlisted" if project.shortlisted_by?(current_user) %> <%= "winner" if project.winner? %>" id="project<%= project.id %>" data-id="<%= project.id %>">
   <header>
     <div class="title">
       <%= link_to project.title, chapter_project_path(project.chapter, project), :class => "title" %></a>
       <% if current_user.can_mark_winner?(project) %>
         <%= show_winner_buttons_for(project) %>
       <% end %>
-      <% if project.shortlisted_by?(current_user) %>
-        <%= link_to t(".awesome"), project_vote_path(project), :method => :delete, :remote => true, :class => "short-list" %>
-      <% else %>
-        <%= link_to t(".awesome"), project_vote_path(project), :method => :post, :remote => true, :class => "short-list" %>
-      <% end %>
-    </div>
-      
-    <section class="meta-data">
-      <%= project.created_at %> (<%= project.chapter.name %>)
-
-      <% if project.winner? %>
-        · <%= link_to t(".view-public-page"), project_path(project), :target => "blank" %> 
-      <% end %>
-
-      <% if current_user.can_edit_project?(project) -%>
-        <span class="spam">
-          <%= link_to t(".delete"), project_path(project), :method => :delete, :data => { :confirm => t(".confirm-delete") }, :class => 'delete-spam' %>
-        </span>
-      <% end -%>
-    </section>
-
-    <section class="contact">
-      <span>
-        <%= project.name %>
-      </span>
-
-      <span>
-        · <%= mail_to project.email %> 
-      </span>
-
-      <% if project.phone.present? %>
-        <span>
-          · <%= project.phone %>
-        </span>
-      <% end %>
-
-      <% if project.url.present? %>
-        <span>
-          · <%= link_to project.url, project.url %>
-        </span>
-      <% end %>
-    </section>
-  </header>
-
-  <section class="project-proposal-details">
-    <div class="project-pitch">
-      <% if project.has_images? %>
-        <h3><%= t ".images" %></h3>
-        <p class="gallery">
-        <% project.photos.each_with_index do |image, index| %>
-          <%= link_to t(".image", :index => index+1), image.url, :rel => "project-#{project.id}-images", :class => "lightbox", :target => "blank" %>
-        <% end %>
-        </p>
-      <% end %>
-
-      <h3><%= t ".about-project" %></h3>
-      <%= markdown project.about_project %>
-      <h3><%= t ".use-for-money" %></h3>
-      <%= markdown project.use_for_money %>
-      <h3><%= t ".about-me" %></h3>
-      <%= markdown project.about_me %>
-
-      <% 1.upto(Chapter::EXTRA_QUESTIONS_COUNT) do |num| -%>
-        <% if project.extra_question(num).present? %>
-          <h3><%= project.extra_question(num) %></h3>
-          <%= markdown project.extra_answer(num) || "_#{t '.not-answered'}_" %>
+      <% unless project.archived? %>
+        <% if project.shortlisted_by?(current_user) %>
+          <%= link_to t(".awesome"), project_vote_path(project), :method => :delete, :remote => true, :class => "short-list" %>
+        <% else %>
+          <%= link_to t(".awesome"), project_vote_path(project), :method => :post, :remote => true, :class => "short-list" %>
         <% end %>
       <% end %>
     </div>
 
-    <div class="details-toggle">
-    </div>
-    <%= link_to edit_project_path(project), :class => "see-more" do %>
-      <p><%= t ".edit" %></p>
-    <% end %>
-  </section>
+    <% if project.archived? %>
+      <section class="meta-data">
+        <div>
+          Archived by <%= project.archived_by_user.name %> on <%= project.archived_at %> because <%= project.archived_reason %>.
+        </div>
+        <div class="unarchive-form">
+          <%= button_to t(".unarchive"), unarchive_project_path(id: project.id), method: :put, class: "archive-action" %>
+        </div>
+      </section>
+    <% else %>
+      <section class="meta-data">
+        <div>
+          <%= t(".consider-archiving") %>
+          <%= link_to t(".archive"), "#", data: {"project-id" => project.id}, class: "archiveFormLink" %>
+        </div>
+        <div class="archive-form">
+          <%= form_tag archive_project_path(project), method: :put do %>
+            <%= t(".archive-reason") %>
+            <%= text_field_tag :archived_reason, "", class: "reason" %>
+            <%= submit_tag t(".archive"), class: "archive-action" %>
+          <% end %>
+        </div>
+      </section>
+      <section class="meta-data">
+        <%= project.created_at %> (<%= project.chapter.name %>)
+
+        <% if project.winner? %>
+          · <%= link_to t(".view-public-page"), project_path(project), :target => "blank" %>
+        <% end %>
+
+        <% if current_user.can_edit_project?(project) -%>
+          <span class="spam">
+            <%= link_to t(".delete"), project_path(project), :method => :delete, :data => { :confirm => t(".confirm-delete") }, :class => 'delete-spam' %>
+          </span>
+        <% end -%>
+      </section>
+
+      <section class="contact">
+        <span>
+          <%= project.name %>
+        </span>
+
+        <span>
+          · <%= mail_to project.email %>
+        </span>
+
+        <% if project.phone.present? %>
+          <span>
+            · <%= project.phone %>
+          </span>
+        <% end %>
+
+        <% if project.url.present? %>
+          <span>
+            · <%= link_to project.url, project.url %>
+          </span>
+        <% end %>
+      </section>
+    </header>
+
+    <section class="project-proposal-details">
+      <div class="project-pitch">
+        <% if project.has_images? %>
+          <h3><%= t ".images" %></h3>
+          <p class="gallery">
+          <% project.photos.each_with_index do |image, index| %>
+            <%= link_to t(".image", :index => index+1), image.url, :rel => "project-#{project.id}-images", :class => "lightbox", :target => "blank" %>
+          <% end %>
+          </p>
+        <% end %>
+
+        <h3><%= t ".about-project" %></h3>
+        <%= markdown project.about_project %>
+        <h3><%= t ".use-for-money" %></h3>
+        <%= markdown project.use_for_money %>
+        <h3><%= t ".about-me" %></h3>
+        <%= markdown project.about_me %>
+
+        <% 1.upto(Chapter::EXTRA_QUESTIONS_COUNT) do |num| -%>
+          <% if project.extra_question(num).present? %>
+            <h3><%= project.extra_question(num) %></h3>
+            <%= markdown project.extra_answer(num) || "_#{t '.not-answered'}_" %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="details-toggle">
+      </div>
+      <%= link_to edit_project_path(project), :class => "see-more" do %>
+        <p><%= t ".edit" %></p>
+      <% end %>
+    </section>
+  <% end %>
 </article>

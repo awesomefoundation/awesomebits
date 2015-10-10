@@ -115,6 +115,10 @@ en:
       not-answered: Not Answered
       images: "Images:"
       image: "Image #%{index}"
+      archive: Archive
+      unarchive: Unarchive
+      consider-archiving: Not an appropriate grant?
+      archive-reason: Why is this not appropriate?
     new:
       title: Are you ready to get Awesome!?
       description: Just fill out the application below with information about yourself and the details of your project.

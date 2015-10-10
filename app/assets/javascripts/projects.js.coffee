@@ -62,3 +62,9 @@ populate_funded_description = ->
     funded_description.val(description)
 
 $('#project_funded_on').blur(populate_funded_description)
+
+showArchiveOptions = ->
+  $("#project#{$(this).data("projectId")} .archive-form").show()
+  false
+
+$(".archiveFormLink").click(showArchiveOptions)
