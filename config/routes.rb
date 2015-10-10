@@ -32,6 +32,7 @@ Awesomefoundation::Application.routes.draw do
     end
 
     resources :projects do
+      put "archive"
       resource :winner, :only => [:create, :destroy]
       resource :vote, :only => [:create, :destroy]
     end
@@ -56,7 +57,7 @@ Awesomefoundation::Application.routes.draw do
     mount Evergreen::Application, :at => '/evergreen'
   end
 
-  # All other routes are considered 404s. ActionController::RoutingError 
+  # All other routes are considered 404s. ActionController::RoutingError
   # will catch them, but that fills our logs with noisy exceptions.
   match '*url', :to => 'errors#not_found', :via => [:get]
 end

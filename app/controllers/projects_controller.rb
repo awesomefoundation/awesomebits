@@ -85,6 +85,16 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def archive
+    @project = Project.find(params[:id])
+    @project.archive!(params[:archived_reason], current_user)
+    render :json => {
+      archived_reason: @project.archived_reason,
+      archived_by: current_user.name,
+      project_id: @project.id
+    }
+  end
+
   def destroy
     @project = Project.find(params[:id])
     @project.destroy
