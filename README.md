@@ -13,7 +13,7 @@ To start developing this project quickly, feel free to use the [docker-compose](
 
 #### Installing the Docker runtime
 
-##### Linux: Use the Native Docker Engine
+##### Linux: Install the Native Docker Engine
 
 If you're developing on a Linux system, follow [these instructions](https://docs.docker.com/installation/) to install Docker natively on your system. You will also need to install [Docker Compose](https://docs.docker.com/compose/install/).
 
@@ -28,15 +28,27 @@ docker-machine create -d virtualbox awesomebits
 eval $(docker-machine env awesomebits)
 ```
 
-#### Starting the Docker Compose environment
+#### Starting the app with Docker Compose
 
-Once you have the Docker engine and [Docker Compose](https://docs.docker.com/compose/install/) installed, you should be able to launch the two docker containers with the following command:
+Once you have the Docker engine and [Docker Compose](https://docs.docker.com/compose/install/) installed, you should be able to launch the app with the following command:
 
 ```bash
 docker-compose up
 ```
 
+If successful, your terminal should look something like this:
+
 ![Docker Compose Up Success](doc/awesomebits-docker-compose-up.gif)
+
+#### Executing arbitary commands with Docker Compose
+
+You can also run arbitrary commands within the Docker container. For example, to run `rails console`, do the following:
+
+```bash
+docker-compose run web rails console
+```
+
+![Running Rails Console with Docker Compose](doc/awesomebits-docker-compose-rails-console.gif)
 
 ### Environment Variables
 
