@@ -1,3 +1,5 @@
+<% full_view ||= false %>
+
 <article class="project <%= "shortlisted" if project.shortlisted_by?(current_user) %> <%= "winner" if project.winner? %>" id="project<%= project.id %>" data-id="<%= project.id %>">
   <header>
     <div class="title">
@@ -14,17 +16,15 @@
       <% end %>
     </div>
 
-    <% if project.archived? %>
-      <section class="meta-data">
+    <section class="meta-data">
+      <% if project.archived? %>
         <div>
           Archived by <%= project.archived_by_user.name %> on <%= project.archived_at %> because <%= project.archived_reason %>.
         </div>
         <div class="unarchive-form">
           <%= button_to t(".unarchive"), unarchive_project_path(id: project.id), method: :put, class: "archive-action" %>
         </div>
-      </section>
-    <% else %>
-      <section class="meta-data">
+      <% else %>
         <div>
           <%= t(".consider-archiving") %>
           <%= link_to t(".archive"), "#", data: {"project-id" => project.id}, class: "archiveFormLink" %>
@@ -36,7 +36,10 @@
             <%= submit_tag t(".archive"), class: "archive-action" %>
           <% end %>
         </div>
-      </section>
+      <% end %>
+    </section>
+
+    <% if full_view || !project.archived? %>
       <section class="meta-data">
         <%= project.created_at %> (<%= project.chapter.name %>)
 
