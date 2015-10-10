@@ -15,3 +15,9 @@ if defined?(RSpec)
     end
   end
 end
+
+desc "db:migrate + db:test:prepare"
+task :migrate => :environment do
+  Rake::Task["db:migrate"].execute
+  Rake::Task["db:test:prepare"].execute
+end
