@@ -120,6 +120,7 @@ en:
       consider-hiding: Not an appropriate grant?
       hide-reason: Why is this not appropriate?
       hidden-details: "Hidden by %{username} at %{hidden_at} because %{reason}."
+      hiding-explanation: "Hiding a project will hide its details from everyone; the title and why it was hidden will still be visible, and it can be easily unhidden."
     new:
       title: Are you ready to get Awesome!?
       description: Just fill out the application below with information about yourself and the details of your project.
