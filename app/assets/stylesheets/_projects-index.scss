@@ -1,4 +1,5 @@
 body.projects-index {
+
   section.container {
     @extend .clearfix;
   }
@@ -469,8 +470,12 @@ body.projects-index {
           height: 30px;
           font-size: 1.2em;
           width: 80px;
-          background-color: gray;
-          /* color: black; */
+          background-color: whitesmoke;
+          background-image: none;
+          border: 1px solid black;
+          color: black;
+          @include box-shadow(none);
+          text-shadow: none;
           margin: 0;
           padding: 0;
         }
