@@ -79,15 +79,6 @@
   </div>
 </section>
 
-<!--<section class="news">
-  <div class="inner-wrapper">
-    <header>
-      <h2><%= t ".news.recent" %></h2>
-    </header>
-    <section class="rss" id="rss-feeds"></section>
-  </div>
-</section>-->
-
 <section class="awesome-chapters">
   <% @chapters.each do |chapter| %>
       <%= link_to chapter, :class => "image-wrapper" do %>
@@ -95,7 +86,3 @@
       <% end %>
   <% end %>
 </section>
-
-<% content_for :javascript do -%>
-  <%= render 'shared/rssfeed', rss_feed_url: MAIN_AWESOME_RSS %>
-<% end -%>
