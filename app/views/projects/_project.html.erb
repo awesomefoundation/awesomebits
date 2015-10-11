@@ -86,31 +86,31 @@
         <p><%= t ".edit" %></p>
       <% end %>
     </section>
-
-    <section class="filtering">
-      <% if project.hidden? %>
-        <div>
-          <%= t(".hidden-details", username: project.hidden_by_user.name, on: l(project.hidden_at), because: project.hidden_reason) %>
-        </div>
-        <div class="unhiding-form">
-          <%= button_to t(".unhide"), unhide_project_path(id: project.id), method: :put, class: "hide-action" %>
-        </div>
-      <% else %>
-        <div class="consider-hiding">
-          <%= t(".consider-hiding") %>
-          <%= link_to t(".hide"), "#", data: {"project-id" => project.id}, class: "hideFormLink" %>
-        </div>
-        <div class="hiding-form">
-          <%= form_tag hide_project_path(project), method: :put do %>
-            <%= t(".hide-reason") %>
-            <%= text_field_tag :hidden_reason, "", class: "reason" %>
-            <%= submit_tag t(".hide"), class: "hide-action" %>
-          <% end %>
-          <div class="explanation">
-            Hiding a project will hide its details from everyone; the title and why it was hidden will still be visible, and it can be easily unhidden.
-          </div>
-        </div>
-      <% end %>
-    </section>
   <% end %>
+
+  <section class="filtering">
+    <% if project.hidden? %>
+      <div>
+        <%= t(".hidden-details", username: project.hidden_by_user.name, hidden_at: l(project.hidden_at), reason: project.hidden_reason) %>
+      </div>
+      <div class="unhiding-form">
+        <%= button_to t(".unhide"), unhide_project_path(id: project.id), method: :put, class: "hide-action" %>
+      </div>
+    <% else %>
+      <div class="consider-hiding">
+        <%= t(".consider-hiding") %>
+        <%= link_to t(".hide"), "#", data: {"project-id" => project.id}, class: "hideFormLink" %>
+      </div>
+      <div class="hiding-form">
+        <%= form_tag hide_project_path(project), method: :put do %>
+          <%= t(".hide-reason") %>
+          <%= text_field_tag :hidden_reason, "", class: "reason" %>
+          <%= submit_tag t(".hide"), class: "hide-action" %>
+        <% end %>
+        <div class="explanation">
+          Hiding a project will hide its details from everyone; the title and why it was hidden will still be visible, and it can be easily unhidden.
+        </div>
+      </div>
+    <% end %>
+  </section>
 </article>
