@@ -16,31 +16,6 @@
       <% end %>
     </div>
 
-    <section class="meta-data">
-      <% if project.hidden? %>
-        <div>
-          <%= t(".hidden-by") %> <%= project.hidden_by_user.name %>
-          <%= t(".hidden-on") %> <%= project.hidden_at %>
-          <%= t(".hidden-because") %> <%= project.hidden_reason %>.
-        </div>
-        <div class="unhide-form">
-          <%= button_to t(".unhide"), unhide_project_path(id: project.id), method: :put, class: "hide-action" %>
-        </div>
-      <% else %>
-        <div>
-          <%= t(".consider-hiding") %>
-          <%= link_to t(".hide"), "#", data: {"project-id" => project.id}, class: "hideFormLink" %>
-        </div>
-        <div class="hide-form">
-          <%= form_tag hide_project_path(project), method: :put do %>
-            <%= t(".hide-reason") %>
-            <%= text_field_tag :hidden_reason, "", class: "reason" %>
-            <%= submit_tag t(".hide"), class: "hide-action" %>
-          <% end %>
-        </div>
-      <% end %>
-    </section>
-
     <% if full_view || !project.hidden? %>
       <section class="meta-data">
         <%= project.created_at %> (<%= project.chapter.name %>)
@@ -109,6 +84,32 @@
       </div>
       <%= link_to edit_project_path(project), :class => "see-more" do %>
         <p><%= t ".edit" %></p>
+      <% end %>
+    </section>
+
+    <section class="filtering">
+      <% if project.hidden? %>
+        <div>
+          <%= t(".hidden-details", username: project.hidden_by_user.name, on: l(project.hidden_at), because: project.hidden_reason) %>
+        </div>
+        <div class="unhiding-form">
+          <%= button_to t(".unhide"), unhide_project_path(id: project.id), method: :put, class: "hide-action" %>
+        </div>
+      <% else %>
+        <div class="consider-hiding">
+          <%= t(".consider-hiding") %>
+          <%= link_to t(".hide"), "#", data: {"project-id" => project.id}, class: "hideFormLink" %>
+        </div>
+        <div class="hiding-form">
+          <%= form_tag hide_project_path(project), method: :put do %>
+            <%= t(".hide-reason") %>
+            <%= text_field_tag :hidden_reason, "", class: "reason" %>
+            <%= submit_tag t(".hide"), class: "hide-action" %>
+          <% end %>
+          <div class="explanation">
+            Hiding a project will hide its details from everyone; the title and why it was hidden will still be visible, and it can be easily unhidden.
+          </div>
+        </div>
       <% end %>
     </section>
   <% end %>

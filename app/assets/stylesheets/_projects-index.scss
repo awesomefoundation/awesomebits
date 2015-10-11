@@ -379,26 +379,6 @@ body.projects-index {
         border-bottom: 1px solid rgb(200,200,200);
         padding: 10px;
 
-        .hide-form, .unhide-form {
-          &.hide-form {
-            display: none;
-          }
-
-          input.reason {
-            width: 200px;
-          }
-
-          input.hide-action {
-            height: 30px;
-            font-size: 1.2em;
-            width: 80px;
-            background-color: gray;
-            /* color: black; */
-            margin: 0;
-            padding: 0;
-          }
-        }
-
         .spam {
           float: right;
           margin: 0px;
@@ -468,6 +448,41 @@ body.projects-index {
           p {
             color: $pink;
           }
+        }
+      }
+    }
+
+    .filtering {
+      border-top: 1px solid rgb(200,200,200);
+      padding: 10px;
+
+      .hiding-form, .unhiding-form {
+        &.hiding-form {
+          display: none;
+        }
+
+        input.reason {
+          width: 200px;
+        }
+
+        input.hide-action {
+          height: 30px;
+          font-size: 1.2em;
+          width: 80px;
+          background-color: gray;
+          /* color: black; */
+          margin: 0;
+          padding: 0;
+        }
+      }
+
+      &.show-form {
+        .consider-hiding {
+          display: none;
+        }
+
+        .hiding-form {
+          display: block;
         }
       }
     }

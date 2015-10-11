@@ -119,9 +119,7 @@ en:
       unhide: Unhide
       consider-hiding: Not an appropriate grant?
       hide-reason: Why is this not appropriate?
-      hidden-by: Hidden by
-      hidden-on: "on"
-      hidden-because: because
+      hidden-detail: "Hidden by %{username} at %{hidden_at} because %{reason}."
     new:
       title: Are you ready to get Awesome!?
       description: Just fill out the application below with information about yourself and the details of your project.
