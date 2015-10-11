@@ -324,48 +324,48 @@ describe Project do
     end
   end
 
-  describe "#archive! / #archived?" do
+  describe "#hide! / #hidden?" do
     let(:project) { FactoryGirl.create(:project) }
     let(:user) { FactoryGirl.create(:user) }
     let(:reason) { Faker::Company.bs }
 
     it "saves the reason" do
-      project.archive!(reason, user)
-      expect(project.reload.archived_reason).to eq(reason)
+      project.hide!(reason, user)
+      expect(project.reload.hidden_reason).to eq(reason)
     end
 
     it "saves the user id" do
-      project.archive!(reason, user)
-      expect(project.reload.archived_by_user).to eq(user)
+      project.hide!(reason, user)
+      expect(project.reload.hidden_by_user).to eq(user)
     end
 
-    it "makes it archived" do
-      expect(project).not_to be_archived
-      project.archive!(reason, user)
-      expect(project).to be_archived
+    it "makes it hidden" do
+      expect(project).not_to be_hidden
+      project.hide!(reason, user)
+      expect(project).to be_hidden
     end
 
     it "saves the time" do
       Timecop.freeze(Time.now) do
-        project.archive!(reason, user)
-        expect(project.archived_at).to eq(Time.now)
+        project.hide!(reason, user)
+        expect(project.hidden_at).to eq(Time.now)
       end
     end
   end
 
-  describe "#unarchive! / #archived?" do
+  describe "#unhide! / #hidden?" do
     let(:project) {
       FactoryGirl.create(:project, {
-        archived_reason: Faker::Company.bs,
-        archived_by_user_id: 123,
-        archived_at: Time.now
+        hidden_reason: Faker::Company.bs,
+        hidden_by_user_id: 123,
+        hidden_at: Time.now
       })
     }
 
-    it "unarchives it" do
-      expect(project).to be_archived
-      project.unarchive!
-      expect(project).not_to be_archived
+    it "unhides it" do
+      expect(project).to be_hidden
+      project.unhide!
+      expect(project).not_to be_hidden
     end
   end
 end

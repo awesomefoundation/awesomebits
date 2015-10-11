@@ -139,7 +139,7 @@ describe ProjectsController do
 
   end
 
-  describe "#archive" do
+  describe "#hide" do
     let(:user) { FactoryGirl.create(:user) }
     let(:reason) { Faker::Company.bs }
     let(:project) { FactoryGirl.create(:project) }
@@ -149,19 +149,19 @@ describe ProjectsController do
 
     it "throws a RecordNotFound if the project doesn't exist" do
       expect {
-        put :archive, id: Time.now.to_i, archived_reason: reason
+        put :hide, id: Time.now.to_i, hidden_reason: reason
       }.to raise_exception(ActiveRecord::RecordNotFound)
     end
 
     context "with a legit project" do
       before :each do
-        put :archive, id: project.id, archived_reason: reason
+        put :hide, id: project.id, hidden_reason: reason
       end
 
-      it "archives the project" do
+      it "hides the project" do
         project.reload
-        expect(project.archived_reason).to eq(reason)
-        expect(project.archived_by_user_id).to eq(user.id)
+        expect(project.hidden_reason).to eq(reason)
+        expect(project.hidden_by_user_id).to eq(user.id)
       end
 
       it "redirects to the appropriate place in the projects page" do
@@ -170,29 +170,29 @@ describe ProjectsController do
     end
   end
 
-  describe "#unarchive" do
+  describe "#unhide" do
     let(:user) { FactoryGirl.create(:user) }
     let(:reason) { Faker::Company.bs }
     let(:project) { FactoryGirl.create(:project) }
     before do
       sign_in_as user
-      project.archive!(reason, user)
+      project.hide!(reason, user)
     end
 
     it "throws a RecordNotFound if the project doesn't exist" do
       expect {
-        put :unarchive, id: Time.now.to_i
+        put :unhide, id: Time.now.to_i
       }.to raise_exception(ActiveRecord::RecordNotFound)
     end
 
     context "with a legit project" do
       before :each do
-        put :unarchive, id: project.id, unarchived_reason: reason
+        put :unhide, id: project.id, unhidden_reason: reason
       end
 
-      it "unarchives the project" do
+      it "unhides the project" do
         project.reload
-        expect(project).not_to be_archived
+        expect(project).not_to be_hidden
       end
 
       it "redirects to the appropriate place in the projects page" do

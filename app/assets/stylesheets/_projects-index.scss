@@ -379,8 +379,8 @@ body.projects-index {
         border-bottom: 1px solid rgb(200,200,200);
         padding: 10px;
 
-        .archive-form, .unarchive-form {
-          &.archive-form {
+        .hide-form, .unhide-form {
+          &.hide-form {
             display: none;
           }
 
@@ -388,7 +388,7 @@ body.projects-index {
             width: 200px;
           }
 
-          input.archive-action {
+          input.hide-action {
             height: 30px;
             font-size: 1.2em;
             width: 80px;

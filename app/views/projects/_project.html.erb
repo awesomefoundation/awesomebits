@@ -7,7 +7,7 @@
       <% if current_user.can_mark_winner?(project) %>
         <%= show_winner_buttons_for(project) %>
       <% end %>
-      <% unless project.archived? %>
+      <% unless project.hidden? %>
         <% if project.shortlisted_by?(current_user) %>
           <%= link_to t(".awesome"), project_vote_path(project), :method => :delete, :remote => true, :class => "short-list" %>
         <% else %>
@@ -17,29 +17,31 @@
     </div>
 
     <section class="meta-data">
-      <% if project.archived? %>
+      <% if project.hidden? %>
         <div>
-          Archived by <%= project.archived_by_user.name %> on <%= project.archived_at %> because <%= project.archived_reason %>.
+          <%= t(".hidden-by") %> <%= project.hidden_by_user.name %>
+          <%= t(".hidden-on") %> <%= project.hidden_at %>
+          <%= t(".hidden-because") %> <%= project.hidden_reason %>.
         </div>
-        <div class="unarchive-form">
-          <%= button_to t(".unarchive"), unarchive_project_path(id: project.id), method: :put, class: "archive-action" %>
+        <div class="unhide-form">
+          <%= button_to t(".unhide"), unhide_project_path(id: project.id), method: :put, class: "hide-action" %>
         </div>
       <% else %>
         <div>
-          <%= t(".consider-archiving") %>
-          <%= link_to t(".archive"), "#", data: {"project-id" => project.id}, class: "archiveFormLink" %>
+          <%= t(".consider-hiding") %>
+          <%= link_to t(".hide"), "#", data: {"project-id" => project.id}, class: "hideFormLink" %>
         </div>
-        <div class="archive-form">
-          <%= form_tag archive_project_path(project), method: :put do %>
-            <%= t(".archive-reason") %>
-            <%= text_field_tag :archived_reason, "", class: "reason" %>
-            <%= submit_tag t(".archive"), class: "archive-action" %>
+        <div class="hide-form">
+          <%= form_tag hide_project_path(project), method: :put do %>
+            <%= t(".hide-reason") %>
+            <%= text_field_tag :hidden_reason, "", class: "reason" %>
+            <%= submit_tag t(".hide"), class: "hide-action" %>
           <% end %>
         </div>
       <% end %>
     </section>
 
-    <% if full_view || !project.archived? %>
+    <% if full_view || !project.hidden? %>
       <section class="meta-data">
         <%= project.created_at %> (<%= project.chapter.name %>)
 

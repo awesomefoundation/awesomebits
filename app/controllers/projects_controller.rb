@@ -85,15 +85,15 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def archive
+  def hide
     @project = Project.find(params[:id])
-    @project.archive!(params[:archived_reason], current_user)
+    @project.hide!(params[:hidden_reason], current_user)
     redirect_to chapter_projects_path(@project.chapter_id, anchor: "project#{@project.id}")
   end
 
-  def unarchive
+  def unhide
     @project = Project.find(params[:id])
-    @project.unarchive!
+    @project.unhide!
     redirect_to chapter_projects_path(@project.chapter_id, anchor: "project#{@project.id}")
   end
 
