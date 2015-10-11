@@ -4,6 +4,7 @@ production: &default
   pool: 5
   timeout: 5000
 
+<% if Rails.env.development? %>
 development: &default
   adapter: postgresql
   database: <%= ENV['DB_NAME'] || 'awesomefoundation_development' %>
@@ -12,6 +13,7 @@ development: &default
   host: <%= ENV['POSTGRES_HOST'] || 'localhost' %>
   username: <%= ENV['POSTGRES_USER'] || 'root' %>
   password: <%= ENV['POSTGRES_PASSWORD'] || '' %>
+<% end %>
 
 test: &test
   <<: *default
