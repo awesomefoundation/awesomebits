@@ -154,18 +154,39 @@ describe ProjectsController do
     end
 
     context "with a legit project" do
-      before :each do
-        put :hide, id: project.id, hidden_reason: reason
+      context "with a reason" do
+        before :each do
+          put :hide, id: project.id, hidden_reason: reason
+        end
+
+        it "hides the project" do
+          project.reload
+          expect(project.hidden_reason).to eq(reason)
+          expect(project.hidden_by_user_id).to eq(user.id)
+        end
+
+        it "redirects to the appropriate place in the projects page" do
+          expect(response).to redirect_to(chapter_projects_path(project.chapter_id, anchor: "project#{project.id}"))
+        end
       end
 
-      it "hides the project" do
-        project.reload
-        expect(project.hidden_reason).to eq(reason)
-        expect(project.hidden_by_user_id).to eq(user.id)
-      end
+      context "with a reason" do
+        before :each do
+          put :hide, id: project.id, hidden_reason: ""
+        end
 
-      it "redirects to the appropriate place in the projects page" do
-        expect(response).to redirect_to(chapter_projects_path(project.chapter_id, anchor: "project#{project.id}"))
+        it "doesn't hide the project" do
+          project.reload
+          expect(project).not_to be_hidden
+        end
+
+        it "sets a flash" do
+          expect(flash[:notice]).not_to be_blank
+        end
+
+        it "redirects to the appropriate place in the projects page" do
+          expect(response).to redirect_to(chapter_projects_path(project.chapter_id))
+        end
       end
     end
   end
