@@ -91,7 +91,7 @@
   <section class="filtering">
     <% if project.hidden? %>
       <div>
-        <%= t(".hidden-details", username: project.hidden_by_user.name, hidden_at: l(project.hidden_at), reason: project.hidden_reason) %>
+        <%= t(".hidden-details", username: project.hidden_by_user.name, hidden_at: l(project.hidden_at.to_date), reason: project.hidden_reason) %>
       </div>
       <div class="unhiding-form">
         <%= button_to t(".unhide"), unhide_project_path(id: project.id), method: :put, class: "hide-action" %>

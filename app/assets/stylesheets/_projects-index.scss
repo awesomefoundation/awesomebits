@@ -467,17 +467,10 @@ body.projects-index {
         }
 
         input.hide-action {
-          height: 30px;
-          font-size: 1.2em;
+          @include button(rgb(230,230,230));
           width: 80px;
-          background-color: whitesmoke;
-          background-image: none;
-          border: 1px solid black;
-          color: black;
-          @include box-shadow(none);
-          text-shadow: none;
-          margin: 0;
-          padding: 0;
+          position: relative;
+          top: -10px;
         }
       }
 
