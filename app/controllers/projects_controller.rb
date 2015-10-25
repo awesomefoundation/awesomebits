@@ -68,6 +68,7 @@ class ProjectsController < ApplicationController
       render :action => "public_show"
 
     else
+      @display_project_even_if_hidden = true
       must_be_logged_in || render
     end
   end

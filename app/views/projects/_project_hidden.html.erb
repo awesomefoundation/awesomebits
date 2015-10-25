@@ -1,0 +1,42 @@
+<header>
+  <div class="title">
+    <%= link_to project.title, chapter_project_path(project.chapter, project), :class => "title" %></a>
+  </div>
+
+  <section class="meta-data">
+    <%= project.created_at %> (<%= project.chapter.name %>)
+
+    <% if project.winner? %>
+      · <%= link_to t(".view-public-page"), project_path(project), :target => "blank" %>
+    <% end %>
+
+    <% if current_user.can_edit_project?(project) -%>
+      <span class="spam">
+        <%= link_to t(".delete"), project_path(project), :method => :delete, :data => { :confirm => t(".confirm-delete") }, :class => 'delete-spam' %>
+      </span>
+    <% end -%>
+  </section>
+
+  <section class="contact">
+    <span>
+      <%= project.name %>
+    </span>
+
+    <span>
+      · <%= mail_to project.email %>
+    </span>
+
+    <% if project.phone.present? %>
+      <span>
+        · <%= project.phone %>
+      </span>
+    <% end %>
+
+    <% if project.url.present? %>
+      <span>
+        · <%= link_to project.url, project.url %>
+      </span>
+    <% end %>
+  </section>
+</header>
+
