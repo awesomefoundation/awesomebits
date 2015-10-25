@@ -91,7 +91,7 @@ class ProjectsController < ApplicationController
       @project.hide!(params[:hidden_reason], current_user)
       redirect_to chapter_projects_path(@project.chapter_id, anchor: "project#{@project.id}")
     else
-      flash[:notice] = "You must supply a reason a to hide a project!"
+      flash[:notice] = t("hide-reason-required")
       redirect_to chapter_projects_path(@project.chapter_id)
     end
   end
