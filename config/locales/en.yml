@@ -110,7 +110,7 @@ en:
       consider-hiding: Not an appropriate grant?
       hide-reason: Why is this not appropriate?
       hide-reason-required: You must supply a reason a to hide a project!
-      hidden-details: "Hidden by %{username} at %{hidden_at} because %{reason}."
+      hidden-details: "Hidden by %{username} on %{hidden_at} because %{reason}."
       hiding-explanation: "Hiding a project will hide its details from everyone; the title and why it was hidden will still be visible, and it can be easily unhidden."
     project_details:
       images: "Images:"
