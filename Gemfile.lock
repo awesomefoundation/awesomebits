@@ -53,6 +53,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara-screenshot (1.0.11)
+      capybara (>= 1.0, < 3)
+      launchy
     capybara-webkit (1.3.0)
       capybara (>= 2.0.2, < 2.5.0)
       json
@@ -385,6 +388,7 @@ DEPENDENCIES
   bourne
   byebug
   capybara
+  capybara-screenshot
   capybara-webkit (~> 1.3.0)
   clearance (~> 0.16.2)
   coffee-rails
