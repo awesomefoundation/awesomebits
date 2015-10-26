@@ -102,19 +102,9 @@ en:
   projects:
     wait-for-uploads-to-complete: Please wait for your images to finish uploading before submitting your application.
     project:
-      awesome: Awesome
       delete: Delete this project
       see-the-rest: See the rest →
-      view-public-page: View the public page →
-      edit: Edit Project →
-      confirm-delete: Really delete this?
       winner: "Winner for %{name}"
-      about-me: "A little about me:"
-      about-project: "Here's my idea:"
-      use-for-money: "How I will use the money:"
-      not-answered: Not Answered
-      images: "Images:"
-      image: "Image #%{index}"
       hide: Hide
       unhide: Unhide
       consider-hiding: Not an appropriate grant?
@@ -122,6 +112,20 @@ en:
       hide-reason-required: You must supply a reason a to hide a project!
       hidden-details: "Hidden by %{username} at %{hidden_at} because %{reason}."
       hiding-explanation: "Hiding a project will hide its details from everyone; the title and why it was hidden will still be visible, and it can be easily unhidden."
+    project_details:
+      images: "Images:"
+      image: "Image #%{index}"
+      awesome: Awesome
+      about-me: "A little about me:"
+      about-project: "Here's my idea:"
+      use-for-money: "How I will use the money:"
+      not-answered: Not Answered
+      confirm-delete: Really delete this?
+      view-public-page: View the public page →
+      edit: Edit Project →
+    project_hidden:
+      confirm-delete: Really delete this?
+      view-public-page: View the public page →
     new:
       title: Are you ready to get Awesome!?
       description: Just fill out the application below with information about yourself and the details of your project.
