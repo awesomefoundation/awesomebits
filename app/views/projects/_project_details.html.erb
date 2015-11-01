@@ -20,7 +20,7 @@
 
     <% if current_user.can_edit_project?(project) -%>
       <span class="spam">
-        <%= link_to t(".delete"), project_path(project), :method => :delete, :data => { :confirm => t(".confirm-delete", scope: "projects.project") }, :class => 'delete-spam' %>
+        <%= link_to t(".delete"), project_path(project), :method => :delete, :data => { :confirm => t("projects.project.confirm-delete") }, :class => 'delete-spam' %>
       </span>
     <% end -%>
   </section>
