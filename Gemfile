@@ -53,6 +53,7 @@ group :test do
   gem "capybara"
   gem "database_cleaner"
   gem "capybara-webkit", "~> 1.3.0"
+  gem 'capybara-screenshot'
   gem "factory_girl_rails"
   gem "faker"
   gem "bourne"

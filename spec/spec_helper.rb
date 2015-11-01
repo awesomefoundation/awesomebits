@@ -10,6 +10,7 @@ require 'sucker_punch/testing/inline'
 
 DatabaseCleaner.strategy = :truncation
 Capybara.javascript_driver = :webkit
+require 'capybara-screenshot/rspec'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
