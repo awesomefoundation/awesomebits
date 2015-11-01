@@ -90,17 +90,16 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     if params[:hidden_reason].present?
       @project.hide!(params[:hidden_reason], current_user)
-      redirect_to chapter_projects_path(@project.chapter_id, anchor: "project#{@project.id}")
     else
       flash[:notice] = t("hide-reason-required")
-      redirect_to chapter_projects_path(@project.chapter_id)
     end
+    redirect_to chapter_projects_path(@project.chapter_id, anchor: "project#{@project.id}", page: params[:page])
   end
 
   def unhide
     @project = Project.find(params[:id])
     @project.unhide!
-    redirect_to chapter_projects_path(@project.chapter_id, anchor: "project#{@project.id}")
+    redirect_to project_path(@project.id)
   end
 
   def destroy
