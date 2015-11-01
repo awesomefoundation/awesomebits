@@ -1,18 +1,18 @@
 <header>
   <div class="title">
-    <%= link_to project.title, chapter_project_path(project.chapter, project), :class => "title" %></a>
+    <%= link_to project.title, chapter_project_path(project.chapter, project), :class => "title" %>
   </div>
 
   <section class="meta-data">
     <%= project.created_at %> (<%= project.chapter.name %>)
 
     <% if project.winner? %>
-      · <%= link_to t(".view-public-page"), project_path(project), :target => "blank" %>
+      · <%= link_to t(".view-public-page", scope: "projects.project"), project_path(project), :target => "blank" %>
     <% end %>
 
     <% if current_user.can_edit_project?(project) -%>
       <span class="spam">
-        <%= link_to t(".delete"), project_path(project), :method => :delete, :data => { :confirm => t(".confirm-delete") }, :class => 'delete-spam' %>
+        <%= link_to t(".delete"), project_path(project), :method => :delete, :data => { :confirm => t(".confirm-delete", scope: "projects.project") }, :class => 'delete-spam' %>
       </span>
     <% end -%>
   </section>

@@ -112,6 +112,9 @@ en:
       hide-reason-required: You must supply a reason a to hide a project!
       hidden-details: "Hidden by %{username} on %{hidden_at} because %{reason}."
       hiding-explanation: "Hiding a project will hide its details from everyone; the title and why it was hidden will still be visible, and it can be easily unhidden."
+      unhiding-explanation: "Restore this project so everyone will be able to see it again."
+      confirm-delete: Really delete this?
+      view-public-page: View the public page →
     project_details:
       images: "Images:"
       image: "Image #%{index}"
@@ -120,12 +123,7 @@ en:
       about-project: "Here's my idea:"
       use-for-money: "How I will use the money:"
       not-answered: Not Answered
-      confirm-delete: Really delete this?
-      view-public-page: View the public page →
       edit: Edit Project →
-    project_hidden:
-      confirm-delete: Really delete this?
-      view-public-page: View the public page →
     new:
       title: Are you ready to get Awesome!?
       description: Just fill out the application below with information about yourself and the details of your project.
