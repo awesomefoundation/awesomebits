@@ -198,7 +198,7 @@ class Project < ActiveRecord::Base
     update_attributes(
       hidden_reason: reason,
       hidden_by_user_id: user.id,
-      hidden_at: Time.now
+      hidden_at: Time.zone.now
     )
   end
 

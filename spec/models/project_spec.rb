@@ -348,7 +348,7 @@ describe Project do
     it "saves the time" do
       Timecop.freeze(Time.now) do
         project.hide!(reason, user)
-        expect(project.hidden_at).to eq(Time.now)
+        expect(project.hidden_at).to eq(Time.zone.now)
       end
     end
   end
