@@ -28,7 +28,7 @@
         <%= link_to t(".hide"), "#", data: {"project-id" => project.id}, class: "hideFormLink" %>
       </div>
       <div class="hiding-form">
-        <%= form_tag hide_project_path(project), method: :put do %>
+        <%= form_tag hide_project_path(project), method: :put, class: "hide-form" do %>
           <%= t(".hide-reason") %>
           <%= text_field_tag :hidden_reason, "", class: "reason" %>
           <%= hidden_field_tag :page, params[:page] || 1 %>

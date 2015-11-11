@@ -462,6 +462,10 @@ body.projects-index {
           display: none;
         }
 
+        form, .explanation {
+          display: inline-block;
+        }
+
         input.reason {
           width: 200px;
         }
