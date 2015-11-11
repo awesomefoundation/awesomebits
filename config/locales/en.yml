@@ -102,7 +102,6 @@ en:
   projects:
     wait-for-uploads-to-complete: Please wait for your images to finish uploading before submitting your application.
     project:
-      delete: Delete this project
       see-the-rest: See the rest →
       winner: "Winner for %{name}"
       hide: Hide
@@ -115,7 +114,7 @@ en:
       unhiding-explanation: "Restore this project so everyone will be able to see it again."
       confirm-delete: Really delete this?
       view-public-page: View the public page →
-    project_details:
+      delete: Delete this project
       images: "Images:"
       image: "Image #%{index}"
       awesome: Awesome
