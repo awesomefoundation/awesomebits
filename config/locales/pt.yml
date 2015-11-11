@@ -4,6 +4,7 @@ pt:
     separator: ","
   date:
     formats:
+      default: "%m-%d-%Y"
       funding: "%B %Y"
   word:
     inactive: Inativo
@@ -121,7 +122,7 @@ pt:
       apply: "Enviar"
     form:
       save: Salvar
-      image-notes: A primeira imagem é usada como imagem de capa. As imagens serão redimensionadas para %{dimensions} pixels. Se você receber uma mensagem de erro, por favor tente novamente com menos arquivos ou arquivos menores. 
+      image-notes: A primeira imagem é usada como imagem de capa. As imagens serão redimensionadas para %{dimensions} pixels. Se você receber uma mensagem de erro, por favor tente novamente com menos arquivos ou arquivos menores.
       use-classic-uploader: Troque para o upload clássico
       use-default-uploader: Troque para o upload padrão
     index:
@@ -159,7 +160,7 @@ pt:
     user:
       promote_to_dean: Tornar Decano
       demote_to_trustee: Retornar a Curador
-      demote_admin: Conceder Administração 
+      demote_admin: Conceder Administração
       promote_admin: Revogar Administração
       error_dean_promotion: Falha na promoção a decano
       error_dean_demotion: Falha no retorno a curador

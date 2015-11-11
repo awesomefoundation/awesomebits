@@ -4,6 +4,7 @@ en:
     separator: "."
   date:
     formats:
+      default: "%m-%d-%Y"
       funding: "%B %Y"
   word:
     inactive: Inactive
