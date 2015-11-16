@@ -36,7 +36,6 @@ gem 'sucker_punch', '~> 1.0'
 gem 's3_file_field'
 gem 'html_pipeline_rails'
 gem 'magnific-popup-rails'
-gem 'therubyracer'
 
 group :development, :test do
   gem "rspec-rails"
