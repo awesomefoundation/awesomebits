@@ -8,7 +8,7 @@ Chaque branche définit elle-même ce qui est « génial ». C’est pourquoi le
 
 ## Qui est au courant que ça existe ?
 
-Depuis nos modestes débuts en 2009, de nombreux médias se sont intéressés à notre projet. Parmi nos préférées figurent la [BBC](http://www.bbc.com/news/magazine-23469438), [CBC](http://www.cbc.ca/player/Radio/Local+Shows/Ontario/In+Town+and+Out/ID/2509176460/), [WGBH](http://blogs.wgbh.org/innovation-hub/2014/6/13/giving-money-away-step-aside-bill-gates/), [Chronicle of Philanthropy](http://philanthropy.com/article/A-Quirky-Grass-Roots-Effort/131683/), et le [Boston Globe](http://www.boston.com/business/technology/articles/2011/10/10/tiny_grants_keep_awesome_ideas_coming/).
+Depuis nos modestes débuts en 2009, de nombreux médias se sont intéressés à notre projet. Parmi nos préférées figurent la [The New York Times](http://www.nytimes.com/2015/07/19/nyregion/awesome-foundation-new-york-chapter-invests-in-awesome-ideas.html), [BBC](http://www.bbc.com/news/magazine-23469438), [CBC](http://www.cbc.ca/player/Radio/Local+Shows/Ontario/In+Town+and+Out/ID/2509176460/), [WGBH](http://blogs.wgbh.org/innovation-hub/2014/6/13/giving-money-away-step-aside-bill-gates/), [Chronicle of Philanthropy](http://philanthropy.com/article/A-Quirky-Grass-Roots-Effort/131683/), et le [Boston Globe](http://www.boston.com/business/technology/articles/2011/10/10/tiny_grants_keep_awesome_ideas_coming/).
 
 ## Comment est-ce que ça marche ? Auprès de quelle branche postuler ? Quand aurai-je une réponse ?
 

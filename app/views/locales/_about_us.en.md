@@ -10,7 +10,7 @@ Every chapter interprets "awesome" for itself. As such, awesome projects include
 
 ## Does anyone else know about this?
 
-We've had lots of great media coverage since our humble beginnings in 2009. Some of our favourite pieces have been from [BBC](http://www.bbc.com/news/magazine-23469438), [CBC](http://www.cbc.ca/player/Radio/Local+Shows/Ontario/In+Town+and+Out/ID/2509176460/), [WGBH](http://blogs.wgbh.org/innovation-hub/2014/6/13/giving-money-away-step-aside-bill-gates/), [Chronicle of Philanthropy](http://philanthropy.com/article/A-Quirky-Grass-Roots-Effort/131683/), and [The Boston Globe](http://www.boston.com/business/technology/articles/2011/10/10/tiny_grants_keep_awesome_ideas_coming/).
+We've had lots of great media coverage since our humble beginnings in 2009. Some of our favourite pieces have been from [The New York Times](http://www.nytimes.com/2015/07/19/nyregion/awesome-foundation-new-york-chapter-invests-in-awesome-ideas.html), [BBC](http://www.bbc.com/news/magazine-23469438), [CBC](http://www.cbc.ca/player/Radio/Local+Shows/Ontario/In+Town+and+Out/ID/2509176460/), [WGBH](http://blogs.wgbh.org/innovation-hub/2014/6/13/giving-money-away-step-aside-bill-gates/), [Chronicle of Philanthropy](http://philanthropy.com/article/A-Quirky-Grass-Roots-Effort/131683/), and [The Boston Globe](http://www.boston.com/business/technology/articles/2011/10/10/tiny_grants_keep_awesome_ideas_coming/).
 
 ## How does it all work? Which chapter should I apply to? When will I hear back?
 
