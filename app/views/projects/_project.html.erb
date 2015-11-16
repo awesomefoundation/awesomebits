@@ -5,6 +5,7 @@
     <%= render "projects/project_hidden", project: project %>
   <% end %>
 
+  <% if project.hidden? or current_user.can_edit_project?(project) %>
   <section class="filtering">
     <% if project.hidden? %>
       <div>
@@ -40,4 +41,5 @@
       </div>
     <% end %>
   </section>
+  <% end %>
 </article>
