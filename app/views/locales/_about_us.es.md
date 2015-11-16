@@ -10,7 +10,7 @@ Cada capítulo interpreta "impresionante" por sí mismo.  Como tal, los proyecto
 
 ## ¿Alguien más sabe de esto?
 
-Hemos recibido mucha cobertura buena de los medios desde nuestro humilde comienzo en el 2009.  Algunas de nuestras selecciones favorita han estado en [BBC](http://www.bbc.com/news/magazine-23469438), [CBC](http://www.cbc.ca/player/Radio/Local+Shows/Ontario/In+Town+and+Out/ID/2509176460/), [WGBH](http://blogs.wgbh.org/innovation-hub/2014/6/13/giving-money-away-step-aside-bill-gates/), [Chronicle of Philanthropy](http://philanthropy.com/article/A-Quirky-Grass-Roots-Effort/131683/), y [The Boston Globe](http://www.boston.com/business/technology/articles/2011/10/10/tiny_grants_keep_awesome_ideas_coming/).
+Hemos recibido mucha cobertura buena de los medios desde nuestro humilde comienzo en el 2009.  Algunas de nuestras selecciones favorita han estado en [The New York Times](http://www.nytimes.com/2015/07/19/nyregion/awesome-foundation-new-york-chapter-invests-in-awesome-ideas.html), [BBC](http://www.bbc.com/news/magazine-23469438), [CBC](http://www.cbc.ca/player/Radio/Local+Shows/Ontario/In+Town+and+Out/ID/2509176460/), [WGBH](http://blogs.wgbh.org/innovation-hub/2014/6/13/giving-money-away-step-aside-bill-gates/), [Chronicle of Philanthropy](http://philanthropy.com/article/A-Quirky-Grass-Roots-Effort/131683/), y [The Boston Globe](http://www.boston.com/business/technology/articles/2011/10/10/tiny_grants_keep_awesome_ideas_coming/).
 
 ## ¿Cómo funciona? A qué capítulo debo solicitar? ¿Cuándo me contestarán?
 
