@@ -97,6 +97,18 @@ MAGICKLY_HOST=http://localhost:8888
 ```
 
 
+Blacklist
+---------
+
+Very basic blacklisting is implemented using [Rack::Attack](https://github.com/kickstarter/rack-attack).
+To blacklist an IP, simply add the IP address to the BLACKLIST_IPS environment
+variable. Multiple IPs should be comma separated:
+
+```shell
+BLACKLIST_IPS=10.0.0.1,10.0.0.2
+```
+
+
 License
 -------
 

@@ -70,5 +70,8 @@ module Awesomefoundation
 
     # Do not initialize on assets compilation
     config.assets.initialize_on_precompile = false
+
+    # Load middleware
+    config.middleware.use Rack::Attack
   end
 end
