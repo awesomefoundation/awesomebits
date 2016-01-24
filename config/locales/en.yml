@@ -4,6 +4,7 @@ en:
     separator: "."
   date:
     formats:
+      default: "%m-%d-%Y"
       funding: "%B %Y"
   word:
     inactive: Inactive
@@ -115,6 +116,14 @@ en:
       not-answered: Not Answered
       images: "Images:"
       image: "Image #%{index}"
+      hide: Hide
+      unhide: Unhide
+      consider-hiding: Not an appropriate grant?
+      hide-reason: Why is this not appropriate?
+      hide-reason-required: You must supply a reason a to hide a project!
+      hidden-details: "Hidden by %{username} on %{hidden_at} because %{reason}."
+      hiding-explanation: "Hiding a project will hide its details from everyone; the title and why it was hidden will still be visible, and it can be easily unhidden."
+      unhiding-explanation: "Restore this project so everyone will be able to see it again."
     new:
       title: Are you ready to get Awesome!?
       description: Just fill out the application below with information about yourself and the details of your project.

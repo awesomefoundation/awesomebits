@@ -4,6 +4,7 @@ es:
     separator: "."
   date:
     formats:
+      default: "%m-%d-%Y"
       funding: "%B %Y"
   word:
     inactive: Inactivo
@@ -13,7 +14,7 @@ es:
       must-be-admin: Debes ser un administrador.
       cannot-remove-user: No tienes permiso para remover a este usuario.
       must-be-dean-or-admin: Debes ser un administrador o decano para tener acceso a esta página.
-      must-have-chapter: Tu cuenta no está asociada a ninguno de los capítulos. 
+      must-have-chapter: Tu cuenta no está asociada a ninguno de los capítulos.
       cannot-view-finalists: "No tienes permiso para ver esto."
       cannot-invite: "No tienes permiso para invitar a otros."
       cannot-modify-account: "No tienes permiso para modificar esta cuenta."
@@ -48,7 +49,7 @@ es:
       create-chapter: Crear un Capítulo
       invite-trustee: Invitar a un administrador
       edit-profile: Editar mi perfil
-      edit-chapter-profile: Editar el perfil del capítulo 
+      edit-chapter-profile: Editar el perfil del capítulo
       view-all-users: Ver a todos los usuarios
       trustee-resources: Recursos para los administradores
   home:
@@ -56,16 +57,16 @@ es:
       title: promoviendo el interés por lo impresionante en el universo, $1,000 a la vez.
       by: "Por %{name}"
       what:
-        header: ¿Necesita fondos? 
+        header: ¿Necesita fondos?
         body-html: "¿Tiene una brillante idea loca que necesita fondos? Otorgamos <strong>becas de $1,000 cada mes </strong>. ¡No podía ser más sencillo! Tu idea es solo tuya.  No queremos ninguna parte de ella. ¡Solo queremos ayudarte a  hacerla realidad!"
       call-to-action: ¡Solicita una beca del Awesome Foundation ahora!
       who:
         header: ¡Awesome está en todas partes!
-        body: La fundación Awesome Foundation for the Arts and Sciences es una red siempre en crecimiento a nivel mundial de personas dedicadas a promover los intereses de lo impresionante en el universo. Creadoi durante el largo y ardiente verano del 2009 en Boston, la Fundación distribuye una serie de becas de $1,000 a proyectos y a sus creadores. El dinero es recaudado de las arcas de unos diez “microadministradores” autoorganizados y entregado por adelantado en efectivo, cheque o  doblones de oro.  Los capítulos son autónomos y organizados por los administradores por áreas geográficas o temas de interés. 
+        body: La fundación Awesome Foundation for the Arts and Sciences es una red siempre en crecimiento a nivel mundial de personas dedicadas a promover los intereses de lo impresionante en el universo. Creadoi durante el largo y ardiente verano del 2009 en Boston, la Fundación distribuye una serie de becas de $1,000 a proyectos y a sus creadores. El dinero es recaudado de las arcas de unos diez “microadministradores” autoorganizados y entregado por adelantado en efectivo, cheque o  doblones de oro.  Los capítulos son autónomos y organizados por los administradores por áreas geográficas o temas de interés.
       news:
         header: ¡Noticias impresionantes!
         recent:  Entradas recientes al blog
-        events: Eventos próximos 
+        events: Eventos próximos
       funding-html: "<em class='funding'>$%{amount}</em> Otorgado"
       winner-count-html: "<em class='winners'>%{amount}</em> proyectos becados"
       chapter-count-html: "<em class='capítulos'>%{count}</em> Capítulos"
@@ -75,7 +76,7 @@ es:
       title: ¡Awesome está en todas partes!
     show:
       edit: Editar capítulo
-      recent_winners: Proyectos recientemente becados 
+      recent_winners: Proyectos recientemente becados
       see_more: Ver más cosas impresionantes
       byline: "Por %{name}"
       trustees:
@@ -88,7 +89,7 @@ es:
     edit:
       title: Editar información del capítulo
     new:
-      title: Crear un capítulo nuevo 
+      title: Crear un capítulo nuevo
   finalists:
     index:
       title: "Finalistas para %{name}"
@@ -121,7 +122,7 @@ es:
       apply: Solicita
     form:
       save: Guarda
-      image-notes: La imagen superior está fijada como la imagen de la cubierta. El tamaño de las imágenes será ajustado a %{dimensions} pixels. Si recibes un mensaje de error, por favor intenta nuevamente con menos archivos o archivos más pequeños.   
+      image-notes: La imagen superior está fijada como la imagen de la cubierta. El tamaño de las imágenes será ajustado a %{dimensions} pixels. Si recibes un mensaje de error, por favor intenta nuevamente con menos archivos o archivos más pequeños.
       use-classic-uploader: Cambia al cargador de archivos clásico
       use-default-uploader: Cambia al cargador de archivos estándar
     index:
@@ -153,7 +154,7 @@ es:
   sessions:
     new:
       sign-in: Registro de Administrador y Decano
-      intro: Esta sección del sitio web está reservada para los Administradores y Decanos del   Awesome Foundation solamente. Si eres un administrador y necesitas acceso,por favor comunícate directamente con el decano de tu capítulo.  
+      intro: Esta sección del sitio web está reservada para los Administradores y Decanos del   Awesome Foundation solamente. Si eres un administrador y necesitas acceso,por favor comunícate directamente con el decano de tu capítulo.
       forgot-password: ¿Se te olvidó tu contraseña?
   users:
     user:
@@ -170,7 +171,7 @@ es:
     edit:
       title: Editar información del usuario
     index:
-      title: Miembros del Awesome Foundation  
+      title: Miembros del Awesome Foundation
       name: Nombre
       email: Correo Electrónico
       chapter: Capítulo
@@ -196,13 +197,13 @@ es:
         url: Sitio web del proyecto
         current_photos-html: "Imágenes actuales <span>(drag to re-order)</span>"
         new_photos-html: "Sube imágenes de tu proyecto"
-        chapter_id: Selecciona el capítulo al que deseas solicitar 
+        chapter_id: Selecciona el capítulo al que deseas solicitar
         rss_feed_url: RSS feed url del proyecto
         about_me: Cuéntanos un poco sobre tí
         about_project: ¡Cuéntanos acerca de tu impresionante proyecto!
         use_for_money: ¿Cómo utilizarás el dinero?
         funded_on: Becado en
-        funded_description: Descripción de lo becado 
+        funded_description: Descripción de lo becado
       chapter:
         name: Nombre
         slug: Nombre en el URL
@@ -231,7 +232,7 @@ es:
     hints:
       project:
         funded_description: Solo visible en la página del proyecto becado
-        rss_feed_url: Enlaces a entradas desde esta transmisión estarán exhibidas en la página del proyecto becado 
+        rss_feed_url: Enlaces a entradas desde esta transmisión estarán exhibidas en la página del proyecto becado
       user:
         user_image: Fija tu imagen de usuario en <a href="https://en.gravatar.com/site/signup/%{email}" target="_blank">gravatar.com</a> usando la dirección de tu correo electrónico indicado previamente
   activerecord:
@@ -242,4 +243,4 @@ es:
             slug:
               invalid: debe ser en letras minúsculas y no puede contener espacios
   meta:
-    description: Promover los intereses de lo impresionante en el universo, $1,000 a la vez. 
+    description: Promover los intereses de lo impresionante en el universo, $1,000 a la vez.

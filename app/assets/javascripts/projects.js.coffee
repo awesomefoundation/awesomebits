@@ -62,3 +62,9 @@ populate_funded_description = ->
     funded_description.val(description)
 
 $('#project_funded_on').blur(populate_funded_description)
+
+showHideOptions = ->
+  $("#project#{$(this).data("projectId")} .filtering").addClass("show-form")
+  false
+
+$(".hideFormLink").click(showHideOptions)

@@ -1,84 +1,45 @@
-<article class="project <%= "shortlisted" if project.shortlisted_by?(current_user) %> <%= "winner" if project.winner? %>" data-id="<%= project.id %>">
-  <header>
-    <div class="title">
-      <%= link_to project.title, chapter_project_path(project.chapter, project), :class => "title" %></a>
-      <% if current_user.can_mark_winner?(project) %>
-        <%= show_winner_buttons_for(project) %>
-      <% end %>
-      <% if project.shortlisted_by?(current_user) %>
-        <%= link_to t(".awesome"), project_vote_path(project), :method => :delete, :remote => true, :class => "short-list" %>
-      <% else %>
-        <%= link_to t(".awesome"), project_vote_path(project), :method => :post, :remote => true, :class => "short-list" %>
-      <% end %>
-    </div>
-      
-    <section class="meta-data">
-      <%= project.created_at %> (<%= project.chapter.name %>)
+<article class="project <%= "shortlisted" if project.shortlisted_by?(current_user) %> <%= "winner" if project.winner? %>" id="project<%= project.id %>" data-id="<%= project.id %>">
+  <% if !project.hidden? || @display_project_even_if_hidden %>
+    <%= render "projects/project_details", project: project %>
+  <% else %>
+    <%= render "projects/project_hidden", project: project %>
+  <% end %>
 
-      <% if project.winner? %>
-        · <%= link_to t(".view-public-page"), project_path(project), :target => "blank" %> 
-      <% end %>
-
-      <% if current_user.can_edit_project?(project) -%>
-        <span class="spam">
-          <%= link_to t(".delete"), project_path(project), :method => :delete, :data => { :confirm => t(".confirm-delete") }, :class => 'delete-spam' %>
-        </span>
-      <% end -%>
-    </section>
-
-    <section class="contact">
-      <span>
-        <%= project.name %>
-      </span>
-
-      <span>
-        · <%= mail_to project.email %> 
-      </span>
-
-      <% if project.phone.present? %>
-        <span>
-          · <%= project.phone %>
-        </span>
-      <% end %>
-
-      <% if project.url.present? %>
-        <span>
-          · <%= link_to project.url, project.url %>
-        </span>
-      <% end %>
-    </section>
-  </header>
-
-  <section class="project-proposal-details">
-    <div class="project-pitch">
-      <% if project.has_images? %>
-        <h3><%= t ".images" %></h3>
-        <p class="gallery">
-        <% project.photos.each_with_index do |image, index| %>
-          <%= link_to t(".image", :index => index+1), image.url, :rel => "project-#{project.id}-images", :class => "lightbox", :target => "blank" %>
+  <% if project.hidden? or current_user.can_edit_project?(project) %>
+  <section class="filtering">
+    <% if project.hidden? %>
+      <div>
+        <%= t(".hidden-details", username: project.hidden_by_user.name, hidden_at: l(project.hidden_at.to_date), reason: project.hidden_reason) %>
+        <% unless @display_project_even_if_hidden %>
+          (<%= link_to "view application", chapter_project_path(project.chapter, project), :class => "title" %>)
         <% end %>
-        </p>
+      </div>
+      <%# only display the unhide button if we're reviewing the whole project %>
+      <% if @display_project_even_if_hidden %>
+        <div class="unhiding-form">
+          <%= button_to t(".unhide"), unhide_project_path(id: project.id), method: :put, class: "hide-action" %>
+          <div class="explanation">
+            <%= t(".unhiding-explanation") %>
+          </div>
+        </div>
       <% end %>
-
-      <h3><%= t ".about-project" %></h3>
-      <%= markdown project.about_project %>
-      <h3><%= t ".use-for-money" %></h3>
-      <%= markdown project.use_for_money %>
-      <h3><%= t ".about-me" %></h3>
-      <%= markdown project.about_me %>
-
-      <% 1.upto(Chapter::EXTRA_QUESTIONS_COUNT) do |num| -%>
-        <% if project.extra_question(num).present? %>
-          <h3><%= project.extra_question(num) %></h3>
-          <%= markdown project.extra_answer(num) || "_#{t '.not-answered'}_" %>
+    <% else %>
+      <div class="consider-hiding">
+        <%= t(".consider-hiding") %>
+        <%= link_to t(".hide"), "#", data: {"project-id" => project.id}, class: "hideFormLink" %>
+      </div>
+      <div class="hiding-form">
+        <%= form_tag hide_project_path(project), method: :put, class: "hide-form" do %>
+          <%= t(".hide-reason") %>
+          <%= text_field_tag :hidden_reason, "", class: "reason" %>
+          <%= hidden_field_tag :page, params[:page] || 1 %>
+          <%= submit_tag t(".hide"), class: "hide-action" %>
         <% end %>
-      <% end %>
-    </div>
-
-    <div class="details-toggle">
-    </div>
-    <%= link_to edit_project_path(project), :class => "see-more" do %>
-      <p><%= t ".edit" %></p>
+        <div class="explanation">
+          <%= t(".hiding-explanation") %>
+        </div>
+      </div>
     <% end %>
   </section>
+  <% end %>
 </article>

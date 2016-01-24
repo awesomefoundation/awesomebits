@@ -4,6 +4,7 @@ ru:
     separator: "."
   date:
     formats:
+      default: "%m-%d-%Y"
       funding: "%B %Y"
   word:
     inactive: Inactive
@@ -207,7 +208,7 @@ ru:
         twitter_url: Twitter URL
         facebook_url: Facebook URL
         blog_url: URL блога
-        rss_feed_url: URL RSS-рассылки 
+        rss_feed_url: URL RSS-рассылки
         description: Описание
         extra_question_1: Дополнительный вопрос №1
         extra_question_2: Дополнительный вопрос №2
@@ -219,7 +220,7 @@ ru:
         email: имейл
         bio: Биография
         url: Ссылка на сайт
-        twitter_username: Аккаунт в Twitter 
+        twitter_username: Аккаунт в Twitter
         facebook_url: Facebook URL
         linkedin_url: LinkedIn URL
         new_password: Новый пароль
@@ -227,7 +228,7 @@ ru:
         user_image: Изображение пользователя
     hints:
       project:
-        funded_description: Отображается только на странице проекта, получившего грант 
+        funded_description: Отображается только на странице проекта, получившего грант
         rss_feed_url: Ссылки на сообщения из этой ленты будут отображаться на странице проекта, получившего грант
       user:
         user_image: Установите Ваше изображение пользователя через <a href="https://en.gravatar.com/site/signup/%{email}" target="_blank">gravatar.com</a>, используя указанный Вами имейл

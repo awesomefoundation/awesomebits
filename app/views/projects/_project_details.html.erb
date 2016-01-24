@@ -1,0 +1,82 @@
+<header>
+  <div class="title">
+    <%= link_to project.title, chapter_project_path(project.chapter, project), :class => "title" %></a>
+    <% if current_user.can_mark_winner?(project) %>
+      <%= show_winner_buttons_for(project) %>
+    <% end %>
+    <% if project.shortlisted_by?(current_user) %>
+      <%= link_to I18n.t(".awesome", scope: "projects.project"), project_vote_path(project), :method => :delete, :remote => true, :class => "short-list" %>
+    <% else %>
+      <%= link_to I18n.t(".awesome", scope: "projects.project"), project_vote_path(project), :method => :post, :remote => true, :class => "short-list" %>
+    <% end %>
+  </div>
+
+  <section class="meta-data">
+    <%= project.created_at %> (<%= project.chapter.name %>)
+
+    <% if project.winner? %>
+      · <%= link_to I18n.t(".view-public-page", scope: "projects.project"), project_path(project), :target => "blank" %>
+    <% end %>
+
+    <% if current_user.can_edit_project?(project) -%>
+      <span class="spam">
+        <%= link_to I18n.t(".delete", scope: "projects.project"), project_path(project), :method => :delete, :data => { :confirm => I18n.t("confirm-delete", scope: "projects.project") }, :class => 'delete-spam' %>
+      </span>
+    <% end -%>
+  </section>
+
+  <section class="contact">
+    <span>
+      <%= project.name %>
+    </span>
+
+    <span>
+      · <%= mail_to project.email %>
+    </span>
+
+    <% if project.phone.present? %>
+      <span>
+        · <%= project.phone %>
+      </span>
+    <% end %>
+
+    <% if project.url.present? %>
+      <span>
+        · <%= link_to project.url, project.url %>
+      </span>
+    <% end %>
+  </section>
+</header>
+
+<section class="project-proposal-details">
+  <div class="project-pitch">
+    <% if project.has_images? %>
+      <h3><%= I18n.t(".images", scope: "projects.project") %></h3>
+      <p class="gallery">
+      <% project.photos.each_with_index do |image, index| %>
+        <%= link_to I18n.t(".image", scope: "projects.project", index: index + 1), image.url, :rel => "project-#{project.id}-images", :class => "lightbox", :target => "blank" %>
+      <% end %>
+      </p>
+    <% end %>
+
+    <h3><%= I18n.t(".about-project", scope: "projects.project") %></h3>
+    <%= markdown project.about_project %>
+    <h3><%= I18n.t(".use-for-money", scope: "projects.project") %></h3>
+    <%= markdown project.use_for_money %>
+    <h3><%= I18n.t(".about-me", scope: "projects.project") %></h3>
+    <%= markdown project.about_me %>
+
+    <% 1.upto(Chapter::EXTRA_QUESTIONS_COUNT) do |num| -%>
+      <% if project.extra_question(num).present? %>
+        <h3><%= project.extra_question(num) %></h3>
+        <%= markdown project.extra_answer(num) || "_#{I18n.t '.not-answered', scope: 'projects.project'}_" %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="details-toggle">
+  </div>
+  <%= link_to edit_project_path(project), :class => "see-more" do %>
+    <p><%= I18n.t(".edit", scope: "projects.project") %></p>
+  <% end %>
+</section>

@@ -324,6 +324,50 @@ describe Project do
     end
   end
 
+  describe "#hide! / #hidden?" do
+    let(:project) { FactoryGirl.create(:project) }
+    let(:user) { FactoryGirl.create(:user) }
+    let(:reason) { Faker::Company.bs }
+
+    it "saves the reason" do
+      project.hide!(reason, user)
+      expect(project.reload.hidden_reason).to eq(reason)
+    end
+
+    it "saves the user id" do
+      project.hide!(reason, user)
+      expect(project.reload.hidden_by_user).to eq(user)
+    end
+
+    it "makes it hidden" do
+      expect(project).not_to be_hidden
+      project.hide!(reason, user)
+      expect(project).to be_hidden
+    end
+
+    it "saves the time" do
+      Timecop.freeze(Time.now) do
+        project.hide!(reason, user)
+        expect(project.hidden_at).to eq(Time.zone.now)
+      end
+    end
+  end
+
+  describe "#unhide! / #hidden?" do
+    let(:project) {
+      FactoryGirl.create(:project, {
+        hidden_reason: Faker::Company.bs,
+        hidden_by_user_id: 123,
+        hidden_at: Time.now
+      })
+    }
+
+    it "unhides it" do
+      expect(project).to be_hidden
+      project.unhide!
+      expect(project).not_to be_hidden
+    end
+  end
 end
 
 describe Project, 'csv_export' do

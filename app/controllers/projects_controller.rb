@@ -68,6 +68,7 @@ class ProjectsController < ApplicationController
       render :action => "public_show"
 
     else
+      @display_project_even_if_hidden = true
       must_be_logged_in || render
     end
   end
@@ -83,6 +84,22 @@ class ProjectsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def hide
+    @project = Project.find(params[:id])
+    if params[:hidden_reason].present?
+      @project.hide!(params[:hidden_reason], current_user)
+    else
+      flash[:notice] = t("hide-reason-required")
+    end
+    redirect_to chapter_projects_path(@project.chapter_id, anchor: "project#{@project.id}", page: params[:page])
+  end
+
+  def unhide
+    @project = Project.find(params[:id])
+    @project.unhide!
+    redirect_to project_path(@project.id)
   end
 
   def destroy

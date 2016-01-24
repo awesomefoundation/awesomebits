@@ -2,6 +2,7 @@ require "texticle/searchable"
 
 class Project < ActiveRecord::Base
   belongs_to :chapter
+  belongs_to :hidden_by_user, class_name: "User"
   has_many :votes
   has_many :users, :through => :votes
   has_many :photos, :order => "photos.sort_order asc, photos.id asc"
@@ -10,7 +11,8 @@ class Project < ActiveRecord::Base
                   :chapter_id, :extra_question_1, :extra_question_2, :extra_question_3,
                   :extra_answer_1, :extra_answer_2, :extra_answer_3,
                   :new_photos, :photo_order, :rss_feed_url, :use_for_money, :funded_on, :funded_description,
-                  :new_photo_direct_upload_urls
+                  :new_photo_direct_upload_urls,
+                  :hidden_by_user_id, :hidden_reason, :hidden_at
 
   before_validation UrlNormalizer.new(:url, :rss_feed_url)
 
@@ -190,6 +192,26 @@ class Project < ActiveRecord::Base
 
   def extra_answer(num)
     (answer = read_attribute("extra_answer_#{num}".to_sym)) && answer.present? ? answer : nil
+  end
+
+  def hide!(reason, user)
+    update_attributes(
+      hidden_reason: reason,
+      hidden_by_user_id: user.id,
+      hidden_at: Time.zone.now
+    )
+  end
+
+  def unhide!
+    update_attributes(
+      hidden_reason: nil,
+      hidden_by_user_id: nil,
+      hidden_at: nil
+    )
+  end
+
+  def hidden?
+    !!hidden_at
   end
 
   protected

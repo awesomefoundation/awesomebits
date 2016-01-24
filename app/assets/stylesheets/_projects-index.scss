@@ -1,4 +1,5 @@
 body.projects-index {
+
   section.container {
     @extend .clearfix;
   }
@@ -23,7 +24,7 @@ body.projects-index {
       margin-top: -10px;
       margin-right: 5px;
     }
-    
+
     ol {
       display: none;
       clear: both;
@@ -314,7 +315,7 @@ body.projects-index {
       padding: 5px 15px;
     }
   }
-  
+
   article.project {
     border: 1px solid rgb(200,200,200);
     background: rgb(255,255,255);
@@ -448,6 +449,42 @@ body.projects-index {
           p {
             color: $pink;
           }
+        }
+      }
+    }
+
+    .filtering {
+      border-top: 1px solid rgb(200,200,200);
+      padding: 10px;
+
+      .hiding-form, .unhiding-form {
+        &.hiding-form {
+          display: none;
+        }
+
+        form, .explanation {
+          display: inline-block;
+        }
+
+        input.reason {
+          width: 200px;
+        }
+
+        input.hide-action {
+          @include button(rgb(230,230,230));
+          width: 80px;
+          position: relative;
+          top: -10px;
+        }
+      }
+
+      &.show-form {
+        .consider-hiding {
+          display: none;
+        }
+
+        .hiding-form {
+          display: block;
         }
       }
     }
