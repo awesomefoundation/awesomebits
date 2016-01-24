@@ -222,8 +222,8 @@ describe ProjectsController do
         expect(project).not_to be_hidden
       end
 
-      it "redirects to the appropriate place in the projects page" do
-        expect(response).to redirect_to(project_path(project.id))
+      it "redirects to the project project" do
+        expect(response).to redirect_to(chapter_project_path(project.chapter, project))
       end
     end
   end

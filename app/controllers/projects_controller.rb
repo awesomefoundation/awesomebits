@@ -104,7 +104,7 @@ class ProjectsController < ApplicationController
   def unhide
     @project = Project.find(params[:id])
     @project.unhide!
-    redirect_to project_path(@project.id)
+    redirect_to chapter_project_path(@project.chapter, @project)
   end
 
   def destroy
