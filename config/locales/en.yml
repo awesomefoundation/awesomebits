@@ -26,6 +26,8 @@ en:
       thanks: "Thanks for applying!"
     acceptances:
       cannot: "Could not accept the invitation"
+    projects:
+      hide-reason-required: You must supply a reason a to hide a project
   layouts:
     application:
       main-header: The Awesome Foundation
@@ -120,7 +122,6 @@ en:
       unhide: Unhide
       consider-hiding: Not an appropriate grant?
       hide-reason: Why is this not appropriate?
-      hide-reason-required: You must supply a reason a to hide a project!
       hidden-details: "Hidden by %{username} on %{hidden_at} because %{reason}."
       hiding-explanation: "Hiding a project will hide its details from everyone; the title and why it was hidden will still be visible, and it can be easily unhidden."
       unhiding-explanation: "Restore this project so everyone will be able to see it again."
