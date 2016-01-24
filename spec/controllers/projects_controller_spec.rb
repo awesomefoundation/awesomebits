@@ -156,7 +156,7 @@ describe ProjectsController do
     context "with a legit project" do
       context "with a reason" do
         before :each do
-          put :hide, id: project.id, hidden_reason: reason
+          put :hide, id: project.id, hidden_reason: reason, return_to: chapter_projects_path(project.chapter)
         end
 
         it "hides the project" do
@@ -166,32 +166,32 @@ describe ProjectsController do
         end
 
         it "redirects to the appropriate place in the projects page" do
-          expect(response).to redirect_to(chapter_projects_path(project.chapter_id, anchor: "project#{project.id}"))
+          expect(response).to redirect_to(chapter_projects_path(project.chapter, anchor: "project#{project.id}"))
         end
       end
 
       context "with a reason" do
-        let(:page) { 2 }
+        let(:return_to) { chapter_projects_path(project.chapter, q: project.title) }
 
         it "doesn't hide the project" do
-          put :hide, id: project.id, hidden_reason: "", page: page
+          put :hide, id: project.id, hidden_reason: "", return_to: return_to
           project.reload
           expect(project).not_to be_hidden
         end
 
         it "sets a flash" do
-          put :hide, id: project.id, hidden_reason: "", page: page
+          put :hide, id: project.id, hidden_reason: "", return_to: return_to
           expect(flash[:notice]).not_to be_blank
         end
 
         it "redirects to the appropriate place in the projects page" do
-          put :hide, id: project.id, hidden_reason: "", page: page
-          expect(response).to redirect_to(chapter_projects_path(project.chapter_id, page: page, anchor: "project#{project.id}"))
+          put :hide, id: project.id, hidden_reason: "", return_to: return_to
+          expect(response).to redirect_to(chapter_projects_path(project.chapter, q: project.title, anchor: "project#{project.id}"))
         end
 
         it "defaults to page 1 by default" do
           put :hide, id: project.id, hidden_reason: ""
-          expect(response).to redirect_to(chapter_projects_path(project.chapter_id, anchor: "project#{project.id}"))
+          expect(response).to redirect_to(chapter_projects_path(project.chapter, anchor: "project#{project.id}"))
         end
       end
     end
@@ -222,8 +222,8 @@ describe ProjectsController do
         expect(project).not_to be_hidden
       end
 
-      it "redirects to the appropriate place in the projects page" do
-        expect(response).to redirect_to(project_path(project.id))
+      it "redirects to the project project" do
+        expect(response).to redirect_to(chapter_project_path(project.chapter, project))
       end
     end
   end

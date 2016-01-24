@@ -32,7 +32,7 @@
         <%= form_tag hide_project_path(project), method: :put, class: "hide-form" do %>
           <%= t(".hide-reason") %>
           <%= text_field_tag :hidden_reason, "", class: "reason" %>
-          <%= hidden_field_tag :page, params[:page] || 1 %>
+          <%= hidden_field_tag :return_to, request.original_url %>
           <%= submit_tag t(".hide"), class: "hide-action" %>
         <% end %>
         <div class="explanation">
