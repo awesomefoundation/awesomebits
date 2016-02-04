@@ -13,15 +13,4 @@
     </div>
 
     <div><%= t("projects.form.image-notes", :dimensions => Photo::MAIN_DIMENSIONS) %></div>
-
-    <% if s3_uploader_available? %>
-    <div class="toggle-uploader">
-      <% if upload_mechanism == :s3 %>
-        <%= link_to t("projects.form.use-classic-uploader"), params.merge(:uploader => "classic") %>
-      <% else %>
-        <%= link_to t("projects.form.use-default-uploader"), params.merge(:uploader => nil) %>
-      <% end %>
-    </div>
-    <% end %>
-
   </div>

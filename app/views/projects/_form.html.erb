@@ -43,8 +43,9 @@
 
   <% if s3_uploader_available? %>
     <%= render :partial => "image_form", :locals => { :form => form, :upload_mechanism => :s3 } %>
+  <% else %>
+    <%= render :partial => "image_form", :locals => { :form => form, :upload_mechanism => :classic } %>
   <% end %>
-  <%= render :partial => "image_form", :locals => { :form => form, :upload_mechanism => :classic } %>
 
 </div>
 
