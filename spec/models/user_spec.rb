@@ -211,6 +211,13 @@ describe User do
 
       user.url.should == ''
     end
+
+    it 'allows mailto scheme' do
+      user.url = 'mailto:awesome@example.com'
+      user.valid?
+
+      user.url.should == 'mailto:awesome@example.com'
+    end
   end
 
 end
