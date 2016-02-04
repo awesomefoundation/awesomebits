@@ -7,7 +7,7 @@ class UrlNormalizer
     @url_fields.each do |url_field|
       url = record[url_field]
 
-      if url.present? && ! url.match(/:\/\//)
+      if url.present? && ! url.match(/:\/\//) && ! url.match(/^mailto:/)
         record[url_field] = "http://#{url}"
       end
     end
