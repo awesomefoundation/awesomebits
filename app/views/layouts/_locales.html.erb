@@ -1,0 +1,3 @@
+<% I18n.available_locales.each do |locale| %>
+  <%= tag("link", :rel => "alternate", :hreflang => locale, :href => url_for(:locale => locale, :only_path => false)) %>
+<% end %>
