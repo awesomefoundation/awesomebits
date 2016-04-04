@@ -7,7 +7,7 @@ class ChaptersController < ApplicationController
   # everything gets crawled for SEO purposes. This can be rethought
   # in the future if needed.
   def index
-    @chapters = Chapter.visitable.all.sort_by(&CountrySortCriteria.new(COUNTRY_PRIORITY))
+    @chapters = chapter_source.visitable.all.sort_by(&CountrySortCriteria.new(COUNTRY_PRIORITY))
   end
 
   def show
@@ -45,6 +45,14 @@ class ChaptersController < ApplicationController
   def ensure_lowercase_id
     if params[:id].match(/[A-Z]+/)
       redirect_to(:id => params[:id].parameterize, :status => :moved_permanently) && return
+    end
+  end
+
+  def chapter_source
+    if params[:include_inactive]
+      Chapter
+    else
+      Chapter.active
     end
   end
 end
