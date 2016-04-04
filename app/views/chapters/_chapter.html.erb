@@ -2,9 +2,9 @@
   <div class="inner-wrapper">
     <h2 class="name"><%= link_to chapter.name, chapter_path(chapter) %></h2>
     <div class="external-links">
-      <%= link_to "", chapter.twitter_url, :class => :twitter_url %>
-      <%= link_to "", chapter.facebook_url, :class => :facebook_url %>
-      <%= link_to "", chapter.blog_url, :class => :blog_url %>
+      <%= link_to "", chapter.twitter_url, :class => :twitter_url if chapter.twitter_url.present? %>
+      <%= link_to "", chapter.facebook_url, :class => :facebook_url if chapter.facebook_url.present? %>
+      <%= link_to "", chapter.blog_url, :class => :blog_url if chapter.blog_url.present? %>
     </div>
   </div>
   <p class="country"><%= chapter.country %></p>
