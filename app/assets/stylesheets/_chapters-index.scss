@@ -19,6 +19,24 @@ body.chapters-index {
   }
 }
 
+.chapters-intro {
+  text-align: center;
+
+  p {
+    font: normal 14px/20px $sans-serif;
+
+    a {
+      color: $base-font-color;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      &:hover {
+        color: $pink;
+      }
+    }
+  }
+}
+
 section.chapters {
   @extend .clearfix;
   margin: 0 auto;

@@ -28,6 +28,10 @@ step 'there is a chapter in the system' do
   @current_chapter = FactoryGirl.create(:chapter, :rss_feed_url => Rails.root.join('spec', 'support', 'feed.xml').to_s)
 end
 
+step 'there is an inactive chapter in the system' do
+  @current_chapter = FactoryGirl.create(:inactive_chapter)
+end
+
 step 'I go to the chapter page' do
   visit chapter_path(@current_chapter)
 end
@@ -53,8 +57,21 @@ step 'I go to the chapters index' do
   visit(chapters_url)
 end
 
+step 'I click the Show Inactive Chapters link' do
+  visit(chapters_url)
+  click_link(I18n.t("chapters.index.show_inactive_chapters"))
+end
+
 step 'I should not see the Any chapter' do
   page.should_not have_css("h2.name:contains('Any')")
+end
+
+step 'I should not see an Inactive chapter' do
+  page.should_not have_css("h2.name:contains('Inactive')")
+end
+
+step 'I should see an Inactive chapter' do
+  page.should have_css("h2.name:contains('Inactive')")
 end
 
 step 'I should see this new chapter' do

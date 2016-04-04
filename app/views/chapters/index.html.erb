@@ -4,3 +4,13 @@
 <section class="chapters">
   <%= render @chapters %>
 </section>
+
+<section class="chapters-intro">
+  <p>
+    <% if params[:include_inactive].present? %>
+      <%= link_to t(".show_active_chapters"), :include_inactive => nil %>
+    <% else %>
+      <%= link_to t(".show_inactive_chapters"), :include_inactive => true %>
+    <% end %>
+  </p>
+</section>
