@@ -34,3 +34,14 @@ Feature: View chapters in the system
     Given there is a chapter in the system
     When I go to the chapters index
     Then I should not see the Any chapter
+
+  Scenario:
+    Given there is an inactive chapter in the system
+    When I go to the chapters index
+    Then I should not see an Inactive chapter
+
+  Scenario:
+    Given there is an inactive chapter in the system
+    When I go to the chapters index
+    And I click the Show Inactive Chapters link
+    Then I should see an Inactive chapter

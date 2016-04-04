@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'chapters/show' do 
+describe 'chapters/show' do
   let!(:chapter) { FactoryGirl.create(:chapter) }
 
   context 'an active chapter' do
@@ -49,7 +49,7 @@ describe 'chapters/show' do
     rendered.should_not have_selector('section.chapter-projects')
   end
 
-  it 'does not render the trustee section by default' do 
+  it 'does not render the trustee section by default' do
     assign(:chapter, chapter)
     view.stubs(:current_user).returns(nil)
 
@@ -78,7 +78,7 @@ describe 'chapters/show' do
     end
   end
 
-  context 'with trustees' do 
+  context 'with trustees' do
     let!(:dean) { FactoryGirl.create(:user_with_dean_role) }
 
     it 'renders the trustee secton' do
@@ -93,7 +93,7 @@ describe 'chapters/show' do
   context 'with rss feed' do
     before { chapter.update_attribute(:rss_feed_url, 'http://example.com/rss') }
 
-    it 'renders the news section' do 
+    it 'renders the news section' do
       assign(:chapter, chapter)
       view.stubs(:current_user).returns(nil)
 
@@ -104,12 +104,12 @@ describe 'chapters/show' do
   end
 end
 
-describe 'chapters/edit' do 
+describe 'chapters/edit' do
   let(:dean) { FactoryGirl.create(:user_with_dean_role) }
   let(:admin) { FactoryGirl.create(:admin) }
   let(:chapter) { FactoryGirl.create(:chapter) }
 
-  it 'does not display the inactivity checkbox to deans' do 
+  it 'does not display the inactivity checkbox to deans' do
     assign(:chapter, dean.chapters.first)
     view.stubs(:current_user).returns(dean)
 
@@ -118,7 +118,7 @@ describe 'chapters/edit' do
     rendered.should_not have_selector('#chapter_inactive')
   end
 
-  it 'displays the inactivity checkbox to admins' do 
+  it 'displays the inactivity checkbox to admins' do
     assign(:chapter, chapter)
     view.stubs(:current_user).returns(admin)
 

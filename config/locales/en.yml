@@ -76,6 +76,8 @@ en:
   chapters:
     index:
       title: Awesome is Everywhere
+      show_active_chapters: Show Active Chapters Only
+      show_inactive_chapters: Show Inactive Chapters
     show:
       edit: Edit Chapter
       recent_winners: Recently funded projects
