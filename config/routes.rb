@@ -50,6 +50,8 @@ Awesomefoundation::Application.routes.draw do
       match page, :to => 'high_voltage/pages#show', :id => page
     end
 
+    get 'feed', :to => 'home#feed'
+
     root :to => 'home#index'
   end
 

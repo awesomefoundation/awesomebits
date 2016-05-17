@@ -18,6 +18,9 @@ development: &default
 test: &test
   <<: *default
   database: awesomefoundation_test
+  host: <%= ENV['POSTGRES_HOST'] || 'localhost' %>
+  username: <%= ENV['POSTGRES_USER'] || '' %>
+  password: <%= ENV['POSTGRES_PASSWORD'] || '' %>
   min_messages: warning
 
 cucumber:

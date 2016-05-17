@@ -8,6 +8,7 @@
   <%= meta_tag :viewport, '', :name => 'viewport' %>
   <%= meta_tag :description, t("meta.description"), :name => "description", :property => "og:description" %>
   <%= meta_tag :image, image_url("logo-160x160.png"), :property => "og:image" %>
+  <%= auto_discovery_link_tag(:atom, feed_url(format: 'xml')) %>
 
   <%= render "layouts/locales" %>
 
