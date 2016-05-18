@@ -5,7 +5,7 @@ class HomeController < ApplicationController
   end
 
   def feed
-    project_filter = ProjectFilter.new(Project.recent_winners)
+    project_filter = ProjectFilter.new(Project.includes(:photos).recent_winners)
     @projects = project_filter.page(params[:page], 50).result
 
     respond_to do |format|
