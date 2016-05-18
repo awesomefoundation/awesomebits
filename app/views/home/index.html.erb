@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <%= auto_discovery_link_tag(:atom, funded_projects_url(format: 'xml')) %>
+<% end %>
+
 <section class="awesome-wrapper">
   <section class="awesome-projects">
   <% @projects[0..5].each do |project| %>

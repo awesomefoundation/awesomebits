@@ -8,7 +8,6 @@
   <%= meta_tag :viewport, '', :name => 'viewport' %>
   <%= meta_tag :description, t("meta.description"), :name => "description", :property => "og:description" %>
   <%= meta_tag :image, image_url("logo-160x160.png"), :property => "og:image" %>
-  <%= auto_discovery_link_tag(:atom, funded_projects_url(format: 'xml')) %>
 
   <%= render "layouts/locales" %>
 
@@ -19,6 +18,8 @@
   <!--[if lt IE 9]>
   <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+
+  <%= content_for :head %>
 </head>
 <body class="<%= body_class %>">
   <%= render 'shared/navigation' %>
