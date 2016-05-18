@@ -1,7 +1,6 @@
 class FundedProjectsController < ApplicationController
   def index
-    project_filter = ProjectFilter.new(Project.includes(:photos).recent_winners)
-    @projects = project_filter.page(params[:page], 50).result
+    @projects = Project.includes(:photos).winners.order("funded_on DESC").paginate(:page => params[:page], :per_page => 50)
 
     respond_to do |format|
       format.xml

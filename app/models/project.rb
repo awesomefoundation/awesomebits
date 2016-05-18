@@ -71,6 +71,10 @@ class Project < ActiveRecord::Base
       order("vote_count DESC")
   end
 
+  def self.winners
+    where("funded_on IS NOT NULL")
+  end
+
   def self.recent_winners
     subquery = select("DISTINCT ON (chapter_id) projects.*").where("projects.funded_on IS NOT NULL").order(:chapter_id, :funded_on).reverse_order
     select("*").from("(#{subquery.to_sql}) AS distinct_chapters").order(:funded_on).reverse_order
