@@ -1,5 +1,5 @@
 atom_feed do |feed|
-  feed.title 'Awesome Foundation – Winning Projects'
+  feed.title t('feed.title')
   feed.updated @projects[0].updated_at unless @projects.empty?
 
   @projects.each do |project|
