@@ -31,9 +31,9 @@ Awesomefoundation::Application.routes.draw do
       resources :acceptances, :only => [:new, :create]
     end
 
-    resources :funded_projects
+    resources :funded_projects, :path => "projects", :only => [:index]
 
-    resources :projects do
+    resources :projects, :except => [:index] do
       member do
         put "hide"
         put "unhide"

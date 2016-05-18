@@ -5,6 +5,7 @@ class FundedProjectsController < ApplicationController
 
     respond_to do |format|
       format.xml
+      format.html { render_404 }
     end
   end
 end

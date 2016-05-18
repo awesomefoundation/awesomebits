@@ -1,5 +1,5 @@
 class SessionsController < Clearance::SessionsController
   def url_after_create
-    projects_path
+    submissions_path
   end
 end

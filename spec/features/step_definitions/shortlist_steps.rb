@@ -65,11 +65,11 @@ step 'there are some projects in the "Any" chapter for this month with votes' do
 end
 
 step 'I view the list of projects for this month' do
-  visit(projects_path)
+  visit(submissions_path)
 end
 
 step 'I view the list of projects for this month in the "Any" chapter' do
-  visit(projects_path)
+  visit(submissions_path)
   # make the menu visible
   page.find(".chapter-selection").click
   # then click it
