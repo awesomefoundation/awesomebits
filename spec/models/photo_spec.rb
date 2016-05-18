@@ -1,18 +1,17 @@
 require 'spec_helper'
-require 'paperclip/matchers/have_attached_file_matcher'
 
 describe Photo do
   it { should belong_to :project }
   it { should have_attached_file :image }
 
-  context 'with an image' do 
+  context 'with an image' do
     let(:photo) { FactoryGirl.create(:photo) }
 
-    it "returns the base photo url as the original photo" do 
+    it "returns the base photo url as the original photo" do
       photo.url.should == photo.image.url(:original, :timestamp => false)
     end
 
-    it "returns a dynamic photo url as a cropped photo" do 
+    it "returns a dynamic photo url as a cropped photo" do
       photo.url(:main).should match(/#{ENV['MAGICKLY_HOST']}/)
       photo.url(:main).should match(/thumb\/#{CGI.escape(Photo::MAIN_DIMENSIONS)}/)
       photo.url(:main).should match(/#{CGI.escape(photo.url)}/)
@@ -37,7 +36,7 @@ describe Photo do
     let(:uploaded_image_with_space) { FogFactory.new.create_png_file(:key => "with space.png") }
     let(:uploaded_image_with_restricted_character) { FogFactory.new.create_png_file(:key => "with[bracket].png") }
     let(:photo) { FactoryGirl.build(:photo, :image => nil) }
-    
+
     it "copies a direct upload url to the correct destination" do
       photo.fog_config = FogFactory.fog_config
       photo.direct_upload_url = uploaded_image.public_url

@@ -1,4 +1,4 @@
-require "texticle/searchable"
+require 'textacular/searchable'
 
 class Project < ActiveRecord::Base
   belongs_to :chapter

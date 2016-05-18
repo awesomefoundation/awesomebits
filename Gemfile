@@ -14,13 +14,13 @@ end
 
 gem 'country_select'
 gem 'pg', '~> 0.13.2'
-gem 'texticle', '~> 2.0', :require => 'texticle/rails'
+gem 'textacular', "~> 3.0", require: 'textacular/rails'
 gem 'jquery-rails'
 gem 'clearance', '~> 0.16.2'
 gem 'thin'
 gem 'sass'
 gem 'high_voltage'
-gem 'paperclip', '~> 3.0.3'
+gem 'paperclip', '~> 4.2.0'
 gem 'fog'
 gem 'formtastic'
 gem 'flutie'
@@ -62,6 +62,7 @@ group :test do
   gem "shoulda-matchers"
   gem "launchy"
   gem "email_spec"
+  gem 'rspec-collection_matchers'
 end
 
 group :staging, :production do

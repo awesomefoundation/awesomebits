@@ -5,6 +5,9 @@ class Photo < ActiveRecord::Base
   has_attached_file :image,
                     :default_url => "/assets/no-image-:style.png"
 
+  validates_attachment_content_type :image,
+                                    content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+
   attr_accessible :image, :direct_upload_url
 
   after_create do
