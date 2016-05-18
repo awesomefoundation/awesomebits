@@ -255,3 +255,5 @@ en:
               invalid: must be lowercase and can not contain spaces
   meta:
     description: Forwarding the interest of Awesome in the universe, $1,000 at a time.
+  feed:
+    title: Awesome Foundation - Projects

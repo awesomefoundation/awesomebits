@@ -1,9 +1,9 @@
 step 'I am looking at the list of projects' do
-  visit projects_path
+  visit submissions_path
 end
 
 step 'I go back to the first page of projects' do
-  visit projects_path
+  visit submissions_path
 end
 
 step 'I am looking at the list of projects for the first chapter' do
@@ -208,7 +208,7 @@ step 'someone has submitted spam to my chapter' do
 end
 
 step 'I go to the projects list' do
-  visit(projects_path)
+  visit(submissions_path)
 end
 
 step 'I delete the project' do

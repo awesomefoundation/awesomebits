@@ -12,19 +12,25 @@ class ProjectsController < ApplicationController
   def index
     @start_date, @end_date = extract_timeframe
     @short_listed = params[:short_list]
+
     project_filter = ProjectFilter.new(@chapter.projects).during(@start_date, @end_date)
+
     if params[:short_list]
       project_filter.shortlisted_by(current_user)
     end
+
     @q = params[:q].to_s.strip
+
     unless @q.blank?
       project_filter.search(@q)
     end
+
     respond_to do |format|
       format.html do
         @projects = project_filter.page(params[:page]).result
         current_user.mark_last_viewed_chapter(params[:chapter_id])
       end
+
       format.csv do
         if export_all?
           @projects = Project.during_timeframe(@start_date, @end_date)
@@ -48,6 +54,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(params[:project])
+
     if @project.save
       flash[:thanks] = t("flash.applications.thanks")
       redirect_to root_path
@@ -79,6 +86,7 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
+
     if @project.update_attributes(params[:project])
       redirect_to @project
     else
@@ -104,12 +112,14 @@ class ProjectsController < ApplicationController
   def unhide
     @project = Project.find(params[:id])
     @project.unhide!
+
     redirect_to chapter_project_path(@project.chapter, @project)
   end
 
   def destroy
     @project = Project.find(params[:id])
     @project.destroy
+
     redirect_to(projects_path)
   end
 
@@ -155,7 +165,7 @@ class ProjectsController < ApplicationController
       if current_user.logged_in?
         redirect_to chapter_project_path(current_project.chapter, current_project) and return
       else
-        render_404 and return
+        render_404 && return
       end
     end
   end

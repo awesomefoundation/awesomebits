@@ -1,6 +1,6 @@
 step 'I invite a new trustee to the :name chapter' do |name|
   @chapter = FactoryGirl.create(:chapter, :name => name)
-  visit projects_path
+  visit submissions_path
   click_link("Invite a Trustee")
   fill_in("First name", :with => "Joe")
   fill_in("Last name", :with => "Schmoe")
@@ -11,7 +11,7 @@ step 'I invite a new trustee to the :name chapter' do |name|
 end
 
 step 'I invite the same trustee to the :name chapter' do |name|
-  visit projects_path
+  visit submissions_path
   click_link("Invite a Trustee")
   fill_in("First name", :with => "Joe")
   fill_in("Last name", :with => "Schmoe")
@@ -22,7 +22,7 @@ end
 
 step 'I invite a new trustee to a different chapter' do |name|
   @chapter = FactoryGirl.create(:chapter)
-  visit projects_path
+  visit submissions_path
   click_link("Invite a Trustee")
   fill_in("First name", :with => "Joe")
   fill_in("Last name", :with => "Schmoe")
@@ -49,7 +49,7 @@ step 'I should not see a link to invite other trustees' do
 end
 
 step 'I invite a new trustee to my chapter' do
-  visit projects_path
+  visit submissions_path
   click_link("Invite a Trustee")
   fill_in("First name", :with => "Joe")
   fill_in("Last name", :with => "Schmoe")
