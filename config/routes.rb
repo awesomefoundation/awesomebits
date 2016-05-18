@@ -31,6 +31,8 @@ Awesomefoundation::Application.routes.draw do
       resources :acceptances, :only => [:new, :create]
     end
 
+    resources :funded_projects
+
     resources :projects do
       member do
         put "hide"
@@ -49,8 +51,6 @@ Awesomefoundation::Application.routes.draw do
     %w(about_us faq).each do |page|
       match page, :to => 'high_voltage/pages#show', :id => page
     end
-
-    get 'feed', :to => 'home#feed'
 
     root :to => 'home#index'
   end
