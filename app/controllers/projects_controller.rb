@@ -120,7 +120,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @project.destroy
 
-    redirect_to(projects_path)
+    redirect_to submissions_path
   end
 
   private

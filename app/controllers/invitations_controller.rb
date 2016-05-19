@@ -11,7 +11,7 @@ class InvitationsController < ApplicationController
     @invitation.inviter = current_user
     if @invitation.save
       @invitation.send_invitation
-      redirect_to projects_path
+      redirect_to submissions_path
     else
       render :new
     end
