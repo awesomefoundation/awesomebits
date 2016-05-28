@@ -12,7 +12,7 @@ group :assets do
   gem 'uglifier'
 end
 
-gem 'country_select'
+gem 'country_select', '0.0.2'
 gem 'pg', '~> 0.13.2'
 gem 'textacular', "~> 3.0", require: 'textacular/rails'
 gem 'jquery-rails'
