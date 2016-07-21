@@ -1,4 +1,10 @@
 Awesomefoundation::Application.routes.draw do
+  constraints(SubdomainConstraint) do
+    match "/apply" => "subdomains#apply"
+    match "*url"   => "subdomains#chapter"
+    match "/"      => "subdomains#chapter"
+  end
+
   match "/blog/contact/" => redirect("/en/contact")
   match "/blog/about/"   => redirect("/en/about_us")
   match "/blog"          => redirect("http://blog.awesomefoundation.org")
