@@ -173,11 +173,6 @@ section.chapter-form {
   }
 
   label {
-    &.select {
-      margin-right: 10px;
-      @include inline-block;
-    }
-
     &.boolean {
       @include inline-block;
     }
@@ -190,5 +185,11 @@ section.chapter-form {
 
   input.boolean {
     margin-right: 10px;
+  }
+
+  .hint {
+    margin-top: .5em;
+    display: block;
+    font-style: italic;
   }
 }

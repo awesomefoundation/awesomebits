@@ -20,7 +20,7 @@ class Chapter < ActiveRecord::Base
 
   attr_accessible :name, :twitter_url, :facebook_url, :blog_url, :rss_feed_url, :description,
                   :country, :extra_question_1, :extra_question_2, :extra_question_3, :slug,
-                  :email_address, :time_zone, :inactive
+                  :email_address, :time_zone, :inactive, :locale
 
   def should_generate_new_friendly_id?
     slug.blank?
