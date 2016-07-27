@@ -18,23 +18,23 @@ describe User do
     end
 
     it 'returns true if the user is a trustee anywhere' do
-      user.trustee?.should be_true
+      user.trustee?.should be_truthy
     end
 
     it 'returns false if the user is not a trustee anywhere' do
       user.roles = []
-      user.trustee?.should be_false
+      user.trustee?.should be_falsey
     end
 
     it 'returns true if the user is only a dean somewhere' do
       role.name = "dean"
-      user.trustee?.should be_true
+      user.trustee?.should be_truthy
     end
 
     it 'returns true if the user is an admin' do
       user.admin = true
       user.roles = []
-      user.trustee?.should be_true
+      user.trustee?.should be_truthy
     end
   end
 
@@ -42,7 +42,7 @@ describe User do
     let(:user) { FactoryGirl.build(:user) }
     it 'returns true if the user is an admin' do
       user.admin = true
-      user.can_invite?.should be_true
+      user.can_invite?.should be_truthy
     end
     it 'asks the roles if it can invite if not an admin' do
       user.admin = false
@@ -56,7 +56,7 @@ describe User do
     let(:user) { FactoryGirl.build(:user) }
     it 'returns true if the user is an admin' do
       user.admin = true
-      user.can_invite_to_chapter?(:chapter).should be_true
+      user.can_invite_to_chapter?(:chapter).should be_truthy
     end
     it 'asks the roles if it can invite if not an admin' do
       user.admin = false
@@ -70,7 +70,7 @@ describe User do
     let(:user) { FactoryGirl.build(:user) }
     it 'returns true if the user is an admin' do
       user.admin = true
-      user.can_manage_chapter?(:chapter).should be_true
+      user.can_manage_chapter?(:chapter).should be_truthy
     end
     it 'asks the roles if it can manage if not an admin' do
       user.admin = false
@@ -84,7 +84,7 @@ describe User do
     let(:user) { FactoryGirl.build(:user) }
     it 'returns true if the user is an admin' do
       user.admin = true
-      user.can_manage_chapter?(:chapter).should be_true
+      user.can_manage_chapter?(:chapter).should be_truthy
     end
     it 'asks the roles if it can manage if not an admin' do
       user.admin = false
@@ -98,7 +98,7 @@ describe User do
     let(:user) { FactoryGirl.build(:user) }
     it 'returns true if the user is an admin' do
       user.admin = true
-      user.can_view_finalists_for?(:chapter).should be_true
+      user.can_view_finalists_for?(:chapter).should be_truthy
     end
     it 'asks the roles if it can view finalists if not an admin' do
       user.admin = false
@@ -112,7 +112,7 @@ describe User do
     let(:user) { FactoryGirl.build(:user) }
     it 'returns true if the user is an admin' do
       user.admin = true
-      user.can_edit_project?(:chapter).should be_true
+      user.can_edit_project?(:chapter).should be_truthy
     end
     it 'asks the roles if it can view finalists if not an admin' do
       user.admin = false
@@ -126,11 +126,11 @@ describe User do
     let(:user) { FactoryGirl.build(:user) }
     it 'returns true if the user is an admin' do
       user.admin = true
-      user.can_edit_all_profiles?.should be_true
+      user.can_edit_all_profiles?.should be_truthy
     end
     it 'returns false if the user is not an admin' do
       user.admin = false
-      user.can_edit_all_profiles?.should be_false
+      user.can_edit_all_profiles?.should be_falsey
     end
   end
 
@@ -140,7 +140,7 @@ describe User do
     it 'returns true if the user is an admin' do
       project.stubs(:in_any_chapter?).returns(false)
       user.admin = true
-      user.can_mark_winner?(project).should be_true
+      user.can_mark_winner?(project).should be_truthy
     end
     it 'asks the roles if it can manage if not an admin' do
       project.stubs(:in_any_chapter?).returns(false)
