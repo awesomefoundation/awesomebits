@@ -25,4 +25,13 @@ RSpec.configure do |config|
   config.before(:each){ FactoryGirl.create(:chapter, :name => "Any") }
   config.before(:each){ ActionMailer::Base.deliveries.clear }
   config.include(Paperclip::Shoulda::Matchers)
+
+  # TODO Rails 3.2.22.3 introduced a change that makes this required
+  # for getting view tests to pass. When upgrading rspec or
+  # Rails to a future version, see if this is still required.
+  config.before(:suite, :type => :view) do
+    class ActionView::Helpers::InstanceTag
+      include ActionView::Helpers::OutputSafetyHelper
+    end
+  end
 end
