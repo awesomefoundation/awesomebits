@@ -228,7 +228,7 @@ en:
         extra_question_3: Extra question 3
         inactive: This chapter is inactive
         submit: Submit
-        locale: Redirect locale
+        locale: Language for %{slug}.awesomefoundation.org redirect
       user:
         first_name: First name
         last_name: Last name
