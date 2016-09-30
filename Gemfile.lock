@@ -296,6 +296,8 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     redcarpet (2.1.1)
+    rollbar (2.13.2)
+      multi_json
     rspec (2.13.0)
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
@@ -418,6 +420,7 @@ DEPENDENCIES
   rails (= 3.2.22.3)
   rails_12factor
   redcarpet
+  rollbar
   rspec-rails
   s3_file_field
   sass
