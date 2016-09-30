@@ -1,4 +1,6 @@
 class FakeUserFactory
+  attr_accessor :errors
+
   def initialize
     @users = []
     @return_value = true

@@ -29,6 +29,13 @@ class Invitation < ActiveRecord::Base
       self.invitee = factory.user
       self.accepted = true
       self.save
+    else
+      unless factory.errors.blank?
+        factory.errors.each do |key, error|
+          self.errors[key] = error
+        end
+      end
+      false
     end
   end
 
