@@ -1,4 +1,6 @@
 class UserFactory
+  attr_accessor :errors
+
   def initialize(attributes)
     @attributes = attributes
   end
@@ -9,10 +11,11 @@ class UserFactory
         user.save! && chapter.save! && role.save! && user
       end
     rescue ActiveRecord::ActiveRecordError => e
+      self.errors = e.record.errors
       Rails.logger.error("Cannot accept invitation: #{e.message}")
-      Rails.logger.error("User: #{factory.user.errors.full_messages.to_sentence}") unless factory.user.valid?
-      Rails.logger.error("Chapter: #{factory.chapter.errors.full_messages.to_sentence}") unless factory.chapter.valid?
-      Rails.logger.error("Role: #{factory.role.errors.full_messages.to_sentence}") unless factory.role.valid?
+      Rails.logger.error("User: #{user.errors.full_messages.to_sentence}") unless user.valid?
+      Rails.logger.error("Chapter: #{chapter.errors.full_messages.to_sentence}") unless chapter.valid?
+      Rails.logger.error("Role: #{role.errors.full_messages.to_sentence}") unless role.valid?
       false
     end
   end
