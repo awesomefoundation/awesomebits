@@ -37,6 +37,7 @@ gem 's3_file_field'
 gem 'html_pipeline_rails'
 gem 'magnific-popup-rails'
 gem 'rack-attack'
+gem 'rollbar'
 
 group :development, :test do
   gem "rspec-rails"
