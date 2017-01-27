@@ -1,7 +1,5 @@
 COUNTRY_PRIORITY = [
   "Worldwide",
-  "United States",
-  "Canada",
   ]
 
 COUNTRIES = [
