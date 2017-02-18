@@ -8,7 +8,7 @@
 
   <%= form.label t(:'simple_form.labels.user.user_image') %>
   <div><%= image_tag(user.gravatar_url) %></div>
-  <%= form.hint  t(:'simple_form.hints.user.user_image', :email => user.email) %>
+  <%= form.hint  t(:'simple_form.hints.user.user_image', :email => h(user.email)).html_safe %>
 
   <%= form.button :submit %>
 <% end %>
