@@ -87,6 +87,7 @@ en:
         header: Meet the Trustees
         about: About Us
         news: "%{name} News"
+        photo-alt-text: "Photo of %{name}"
       apply-for-grant: Apply For a Grant
       inactive-chapter: This chapter is currently inactive.
       inactive-chapter-reason: An inactive chapter is one that has not given a grant in six months. If you are interested in re-starting this chapter, please <a href="mailto:join@awesomefoundation.org">contact us</a>.

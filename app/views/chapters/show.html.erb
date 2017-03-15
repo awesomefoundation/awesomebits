@@ -83,7 +83,7 @@
               <h3><%= user.first_name %> <%= user.last_name %></h3>
             </div>
             <div class="avatar">
-              <%= image_tag user.gravatar_url %>
+              <%= image_tag user.gravatar_url, :alt => t(".trustees.photo-alt-text", :name => user.name) %>
             </div>
           <% end %>
         </article>
