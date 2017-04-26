@@ -20,13 +20,13 @@ class Photo < ActiveRecord::Base
     case size
 
     when :main
-      image.present? ? cropped_image_url("#{MAIN_DIMENSIONS}#") : image.url(:main)
+      image.present? ? cropped_image_url("#{MAIN_DIMENSIONS}#") : image_with_host(image.url(:main))
 
     when :index
-      image.present? ? cropped_image_url("500x300#") : image.url(:index)
+      image.present? ? cropped_image_url("500x300#") : image_with_host(image.url(:index))
 
     else
-      image_url
+      image_with_host(image_url)
     end
   end
 
