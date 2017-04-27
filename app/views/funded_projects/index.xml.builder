@@ -6,7 +6,10 @@ atom_feed(language: I18n.locale) do |feed|
     feed.entry(project, :published => project.funded_on) do |entry|
       entry.title "#{project.chapter.name} – #{project.title}"
       entry.content(project.funded_description, type: 'html')
-      entry.link(href: image_url(project.primary_image.url), rel: 'enclosure', type: 'image/jpeg')
+
+      if mime_type = MIME::Types.type_for(project.primary_image.url).first
+        entry.link(href: image_url(project.primary_image.url), rel: 'enclosure', type: mime_type)
+      end
 
       entry.author do |author|
         author.name project.name
