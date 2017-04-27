@@ -112,7 +112,7 @@ BLACKLIST_IPS=10.0.0.1,10.0.0.2
 License
 -------
 
-AwesomeBits is Copyright 2012-2015, Institute on Higher Awesome Studies
+AwesomeBits is Copyright 2012-2017, Institute on Higher Awesome Studies
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
