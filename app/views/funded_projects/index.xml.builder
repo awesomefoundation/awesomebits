@@ -7,7 +7,7 @@ atom_feed(language: I18n.locale) do |feed|
       entry.title "#{project.chapter.name} – #{project.title}"
       entry.content(project.funded_description, type: 'html')
 
-      if project.has_images? && mime_type = MIME::Types.type_for(project.primary_image.url).first
+      if mime_type = MIME::Types.type_for(project.primary_image.url).first
         entry.link(href: image_url(project.primary_image.url), rel: 'enclosure', type: mime_type)
       end
 
