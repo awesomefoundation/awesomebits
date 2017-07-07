@@ -2,7 +2,8 @@ source 'http://rubygems.org'
 
 ruby '2.1.7'
 
-gem 'rails', '3.2.22.3'
+gem 'rails', '3.2.22.4'
+gem 'rake', '< 11.0'
 
 # Gems used only for assets and not required
 # in production environments by default.
