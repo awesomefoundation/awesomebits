@@ -11,8 +11,8 @@ describe 'projects/index' do
     view.stubs(:current_user).returns(user)
 
     render
-    rendered.should have_content("Extra Question 1")
-    rendered.should have_content("Extra Answer 1")
+    expect(rendered).to have_content("Extra Question 1")
+    expect(rendered).to have_content("Extra Answer 1")
   end
 end
 
@@ -25,7 +25,7 @@ describe 'projects/show' do
     view.stubs(:current_user).returns(user)
     
     render
-    rendered.should have_content(unfunded_project.about_project)
+    expect(rendered).to have_content(unfunded_project.about_project)
   end
 end
 
@@ -37,7 +37,7 @@ describe 'projects/public_show' do
     view.stubs(:current_user).returns(Guest.new)
 
     render
-    rendered.should have_content(funded_project.funded_description)
+    expect(rendered).to have_content(funded_project.funded_description)
   end
 end
 
@@ -54,8 +54,8 @@ describe 'projects/_form' do
       assign(:project, Project.new)
 
       render :template => 'projects/new'
-      rendered.should     have_content(active_chapter.name)
-      rendered.should_not have_content(inactive_chapter.name)
+      expect(rendered).to     have_content(active_chapter.name)
+      expect(rendered).not_to have_content(inactive_chapter.name)
     end
   end
 
@@ -64,8 +64,8 @@ describe 'projects/_form' do
       assign(:project, FactoryGirl.create(:project, :chapter => inactive_chapter))
 
       render :template => 'projects/edit'
-      rendered.should have_content(active_chapter.name)
-      rendered.should have_content(inactive_chapter.name)
+      expect(rendered).to have_content(active_chapter.name)
+      expect(rendered).to have_content(inactive_chapter.name)
     end
   end
 end

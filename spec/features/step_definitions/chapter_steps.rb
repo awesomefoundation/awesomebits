@@ -20,8 +20,8 @@ step 'I just submit the form' do
 end
 
 step 'I should see the new chapter form with errors' do
-  page.should have_css(".field_with_errors label:contains('* Name')")
-  page.should have_css(".field_with_errors label:contains('* Description')")
+  expect(page).to have_css(".field_with_errors label:contains('* Name')")
+  expect(page).to have_css(".field_with_errors label:contains('* Description')")
 end
 
 step 'there is a chapter in the system' do
@@ -63,19 +63,19 @@ step 'I click the Show Inactive Chapters link' do
 end
 
 step 'I should not see the Any chapter' do
-  page.should_not have_css("h2.name:contains('Any')")
+  expect(page).not_to have_css("h2.name:contains('Any')")
 end
 
 step 'I should not see an Inactive chapter' do
-  page.should_not have_css("h2.name:contains('Inactive')")
+  expect(page).not_to have_css("h2.name:contains('Inactive')")
 end
 
 step 'I should see an Inactive chapter' do
-  page.should have_css("h2.name:contains('Inactive')")
+  expect(page).to have_css("h2.name:contains('Inactive')")
 end
 
 step 'I should see this new chapter' do
-  page.should have_content(@chapter_name)
+  expect(page).to have_content(@chapter_name)
 end
 
 step 'I edit a chapter' do
@@ -100,13 +100,13 @@ step 'I edit a chapter' do
 end
 
 step 'I should see the updated chapter' do
-  page.should have_css("h1:contains('#{@new_chapter_name}')")
-  page.should have_css("a.twitter[href='#{@new_twitter_url}']")
-  page.should have_css("a.facebook[href='#{@new_facebook_url}']")
-  page.should have_css("a.email[href='mailto:#{@new_email_address}']")
-  page.should have_css("a.blog[href='#{@new_blog_url}']")
-  page.should have_css("article.rss-feed[data-feed-url='#{@new_rss_feed_url}']")
-  page.should have_css(".about p:contains('#{@new_description}')")
+  expect(page).to have_css("h1:contains('#{@new_chapter_name}')")
+  expect(page).to have_css("a.twitter[href='#{@new_twitter_url}']")
+  expect(page).to have_css("a.facebook[href='#{@new_facebook_url}']")
+  expect(page).to have_css("a.email[href='mailto:#{@new_email_address}']")
+  expect(page).to have_css("a.blog[href='#{@new_blog_url}']")
+  expect(page).to have_css("article.rss-feed[data-feed-url='#{@new_rss_feed_url}']")
+  expect(page).to have_css(".about p:contains('#{@new_description}')")
 end
 
 step 'I attempt to edit a/my chapter' do
@@ -114,7 +114,7 @@ step 'I attempt to edit a/my chapter' do
 end
 
 step 'I should see a permissions error' do
-  page.should have_content('You must be an admin or dean to access this page.')
+  expect(page).to have_content('You must be an admin or dean to access this page.')
 end
 
 step 'there are 5 chapters' do
@@ -128,11 +128,11 @@ end
 
 step 'I should see those 5 chapters' do
   @projects.each do |project|
-    page.should have_css(".awesome-chapters a:contains('#{project.chapter.name}')")
+    expect(page).to have_css(".awesome-chapters a:contains('#{project.chapter.name}')")
   end
 end
 
 step 'I should see that the 5 chapters, not including Any, are spread across 4 countries' do
-  page.should have_css(".who-where h2 .chapters:contains('5')")
-  page.should have_css(".who-where h2 .countries:contains('4')")
+  expect(page).to have_css(".who-where h2 .chapters:contains('5')")
+  expect(page).to have_css(".who-where h2 .countries:contains('4')")
 end

@@ -2,20 +2,20 @@ require 'spec_helper'
 require 'paperclip/matchers/have_attached_file_matcher'
 
 describe Photo do
-  it { should belong_to :project }
-  it { should have_attached_file :image }
+  it { is_expected.to belong_to :project }
+  it { is_expected.to have_attached_file :image }
 
   context 'with an image' do 
     let(:photo) { FactoryGirl.create(:photo) }
 
     it "returns the base photo url as the original photo" do 
-      photo.url.should == photo.image.url(:original, :timestamp => false)
+      expect(photo.url).to eq(photo.image.url(:original, :timestamp => false))
     end
 
     it "returns a dynamic photo url as a cropped photo" do 
-      photo.url(:main).should match(/#{ENV['MAGICKLY_HOST']}/)
-      photo.url(:main).should match(/thumb\/#{CGI.escape(Photo::MAIN_DIMENSIONS)}/)
-      photo.url(:main).should match(/#{CGI.escape(photo.url)}/)
+      expect(photo.url(:main)).to match(/#{ENV['MAGICKLY_HOST']}/)
+      expect(photo.url(:main)).to match(/thumb\/#{CGI.escape(Photo::MAIN_DIMENSIONS)}/)
+      expect(photo.url(:main)).to match(/#{CGI.escape(photo.url)}/)
     end
   end
 
@@ -23,7 +23,7 @@ describe Photo do
     let(:photo) { FactoryGirl.create(:utf8_photo) }
 
     it "returns a dynamic photo url that is escaped properly" do
-      photo.url(:main).should match(/#{CGI.escape(URI.unescape(photo.url))}/)
+      expect(photo.url(:main)).to match(/#{CGI.escape(URI.unescape(photo.url))}/)
     end
   end
 
@@ -43,11 +43,11 @@ describe Photo do
       photo.direct_upload_url = uploaded_image.public_url
       photo.save
 
-      photo.image.should_not be_nil
-      photo.image.size.should == uploaded_image.content_length
-      photo.image.updated_at.should == Time.parse(uploaded_image.last_modified).to_i
-      photo.image.content_type.should == uploaded_image.content_type
-      File.basename(photo.url).should == File.basename(uploaded_image.public_url)
+      expect(photo.image).not_to be_nil
+      expect(photo.image.size).to eq(uploaded_image.content_length)
+      expect(photo.image.updated_at).to eq(Time.parse(uploaded_image.last_modified).to_i)
+      expect(photo.image.content_type).to eq(uploaded_image.content_type)
+      expect(File.basename(photo.url)).to eq(File.basename(uploaded_image.public_url))
     end
 
     it "handles images with escaped spaces in its name" do
@@ -55,8 +55,8 @@ describe Photo do
       photo.direct_upload_url = uploaded_image_with_space.public_url
       photo.save
 
-      photo.image.should_not be_nil
-      File.basename(photo.url).should == "with_space.png"
+      expect(photo.image).not_to be_nil
+      expect(File.basename(photo.url)).to eq("with_space.png")
     end
 
     it "handles images with restricted characters in its name" do
@@ -64,8 +64,8 @@ describe Photo do
       photo.direct_upload_url = uploaded_image_with_restricted_character.public_url
       photo.save
 
-      photo.image.should_not be_nil
-      File.basename(photo.url).should == "with_bracket_.png"
+      expect(photo.image).not_to be_nil
+      expect(File.basename(photo.url)).to eq("with_bracket_.png")
     end
   end
 end

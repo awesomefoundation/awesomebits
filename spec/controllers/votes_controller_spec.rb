@@ -11,8 +11,8 @@ describe VotesController do
       sign_in_as user
       post :create, :project_id => project.id
     end
-    it { should respond_with(:success) }
-    it { response.header['Content-Type'].should include 'json' }
+    it { is_expected.to respond_with(:success) }
+    it { expect(response.header['Content-Type']).to include 'json' }
   end
 
   context "user can remove vote from project" do
@@ -21,8 +21,8 @@ describe VotesController do
       sign_in_as user
       delete :destroy, :project_id => project.id
     end
-    it { should respond_with(:success) }
-    it { response.header['Content-Type'].should include 'json' }
+    it { is_expected.to respond_with(:success) }
+    it { expect(response.header['Content-Type']).to include 'json' }
   end
 
   context "error when user votes for a second time on a project" do
@@ -31,8 +31,8 @@ describe VotesController do
       sign_in_as user
       post :create, :project_id => project.id
     end
-    it { should respond_with(400) }
-    it { response.header['Content-Type'].should include 'json' }
+    it { is_expected.to respond_with(400) }
+    it { expect(response.header['Content-Type']).to include 'json' }
   end
 
   context "error when user trieds to delete a vote that doesn't exist" do
@@ -40,8 +40,8 @@ describe VotesController do
       sign_in_as user
       delete :destroy, :project_id => project.id
     end
-    it { should respond_with(400) }
-    it { response.header['Content-Type'].should include 'json' }
+    it { is_expected.to respond_with(400) }
+    it { expect(response.header['Content-Type']).to include 'json' }
   end
 
 end

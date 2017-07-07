@@ -3,13 +3,13 @@ require 'spec_helper'
 describe Invitation do
   context "validations" do
     before{ FactoryGirl.create(:invitation) }
-    it { should belong_to(:inviter) }
-    it { should belong_to(:invitee) }
-    it { should belong_to(:chapter) }
-    it { should validate_presence_of(:email) }
-    it { should validate_presence_of(:inviter) }
-    it { should validate_presence_of(:chapter_id) }
-    it { should validate_uniqueness_of(:email).scoped_to(:chapter_id) }
+    it { is_expected.to belong_to(:inviter) }
+    it { is_expected.to belong_to(:invitee) }
+    it { is_expected.to belong_to(:chapter) }
+    it { is_expected.to validate_presence_of(:email) }
+    it { is_expected.to validate_presence_of(:inviter) }
+    it { is_expected.to validate_presence_of(:chapter_id) }
+    it { is_expected.to validate_uniqueness_of(:email).scoped_to(:chapter_id) }
   end
 
   context "#save" do
@@ -17,7 +17,7 @@ describe Invitation do
     let(:chapter) { FactoryGirl.create(:chapter) }
     let(:invitation) { FactoryGirl.build(:invitation, :inviter => user, :chapter => chapter) }
     it 'should not be valid if the inviter cannot invite to this chapter' do
-      invitation.should_not be_valid
+      expect(invitation).not_to be_valid
     end
   end
 
@@ -32,7 +32,7 @@ describe Invitation do
 
     it "sends the invitation email if it hasn't already been accepted" do
       invitation.send_invitation
-      fake_mailer.should have_delivered_email(:invite_trustee)
+      expect(fake_mailer).to have_delivered_email(:invite_trustee)
     end
   end
 
@@ -44,29 +44,29 @@ describe Invitation do
 
     it 'creates a user and assigns it to this invitation' do
       invitation.user_factory = fake_user_factory
-      invitation.accept(attributes).should be_truthy
-      fake_user_factory.users.should include(invitation.invitee)
+      expect(invitation.accept(attributes)).to be_truthy
+      expect(fake_user_factory.users).to include(invitation.invitee)
     end
 
     it 'uses the supplied data to override defaults' do
       invitation.user_factory = fake_user_factory
-      invitation.accept(attributes).should be_truthy
-      invitation.invitee.first_name.should == "Jane"
+      expect(invitation.accept(attributes)).to be_truthy
+      expect(invitation.invitee.first_name).to eq("Jane")
     end
 
     it 'sends an email if the user was created' do
       invitation.user_factory = fake_user_factory
       invitation.mailer = fake_mailer
-      invitation.accept(attributes).should be_truthy
-      fake_mailer.should have_delivered_email(:welcome_trustee)
+      expect(invitation.accept(attributes)).to be_truthy
+      expect(fake_mailer).to have_delivered_email(:welcome_trustee)
     end
 
     it 'sends no email if the user was not created' do
       invitation.user_factory = fake_user_factory
       fake_user_factory.fail!
       invitation.mailer = fake_mailer
-      invitation.accept(attributes).should_not be_truthy
-      fake_mailer.should_not have_delivered_email(:welcome_trustee)
+      expect(invitation.accept(attributes)).not_to be_truthy
+      expect(fake_mailer).not_to have_delivered_email(:welcome_trustee)
     end
   end
 end

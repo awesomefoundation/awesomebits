@@ -1,6 +1,6 @@
 RSpec::Matchers.define :show_the_flash do |expected|
   match do |actual|
-    actual.should have_selector("#flash #flash_#{expected}")
+    expect(actual).to have_selector("#flash #flash_#{expected}")
   end
 
   failure_message_for_should do |actual|

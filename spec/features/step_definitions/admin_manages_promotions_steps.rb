@@ -12,9 +12,9 @@ step 'I remove trustee from a chapter' do
 end
 
 step 'I should see the deactivated user' do
-  page.should have_selector(".remove-trustee", :text => '-')
+  expect(page).to have_selector(".remove-trustee", :text => '-')
 end
 
 step 'I should see the new admin' do
-  page.should have_css("tr[data-user-id='#{@trustee.id}'].admin")
+  expect(page).to have_css("tr[data-user-id='#{@trustee.id}'].admin")
 end

@@ -3,5 +3,5 @@ step 'I follow the link to the next page' do
 end
 
 step 'I should see pagination links' do
-  page.should have_css('div.pagination')
+  expect(page).to have_css('div.pagination')
 end

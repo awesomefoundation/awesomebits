@@ -1,17 +1,17 @@
 require 'spec_helper'
 
 describe Project do
-  it { should belong_to :chapter }
-  it { should validate_presence_of :name }
-  it { should validate_presence_of :title }
-  it { should validate_presence_of :email }
-  it { should validate_presence_of :about_me }
-  it { should validate_presence_of :about_project }
-  it { should validate_presence_of :use_for_money }
-  it { should validate_presence_of :chapter_id }
-  it { should have_many(:votes) }
-  it { should have_many(:users).through(:votes) }
-  it { should have_many(:photos) }
+  it { is_expected.to belong_to :chapter }
+  it { is_expected.to validate_presence_of :name }
+  it { is_expected.to validate_presence_of :title }
+  it { is_expected.to validate_presence_of :email }
+  it { is_expected.to validate_presence_of :about_me }
+  it { is_expected.to validate_presence_of :about_project }
+  it { is_expected.to validate_presence_of :use_for_money }
+  it { is_expected.to validate_presence_of :chapter_id }
+  it { is_expected.to have_many(:votes) }
+  it { is_expected.to have_many(:users).through(:votes) }
+  it { is_expected.to have_many(:photos) }
 
   context '#save' do
     let(:fake_mailer) { FakeMailer.new }
@@ -20,7 +20,7 @@ describe Project do
     it 'sends an email to the applicant on successful save' do
       project.mailer = fake_mailer
       project.save
-      fake_mailer.should have_delivered_email(:new_application)
+      expect(fake_mailer).to have_delivered_email(:new_application)
     end
   end
 
@@ -28,7 +28,7 @@ describe Project do
     let(:chapter) { FactoryGirl.create :chapter, :name => 'Test chapter' }
     let(:project) { FactoryGirl.create :project, :chapter => chapter }
     it 'should delegate to chapter' do
-      project.chapter_name.should == 'Test chapter'
+      expect(project.chapter_name).to eq('Test chapter')
     end
   end
 
@@ -36,7 +36,7 @@ describe Project do
     let!(:winners) { (1..2).map{|x| FactoryGirl.create(:project, :funded_on => Date.today) } }
     let!(:non_winners){ (1..3).map{|x| FactoryGirl.create(:project, :funded_on => nil) } }
     it 'counts the winners' do
-      Project.winner_count.should == 2
+      expect(Project.winner_count).to eq(2)
     end
   end
 
@@ -51,9 +51,9 @@ describe Project do
 
     it 'finds the projects a user has access to' do
       projects = Project.visible_to(user).all
-      projects.should include(good_project)
-      projects.should include(any_project)
-      projects.should_not include(bad_project)
+      expect(projects).to include(good_project)
+      expect(projects).to include(any_project)
+      expect(projects).not_to include(bad_project)
     end
   end
 
@@ -67,18 +67,18 @@ describe Project do
 
     it 'searches between two dates' do
       actual = Project.during_timeframe(start_date, end_date)
-      actual.should_not include(after_end)
-      actual.should_not include(before_start)
-      actual.should include(after_start)
-      actual.should include(before_end)
+      expect(actual).not_to include(after_end)
+      expect(actual).not_to include(before_start)
+      expect(actual).to include(after_start)
+      expect(actual).to include(before_end)
     end
 
     it 'defaults to all dates if none are supplied' do
       actual = Project.during_timeframe(nil, nil)
-      actual.should include(after_end)
-      actual.should include(before_start)
-      actual.should include(after_start)
-      actual.should include(before_end)
+      expect(actual).to include(after_end)
+      expect(actual).to include(before_start)
+      expect(actual).to include(after_start)
+      expect(actual).to include(before_end)
     end
   end
 
@@ -89,11 +89,11 @@ describe Project do
     let!(:other_user) { FactoryGirl.create(:user) }
 
     it 'returns true if this project had been shortlisted by the given user' do
-      project.shortlisted_by?(user).should be_truthy
+      expect(project.shortlisted_by?(user)).to be_truthy
     end
 
     it 'returns false if this project had not been shortlisted by the given user' do
-      project.shortlisted_by?(other_user).should_not be_truthy
+      expect(project.shortlisted_by?(other_user)).not_to be_truthy
     end
   end
 
@@ -114,8 +114,8 @@ describe Project do
     end
 
     it 'returns the projects that the given chapter has voted on' do
-      Project.voted_for_by_members_of(boston).should == [boston_project]
-      Project.voted_for_by_members_of(chicago).should == [chicago_project]
+      expect(Project.voted_for_by_members_of(boston)).to eq([boston_project])
+      expect(Project.voted_for_by_members_of(chicago)).to eq([chicago_project])
     end
   end
 
@@ -131,12 +131,12 @@ describe Project do
     end
 
     it 'returns the projects in descending order of vote_count' do
-      Project.by_vote_count.map(&:id).should == [projects[1].id, projects[2].id]
+      expect(Project.by_vote_count.map(&:id)).to eq([projects[1].id, projects[2].id])
     end
 
     it 'gives each returned project a #vote_count getter with its count' do
-      Project.by_vote_count[0].vote_count.should == "2"
-      Project.by_vote_count[1].vote_count.should == "1"
+      expect(Project.by_vote_count[0].vote_count).to eq("2")
+      expect(Project.by_vote_count[1].vote_count).to eq("1")
     end
   end
 
@@ -146,7 +146,7 @@ describe Project do
     let!(:new_winner) { FactoryGirl.create(:project, :funded_on => 1.days.ago) }
     let!(:ignored_winner) { FactoryGirl.create(:project, :funded_on => 1.week.ago, :chapter_id => new_winner.chapter_id) }
     it 'returns one project per chapter  by descending funding date' do
-      Project.recent_winners.all.should == [new_winner, old_winner]
+      expect(Project.recent_winners.all).to eq([new_winner, old_winner])
     end
   end
 
@@ -157,33 +157,33 @@ describe Project do
 
     it 'sets the #funded_on attribute' do
       project.declare_winner!
-      project.funded_on.should == Date.today
+      expect(project.funded_on).to eq(Date.today)
     end
 
     it 'does not move the project to a different chapter, if not supplied' do
       project.declare_winner!
-      project.chapter.should == chapter
+      expect(project.chapter).to eq(chapter)
     end
 
     it 'moves the project to a different chapter, if supplied' do
       project.declare_winner!(other_chapter)
-      project.chapter.should == other_chapter
+      expect(project.chapter).to eq(other_chapter)
     end
 
     it 'populates the funded description' do
       project.declare_winner!
-      project.funded_description.should == project.about_project
+      expect(project.funded_description).to eq(project.about_project)
     end
 
     it 'does not replace an existing funded description' do
       project.funded_description = 'I am funded'
       project.declare_winner!
-      project.funded_description.should == 'I am funded'
+      expect(project.funded_description).to eq('I am funded')
     end
 
     it 'saves the record' do
       project.declare_winner!
-      Project.find(project.id).funded_on.should == Date.today
+      expect(Project.find(project.id).funded_on).to eq(Date.today)
     end
   end
 
@@ -193,12 +193,12 @@ describe Project do
 
     it 'sets the #funded_on attribute' do
       project.revoke_winner!
-      project.funded_on.should be_nil
+      expect(project.funded_on).to be_nil
     end
 
     it 'saves the record' do
       project.revoke_winner!
-      Project.find(project.id).funded_on.should be_nil
+      expect(Project.find(project.id).funded_on).to be_nil
     end
   end
 
@@ -207,11 +207,11 @@ describe Project do
     let(:other_project) { FactoryGirl.build(:project) }
 
     it 'is true when the project is in the Any chapter' do
-      project.in_any_chapter?.should be_truthy
+      expect(project.in_any_chapter?).to be_truthy
     end
 
     it 'is false when the project is in some other chapter' do
-      other_project.in_any_chapter?.should be_falsey
+      expect(other_project.in_any_chapter?).to be_falsey
     end
   end
 
@@ -220,17 +220,17 @@ describe Project do
 
     it 'creates new Photo records' do
       project.new_photos = [File.new(Rails.root.join('spec', 'support', 'fixtures', '1.JPG'))]
-      project.photos.first.image_file_name.should == "1.JPG"
+      expect(project.photos.first.image_file_name).to eq("1.JPG")
     end
 
     it 'creates and saves new Photo records if the Project has been saved' do
       project.new_photos = [File.new(Rails.root.join('spec', 'support', 'fixtures', '1.JPG'))]
-      project.photos.first.image_file_name.should == "1.JPG"
+      expect(project.photos.first.image_file_name).to eq("1.JPG")
       project.save
-      project.photos.first.new_record?.should be_falsey
+      expect(project.photos.first.new_record?).to be_falsey
 
       project.new_photos = [File.new(Rails.root.join('spec', 'support', 'fixtures', '2.JPG'))]
-      project.photos.last.image_file_name.should == "2.JPG"
+      expect(project.photos.last.image_file_name).to eq("2.JPG")
     end
   end
 
@@ -243,7 +243,7 @@ describe Project do
     it "returns a string of the photos' ids in order" do
       project.photos = [photo1, photo2, photo3]
       expected = [photo1, photo2, photo3].map(&:id).join(" ")
-      project.photo_order.should == expected
+      expect(project.photo_order).to eq(expected)
     end
   end
 
@@ -271,17 +271,17 @@ describe Project do
     it "returns the photos if there are any" do
       photo = FactoryGirl.create(:photo)
       project.photos = [photo]
-      project.display_images.map(&:url).should == [photo.url]
+      expect(project.display_images.map(&:url)).to eq([photo.url])
     end
 
     it "returns a new photo if there aren't any" do
-      project.display_images.map(&:url).should == [Photo.new.image.url]
+      expect(project.display_images.map(&:url)).to eq([Photo.new.image.url])
     end
   end
 
   context 'pagination' do
     it 'has 30 items per page' do
-      Chapter.per_page.should == 30
+      expect(Chapter.per_page).to eq(30)
     end
   end
 
@@ -292,35 +292,35 @@ describe Project do
       project.url = "https://example.com"
       project.valid?
 
-      project.url.should == "https://example.com"
+      expect(project.url).to eq("https://example.com")
     end
 
     it 'leaves the rss feed url alone if it has a scheme' do
       project.rss_feed_url = "https://example.com/rss"
       project.valid?
 
-      project.rss_feed_url.should == "https://example.com/rss"
+      expect(project.rss_feed_url).to eq("https://example.com/rss")
     end
 
     it 'adds a url scheme if it does not have one' do
       project.url = "example.com"
       project.valid?
 
-      project.url.should == "http://example.com"
+      expect(project.url).to eq("http://example.com")
     end
 
     it 'adds a rss feed url scheme if it does not have one' do
       project.rss_feed_url = "example.com/rss"
       project.valid?
 
-      project.rss_feed_url.should == "http://example.com/rss"
+      expect(project.rss_feed_url).to eq("http://example.com/rss")
     end
 
     it 'leaves the url bank if it is blank' do
       project.url = ''
       project.valid?
 
-      project.url.should == ''
+      expect(project.url).to eq('')
     end
   end
 
@@ -388,10 +388,10 @@ describe Project, 'csv_export' do
   let(:parsed)  { CSV.parse(subject).to_a }
 
   it 'adds headers' do
-    parsed.first.should == %w(name title about_project use_for_money about_me url email phone chapter_name id created_at funded_on extra_question_1 extra_answer_1 extra_question_2 extra_answer_2 extra_question_3 extra_answer_3 rss_feed_url)
+    expect(parsed.first).to eq(%w(name title about_project use_for_money about_me url email phone chapter_name id created_at funded_on extra_question_1 extra_answer_1 extra_question_2 extra_answer_2 extra_question_3 extra_answer_3 rss_feed_url))
   end
 
   it 'includes basic information for a project' do
-    parsed.should include(['Name', 'Title', 'About project', 'Fun', 'About me', 'http://example.com','mail@example.com','555-555-5555', project.chapter.name.to_s, project.id.to_s, project.created_at.to_s, '2012-01-01', '', '', '', '', '', '', 'http://example.com/rss'])
+    expect(parsed).to include(['Name', 'Title', 'About project', 'Fun', 'About me', 'http://example.com','mail@example.com','555-555-5555', project.chapter.name.to_s, project.id.to_s, project.created_at.to_s, '2012-01-01', '', '', '', '', '', '', 'http://example.com/rss'])
   end
 end

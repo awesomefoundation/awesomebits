@@ -7,19 +7,19 @@ describe ApplicationHelper, '#display_country?' do
   let(:chapter3) { FactoryGirl.create(:chapter, :country => 'America') }
 
   it 'returns true/false based on current/previous chapters country' do
-    helper.display_country?(chapter1.country).should be_truthy
-    helper.display_country?(chapter2.country).should be_falsey
-    helper.display_country?(chapter3.country).should be_truthy
+    expect(helper.display_country?(chapter1.country)).to be_truthy
+    expect(helper.display_country?(chapter2.country)).to be_falsey
+    expect(helper.display_country?(chapter3.country)).to be_truthy
   end
 
 end
 
 describe ApplicationHelper, '#markdown' do
   it 'returns markdown converted text' do
-    helper.markdown('*Test*').should == "<p><em>Test</em></p>\n"
+    expect(helper.markdown('*Test*')).to eq("<p><em>Test</em></p>\n")
   end
 
   it 'returns html_safe text' do
-    helper.markdown('test').should be_html_safe
+    expect(helper.markdown('test')).to be_html_safe
   end
 end

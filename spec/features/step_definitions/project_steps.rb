@@ -74,21 +74,21 @@ end
 step 'I should see my projects for the past 3 days' do
   expected = @my_projects[0..3]
   expected.each do |project|
-    page.should have_css(".project .title:contains('#{project.title}')")
+    expect(page).to have_css(".project .title:contains('#{project.title}')")
   end
 end
 
 step 'I should not see projects that are not mine' do
   not_expected = @other_projects + @any_projects
   not_expected.each do |project|
-    page.should have_no_css(".project .title:contains('#{project.title}')")
+    expect(page).to have_no_css(".project .title:contains('#{project.title}')")
   end
 end
 
 step 'I should not see any projects that are 4 or more days old' do
   not_expected = @my_projects[4..-1]
   not_expected.each do |project|
-    page.should have_no_css(".project .title:contains('#{project.title}')")
+    expect(page).to have_no_css(".project .title:contains('#{project.title}')")
   end
 end
 
@@ -106,7 +106,7 @@ end
 step 'I should see its projects for the past 3 days' do
   expected = @viewing_projects[0..3]
   expected.each do |project|
-    page.should have_css(".project .title:contains('#{project.title}')")
+    expect(page).to have_css(".project .title:contains('#{project.title}')")
   end
 end
 
@@ -116,13 +116,13 @@ end
 
 step 'I should see the questions and my answers to them' do
   question_1 = page.find(:css, ".project-pitch h3", text: @extra_question_1).find(:xpath, "./..")
-  question_1.should have_css("p", text: @extra_answer_1)
+  expect(question_1).to have_css("p", text: @extra_answer_1)
 
   question_2 = page.find(:css, ".project-pitch h3", text: @extra_question_2).find(:xpath, "./..")
-  question_2.should have_css("p", text: @extra_answer_2)
+  expect(question_2).to have_css("p", text: @extra_answer_2)
 
   question_3 = page.find(:css, ".project-pitch h3", text: @extra_question_3).find(:xpath, "./..")
-  question_3.should have_css("p", @extra_answer_3)
+  expect(question_3).to have_css("p", @extra_answer_3)
 end
 
 step 'I go to the recently submitted project' do
@@ -150,11 +150,11 @@ end
 step 'I should see those 5 winning projects in their proper order' do
   project_ids = @projects.sort_by(&:funded_on).reverse.map(&:id)
   css_selector = project_ids.map{|id| ".project-#{id}"}.join(" + ")
-  page.should have_css(".awesome-projects #{css_selector}")
+  expect(page).to have_css(".awesome-projects #{css_selector}")
 end
 
 step 'I should see only :count project(s)' do |count|
-  all('article.project').size.should == count.to_i
+  expect(all('article.project').size).to eq(count.to_i)
 end
 
 step 'I click on that project' do
@@ -163,13 +163,13 @@ end
 
 step 'I should see the page describing it and all its details' do
   project = @projects.first
-  page.should have_css(".projects-show")
-  page.should have_css("header h1:contains('#{project.title}')")
-  page.should have_css(".project-details .chapter-name a:contains('#{project.chapter.name}')")
-  page.should have_css(".project-details .project-starter:contains('#{project.name}')")
-  page.should have_css(".project-details p:contains('#{project.about_project}')")
-  page.should have_css(".project-side-bar .funded-on:contains('(#{project.funded_on.strftime("%B %Y")})')")
-  page.should have_css(".project-side-bar .project-site-link a[href='#{project.url}']")
+  expect(page).to have_css(".projects-show")
+  expect(page).to have_css("header h1:contains('#{project.title}')")
+  expect(page).to have_css(".project-details .chapter-name a:contains('#{project.chapter.name}')")
+  expect(page).to have_css(".project-details .project-starter:contains('#{project.name}')")
+  expect(page).to have_css(".project-details p:contains('#{project.about_project}')")
+  expect(page).to have_css(".project-side-bar .funded-on:contains('(#{project.funded_on.strftime("%B %Y")})')")
+  expect(page).to have_css(".project-side-bar .project-site-link a[href='#{project.url}']")
 end
 
 step '5 projects have won for this chapter' do
@@ -193,13 +193,13 @@ end
 
 step 'I should see only those 5 winning projects for this chapter listed' do
   @winning_projects_for_other_chapter.each do |project|
-    page.should have_no_css(".chapter-projects .project[data-id='#{project.id}']")
+    expect(page).to have_no_css(".chapter-projects .project[data-id='#{project.id}']")
   end
   @not_winning_projects.each do |project|
-    page.should have_no_css(".chapter-projects .project[data-id='#{project.id}']")
+    expect(page).to have_no_css(".chapter-projects .project[data-id='#{project.id}']")
   end
   @winning_projects.each do |project|
-    page.should have_css(".chapter-projects .project[data-id='#{project.id}'] a[href*='#{project_path(project)}']")
+    expect(page).to have_css(".chapter-projects .project[data-id='#{project.id}'] a[href*='#{project_path(project)}']")
   end
 end
 
@@ -216,7 +216,7 @@ step 'I delete the project' do
 end
 
 step 'I should not see the project anymore' do
-  page.should have_no_css(".project[data-id='#{@spam_project.id}']")
+  expect(page).to have_no_css(".project[data-id='#{@spam_project.id}']")
 end
 
 step 'I go to the public page for that project' do
@@ -224,8 +224,8 @@ step 'I go to the public page for that project' do
 end
 
 step 'I should see that 5 projects have been funded for $5000' do
-  page.should have_css(".what-how h2 .funding:contains('$5,000')")
-  page.should have_css(".what-how h2 .winners:contains('5')")
+  expect(page).to have_css(".what-how h2 .funding:contains('$5,000')")
+  expect(page).to have_css(".what-how h2 .winners:contains('5')")
 end
 
 step 'that chapter has 5 winning projects' do
@@ -239,13 +239,13 @@ end
 
 step 'I should see those 5 projects' do
   @winning_projects.each_with_index do |project, x|
-    page.should have_css(".image-wrapper img[src*='#{project.photos[0].image_file_name}']")
+    expect(page).to have_css(".image-wrapper img[src*='#{project.photos[0].image_file_name}']")
   end
 end
 
 step 'I should see when each has won' do
   @winning_projects.each_with_index do |project, x|
-    page.should have_css(".image-wrapper span:contains('#{I18n.l project.funded_on.to_date, :format => :funding}')")
+    expect(page).to have_css(".image-wrapper span:contains('#{I18n.l project.funded_on.to_date, :format => :funding}')")
   end
 end
 
@@ -254,5 +254,5 @@ step 'I should see no feed for the project' do
 end
 
 step 'I should be on the projects index for the chapter I am a dean for' do
-  page.current_path.should == chapter_projects_path(@current_chapter)
+  expect(page.current_path).to eq(chapter_projects_path(@current_chapter))
 end

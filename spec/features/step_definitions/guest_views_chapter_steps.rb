@@ -10,7 +10,7 @@ end
 
 step 'I should see the trustees' do
   @trustees.each do |trustee|
-    page.should have_selector(".trustee-details h3", :text => "#{trustee.first_name} #{trustee.last_name}")
+    expect(page).to have_selector(".trustee-details h3", :text => "#{trustee.first_name} #{trustee.last_name}")
   end
 end
 
@@ -22,5 +22,5 @@ end
 
 step 'I should be able to click on a trustee' do
   visit chapter_path(@chapter)
-  page.should have_css("a.avatar[href='#{@trustee.url}']")
+  expect(page).to have_css("a.avatar[href='#{@trustee.url}']")
 end

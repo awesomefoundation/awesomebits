@@ -8,9 +8,9 @@ describe InvitationsController do
       before do
         get :new
       end
-      it { should redirect_to(root_path) }
+      it { is_expected.to redirect_to(root_path) }
       it 'sets the flash' do
-        flash[:notice].should == "You must be logged in."
+        expect(flash[:notice]).to eq("You must be logged in.")
       end
     end
   end
@@ -24,9 +24,9 @@ describe InvitationsController do
         sign_in_as user
         get :new
       end
-      it { should redirect_to(root_path) }
+      it { is_expected.to redirect_to(root_path) }
       it 'sets the flash' do
-        flash[:notice].should == "You do not have permission to invite others."
+        expect(flash[:notice]).to eq("You do not have permission to invite others.")
       end
     end
   end
@@ -39,7 +39,7 @@ describe InvitationsController do
         sign_in_as user
         get :new
       end
-      it { should respond_with(:success) }
+      it { is_expected.to respond_with(:success) }
     end
   end
 end

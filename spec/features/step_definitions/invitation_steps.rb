@@ -41,11 +41,11 @@ step 'I visit the invitation screen' do
 end
 
 step 'I should not see a drop down menu with chapters' do
-  page.should have_no_content('Select a chapter')
+  expect(page).to have_no_content('Select a chapter')
 end
 
 step 'I should not see a link to invite other trustees' do
-  page.should have_no_css(".admin-panel a:contains('Invite a trustee')")
+  expect(page).to have_no_css(".admin-panel a:contains('Invite a trustee')")
 end
 
 step 'I invite a new trustee to my chapter' do
@@ -65,13 +65,13 @@ end
 
 steps_for :dean do
   step 'I am unable to invite them to that chapter' do
-    page.should have_no_css("select[name='invitation[chapter_id]'] option:contains('#{@inaccessible_chapter.name}')")
+    expect(page).to have_no_css("select[name='invitation[chapter_id]'] option:contains('#{@inaccessible_chapter.name}')")
   end
 end
 
 steps_for :trustee do
   step 'I am unable to invite them' do
-    page.should have_css("#flash #flash_notice:contains('You do not have permission to invite others.')")
+    expect(page).to have_css("#flash #flash_notice:contains('You do not have permission to invite others.')")
   end
 end
 
@@ -81,11 +81,11 @@ end
 
 step 'that person should get an(other) invitation email' do
   invitation = Invitation.find_by_email(@invitation_address)
-  invitation.should_not be_nil
+  expect(invitation).not_to be_nil
   deliveries = ActionMailer::Base.deliveries.select do |email|
     email.subject =~ /invited/ && email.to.include?(@invitation_address)
   end
-  deliveries.size.should eq(1)
+  expect(deliveries.size).to eq(1)
   @invitation_email = deliveries.first
 end
 
@@ -104,9 +104,9 @@ end
 
 step 'they should get (yet) another email welcoming them' do
   user = User.find_by_email(@invitation_address)
-  user.should_not be_nil
+  expect(user).not_to be_nil
   deliveries = ActionMailer::Base.deliveries.select do |email|
     email.subject =~ /Welcome/ && email.to.include?(@invitation_address)
   end
-  deliveries.size.should eq(1)
+  expect(deliveries.size).to eq(1)
 end

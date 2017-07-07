@@ -9,8 +9,8 @@ describe FundedProjectsController do
     end
 
     it 'should return parseable XML' do
-      response.content_type.should eq('application/xml')
-      lambda { Nokogiri::XML(response.body) }.should_not raise_error
+      expect(response.content_type).to eq('application/xml')
+      expect { Nokogiri::XML(response.body) }.not_to raise_error
     end
   end
 end

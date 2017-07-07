@@ -12,19 +12,19 @@ describe HomeController do
     end
 
     it 'should not include inactive chapters in the total chapter count' do
-      response.body.should have_selector('section.who-where', :text => '1 Chapter')
+      expect(response.body).to have_selector('section.who-where', :text => '1 Chapter')
     end
 
     it 'should not include inactive chapters in the total country count' do
-      response.body.should have_selector('section.who-where', :text => '1 Countr')
+      expect(response.body).to have_selector('section.who-where', :text => '1 Countr')
     end
 
     it 'should not include inactive chapters in the chapter list' do
-      response.body.should_not have_selector('section.awesome-chapters', :text => inactive.name)
+      expect(response.body).not_to have_selector('section.awesome-chapters', :text => inactive.name)
     end
 
     it 'should include active chapters in the chapter list' do
-      response.body.should have_selector('section.awesome-chapters', :text => chapter.name)
+      expect(response.body).to have_selector('section.awesome-chapters', :text => chapter.name)
     end
   end
 end
