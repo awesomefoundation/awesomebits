@@ -227,6 +227,8 @@ GEM
     json_pure (1.8.1)
     launchy (2.1.0)
       addressable (~> 2.2.6)
+    letter_opener (1.0.0)
+      launchy (>= 2.0.4)
     magnific-popup-rails (0.9.9.1)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -408,6 +410,7 @@ DEPENDENCIES
   html_pipeline_rails
   jquery-rails
   launchy
+  letter_opener
   magnific-popup-rails
   newrelic_rpm
   nokogiri
@@ -438,5 +441,8 @@ DEPENDENCIES
   uglifier
   will_paginate (~> 3.0.3)
 
+RUBY VERSION
+   ruby 2.1.7p400
+
 BUNDLED WITH
-   1.10.6
+   1.15.1

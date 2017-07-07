@@ -1,5 +1,8 @@
 Hi <%= @project.name %>!
 
+<% if @project.chapter.default_email_text.present? %>
+<%= @project.chapter.default_email_text %>
+<% else %>
 We wanted to send you this (automated) email to let you know that we have
 received your Awesome Foundation application. Your application will be
 considered at the specified chapter’s next deliberation meeting.
@@ -9,6 +12,7 @@ http://twitter.com/awesomefound for information about grants from all
 of our chapters as well as future application deadlines.
 
 Thanks for your interest in the Awesome Foundation!
+<% end %>
 
 Your application, for reference:
 
@@ -29,17 +33,17 @@ About the project:
 How you will use the money:
 <%= @project.use_for_money %>
 
-<% if @project.extra_question_1 -%>
+<% if @project.extra_question_1.present? -%>
 <%= @project.extra_question_1 %>:
 <%= @project.extra_answer_1 %>
 
 <% end -%>
-<% if @project.extra_question_2 -%>
+<% if @project.extra_question_2.present? -%>
 <%= @project.extra_question_2 %>:
 <%= @project.extra_answer_2 %>
 
 <% end -%>
-<% if @project.extra_question_3 -%>
+<% if @project.extra_question_3.present? -%>
 <%= @project.extra_question_3 %>:
 <%= @project.extra_answer_3 %>
 <% end -%>
