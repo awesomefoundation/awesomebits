@@ -41,8 +41,7 @@ gem 'rack-attack'
 gem 'rollbar'
 
 group :development, :test do
-  gem "rspec-rails", "2.99"
-  gem "rspec", "2.99"
+  gem "rspec-rails", "~> 3.6"
   gem "byebug"
   gem "sham_rack"
   gem "tddium"

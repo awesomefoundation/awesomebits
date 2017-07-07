@@ -2,14 +2,14 @@ require 'spec_helper'
 
 describe Invitation do
   context "validations" do
-    before{ FactoryGirl.create(:invitation) }
-    it { is_expected.to belong_to(:inviter) }
-    it { is_expected.to belong_to(:invitee) }
-    it { is_expected.to belong_to(:chapter) }
-    it { is_expected.to validate_presence_of(:email) }
-    it { is_expected.to validate_presence_of(:inviter) }
-    it { is_expected.to validate_presence_of(:chapter_id) }
-    it { is_expected.to validate_uniqueness_of(:email).scoped_to(:chapter_id) }
+    before { FactoryGirl.create(:invitation) }
+    it { expect(subject).to belong_to(:inviter) }
+    it { expect(subject).to belong_to(:invitee) }
+    it { expect(subject).to belong_to(:chapter) }
+    it { expect(subject).to validate_presence_of(:email) }
+    it { expect(subject).to validate_presence_of(:inviter) }
+    it { expect(subject).to validate_presence_of(:chapter_id) }
+    it { expect(subject).to validate_uniqueness_of(:email).scoped_to(:chapter_id) }
   end
 
   context "#save" do

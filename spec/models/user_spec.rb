@@ -1,13 +1,13 @@
 require 'spec_helper'
 
 describe User do
-  it { is_expected.to validate_presence_of(:first_name) }
-  it { is_expected.to validate_presence_of(:last_name) }
-  it { is_expected.to validate_presence_of(:encrypted_password) }
-  it { is_expected.to have_many(:roles) }
-  it { is_expected.to have_many(:chapters).through(:roles) }
-  it { is_expected.to have_many(:votes) }
-  it { is_expected.to have_many(:projects).through(:votes) }
+  it { expect(subject).to validate_presence_of(:first_name) }
+  it { expect(subject).to validate_presence_of(:last_name) }
+  it { expect(subject).to validate_presence_of(:encrypted_password) }
+  it { expect(subject).to have_many(:roles) }
+  it { expect(subject).to have_many(:chapters).through(:roles) }
+  it { expect(subject).to have_many(:votes) }
+  it { expect(subject).to have_many(:projects).through(:votes) }
 
   context "#trustee?" do
     let(:user){ FactoryGirl.build(:user) }

@@ -1,16 +1,16 @@
 require 'spec_helper'
 
 describe Chapter do
-  it { is_expected.to have_many(:projects) }
-  it { is_expected.to have_many(:roles) }
-  it { is_expected.to have_many(:invitations) }
-  it { is_expected.to have_many(:users).through(:roles)}
-  it { is_expected.to validate_presence_of :name }
-  it { is_expected.to validate_presence_of :description }
-  it { is_expected.to validate_uniqueness_of :name }
-  it { is_expected.not_to allow_value("invalid slug").for(:slug) }
-  it { is_expected.not_to allow_value("Invalid-Slug").for(:slug) }
-  it { is_expected.to allow_value("valid-slug1").for(:slug) }
+  it { expect(subject).to have_many(:projects) }
+  it { expect(subject).to have_many(:roles) }
+  it { expect(subject).to have_many(:invitations) }
+  it { expect(subject).to have_many(:users).through(:roles)}
+  it { expect(subject).to validate_presence_of :name }
+  it { expect(subject).to validate_presence_of :description }
+  it { expect(subject).to validate_uniqueness_of :name }
+  it { expect(subject).not_to allow_value("invalid slug").for(:slug) }
+  it { expect(subject).not_to allow_value("Invalid-Slug").for(:slug) }
+  it { expect(subject).to allow_value("valid-slug1").for(:slug) }
 
   context '.country_count' do
     let!(:chapter1){ FactoryGirl.create(:chapter, :country => "United States") }

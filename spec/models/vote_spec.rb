@@ -3,11 +3,12 @@ require 'spec_helper'
 describe Vote do
   context "validations" do
     before { FactoryGirl.create(:vote) }
-    it { is_expected.to belong_to :user }
-    it { is_expected.to belong_to :project }
-    it { is_expected.to validate_presence_of :user_id }
-    it { is_expected.to validate_presence_of :project_id }
-    it { is_expected.to validate_uniqueness_of(:user_id).scoped_to(:project_id) }
+
+    it { expect(subject).to belong_to :user }
+    it { expect(subject).to belong_to :project }
+    it { expect(subject).to validate_presence_of :user_id }
+    it { expect(subject).to validate_presence_of :project_id }
+    it { expect(subject).to validate_uniqueness_of(:user_id).scoped_to(:project_id) }
   end
 
   context ".by" do
