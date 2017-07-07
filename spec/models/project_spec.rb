@@ -1,17 +1,17 @@
 require 'spec_helper'
 
 describe Project do
-  it { expect(subject).to belong_to :chapter }
-  it { expect(subject).to validate_presence_of :name }
-  it { expect(subject).to validate_presence_of :title }
-  it { expect(subject).to validate_presence_of :email }
-  it { expect(subject).to validate_presence_of :about_me }
-  it { expect(subject).to validate_presence_of :about_project }
-  it { expect(subject).to validate_presence_of :use_for_money }
-  it { expect(subject).to validate_presence_of :chapter_id }
-  it { expect(subject).to have_many(:votes) }
-  it { expect(subject).to have_many(:users).through(:votes) }
-  it { expect(subject).to have_many(:photos) }
+  it { is_expected.to belong_to :chapter }
+  it { is_expected.to validate_presence_of :name }
+  it { is_expected.to validate_presence_of :title }
+  it { is_expected.to validate_presence_of :email }
+  it { is_expected.to validate_presence_of :about_me }
+  it { is_expected.to validate_presence_of :about_project }
+  it { is_expected.to validate_presence_of :use_for_money }
+  it { is_expected.to validate_presence_of :chapter_id }
+  it { is_expected.to have_many(:votes) }
+  it { is_expected.to have_many(:users).through(:votes) }
+  it { is_expected.to have_many(:photos) }
 
   context '#save' do
     let(:fake_mailer) { FakeMailer.new }

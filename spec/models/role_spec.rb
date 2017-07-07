@@ -5,9 +5,9 @@ describe Role do
     before do
       FactoryGirl.create(:role)
     end
-    it { expect(subject).to belong_to :user }
-    it { expect(subject).to belong_to :chapter }
-    it { expect(subject).to validate_uniqueness_of(:user_id).scoped_to(:chapter_id) }
+    it { is_expected.to belong_to :user }
+    it { is_expected.to belong_to :chapter }
+    it { is_expected.to validate_uniqueness_of(:user_id).scoped_to(:chapter_id) }
   end
 
   it '#trustee? always returns true' do
