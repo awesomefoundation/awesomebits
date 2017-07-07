@@ -10,7 +10,7 @@ class ProjectsController < ApplicationController
   include ApplicationHelper
 
   def index
-    @start_date, @end_date = extract_timeframe
+    @start_date, @end_date = extract_timeframe_for_chapter(@chapter)
     @short_listed = params[:short_list]
 
     project_filter = ProjectFilter.new(@chapter.projects).during(@start_date, @end_date)

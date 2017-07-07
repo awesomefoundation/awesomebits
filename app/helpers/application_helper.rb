@@ -1,7 +1,12 @@
 module ApplicationHelper
   def extract_timeframe
     start_date = params[:start]
-    end_date =   params[:end]
+    end_date = params[:end]
+  end
+
+  def extract_timeframe_for_chapter(chapter)
+    start_date = params[:start] || chapter.project_review_start.to_s
+    end_date   =   params[:start] || chapter.project_review_end.to_s
     [start_date, end_date]
   end
 
