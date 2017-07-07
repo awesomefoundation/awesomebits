@@ -89,11 +89,11 @@ describe Project do
     let!(:other_user) { FactoryGirl.create(:user) }
 
     it 'returns true if this project had been shortlisted by the given user' do
-      project.shortlisted_by?(user).should be_true
+      project.shortlisted_by?(user).should be_truthy
     end
 
     it 'returns false if this project had not been shortlisted by the given user' do
-      project.shortlisted_by?(other_user).should_not be_true
+      project.shortlisted_by?(other_user).should_not be_truthy
     end
   end
 
@@ -207,11 +207,11 @@ describe Project do
     let(:other_project) { FactoryGirl.build(:project) }
 
     it 'is true when the project is in the Any chapter' do
-      project.in_any_chapter?.should be_true
+      project.in_any_chapter?.should be_truthy
     end
 
     it 'is false when the project is in some other chapter' do
-      other_project.in_any_chapter?.should be_false
+      other_project.in_any_chapter?.should be_falsey
     end
   end
 
@@ -227,7 +227,7 @@ describe Project do
       project.new_photos = [File.new(Rails.root.join('spec', 'support', 'fixtures', '1.JPG'))]
       project.photos.first.image_file_name.should == "1.JPG"
       project.save
-      project.photos.first.new_record?.should be_false
+      project.photos.first.new_record?.should be_falsey
 
       project.new_photos = [File.new(Rails.root.join('spec', 'support', 'fixtures', '2.JPG'))]
       project.photos.last.image_file_name.should == "2.JPG"

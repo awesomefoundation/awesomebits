@@ -85,7 +85,7 @@ step 'that person should get an(other) invitation email' do
   deliveries = ActionMailer::Base.deliveries.select do |email|
     email.subject =~ /invited/ && email.to.include?(@invitation_address)
   end
-  deliveries.should have(1).item
+  deliveries.size.should eq(1)
   @invitation_email = deliveries.first
 end
 
@@ -108,5 +108,5 @@ step 'they should get (yet) another email welcoming them' do
   deliveries = ActionMailer::Base.deliveries.select do |email|
     email.subject =~ /Welcome/ && email.to.include?(@invitation_address)
   end
-  deliveries.should have(1).item
+  deliveries.size.should eq(1)
 end

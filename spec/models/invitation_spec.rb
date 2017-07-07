@@ -44,20 +44,20 @@ describe Invitation do
 
     it 'creates a user and assigns it to this invitation' do
       invitation.user_factory = fake_user_factory
-      invitation.accept(attributes).should be_true
+      invitation.accept(attributes).should be_truthy
       fake_user_factory.users.should include(invitation.invitee)
     end
 
     it 'uses the supplied data to override defaults' do
       invitation.user_factory = fake_user_factory
-      invitation.accept(attributes).should be_true
+      invitation.accept(attributes).should be_truthy
       invitation.invitee.first_name.should == "Jane"
     end
 
     it 'sends an email if the user was created' do
       invitation.user_factory = fake_user_factory
       invitation.mailer = fake_mailer
-      invitation.accept(attributes).should be_true
+      invitation.accept(attributes).should be_truthy
       fake_mailer.should have_delivered_email(:welcome_trustee)
     end
 
@@ -65,7 +65,7 @@ describe Invitation do
       invitation.user_factory = fake_user_factory
       fake_user_factory.fail!
       invitation.mailer = fake_mailer
-      invitation.accept(attributes).should_not be_true
+      invitation.accept(attributes).should_not be_truthy
       fake_mailer.should_not have_delivered_email(:welcome_trustee)
     end
   end

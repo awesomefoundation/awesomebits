@@ -97,10 +97,10 @@ describe Chapter do
 
   context '#any_chapter?' do
     it 'returns true if the name of this chapter is "Any"' do
-      FactoryGirl.build(:chapter, :name => "Any").any_chapter?.should be_true
+      FactoryGirl.build(:chapter, :name => "Any").any_chapter?.should be_truthy
     end
     it 'returns false if the name of this chapter is "Any"' do
-      FactoryGirl.build(:chapter, :name => "XXX").any_chapter?.should be_false
+      FactoryGirl.build(:chapter, :name => "XXX").any_chapter?.should be_falsey
     end
   end
 

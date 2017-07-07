@@ -62,7 +62,7 @@ step 'I should get an email telling me the application went through' do
   deliveries = ActionMailer::Base.deliveries.select do |email|
     email.subject =~ /applying/ && email.to.include?("awesome@awesome.com")
   end
-  deliveries.should have(1).item
+  deliveries.size.should eq(1)
 end
 
 step 'I submit a project to the :name chapter, but it fails' do |name|
