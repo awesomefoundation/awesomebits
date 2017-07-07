@@ -2,21 +2,21 @@ require 'spec_helper'
 
 describe ChaptersController do
   context "routing" do
-    let(:boston){ FactoryGirl.build_stubbed(:chapter) }
-
     it "routes /chapters/boston to chapters#show" do
-      expect({:get => "/chapters/boston"}).to
-        route_to({:controller => "chapters", :action => "show", :id => boston.id, :locale => "en"})
+      expect({:get => "/chapters/boston"}).to route_to(
+        {:controller => "chapters", :action => "show", :id => "boston"}
+      )
     end
 
     it "routes /en/chapters/boston to chapters#show" do
-      expect({:get => "/en/chapters/boston"}).to
-        route_to({:controller => "chapters", :action => "show", :id => boston.id, :locale => "en"})
+      expect({:get => "/en/chapters/boston"}).to route_to(
+        {:controller => "chapters", :action => "show", :id => "boston", :locale => "en"}
+      )
     end
   end
 
-  context "viewing a chapter page with uppercase characters" do 
-    before do 
+  context "viewing a chapter page with uppercase characters" do
+    before do
       get :show, :id => "BOSTON"
     end
 

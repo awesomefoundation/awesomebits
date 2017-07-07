@@ -2,14 +2,16 @@ require 'spec_helper'
 
 describe ProjectsController do
   context "routing" do
-    let(:boston){ FactoryGirl.build_stubbed(:chapter) }
     it "routes /chapters/boston/projects to projects#index" do
-      expect({:get => "/chapters/boston/projects"}).to
-        route_to({:controller => "projects", :action => "index", :id => boston.id, :locale => "en"})
+      expect({get: "/chapters/boston/projects"}).to route_to(
+        {:controller => "projects", :action => "index", :chapter_id => "boston"}
+      )
     end
+
     it "routes /en/chapters/boston/projects to projects#index" do
-      expect({:get => "/en/chapters/boston/projects"}).to
-        route_to({:controller => "projects", :action => "index", :id => boston.id, :locale => "en"})
+      expect({:get => "/en/chapters/boston/projects"}).to route_to(
+        {:controller => "projects", :action => "index", :chapter_id => "boston", :locale => "en"}
+      )
     end
   end
 
