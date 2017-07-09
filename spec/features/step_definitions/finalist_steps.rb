@@ -4,7 +4,7 @@ end
 
 step 'I view the finalists for the first chapter' do
   visit(chapter_finalists_path(@current_chapter))
-  page.should have_content("Finalists for #{@current_chapter.name}")
+  expect(page).to have_content("Finalists for #{@current_chapter.name}")
 end
 
 step 'I select the other chapter from the navigation dropdown' do
@@ -12,7 +12,7 @@ step 'I select the other chapter from the navigation dropdown' do
 end
 
 step 'I should see the finalists for the other chapter' do
-  page.should have_content("Finalists for #{@other_chapter.name}")
+  expect(page).to have_content("Finalists for #{@other_chapter.name}")
 end
 
 step "I look at the other chapter's finalists" do
@@ -25,13 +25,13 @@ end
 
 step 'I should only see the projects with votes in my chapter' do
   @finalist_projects.each do |project, count|
-    page.should have_css("table tr[data-count='#{count}'] td a:contains('#{project.title}')")
+    expect(page).to have_css("table tr[data-count='#{count}'] td a:contains('#{project.title}')")
   end
 end
 
 step 'they should be in descending order of vote count' do
   counts = page.all("tr.finalist td.vote-count").map(&:text)
-  counts.should == counts.sort.reverse
+  expect(counts).to eq(counts.sort.reverse)
 end
 
 step 'votes are cast once per day, consecutively leading up to today' do
@@ -48,9 +48,9 @@ end
 
 step 'I should see that 2 votes were cast on projects created in that time' do
   vote_count = page.all(:css, "table tr td.vote-count").map(&:text).map(&:to_i).sum
-  vote_count.should == 2
+  expect(vote_count).to eq(2)
 end
 
 step 'I should see the project I shortlisted' do
-  page.should have_css("tr.finalist[data-id='#{@shortlisted_project_id}']")
+  expect(page).to have_css("tr.finalist[data-id='#{@shortlisted_project_id}']")
 end

@@ -11,7 +11,7 @@ describe CountrySortCriteria do
 
   context "given an array of chapters" do
     it "should be sorted based on priorty and country name" do
-      chapters.sort_by(&CountrySortCriteria.new(COUNTRY_PRIORITY)).should == [chapter5, chapter3, chapter1, chapter4, chapter2]
+      expect(chapters.sort_by(&CountrySortCriteria.new(COUNTRY_PRIORITY))).to eq([chapter5, chapter3, chapter1, chapter4, chapter2])
     end
   end
 

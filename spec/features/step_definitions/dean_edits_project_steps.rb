@@ -4,5 +4,5 @@ step 'I set the winning date to be February 2008' do
 end
 
 step 'I should see the project was funded in February 2008' do
-  find('.funded-on').text.should == "(February 2008)"
+  expect(find('.funded-on').text).to eq("(February 2008)")
 end

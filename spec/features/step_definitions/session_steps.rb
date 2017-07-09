@@ -76,9 +76,9 @@ step "the trustee can log in" do
   fill_in("Email", :with => @invitation_address)
   fill_in("Password", :with => "12345")
   click_button("Sign in")
-  page.should have_css("body.projects")
-  page.should have_no_css("body.home")
-  page.should have_no_css("body.clearance-sessions")
+  expect(page).to have_css("body.projects")
+  expect(page).to have_no_css("body.home")
+  expect(page).to have_no_css("body.clearance-sessions")
 end
 
 step "I log in as a trustee with no chapter" do
@@ -92,5 +92,5 @@ end
 
 step "I log out" do
   click_link("Sign out")
-  page.should have_content("Sign in")
+  expect(page).to have_content("Sign in")
 end

@@ -20,6 +20,8 @@ Dir[Rails.root.join("spec/features/step_definitions**/*.rb")].each {|f| require 
 RSpec.configure do |config|
   config.include Capybara::DSL
 
+  config.infer_spec_type_from_file_location!
+
   config.mock_with :mocha
   config.after(:each){ DatabaseCleaner.clean }
   config.before(:each){ FactoryGirl.create(:chapter, :name => "Any") }

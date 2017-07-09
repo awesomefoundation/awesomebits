@@ -5,38 +5,38 @@ describe Role do
     before do
       FactoryGirl.create(:role)
     end
-    it { should belong_to :user }
-    it { should belong_to :chapter }
-    it { should validate_uniqueness_of(:user_id).scoped_to(:chapter_id) }
+    it { is_expected.to belong_to :user }
+    it { is_expected.to belong_to :chapter }
+    it { is_expected.to validate_uniqueness_of(:user_id).scoped_to(:chapter_id) }
   end
 
   it '#trustee? always returns true' do
-    Role.new.trustee?.should == true
+    expect(Role.new.trustee?).to eq(true)
   end
 
   context '#dean?' do
     let(:role) { FactoryGirl.build(:role) }
     it 'returns true if this is a dean role' do
       role.name = "dean"
-      role.dean?.should be_true
+      expect(role.dean?).to be_truthy
     end
 
     it 'returns false if the user is only a trustee' do
       role.name = 'trustee'
-      role.dean?.should be_false
+      expect(role.dean?).to be_falsey
     end
   end
 
   context ".can_invite?" do
     it 'returns true when any role is a dean role' do
       FactoryGirl.create(:role, :name => "dean")
-      Role.can_invite?.should be_true
+      expect(Role.can_invite?).to be_truthy
     end
 
     it 'return false if no roles are dean roles' do
       Role.delete_all
       FactoryGirl.create(:role, :name => "trustee")
-      Role.can_invite?.should be_false
+      expect(Role.can_invite?).to be_falsey
     end
   end
 
@@ -45,13 +45,13 @@ describe Role do
     let!(:chapter) { role.chapter }
     let!(:other_chapter) { FactoryGirl.create(:chapter) }
     it 'returns true when we have dean role for this chapter' do
-      Role.can_invite_to_chapter?(chapter).should be_true
+      expect(Role.can_invite_to_chapter?(chapter)).to be_truthy
     end
 
     it 'returns false if chapter has no dean role' do
-      Role.can_invite_to_chapter?(other_chapter).should be_false
+      expect(Role.can_invite_to_chapter?(other_chapter)).to be_falsey
       Role.delete_all
-      Role.can_invite_to_chapter?(chapter).should be_false
+      expect(Role.can_invite_to_chapter?(chapter)).to be_falsey
     end
   end
 
@@ -60,13 +60,13 @@ describe Role do
     let!(:chapter) { role.chapter }
     let!(:other_chapter) { FactoryGirl.create(:chapter) }
     it 'returns true when we have dean role for this chapter' do
-      Role.can_manage_chapter?(chapter).should be_true
+      expect(Role.can_manage_chapter?(chapter)).to be_truthy
     end
 
     it 'returns false if chapter has no dean role' do
-      Role.can_manage_chapter?(other_chapter).should be_false
+      expect(Role.can_manage_chapter?(other_chapter)).to be_falsey
       Role.delete_all
-      Role.can_manage_chapter?(chapter).should be_false
+      expect(Role.can_manage_chapter?(chapter)).to be_falsey
     end
   end
 
@@ -75,13 +75,13 @@ describe Role do
     let!(:chapter) { role.chapter }
     let!(:other_chapter) { FactoryGirl.create(:chapter) }
     it 'returns true when we have dean role for this chapter' do
-      Role.can_manage_users?(chapter).should be_true
+      expect(Role.can_manage_users?(chapter)).to be_truthy
     end
 
     it 'returns false if chapter has no dean role' do
-      Role.can_manage_users?(other_chapter).should be_false
+      expect(Role.can_manage_users?(other_chapter)).to be_falsey
       Role.delete_all
-      Role.can_manage_users?(chapter).should be_false
+      expect(Role.can_manage_users?(chapter)).to be_falsey
     end
   end
 
@@ -91,13 +91,13 @@ describe Role do
     let!(:other_chapter) { FactoryGirl.create(:chapter) }
 
     it 'returns true when we have a trustee role for this chapter' do
-      Role.can_view_finalists_for?(chapter).should be_true
+      expect(Role.can_view_finalists_for?(chapter)).to be_truthy
     end
 
     it 'returns false if chapter has no trustee role' do
-      Role.can_view_finalists_for?(other_chapter).should be_false
+      expect(Role.can_view_finalists_for?(other_chapter)).to be_falsey
       Role.delete_all
-      Role.can_view_finalists_for?(chapter).should be_false
+      expect(Role.can_view_finalists_for?(chapter)).to be_falsey
     end
   end
 
@@ -107,13 +107,13 @@ describe Role do
     let!(:project) { FactoryGirl.create(:project, :chapter => chapter) }
     let!(:other_project) { FactoryGirl.create(:project) }
     it 'returns true when we have dean role for this chapter' do
-      Role.can_mark_winner?(project).should be_true
+      expect(Role.can_mark_winner?(project)).to be_truthy
     end
 
     it 'returns false if chapter has no dean role' do
-      Role.can_mark_winner?(other_project).should be_false
+      expect(Role.can_mark_winner?(other_project)).to be_falsey
       Role.delete_all
-      Role.can_mark_winner?(project).should be_false
+      expect(Role.can_mark_winner?(project)).to be_falsey
     end
   end
 
@@ -123,13 +123,13 @@ describe Role do
     let!(:project) { FactoryGirl.create(:project, :chapter => chapter) }
     let!(:other_project) { FactoryGirl.create(:project) }
     it 'returns true when we have dean role for this chapter' do
-      Role.can_edit_project?(project).should be_true
+      expect(Role.can_edit_project?(project)).to be_truthy
     end
 
     it 'returns false if chapter has no dean role' do
-      Role.can_edit_project?(other_project).should be_false
+      expect(Role.can_edit_project?(other_project)).to be_falsey
       Role.delete_all
-      Role.can_edit_project?(project).should be_false
+      expect(Role.can_edit_project?(project)).to be_falsey
     end
   end
 

@@ -9,11 +9,11 @@ step 'I demote the dean to trustee' do
 end
 
 step 'I should see the new trustee' do
-  page.should have_css("span[data-role-id='#{@dean_role.id}'] a.promote-user")
+  expect(page).to have_css("span[data-role-id='#{@dean_role.id}'] a.promote-user")
 end
 
 step 'I should see the new dean' do
-  page.should have_css("span[data-role-id='#{@trustee_role.id}'] a.demote-user")
+  expect(page).to have_css("span[data-role-id='#{@trustee_role.id}'] a.demote-user")
 end
 
 step 'I try to promote a user' do
@@ -21,8 +21,8 @@ step 'I try to promote a user' do
 end
 
 step 'I should not see promotion links' do
-  page.should have_no_css(".demote-user")
-  page.should have_no_css(".promote-user")
+  expect(page).to have_no_css(".demote-user")
+  expect(page).to have_no_css(".promote-user")
 end
 
 step 'I am a trustee for another chapter as well' do

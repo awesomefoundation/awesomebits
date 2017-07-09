@@ -5,6 +5,6 @@ RSpec::Matchers.define :have_delivered_email do |expected|
 
   match do |actual|
     emails = actual.delivery_to(expected, @address)
-    emails.length.should == 1
+    expect(emails.length).to eq(1)
   end
 end

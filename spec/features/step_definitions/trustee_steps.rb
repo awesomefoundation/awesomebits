@@ -25,7 +25,7 @@ step "I should see the change reflected in the list of all users" do
   visit(root_path)
   click_link "Dashboard"
   click_link "View all Users"
-  page.should have_css("*[data-user-id='#{@trustee.id}'] td:contains('new@email.addr')")
+  expect(page).to have_css("*[data-user-id='#{@trustee.id}'] td:contains('new@email.addr')")
 end
 
 step "I try to change the other trustees information" do
@@ -45,19 +45,19 @@ step "I change my profile information" do
 end
 
 step "my profile is updated" do
-  page.should have_selector("h2", :text => "#{@updated_trustee_first_name} #{@updated_trustee_last_name}")
+  expect(page).to have_selector("h2", :text => "#{@updated_trustee_first_name} #{@updated_trustee_last_name}")
 end
 
 step "I am on the projects page of my last viewed chapter" do
-  page.should have_selector("a.chapter-selection", :text => @current_chapter.name)
+  expect(page).to have_selector("a.chapter-selection", :text => @current_chapter.name)
 end
 
 step "I should see an update user permission error" do
-  page.should have_content("You do not have permission to modify this account.")
+  expect(page).to have_content("You do not have permission to modify this account.")
 end
 
 step "I should see an error about not having a chapter" do
-  page.should have_content("Your account is not associated with any chapters.")
+  expect(page).to have_content("Your account is not associated with any chapters.")
 end
 
 step "I update my password" do
@@ -72,5 +72,5 @@ step "I should be able to log in with updated password" do
   fill_in("Email",    :with => @current_user.email)
   fill_in("Password", :with => @updated_password)
   click_button("Sign in")
-  page.should have_selector("h2", :text => "#{@current_user.first_name} #{@current_user.last_name}")
+  expect(page).to have_selector("h2", :text => "#{@current_user.first_name} #{@current_user.last_name}")
 end

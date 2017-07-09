@@ -9,13 +9,13 @@ step 'I view the project' do
 end
 
 step 'I should not see the carousel buttons' do
-  page.should have_no_css('.arrows')
+  expect(page).to have_no_css('.arrows')
 end
 
 step 'I should see the carousel buttons' do
-  page.should have_css('.arrows')
+  expect(page).to have_css('.arrows')
 end
 
 step 'I should see a placeholder image' do
-  page.should have_css('#project-gallery img[src="/assets/no-image-main.png"]')
+  expect(page).to have_css('#project-gallery img[src="/assets/no-image-main.png"]')
 end

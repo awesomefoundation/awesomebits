@@ -55,14 +55,14 @@ step 'I submit a project to the :name chapter with the extra questions answered'
 end
 
 step 'I should be thanked' do
-  page.should show_the_flash("thanks")
+  expect(page).to show_the_flash("thanks")
 end
 
 step 'I should get an email telling me the application went through' do
   deliveries = ActionMailer::Base.deliveries.select do |email|
     email.subject =~ /applying/ && email.to.include?("awesome@awesome.com")
   end
-  deliveries.should have(1).item
+  expect(deliveries.size).to eq(1)
 end
 
 step 'I submit a project to the :name chapter, but it fails' do |name|
@@ -71,7 +71,7 @@ step 'I submit a project to the :name chapter, but it fails' do |name|
 end
 
 step 'I should see the error' do
-  page.should have_css(%q[.field_with_errors #project_title+.error:contains("can't be blank")])
+  expect(page).to have_css(%q[.field_with_errors #project_title+.error:contains("can't be blank")])
 end
 
 step 'I fix the error and resubmit' do

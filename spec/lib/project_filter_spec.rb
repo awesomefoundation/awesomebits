@@ -8,7 +8,7 @@ describe ProjectFilter do
     non_matching_project = FactoryGirl.create(:project, :created_at => 6.days.ago)
     project_filter = ProjectFilter.new(Project)
 
-    project_filter.during(start_date, end_date).result.all.should == [matching_project]
+    expect(project_filter.during(start_date, end_date).result.all).to eq([matching_project])
   end
 
   it 'paginates the projects' do
@@ -19,8 +19,8 @@ describe ProjectFilter do
 
       project_filter = ProjectFilter.new(Project)
 
-      project_filter.page(2, per_page).result.all.should == [first_page_project]
-      project_filter.page(1, per_page).result.all.should == [second_page_project]
+      expect(project_filter.page(2, per_page).result.all).to eq([first_page_project])
+      expect(project_filter.page(1, per_page).result.all).to eq([second_page_project])
     end
   end
 
@@ -33,6 +33,6 @@ describe ProjectFilter do
     FactoryGirl.create(:vote, :user => FactoryGirl.create(:user), :project => shortlisted_project)
 
     project_filter = ProjectFilter.new(Project)
-    project_filter.shortlisted_by(user).result.all.should == [shortlisted_project]
+    expect(project_filter.shortlisted_by(user).result.all).to eq([shortlisted_project])
   end
 end

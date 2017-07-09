@@ -10,8 +10,8 @@ describe HighVoltage::PagesController, '#show' do
           get :show, id: page, locale: locale
         end
 
-        it { should respond_with(:success) }
-        it { should render_template(page) }
+        it { is_expected.to respond_with(:success) }
+        it { is_expected.to render_template(page) }
       end
     end
   end
