@@ -227,8 +227,7 @@ en:
         extra_question_1: Extra question 1
         extra_question_2: Extra question 2
         extra_question_3: Extra question 3
-        default_email_text: Customized Email Response
-        default_email_text_description: This will appear as the introduction in emails sent to applicants to your chapter.
+        submission_response_email: Customized Email Response
         inactive: This chapter is inactive
         submit: Submit
         locale: Language for %{slug}.awesomefoundation.org redirect
@@ -250,6 +249,8 @@ en:
         rss_feed_url: Links to posts from this feed will be displayed on the funded project page
       user:
         user_image: Set your user image at <a href="https://en.gravatar.com/site/signup/%{email}" target="_blank">gravatar.com</a> using your email address above
+      chapter:
+        submission_response_email: This text will be included in the confirmation emails sent to your grant applicants
   activerecord:
     errors:
       models:

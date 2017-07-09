@@ -1,9 +1,9 @@
 Hi <%= @project.name %>!
 
-<% if @project.chapter.default_email_text.present? %>
-<%= @project.chapter.default_email_text %>
+<% if @project.chapter.submission_response_email.present? %>
+<%= @project.chapter.submission_response_email %>
 <% else %>
-<%= Chapter::DEFAULT_EMAIL_INTRO %>
+<%= Chapter::DEFAULT_SUBMISSION_RESPONSE_EMAIL %>
 <% end %>
 
 Your application, for reference:

@@ -19,10 +19,7 @@
   <%= form.input :extra_question_1 %>
   <%= form.input :extra_question_2 %>
   <%= form.input :extra_question_3 %>
-  <div>
-    <%= form.input :default_email_text, input_html: {value: chapter.default_email_text.present? ? chapter.default_email_text : Chapter::DEFAULT_EMAIL_INTRO} %>
-    <div><%= t("simple_form.labels.chapter.default_email_text_description") %></div>
-  </div>
+  <%= form.input :submission_response_email, :input_html => { :placeholder => Chapter::DEFAULT_SUBMISSION_RESPONSE_EMAIL } %>
 
   <%= form.button :submit %>
 <% end -%>
