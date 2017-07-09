@@ -9,7 +9,7 @@ describe 'shared/_navigation' do
 
     render
 
-    rendered.should     have_content(chapter.name)
-    rendered.should_not have_content(inactive_chapter.name)
+    expect(rendered).to     have_content(chapter.name)
+    expect(rendered).not_to have_content(inactive_chapter.name)
   end
 end

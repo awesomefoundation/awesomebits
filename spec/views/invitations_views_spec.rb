@@ -16,7 +16,7 @@ describe 'invitations/new' do
     view.stubs(:show_chapters_dropdown?).returns(true)
     view.stubs(:invitable_chapters).returns([chapter, another_chapter])
     render
-    rendered.should have_content("Select a chapter")
+    expect(rendered).to have_content("Select a chapter")
   end
 
   it 'renders a chapter hidden field when dean of one chapter' do
@@ -26,7 +26,7 @@ describe 'invitations/new' do
     view.stubs(:show_chapters_dropdown?).returns(false)
     view.stubs(:primary_invitable_chapter).returns(chapter)
     render
-    rendered.should_not have_content("Select a chapter")
+    expect(rendered).not_to have_content("Select a chapter")
   end
 
 end

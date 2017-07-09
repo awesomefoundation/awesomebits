@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 ruby '2.1.7'
 
 gem 'rails', '3.2.22.3'
+gem 'rake', '< 11.0'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -44,7 +45,7 @@ group :development do
 end
 
 group :development, :test do
-  gem "rspec-rails"
+  gem "rspec-rails", "~> 3.6"
   gem "byebug"
   gem "sham_rack"
   gem "tddium"

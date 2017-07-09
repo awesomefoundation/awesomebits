@@ -15,11 +15,11 @@ describe UserFactory do
       factory.create
       user = factory.user
 
-      user.should_not be_a_new_record
-      user.should have(1).role
-      user.should have(1).chapter
-      user.chapters.first.should == chapter
-      user.roles.first.name.should == "trustee"
+      expect(user).not_to be_a_new_record
+      expect(user.roles.size).to eq(1)
+      expect(user.chapters.size).to eq(1)
+      expect(user.chapters.first).to eq(chapter)
+      expect(user.roles.first.name).to eq("trustee")
     end
     it "creates a new Role, but not a User, if the User exists already" do
       existing_user = FactoryGirl.create(:user, :email => user_attributes[:email])
@@ -27,11 +27,11 @@ describe UserFactory do
       factory.create
       user = factory.user
 
-      user.should == existing_user
-      user.should have(1).role
-      user.should have(1).chapter
-      user.chapters.first.should == chapter
-      user.roles.first.name.should == "trustee"
+      expect(user).to eq(existing_user)
+      expect(user.roles.size).to eq(1)
+      expect(user.chapters.size).to eq(1)
+      expect(user.chapters.first).to eq(chapter)
+      expect(user.roles.first.name).to eq("trustee")
     end
     it "uses an existing Role if it exists already" do
       existing_user = FactoryGirl.create(:user, :email => user_attributes[:email])
@@ -40,7 +40,7 @@ describe UserFactory do
       factory.create
       role = factory.role
 
-      role.should == existing_role
+      expect(role).to eq(existing_role)
     end
   end
 end

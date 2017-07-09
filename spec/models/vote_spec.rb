@@ -3,18 +3,18 @@ require 'spec_helper'
 describe Vote do
   context "validations" do
     before { FactoryGirl.create(:vote) }
-    it { should belong_to :user }
-    it { should belong_to :project }
-    it { should validate_presence_of :user_id }
-    it { should validate_presence_of :project_id }
-    it { should validate_uniqueness_of(:user_id).scoped_to(:project_id) }
+    it { is_expected.to belong_to :user }
+    it { is_expected.to belong_to :project }
+    it { is_expected.to validate_presence_of :user_id }
+    it { is_expected.to validate_presence_of :project_id }
+    it { is_expected.to validate_uniqueness_of(:user_id).scoped_to(:project_id) }
   end
 
   context ".by" do
     let!(:vote){ FactoryGirl.create(:vote) }
     let!(:other_vote) { FactoryGirl.create(:vote) }
     it 'returns the votes by a certain user' do
-      Vote.by(vote.user).should == [vote]
+      expect(Vote.by(vote.user)).to eq([vote])
     end
   end
 
@@ -22,7 +22,7 @@ describe Vote do
     let!(:vote){ FactoryGirl.create(:vote) }
     let!(:other_vote) { FactoryGirl.create(:vote) }
     it 'returns the votes for a certain project' do
-      Vote.for(vote.project).should == [vote]
+      expect(Vote.for(vote.project)).to eq([vote])
     end
   end
 end
