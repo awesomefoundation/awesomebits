@@ -19,7 +19,10 @@
   <%= form.input :extra_question_1 %>
   <%= form.input :extra_question_2 %>
   <%= form.input :extra_question_3 %>
-  <%= form.input :default_email_text, label: "Customized Email Response", placeholder: "This will appear as the introduction in emails sent to applicants to your chapter." %>
+  <div>
+    <%= form.input :default_email_text, input_html: {value: chapter.default_email_text.present? ? chapter.default_email_text : Chapter::DEFAULT_EMAIL_INTRO} %>
+    <div><%= t("simple_form.labels.chapter.default_email_text_description") %></div>
+  </div>
 
   <%= form.button :submit %>
 <% end -%>
