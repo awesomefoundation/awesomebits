@@ -1,6 +1,19 @@
 class Chapter < ActiveRecord::Base
   EXTRA_QUESTIONS_COUNT = 3
 
+  DEFAULT_SUBMISSION_RESPONSE_EMAIL = <<-EOT
+We wanted to send you this (automated) email to let you know that we have
+received your Awesome Foundation application. Your application will be
+considered at the specified chapter's next deliberation meeting.
+
+Unfortunately, we are not able to personally respond to all of our
+applicants, but be sure to follow our Twitter account at
+http://twitter.com/awesomefound for information about grants from all
+of our chapters.
+
+Thanks for your interest in the Awesome Foundation!
+EOT
+
   extend FriendlyId
   friendly_id :name, use: :slugged
 
@@ -20,7 +33,7 @@ class Chapter < ActiveRecord::Base
 
   attr_accessible :name, :twitter_url, :facebook_url, :blog_url, :rss_feed_url, :description,
                   :country, :extra_question_1, :extra_question_2, :extra_question_3, :slug,
-                  :email_address, :time_zone, :inactive, :locale
+                  :email_address, :time_zone, :inactive, :locale, :submission_response_email
 
   def should_generate_new_friendly_id?
     slug.blank?

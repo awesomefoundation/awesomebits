@@ -40,6 +40,10 @@ gem 'magnific-popup-rails'
 gem 'rack-attack'
 gem 'rollbar'
 
+group :development do
+  gem "letter_opener"
+end
+
 group :development, :test do
   gem "rspec-rails", "~> 3.6"
   gem "byebug"
