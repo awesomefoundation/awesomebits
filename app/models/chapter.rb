@@ -1,6 +1,19 @@
 class Chapter < ActiveRecord::Base
   EXTRA_QUESTIONS_COUNT = 3
 
+  DEFAULT_SUBMISSION_RESPONSE_EMAIL = <<-EOT
+We wanted to send you this (automated) email to let you know that we have
+received your Awesome Foundation application. Your application will be
+considered at the specified chapter's next deliberation meeting.
+
+Unfortunately, we are not able to personally respond to all of our
+applicants, but be sure to follow our Twitter account at
+http://twitter.com/awesomefound for information about grants from all
+of our chapters.
+
+Thanks for your interest in the Awesome Foundation!
+EOT
+
   extend FriendlyId
   friendly_id :name, use: :slugged
 

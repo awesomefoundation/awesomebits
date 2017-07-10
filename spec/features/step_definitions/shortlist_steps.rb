@@ -13,14 +13,14 @@ step 'I shortlist a project on the second page' do
 end
 
 step 'the project indicates that I have shortlisted it' do
-  page.should have_css("article.project[data-id='#{@shortlisted_project_id}'].shortlisted")
+  expect(page).to have_css("article.project[data-id='#{@shortlisted_project_id}'].shortlisted")
 end
 
 step 'the correct projects are displayed as shortlisted' do
   page.all(:css, "article.project:not([data-id='#{@shortlisted_project_id}'])").each do |el|
-    el['class'].should_not include('shortlisted')
+    expect(el['class']).not_to include('shortlisted')
   end
-  page.should have_css("article.project[data-id='#{@shortlisted_project_id}'].shortlisted")
+  expect(page).to have_css("article.project[data-id='#{@shortlisted_project_id}'].shortlisted")
 end
 
 step 'I de-shortlist that project' do
@@ -29,7 +29,7 @@ end
 
 step 'none of the projects should be shortlisted' do
   page.all(:css, "article.project").each do |el|
-    el['class'].should_not include('shortlisted')
+    expect(el['class']).not_to include('shortlisted')
   end
 end
 
@@ -82,20 +82,20 @@ step 'I view only my shortlisted projects' do
 end
 
 step 'I should only see my shortlisted projects' do
-  page.should have_css('article.project', :visible => true, :count => 1)
+  expect(page).to have_css('article.project', :visible => true, :count => 1)
   page.all(:css, "article.project", :visible => true).each do |el|
-    el['class'].should include('shortlisted')
+    expect(el['class']).to include('shortlisted')
   end
 end
 
 step 'I should see no projects' do
-  page.should have_no_css('article.project', :visible => true)
+  expect(page).to have_no_css('article.project', :visible => true)
 end
 
 step 'the shortlisted filter should be on' do
-  find('#my-short-list')[:checked].should be_present
+  expect(find('#my-short-list')[:checked]).to be_present
 end
 
 step 'the shortlisted filter should be off' do
-  find('#my-short-list')[:checked].should be_blank
+  expect(find('#my-short-list')[:checked]).to be_blank
 end

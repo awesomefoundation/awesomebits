@@ -12,15 +12,15 @@ describe 'chapters/show' do
     end
 
     it 'renders an apply button in the header' do
-      rendered.should have_selector('header div.title a.apply-chapter', :text => t('chapters.show.apply-for-grant'))
+      expect(rendered).to have_selector('header div.title a.apply-chapter', :text => t('chapters.show.apply-for-grant'))
     end
 
     it 'renders an apply button at the bottom of the page' do
-      rendered.should have_selector('section.chapter-apply a', :text => t('chapters.show.apply-for-grant'))
+      expect(rendered).to have_selector('section.chapter-apply a', :text => t('chapters.show.apply-for-grant'))
     end
 
     it 'should not display the inactive chapter notice' do
-      rendered.should_not have_selector('.inactive-notice')
+      expect(rendered).not_to have_selector('.inactive-notice')
     end
   end
 
@@ -33,11 +33,11 @@ describe 'chapters/show' do
     end
 
     it 'does not render any apply buttons' do
-      rendered.should_not have_content(t('chapters.show.apply-for-grant'))
+      expect(rendered).not_to have_content(t('chapters.show.apply-for-grant'))
     end
 
     it 'displays the inactive notice' do
-      rendered.should have_selector('.inactive-notice')
+      expect(rendered).to have_selector('.inactive-notice')
     end
   end
 
@@ -46,7 +46,7 @@ describe 'chapters/show' do
     view.stubs(:current_user).returns(nil)
 
     render
-    rendered.should_not have_selector('section.chapter-projects')
+    expect(rendered).not_to have_selector('section.chapter-projects')
   end
 
   it 'does not render the trustee section by default' do
@@ -54,7 +54,7 @@ describe 'chapters/show' do
     view.stubs(:current_user).returns(nil)
 
     render
-    rendered.should_not have_selector('section.trustees')
+    expect(rendered).not_to have_selector('section.trustees')
   end
 
   it 'does not render the news section by default' do
@@ -62,8 +62,8 @@ describe 'chapters/show' do
     view.stubs(:current_user).returns(nil)
 
     render
-    rendered.should_not have_selector('section.description article.rss-feed')
-    rendered.should_not have_selector('section.description article.about.half')
+    expect(rendered).not_to have_selector('section.description article.rss-feed')
+    expect(rendered).not_to have_selector('section.description article.about.half')
   end
 
   context 'with projects' do
@@ -74,7 +74,7 @@ describe 'chapters/show' do
       view.stubs(:current_user).returns(nil)
 
       render
-      rendered.should have_selector('section.chapter-projects')
+      expect(rendered).to have_selector('section.chapter-projects')
     end
   end
 
@@ -86,7 +86,7 @@ describe 'chapters/show' do
       view.stubs(:current_user).returns(nil)
 
       render
-      rendered.should have_selector('section.trustees')
+      expect(rendered).to have_selector('section.trustees')
     end
   end
 
@@ -98,8 +98,8 @@ describe 'chapters/show' do
       view.stubs(:current_user).returns(nil)
 
       render
-      rendered.should have_selector('section.description article.rss-feed')
-      rendered.should have_selector('section.description article.about.half')
+      expect(rendered).to have_selector('section.description article.rss-feed')
+      expect(rendered).to have_selector('section.description article.about.half')
     end
   end
 end
@@ -115,7 +115,7 @@ describe 'chapters/edit' do
 
     render
 
-    rendered.should_not have_selector('#chapter_inactive')
+    expect(rendered).not_to have_selector('#chapter_inactive')
   end
 
   it 'displays the inactivity checkbox to admins' do
@@ -124,6 +124,6 @@ describe 'chapters/edit' do
 
     render
 
-    rendered.should have_selector('#chapter_inactive')
+    expect(rendered).to have_selector('#chapter_inactive')
   end
 end

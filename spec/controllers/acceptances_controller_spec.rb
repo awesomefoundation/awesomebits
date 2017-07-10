@@ -9,7 +9,7 @@ describe AcceptancesController do
         get :new, :invitation_id => invitation.id
       end
 
-      it { should respond_with(:success) }
+      it { is_expected.to respond_with(:success) }
     end
 
     context 'accepting with password' do
@@ -17,8 +17,8 @@ describe AcceptancesController do
         post :create, :invitation_id => invitation.id, :invitation => {}
       end
 
-      it { should respond_with(:success) }
-      it { should render_template('new') }
+      it { is_expected.to respond_with(:success) }
+      it { is_expected.to render_template('new') }
       it { expect(flash[:notice]).not_to be_blank }
     end
   end

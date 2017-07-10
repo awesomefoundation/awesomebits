@@ -7,7 +7,7 @@ describe 'layouts/application' do
 
       render
 
-      rendered.should have_selector('html[lang="en"]')
+      expect(rendered).to have_selector('html[lang="en"]')
     end
 
     it 'includes an alternate language locale' do
@@ -17,7 +17,7 @@ describe 'layouts/application' do
 
       render
 
-      rendered.should have_selector('html[lang="fr"]')
+      expect(rendered).to have_selector('html[lang="fr"]')
     end
   end
 
@@ -29,7 +29,7 @@ describe 'layouts/application' do
 
       # Can't figure out why have_selector isn't working here
       I18n.available_locales.each do |locale|
-        rendered.should include("hreflang=\"#{locale}\" rel=\"alternate\"")
+        expect(rendered).to include("hreflang=\"#{locale}\" rel=\"alternate\"")
       end
     end
   end

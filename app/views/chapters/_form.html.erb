@@ -23,6 +23,7 @@
   <%= form.input :extra_question_1 %>
   <%= form.input :extra_question_2 %>
   <%= form.input :extra_question_3 %>
+  <%= form.input :submission_response_email, :input_html => { :placeholder => Chapter::DEFAULT_SUBMISSION_RESPONSE_EMAIL } %>
 
   <%= form.button :submit %>
 <% end -%>

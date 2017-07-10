@@ -2,14 +2,16 @@ require 'spec_helper'
 
 describe ProjectsController do
   context "routing" do
-    let(:boston){ FactoryGirl.build_stubbed(:chapter) }
     it "routes /chapters/boston/projects to projects#index" do
-      {:get => "/chapters/boston/projects"}.should
-        route_to({:controller => "projects", :action => "index", :id => boston.id, :locale => "en"})
+      expect({get: "/chapters/boston/projects"}).to route_to(
+        {:controller => "projects", :action => "index", :chapter_id => "boston"}
+      )
     end
+
     it "routes /en/chapters/boston/projects to projects#index" do
-      {:get => "/en/chapters/boston/projects"}.should
-        route_to({:controller => "projects", :action => "index", :id => boston.id, :locale => "en"})
+      expect({:get => "/en/chapters/boston/projects"}).to route_to(
+        {:controller => "projects", :action => "index", :chapter_id => "boston", :locale => "en"}
+      )
     end
   end
 
@@ -18,7 +20,7 @@ describe ProjectsController do
       get :index
     end
 
-    it { should redirect_to(root_path) }
+    it { is_expected.to redirect_to(root_path) }
   end
 
   context 'attempting to delete a project as a trustee who is not the dean or an admin' do
@@ -28,7 +30,7 @@ describe ProjectsController do
       sign_in_as user
       delete :destroy, :id => project
     end
-    it { should redirect_to(chapter_projects_path(project.chapter)) }
+    it { is_expected.to redirect_to(chapter_projects_path(project.chapter)) }
   end
 
   context 'viewing the index without a chapter' do
@@ -41,7 +43,7 @@ describe ProjectsController do
       get :index
     end
 
-    it { should redirect_to(chapter_projects_path(chapter)) }
+    it { is_expected.to redirect_to(chapter_projects_path(chapter)) }
   end
 
   context 'downloading the csv report' do
@@ -55,7 +57,7 @@ describe ProjectsController do
       get :index, :chapter_id => chapter, :format => :csv
     end
 
-    it { response.header['Content-Type'].should include 'csv' }
+    it { expect(response.header['Content-Type']).to include 'csv' }
   end
 
   context 'viewing a public project page that has not won yet' do
@@ -68,8 +70,8 @@ describe ProjectsController do
         sign_in_as user
         get :show, :id => project
       end
-      it { should respond_with(:redirect) }
-      it { should redirect_to(chapter_project_path(project.chapter, project)) }
+      it { is_expected.to respond_with(:redirect) }
+      it { is_expected.to redirect_to(chapter_project_path(project.chapter, project)) }
     end
 
     context 'while not logged in' do
@@ -77,7 +79,7 @@ describe ProjectsController do
         sign_out
         get :show, :id => project
       end
-      it { should respond_with(:missing) }
+      it { is_expected.to respond_with(:missing) }
     end
   end
 
@@ -89,8 +91,8 @@ describe ProjectsController do
         get :show, :id => project
       end
 
-      it { should respond_with(:success) }
-      it { should render_template("public_show") }
+      it { is_expected.to respond_with(:success) }
+      it { is_expected.to render_template("public_show") }
     end
 
     context "with an incorrect slug" do
@@ -98,8 +100,8 @@ describe ProjectsController do
         get :show, :id => "#{project.id}-this-is-a-bad-slug"
       end
 
-      it { should respond_with(:moved_permanently) }
-      it { should redirect_to(project_path(project)) }
+      it { is_expected.to respond_with(:moved_permanently) }
+      it { is_expected.to redirect_to(project_path(project)) }
     end
   end
 
@@ -116,7 +118,7 @@ describe ProjectsController do
         get :show, :chapter_id => project.chapter,  :id => project
       end
 
-      it { should redirect_to root_path }
+      it { is_expected.to redirect_to root_path }
     end
 
     context "while logged in as a trustee" do
@@ -125,7 +127,7 @@ describe ProjectsController do
         get :show, :chapter_id => project.chapter,  :id => project
       end
 
-      it { should render_template("show") }
+      it { is_expected.to render_template("show") }
     end
 
     context "while logged in as a admin" do
@@ -134,7 +136,7 @@ describe ProjectsController do
         get :show, :chapter_id => project.chapter,  :id => project
       end
 
-      it { should render_template("show") }
+      it { is_expected.to render_template("show") }
     end
 
   end

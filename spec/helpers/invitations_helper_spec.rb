@@ -14,7 +14,7 @@ describe InvitationsHelper do
   describe '#show_chapters_dropdown' do
     it 'checks if more than one chapter avaiable to user' do
       helper.stubs(:current_user).returns(user)
-      helper.show_chapters_dropdown?.should == true
+      expect(helper.show_chapters_dropdown?).to eq(true)
     end
   end
 
@@ -24,14 +24,14 @@ describe InvitationsHelper do
       chapter.update_attributes(name: "Alpha")
       another_chapter.update_attributes(name: "Gamma")
       yet_another_chapter.update_attributes(name: "Beta")
-      helper.invitable_chapters.should == [chapter, yet_another_chapter, another_chapter]
+      expect(helper.invitable_chapters).to eq([chapter, yet_another_chapter, another_chapter])
     end
   end
 
   describe '#primary_invitable_chapter' do
     it 'returns the single chapter available to user' do
       helper.stubs(:current_user).returns(user)
-      helper.primary_invitable_chapter.should == chapter
+      expect(helper.primary_invitable_chapter).to eq(chapter)
     end
   end
 
