@@ -258,6 +258,8 @@ en:
           attributes:
             slug:
               invalid: must be lowercase and can not contain spaces
+            project_review_end:
+              before_start: Project review end must be after project review start.
   meta:
     description: Forwarding the interest of Awesome in the universe, $1,000 at a time.
   feed:

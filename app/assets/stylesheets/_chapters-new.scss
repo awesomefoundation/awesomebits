@@ -6,4 +6,13 @@
       margin-bottom: 25px;
     }
   }
+
+  .input .error {
+    float: left;
+    width: 100%;
+    font-weight: bold;
+    font-size: 120%;
+    color: $pink;
+    margin: 1em 0;
+  }
 }

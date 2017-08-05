@@ -31,9 +31,12 @@ EOT
 
   validates_format_of :slug, :with => /\A[a-z0-9-]+\Z/
 
+  validate :project_review_end_after_start
+
   attr_accessible :name, :twitter_url, :facebook_url, :blog_url, :rss_feed_url, :description,
                   :country, :extra_question_1, :extra_question_2, :extra_question_3, :slug,
-                  :email_address, :time_zone, :inactive, :locale, :submission_response_email
+                  :email_address, :time_zone, :inactive, :locale, :project_review_start,
+                  :project_review_end
 
   def should_generate_new_friendly_id?
     slug.blank?
@@ -125,6 +128,12 @@ EOT
       self.inactive_at = Time.zone.now
     else
       self.inactive_at = nil
+    end
+  end
+
+  def project_review_end_after_start
+    if project_review_start.present? && project_review_end.present? && project_review_end < project_review_start
+      errors.add(:project_review_end, "#{I18n.t('activerecord.errors.models.chapter.attributes.project_review_end.before_start')}")
     end
   end
 end
