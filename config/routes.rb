@@ -8,7 +8,7 @@ Awesomefoundation::Application.routes.draw do
   match "/blog/contact/" => redirect("/en/contact")
   match "/blog/about/"   => redirect("/en/about_us")
   match "/blog"          => redirect("http://blog.awesomefoundation.org")
-  match "/blog/*path"    => redirect { |params, request| "http://blog.awesomefoundation.org/#{params[:path]}" }, :format => false
+  match "/blog/*path"    => redirect { |params, request| "http://blog.awesomefoundation.org/#{URI.escape(params[:path])}" }, :format => false
   match "/apply"         => redirect("/en/submissions/new")
 
   resources :passwords, :controller => 'clearance/passwords', :only => [:new, :create]
