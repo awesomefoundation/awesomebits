@@ -27,4 +27,12 @@ describe HomeController do
       expect(response.body).to have_selector('section.awesome-chapters', :text => chapter.name)
     end
   end
+
+  context 'with an invalid locale' do
+    it 'should use the default locale' do
+      get :index, :locale => 'INVALID LOCALE'
+
+      expect(I18n.locale).to eq(I18n.default_locale)
+    end
+  end
 end
