@@ -4,7 +4,7 @@ describe HighVoltage::PagesController, '#show' do
   render_views
 
   %w(about_us faq).each do |page|
-    %w(en fr pt ru).each do |locale|
+    %w(en es fr pt ru).each do |locale|
       context "on GET to /#{locale}/#{page}" do
         before do
           get :show, id: page, locale: locale
