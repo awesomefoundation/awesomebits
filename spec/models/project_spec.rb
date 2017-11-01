@@ -322,6 +322,21 @@ describe Project do
 
       expect(project.url).to eq('')
     end
+
+    it 'rejects an invalid url' do
+      project.url = "url with spaces"
+      expect(project).to_not be_valid
+    end
+
+    it 'rejects an invalid rss url' do
+      project.rss_feed_url = "url with spaces"
+      expect(project).to_not be_valid
+    end
+
+    it 'rejects a url that is too long before url normalization' do
+      project.url = "a" * 255
+      expect(project).to_not be_valid
+    end
   end
 
   describe "#hide! / #hidden?" do

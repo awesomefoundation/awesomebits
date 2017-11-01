@@ -24,6 +24,7 @@ en:
       already-deleted: "Vote has already been deleted"
     applications:
       thanks: "Thanks for applying!"
+      error: There was a problem with your application
     acceptances:
       cannot: "Could not accept the invitation"
     projects:
@@ -258,6 +259,10 @@ en:
           attributes:
             slug:
               invalid: must be lowercase and can not contain spaces
+        project:
+          attributes:
+            url:
+              invalid: is not a valid website
   meta:
     description: Forwarding the interest of Awesome in the universe, $1,000 at a time.
   feed:
