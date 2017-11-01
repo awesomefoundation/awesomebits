@@ -16,6 +16,9 @@ class Project < ActiveRecord::Base
 
   before_validation UrlNormalizer.new(:url, :rss_feed_url)
 
+  validates           :url, :rss_feed_url, :url => true, :allow_blank => true
+  validates_length_of :url, :rss_feed_url, :maximum => 255
+
   validates_presence_of :name
   validates_presence_of :title
   validates_presence_of :email
