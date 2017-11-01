@@ -24,7 +24,7 @@ en:
       already-deleted: "Vote has already been deleted"
     applications:
       thanks: "Thanks for applying!"
-      error: There was a problem with your submission
+      error: There was a problem with your application
     acceptances:
       cannot: "Could not accept the invitation"
     projects:
