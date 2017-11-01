@@ -59,7 +59,7 @@ class ProjectsController < ApplicationController
       flash[:thanks] = t("flash.applications.thanks")
       redirect_to root_path
     else
-      flash[:notice] = t("flash.applications.error")
+      flash.now[:notice] = t("flash.applications.error")
       render :new
     end
   end
