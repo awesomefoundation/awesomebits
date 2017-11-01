@@ -21,8 +21,8 @@ module ApplicationHelper
                                                :separator => I18n.t("number.separator"))
   end
 
-  def markdown(text)
-    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :autolink => true, :space_after_headers => true)
+  def markdown(text, renderer_options = {})
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(renderer_options), :autolink => true, :space_after_headers => true)
     markdown.render(text).html_safe unless text.nil?
   end
 

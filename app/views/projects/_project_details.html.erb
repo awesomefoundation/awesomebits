@@ -42,7 +42,7 @@
 
     <% if project.url.present? %>
       <span>
-        · <%= link_to project.url, project.url %>
+        · <%= link_to project.url, project.url, :target => "_blank" %>
       </span>
     <% end %>
   </section>
@@ -60,11 +60,11 @@
     <% end %>
 
     <h3><%= I18n.t(".about-project", scope: "projects.project") %></h3>
-    <%= markdown project.about_project %>
+    <%= markdown project.about_project, :link_attributes => { :target => "_blank" } %>
     <h3><%= I18n.t(".use-for-money", scope: "projects.project") %></h3>
-    <%= markdown project.use_for_money %>
+    <%= markdown project.use_for_money, :link_attributes => { :target => "_blank" } %>
     <h3><%= I18n.t(".about-me", scope: "projects.project") %></h3>
-    <%= markdown project.about_me %>
+    <%= markdown project.about_me, :link_attributes => { :target => "_blank" } %>
 
     <% 1.upto(Chapter::EXTRA_QUESTIONS_COUNT) do |num| -%>
       <% if project.extra_question(num).present? %>
