@@ -169,10 +169,10 @@ class Project < ActiveRecord::Base
   end
 
   def display_images
-    if photos.empty?
+    if photos.real_images.empty?
       [Photo.new]
     else
-      photos
+      photos.real_images
     end
   end
 

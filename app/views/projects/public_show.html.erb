@@ -15,7 +15,7 @@
        <li class="piece image-wrapper"> <%= image_tag(image.url(:main)) %> </li>
      <% end %>
    </ul>
-   <% if @project.photos.count > 1 %>
+   <% if @project.display_images.count > 1 %>
      <div class="arrows">
        <a class="arrow left"></a>
        <a class="arrow right"></a>
