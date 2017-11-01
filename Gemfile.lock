@@ -237,7 +237,7 @@ GEM
     mime-types (1.25.1)
     mocha (1.2.1)
       metaclass (~> 0.0.1)
-    multi_json (1.12.1)
+    multi_json (1.12.2)
     multi_xml (0.5.1)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -297,7 +297,7 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     redcarpet (2.1.1)
-    rollbar (2.13.2)
+    rollbar (2.15.5)
       multi_json
     rspec (3.6.0)
       rspec-core (~> 3.6.0)
