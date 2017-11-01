@@ -296,7 +296,7 @@ GEM
     rake (10.5.0)
     rdoc (3.12.2)
       json (~> 1.4)
-    redcarpet (2.1.1)
+    redcarpet (3.4.0)
     rollbar (2.15.5)
       multi_json
     rspec (3.6.0)
