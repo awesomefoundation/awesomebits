@@ -277,6 +277,18 @@ describe Project do
     it "returns a new photo if there aren't any" do
       expect(project.display_images.map(&:url)).to eq([Photo.new.image.url])
     end
+
+    it "returns a new photo if the only photo is a non-image" do
+      project.photos = [FactoryGirl.create(:pdf)]
+      expect(project.display_images.map(&:url)).to eq([Photo.new.image.url])
+    end
+
+    it "only returns image files for display" do
+      pdf = FactoryGirl.create(:pdf)
+      image = FactoryGirl.create(:photo)
+      project.photos = [pdf, image]
+      expect(project.display_images).to eq([image])
+    end
   end
 
   context 'pagination' do

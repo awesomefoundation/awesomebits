@@ -14,6 +14,10 @@ class Photo < ActiveRecord::Base
   cattr_accessor :fog_config
   self.fog_config = Rails.configuration.fog
 
+  def self.real_images
+    where("image_content_type LIKE 'image/%'")
+  end
+
   # Build a URL to dynamically resize application images via an external service
   # Currently using http://magickly.afeld.me/
   def url(size = nil)
