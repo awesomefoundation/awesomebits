@@ -24,8 +24,11 @@ pt:
       already-deleted: "O voto já foi excluído"
     applications:
       thanks: "Obrigado pelo envio!"
+      error: "Ops! Aconteceu algum problema com a sua inscrição"
     acceptances:
       cannot: "Não foi possível aceitar o convite"
+    projects:
+      hide-reason-required: Você deve apresentar uma razão para esconder um projeto
   layouts:
     application:
       main-header: The Awesome Foundation
@@ -74,6 +77,8 @@ pt:
   chapters:
     index:
       title: Awesome por Toda Parte
+      show_active_chapters: Mostrar somente capítulos ativos
+      show_inactive_chapters: Mostrar capítulos inativos
     show:
       edit: Editar Capítulo
       recent_winners: Projetos financiados recentemente
@@ -83,6 +88,7 @@ pt:
         header: Conheça os Curadores
         about: Sobre Nós
         news: "Notícias do capítulo %{name}"
+        photo-alt-text: "Foto de %{name}"
       apply-for-grant: Envie Sua Proposta
       inactive-chapter: Este capítulo está inativo.
       inactive-chapter-reason: Um capítulo é considerado inativo quando não tiver apoiado projetos em um período de seis meses. Se você estiver interessado em reiniciar este capítulo, por favor <a href="mailto:join@awesomefoundation.org">entre em contato</a>.
@@ -116,6 +122,13 @@ pt:
       not-answered: Não Respondido
       images: "Imagens:"
       image: "Imagen #%{index}"
+      hide: Esconder
+      unhide: Mostrar
+      consider-hiding: Projeto inadequado?
+      hide-reason: Por que isso é inadequado?
+      hidden-details: "Escondido por %{username} em %{hidden_at} por causa de %{reason}."
+      hiding-explanation: "Esconder um projeto fara com que os detalhes do projeto não possa ser visualizado por ninguém. O título do projeto e o motivo permanecerão visíveis. Essa ação pode ser revertida a qualquer momento."
+      unhiding-explanation: "Restaurar o projeto para que possa ser visualizado por todos novamente."
     new:
       title: Você está pronto para ser Irado!?
       description: Apenas preencha o formulário abaixo com seus dados e detalhes do seu projeto.
@@ -202,6 +215,8 @@ pt:
         about_me: Fale-nos um pouco sobre você
         about_project: Fale sobre seu projeto incrível!
         use_for_money: Como você vai usar o dinheiro?
+        funded_on: Financiado em
+        funded_description: Descrição do Projeto Financiado
       chapter:
         name: Nome
         slug: Nome na URL
@@ -213,8 +228,10 @@ pt:
         extra_question_1: Questão extra 1
         extra_question_2: Questão extra 2
         extra_question_3: Questão extra 3
+        submission_response_email: Resposta de Email Customizada
         inactive: Este capítulo está inativo
         submit: Enviar
+        locale: Idioma para o redirecionamento de %{slug}.awesomefoundation.org
       user:
         first_name: Nome
         last_name: Sobrenome
@@ -233,6 +250,8 @@ pt:
         rss_feed_url: Links para posts deste feed será exibido na página do projeto financiado
       user:
         user_image: Defina sua imagem em <a href="https://en.gravatar.com/site/signup/%{email}" target="_blank">gravatar.com</a> usando seu endereço de e-mail informado acima
+      chapter:
+        submission_response_email: Esse texto será incluído no email de confirmação enviado para os projetos candidatos ao prêmio
   activerecord:
     errors:
       models:
@@ -240,5 +259,9 @@ pt:
           attributes:
             slug:
               invalid: deve estar em minúsculas e sem espaços
+        project:
+          attributes:
+            url:
+              invalid: não é um endereço válido de site
   meta:
     description: Tornando o universo mais Irado, $1.000 de cada vez.
