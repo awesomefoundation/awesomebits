@@ -124,7 +124,7 @@ en:
       image: "Image #%{index}"
       hide: Hide
       unhide: Unhide
-      consider-hiding: Not an appropriate grant?
+      consider-hiding: Not an appropriate project?
       hide-reason: Why is this not appropriate?
       hidden-details: "Hidden by %{username} on %{hidden_at} because %{reason}."
       hiding-explanation: "Hiding a project will hide its details from everyone; the title and why it was hidden will still be visible, and it can be easily unhidden."
