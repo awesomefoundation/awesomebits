@@ -42,7 +42,10 @@
     </tr>
     <% @projects.each do |project| %>
       <tr class="finalist" data-count="<%= project.vote_count %>" data-id="<%= project.id %>">
-        <td><%= link_to project.title, chapter_project_path(project.chapter, project) %></td>
+        <td>
+          <%= link_to project.title, chapter_project_path(project.chapter, project) %>
+          <%= link_to(raw('<i class="icon-ok-sign winner"></i>'), project_path(project), :target => "_blank", :title => t("projects.project.winner", :name => project.chapter.name)) if project.winner? %>
+        </td>
         <td><%= project.id %></td>
         <td class="vote-count"><%= project.vote_count %></td>
       </tr>

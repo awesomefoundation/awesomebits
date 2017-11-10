@@ -8,6 +8,7 @@ class FinalistsController < ApplicationController
   def index
     @start_date, @end_date = extract_timeframe
     @projects = Project.
+                  includes(:chapter).
                   voted_for_by_members_of(current_chapter).
                   during_timeframe(@start_date, @end_date).
                   by_vote_count
