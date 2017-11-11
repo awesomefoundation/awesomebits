@@ -10,7 +10,7 @@
       <div>
         <%= t(".hidden-details", username: project.hidden_by_user.name, hidden_at: l(project.hidden_at.to_date), reason: project.hidden_reason) %>
         <% unless @display_project_even_if_hidden %>
-          (<%= link_to "view application", chapter_project_path(project.chapter, project), :class => "title" %>)
+          (<%= link_to t(".view-application"), chapter_project_path(project.chapter, project), :class => "title" %>)
         <% end %>
       </div>
       <%# only display the unhide button if we're reviewing the whole project %>
