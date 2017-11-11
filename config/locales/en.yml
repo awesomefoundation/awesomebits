@@ -127,6 +127,7 @@ en:
       consider-hiding: Not an appropriate project?
       hide-reason: Why is this not appropriate?
       hidden-details: "Hidden by %{username} on %{hidden_at} because %{reason}."
+      view-application: view application
       hiding-explanation: "Hiding a project will hide its details from everyone; the title and why it was hidden will still be visible, and it can be easily unhidden."
       unhiding-explanation: "Restore this project so everyone will be able to see it again."
     new:

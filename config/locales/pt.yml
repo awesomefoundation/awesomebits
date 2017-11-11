@@ -127,6 +127,7 @@ pt:
       consider-hiding: Projeto inadequado?
       hide-reason: Por que isso é inadequado?
       hidden-details: "Escondido por %{username} em %{hidden_at} por causa de %{reason}."
+      view-application: ver proposta
       hiding-explanation: "Esconder um projeto fara com que os detalhes do projeto não possa ser visualizado por ninguém. O título do projeto e o motivo permanecerão visíveis. Essa ação pode ser revertida a qualquer momento."
       unhiding-explanation: "Restaurar o projeto para que possa ser visualizado por todos novamente."
     new:
