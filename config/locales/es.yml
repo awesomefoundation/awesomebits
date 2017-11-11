@@ -24,8 +24,11 @@ es:
       already-deleted: "El voto ya ha sido borrado"
     applications:
       thanks: "¡Gracias por solicitar!"
+      error: Ocurrió un problema con su solicitud
     acceptances:
       cannot: "La invitación no fue aceptada"
+    projects:
+      hide-reason-required: Usted deberá proveer una razón para esconder un proyecto
   layouts:
     application:
       main-header: The Awesome Foundation
@@ -74,6 +77,8 @@ es:
   chapters:
     index:
       title: ¡Awesome está en todas partes!
+      show_active_chapters: Mostrar solo los capítulos activos
+      show_inactive_chapters: Mostrar los capítulos inactivos
     show:
       edit: Editar capítulo
       recent_winners: Proyectos recientemente becados
@@ -83,6 +88,7 @@ es:
         header: Conoce a los Administradores
         about: Acerca de Nosotros
         news: "%{name} Noticias"
+        photo-alt-text: Foto de %{name}
       apply-for-grant: Solicita una beca
       inactive-chapter: Este capítulo está inactivo.
       inactive-chapter-reason: Un capítulo inactivo es uno que no ha otorgado una beca en seis meses. Si estás interesado en reiniciar este capítulo, por favor <a href="mailto:join@awesomefoundation.org">comunícate con nosotros</a>.
@@ -116,6 +122,13 @@ es:
       not-answered: No se ha respondido
       images: "Imágenes:"
       image: "Imagen #%{index}"
+      hide: Esconder
+      unhide: Mostrar
+      consider-hiding: "¿No es un proyecto adecuado?"
+      hide-reason: "¿Por qué no es apropiado?"
+      hidden-details: Escondido por %{username} en %{hidden_at} por %{reason}.
+      hiding-explanation: Esconder un proyecto esconderá sus detalles para todos; el título y la razón por la cual se escondió permanecerán visibles y puede revertirse fácilmente
+      unhiding-explanation: Restaura este proyecto para que todos puedan verlo nuevamente
     new:
       title: ¿Estás listo para ser impresionante!?
       description:  Simplemente completa la solicitud a continuación con información sobre tí y los detalles de tu proyecto.
@@ -215,8 +228,10 @@ es:
         extra_question_1: Pregunta adicional 1
         extra_question_2: Pregunta adicional 2
         extra_question_3: Pregunta adicional 3
+        submission_response_email: Respuesta personalizada por correo electrónico
         inactive: Este capítulo está inactivo
         submit: Someter
+        locale: Idioma para redirigir %{slug}.awesomefoundation.org
       user:
         first_name: Primer nombre
         last_name: Apellido
@@ -235,6 +250,8 @@ es:
         rss_feed_url: Enlaces a entradas desde esta transmisión estarán exhibidas en la página del proyecto becado
       user:
         user_image: Fija tu imagen de usuario en <a href="https://en.gravatar.com/site/signup/%{email}" target="_blank">gravatar.com</a> usando la dirección de tu correo electrónico indicado previamente
+      chapter:
+        submission_response_email: Este texto será incluido en el correo electrónico de confirmación enviado a sus solicitantes de becas
   activerecord:
     errors:
       models:
@@ -242,5 +259,9 @@ es:
           attributes:
             slug:
               invalid: debe ser en letras minúsculas y no puede contener espacios
+        project:
+          attributes:
+              url:
+                invalid: no es un sitio web válido
   meta:
     description: Promover los intereses de lo impresionante en el universo, $1,000 a la vez.
