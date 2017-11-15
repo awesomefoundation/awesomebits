@@ -24,8 +24,11 @@ fr:
       already-deleted: "Vote déjà supprimé"
     applications:
       thanks: "Merci pour votre candidature !"
+      error: Un problème est survenu dans votre candidature
     acceptances:
       cannot: "Ne peut pas accepter l'invitation"
+    projects:
+      hide-reason-required: Vous devez donner une raison pour masquer un projet
   layouts:
     application:
       main-header: L'Awesome Foundation
@@ -74,6 +77,8 @@ fr:
   chapters:
     index:
       title: Awesome Partout
+      show_active_chapters: Afficher seulement les branches actives
+      show_inactive_chapters: Afficher seulement les branches inactives
     show:
       edit: Editer la Branche
       recent_winners: Projets financés récemment
@@ -83,6 +88,7 @@ fr:
         header: Rencontrer les Donateurs
         about: A Propos
         news: "%{name} News"
+        photo-alt-text: "Photo de %{name}"
       apply-for-grant: Postuler à une bourse
       inactive-chapter: Cette branche n'est actuellement non-active.
       inactive-chapter-reason: Une branche non-active est une branche qui n’a pas remis de bourse au cours des six derniers mois. Veuillez <a href="mailto:join@awesomefoundation.org">nous contacter</a> si cela vous intéresse de relancer cette branche.
@@ -116,6 +122,14 @@ fr:
       not-answered: Pas répondu
       images: "Images :"
       image: "Image #%{index}"
+      hide: Masquer
+      unhide: Montrer
+      consider-hiding: Projet inapproprié ?
+      hide-reason: Pourquoi est-il inapproprié ?
+      hidden-details: Masqué par %{username} le %{hidden_at} car %{reason}.
+      view-application: Voir le projet
+      hiding-explanation: Quand un projet est masqué, le contenu n'est visible par personne ; le titre et la raison pour laquelle il est masqué sont visible, le projet peut facilement être affiché de nouveau.
+      unhiding-explanation: Restaurer ce projet pour qu'il soit à nouveau visible par tous
     new:
       title: Êtes-vous prêt à devenir Awesome !?
       description: Remplissez simplement le formulaire ci-dessous avec des informations sur vous et sur votre projet.
@@ -202,6 +216,8 @@ fr:
         about_me: Parlez-nous de vous
         about_project: Parlez-nous de votre projet !
         use_for_money: Comment utiliserez-vous l'argent ?
+        funded_on: Financé le
+        funded_description: Description du projet financé
       chapter:
         name: Nom
         slug: Nom dans l'URL
@@ -213,8 +229,10 @@ fr:
         extra_question_1: Question bonus 1
         extra_question_2: Question bonus 2
         extra_question_3: Question bonus 3
+        submission_response_email: Réponse email personnalisée
         inactive: Cette branche n'est pas active
         submit: Envoyer
+        locale: Langue de %{slug}.awesomefoundation.org redirection
       user:
         first_name: Prénom
         last_name: Nom
@@ -233,6 +251,8 @@ fr:
         rss_feed_url: Les liens vers les articles de ce flux ne seront affichés que sur la page des projets financés
       user:
         user_image: Réglez votre image utilisateur à <a href="https://fr.gravatar.com/site/signup/%{email}" target="_blank">gravatar.com</a> en utilisant l'adresse mail ci-dessus
+      chapter:
+        submission_response_email: Ce texte sera inclu dans les messages de confirmation envoyés à vos candidats
   activerecord:
     errors:
       models:
@@ -240,5 +260,9 @@ fr:
           attributes:
             slug:
               invalid: doit être en minuscules et sans espaces
+        project:
+          attributes:
+            url:
+              invalid: n'est pas un lien valide
   meta:
     description: Rendre l'univers génial, 1.000€ à la fois.
