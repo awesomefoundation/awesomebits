@@ -230,6 +230,8 @@ en:
         extra_question_2: Extra question 2
         extra_question_3: Extra question 3
         submission_response_email: Customized Email Response
+        project_review_start: Project Review Period Start Date
+        project_review_end: Project Review Period End Date
         inactive: This chapter is inactive
         submit: Submit
         locale: Language for %{slug}.awesomefoundation.org redirect
