@@ -108,6 +108,20 @@ variable. Multiple IPs should be comma separated:
 BLACKLIST_IPS=10.0.0.1,10.0.0.2
 ```
 
+Password Protection
+-------------------
+
+There are instances where you want to put a password on the entire site (for
+example, a staging server which is on the public internet but should not be
+accessible to the general public). Set the `SITE_PASSWORD` environment
+variable to a password you want people to have to use to access the site.
+The user should then enter the `SITE_PASSWORD` text for both the username
+and password when prompted.
+
+```shell
+SITE_PASSWORD=topsecret
+```
+
 
 License
 -------
