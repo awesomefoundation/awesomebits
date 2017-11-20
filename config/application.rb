@@ -73,5 +73,11 @@ module Awesomefoundation
 
     # Load middleware
     config.middleware.use Rack::Attack
+
+    if ENV['SITE_PASSWORD'].present?
+      config.middleware.use Rack::Auth::Basic do |username, password|
+        username == ENV['SITE_PASSWORD'] && password == ENV['SITE_PASSWORD']
+      end
+    end
   end
 end
