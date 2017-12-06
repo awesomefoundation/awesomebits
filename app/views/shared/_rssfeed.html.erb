@@ -2,6 +2,7 @@
   jQuery(function($) {
     $("#rss-feeds").rss("<%= rss_feed_url %>",
     {
+      ssl: true,
       limit: 6,
       layoutTemplate: '<ol class="feed">{entries}</ol>',
       entryTemplate: '<li class="post"><a href="{url}"><span class="post-date">{formatted_date}</span>{title}</a></li>',
