@@ -8,7 +8,7 @@ describe Gravatar do
     end
 
     it 'should generate the url that will get the gravatar' do
-      expect(gravatar.url).to eq("http://www.gravatar.com/avatar/cb8419c1d471d55fbca0d63d1fb2b6ac?d=retro&s=134")
+      expect(gravatar.url).to eq("https://www.gravatar.com/avatar/cb8419c1d471d55fbca0d63d1fb2b6ac?d=retro&s=134")
     end
   end
 end
