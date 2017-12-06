@@ -10,6 +10,6 @@ class Gravatar
   end
 
   def url
-    "http://www.gravatar.com/avatar/#{hash}?d=retro&s=134"
+    "https://www.gravatar.com/avatar/#{hash}?d=retro&s=134"
   end
 end
