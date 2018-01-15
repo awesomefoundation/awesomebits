@@ -1,4 +1,4 @@
-atom_feed(language: I18n.locale) do |feed|
+atom_feed(language: I18n.locale, "xmlns:awesome" => "http://www.awesomefoundation.org/") do |feed|
   feed.title t('feed.title')
   feed.updated @projects[0].updated_at unless @projects.empty?
 
@@ -15,7 +15,7 @@ atom_feed(language: I18n.locale) do |feed|
         author.name project.name
       end
 
-      entry.awesomefoundation do |awesome|
+      entry.tag!("awesome:details") do |awesome|
         awesome.project do |p|
           p.name project.title
           p.url  !project.url.blank? ? project.url : nil
