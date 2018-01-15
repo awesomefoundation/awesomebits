@@ -35,8 +35,4 @@ module ApplicationHelper
 
     tag :meta, options.merge(:content => content_for?(content_tag) ? content_for(content_tag) : content)
   end
-
-  def nil_if_blank(str)
-    str.blank? ? nil : str
-  end
 end
