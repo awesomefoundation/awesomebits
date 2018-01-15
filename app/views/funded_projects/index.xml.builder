@@ -14,6 +14,19 @@ atom_feed(language: I18n.locale) do |feed|
       entry.author do |author|
         author.name project.name
       end
+
+      entry.awesomefoundation do |awesome|
+        awesome.project do |p|
+          p.name project.title
+          p.url  !project.url.blank? ? project.url : nil
+        end
+
+        awesome.chapter do |chapter|
+          chapter.country project.chapter.country
+          chapter.name    project.chapter.name
+          chapter.url     chapter_url(project.chapter)
+        end
+      end
     end
   end
 end
