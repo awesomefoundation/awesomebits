@@ -35,5 +35,4 @@ module ApplicationHelper
 
     tag :meta, options.merge(:content => content_for?(content_tag) ? content_for(content_tag) : content)
   end
-
 end
