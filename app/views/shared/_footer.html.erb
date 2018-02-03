@@ -2,14 +2,18 @@
   <p>
     <%= link_to t("layouts.application.about_contact"), about_us_path %>
     <%= link_to t("layouts.application.faq"), faq_path %>
+
+    <%= link_to content_tag("i", nil, :class => "icon-twitter", :title => t("word.twitter")), "https://twitter.com/awesomefound", :target => "_blank" %>
+    <%= link_to content_tag("i", nil, :class => "icon-facebook", :title => t("word.facebook")), "https://www.facebook.com/awesomefoundation", :target => "_blank" %>
+
     <% if signed_in? -%>
       <%= link_to t("layouts.application.sign-out"), sign_out_path, :method => :delete %>
     <% else -%>
       <%= link_to t("layouts.application.sign-in"), sign_in_path %>
     <% end -%>
+  </p>
 
-    <span>·</span>
-
+  <p>
     <%= link_to "Български", params.merge(:locale => "bg") %>
     <%= link_to "English", params.merge(:locale => "en") %>
     <%= link_to "Español", params.merge(:locale => "es") %>
@@ -17,10 +21,4 @@
     <%= link_to "Português", params.merge(:locale => "pt") %>
     <%= link_to "Русский", params.merge(:locale => "ru") %>
   </p>
-
-  <ol class="social-links">
-    <li><%= link_to "", "https://twitter.com/awesomefound", :class => :twitter %></li>
-    <li><%= link_to "", "https://www.facebook.com/awesomefoundation", :class => :facebook %></li>
-    <li><%= link_to "", "http://blog.awesomefoundation.org", :class => :blog %></li>
-  </ol>
 </footer>

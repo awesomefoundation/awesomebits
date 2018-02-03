@@ -8,6 +8,8 @@ pt:
       funding: "%B %Y"
   word:
     inactive: Inativo
+    twitter: Twitter
+    facebook: Facebook
   flash:
     permissions:
       must-be-logged-in: Você deve estar autenticado.
