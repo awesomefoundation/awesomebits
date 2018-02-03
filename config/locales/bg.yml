@@ -8,6 +8,8 @@ bg:
       funding: "%B %Y"
   word:
     inactive: Неактивен
+    twitter: Twitter
+    facebook: Facebook
   flash:
     permissions:
       must-be-logged-in: Влезте в профила си.

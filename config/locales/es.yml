@@ -8,6 +8,8 @@ es:
       funding: "%B %Y"
   word:
     inactive: Inactivo
+    twitter: Twitter
+    facebook: Facebook
   flash:
     permissions:
       must-be-logged-in: Debes estar conectado.
