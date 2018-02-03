@@ -1,0 +1,270 @@
+bg:
+  number:
+    delimiter: ","
+    separator: "."
+  date:
+    formats:
+      default: "%Y-%m-%d"
+      funding: "%B %Y"
+  word:
+    inactive: Неактивен
+  flash:
+    permissions:
+      must-be-logged-in: Влезте в профила си.
+      must-be-admin: Трябва да сте админ.
+      cannot-remove-user: Не може да премахнете този потребител.
+      must-be-dean-or-admin: Трябва да сте админ или декан, за да влезнете.
+      must-have-chapter:  Акаунта ви не е свързан с никой епизод.
+      cannot-view-finalists: "Не можете да видите това." 
+      cannot-invite: "Нямате право да каните други."
+      cannot-modify-account: "Намате право да променяте акаунта"
+      cannot-mark-winner:  "Не можете да маркирате този победител"
+    votes:
+      already-voted: "Вече гласувахте за този проект"
+      already-deleted: "Този глас е изтрит"
+    applications:
+      thanks:  "Благодарим, че кандидатствахте!"
+      error: "Имаше проблем с изпращането на апликацията:"
+    acceptances:
+      cannot: "Неуспешно приемане на поканата"
+    projects:
+      hide-reason-required: Трабва да индикирате защо скривате проект
+  layouts:
+    application:
+      main-header: The Awesome Foundation
+      apply: Кандидатсвай
+      dashboard: Дашборд
+      blog: Блог
+      chapters: Епизоди
+      chapter_header: Awesome навсякъде!
+      home: Начало
+      about_us: За нас
+      about_contact: За нас & Контакти 
+      faq: FAQ
+      want_to_help: Участвай      
+      sign-out: Изход
+      sign-in: Вход
+    sidebar:
+      projects: Проекти
+      finalists: Финалисти
+      trustees: Awesome пазители
+      members: Членове
+      create-chapter: Създай Епизод
+      invite-trustee: Покани Пазител
+      edit-profile: Редактирай Профил
+      edit-chapter-profile: Редактирай Профил на Епизод
+      view-all-users: Виж всички Потребители
+      trustee-resources: Ресурси за Пазители
+  home:
+    index:
+      title: Спомагаме разпръскването на страхотност из вселената, 1000 лева по 1000 лева.
+      by: "От %{name}"
+      what:
+        header: Търсиш средства?
+        body-html: "Имаш шантава, брилянтна идея, за която ти трябва финансиране? Ние даваме<strong>единичен  грант от 1,000 лева всеки месец</strong>.  Не може да е по-лесно! Твоята идея си е само твоя. Ние не искаме дял от нея. Просто искаме да ти помогнем да я реализираш!"
+      call-to-action: андидатсвайте сега за грант от Awesome фондацията!
+      who:
+        header: Awesome е навсякъде!
+        body: Awesome фондацията е разрастващо се, глобално общество посветено на разпръскване на страхотност из вселената. Създадена през дългото лято на 2009 в Бостън, Фондацията раздава микрогрантове, на Awesome проекти и техните създатели. Всеки клон наричаме “Епизод”. Той е напълно автономен, средствата се събират от независимо  организирали се “Пазители”, който дават своя принос в кеш, чекове или златни дублони.
+      news:
+        header: Awesome Новини!
+        recent: Последни блог постове
+        events: Предстоящи събития
+      funding-html: "<em class='funding'>$%{amount}</em> Подкрепен"
+      winner-count-html: "<em class='winners'>%{amount}</em> подкрепени проекти"
+      chapter-count-html: "<em class='chapters'>%{count}</em> Епизоди"
+      country-count-html: "<em class='countries'>%{count}</em> Държави"
+  chapters:
+    index:
+      title: Awesome е Навсякъде
+      show_active_chapters: Покажете Само Активни Епизоди
+      show_inactive_chapters: Покажете Неактивни Епизоди
+    show:
+      edit: Редактирайте Епизод
+      recent_winners: Последно Спечелили Проекти
+      see_more: Вижте Повече Awesomeness
+      byline: "От %{name}"
+      trustees:
+        header: Запознайте се с Пазителите
+        about: За Нас
+        news: "%{name} Новини"
+        photo-alt-text: "Снимка на %{name}"
+      apply-for-grant: Кандидатствайте За Грант
+      inactive-chapter: Този епизод е неактивен в момента
+      inactive-chapter-reason: Неактивен епизод е такъв, който не е давал грант повече от 6 месеца.I Ако се интересувате да рестартирате епизода, моля изпратете до <a href="mailto:join@awesomefoundation.org">contact us</a>.
+    edit:
+      title: Коригирайте информацията за епизода
+    new:
+      title: Създайте нов епизод 
+  finalists:
+    index:
+      title: "Финалист за %{name}"
+      filter-button: Филтър
+      start-date: стартова дата
+      end-date: крайна дата
+      table:
+        title: Заглавие
+        id: ID
+        votes: Гласове
+  projects:
+    wait-for-uploads-to-complete: Моля, изчакайте качването на изображенията да приключи, преди да изпратите кандидатурата.   
+    project:
+      awesome: Awesome
+      delete: Изтрий този проект
+      see-the-rest: Виж останалите →
+      view-public-page: Виж публичната сраница →
+      edit: Редактирай Проект →
+      confirm-delete: Наистина ли искате да изтриете?
+      winner: "Спечелил %{name}"
+      about-me: "Малко за мен:"
+      about-project: "Моята идея:"
+      use-for-money: "Как ще използвам парите:"
+      not-answered: Не е отговорено
+      images: "Изображения:"
+      image: "Изображение #%{index}"
+      hide: Скрий
+      unhide: Покажи
+      consider-hiding: Проекта не е подходящ?
+      hide-reason: Защо това не е подходящо?
+      hidden-details: "Скрит на %{username} на %{hidden_at} защото %{reason}."
+      view-application: виж кандидатура
+      hiding-explanation: "Скриването на проект, скрива всички негови детайли от всички; заглавието и причината за скриването ще останат видими. Проекта лесно може да бъде показан отново."
+      unhiding-explanation: "Направете този проект видим за всички."
+    new:
+      title: Готов ли си да разпръскваш страхотност!?
+      description:  Просто попълни  информацията за теб и твоя проект.
+      apply: Кандидатствай
+    form:
+      save: Запази
+      image-notes: Първото изображение ще бъдекорица по подразбиране. Изображенията ще бъдат преоразмерени на%{dimensions}пиксела. Ако получите съобщение с грешка, моля опитайте да качите по-малки изображения или файлове.    
+      use-classic-uploader: Премини към classic uploader
+      use-default-uploader: Премини към default uploader
+    index:
+      filter-button: Филтър
+      search: търсене
+      start-date: начална дата 
+      end-date: крайна дата
+      short-list-filter: Моят кратък списък
+      title: "Проекти за %{name}"
+      export-projects: Експортирай Филтрирани
+      export-all-projects: Експортирай всички от Data Range          
+    public_show:
+      edit: Редактирай проект      
+      byline-html: "<span class='chapter-name'>%{chapter_name}</span> проект от <span class='project-starter'>%{submitter_name}</span>"
+      funder-html: "Подкрепен от <span class='chapter-name'>%{name}</span>"
+      submitted-to-html: "Кандидатурата е изпратена към <span class=''>%{name}</span>"
+      description:
+        header: Описание на проекта 
+      feed-title: Последни постове
+    show:
+      back-to: 'Назад към <a href="%{url}">%{name}</a>'
+  emails:
+    invitation:
+      subject: "Поканени сте в%{name} епизод на the Awesome Foundation!"
+    welcome:
+      subject: "Добре дошли в епизод %{name}!"
+    application:
+      subject: "Благодарим за кандидатурата!"
+  sessions:
+    new:
+      sign-in: Вход за Пазители и Декан
+      intro: T Тази секция от сайта е само за Пазители и Декани на  Awesome Foundation. Ако си Пазител и имаш нужда от достъп, моля свържи се с Декана на Епизода.
+      forgot-password: Забравена парола?
+  users:
+    user:
+      promote_to_dean: Повиши
+      demote_to_trustee: Понижи
+      demote_admin: Понижи
+      promote_admin: Повиши
+      error_dean_promotion: Повишаване в Декан неуспешно
+      error_dean_demotion:  Понижаване на Декан неуспешно
+      error_admin_promotion: Повишаване в Администратор неуспешно
+      error_admin_demotion: Понижаване на Администратнор нешуспешно
+      error_removing_user: Възникна грешка при премахване на потребител      
+      remove_from_chapter:  Премахни
+    edit:
+      title: Редактирай информация за потребител
+    index:
+      title: Awesome Foundation Членове
+      name: Име
+      email: Имейл
+      chapter: Епизод
+      role: Роля
+      remove: Премахни
+      dean: Декан
+      admin: Администратор
+  pages:
+    about_us:
+      title_tag: За Нас
+      meta_description: За Awesome Foundation
+      meta_keywords:
+    faq:
+      title_tag: FAQ
+      headline: Често Задавани Въпроси
+  simple_form:
+    labels:
+      project:
+        name: Твоето име
+        email: Email
+        phone: Телефон
+        title: Заглавие на Проекта
+        url: Сайт на Проекта
+        current_photos-html: "Изображения <span>(drag to re-order)</span>"
+        new_photos-html: "Качи изображения за твоя проект"
+        chapter_id: Изберете за кой Епизод кандидатствате  
+        rss_feed_url: Project RSS feed url
+        about_me: Кажете ни малко за себе си 
+        about_project: Разкажете ни за своя Awesome проект!
+        use_for_money: Как ще използвате гранта?
+        funded_on: Финансиран на
+        funded_description: Описание
+      chapter:
+        name: Име
+        slug: Име в URL
+        twitter_url: Twitter URL
+        facebook_url: Facebook URL
+        blog_url: Blog URL
+        rss_feed_url: RSS Feed URL
+        description: Описание
+        extra_question_1: Допълнителен въпрос 1
+        extra_question_2: Допълнителен въпрос 2
+        extra_question_3: Допълнителен въпрос 3
+        submission_response_email: Персонализиран Email Отговор
+        inactive: Този Епизод не е активен
+        submit: Изпрати
+        locale:  Език за %{slug}.awesomefoundation.org пренасочване
+      user:
+        first_name: Име
+        last_name: Фамилия
+        email: Email
+        bio: Bio
+        url: Website URL
+        twitter_username: Twitter username
+        facebook_url: Facebook URL
+        linkedin_url: LinkedIn URL
+        new_password: Нова парола
+        submit: Изпращане 
+        user_image: Снимка на потребителя
+    hints:
+      project:
+        funded_description: Видимо само на страницата с финансирани проекти
+        rss_feed_url: Линкове към постове от този фийд ще бъдат показани само на страницата с финансирани проекти  
+      user:
+        user_image: Задай профилма снимка на <a href="https://en.gravatar.com/site/signup/%{email}" target="_blank">gravatar.com</a> като използвате email адреса по-горе   
+      chapter:
+        submission_response_email: Този текст ще бъде включен в потвърждаващ имейл, който се изпраща на вашите кандидати  
+  activerecord:
+    errors:
+      models:
+        chapter:
+          attributes:
+            slug:
+              invalid: с малки букви и не може да съдържа разстояние   
+        project:
+          attributes:
+            url:
+              invalid: това не е валиден уебсайт
+  meta:
+    description: Спомагаме разпръскването на страхотност из вселената, 1000 лева по 1000 лева. .
+  feed:
+    title: Awesome Foundation - Проекти
