@@ -48,7 +48,6 @@ group :development, :test do
   gem "rspec-rails", "~> 3.6"
   gem "byebug"
   gem "sham_rack"
-  gem "tddium"
   gem "pry"
   gem "pry-nav"
   gem "evergreen", "~> 1.1.3", :require => "evergreen/rails"
