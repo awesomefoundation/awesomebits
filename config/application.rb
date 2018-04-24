@@ -74,6 +74,13 @@ module Awesomefoundation
     # Load middleware
     config.middleware.use Rack::Attack
 
+    # https://github.com/tobmatth/rack-ssl-enforcer
+    # Only force SSL for www since we don't have a wildcard SSL cert
+    # Do not enable HSTS yet
+    if ENV['FORCE_HTTPS']
+      config.middleware.insert_before ActionDispatch::Cookies, Rack::SslEnforcer, :only_hosts => /^(www)\./, :hsts => false
+    end
+
     if ENV['SITE_PASSWORD'].present?
       config.middleware.use Rack::Auth::Basic do |username, password|
         username == ENV['SITE_PASSWORD'] && password == ENV['SITE_PASSWORD']

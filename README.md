@@ -122,6 +122,19 @@ and password when prompted.
 SITE_PASSWORD=topsecret
 ```
 
+HTTPS
+-----
+
+The site can be forced to redirect users to https pages by setting the
+`FORCE_HTTPS` environment variable. By doing this, all traffic to the `www`
+subdomain will be forced to https.
+
+NOTE: We do not currently enforce HSTS in case there is a problem and we
+need to turn off https. This might change in the future.
+
+```shell
+FORCE_HTTPS=true
+```
 
 License
 -------
