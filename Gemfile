@@ -38,6 +38,7 @@ gem 's3_file_field'
 gem 'html_pipeline_rails'
 gem 'magnific-popup-rails'
 gem 'rack-attack'
+gem 'rack-ssl-enforcer'
 gem 'rollbar'
 
 group :development do
