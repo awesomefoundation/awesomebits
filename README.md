@@ -61,7 +61,7 @@ AWS_SECRET_ACCESS_KEY=YYY
 AWS_BUCKET=your-bucket-name
 ```
 
-Secure Token
+Secret Token
 ------------
 
 When deploying to production, the SECRET_TOKEN environment variable must
