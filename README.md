@@ -83,7 +83,7 @@ Constant COUNTRY_PRIORITY used to define an array of priority countries. This
 used in the Chapter Form to create quick access to popular countries; also used
 in CountrySorter model for sorting the chapters.
 
-Constant can be found in initializers file. /config/initializers/countries.rb
+Constant can be found in initializers file config/initializers/countries.rb
 
 
 Localization
@@ -154,7 +154,7 @@ FORCE_HTTPS=true
 License
 -------
 
-AwesomeBits is Copyright 2012-2017, Institute on Higher Awesome Studies
+AwesomeBits is Copyright 2012-2018, Institute on Higher Awesome Studies
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
