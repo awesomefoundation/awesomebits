@@ -64,7 +64,7 @@ AWS_BUCKET=your-bucket-name
 Secure Token
 ------------
 
-When deploying to production, the SECURE_TOKEN environment variable must
+When deploying to production, the SECRET_TOKEN environment variable must
 be set. This token only needs to be generated once and then stored in
 the environment variable, but it must be kept secret. This does not need
 to be set in development or test environments.
@@ -72,7 +72,7 @@ to be set in development or test environments.
 For a Heroku deployment, something like the following could be used:
 
 ```shell
-# heroku config:set SECURE_TOKEN=`rake secret`
+$ heroku config:set SECRET_TOKEN=`rake secret`
 ```
 
 
