@@ -6,7 +6,7 @@ class FinalistsController < ApplicationController
   include ApplicationHelper
 
   def index
-    @start_date, @end_date = extract_timeframe
+    @start_date, @end_date = extract_timeframe_for_chapter(@chapter)
     @projects = Project.
                   includes(:chapter).
                   voted_for_by_members_of(current_chapter).
