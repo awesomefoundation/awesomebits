@@ -87,6 +87,107 @@ body.chapters-show {
       }
     }
   }
+
+  .owl-dots-wrapper {
+    margin-top: 20px;
+
+    .owl-dots{
+      float: left;
+      width: 20%;
+      margin-left: 40%;
+      margin-right: 40%;
+    }
+
+    .owl-dots, .owl-nav {
+      text-align: center;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .owl-dots .owl-dot {
+      display: inline-block;
+      zoom: 1;
+    }
+
+    .owl-nav button.owl-next, .owl-nav button.owl-prev, button.owl-dot {
+      background: 0 0;
+      color: inherit;
+      border: none;
+      padding: 0!important;
+      font: inherit;
+    }
+
+    .owl-nav button.owl-next, .owl-nav button.owl-prev,  button.owl-dot {
+      background: 0 0;
+      color: inherit;
+      border: none;
+      padding: 0!important;
+      font: inherit;
+    }
+
+    .owl-dots .owl-dot.active span, .owl-dots .owl-dot:hover span {
+      background: #869791;
+    }
+
+    .owl-dots .owl-dot span {
+      width: 10px;
+      height: 10px;
+      margin: 5px 7px;
+      background: #D6D6D6;
+      display: block;
+      -webkit-backface-visibility: visible;
+      transition: opacity 0.2s ease;
+      border-radius: 30px;
+    }
+
+    .owl-nav button.owl-next, .owl-nav button.owl-prev, button.owl-dot {
+      background: 0 0;
+      color: inherit;
+      border: none;
+      padding: 0!important;
+      font: inherit;
+    }
+
+    .owl-dots .owl-dot {
+      display: inline-block;
+      zoom: 1;
+    }
+
+  }
+
+  .owl-carousel {
+    .project {
+      width: 410px !important;
+    }
+  }
+
+  .chapter-header-wrapper {
+    width: 90% !important;
+    .gallery-container{
+      position: relative;
+    }
+
+    .owl-nav {
+      display: none;
+    }
+  }
+
+
+  @media screen and (max-width:780px) {
+    .prev_button {
+      display:block !important;
+      background-image: url(arrow_left.png) !important;
+    }
+  }
+
+  @media only screen
+  and (min-device-width : 360px)
+  and (max-device-width : 640px){
+    .prev_button, .next_button{
+      background-color: #ff4b7e !important;
+      opacity: 1 !important;
+    }
+  }
+
 }
 
 .gallery-overflow-wrapper {

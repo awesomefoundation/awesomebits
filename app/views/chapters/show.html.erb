@@ -31,30 +31,29 @@
 
 
 <% unless @chapter.winning_projects.empty? %>
-
-  <section class="chapter-header-wrapper ">
-    <div class="gallery-container">
-      <section class="chapter-projects owl-carousel owl-theme">
-<% @chapter.winning_projects.each do |project| %>
+  <section class="chapter-header-wrapper owl-wrapper">
+     <section class="chapter-projects owl-carousel owl-theme">
+        <% @chapter.winning_projects.each do |project| %>
           <article class="project item" data-id="<%= project.id %>">
-<%= link_to project do %>
+            <%= link_to project do %>
               <div class="image-wrapper">
                 <div class="project-name">
                   <h2><%= project.title %></h2>
                   <span><%= t(".byline", :name => project.name) %> </span>
                   <span><%= l project.funded_on, :format => :funding %></span>
                 </div>
-<%= image_tag(project.primary_image.url(:index)) %>
+                <%= image_tag(project.primary_image.url(:index)) %>
               </div>
-<% end %>
+            <% end %>
           </article>
-<% end %>
+       <% end %>
       </section>
+    <div class="owl-dots-wrapper">
+      <div id="owl-dots" class="owl-dots"></div>
     </div>
     <a href="#" class="nav left prev_button"></a>
     <a href="#" class="nav right next_button"></a>
   </section>
-
 <% end %>
 
 
