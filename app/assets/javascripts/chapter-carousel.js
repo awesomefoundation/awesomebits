@@ -17,7 +17,7 @@ $(window).ready(function(){
      owl.owlCarousel({
        loop: false,
        nav: true,
-       margin:10,
+       margin: 10,
        autoWidth:true,
        dotsContainer: '.owl-dots-wrapper #owl-dots',
        responsive: {
