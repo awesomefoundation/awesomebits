@@ -11,6 +11,18 @@ header {
     margin-top: 10px;
     float: right;
   }
+  .prev-next-links {
+    margin-bottom: 5px;
+    overflow: overlay;
+
+    .prev-project {
+      float: left;
+    }
+
+    .next-project{
+      float: right;
+    }
+  }
 }
 
 header.project {
