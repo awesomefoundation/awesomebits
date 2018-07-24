@@ -171,23 +171,17 @@ body.chapters-show {
     }
   }
 
-
-  @media screen and (max-width:780px) {
-    .prev_button {
-      display:block !important;
-      background-image: url(arrow_left.png) !important;
-    }
-  }
-
   @media only screen
-  and (min-device-width : 360px)
+  and (min-device-width : 320px)
   and (max-device-width : 640px){
-    .prev_button, .next_button{
-      background-color: #ff4b7e !important;
-      opacity: 1 !important;
+    //.prev_button, .next_button{
+    //  background-color: #ff4b7e !important;
+    //  opacity: 1 !important;
+    //}
+    .chapter-header-wrapper {
+      width: 100% !important;
     }
   }
-
 }
 
 .gallery-overflow-wrapper {
