@@ -8,7 +8,6 @@ class ProjectsController < ApplicationController
   around_filter :set_time_zone, :only => [:index, :show]
 
   include ApplicationHelper
-  include ProjectNavHelper
 
   def index
     @start_date, @end_date = extract_timeframe
