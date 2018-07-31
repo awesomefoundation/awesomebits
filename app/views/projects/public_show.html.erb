@@ -3,10 +3,11 @@
 <% provide(:meta_image, image_url(@project.primary_image.url)) if @project.has_images? %>
 
 <header class="project">
-  <% if prev_project_id(@project) || next_project_id(@project) %>
+  <% prev_project, next_project = prev_project_id(@project), next_project_id(@project) %>
+  <% if prev_project || next_project %>
     <div class="prev-next-links">
-      <%= link_to 'Previous Project', project_path(prev_project_id(@project)), :class => 'prev-project' if prev_project_id(@project) %>
-      <%= link_to 'Next Project', project_path(next_project_id(@project)), :class => 'next-project' if next_project_id(@project) %>
+      <%= link_to t('.prev-project'), project_path(prev_project), :class => 'prev-project' if prev_project %>
+      <%= link_to t('.next-project'), project_path(next_project), :class => 'next-project' if next_project %>
     </div>
   <% end %>
   <% if can_manage_chapter?(@project.chapter) %>

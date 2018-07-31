@@ -158,6 +158,8 @@ fr:
       description:
         header: Description du Projet
       feed-title: Articles Récents
+      prev-project: Projet précédent
+      next-project: Le prochain projet
     show:
       back-to: 'Retour à <a href="%{url}">%{name}</a>'
   emails:

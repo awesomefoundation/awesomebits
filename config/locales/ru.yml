@@ -144,6 +144,8 @@ ru:
       description:
         header: Описание проекта
       feed-title: Недавние публикации
+      prev-project: Предыдущий проект
+      next-project: Следующий проект
     show:
       back-to: 'Назад к <a href="%{url}">%{name}</a>'
   emails:
