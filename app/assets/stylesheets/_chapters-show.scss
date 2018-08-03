@@ -156,7 +156,7 @@ body.chapters-show {
 
   .owl-carousel {
     .project {
-      width: 510px !important;
+      width: 500px !important;
     }
   }
 }
@@ -189,7 +189,7 @@ body.chapters-show {
     opacity: 0;
     position: absolute;
     @include transition((opacity, background-color), 0.2s, ease-out);
-    top: 90px;
+    top: 130px;
     width: 120px;
     z-index: 3;
 
@@ -226,7 +226,7 @@ body.chapters-show {
       float: left;
       margin: 0px;
       overflow: hidden;
-      width: 510px;
+      width: 500px;
 
       a {
         text-decoration: none;
