@@ -15,8 +15,8 @@ $ ->
 
   $(".owl-wrapper .left").click (e)->
     e.preventDefault()
-    $owl.trigger("next.owl")
+    $owl.trigger("prev.owl")
 
   $(".owl-wrapper .right").click (e)->
     e.preventDefault()
-    $owl.trigger("prev.owl")
+    $owl.trigger("next.owl")
