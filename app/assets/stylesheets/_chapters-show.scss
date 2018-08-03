@@ -170,18 +170,6 @@ body.chapters-show {
       display: none;
     }
   }
-
-  @media only screen
-  and (min-device-width : 320px)
-  and (max-device-width : 640px){
-    //.prev_button, .next_button{
-    //  background-color: #ff4b7e !important;
-    //  opacity: 1 !important;
-    //}
-    .chapter-header-wrapper {
-      width: 100% !important;
-    }
-  }
 }
 
 .gallery-overflow-wrapper {

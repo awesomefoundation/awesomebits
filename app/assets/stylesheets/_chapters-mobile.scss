@@ -1,0 +1,24 @@
+/**
+ * Base mobile styling to apply to all dashboard views
+ *
+ * The idea: two width cutoffs:
+ * $narrow = iPad portrait and narrower
+ * $phone = iPhone portrait and narrower
+ *
+ * The $phone cuttoff is particularly relevant for the main header nav
+ */
+$wide: 1060px;
+$narrow: 768px;
+$phone: 480px;
+
+@media all and (max-device-width: $narrow) {
+  .chapter-projects-next-button, .chapter-projects-prev-button {
+    display: none !important;
+  }
+}
+
+@media all and (max-device-width: $wide) {
+  .chapter-header-wrapper {
+    width: 100% !important;
+  }
+}
