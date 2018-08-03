@@ -8,5 +8,4 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require magnific-popup
-//= require owl.carousel
 //= require_tree .
