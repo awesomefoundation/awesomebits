@@ -11,7 +11,7 @@ $wide: 1060px;
 $narrow: 768px;
 $phone: 480px;
 
-@media all and (max-device-width: $narrow) {
+@media all and (max-device-width: $wide) {
   .chapter-projects-next-button, .chapter-projects-prev-button {
     display: none !important;
   }
@@ -20,5 +20,6 @@ $phone: 480px;
 @media all and (max-device-width: $wide) {
   .chapter-header-wrapper {
     width: 100% !important;
+    margin: 0;
   }
 }

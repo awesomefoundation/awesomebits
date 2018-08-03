@@ -159,17 +159,6 @@ body.chapters-show {
       width: 510px !important;
     }
   }
-
-  .chapter-header-wrapper {
-    width: 90% !important;
-    .gallery-container{
-      position: relative;
-    }
-
-    .owl-nav {
-      display: none;
-    }
-  }
 }
 
 .gallery-overflow-wrapper {
@@ -179,10 +168,10 @@ body.chapters-show {
 
 .chapter-header-wrapper {
   height: 300px;
-  margin: 0 auto;
+  margin: 0 0 0 auto;
   padding: 40px 0px 0px;
   position: relative;
-  width: 1020px;
+  width: 95%;
 
   &:hover {
     a.nav {
@@ -216,6 +205,7 @@ body.chapters-show {
     &.right {
       background-image: url("arrow_right.png");
       right: -60px;
+      margin-right: 5%;
     }
   }
 
@@ -287,6 +277,10 @@ body.chapters-show {
           max-width: 100%;
         }
       }
+    }
+
+    .owl-nav {
+      display: none;
     }
   }
 }
