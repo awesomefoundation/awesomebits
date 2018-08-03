@@ -3,8 +3,6 @@ db:
   environment:
     POSTGRES_USER: "postgres"
     POSTGRES_PASSWORD: "mysecretpassword"
-  ports:
-    - "5433:5432"
 web:
   build: .
   volumes:
