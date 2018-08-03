@@ -12,7 +12,7 @@ $narrow: 768px;
 $phone: 480px;
 
 @media all and (max-device-width: $wide) {
-  .chapter-projects-next-button, .chapter-projects-prev-button {
+  .owl-wrapper .left, .owl-wrapper .right {
     display: none !important;
   }
 }
