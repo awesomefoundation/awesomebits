@@ -15,6 +15,15 @@ header {
   .prev-next-links {
     margin-bottom: 5px;
 
+    a {
+      color: $pink;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
     .prev-project {
       float: left;
     }
