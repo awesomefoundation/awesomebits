@@ -1,32 +1,18 @@
 module ProjectNavHelper
+  def project_winning_siblings(project)
+    all_projects = chapter_winning_projects(project).to_a
+    project_index = all_projects.index { |obj| obj.id == project.id }
+    return [] unless project_index
 
-  def next_project_id(project)
-    return if is_last_project? project
+    prev_project = all_projects[project_index - 1] unless project_index.zero?
+    next_project = all_projects[project_index + 1] unless project_index == all_projects.count - 1
 
-    all_keys = chapter_projects_keys(project)
-    index_next_project = all_keys.index(project.id) + 1
-    all_keys[index_next_project]
-  end
-
-  def prev_project_id(project)
-    return if is_first_project? project
-
-    all_keys = chapter_projects_keys(project)
-    index_prev_project = all_keys.index(project.id) - 1
-    all_keys[index_prev_project]
+    [prev_project, next_project]
   end
 
   private
 
-  def chapter_projects_keys(project)
-    project.chapter.projects.order('funded_on DESC').pluck(:id)
-  end
-
-  def is_last_project?(project)
-    chapter_projects_keys(project).last == project.id
-  end
-
-  def is_first_project?(project)
-    chapter_projects_keys(project).first == project.id
+  def chapter_winning_projects(project)
+    project.chapter.winning_projects.order('funded_on DESC')
   end
 end
