@@ -2,42 +2,48 @@ require 'spec_helper'
 require 'date'
 
 describe ProjectNavHelper do
-
-  context 'next_link' do
+  describe '#project_winning_siblings' do
     let(:chapter) { FactoryGirl.create :chapter, :name => 'Test chapter' }
     let!(:project) { FactoryGirl.create :project, :chapter => chapter, :funded_on => Date.today + 1 }
 
-    it 'A single project can not have a reference to the following' do
-      expect(helper.next_project_id project).to be_nil
+    it 'returns no siblings for single project' do
+      expect(helper.project_winning_siblings(project).compact).to be_empty
     end
 
-    it 'The first project has a link next_project for the 2nd project' do
-      second_project = FactoryGirl.create :project, :chapter => chapter, :funded_on => Date.today
-      expect(helper.next_project_id project).to eq(second_project.id)
+    it 'returns no siblings for not winning project' do
+      not_winning_project = FactoryGirl.create :project, :chapter => chapter
+      expect(helper.project_winning_siblings(not_winning_project).compact).to be_empty
     end
 
-    it 'The last project can not have the following' do
+    it 'does not include not winning projects as siblings' do
+      not_winning_projects = FactoryGirl.create_list :project, 2, :chapter => chapter
+      expect(helper.project_winning_siblings(project).compact).to be_empty
+    end
+
+    it 'returns Next sibling for first project' do
       second_project = FactoryGirl.create :project, :chapter => chapter, :funded_on => Date.today
-      expect(helper.next_project_id second_project).to be_nil
+      expect(helper.project_winning_siblings(project).last).to eq(second_project)
+    end
+
+    it 'returns Prev sibling for second project' do
+      second_project = FactoryGirl.create :project, :chapter => chapter, :funded_on => Date.today
+      expect(helper.project_winning_siblings(second_project).first).to eq(project)
+    end
+
+    it 'returns no Next sibling for last project' do
+      second_project = FactoryGirl.create :project, :chapter => chapter, :funded_on => Date.today
+      expect(helper.project_winning_siblings(second_project).last).to be_nil
+    end
+
+    it 'returns no Prev sibling for first project' do
+      second_project = FactoryGirl.create :project, :chapter => chapter, :funded_on => Date.today
+      expect(helper.project_winning_siblings(project).first).to be_nil
+    end
+
+    it 'returns Prev, Next siblings' do
+      second_project = FactoryGirl.create :project, :chapter => chapter, :funded_on => Date.today
+      third_project  = FactoryGirl.create :project, :chapter => chapter, :funded_on => Date.today - 1
+      expect(helper.project_winning_siblings(second_project)).to eq([project, third_project])
     end
   end
-
-  context 'prev_link' do
-    let(:chapter) { FactoryGirl.create :chapter, :name => 'Test chapter' }
-    let!(:project) { FactoryGirl.create :project, :chapter => chapter, :funded_on => Date.today + 1 }
-
-    it 'A single project can not have a link to the previous one' do
-      expect(helper.prev_project_id project).to be_nil
-    end
-
-    it 'The second project has a link prev_project for the 1st project' do
-      second_project = FactoryGirl.create :project, :chapter => chapter, :funded_on => Date.today
-      expect(helper.prev_project_id second_project).to eq(project.id)
-    end
-
-    it 'The first project can not have prev_project links' do
-      expect(helper.prev_project_id project).to be_nil
-    end
-  end
-
 end
