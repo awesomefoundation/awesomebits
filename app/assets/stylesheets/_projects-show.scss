@@ -14,7 +14,6 @@ header {
   
   .prev-next-links {
     margin-bottom: 5px;
-    overflow: overlay;
 
     .prev-project {
       float: left;
@@ -22,6 +21,12 @@ header {
 
     .next-project{
       float: right;
+    }
+
+    &:after {
+      content: '';
+      display: block;
+      clear: both;
     }
   }
 }
