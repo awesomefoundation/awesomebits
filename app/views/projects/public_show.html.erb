@@ -9,19 +9,20 @@
   <h1><%= @project.title %></h1>
 </header>
 
- <section class="project-gallery" id="project-gallery">
-   <ul class="viewport">
-     <% @project.display_images.reverse_each do |image| %>
-       <li class="piece image-wrapper"> <%= image_tag(image.url(:main)) %> </li>
-     <% end %>
-   </ul>
-   <% if @project.display_images.count > 1 %>
-     <div class="arrows">
-       <a class="arrow left"></a>
-       <a class="arrow right"></a>
-     </div>
-   <% end %>
-   </section>
+<section class="project-gallery" id="project-gallery">
+  <div class="fotorama" data-width="100%" data-ratio="1000/500" data-nav="thumbs" data-arrows="false" data-allowfullscreen="true">
+    <% @project.display_images.reverse_each do |image| %>
+      <%= image_tag(image.url) %>
+    <% end %>
+  </div>
+  </div>
+  <% if @project.display_images.count > 1 %>
+    <div class="arrows">
+      <a class="arrow left"></a>
+      <a class="arrow right"></a>
+    </div>
+  <% end %>
+</section>
 
 <section class="project-details">
   <section class="meta-data">
@@ -100,7 +101,7 @@
 <%= content_for :javascript do %>
   <%= javascript_tag do %>
     $(document).ready(function(){
-      Slideshow("#project-gallery .piece").run();
+      //$("#project-gallery").fotorama();
     });
   <% end %>
 <% end %>
