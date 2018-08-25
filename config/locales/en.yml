@@ -132,6 +132,7 @@ en:
       view-application: view application
       hiding-explanation: "Hiding a project will hide its details from everyone; the title and why it was hidden will still be visible, and it can be easily unhidden."
       unhiding-explanation: "Restore this project so everyone will be able to see it again."
+
     new:
       title: Are you ready to get Awesome!?
       description: Just fill out the application below with information about yourself and the details of your project.
@@ -158,6 +159,8 @@ en:
       description:
         header: Project Description
       feed-title: Recent Posts
+      prev-project: Previous Project
+      next-project: Next Project
     show:
       back-to: 'Back to <a href="%{url}">%{name}</a>'
   emails:

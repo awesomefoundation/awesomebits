@@ -11,6 +11,33 @@ header {
     margin-top: 10px;
     float: right;
   }
+  
+  .prev-next-links {
+    margin-bottom: 5px;
+
+    a {
+      color: $pink;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .prev-project {
+      float: left;
+    }
+
+    .next-project{
+      float: right;
+    }
+
+    &:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+  }
 }
 
 header.project {

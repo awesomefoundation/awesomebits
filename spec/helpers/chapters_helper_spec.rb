@@ -11,7 +11,7 @@ describe ChaptersHelper, '#can_manage_chapter?' do
     expect(helper.can_manage_chapter?(chapter)).to eq(true)
   end
 
-  it 'checks if un-authorized user can manage a chapter ' do
+  it 'checks if un-authorized user can manage a chapter' do
     helper.stubs(:current_user).returns(nil)
     expect(helper.can_manage_chapter?(chapter)).to eq(false)
   end

@@ -158,6 +158,8 @@ bg:
       description:
         header: Описание на проекта 
       feed-title: Последни постове
+      prev-project: Предишен проект
+      next-project: Следващият проект
     show:
       back-to: 'Назад към <a href="%{url}">%{name}</a>'
   emails:

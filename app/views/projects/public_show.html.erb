@@ -3,6 +3,13 @@
 <% provide(:meta_image, image_url(@project.primary_image.url)) if @project.has_images? %>
 
 <header class="project">
+  <% prev_project, next_project = project_winning_siblings(@project) %>
+  <% if prev_project || next_project %>
+    <div class="prev-next-links">
+      <%= link_to t('.prev-project'), prev_project, :class => 'prev-project' if prev_project %>
+      <%= link_to t('.next-project'), next_project, :class => 'next-project' if next_project %>
+    </div>
+  <% end %>
   <% if can_manage_chapter?(@project.chapter) %>
     <%= link_to t(".edit"), edit_project_path(@project), :class => 'edit-project' %>
   <% end %>
