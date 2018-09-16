@@ -89,13 +89,12 @@ body.chapters-show {
   }
 
   .owl-dots-wrapper {
+    @extend .clearfix;
     margin-top: 20px;
 
     .owl-dots{
       float: left;
-      width: 20%;
-      margin-left: 40%;
-      margin-right: 40%;
+      width: 100%;
     }
 
     .owl-dots, .owl-nav {
