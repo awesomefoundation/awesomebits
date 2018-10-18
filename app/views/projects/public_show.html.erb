@@ -46,7 +46,7 @@
 
   <section class="project-description">
     <% if @project.winner? %>
-      <%= markdown @project.funded_description %>
+      <%= markdown @project.funded_description, :link_attributes => { :target => "_blank" }, :hard_wrap => true %>
 
     <% else %>
       <h2><%= t ".description.header" %></h2>
