@@ -60,11 +60,11 @@
     <% end %>
 
     <h3><%= I18n.t(".about-project", scope: "projects.project") %></h3>
-    <%= markdown project.about_project, :link_attributes => { :target => "_blank" } %>
+    <%= markdown project.about_project, :link_attributes => { :target => "_blank" }, :hard_wrap => true %>
     <h3><%= I18n.t(".use-for-money", scope: "projects.project") %></h3>
-    <%= markdown project.use_for_money, :link_attributes => { :target => "_blank" } %>
+    <%= markdown project.use_for_money, :link_attributes => { :target => "_blank" }, :hard_wrap => true %>
     <h3><%= I18n.t(".about-me", scope: "projects.project") %></h3>
-    <%= markdown project.about_me, :link_attributes => { :target => "_blank" } %>
+    <%= markdown project.about_me, :link_attributes => { :target => "_blank" }, :hard_wrap => true %>
 
     <% 1.upto(Chapter::EXTRA_QUESTIONS_COUNT) do |num| -%>
       <% if project.extra_question(num).present? %>
