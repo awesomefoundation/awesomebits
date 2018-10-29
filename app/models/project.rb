@@ -6,6 +6,7 @@ class Project < ActiveRecord::Base
   has_many :votes
   has_many :users, :through => :votes
   has_many :photos, :order => "photos.sort_order asc, photos.id asc"
+  has_many :real_photos, :order => "photos.sort_order asc, photos.id asc", :conditions => proc { Photo.arel_table[:image_content_type].matches('image/%') }, :class_name => "Photo"
 
   attr_accessible :name, :title, :url, :email, :phone, :about_me, :about_project,
                   :chapter_id, :extra_question_1, :extra_question_2, :extra_question_3,
@@ -169,10 +170,10 @@ class Project < ActiveRecord::Base
   end
 
   def display_images
-    if photos.real_images.empty?
+    if real_photos.empty?
       [Photo.new]
     else
-      photos.real_images
+      real_photos
     end
   end
 
