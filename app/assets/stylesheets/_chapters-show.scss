@@ -70,19 +70,19 @@ body.chapters-show {
         }
 
         &.twitter {
-          background: url("twitter.png");
+          background: url('twitter.png');
         }
 
         &.facebook {
-          background: url("fb.png");
+          background: url('fb.png');
         }
 
         &.email {
-          background: url("mail.png");
+          background: url('mail.png');
         }
 
         &.blog {
-          background: url("blog-2.png");
+          background: url('blog-2.png');
         }
       }
     }
@@ -177,12 +177,12 @@ body.chapters-show {
     }
 
     &.owl-nav-left {
-      background-image: url("arrow_left.png") !important;
+      background-image: url('arrow_left.png');
       left: -60px;
     }
 
     &.owl-nav-right {
-      background-image: url("arrow_right.png") !important;;
+      background-image: url('arrow_right.png');
       right: -60px;
       margin-right: 5%;
     }
