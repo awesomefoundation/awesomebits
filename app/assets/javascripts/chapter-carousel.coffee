@@ -2,11 +2,14 @@ $ ->
   $owl = $(".chapter-projects")
 
   $owl.owlCarousel
-    loop:           false,
-    nav:            true,
-    margin:         10,
-    autoWidth:      true,
-    dotsContainer:  ".owl-dots-wrapper #owl-dots",
+    loop:               false,
+    nav:                true,
+    navContainerClass:  "owl-nav-round",
+    navText:            ["", ""]
+    navClass:           ["owl-nav-left", "owl-nav-right"],
+    margin:             10,
+    autoWidth:          true,
+    dotsContainer:      ".owl-dots-wrapper #owl-dots",
     responsive:
       0:    {items: 2},
       600:  {items: 2},
