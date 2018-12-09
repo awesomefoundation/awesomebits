@@ -161,13 +161,14 @@ body.chapters-show {
     background: rgba(0,0,0, 0.6);
     background-position: center center;
     background-repeat: no-repeat;
+    border: 0;
     @include border-radius(60px);
     display: block;
     height: 120px;
     opacity: 0;
     position: absolute;
     @include transition((opacity, background-color), 0.2s, ease-out);
-    top: 130px;
+    top: 90px;
     width: 120px;
     z-index: 3;
 
