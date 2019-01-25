@@ -203,10 +203,19 @@ body.chapters-show {
     position: relative;
     top: 0px;
 
+    // make slides (display: inline-block) stack horizontally before the carousel is on
+    white-space: nowrap;
+    overflow: hidden;
+
+    &.owl-loaded {
+      // when the carousel is on, reset overflow: hidden added to hide off screen slides
+      overflow: visible !important;
+    }
+
     .project {
+      @include inline-block;
       background: transparent;
       height: auto;
-      float: left;
       margin: 0px;
       overflow: hidden;
       width: 500px;
