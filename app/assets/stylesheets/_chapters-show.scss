@@ -70,21 +70,71 @@ body.chapters-show {
         }
 
         &.twitter {
-          background: url("twitter.png");
+          background: url('twitter.png');
         }
 
         &.facebook {
-          background: url("fb.png");
+          background: url('fb.png');
         }
 
         &.email {
-          background: url("mail.png");
+          background: url('mail.png');
         }
 
         &.blog {
-          background: url("blog-2.png");
+          background: url('blog-2.png');
         }
       }
+    }
+  }
+
+  .owl-dots-wrapper {
+    @extend .clearfix;
+    margin-top: 20px;
+
+    .owl-dots{
+      float: left;
+      width: 100%;
+    }
+
+    .owl-dots, .owl-nav-round {
+      text-align: center;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .owl-dots .owl-dot {
+      display: inline-block;
+      zoom: 1;
+    }
+
+    button.owl-dot {
+      background: 0 0;
+      color: inherit;
+      border: none;
+      padding: 0!important;
+      font: inherit;
+    }
+
+    .owl-dots .owl-dot.active span, .owl-dots .owl-dot:hover span {
+      background: #869791;
+    }
+
+    .owl-dots .owl-dot span {
+      width: 10px;
+      height: 10px;
+      margin: 5px 7px;
+      background: #D6D6D6;
+      display: block;
+      -webkit-backface-visibility: visible;
+      transition: opacity 0.2s ease;
+      border-radius: 30px;
+    }
+
+  }
+
+  .owl-carousel {
+    .project {
+      width: 500px !important;
     }
   }
 }
@@ -96,21 +146,22 @@ body.chapters-show {
 
 .chapter-header-wrapper {
   height: 300px;
-  margin: 0 auto;
+  margin: 0 0 0 auto;
   padding: 40px 0px 0px;
   position: relative;
-  width: 1020px;
+  width: 95%;
 
   &:hover {
-    a.nav {
+    .owl-nav-round button {
       opacity: 1;
     }
   }
 
-  a.nav {
+  .owl-nav-round button {
     background: rgba(0,0,0, 0.6);
     background-position: center center;
     background-repeat: no-repeat;
+    border: 0;
     @include border-radius(60px);
     display: block;
     height: 120px;
@@ -125,14 +176,19 @@ body.chapters-show {
       background-color: rgba($pink, 1);
     }
 
-    &.left {
-      background-image: url("arrow_left.png");
+    &.owl-nav-left {
+      background-image: url('arrow_left.png');
       left: -60px;
     }
 
-    &.right {
-      background-image: url("arrow_right.png");
+    &.owl-nav-right {
+      background-image: url('arrow_right.png');
       right: -60px;
+      margin-right: 5%;
+    }
+
+    &.disabled {
+      display: none;
     }
   }
 
@@ -147,13 +203,22 @@ body.chapters-show {
     position: relative;
     top: 0px;
 
+    // make slides (display: inline-block) stack horizontally before the carousel is on
+    white-space: nowrap;
+    overflow: hidden;
+
+    &.owl-loaded {
+      // when the carousel is on, reset overflow: hidden added to hide off screen slides
+      overflow: visible !important;
+    }
+
     .project {
+      @include inline-block;
       background: transparent;
       height: auto;
-      float: left;
       margin: 0px;
       overflow: hidden;
-      width: 510px;
+      width: 500px;
 
       a {
         text-decoration: none;
@@ -161,7 +226,6 @@ body.chapters-show {
 
       .image-wrapper {
         height: 100%;
-        margin: 0px 5px;
         overflow: hidden;
         position: relative;
         text-decoration: none;

@@ -29,12 +29,10 @@
 </header>
 
 <% unless @chapter.winning_projects.empty? %>
-<div class="gallery-overflow-wrapper">
-  <section class="chapter-header-wrapper jThumbnailScroller">
-    <div class="gallery-container jTscrollerContainer">
-      <section class="chapter-projects jTscroller">
+  <section class="chapter-header-wrapper owl-wrapper">
+     <section class="chapter-projects owl-carousel owl-theme">
         <% @chapter.winning_projects.each do |project| %>
-          <article class="project" data-id="<%= project.id %>">
+          <article class="project item" data-id="<%= project.id %>">
             <%= link_to project do %>
               <div class="image-wrapper">
                 <div class="project-name">
@@ -46,13 +44,12 @@
               </div>
             <% end %>
           </article>
-        <% end %>
+       <% end %>
       </section>
+    <div class="owl-dots-wrapper">
+      <div id="owl-dots" class="owl-dots"></div>
     </div>
-    <a href="#" class="nav left jTscrollerPrevButton"></a>
-    <a href="#" class="nav right jTscrollerNextButton"></a>
   </section>
-</div>
 <% end %>
 
 <section class="chapter-info">
