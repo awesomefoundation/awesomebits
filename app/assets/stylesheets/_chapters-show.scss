@@ -147,7 +147,7 @@ body.chapters-show {
 .chapter-header-wrapper {
   height: 300px;
   margin: 0 0 0 auto;
-  padding: 40px 0px 0px;
+  padding: 40px 0px 20px;
   position: relative;
   width: 95%;
 
@@ -183,7 +183,7 @@ body.chapters-show {
 
     &.owl-nav-right {
       background-image: url('arrow_right.png');
-      right: -60px;
+      right: -55px;
       margin-right: 5%;
     }
 
