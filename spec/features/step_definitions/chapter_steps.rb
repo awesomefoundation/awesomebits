@@ -28,6 +28,10 @@ step 'there is a chapter in the system' do
   @current_chapter = FactoryGirl.create(:chapter, :rss_feed_url => Rails.root.join('spec', 'support', 'feed.xml').to_s)
 end
 
+step 'the chapter has trustees hidden' do
+  @current_chapter.update_attribute(:hide_trustees, true)
+end
+
 step 'there is an inactive chapter in the system' do
   @current_chapter = FactoryGirl.create(:inactive_chapter)
 end
