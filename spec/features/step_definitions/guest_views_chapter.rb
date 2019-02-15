@@ -13,3 +13,7 @@ step 'I should see the trustees' do
     page.should have_selector(".trustee-details h3", :text => "#{trustee.first_name} #{trustee.last_name}")
   end
 end
+
+step 'I should not see the trustees' do
+  expect(page).to_not have_selector('.trustees')
+end

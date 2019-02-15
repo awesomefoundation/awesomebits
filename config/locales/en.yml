@@ -258,6 +258,7 @@ en:
         user_image: Set your user image at <a href="https://en.gravatar.com/site/signup/%{email}" target="_blank">gravatar.com</a> using your email address above
       chapter:
         submission_response_email: This text will be included in the confirmation emails sent to your grant applicants
+        hide_trustees: Prevent the trustee list from being displayed on the public chapter page
   activerecord:
     errors:
       models:

@@ -67,7 +67,7 @@
     <% end %>
   </section>
 
-  <% if @chapter.users.present? %>
+  <% if !@chapter.hide_trustees? && @chapter.users.present? %>
   <h2><%= t(".trustees.header") %></h2>
   <section class="trustees">
     <ol>
