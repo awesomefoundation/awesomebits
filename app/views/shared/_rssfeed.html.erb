@@ -8,8 +8,8 @@
       entryTemplate: '<li class="post"><a href="{url}"><span class="post-date">{formatted_date}</span>{title}</a></li>',
       tokens: {
         formatted_date: function(entry, tokens) {
-          date = Date.parse(tokens.date) || Date.now();
-            return date.toString('yyyy-MM-dd');
+          date = (new Date(tokens.date)) || Date.now();
+          return date.toString('yyyy-MM-dd');
         }
       }
     }
