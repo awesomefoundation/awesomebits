@@ -14,10 +14,15 @@ describe Chapter do
 
   context '.country_count' do
     let!(:chapter1){ FactoryGirl.create(:chapter, :country => "United States") }
-    let!(:chapter2){ FactoryGirl.create(:chapter, :country => "BBB") }
+    let!(:chapter2){ FactoryGirl.create(:chapter, :country => "Canada") }
     let!(:chapter3){ FactoryGirl.create(:chapter, :country => "United States") }
     it 'returns the number of unique countries we have chapters in' do
-      expect(Chapter.country_count).to eq("2")
+      expect(Chapter.country_count).to eq(2)
+    end
+
+    it 'ignores "Worldwide" chapters' do
+      FactoryGirl.create(:chapter, :country => "Worldwide")
+      expect(Chapter.country_count).to eq(2)
     end
   end
 

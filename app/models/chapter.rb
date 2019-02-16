@@ -41,7 +41,7 @@ EOT
   end
 
   def self.country_count
-    select("count(distinct country) as country_count").first.country_count
+    where(arel_table[:country].not_eq("Worldwide")).select(:country).uniq.count
   end
 
   def self.visitable
