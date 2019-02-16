@@ -46,6 +46,7 @@ fr:
       want_to_help: Participer
       sign-out: Déconnexion
       sign-in: Connexion
+  shared:
     sidebar:
       projects: Projets
       finalists: Finalistes
@@ -57,6 +58,7 @@ fr:
       edit-chapter-profile: Editer la Branche
       view-all-users: Voir tous les utilisateurs
       trustee-resources: Ressources Donateur
+      admin: Administrateur
   home:
     index:
       title: Rendre l'univers génial, 1.000€ à la fois.

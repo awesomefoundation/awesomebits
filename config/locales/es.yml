@@ -46,6 +46,7 @@ es:
       want_to_help: Participa
       sign-out: Salir
       sign-in: Iniciar
+  shared:
     sidebar:
       projects: Proyectos
       finalists: Finalistas
@@ -57,6 +58,7 @@ es:
       edit-chapter-profile: Editar el perfil del capítulo
       view-all-users: Ver a todos los usuarios
       trustee-resources: Recursos para los administradores
+      admin: Administrador
   home:
     index:
       title: promoviendo el interés por lo impresionante en el universo, $1,000 a la vez.
