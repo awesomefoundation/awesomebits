@@ -7,7 +7,7 @@
 </section>
 
 <section class="applications">
-  <h1><%= t "projects.index.title", :name => @project.chapter.name %></h1>
+  <h1><%= t "projects.index.title", :name => @project.chapter.name, :count => 1 %></h1>
 
   <p>
     <%= raw t ".back-to", :name => @project.chapter.name, :url => chapter_projects_path(@project.chapter) %>
