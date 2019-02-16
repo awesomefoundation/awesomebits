@@ -147,7 +147,9 @@ fr:
       start-date: date de début
       end-date: date de fin
       short-list-filter: Ma short-list
-      title: "Projets pour %{name}"
+      title:
+        one: "%{count} Projet pour %{name}"
+        other: "%{count} Projets pour %{name}"
       export-projects: Exporter le filtre
       export-all-projects: Exporter toute la période
     public_show:

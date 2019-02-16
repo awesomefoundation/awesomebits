@@ -147,7 +147,9 @@ pt:
       start-date: data inicial
       end-date: data final
       short-list-filter: Marcados por mim
-      title: "Projetos do capítulo %{name}"
+      title:
+        one: "%{count} Projeto do capítulo %{name}"
+        other: "%{count} Projetos do capítulo %{name}"
       export-projects: Exportar Filtrados
       export-all-projects: Exportar Todos do Período
     public_show:

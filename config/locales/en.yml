@@ -148,7 +148,9 @@ en:
       start-date: start date
       end-date: end date
       short-list-filter: My short-list
-      title: "Projects for %{name}"
+      title:
+        one: "%{count} Project for %{name}"
+        other: "%{count} Projects for %{name}"
       export-projects: Export Filtered
       export-all-projects: Export All From Date Range
     public_show:

@@ -147,7 +147,9 @@ bg:
       start-date: начална дата 
       end-date: крайна дата
       short-list-filter: Моят кратък списък
-      title: "Проекти за %{name}"
+      title:
+        one: "%{count} Проект за %{name}"
+        other: "%{count} Проекти за %{name}"
       export-projects: Експортирай Филтрирани
       export-all-projects: Експортирай всички от Data Range          
     public_show:

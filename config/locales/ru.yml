@@ -133,7 +133,9 @@ ru:
       start-date: дата начала
       end-date: дата окончания
       short-list-filter: Мой список кандидатов
-      title: "Проекты в %{name}"
+      title:
+        one: "%{count} Проект в %{name}"
+        other: "%{count} Проекты в %{name}"
       export-projects: Экспортировать отфильтрованные
       export-all-projects: Экспортировать всё в указанном периоде
     public_show:
