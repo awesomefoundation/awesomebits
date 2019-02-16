@@ -37,7 +37,7 @@ class Project < ActiveRecord::Base
   self.mailer = ProjectMailer
 
   # specify the default fields on which full text search will be performed
-  extend Searchable(:name, :title, :about_me, :about_project, :use_for_money,
+  extend Searchable(:name, :title, :email, :about_me, :about_project, :use_for_money,
                     :extra_answer_1, :extra_answer_2, :extra_answer_3)
 
   def self.winner_count
