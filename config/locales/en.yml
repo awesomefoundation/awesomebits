@@ -228,6 +228,7 @@ en:
         slug: Name in the URL
         twitter_url: Twitter URL
         facebook_url: Facebook URL
+        instagram_url: Instagram URL
         blog_url: Blog URL
         rss_feed_url: RSS Feed URL
         description: Description

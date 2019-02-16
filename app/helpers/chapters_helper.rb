@@ -40,6 +40,10 @@ module ChaptersHelper
     link_if_not_blank(chapter.twitter_url, "external twitter")
   end
 
+  def instagram_link(chapter)
+    link_if_not_blank(chapter.instagram_url, "external instagram")
+  end
+
   def about_class(chapter)
     chapter.rss_feed_url.present? ? "half" : ""
   end

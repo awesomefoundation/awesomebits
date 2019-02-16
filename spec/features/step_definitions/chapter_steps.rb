@@ -7,6 +7,7 @@ step 'I create a new chapter' do
   fill_in("Blog URL", :with => "http://twitter.com/awesomefound")
   fill_in("RSS Feed URL", :with => "http://awesomefoundation.org/blog/feed/")
   fill_in("Description", :with => "http://twitter.com/awesomefound")
+  fill_in("Instagram URL", :with => "https://www.instagram.com/awesomefound/")
   select("United States", :from => "Country", match: :first)
   click_button("Create Chapter")
 end
@@ -92,10 +93,12 @@ step 'I edit a chapter' do
   @new_email_address = "new@example.com"
   @new_blog_url = "http://blog.com/awesomefound"
   @new_rss_feed_url = "http://rss.com/awesomefound"
+  @new_instagram_url = "https://instagram.com/newlyawesome"
   @new_description = "This is a description of the chapter."
   fill_in("chapter_name",   :with => @new_chapter_name)
   fill_in("Twitter URL",    :with => @new_twitter_url)
   fill_in("Facebook URL",   :with => @new_facebook_url)
+  fill_in("Instagram URL",  :with => @new_instagram_url)
   fill_in("Email Address",  :with => @new_email_address)
   fill_in("Blog URL",       :with => @new_blog_url)
   fill_in("RSS Feed URL",   :with => @new_rss_feed_url)
@@ -107,6 +110,7 @@ step 'I should see the updated chapter' do
   expect(page).to have_css("h1:contains('#{@new_chapter_name}')")
   expect(page).to have_css("a.twitter[href='#{@new_twitter_url}']")
   expect(page).to have_css("a.facebook[href='#{@new_facebook_url}']")
+  expect(page).to have_css("a.instagram[href='#{@new_instagram_url}']")
   expect(page).to have_css("a.email[href='mailto:#{@new_email_address}']")
   expect(page).to have_css("a.blog[href='#{@new_blog_url}']")
   expect(page).to have_css("article.rss-feed[data-feed-url='#{@new_rss_feed_url}']")
