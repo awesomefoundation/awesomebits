@@ -226,10 +226,6 @@ en:
       chapter:
         name: Name
         slug: Name in the URL
-        twitter_url: Twitter URL
-        facebook_url: Facebook URL
-        instagram_url: Instagram URL
-        blog_url: Blog URL
         rss_feed_url: RSS Feed URL
         description: Description
         extra_question_1: Extra question 1
@@ -261,6 +257,12 @@ en:
         submission_response_email: This text will be included in the confirmation emails sent to your grant applicants
         hide_trustees: Prevent the trustee list from being displayed on the public chapter page
   activerecord:
+    attributes:
+      chapter:
+        twitter_url: Twitter URL
+        facebook_url: Facebook URL
+        instagram_url: Instagram URL
+        blog_url: Blog URL
     errors:
       models:
         chapter:
