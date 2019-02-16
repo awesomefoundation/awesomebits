@@ -46,6 +46,7 @@ bg:
       want_to_help: Участвай      
       sign-out: Изход
       sign-in: Вход
+  shared:
     sidebar:
       projects: Проекти
       finalists: Финалисти
@@ -57,6 +58,7 @@ bg:
       edit-chapter-profile: Редактирай Профил на Епизод
       view-all-users: Виж всички Потребители
       trustee-resources: Ресурси за Пазители
+      admin: Администратор
   home:
     index:
       title: Спомагаме разпръскването на страхотност из вселената, 1000 лева по 1000 лева.

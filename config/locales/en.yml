@@ -46,6 +46,7 @@ en:
       want_to_help: Get Involved
       sign-out: Sign out
       sign-in: Sign in
+  shared:
     sidebar:
       projects: Projects
       finalists: Finalists
@@ -57,6 +58,7 @@ en:
       edit-chapter-profile: Edit Chapter Profile
       view-all-users: View all Users
       trustee-resources: Trustee Resources
+      admin: Admin
   home:
     index:
       title: Forwarding the interest of Awesome in the universe, $1,000 at a time.

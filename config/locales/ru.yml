@@ -43,6 +43,7 @@ ru:
       want_to_help: Принять участие
       sign-out: Выйти
       sign-in: Авторизироваться
+  shared:
     sidebar:
       projects: Проекты
       finalists: Финалисты
@@ -54,6 +55,7 @@ ru:
       edit-chapter-profile: Изменить описание раздела
       view-all-users: Просмотреть всех пользователей
       trustee-resources: Ресурсы попечителя
+      admin: Администратор
   home:
     index:
       title: Мы направляем капитал на потрясающие идеи Вселенной - $1000 за раз.
