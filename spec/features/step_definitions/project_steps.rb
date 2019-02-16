@@ -253,6 +253,6 @@ step 'I should see no feed for the project' do
   page.should have_no_css(".project-rss")
 end
 
-step 'I should be on the projects index for the chapter I am a dean for' do
-  expect(page.current_path).to eq(chapter_projects_path(@current_chapter))
+step 'I should be on the project page for that project' do
+  expect(page.current_path).to eq(chapter_project_path(@current_chapter, @winning_project))
 end

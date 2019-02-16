@@ -116,10 +116,11 @@ en:
       awesome: Awesome
       delete: Delete this project
       see-the-rest: See the rest →
-      view-public-page: View the public page →
-      edit: Edit Project →
+      view-public-page: View the public page
+      edit: Edit project
       confirm-delete: Really delete this?
       winner: "Winner for %{name}"
+      edit-winner: Update winning project details
       about-me: "A little about me:"
       about-project: "Here's my idea:"
       use-for-money: "How I will use the money:"
