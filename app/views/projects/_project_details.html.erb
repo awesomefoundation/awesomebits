@@ -1,6 +1,6 @@
 <header>
   <div class="title">
-    <%= link_to project.title, chapter_project_path(project.chapter, project), :class => "title" %></a>
+    <%= link_to project.title, chapter_project_path(project.chapter, project), :class => "title" %>
 
     <% unless FEATURE_NEW_ACTIONS? %>
     <% if current_user.can_mark_winner?(project) %>
