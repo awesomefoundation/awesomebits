@@ -21,7 +21,9 @@
     <% end %>
 
     <div class="public-link">
-      <%= link_to I18n.t(".view-public-page", scope: "projects.project"), project_path(project), :target => "blank" %>
+      <%= link_to project_path(project), :target => "blank" do %>
+        <%= I18n.t(".view-public-page", scope: "projects.project") %> <i class="icon-ok-sign"></i>
+      <% end %>
     </div>
   </div>
 
