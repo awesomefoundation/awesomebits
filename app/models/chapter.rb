@@ -10,7 +10,7 @@ Thanks for your interest in the Awesome Foundation!
 EOT
 
   extend FriendlyId
-  friendly_id :name, use: :slugged
+  friendly_id :name, use: [:slugged, :finders]
 
   has_many :roles
   has_many :users, :through => :roles

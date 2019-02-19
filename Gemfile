@@ -2,35 +2,27 @@ source 'http://rubygems.org'
 
 ruby '2.1.7'
 
-gem 'rails', '3.2.22.5'
+gem 'rails', '4.0.13'
 gem 'rake', '< 11.0'
-
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails'
-  gem 'coffee-rails'
-  gem 'uglifier'
-end
 
 gem 'country_select'
 gem 'pg', '~> 0.13.2'
-gem 'texticle', '~> 2.0', :require => 'texticle/rails'
+gem 'textacular', '~> 4.0', :require => 'textacular/searchable'
 gem 'jquery-rails', '~> 2.1.0'
-gem 'clearance', '~> 0.16.2'
+gem 'clearance', '~> 1.0'
 gem 'thin'
 gem 'sass'
-gem 'high_voltage'
+gem 'high_voltage', '~> 1'
 gem 'paperclip', '~> 3.0.3'
 gem 'fog'
 gem 'formtastic'
 gem 'flutie'
 gem 'bourbon', '~> 1.4.0'
 gem 'copycopter_client'
-gem "simple_form", "~> 2.1.3"
+gem "simple_form", "~> 3.0"
 gem 'nokogiri'
 gem "will_paginate", "~> 3.0.3"
-gem "friendly_id", "~> 4.0.9"
+gem "friendly_id", "~> 5.2.4"
 gem 'redcarpet'
 gem 'honeypot-captcha'
 gem 'sucker_punch', '~> 1.0'
@@ -40,6 +32,12 @@ gem 'magnific-popup-rails'
 gem 'rack-attack'
 gem 'rack-ssl-enforcer'
 gem 'rollbar'
+gem 'sass-rails', '~> 4.0'
+gem 'coffee-rails'
+gem 'uglifier'
+
+# TODO transition to strong parameters
+gem 'protected_attributes'
 
 group :development do
   gem "letter_opener"

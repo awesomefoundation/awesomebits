@@ -1,4 +1,4 @@
-require "texticle/searchable"
+require "textacular/searchable"
 
 class Project < ActiveRecord::Base
   belongs_to :chapter
@@ -81,7 +81,7 @@ class Project < ActiveRecord::Base
 
   def self.recent_winners
     subquery = select("DISTINCT ON (chapter_id) projects.*").where("projects.funded_on IS NOT NULL").order(:chapter_id, :funded_on).reverse_order
-    select("*").from("(#{subquery.to_sql}) AS distinct_chapters").order(:funded_on).reverse_order
+    select("*").from("(#{subquery.to_sql}) AS distinct_chapters").order("distinct_chapters.funded_on").reverse_order
   end
 
   def self.csv_export(projects)
