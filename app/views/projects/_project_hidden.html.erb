@@ -9,14 +9,6 @@
     <% if project.winner? %>
       · <%= link_to I18n.t(".view-public-page", scope: "projects.project"), project_path(project), :target => "blank" %>
     <% end %>
-
-    <% unless FEATURE_NEW_ACTIONS? %>
-    <% if current_user.can_edit_project?(project) -%>
-      <span class="spam">
-        <%= link_to I18n.t(".delete", scope: "projects.project"), project_path(project), :method => :delete, :data => { :confirm => I18n.t(".confirm-delete", scope: "projects.project", scope: "projects.project") }, :class => 'delete-spam' %>
-      </span>
-    <% end -%>
-    <% end %>
   </section>
 
   <section class="contact">

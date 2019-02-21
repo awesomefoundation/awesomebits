@@ -256,3 +256,8 @@ end
 step 'I should be on the project page for that project' do
   expect(page.current_path).to eq(chapter_project_path(@current_chapter, @winning_project))
 end
+
+step 'I expand the project menu' do
+  project = page.find("article.project", match: :first)
+  project.find(".project-actions-toggle").click
+end

@@ -51,13 +51,4 @@ module ProjectsHelper
       uploader.to_s == "classic"
     end
   end
-
-  # TODO Remove this after it's been deployed to everyone
-  def FEATURE_NEW_ACTIONS?
-    if params[:feature_actions].present?
-      params[:feature_actions] == '1' || params[:feature_actions] == 'true'
-    else
-      ENV['FEATURE_ACTIONS'] == '1'
-    end
-  end
 end
