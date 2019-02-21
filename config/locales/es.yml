@@ -116,8 +116,8 @@ es:
       awesome: Impresionante
       delete: Elimina este proyecto
       see-the-rest: Vea el resto  →
-      view-public-page: Vea la página pública →
-      edit: Edita el proyecto →
+      view-public-page: Vea la página pública
+      edit: Edita el proyecto
       confirm-delete: ¿Realmente quieres borrar esto?
       winner: "Ganador para %{name}"
       about-me: "Un poco sobre mí:"

@@ -1,28 +1,53 @@
 <header>
   <div class="title">
-    <%= link_to project.title, chapter_project_path(project.chapter, project), :class => "title" %></a>
-    <% if current_user.can_mark_winner?(project) %>
-      <%= show_winner_buttons_for(project) %>
-    <% end %>
+    <%= link_to project.title, chapter_project_path(project.chapter, project), :class => "title" %>
+
     <% if project.shortlisted_by?(current_user) %>
       <%= link_to I18n.t(".awesome", scope: "projects.project"), project_vote_path(project), :method => :delete, :remote => true, :class => "short-list" %>
     <% else %>
       <%= link_to I18n.t(".awesome", scope: "projects.project"), project_vote_path(project), :method => :post, :remote => true, :class => "short-list" %>
     <% end %>
+
+    <% if display_project_actions?(current_user, project) %>
+      <%= link_to '<i class="icon-gear"></i>'.html_safe, "#", :class => "project-actions-toggle" %>
+    <% end %>
+
+    <div class="public-link">
+      <%= link_to project_path(project), :target => "blank" do %>
+        <%= I18n.t(".view-public-page", scope: "projects.project") %> <i class="icon-ok-sign"></i>
+      <% end %>
+    </div>
   </div>
 
   <section class="meta-data">
     <%= project.created_at %> (<%= project.chapter.name %>)
 
-    <% if project.winner? %>
-      · <%= link_to I18n.t(".view-public-page", scope: "projects.project"), project_path(project), :target => "blank" %>
-    <% end %>
+    <section class="project-actions">
+      <ul class="icons-ul">
+        <% if current_user.can_mark_winner?(project) %>
+          <%= show_winner_buttons_for(project, { :pre => "<li>", :post => "</li>", :link_prefix => '<i class="icon-li icon-forward"></i>' }) %>
 
-    <% if current_user.can_edit_project?(project) -%>
-      <span class="spam">
-        <%= link_to I18n.t(".delete", scope: "projects.project"), project_path(project), :method => :delete, :data => { :confirm => I18n.t("confirm-delete", scope: "projects.project") }, :class => 'delete-spam' %>
-      </span>
-    <% end -%>
+          <li class="edit-winner">
+            <%= link_to edit_project_path(project, :anchor => "winner") do %>
+              <i class="icon-li icon-ellipsis-horizontal"></i> <%= t("projects.project.edit-winner") %>
+            <% end %>
+          </li>
+        <% end %>
+
+        <% if current_user.can_edit_project?(project) %>
+          <li>
+            <%= link_to edit_project_path(project) do %>
+              <i class="icon-li icon-edit"></i> <%= t("projects.project.edit") %>
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to project_path(project), :method => :delete, :data => { :confirm => I18n.t("projects.project.confirm-delete") }, :class => "text-muted delete-spam" do %>
+              <i class="icon-li icon-remove"></i> <%= t("projects.project.delete") %>
+            <% end %>
+        <% end %>
+      </ul>
+    </section>
   </section>
 
   <section class="contact">
@@ -74,9 +99,4 @@
     <% end %>
   </div>
 
-  <div class="details-toggle">
-  </div>
-  <%= link_to edit_project_path(project), :class => "see-more" do %>
-    <p><%= I18n.t(".edit", scope: "projects.project") %></p>
-  <% end %>
 </section>

@@ -59,6 +59,7 @@
 </div>
 
 <% if current_user.can_edit_project?(project) %>
+  <a name="winner"></a>
   <div class="funded_on">
     <%= form.input :funded_on, :as => :string %>
   </div>

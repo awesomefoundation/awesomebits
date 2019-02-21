@@ -116,8 +116,8 @@ bg:
       awesome: Awesome
       delete: Изтрий този проект
       see-the-rest: Виж останалите →
-      view-public-page: Виж публичната сраница →
-      edit: Редактирай Проект →
+      view-public-page: Виж публичната сраница
+      edit: Редактирай Проект
       confirm-delete: Наистина ли искате да изтриете?
       winner: "Спечелил %{name}"
       about-me: "Малко за мен:"

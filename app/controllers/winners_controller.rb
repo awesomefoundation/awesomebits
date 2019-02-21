@@ -4,7 +4,7 @@ class WinnersController < ApplicationController
   def create
     @project = Project.find(params[:project_id])
     response_json = { winner: true, project_id: @project.id }
-    response_json[:location] = chapter_projects_url(winning_chapter) if winning_chapter != @project.chapter
+    response_json[:location] = chapter_project_url(winning_chapter, @project) if winning_chapter != @project.chapter
     @project.declare_winner!(winning_chapter)
     render :json => response_json
   end

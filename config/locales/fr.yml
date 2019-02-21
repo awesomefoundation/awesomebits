@@ -116,8 +116,8 @@ fr:
       awesome: Awesome
       delete: Supprimer ce projet
       see-the-rest: Voir le reste →
-      view-public-page: Voir la page publique →
-      edit: Editer le Projet →
+      view-public-page: Voir la page publique
+      edit: Editer le Projet
       confirm-delete: Confirmer la suppression ?
       winner: "Gagnant pour %{name}"
       about-me: "A propos de moi :"
