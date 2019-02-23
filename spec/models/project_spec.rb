@@ -135,8 +135,8 @@ describe Project do
     end
 
     it 'gives each returned project a #vote_count getter with its count' do
-      expect(Project.by_vote_count[0].vote_count).to eq("2")
-      expect(Project.by_vote_count[1].vote_count).to eq("1")
+      expect(Project.by_vote_count[0].vote_count).to eq(2)
+      expect(Project.by_vote_count[1].vote_count).to eq(1)
     end
   end
 
