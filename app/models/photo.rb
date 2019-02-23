@@ -3,7 +3,7 @@ class Photo < ActiveRecord::Base
 
   belongs_to :project
   has_attached_file :image,
-                    :default_url => "/assets/no-image-:style.png"
+                    default_url: "no-image-:style.png"
 
   attr_accessible :image, :direct_upload_url
 
