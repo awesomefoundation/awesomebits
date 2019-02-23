@@ -108,7 +108,7 @@ body.sessions-create {
     margin: 0 auto;
     width: grid-width(6);
 
-    div.text_field {
+    div.text_field, div.text-field, div.password-field {
       margin: 0 0 20px 0;
     }
   }
