@@ -9,7 +9,9 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-# Awesomefoundation::Application.config.secret_key_base = '(Rails.env.development? || Rails.env.test?) ?  "insecure_token_just_for_test_and_dev" : ENV.fetch('SECRET_KEY_BASE')
+# In environments other than test or development, the secret must be set
+# in the SECRET_KEY_BASE environment variable.
+Awesomefoundation::Application.config.secret_key_base = (Rails.env.development? || Rails.env.test?) ?  "insecure_token_just_for_test_and_dev" : ENV.fetch('SECRET_KEY_BASE')
 
 # TODO https://edgeguides.rubyonrails.org/upgrading_ruby_on_rails.html#action-pack
 # Remove this and uncomment secret_key_base above
