@@ -50,7 +50,7 @@ describe Project do
     let!(:any_project){ FactoryGirl.create(:project, :chapter => any_chapter) }
 
     it 'finds the projects a user has access to' do
-      projects = Project.visible_to(user).all
+      projects = Project.visible_to(user)
       expect(projects).to include(good_project)
       expect(projects).to include(any_project)
       expect(projects).not_to include(bad_project)
@@ -146,7 +146,7 @@ describe Project do
     let!(:new_winner) { FactoryGirl.create(:project, :funded_on => 1.days.ago) }
     let!(:ignored_winner) { FactoryGirl.create(:project, :funded_on => 1.week.ago, :chapter_id => new_winner.chapter_id) }
     it 'returns one project per chapter  by descending funding date' do
-      expect(Project.recent_winners.all).to eq([new_winner, old_winner])
+      expect(Project.recent_winners).to eq([new_winner, old_winner])
     end
   end
 

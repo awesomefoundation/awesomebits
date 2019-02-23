@@ -7,7 +7,7 @@ class ChaptersController < ApplicationController
   # everything gets crawled for SEO purposes. This can be rethought
   # in the future if needed.
   def index
-    @chapters = chapter_source.visitable.all.sort_by(&CountrySortCriteria.new(COUNTRY_PRIORITY))
+    @chapters = chapter_source.visitable.sort_by(&CountrySortCriteria.new(COUNTRY_PRIORITY))
   end
 
   def show
