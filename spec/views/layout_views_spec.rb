@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 describe 'layouts/application' do
+  before(:each) do
+    controller.request.path_parameters[:controller] = "home"
+    controller.request.path_parameters[:action] = "index"
+  end
+
   context 'the html tag' do
     it 'includes the default language locale' do
       view.stubs(:signed_in?).returns(false)

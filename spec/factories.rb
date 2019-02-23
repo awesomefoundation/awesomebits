@@ -18,6 +18,7 @@ FactoryGirl.define do
     last_name "Schmoe"
     email
     password "12345"
+    url "http://www.example.com/"
 
     factory :admin do
       admin true
