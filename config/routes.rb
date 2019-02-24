@@ -17,7 +17,7 @@ Awesomefoundation::Application.routes.draw do
     resource :password, :controller => 'clearance/passwords', :only => [:create, :edit, :update]
   end
 
-  scope "(:locale)", :locale => /bg|en|es|fr|pt|ru/ do
+  scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     resource  :session, controller: :sessions, only: [:new, :create, :destroy]
 
     get "sign_in",  :to => "sessions#new"

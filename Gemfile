@@ -2,11 +2,11 @@ source 'http://rubygems.org'
 
 ruby '2.1.7'
 
-gem 'rails', '4.1.16'
+gem 'rails', '4.2.11'
 gem 'rake', '< 11.0'
 
 gem 'country_select', '~> 1.1.3'
-gem 'pg', '~> 0.13.2'
+gem 'pg', '~> 0.20.0'
 gem 'textacular', '~> 4.0', :require => 'textacular/searchable'
 gem 'jquery-rails', '~> 2.1.0'
 gem 'clearance', '~> 1.5.0'
@@ -19,7 +19,7 @@ gem 'formtastic'
 gem 'flutie'
 gem 'bourbon', '~> 1.4.0'
 gem "simple_form", "~> 3.0"
-gem 'nokogiri', '~> 1.5.11'
+gem 'nokogiri', '~> 1.6.8.1'
 gem "will_paginate", "~> 3.0.3"
 gem "friendly_id", "~> 5.2.4"
 gem 'redcarpet'
@@ -40,10 +40,11 @@ gem 'protected_attributes'
 
 group :development do
   gem "letter_opener"
+  gem 'web-console', '~> 2.0'
 end
 
 group :development, :test do
-  gem "rspec-rails", "~> 3.6"
+  gem "rspec-rails", "~> 3.6.1"
   gem "byebug"
   gem "sham_rack"
   gem "pry"

@@ -34,7 +34,7 @@ describe 'layouts/application' do
 
       # Can't figure out why have_selector isn't working here
       I18n.available_locales.each do |locale|
-        expect(rendered).to include("hreflang=\"#{locale}\" rel=\"alternate\"")
+        expect(rendered).to include("rel=\"alternate\" hreflang=\"#{locale}\"")
       end
     end
   end

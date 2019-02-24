@@ -25,7 +25,7 @@ class Invitation < ActiveRecord::Base
                                :chapter => chapter)
 
     if factory.create
-      mailer.welcome_trustee(self).deliver
+      mailer.welcome_trustee(self).deliver_now
       self.invitee = factory.user
       self.accepted = true
       self.save
@@ -40,7 +40,7 @@ class Invitation < ActiveRecord::Base
   end
 
   def send_invitation
-    mailer.invite_trustee(self).deliver
+    mailer.invite_trustee(self).deliver_now
   end
 
   def ensure_inviter_can_invite_to_chapter

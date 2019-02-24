@@ -3,7 +3,7 @@ class ProjectMailerJob
 
   def perform(project)
     ActiveRecord::Base.connection_pool.with_connection do
-      project.mailer.new_application(project).deliver
+      project.mailer.new_application(project).deliver_now
     end
   end
 end

@@ -110,7 +110,7 @@ class Project < ActiveRecord::Base
   end
 
   def deliver_winning_email
-    mailer.winner(self).deliver
+    mailer.winner(self).deliver_now
   end
 
   def declare_winner!(new_chapter = nil)
