@@ -5,7 +5,7 @@ ruby '2.1.7'
 gem 'rails', '4.1.16'
 gem 'rake', '< 11.0'
 
-gem 'country_select', '~> 1'
+gem 'country_select', '~> 1.1.3'
 gem 'pg', '~> 0.13.2'
 gem 'textacular', '~> 4.0', :require => 'textacular/searchable'
 gem 'jquery-rails', '~> 2.1.0'
