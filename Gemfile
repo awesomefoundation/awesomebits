@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 ruby '2.1.7'
 
-gem 'rails', '4.0.13'
+gem 'rails', '4.1.16'
 gem 'rake', '< 11.0'
 
 gem 'country_select', '~> 1'
@@ -19,7 +19,7 @@ gem 'formtastic'
 gem 'flutie'
 gem 'bourbon', '~> 1.4.0'
 gem "simple_form", "~> 3.0"
-gem 'nokogiri'
+gem 'nokogiri', '~> 1.5.11'
 gem "will_paginate", "~> 3.0.3"
 gem "friendly_id", "~> 5.2.4"
 gem 'redcarpet'
