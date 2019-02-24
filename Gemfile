@@ -18,7 +18,6 @@ gem 'fog'
 gem 'formtastic'
 gem 'flutie'
 gem 'bourbon', '~> 1.4.0'
-gem 'copycopter_client'
 gem "simple_form", "~> 3.0"
 gem 'nokogiri'
 gem "will_paginate", "~> 3.0.3"
