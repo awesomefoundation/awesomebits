@@ -5,6 +5,10 @@ class Photo < ActiveRecord::Base
   has_attached_file :image,
                     default_url: "no-image-:style.png"
 
+  # Added when migrating to Paperclip 4.1 and since Paperclip
+  # is deprecated, we will handle content validations later
+  do_not_validate_attachment_file_type :image
+
   attr_accessible :image, :direct_upload_url
 
   after_create do
