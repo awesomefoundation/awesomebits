@@ -49,7 +49,6 @@ group :development, :test do
   gem "sham_rack"
   gem "pry"
   gem "pry-nav"
-  gem "evergreen", "~> 1.1.3", :require => "evergreen/rails"
   gem "dotenv-rails"
 end
 
