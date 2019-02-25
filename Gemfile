@@ -18,7 +18,6 @@ gem 'pg', '~> 0.13.2'
 gem 'texticle', '~> 2.0', :require => 'texticle/rails'
 gem 'jquery-rails', '~> 2.1.0'
 gem 'clearance', '~> 0.16.2'
-gem 'thin'
 gem 'sass'
 gem 'high_voltage'
 gem 'paperclip', '~> 3.0.3'
@@ -43,6 +42,7 @@ gem 'rollbar'
 
 group :development do
   gem "letter_opener"
+  gem 'thin'
 end
 
 group :development, :test do
