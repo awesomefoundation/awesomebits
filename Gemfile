@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.1.7'
+ruby '2.4.5'
 
 gem 'rails', '4.2.11'
 gem 'rake', '< 11.0'
@@ -13,13 +13,13 @@ gem 'clearance', '~> 1.5.0'
 gem 'sass'
 gem 'high_voltage', '~> 1'
 gem 'paperclip', '~> 4.1.1'
-gem 'fog'
+gem 'fog', '~> 1.41.0'
 gem 'formtastic'
 gem 'flutie'
 gem 'bourbon', '~> 1.4.0'
 gem "simple_form", "~> 3.0"
-gem 'nokogiri', '~> 1.6.8.1'
-gem "will_paginate", "~> 3.0.3"
+gem 'nokogiri', '~> 1.7.2'
+gem "will_paginate", "~> 3.1.6"
 gem "friendly_id", "~> 5.2.4"
 gem 'redcarpet'
 gem 'honeypot-captcha'
@@ -33,6 +33,7 @@ gem 'rollbar'
 gem 'sass-rails', '~> 4.0'
 gem 'coffee-rails'
 gem 'uglifier'
+gem 'xmlrpc'
 
 # TODO transition to strong parameters
 gem 'protected_attributes'
@@ -68,7 +69,7 @@ group :test do
 end
 
 group :staging, :production do
-  gem 'newrelic_rpm'
+  gem 'newrelic_rpm', '~> 3.18.1'
   gem 'sprockets-redirect'
   gem 'passenger'
   gem 'rails_12factor'
