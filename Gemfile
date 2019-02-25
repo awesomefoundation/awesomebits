@@ -10,7 +10,6 @@ gem 'pg', '~> 0.20.0'
 gem 'textacular', '~> 4.0', :require => 'textacular/searchable'
 gem 'jquery-rails', '~> 2.1.0'
 gem 'clearance', '~> 1.5.0'
-gem 'thin'
 gem 'sass'
 gem 'high_voltage', '~> 1'
 gem 'paperclip', '~> 4.1.1'
@@ -40,6 +39,7 @@ gem 'protected_attributes'
 
 group :development do
   gem "letter_opener"
+  gem 'thin'
   gem 'web-console', '~> 2.0'
 end
 
