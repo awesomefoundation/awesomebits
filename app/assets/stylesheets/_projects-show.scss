@@ -80,14 +80,14 @@ header.project {
     }
 
     &.left {
-      background-image: url("arrow_left.png");
+      background-image: image-url('arrow_left.png');
       background-position: center center;
       background-repeat: no-repeat;
       left: -60px;
     }
 
     &.right {
-      background-image: url("arrow_right.png");
+      background-image: image-url('arrow_right.png');
       background-position: center center;
       background-repeat: no-repeat;
       right: -60px;
