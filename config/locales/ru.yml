@@ -88,8 +88,8 @@ ru:
         about: О нас
         news: "%{name}, в новостях"
       apply-for-grant: Подать заявку на грант
-      inactive-chapter: This chapter is currently inactive.
-      inactive-chapter-reason: An inactive chapter is one that has not given a grant in six months. If you are interested in re-starting this chapter, please <a href="mailto:join@awesomefoundation.org">contact us</a>.
+      inactive-chapter: Этот филиал в настоящее время неактивен.
+      inactive-chapter-reason: Неактивный филиал, это тот филиал, которой не дал ни одного гранта в течение шести месяцев. Если вы заинтересованы в перезапуске этого филиала, пожалуйста,<a href="mailto:join@awesomefoundation.org">свяжитесь с нами тут</a>.
     edit:
       title: Изменить информацию о разделе
     new:
@@ -114,6 +114,7 @@ ru:
       edit: Редактировать проект
       confirm-delete: Вы уверены, что хотите удалить этот проект?
       winner: "Победитель %{name}"
+      edit-winner: Обновите детали победившего проекта
       about-me: "Немного обо мне:"
       about-project: "В чем состоит моя идея:"
       use-for-money: "На что я потрачу деньги:"
@@ -213,15 +214,14 @@ ru:
       chapter:
         name: Название
         slug: Название в URL
-        twitter_url: Twitter URL
-        facebook_url: Facebook URL
-        blog_url: URL блога
         rss_feed_url: URL RSS-рассылки
         description: Описание
         extra_question_1: Дополнительный вопрос №1
         extra_question_2: Дополнительный вопрос №2
         extra_question_3: Дополнительный вопрос №3
+        submission_response_email: Индивидуальный ответ по электронной почте
         submit: Отправить
+        locale: Язык для перенаправления %{slug}.awesomefoundation.org
       user:
         first_name: Имя
         last_name: Фамилия
@@ -240,7 +240,20 @@ ru:
         rss_feed_url: Ссылки на сообщения из этой ленты будут отображаться на странице проекта, получившего грант
       user:
         user_image: Установите Ваше изображение пользователя через <a href="https://en.gravatar.com/site/signup/%{email}" target="_blank">gravatar.com</a>, используя указанный Вами имейл
+      chapter:
+        submission_response_email: This text will be included in the confirmation emails sent to your grant applicants
+        hide_trustees: Prevent the trustee list from being displayed on the public chapter page
   activerecord:
+    attributes:
+      chapter:
+        twitter_url: Twitter URL
+        facebook_url: Facebook URL
+        instagram_url: Instagram URL
+        blog_url: URL блога
+        email_address: Адрес электронной почты
+        hide_trustees: Скрыть попечителей
+        country: Страна
+        time_zone: Часовой пояс
     errors:
       models:
         chapter:
@@ -249,3 +262,10 @@ ru:
               invalid: используйте только нижний регистр; не используйте пробелы
   meta:
     description: Мы направляем капитал на потрясающие идеи Вселенной - $1000 за раз.
+  will_paginate:
+    previous_label: "&#8592; Предыдущий"
+    next_label: "Следующий &#8594;"
+  helpers:
+    submit:
+      chapter:
+        update: Обновить филиал
