@@ -241,8 +241,8 @@ ru:
       user:
         user_image: Установите Ваше изображение пользователя через <a href="https://en.gravatar.com/site/signup/%{email}" target="_blank">gravatar.com</a>, используя указанный Вами имейл
       chapter:
-        submission_response_email: This text will be included in the confirmation emails sent to your grant applicants
-        hide_trustees: Prevent the trustee list from being displayed on the public chapter page
+        submission_response_email: Этот текст будет включен в электронное письмо с подтверждением, отправленное вашим заявителям
+        hide_trustees: Запретить отображение списка попечителей на общедоступной странице филиала
   activerecord:
     attributes:
       chapter:
