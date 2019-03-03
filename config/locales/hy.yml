@@ -1,0 +1,284 @@
+﻿hy:
+  number:
+    delimiter: ","
+    separator: "."
+  date:
+    formats:
+      default: "%d-%m-%Y"
+      funding: "%B %Y"
+  word:
+    inactive: Ոչ ակտիվ
+    twitter: Twitter
+    facebook: Facebook
+  flash:
+    permissions:
+      must-be-logged-in: "Դուք պետք է գրանցված լինեք:"
+      must-be-admin: "Դուք պետք է ադմինիստրատոր լինեք:"
+      cannot-remove-user: "Դուք իրավունք չունեք հեռացնել այս օգտատիրոջը:"
+      must-be-dean-or-admin: "Դուք պետք է ադմինիստրատոր կամ դեկան լինեք, որպեսզի մուտք գործեք այս էջ:"
+      must-have-chapter: "Ձեր օգտահաշիվը կապված չէ որևէ մասնաճյուղի հետ:"
+      cannot-view-finalists: "Դուք իրավունք չունեք տեսնել սա:"
+      cannot-invite: "Դուք իրավունք չունեք հրավիրելու այլոց:"
+      cannot-modify-account: "Դուք իրավունք չունեք փոխելու այս օգտահաշիվը:"
+      cannot-mark-winner: "Դուք իրավունք չունեք նշելու հաղթողին:"
+    votes:
+      already-voted: "Այս նախագծի համար արդեն քվեարկված է"
+      already-deleted: "Քվեն արդեն հեռացված է"
+    applications:
+      thanks: "Շնորհակալություն դիմելու համար:"
+      error: "Ձեր դիմումը սխալ է պարունակում:"
+    acceptances:
+      cannot: "Չի կարող ընդունել հրավերը"
+    projects:
+      hide-reason-required: "Դուք պետք է ներկայացնեք նախագիծը թաքցնելու պատճառը:"
+  layouts:
+    application:
+      main-header: Օսմ հիմնադրամ
+      apply: Դիմել
+      dashboard: Ցուցատախտակ
+      blog: Բլոգ
+      chapters: Մասնաճյուղեր
+      chapter_header: Օսմը ամենուր
+      home: Գլխավոր
+      about_us: Մեր մասին
+      about_contact: Կապ
+      faq: Հաճախ տրվող հարցեր
+      want_to_help: Ընդգրկվել
+      sign-out: Դուրս գալ
+      sign-in: Մուտք
+  shared:
+    sidebar:
+      projects: Նախագծեր
+      finalists: Ֆինալիստներ
+      trustees: Հոգաբարձուներ
+      members: Անդամներ
+      create-chapter: Ստեղծել մասնաճյուղ
+      invite-trustee: Հրավիրել հոգաբարձու
+      edit-profile: Խմբագրել իմ հաշիվը
+      edit-chapter-profile: Խմբագրել մասնաճյուղի հաշիվը
+      view-all-users: Բոլոր օգտատերերը
+      trustee-resources: Հոգաբարձուների Ռեսուրսներ
+      admin: Ադմին
+  home:
+    index:
+      title: "Առաջ մղելով հավեսով գաղափարներ տիեզերքում՝ $1,000 ամեն անգամ:"
+      by: "ըստ %{name}"
+      what:
+        header: "Միջոցների կարիք ունե՞ք:"
+        body-html: "Ունե՞ք խենթ և փայլուն գաղափար, որի իրագործման համար միջոցներ են պետք։ Մենք հատկացնում ենք <strong>$1,000 դրամաշնորհներ ամեն ամիս</strong>: Դա շատ պարզ է։ Ձեր գաղափարը հենց Ձերն է, և մենք որևէ մասնաբաժին չենք ակնկալում դրանում։ Մենք միայն ցանկանում ենք օգնել Ձեզ այն կյանքի կոչելու գործում։"
+      call-to-action: "Դիմեք հիմա Օսմ հիմնադրամի դրամաշնորհի համար:"
+      who:
+        header: "Օսմը ամենուր է:"
+        body: "Օսմ հիմնադրամը մշտապես աճող կառույց է աշխարհում՝ նվիրված հիանալի գաղափարների առաջ մղմանը տիեզերքում։ Այն ստեղծվել է 2009թ. ամառային երկար ու տոթ օրերին Բոստոնում: Հիմնադրամը հատկացնում է $1,000 դրամաշնորհներ հիանալի նախագծերին, առանց գլխացավանքի: Յուրաքանչյուր մասնաճյուղ լրիվ ինքնուրույն կառույց է, իսկ գումարը հավաքագրվում է տվյալ մասնաճյուղի ինքնակազմակերպվող հոգաբարձուների կողմից, և հատկացվում է հաղթողին կանխիկով, բանկային փոխանցմամբ կամ ոսկու սալիկներով։"
+      news:
+        header: Օսմ լուրեր
+        recent: Վերջին բլոգային գրառումները
+        events: Առաջիկա միջոցառումները
+      funding-html: "<em class='funding'>$%{amount}</em> ֆինանսավորվել է"
+      winner-count-html: "<em class='winners'>%{amount}</em> նախագիծ ֆինանսավորվել է"
+      chapter-count-html: "<em class='chapters'>%{count}</em> Մասնաճյուղեր"
+      country-count-html: "<em class='countries'>%{count}</em> Երկրներ"
+  chapters:
+    index:
+      title: Օսմը ամենուր է
+      show_active_chapters: Ցուցադրել միայն ակտիվ մասնաճյուղերը
+      show_inactive_chapters: Ցուցադրել ոչ ակտիվ մասնաճյուղերը
+    show:
+      edit: Խմբագրել մասնաճյուղը
+      recent_winners: Վերջերս ֆինանսավորված նախագծերը
+      see_more: Տեսնել ավելին
+      byline: "ըստ %{name}"
+      trustees:
+        header: Մեր Հոգաբարձուները
+        about: Մեր մասին
+        news: "%{name} նորությունը"
+        photo-alt-text: "%{name} նկարը"
+      apply-for-grant: Դիմել դրամաշնորհի համար
+      inactive-chapter: "Այս մասնաճյուղն ակտիվ չէ:"
+      inactive-chapter-reason: "Ոչ ակտիվ մասնաճյուղն այն է, որը դրամաշնորհ չի հատկացրել 6 ամիս շարունակ: Եթե Դուք հետաքրքրված եք վերագործարկել այս մասնաճյուղը, խնդրում ենք դիմել մեզ։"
+    edit:
+      title: Խմբագրել մասնաճյուղի տեղեկություններըն    
+    new:
+      title: Ստեղծել նոր մասնաճյուղ
+  finalists:
+    index:
+      title: "%{name} Ֆինալիստները"
+      filter-button: Զտել
+      start-date: Մեկնարկի օր
+      end-date: Ավարտի օր
+      table:
+        title: Անվանում
+        id: ID
+        votes: Քվեներ
+  projects:
+    wait-for-uploads-to-complete: "Խնդրում ենք սպասել լուսանկարի բեռնման ավարտին նախքան Ձեր դիմումը ուղարկելը:"
+    project:
+      awesome: Օսմ
+      delete: Ջնջել այս նախագիծը
+      see-the-rest: Դիտել մնացյալը →
+      view-public-page: Դիտել հրապարակային էջը
+      edit: Խմբագրել նախագիծը
+      confirm-delete: "Իրո՞ք ջնջել սա"
+      winner: "%{name} Հաղթողը"
+      edit-winner: Թարմացրեք հաղթող նախագծի մանրամասները
+      about-me: "Փոքր-ինչ իմ մասին:"
+      about-project: "Ահա իմ գաղափարը:"
+      use-for-money: "Ինչպես կօգտագործեմ գումարը:"
+      not-answered: Չպատասխանված
+      images: "Լուսանկարներ:"
+      image: "Լուսանկար #%{index}"
+      hide: Թաքցնել
+      unhide: Ցուցադրել
+      consider-hiding: "Անհամապատասխա՞ն նախագիծ"
+      hide-reason: "Ինչու՞ է այն անհամապատասխան"
+      hidden-details: "Թաքցված է %{username} կողմից %{hidden_at}, քանի որ %{reason}."
+      view-application: Դիտել դիմումը
+      hiding-explanation: "Այս կոճակը կթաքցնի նախագծի բոլոր մանրամասները յուրաքանչյուրից. վերնագիրն ու թաքցնելու պատճառը տեսանելի կլինեն, և նախագիծը կարող է հեշտորեն վերականգնվել:"
+      unhiding-explanation: "Վերականգնել այս նախագիծը, և բոլորը կարող են նորից տեսնել այն:"
+
+    new:
+      title: "Դուք պատրա՞ստ եք ստանալ Օսմ:"
+      description: "Լրացրեք դիմումը ստորև՝ Ձեր մասին տեղեկության և նախագծի վերաբերյալ մանրամասների հետ:"
+      apply: Դիմել
+    form:
+      save: Հիշել
+      image-notes: "Գլխավոր լուսանկարը նշվելու է որպես ետնանկար: Լուսանկարների չափերը կվերանայվեն %{dimensions} պիքսելի։ Եթե խնդիր ծագի, ապա խնդրում ենք կրկին փորձել ավելի քիչ քանակի կամ ծավալի ֆայլերով:"
+      use-classic-uploader: Անցնել դասական վերբեռնիչին
+      use-default-uploader: Անցնել հիմնական վերբեռնիչին
+    index:
+      filter-button: Զտել
+      search: որոնել
+      start-date: մեկնարկի օր
+      end-date: ավարտի օր
+      short-list-filter: Իմ սեղմ ցուցակը
+      title:
+        one: "%{count} նախագիծ %{name} համար"
+        other: "%{count} նախագիծ %{name} համար"
+      export-projects: Արտահանել զտվածը
+      export-all-projects: Արտահանել նշված ամսաթվի շրջանակից
+    public_show:
+      edit: Խմբագրել նախագիծ
+      byline-html: "<span class='chapter-name'>%{chapter_name}</span> նախագիծ՝ ստեղծված <span class='project-starter'>%{submitter_name}</span>"
+      funder-html: "Ֆինանսավորված <span class='chapter-name'>%{name}</span> կողմից"
+      submitted-to-html: "Նախագծի դիմումը ուղարկված <span class=''>%{name}</span>"
+      description:
+        header: Նախագծի նկարագրությունը
+      feed-title: Վերջին գրառումները
+      prev-project: Նախորդ Նախագիծը
+      next-project: Հաջորդ Նախագիծը
+    show:
+      back-to: 'Ետ դեպի <a href="%{url}">%{name}</a>'
+  emails:
+    invitation:
+      subject: "Դուք հրավիրվել եք Օսմ հիմնադրամի %{name} մասնաճյուղ"
+    welcome:
+      subject: "Բարի գալուստ Օսմ հիմնադրամի %{name} մասնաճյուղ"
+    application:
+      subject: "Շնորհակալություն դիմելու համար"
+      sessions:
+    new:
+      sign-in: Հոգաբարձուների և դեկանների համար մուտք
+      intro: "Կայքի այս բաժինը նախատեսված է միայն Օսմ հիմնադրամի հոգաբարձուների և դեկանների համար. Եթե Դուք հոգաբարձու եք և կարիք ունեք մուտք գործելու, խնդրում ենք կապվել Ձեր մասնաճյուղի դեկանի հետ:"
+      forgot-password: "Մոռացե՞լ եք Ձեր գաղտնաբառը"
+  users:
+    user:
+      promote_to_dean: Դարձնել դեկան
+      demote_to_trustee: Դարձնել հոգաբարձու
+      demote_admin: Դարձնել անդամ
+      promote_admin: Դարձնել ադմին
+      error_dean_promotion: Չի հաջողվել դարձնել դեկան
+      error_dean_demotion: Չի հաջողվել դարձնել հոգաբարձու
+      error_admin_promotion: Չի հաջողվել դարձնել անդամ
+      error_admin_demotion: Չի հաջողվել դարձնել ադմին
+      error_removing_user: Սխալ է արձանագրվել օգտատիրոջը հեռացնելիս
+      remove_from_chapter: Հեռացնել
+    edit:
+      title: Խմբագրել օգտատիրոջ տեղեկատվությունը
+    index:
+      title: Օսմ հիմնադրամի անդամներ
+      name: Անուն
+      email: Էլհասցե
+      chapter: Մասնաճյուղ
+      role: Դեր
+      remove: Հեռացնել
+      dean: Դեկան
+      admin: Ադմին
+  pages:
+    about_us:
+      title_tag: Մեր մասին
+      meta_description: Օսմ հիմնադրամի մասին
+      Meta_keywords: Հատուկ բառեր
+    faq:
+      title_tag: ՀՏՀ
+      headline: Հաճախ տրվող հարցեր
+  simple_form:
+    labels:
+      project:
+        name: Ձեր անունը
+        email: Էլհասցեն
+        phone: Հեռախոսահամարը
+        title: Նախագծի վերնագիրը
+        url: Նախագծի կայքը
+        current_photos-html: "Ընթացիկ լուսանկարներ <span>(ներբեռնել եւ վերադասավորել)</span>"
+        new_photos-html: "Վերբեռնել Ձեր նախագծին վերաբերող լուսանկարներ"
+        chapter_id: Ընտրեք մասնաճյուղը, որին դիմում եք
+        rss_feed_url: Նախագծի RSS ժապավենի հղումը
+        about_me: Փոքր-ինչ պատմեք Ձեր մասին
+        about_project: Պատմեք Ձեր հիանալի նախագծի մասին
+        use_for_money: Ինչպե՞ս եք օգտագործելու գումարը
+        funded_on: Ֆինանսավորված է
+        funded_description: Ֆինանսավորման նկարագրությունը
+      chapter:
+        name: Անուն
+        slug: Հղման մեջ անունը
+        rss_feed_url: RSS ժապավենի հղումը
+        description: Նկարագրությունը
+        extra_question_1: Հավելյալ հարց 1
+        extra_question_2: Հավելյալ հարց 2
+        extra_question_3: Հավելյալ հարց 3
+        submission_response_email: Դիմելուց հետո պատասխան նամակը
+        inactive: Այս մասնաճյուղը ակտիվ չէ
+        submit: Հաստատել
+        locale: "Ընտրել լեզուն %{slug}.awesomefoundation.org համար"
+      user:
+        first_name: Անուն
+        last_name: Ազգանուն
+        email: Էլհասցե
+        bio: Կենսագրություն
+        url: Կայքի հղում
+        twitter_username: Twitter օգտանուն
+        facebook_url: Facebook URL
+        linkedin_url: LinkedIn URL
+        new_password: Նոր գաղտնաբառ
+        submit: Հաստատել
+        user_image: Օգտատիրոջ լուսանկար
+    hints:
+      project:
+        funded_description: Տեսանելի է միայն ֆինանսավորված նախագծի էջում
+        rss_feed_url: Այս ժապավենի գրառումների հղումները կցուցադրվեն ֆինանսավորված նախագծի էջում
+      user:
+        user_image: 'Տեղադրեք Ձեր օգտահաշվի լուսանկարը <a href="https://en.gravatar.com/site/signup/%{email}" target="_blank">gravatar.com</a>ում կիրառելով Ձեր վերոնշյալ էլհասցեն:'
+      chapter:
+        submission_response_email: "Այս տեքստը կներառվի ուղարկվող հաստատման նամակում"
+        hide_trustees: Հոգաբարձուների ցուցակը ցույց չտալ մասնաճյուղի էջում
+  activerecord:
+    attributes:
+      chapter:
+        twitter_url: Twitter URL
+        facebook_url: Facebook URL
+        instagram_url: Instagram URL
+        blog_url: Բլոգի URL
+    errors:
+      models:
+        chapter:
+          attributes:
+            slug:
+              invalid: Պետք է լինի փոքրատառերով և չի կարող ներառել բացակներ
+        project:
+          attributes:
+            url:
+              invalid: Վավերացված կայք չէ
+  meta:
+    description: "Առաջ մղելով հավեսով գաղափարներ տիեզերքում՝ $1,000 ամեն անգամ:"
+  feed:
+    title: "Օսմ հիմնադրամ - Նախագծեր"
