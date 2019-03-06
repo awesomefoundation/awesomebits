@@ -120,6 +120,7 @@ bg:
       edit: Редактирай Проект
       confirm-delete: Наистина ли искате да изтриете?
       winner: "Спечелил %{name}"
+      edit-winner: Ъпдейт с подробности за победителя
       about-me: "Малко за мен:"
       about-project: "Моята идея:"
       use-for-money: "Как ще използвам парите:"
@@ -229,9 +230,6 @@ bg:
       chapter:
         name: Име
         slug: Име в URL
-        twitter_url: Twitter URL
-        facebook_url: Facebook URL
-        blog_url: Blog URL
         rss_feed_url: RSS Feed URL
         description: Описание
         extra_question_1: Допълнителен въпрос 1
@@ -261,7 +259,18 @@ bg:
         user_image: Задай профилма снимка на <a href="https://en.gravatar.com/site/signup/%{email}" target="_blank">gravatar.com</a> като използвате email адреса по-горе   
       chapter:
         submission_response_email: Този текст ще бъде включен в потвърждаващ имейл, който се изпраща на вашите кандидати  
+        hide_trustees: Скрий списък с пазители от главна страница
   activerecord:
+    attributes:
+      chapter:
+        twitter_url: Twitter URL
+        facebook_url: Facebook URL
+        instagram_url: Instagram URL
+        blog_url: URL на блога
+        email_address: Имейл
+        hide_trustees: Скрий пазители
+        country: Държава
+        time_zone: Часова зона
     errors:
       models:
         chapter:
@@ -276,3 +285,10 @@ bg:
     description: Спомагаме разпръскването на страхотност из вселената, 1000 лева по 1000 лева. .
   feed:
     title: Awesome Foundation - Проекти
+  will_paginate:
+    previous_label: "&#8592; Върни"
+    next_label: "Напред &#8594;"
+  helpers:
+    submit:
+      chapter:
+        update: Ъпдейт за Епизода
