@@ -231,7 +231,7 @@ end
 step 'that chapter has 5 winning projects' do
   @winning_projects = (1..5).map do |x|
     p = FactoryGirl.build(:project, :chapter => @current_chapter, :funded_on => x.months.ago)
-    p.photos = [Photo.new(:image => File.new(Rails.root.join("spec", "support", "fixtures", "1.JPG")))]
+    p.photos = [Photo.new(:image => File.new(Rails.root.join("spec", "support", "fixtures", "1.jpg")))]
     p.save
     p
   end

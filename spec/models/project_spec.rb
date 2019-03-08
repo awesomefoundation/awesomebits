@@ -219,18 +219,18 @@ describe Project do
     let(:project){ FactoryGirl.build(:project) }
 
     it 'creates new Photo records' do
-      project.new_photos = [File.new(Rails.root.join('spec', 'support', 'fixtures', '1.JPG'))]
-      expect(project.photos.first.image_file_name).to eq("1.JPG")
+      project.new_photos = [File.new(Rails.root.join('spec', 'support', 'fixtures', '1.jpg'))]
+      expect(project.photos.first.image_file_name).to eq("1.jpg")
     end
 
     it 'creates and saves new Photo records if the Project has been saved' do
-      project.new_photos = [File.new(Rails.root.join('spec', 'support', 'fixtures', '1.JPG'))]
-      expect(project.photos.first.image_file_name).to eq("1.JPG")
+      project.new_photos = [File.new(Rails.root.join('spec', 'support', 'fixtures', '1.jpg'))]
+      expect(project.photos.first.image_file_name).to eq("1.jpg")
       project.save
       expect(project.photos.first.new_record?).to be_falsey
 
-      project.new_photos = [File.new(Rails.root.join('spec', 'support', 'fixtures', '2.JPG'))]
-      expect(project.photos.last.image_file_name).to eq("2.JPG")
+      project.new_photos = [File.new(Rails.root.join('spec', 'support', 'fixtures', '2.jpg'))]
+      expect(project.photos.last.image_file_name).to eq("2.jpg")
     end
   end
 
