@@ -28,3 +28,15 @@ RSpec.configure do |config|
   config.before(:each){ ActionMailer::Base.deliveries.clear }
   config.include(Paperclip::Shoulda::Matchers)
 end
+
+Capybara::Screenshot.after_save_html do |path|
+  mail = Mail.new do
+    delivery_method :sendmail
+    from     'capybara-screenshot@example.com'
+    to       'jcn@awesomefoundation.org'
+    subject  'Capybara Screenshot'
+    add_file File.read path
+  end
+  mail.delivery_method :sendmail
+  mail.deliver
+end
