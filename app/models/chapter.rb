@@ -10,12 +10,12 @@ Thanks for your interest in the Awesome Foundation!
 EOT
 
   extend FriendlyId
-  friendly_id :name, use: :slugged
+  friendly_id :name, use: [:slugged, :finders]
 
   has_many :roles
   has_many :users, :through => :roles
   has_many :projects
-  has_many :winning_projects, :class_name => "Project", :conditions => "funded_on IS NOT NULL", :order => "funded_on DESC"
+  has_many :winning_projects, -> { where.not(funded_on: nil).order(funded_on: :desc) }, class_name: "Project"
   has_many :invitations
 
   validates_presence_of :name

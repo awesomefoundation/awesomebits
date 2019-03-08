@@ -1,35 +1,26 @@
 source 'http://rubygems.org'
 
-ruby '2.1.7'
+ruby '2.4.5'
 
-gem 'rails', '3.2.22.5'
+gem 'rails', '4.2.11'
 gem 'rake', '< 11.0'
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails'
-  gem 'coffee-rails'
-  gem 'uglifier'
-end
-
-gem 'country_select'
-gem 'pg', '~> 0.13.2'
-gem 'texticle', '~> 2.0', :require => 'texticle/rails'
+gem 'country_select', '~> 1.1.3'
+gem 'pg', '~> 0.20.0'
+gem 'textacular', '~> 4.0', :require => 'textacular/searchable'
 gem 'jquery-rails', '~> 2.1.0'
-gem 'clearance', '~> 0.16.2'
+gem 'clearance', '~> 1.5.0'
 gem 'sass'
-gem 'high_voltage'
-gem 'paperclip', '~> 3.0.3'
-gem 'fog'
+gem 'high_voltage', '~> 1'
+gem 'paperclip', '~> 4.1.1'
+gem 'fog', '~> 1.41.0'
 gem 'formtastic'
 gem 'flutie'
 gem 'bourbon', '~> 1.4.0'
-gem 'copycopter_client'
-gem "simple_form", "~> 2.1.3"
-gem 'nokogiri'
-gem "will_paginate", "~> 3.0.3"
-gem "friendly_id", "~> 4.0.9"
+gem "simple_form", "~> 3.0"
+gem 'nokogiri', '~> 1.7.2'
+gem "will_paginate", "~> 3.1.6"
+gem "friendly_id", "~> 5.2.4"
 gem 'redcarpet'
 gem 'honeypot-captcha'
 gem 'sucker_punch', '~> 1.0'
@@ -39,14 +30,22 @@ gem 'magnific-popup-rails'
 gem 'rack-attack'
 gem 'rack-ssl-enforcer'
 gem 'rollbar'
+gem 'sass-rails', '~> 4.0'
+gem 'coffee-rails'
+gem 'uglifier'
+gem 'xmlrpc'
+
+# TODO transition to strong parameters
+gem 'protected_attributes'
 
 group :development do
   gem "letter_opener"
   gem 'thin'
+  gem 'web-console', '~> 2.0'
 end
 
 group :development, :test do
-  gem "rspec-rails", "~> 3.6"
+  gem "rspec-rails", "~> 3.6.1"
   gem "byebug"
   gem "sham_rack"
   gem "pry"
@@ -70,7 +69,7 @@ group :test do
 end
 
 group :staging, :production do
-  gem 'newrelic_rpm'
+  gem 'newrelic_rpm', '~> 3.18.1'
   gem 'sprockets-redirect'
   gem 'passenger'
   gem 'rails_12factor'

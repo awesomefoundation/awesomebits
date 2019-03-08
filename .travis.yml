@@ -2,7 +2,7 @@ sudo: false
 language: ruby
 cache: bundler
 rvm:
-  - 2.1.7
+  - 2.4.5
 # Get the headless webkit running on Travis
 # http://stackoverflow.com/questions/11448806/headless-gem-webkit-server-cannot-connect-to-x-server
 before_install:
