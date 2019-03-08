@@ -1,1 +1,1 @@
-I18n.available_locales = [:bg, :en, :es, :fr, :pt, :ru]
+I18n.available_locales = [:bg, :en, :es, :fr, :hy, :pt, :ru]

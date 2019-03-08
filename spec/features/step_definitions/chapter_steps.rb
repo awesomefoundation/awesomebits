@@ -99,7 +99,7 @@ step 'I edit a chapter' do
   fill_in("Twitter URL",    :with => @new_twitter_url)
   fill_in("Facebook URL",   :with => @new_facebook_url)
   fill_in("Instagram URL",  :with => @new_instagram_url)
-  fill_in("Email Address",  :with => @new_email_address)
+  fill_in("Email address",  :with => @new_email_address)
   fill_in("Blog URL",       :with => @new_blog_url)
   fill_in("RSS Feed URL",   :with => @new_rss_feed_url)
   fill_in("Description",    :with => @new_description)
