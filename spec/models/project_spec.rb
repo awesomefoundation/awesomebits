@@ -409,16 +409,18 @@ describe Project, 'csv_export' do
     :title => 'Title',
     :funded_on => Date.new(2012,1,1),
     :rss_feed_url => 'http://example.com/rss',
-    :use_for_money => 'Fun'
+    :use_for_money => 'Fun',
+    :hidden_at => Time.new(2012, 1, 2).utc,
+    :hidden_reason => 'not awesome'
   end
   subject { Project.csv_export([project]) }
   let(:parsed)  { CSV.parse(subject).to_a }
 
   it 'adds headers' do
-    expect(parsed.first).to eq(%w(name title about_project use_for_money about_me url email phone chapter_name id created_at funded_on extra_question_1 extra_answer_1 extra_question_2 extra_answer_2 extra_question_3 extra_answer_3 rss_feed_url))
+    expect(parsed.first).to eq(%w(name title about_project use_for_money about_me url email phone chapter_name id created_at funded_on extra_question_1 extra_answer_1 extra_question_2 extra_answer_2 extra_question_3 extra_answer_3 rss_feed_url hidden_at hidden_reason))
   end
 
   it 'includes basic information for a project' do
-    expect(parsed).to include(['Name', 'Title', 'About project', 'Fun', 'About me', 'http://example.com','mail@example.com','555-555-5555', project.chapter.name.to_s, project.id.to_s, project.created_at.to_s, '2012-01-01', '', '', '', '', '', '', 'http://example.com/rss'])
+    expect(parsed).to include(['Name', 'Title', 'About project', 'Fun', 'About me', 'http://example.com','mail@example.com','555-555-5555', project.chapter.name.to_s, project.id.to_s, project.created_at.to_s, '2012-01-01', '', '', '', '', '', '', 'http://example.com/rss', Time.new(2012, 1, 2).utc.to_s, 'not awesome'])
   end
 end
