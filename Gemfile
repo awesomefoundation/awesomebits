@@ -18,7 +18,7 @@ gem 'formtastic'
 gem 'flutie'
 gem 'bourbon', '~> 1.4.0'
 gem "simple_form", "~> 3.0"
-gem 'nokogiri', '~> 1.7.2'
+gem 'nokogiri', '~> 1.10.1'
 gem "will_paginate", "~> 3.1.6"
 gem "friendly_id", "~> 5.2.4"
 gem 'redcarpet'
