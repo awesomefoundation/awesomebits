@@ -154,7 +154,7 @@ FORCE_HTTPS=true
 License
 -------
 
-AwesomeBits is Copyright 2012-2018, Institute on Higher Awesome Studies
+AwesomeBits is Copyright 2012-2019, Institute on Higher Awesome Studies
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
