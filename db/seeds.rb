@@ -7,9 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # Set up the admin user
-user = User.find_or_create_by_first_name_and_last_name_and_email("Awesome", "Admin", "admin@awesomefoundation.org")
+user = User.where(first_name: "Awesome", last_name: "Admin", email: "admin@awesomefoundation.org").first_or_create
 user.update_attribute(:admin, true)
 user.update_password("gnarly")
 
 # Set up the "Any" Chapter
-Chapter.find_or_create_by_name("Any", :description => "Any Chapter", :country => COUNTRY_PRIORITY.first)
+Chapter.where(name: "Any").first_or_create(description: "Any Chapter", country: COUNTRY_PRIORITY.first)
