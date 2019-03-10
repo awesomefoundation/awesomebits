@@ -53,7 +53,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(params[:project])
+    @project = Project.new(create_project_params)
 
     if @project.save
       flash[:thanks] = t("flash.applications.thanks")
@@ -88,7 +88,7 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
 
-    if @project.update_attributes(params[:project])
+    if @project.update_attributes(update_project_params)
       redirect_to @project
     else
       render :edit
@@ -125,6 +125,18 @@ class ProjectsController < ApplicationController
   end
 
   private
+
+  def project_params
+    [ :name, :title, :url, :email, :phone, :about_me, :about_project, :chapter_id, :extra_question_1, :extra_question_2, :extra_question_3, :extra_answer_1, :extra_answer_2, :extra_answer_3, :photo_order, :rss_feed_url, :use_for_money, new_photos: [], new_photo_direct_upload_urls: [] ]
+  end
+
+  def create_project_params
+    params.require(:project).permit(project_params)
+  end
+
+  def update_project_params
+    params.require(:project).permit(project_params + [:funded_on, :funded_description])
+  end
 
   def current_project
     @current_project ||= Project.find(params[:id])

@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
   include Clearance::User
-  attr_accessible :first_name, :last_name, :email, :bio, :url, :last_viewed_chapter_id
 
   before_validation UrlNormalizer.new(:url)
 
