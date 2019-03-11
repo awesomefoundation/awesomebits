@@ -2,8 +2,8 @@ class ApplicationController < ActionController::Base
   include Clearance::Controller
 
   protect_from_forgery
-  before_filter :set_locale
-  before_filter :fix_chapter_ids
+  before_action :set_locale
+  before_action :fix_chapter_ids
 
   def must_be_logged_in
     if current_user.blank? || !current_user.logged_in?

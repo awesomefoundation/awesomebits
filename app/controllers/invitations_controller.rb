@@ -1,6 +1,6 @@
 class InvitationsController < ApplicationController
-  before_filter :must_be_logged_in
-  before_filter :must_be_able_to_invite
+  before_action :must_be_logged_in
+  before_action :must_be_able_to_invite
 
   def new
     @invitation = Invitation.new

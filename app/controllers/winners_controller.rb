@@ -1,5 +1,5 @@
 class WinnersController < ApplicationController
-  before_filter :must_be_able_to_mark_winner
+  before_action :must_be_able_to_mark_winner
 
   def create
     @project = Project.find(params[:project_id])

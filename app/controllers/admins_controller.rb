@@ -1,5 +1,5 @@
 class AdminsController < ApplicationController
-  before_filter :must_be_admin
+  before_action :must_be_admin
 
   def create
     user = User.find(params[:user_id])

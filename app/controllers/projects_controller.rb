@@ -1,9 +1,9 @@
 class ProjectsController < ApplicationController
-  before_filter :must_be_logged_in, :except => [:show, :new, :create]
-  before_filter :verify_user_can_edit, :only => [:destroy]
-  before_filter :redirect_to_chapter_or_sign_in, :only => [:index], :if => :chapter_missing?
-  before_filter :handle_unpublished_projects, :only => [:show]
-  before_filter :find_chapter, :only => [:index, :show]
+  before_action :must_be_logged_in, :except => [:show, :new, :create]
+  before_action :verify_user_can_edit, :only => [:destroy]
+  before_action :redirect_to_chapter_or_sign_in, :only => [:index], :if => :chapter_missing?
+  before_action :handle_unpublished_projects, :only => [:show]
+  before_action :find_chapter, :only => [:index, :show]
 
   around_filter :set_time_zone, :only => [:index, :show]
 
