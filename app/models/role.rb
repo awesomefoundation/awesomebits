@@ -1,4 +1,4 @@
-class Role < ActiveRecord::Base
+class Role < ApplicationRecord
   belongs_to :user
   belongs_to :chapter
 

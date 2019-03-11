@@ -1,4 +1,4 @@
-class Photo < ActiveRecord::Base
+class Photo < ApplicationRecord
   MAIN_DIMENSIONS = "940x470"
 
   belongs_to :project

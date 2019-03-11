@@ -1,6 +1,6 @@
 require "textacular/searchable"
 
-class Project < ActiveRecord::Base
+class Project < ApplicationRecord
   belongs_to :chapter
   belongs_to :hidden_by_user, class_name: "User"
   has_many :votes

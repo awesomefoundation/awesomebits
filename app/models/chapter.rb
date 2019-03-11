@@ -1,4 +1,4 @@
-class Chapter < ActiveRecord::Base
+class Chapter < ApplicationRecord
   EXTRA_QUESTIONS_COUNT = 3
 
   DEFAULT_SUBMISSION_RESPONSE_EMAIL = <<-EOT
