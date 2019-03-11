@@ -7,8 +7,6 @@ class Vote < ActiveRecord::Base
 
   validates_uniqueness_of :user_id, :scope => :project_id
 
-  attr_accessible :user, :project
-
   def self.by(user)
     where(:user_id => user.id)
   end

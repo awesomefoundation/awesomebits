@@ -8,13 +8,6 @@ class Project < ActiveRecord::Base
   has_many :photos, -> { order(sort_order: :asc, id: :asc) }
   has_many :real_photos, -> { where(Photo.arel_table[:image_content_type].matches('image/%')).order(sort_order: :asc, id: :asc) }, class_name: "Photo"
 
-  attr_accessible :name, :title, :url, :email, :phone, :about_me, :about_project,
-                  :chapter_id, :extra_question_1, :extra_question_2, :extra_question_3,
-                  :extra_answer_1, :extra_answer_2, :extra_answer_3,
-                  :new_photos, :photo_order, :rss_feed_url, :use_for_money, :funded_on, :funded_description,
-                  :new_photo_direct_upload_urls,
-                  :hidden_by_user_id, :hidden_reason, :hidden_at
-
   before_validation UrlNormalizer.new(:url, :rss_feed_url)
 
   validates           :url, :rss_feed_url, :url => true, :allow_blank => true

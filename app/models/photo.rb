@@ -9,8 +9,6 @@ class Photo < ActiveRecord::Base
   # is deprecated, we will handle content validations later
   do_not_validate_attachment_file_type :image
 
-  attr_accessible :image, :direct_upload_url
-
   after_create do
     DirectUploadJob.new.async.perform(self)
   end

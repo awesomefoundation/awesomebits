@@ -7,7 +7,7 @@ class InvitationsController < ApplicationController
   end
 
   def create
-    @invitation = find_invitation(params[:invitation])
+    @invitation = find_invitation(invitation_params)
     @invitation.inviter = current_user
     if @invitation.save
       @invitation.send_invitation
@@ -18,6 +18,10 @@ class InvitationsController < ApplicationController
   end
 
   private
+
+  def invitation_params
+    params.require(:invitation).permit(:email, :first_name, :last_name, :chapter_id)
+  end
 
   def find_invitation(attributes)
     invitation = Invitation.where(:email => attributes[:email]).

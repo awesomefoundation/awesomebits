@@ -16,6 +16,7 @@ class FakeUserFactory
 
   def new(attributes)
     @attributes = attributes
+    @attributes.delete(:chapter)
     self
   end
 

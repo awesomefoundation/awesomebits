@@ -35,9 +35,6 @@ gem 'coffee-rails'
 gem 'uglifier'
 gem 'xmlrpc'
 
-# TODO transition to strong parameters
-gem 'protected_attributes'
-
 group :development do
   gem "letter_opener"
   gem 'thin'

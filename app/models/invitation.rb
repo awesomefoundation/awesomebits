@@ -9,8 +9,6 @@ class Invitation < ActiveRecord::Base
   validates_uniqueness_of :email, :scope => :chapter_id
   validate :ensure_inviter_can_invite_to_chapter
 
-  attr_accessible :email, :first_name, :last_name, :chapter_id
-
   cattr_accessor :mailer
   self.mailer = InvitationMailer
 
