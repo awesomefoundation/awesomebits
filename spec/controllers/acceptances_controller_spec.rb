@@ -6,15 +6,15 @@ describe AcceptancesController do
   context 'not logged in' do
     context 'GET to #new' do
       before do
-        get :new, :invitation_id => invitation.id
+        get :new, params: { invitation_id: invitation.id }
       end
 
       it { is_expected.to respond_with(:success) }
     end
 
-    context 'accepting with password' do
+    context 'accepting without a password' do
       before do
-        post :create, :invitation_id => invitation.id, :invitation => {}
+        post :create, params: { invitation_id: invitation.id, invitation: { password: "" } }
       end
 
       it { is_expected.to respond_with(:success) }

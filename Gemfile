@@ -2,14 +2,16 @@ source 'http://rubygems.org'
 
 ruby '2.4.5'
 
-gem 'rails', '4.2.11'
+gem 'rails', '5.0.7.1'
 gem 'rake', '< 11.0'
 
 gem 'country_select', '~> 1.1.3'
 gem 'pg', '~> 0.20.0'
 gem 'textacular', '~> 4.0', :require => 'textacular/searchable'
-gem 'jquery-rails', '~> 2.1.0'
-gem 'clearance', '~> 1.5.0'
+gem 'jquery-rails', '~> 4.1.1'
+gem 'jquery-ui-rails', '~> 3.0.1'
+gem 'clearance', '~> 1.13.0'
+gem 'clearance-deprecated_password_strategies'
 gem 'high_voltage', '~> 1'
 gem 'paperclip', '~> 4.1.1'
 gem 'fog', '~> 1.41.0'
@@ -59,6 +61,7 @@ group :test do
   gem "faker"
   gem "bourne"
   gem "timecop"
+  gem "rails-controller-testing"
   gem "shoulda-matchers"
   gem "launchy"
   gem "email_spec"

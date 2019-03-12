@@ -30,7 +30,7 @@ class Invitation < ApplicationRecord
     else
       unless factory.errors.blank?
         factory.errors.each do |key, error|
-          self.errors[key] = error
+          self.errors.add(:key, error)
         end
       end
       false
