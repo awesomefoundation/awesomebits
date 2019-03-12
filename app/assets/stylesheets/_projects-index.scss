@@ -39,7 +39,7 @@ body.projects-index {
       width: 40px;
       height: 40px;
       img {
-        @include border-radius(20px);
+        border-radius: 20px;
         max-width: 40px;
       }
       margin: none;
@@ -133,15 +133,15 @@ body.projects-index {
     @extend .clearfix;
     background: rgb(230,230,230);
     border: 1px solid rgb(200,200,200);
-    @include border-radius(4px);
-    @include box-shadow(inset 0 -1px 0 0 rgba(255,255,255, 0.3), inset 0 1px 0 0 rgba(255,255,255, 0.8));
+    border-radius: 4px;
+    box-shadow: inset 0 -1px 0 0 rgba(255,255,255, 0.3), inset 0 1px 0 0 rgba(255,255,255, 0.8);
     @include linear-gradient(rgb(240,240,240), rgb(220,220,220));
     margin-bottom: 10px;
     position: relative;
     width: grid-width(9);
     @media all and (max-width: $narrow) {
       width: 100%;
-      @include border-radius(0);
+      border-radius: 0;
     }
 
     nav {
@@ -152,7 +152,7 @@ body.projects-index {
       a.chapter-selection {
         background: rgb(230,230,230);
         border: 1px solid rgb(190,190,190);
-        @include border-radius(3px);
+        border-radius: 3px;
         display: block;
         margin: 1px 0 0 0;
         padding: 5px 40px 5px 10px;
@@ -185,7 +185,7 @@ body.projects-index {
         &.expanded {
           background: rgb(220,220,220);
           border: 1px solid rgb(150,150,150);
-          @include border-radius(3px 3px 0px 0px);
+          border-radius: 3px 3px 0px 0px;
           cursor: pointer;
         }
       }
@@ -194,7 +194,7 @@ body.projects-index {
         background: rgb(255,255,255);
         border: 1px solid rgb(150,150,150);
         @include border-bottom-radius(4px);
-        @include box-shadow(0 3px 5px 0 rgba(0,0,0, 0.2));
+        box-shadow: 0 3px 5px 0 rgba(0,0,0, 0.2);
         max-height: 450px;
         left: 10px;
         opacity: 0;
@@ -254,7 +254,7 @@ body.projects-index {
         label {
           background: rgb(230,230,230);
           border: 1px solid rgb(190,190,190);
-          @include border-radius(3px);
+          border-radius: 3px;
           font: normal 12px $sans-serif;
           height: 21px;
           margin: 0px;
@@ -300,6 +300,7 @@ body.projects-index {
         @include button(rgb(230,230,230));
         margin: 0px;
         width: auto;
+        font-size: 11px;
       }
     }
   }
@@ -319,15 +320,15 @@ body.projects-index {
   article.project {
     border: 1px solid rgb(200,200,200);
     background: rgb(255,255,255);
-    @include border-radius(4px);
-    @include box-shadow(0 1px 6px 0 rgba(0,0,0, 0.15));
+    border-radius: 4px;
+    box-shadow: 0 1px 6px 0 rgba(0,0,0, 0.15);
     margin-bottom: 40px;
 
     @media all and (max-width: $narrow) {
-      @include border-radius(0);
+      border-radius: 0;
       border-left: 6px solid rgb(200,200,200);
       border-right: none;
-      @include box-shadow(none);
+      box-shadow: none;
       margin-bottom: 0px;
     }
 
@@ -363,6 +364,10 @@ body.projects-index {
               color: $pink;
             }
           }
+        }
+
+        .actions {
+          font-size: 11px;
         }
 
         a.short-list,
@@ -554,14 +559,14 @@ body.projects-index {
 
   article.project.shortlisted {
     border: 1px solid $pink;
-    @include box-shadow(0 1px 6px 0 rgba($pink, 0.6));
+    box-shadow: 0 1px 6px 0 rgba($pink, 0.6);
 
     @media all and (max-width: $narrow) {
       border: 1px solid rgba($pink, 0.6);
       border-left: 6px solid $pink;
       padding-left: -3px;
       border-right: 0px;
-      @include box-shadow(inset 3px -5px 10px 0px rgba($pink, 0.6));
+      box-shadow: inset 3px -5px 10px 0px rgba($pink, 0.6);
     }
 
     div.title {
@@ -573,14 +578,14 @@ body.projects-index {
 
   article.project.winner {
     border: 1px solid $blue;
-    @include box-shadow(0 1px 6px 0 rgba($blue, 0.6));
+    box-shadow: 0 1px 6px 0 rgba($blue, 0.6);
 
     @media all and (max-width: $narrow) {
       border: 1px solid rgba($blue, 0.6);
       border-left: 6px solid $blue;
       padding-left: -3px;
       border-right: 0px;
-      @include box-shadow(inset 3px -5px 10px 0px rgba($blue, 0.6));
+      box-shadow: inset 3px -5px 10px 0px rgba($blue, 0.6);
     }
 
     header {

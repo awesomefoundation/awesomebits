@@ -1,7 +1,7 @@
 @mixin af-button() {
   @include background-image(linear-gradient(top, rgb(106, 189, 255), rgb(65, 165, 255)));
   border: 1px solid $blue;
-  @include border-radius(3px);
+  border-radius: 3px;
   color: $base-font-color;
   font: normal 16px/20px $sans-serif;
   margin-bottom: 15px;

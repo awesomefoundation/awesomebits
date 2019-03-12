@@ -5,6 +5,7 @@ shortlist_before_send = (event, data, xhr) ->
 
 shortlist_success = (event, data, status, xhr) ->
   project_container = $('article[data-id="'+data.project_id+'"]')
+  $(event.currentTarget).blur()
   if data.shortlisted
     project_container.addClass('shortlisted')
     project_container.find('a.short-list').attr('data-method', 'delete')
