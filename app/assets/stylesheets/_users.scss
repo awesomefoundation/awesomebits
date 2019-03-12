@@ -12,7 +12,7 @@ header.users {
 section.awesome-members {
   background: rgb(240,240,240);
   border: 1px solid rgb(170,170,170);
-  @include border-radius(4px);
+  border-radius: 4px;
   margin: 20px auto;
   padding: 30px 40px;
 

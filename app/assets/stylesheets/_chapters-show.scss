@@ -166,7 +166,7 @@ body.chapters-show {
     background-position: center center;
     background-repeat: no-repeat;
     border: 0;
-    @include border-radius(60px);
+    border-radius: 60px;
     display: block;
     height: 120px;
     opacity: 0;
@@ -339,8 +339,8 @@ body.chapters-show {
             .trustee-details {
               background: rgba($pink, 0.9);
               border: 1px solid rgba($pink, 1);
-              @include border-radius(2px);
-              @include box-shadow(0 1px 5px 0 rgba(0, 0, 0, 0.3));
+              border-radius: 2px;
+              box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.3);
               opacity: 0;
               padding: 8px;
               position: absolute;
@@ -359,7 +359,7 @@ body.chapters-show {
 
             &:hover {
               div.avatar {
-                @include box-shadow(0 1px 6px 0 rgba(0, 0, 0, 0.2));
+                box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.2);
                 top: -5px;
               }
 
