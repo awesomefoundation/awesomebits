@@ -73,6 +73,7 @@ end
 step "the trustee can log in" do
   visit root_path
   click_link("Sign out")
+  click_link("Sign in")
   fill_in("Email", :with => @invitation_address)
   fill_in("Password", :with => "12345")
   click_button("Sign in")
