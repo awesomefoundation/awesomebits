@@ -229,9 +229,6 @@ es:
       chapter:
         name: Nombre
         slug: Nombre en el URL
-        twitter_url: Twitter URL
-        facebook_url: Facebook URL
-        blog_url: Blog URL
         rss_feed_url: RSS Feed URL
         description: Descripción
         extra_question_1: Pregunta adicional 1
@@ -261,7 +258,18 @@ es:
         user_image: Fija tu imagen de usuario en <a href="https://en.gravatar.com/site/signup/%{email}" target="_blank">gravatar.com</a> usando la dirección de tu correo electrónico indicado previamente
       chapter:
         submission_response_email: Este texto será incluido en el correo electrónico de confirmación enviado a sus solicitantes de becas
+        hide_trustees: No mostrar la lista de administradores en la pagina publica del capítulo
   activerecord:
+    attributes:
+      chapter:
+        twitter_url: Twitter URL
+        facebook_url: Facebook URL
+        instagram_url: Instagram URL
+        blog_url: Blog URL
+        email_address: Dirección de Email
+        hide_trustees: Ocultar administradores
+        country: País
+        time_zone: Zona horaria
     errors:
       models:
         chapter:
@@ -274,3 +282,10 @@ es:
                 invalid: no es un sitio web válido
   meta:
     description: Promover los intereses de lo impresionante en el universo, $1,000 a la vez.
+  will_paginate:
+    previous_label: "&#8592; Anterior"
+    next_label: "Siguiente &#8594;"
+  helpers:
+    submit:
+      chapter:
+        update: Actualize el Capítulo
