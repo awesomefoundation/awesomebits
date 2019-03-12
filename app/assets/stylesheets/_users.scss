@@ -29,13 +29,12 @@ section.awesome-members {
         .promote-user,
         .remove-user, {
           @include button(rgb(240,240,240));
-          @include inline-block;
           font-weight: normal;
           padding: 5px 0px 3px;
           text-align: center;
           text-decoration: none;
           text-shadow: 0 1px rgba(255,255,255, 0.4);
-          display: block;
+          display: inline-block;
         }
 
         .demote-user,

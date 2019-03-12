@@ -202,7 +202,7 @@ body.chapters-show {
 
   .chapter-projects {
     @extend .clearfix;
-    @include inline-block;
+    display: inline-block;
     left: 0px;
     position: relative;
     top: 0px;
@@ -217,7 +217,7 @@ body.chapters-show {
     }
 
     .project {
-      @include inline-block;
+      display: inline-block;
       background: transparent;
       height: auto;
       margin: 0px;

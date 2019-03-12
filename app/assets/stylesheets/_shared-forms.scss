@@ -174,7 +174,7 @@ section.chapter-form {
 
   label {
     &.boolean {
-      @include inline-block;
+      display: inline-block;
     }
   }
 

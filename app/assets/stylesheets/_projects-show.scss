@@ -45,7 +45,7 @@ header.project {
 
   h1 {
     font: normal 34px $sans-serif;
-    @include inline-block;
+    display: inline-block;
     margin: 0px;
   }
 }

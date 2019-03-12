@@ -124,7 +124,7 @@ section.chapter-menu {
       @include column-width(grid-width(3));
 
       article.country {
-        @include inline-block;
+        display: inline-block;
         width: grid-width(3);
       }
 
