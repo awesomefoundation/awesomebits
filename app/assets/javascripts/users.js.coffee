@@ -31,15 +31,12 @@ remove_success = (event, data, status, xhr) ->
 ajax_failure = (xhr, status, error) ->
   alert(error.message)
 
-$("td.promote-demote-admin a")
-  .live("ajax:beforeSend", set_data_method)
-  .live("ajax:success", admin_success)
-  .live("ajax:failure", ajax_failure)
+$(document).on 'ajax:beforeSend', 'td.promote-demote-admin a', set_data_method
+$(document).on 'ajax:success',    'td.promote-demote-admin a', admin_success
+$(document).on 'ajax:failure',    'td.promote-demote-admin a', ajax_failure
 
-$("td.promote-demote-dean a")
-  .live("ajax:beforeSend", set_data_method)
-  .live("ajax:success", dean_success)
-  .live("ajax:failure", ajax_failure)
+$(document).on 'ajax:beforeSend', 'td.promote-demote-dean a', set_data_method
+$(document).on 'ajax:success',    'td.promote-demote-dean a', dean_success
+$(document).on 'ajax:failure',    'td.promote-demote-dean a', ajax_failure
 
-$("td.remove-trustee a")
-  .live("ajax:success", remove_success)
+$(document).on 'ajax:success',    'td.remove-trustee a',      remove_success

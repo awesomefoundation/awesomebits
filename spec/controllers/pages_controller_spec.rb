@@ -7,7 +7,7 @@ describe HighVoltage::PagesController, '#show' do
     %w(bg en es fr pt ru).each do |locale|
       context "on GET to /#{locale}/#{page}" do
         before do
-          get :show, id: page, locale: locale
+          get :show, params: { id: page, locale: locale }
         end
 
         it { is_expected.to respond_with(:success) }

@@ -53,9 +53,9 @@ end
 
 group :test do
   gem "turnip"
-  gem "capybara"
+  gem "capybara", "~> 2.6.0"
   gem "database_cleaner"
-  gem "capybara-webkit", "~> 1.3.0"
+  gem "capybara-webkit", "~> 1.8.0"
   gem 'capybara-screenshot'
   gem "factory_girl_rails"
   gem "faker"

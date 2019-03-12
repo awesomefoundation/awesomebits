@@ -12,7 +12,7 @@ $(document).ready ->
     $('.input.file').toggle()
     return false
 
-  $('.first input.multi').live 'change', ->
+  $(document).on 'change', '.first input.multi', ->
     clone = $(@parentNode).clone()
     clone.val('')
     clone.children('input.multi').val('')
@@ -86,7 +86,7 @@ $(document).ready ->
 
       dropZone: null
 
-  $('*[data-remove="true"]').live 'click', (event) ->
+  $(document).on 'click', '*[data-remove="true"]', (event) ->
     event.stopPropagation()
     event.preventDefault()
 

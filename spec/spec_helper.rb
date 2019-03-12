@@ -2,6 +2,7 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
+require 'clearance/rspec'
 require 'turnip'
 require 'turnip/capybara'
 require 'database_cleaner'
@@ -27,4 +28,8 @@ RSpec.configure do |config|
   config.before(:each){ FactoryGirl.create(:chapter, :name => "Any") }
   config.before(:each){ ActionMailer::Base.deliveries.clear }
   config.include(Paperclip::Shoulda::Matchers)
+end
+
+Capybara::Webkit.configure do |config|
+  config.block_unknown_urls
 end

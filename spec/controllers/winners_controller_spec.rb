@@ -12,7 +12,7 @@ describe WinnersController do
     let(:project) { FactoryGirl.create(:project) }
 
     it "cannot set the winner for another chapter by a dean" do
-      post :create, :project_id => project.id, :chapter_id => other_chapter.id
+      post :create, params: { project_id: project.id, chapter_id: other_chapter.id }
 
       expect(project.reload.winner?).to be false
       expect(flash[:notice]).not_to be_blank
@@ -23,7 +23,7 @@ describe WinnersController do
     let(:project) { FactoryGirl.create(:project, :chapter => Chapter.find_by_name('Any')) }
 
     it "cannot set the winner for another chapter by a dean" do
-      post :create, :project_id => project.id, :chapter_id => other_chapter.id
+      post :create, params: { project_id: project.id, chapter_id: other_chapter.id }
 
       expect(project.reload.winner?).to be false
       expect(flash[:notice]).not_to be_blank

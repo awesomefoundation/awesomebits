@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   before_action :handle_unpublished_projects, :only => [:show]
   before_action :find_chapter, :only => [:index, :show]
 
-  around_filter :set_time_zone, :only => [:index, :show]
+  around_action :set_time_zone, :only => [:index, :show]
 
   include ApplicationHelper
 
@@ -39,7 +39,7 @@ class ProjectsController < ApplicationController
         end
 
         headers["Content-Disposition"] = "attachment; filename=#{@chapter.slug}_export.csv"
-        render :text => Project.csv_export(@projects), :content_type => 'text/csv'
+        render body: Project.csv_export(@projects), content_type: 'text/csv'
       end
     end
   end
@@ -155,6 +155,7 @@ class ProjectsController < ApplicationController
     if current_chapter_for_user
       redirect_to chapter_projects_path(current_chapter_for_user)
     else
+      sign_out
       redirect_to sign_in_path, notice: t("flash.permissions.must-have-chapter")
     end
   end

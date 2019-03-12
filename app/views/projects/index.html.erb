@@ -45,9 +45,9 @@
     </form>
   </section>
   <p class="exports">
-    <%= link_to t('.export-projects'), params.merge(:format => :csv) %>
+    <%= link_to t('.export-projects'), params.permit(:start, :end, :q, :short_list).merge(format: :csv) %>
     <% if current_user.admin? %>
-      | <%= link_to t('.export-all-projects'), params.merge(:format => :csv, :export_all => :true) %>
+      | <%= link_to t('.export-all-projects'), params.permit(:start, :end, :q, :short_list).merge(format: :csv, export_all: true) %>
     <% end %>
   </p>
 
