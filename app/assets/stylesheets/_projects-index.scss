@@ -300,6 +300,7 @@ body.projects-index {
         @include button(rgb(230,230,230));
         margin: 0px;
         width: auto;
+        font-size: 11px;
       }
     }
   }
@@ -363,6 +364,10 @@ body.projects-index {
               color: $pink;
             }
           }
+        }
+
+        .actions {
+          font-size: 11px;
         }
 
         a.short-list,

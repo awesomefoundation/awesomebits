@@ -2,6 +2,7 @@
   <div class="title">
     <%= link_to project.title, chapter_project_path(project.chapter, project), :class => "title" %>
 
+    <div class="actions">
     <% if project.shortlisted_by?(current_user) %>
       <%= link_to I18n.t(".awesome", scope: "projects.project"), project_vote_path(project), :method => :delete, :remote => true, :class => "short-list" %>
     <% else %>
@@ -11,6 +12,7 @@
     <% if display_project_actions?(current_user, project) %>
       <%= link_to '<i class="icon-gear"></i>'.html_safe, "#", :class => "project-actions-toggle" %>
     <% end %>
+    </div>
 
     <div class="public-link">
       <%= link_to project_path(project), :target => "blank" do %>
