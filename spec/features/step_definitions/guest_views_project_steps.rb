@@ -17,5 +17,5 @@ step 'I should see the carousel buttons' do
 end
 
 step 'I should see a placeholder image' do
-  expect(page).to have_css('#project-gallery img[src="/assets/no-image-main.png"]')
+  expect(page).to have_css('#project-gallery img[src^="/assets/no-image-main"]')
 end
