@@ -7,7 +7,7 @@ gem 'rake', '< 11.0'
 
 gem 'country_select', '~> 1.1.3'
 gem 'pg', '~> 0.20.0'
-gem 'textacular', '~> 4.0', :require => 'textacular/searchable'
+gem 'textacular', '~> 5.1.0'
 gem 'jquery-rails', '~> 4.1.1'
 gem 'jquery-ui-rails', '~> 3.0.1'
 gem 'clearance', '~> 1.13.0'
