@@ -1,4 +1,4 @@
-class AddSlugsToChapters < ActiveRecord::Migration
+class AddSlugsToChapters < ActiveRecord::Migration[4.2]
   def up
     add_column :chapters, :slug, :string
     select_all("SELECT id, name FROM chapters").each do |chapter|

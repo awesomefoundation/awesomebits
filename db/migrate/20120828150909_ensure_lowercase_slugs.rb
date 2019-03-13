@@ -1,4 +1,4 @@
-class EnsureLowercaseSlugs < ActiveRecord::Migration
+class EnsureLowercaseSlugs < ActiveRecord::Migration[4.2]
   def up
     execute("UPDATE chapters SET slug=LOWER(slug)")
   end

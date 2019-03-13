@@ -1,4 +1,4 @@
-class EnsureUniquenessOfRolesAndInvitations < ActiveRecord::Migration
+class EnsureUniquenessOfRolesAndInvitations < ActiveRecord::Migration[4.2]
   def up
     add_index :invitations, [:email, :chapter_id], :unique => true
     remove_index :roles, :column => [:user_id, :chapter_id]

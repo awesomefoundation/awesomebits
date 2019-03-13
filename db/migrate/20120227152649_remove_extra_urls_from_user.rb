@@ -1,4 +1,4 @@
-class RemoveExtraUrlsFromUser < ActiveRecord::Migration
+class RemoveExtraUrlsFromUser < ActiveRecord::Migration[4.2]
   def change
     remove_column :users, :chapter_id
     remove_column :users, :twitter_username

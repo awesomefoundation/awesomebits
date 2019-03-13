@@ -1,4 +1,4 @@
-class AwesomeFoundationSchema < ActiveRecord::Migration
+class AwesomeFoundationSchema < ActiveRecord::Migration[4.2]
   create_table "chapters", :force => true do |t|
     t.string "name"
     t.string "slug"
