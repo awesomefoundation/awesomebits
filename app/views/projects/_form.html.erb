@@ -98,7 +98,7 @@
       $('#project_photo_order').val($.makeArray(photo_order).join(" "));
     }
 
-    $(".old-photos *[data-remove='true']").live("click", function(){
+    $(".old-photos *[data-remove='true']").on("click", function(){
       var val = $('#project_photo_order').val();
       val = val.replace($(this.parentNode).attr('data-id'), '');
       $('#project_photo_order').val(val);
