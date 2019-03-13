@@ -2,7 +2,7 @@ require "textacular/searchable"
 
 class Project < ApplicationRecord
   belongs_to :chapter
-  belongs_to :hidden_by_user, class_name: "User"
+  belongs_to :hidden_by_user, class_name: "User", optional: true
   has_many :votes
   has_many :users, :through => :votes
   has_many :photos, -> { order(sort_order: :asc, id: :asc) }

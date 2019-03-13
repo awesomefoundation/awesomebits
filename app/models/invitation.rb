@@ -1,6 +1,6 @@
 class Invitation < ApplicationRecord
-  belongs_to :inviter, :class_name => "User"
-  belongs_to :invitee, :class_name => "User"
+  belongs_to :inviter, class_name: "User"
+  belongs_to :invitee, class_name: "User", optional: true
   belongs_to :chapter
 
   validates_presence_of :email

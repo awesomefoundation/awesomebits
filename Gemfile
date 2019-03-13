@@ -38,6 +38,7 @@ gem 'xmlrpc'
 
 group :development do
   gem "letter_opener"
+  gem "listen"
   gem 'puma'
   gem 'web-console', '~> 2.0'
 end
