@@ -50,6 +50,8 @@ GEM
     bcrypt (3.1.12)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
+    bootsnap (1.4.1)
+      msgpack (~> 1.0)
     bourbon (4.0.2)
       sass (~> 3.3)
       thor
@@ -330,6 +332,7 @@ GEM
     minitest (5.11.3)
     mocha (1.2.1)
       metaclass (~> 0.0.1)
+    msgpack (1.2.9)
     multi_json (1.13.1)
     newrelic_rpm (3.18.1.330)
     nio4r (2.3.1)
@@ -497,6 +500,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootsnap (>= 1.1.0)
   bourbon (~> 4.0.2)
   bourne
   byebug

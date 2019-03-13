@@ -4,6 +4,7 @@ ruby '2.4.5'
 
 gem 'rails', '5.2.2'
 gem 'rake', '< 11.0'
+gem 'bootsnap','>= 1.1.0', require: false
 
 gem 'pg', '~> 0.20.0'
 gem 'textacular', '~> 5.1.0'
