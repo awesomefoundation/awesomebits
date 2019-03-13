@@ -92,5 +92,5 @@ end
 
 step "I log out" do
   click_link("Sign out")
-  expect(page).to have_content("Sign in")
+  expect(page).to have_content(/Sign in/i)
 end

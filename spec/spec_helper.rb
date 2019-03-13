@@ -10,8 +10,6 @@ require 'paperclip/matchers'
 require 'sucker_punch/testing/inline'
 
 DatabaseCleaner.strategy = :truncation
-Capybara.javascript_driver = :webkit
-require 'capybara-screenshot/rspec'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -19,8 +17,6 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 Dir[Rails.root.join("spec/features/step_definitions**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|
-  config.include Capybara::DSL
-
   config.infer_spec_type_from_file_location!
 
   config.mock_with :mocha
@@ -28,8 +24,4 @@ RSpec.configure do |config|
   config.before(:each){ FactoryGirl.create(:chapter, :name => "Any") }
   config.before(:each){ ActionMailer::Base.deliveries.clear }
   config.include(Paperclip::Shoulda::Matchers)
-end
-
-Capybara::Webkit.configure do |config|
-  config.block_unknown_urls
 end

@@ -54,14 +54,15 @@ end
 group :test do
   gem "turnip"
   gem "capybara", "~> 2.6.0"
+  gem "capybara-screenshot", "~> 1.0.11"
+  gem "chromedriver-helper"
   gem "database_cleaner"
-  gem "capybara-webkit", "~> 1.8.0"
-  gem 'capybara-screenshot'
   gem "factory_girl_rails"
   gem "faker"
   gem "bourne"
   gem "timecop"
   gem "rails-controller-testing"
+  gem "selenium-webdriver"
   gem "shoulda-matchers"
   gem "launchy"
   gem "email_spec"

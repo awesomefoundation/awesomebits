@@ -7,6 +7,7 @@ Feature: A dean picks a winner
     When I view the list of projects for this month
     And I expand the project menu
     And I pick a winner
+    And I log out
     Then the project is visible to the public
     When I log back in
     Then the winning project should look triumphant
@@ -17,10 +18,12 @@ Feature: A dean picks a winner
     When I view the list of projects for this month
     And I expand the project menu
     And I pick a winner
+    And I log out
     Then the project is visible to the public
     When I log back in
     And I expand the project menu
     And I revoke the win from that project
+    And I log out
     Then the project is no longer visible to the public
     When I log back in
     Then the project looks normal
@@ -32,7 +35,8 @@ Feature: A dean picks a winner
     And I expand the project menu
     And I pick a winner for my chapter
     Then I should be on the project page for that project
-    And the project is visible to the public
+    When I log out
+    Then the project is visible to the public
     When I log back in
     Then the winning project should look triumphant
     And the winning project should belong to my chapter
