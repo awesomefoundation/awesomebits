@@ -2,10 +2,9 @@ source 'http://rubygems.org'
 
 ruby '2.4.5'
 
-gem 'rails', '5.1.6.1'
+gem 'rails', '5.2.2'
 gem 'rake', '< 11.0'
 
-gem 'country_select', '~> 1.1.3'
 gem 'pg', '~> 0.20.0'
 gem 'textacular', '~> 5.1.0'
 gem 'jquery-rails', '~> 4.1.1'
@@ -18,7 +17,7 @@ gem 'fog', '~> 1.41.0'
 gem 'formtastic'
 gem 'flutie'
 gem 'bourbon', '~> 4.0.2'
-gem "simple_form", "~> 3.0"
+gem 'simple_form', '~> 4.1'
 gem 'nokogiri', '~> 1.10.1'
 gem "will_paginate", "~> 3.1.6"
 gem "friendly_id", "~> 5.2.4"
