@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   include Clearance::Controller
 
-  protect_from_forgery
   before_action :set_locale
   before_action :fix_chapter_ids
 
