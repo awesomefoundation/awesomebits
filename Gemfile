@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 ruby '2.4.5'
 
-gem 'rails', '5.0.7.1'
+gem 'rails', '5.1.6.1'
 gem 'rake', '< 11.0'
 
 gem 'country_select', '~> 1.1.3'
@@ -53,7 +53,7 @@ end
 
 group :test do
   gem "turnip"
-  gem "capybara", "~> 2.6.0"
+  gem "capybara", "~> 2.18.0"
   gem "capybara-screenshot", "~> 1.0.11"
   gem "chromedriver-helper"
   gem "database_cleaner"
