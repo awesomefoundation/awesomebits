@@ -16,13 +16,11 @@ step 'I revoke the win from that project' do
 end
 
 step 'the project is no longer visible to the public' do
-  click_link("Sign out")
   visit(project_path(@winning_project))
   expect(page).to have_no_content(@winning_project.title)
 end
 
 step 'the project is visible to the public' do
-  click_link("Sign out")
   visit(project_path(@winning_project))
   expect(page).to have_css("body.projects")
   expect(page).to have_content(@winning_project.title)

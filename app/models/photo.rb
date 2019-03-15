@@ -1,7 +1,7 @@
-class Photo < ActiveRecord::Base
+class Photo < ApplicationRecord
   MAIN_DIMENSIONS = "940x470"
 
-  belongs_to :project
+  belongs_to :project, optional: true
   has_attached_file :image,
                     default_url: "no-image-:style.png"
 

@@ -62,6 +62,7 @@ Rails.application.routes.draw do
   end
 
   get "/404", :to => "errors#not_found"
+  get "/500", :to => "errors#internal_server_error"
 
   # All other routes are considered 404s. ActionController::RoutingError
   # will catch them, but that fills our logs with noisy exceptions.

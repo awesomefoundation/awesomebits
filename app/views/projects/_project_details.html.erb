@@ -81,7 +81,7 @@
       <h3><%= I18n.t(".images", scope: "projects.project") %></h3>
       <p class="gallery">
       <% project.photos.each_with_index do |image, index| %>
-        <%= link_to I18n.t(".image", scope: "projects.project", index: index + 1), image.url, :rel => "project-#{project.id}-images", :class => "lightbox", :target => "blank" %>
+        <%= link_to I18n.t(".image", scope: "projects.project", index: index + 1), image_path(image.url), :rel => "project-#{project.id}-images", :class => "lightbox", :target => "blank" %>
       <% end %>
       </p>
     <% end %>

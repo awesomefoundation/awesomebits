@@ -1,4 +1,4 @@
-class ExtraQuestionsOnApplications < ActiveRecord::Migration
+class ExtraQuestionsOnApplications < ActiveRecord::Migration[4.2]
   def up
     add_column :chapters, :extra_question_1, :string
     add_column :chapters, :extra_question_2, :string

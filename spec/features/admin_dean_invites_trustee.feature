@@ -3,13 +3,16 @@ Feature: Admins and Deans can invite users to chapters they have access to
   Scenario: Admin invites to any chapter
     Given I am logged in as an admin
     When I invite a new trustee to the "Boston" chapter
+    And I log out
     Then that person should get an invitation email
     When they accept the invitation
     Then they should get another email welcoming them
     And the trustee can log in
 
-    Given I log back in
+    Given I log out
+    And I log back in
     When I invite a new trustee to the "Sydney" chapter
+    And I log out
     Then that person should get an invitation email
     When they accept the invitation
     Then they should get another email welcoming them
@@ -18,6 +21,7 @@ Feature: Admins and Deans can invite users to chapters they have access to
   Scenario: Lots of invitations to one user
     Given I am logged in as an admin
     When I invite a new trustee to the "Boston" chapter
+    And I log out
     Then that person should get an invitation email
     When they accept the invitation
     Then they should get another email welcoming them
@@ -25,6 +29,7 @@ Feature: Admins and Deans can invite users to chapters they have access to
     Given I log back in
     And the email backlog has been cleared
     When I invite the same trustee to the "Boston" chapter
+    And I log out
     Then that person should get another invitation email
     When they accept the invitation
     Then they should get another email welcoming them
@@ -38,12 +43,14 @@ Feature: Admins and Deans can invite users to chapters they have access to
   Scenario: Dean can only invite to their chapter
     Given I am logged in as a dean
     When I invite a new trustee to my chapter
+    And I log out
     Then that person should get an invitation email
     When they accept the invitation
     Then they should get another email welcoming them
     And the trustee can log in
 
-    Given I log back in
+    Given I log out
+    And I log back in
     When I try to invite a new trustee to a chapter I am not dean of
     Then I am unable to invite them to that chapter
 

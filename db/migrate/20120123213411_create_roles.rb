@@ -1,4 +1,4 @@
-class CreateRoles < ActiveRecord::Migration
+class CreateRoles < ActiveRecord::Migration[4.2]
   def up
     create_table :roles do |t|
       t.references :user, :null => false

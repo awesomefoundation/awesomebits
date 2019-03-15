@@ -1,4 +1,4 @@
-class Chapter < ActiveRecord::Base
+class Chapter < ApplicationRecord
   EXTRA_QUESTIONS_COUNT = 3
 
   DEFAULT_SUBMISSION_RESPONSE_EMAIL = <<-EOT
@@ -31,7 +31,7 @@ EOT
   end
 
   def self.country_count
-    where(arel_table[:country].not_eq("Worldwide")).select(:country).uniq.count
+    where(arel_table[:country].not_eq("Worldwide")).select(:country).distinct.count
   end
 
   def self.visitable

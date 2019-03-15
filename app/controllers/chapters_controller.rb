@@ -1,7 +1,7 @@
 class ChaptersController < ApplicationController
-  before_filter :ensure_lowercase_id, :only => [:show, :edit]
-  before_filter :must_be_admin, :only => [:new, :create]
-  before_filter :must_be_able_to_manage_chapter, :only => [:edit, :update]
+  before_action :ensure_lowercase_id, :only => [:show, :edit]
+  before_action :must_be_admin, :only => [:new, :create]
+  before_action :must_be_able_to_manage_chapter, :only => [:edit, :update]
 
   # Display all chapters (including inactive ones) to ensure that
   # everything gets crawled for SEO purposes. This can be rethought

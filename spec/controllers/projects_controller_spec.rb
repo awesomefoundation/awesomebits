@@ -28,7 +28,7 @@ describe ProjectsController do
     let(:project) { FactoryGirl.create(:project) }
     before do
       sign_in_as user
-      delete :destroy, :id => project
+      delete :destroy, params: { id: project }
     end
     it { is_expected.to redirect_to(chapter_projects_path(project.chapter)) }
   end
@@ -54,7 +54,7 @@ describe ProjectsController do
 
     before do
       sign_in_as user
-      get :index, :chapter_id => chapter, :format => :csv
+      get :index, params: { chapter_id: chapter }, format: :csv
     end
 
     it { expect(response.header['Content-Type']).to include 'csv' }
@@ -68,7 +68,7 @@ describe ProjectsController do
     context 'while logged in' do
       before do
         sign_in_as user
-        get :show, :id => project
+        get :show, params: { id: project }
       end
       it { is_expected.to respond_with(:redirect) }
       it { is_expected.to redirect_to(chapter_project_path(project.chapter, project)) }
@@ -77,18 +77,18 @@ describe ProjectsController do
     context 'while not logged in' do
       before do
         sign_out
-        get :show, :id => project
+        get :show, params: { id: project }
       end
       it { is_expected.to respond_with(:missing) }
     end
   end
 
   context 'viewing a project that has won while logged out' do
-    let!(:project) { FactoryGirl.create(:project, :funded_on => Date.today) }
+    let!(:project) { FactoryGirl.create(:project, funded_on: Date.today) }
 
     context "with the correct slug" do
       before do
-        get :show, :id => project
+        get :show, params: { id: project, locale: I18n.locale }
       end
 
       it { is_expected.to respond_with(:success) }
@@ -97,7 +97,7 @@ describe ProjectsController do
 
     context "with an incorrect slug" do
       before do
-        get :show, :id => "#{project.id}-this-is-a-bad-slug"
+        get :show, params: { id: "#{project.id}-this-is-a-bad-slug", locale: I18n.locale }
       end
 
       it { is_expected.to respond_with(:moved_permanently) }
@@ -115,7 +115,7 @@ describe ProjectsController do
     context "while not logged in" do
       before do
         sign_out
-        get :show, :chapter_id => project.chapter,  :id => project
+        get :show, params: { chapter_id: project.chapter, id: project }
       end
 
       it { is_expected.to redirect_to root_path }
@@ -124,7 +124,7 @@ describe ProjectsController do
     context "while logged in as a trustee" do
       before do
         sign_in_as trustee
-        get :show, :chapter_id => project.chapter,  :id => project
+        get :show, params: { chapter_id: project.chapter, id: project }
       end
 
       it { is_expected.to render_template("show") }
@@ -133,7 +133,7 @@ describe ProjectsController do
     context "while logged in as a admin" do
       before do
         sign_in_as admin
-        get :show, :chapter_id => project.chapter,  :id => project
+        get :show, params: { chapter_id: project.chapter, id: project }
       end
 
       it { is_expected.to render_template("show") }
@@ -151,14 +151,14 @@ describe ProjectsController do
 
     it "throws a RecordNotFound if the project doesn't exist" do
       expect {
-        put :hide, id: Time.now.to_i, hidden_reason: reason
+        put :hide, params: { id: Time.now.to_i, hidden_reason: reason }
       }.to raise_exception(ActiveRecord::RecordNotFound)
     end
 
     context "with a legit project" do
       context "with a reason" do
         before :each do
-          put :hide, id: project.id, hidden_reason: reason, return_to: chapter_projects_path(project.chapter)
+          put :hide, params: { id: project.id, hidden_reason: reason, return_to: chapter_projects_path(project.chapter) }
         end
 
         it "hides the project" do
@@ -176,23 +176,23 @@ describe ProjectsController do
         let(:return_to) { chapter_projects_path(project.chapter, q: project.title) }
 
         it "doesn't hide the project" do
-          put :hide, id: project.id, hidden_reason: "", return_to: return_to
+          put :hide, params: { id: project.id, hidden_reason: "", return_to: return_to }
           project.reload
           expect(project).not_to be_hidden
         end
 
         it "sets a flash" do
-          put :hide, id: project.id, hidden_reason: "", return_to: return_to
+          put :hide, params: { id: project.id, hidden_reason: "", return_to: return_to }
           expect(flash[:notice]).not_to be_blank
         end
 
         it "redirects to the appropriate place in the projects page" do
-          put :hide, id: project.id, hidden_reason: "", return_to: return_to
+          put :hide, params: { id: project.id, hidden_reason: "", return_to: return_to }
           expect(response).to redirect_to(chapter_projects_path(project.chapter, q: project.title, anchor: "project#{project.id}"))
         end
 
         it "defaults to page 1 by default" do
-          put :hide, id: project.id, hidden_reason: ""
+          put :hide, params: { id: project.id, hidden_reason: "" }
           expect(response).to redirect_to(chapter_projects_path(project.chapter, anchor: "project#{project.id}"))
         end
       end
@@ -210,13 +210,13 @@ describe ProjectsController do
 
     it "throws a RecordNotFound if the project doesn't exist" do
       expect {
-        put :unhide, id: Time.now.to_i
+        put :unhide, params: { id: Time.now.to_i }
       }.to raise_exception(ActiveRecord::RecordNotFound)
     end
 
     context "with a legit project" do
       before :each do
-        put :unhide, id: project.id, unhidden_reason: reason
+        put :unhide, params: { id: project.id, unhidden_reason: reason }
       end
 
       it "unhides the project" do

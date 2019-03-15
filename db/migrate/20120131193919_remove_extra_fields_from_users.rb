@@ -1,4 +1,4 @@
-class RemoveExtraFieldsFromUsers < ActiveRecord::Migration
+class RemoveExtraFieldsFromUsers < ActiveRecord::Migration[4.2]
   def up
     remove_column :users, :login_count
     remove_column :users, :failed_login_count

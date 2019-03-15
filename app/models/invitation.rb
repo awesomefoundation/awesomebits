@@ -1,6 +1,6 @@
-class Invitation < ActiveRecord::Base
-  belongs_to :inviter, :class_name => "User"
-  belongs_to :invitee, :class_name => "User"
+class Invitation < ApplicationRecord
+  belongs_to :inviter, class_name: "User"
+  belongs_to :invitee, class_name: "User", optional: true
   belongs_to :chapter
 
   validates_presence_of :email
@@ -30,7 +30,7 @@ class Invitation < ActiveRecord::Base
     else
       unless factory.errors.blank?
         factory.errors.each do |key, error|
-          self.errors[key] = error
+          self.errors.add(:key, error)
         end
       end
       false

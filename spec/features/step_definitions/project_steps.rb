@@ -122,7 +122,7 @@ step 'I should see the questions and my answers to them' do
   expect(question_2).to have_css("p", text: @extra_answer_2)
 
   question_3 = page.find(:css, ".project-pitch h3", text: @extra_question_3).find(:xpath, "./..")
-  expect(question_3).to have_css("p", @extra_answer_3)
+  expect(question_3).to have_css("p", text: @extra_answer_3)
 end
 
 step 'I go to the recently submitted project' do

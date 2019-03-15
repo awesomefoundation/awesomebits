@@ -1,5 +1,5 @@
 class PromotionsController < ApplicationController
-  before_filter { |c| c.must_be_able_to_manage_chapter_users(params[:role_id]) }
+  before_action { |c| c.must_be_able_to_manage_chapter_users(params[:role_id]) }
 
   def create
     role = Role.find(params[:role_id])
