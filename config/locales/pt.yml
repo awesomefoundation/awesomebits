@@ -137,7 +137,7 @@ pt:
       unhiding-explanation: "Restaurar o projeto para que possa ser visualizado por todos novamente."
     new:
       title: Você está pronto para ser Irado!?
-      description: Apenas preencha o formulário abaixo com seus dados e detalhes do seu projeto.
+      description: Preencha o formulário abaixo com seus dados e detalhes do seu projeto.
       apply: "Enviar"
     form:
       save: Salvar
