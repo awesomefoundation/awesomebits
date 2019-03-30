@@ -17,6 +17,7 @@ footer {
       padding-bottom: 3px;
       text-decoration: none;
       text-transform: uppercase;
+      white-space: nowrap;
 
       &:hover {
         border-bottom: 3px solid $pink;
