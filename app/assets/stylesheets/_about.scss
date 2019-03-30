@@ -40,7 +40,7 @@
 /*               Responsiveness               */
 /**********************************************/
 
-@media (max-width:60em) {
+@media (max-width:$mobile-max) {
   .about-wrapper {
     .our-story,
     .contact {

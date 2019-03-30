@@ -31,7 +31,7 @@ body {
 
 #main-container {
   width: 100%;
-  max-width: 60em;
+  max-width: $mobile-max;
   background: var(--site-bg-color);
   margin-top: 3em;
   margin-bottom: 6em;  

@@ -1,5 +1,4 @@
-@media all and (max-width:60em) {
-
+@media all and (max-width:$mobile-max) {
   body {
     section.container, footer {
       width: 100%;
