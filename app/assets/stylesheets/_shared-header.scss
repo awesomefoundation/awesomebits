@@ -58,11 +58,7 @@ header.main {
       li {
         float: left;
         list-style: none;
-        margin: 28px 0px 20px 2px;
-
-        &:last-child {
-          margin-left: 0;
-        }
+        margin: 28px 0px 20px 0px;
 
         a {
           color: rgb(155,155,155);
@@ -87,6 +83,34 @@ header.main {
     }
   }
 }
+
+
+/**********************************************/
+/*               Responsiveness               */
+/**********************************************/
+
+@media (max-width:$mobile-min) {
+  header.main {
+    nav {
+      ol {
+        li {
+          float: left;
+          clear: both;
+          margin: 10px 0px;
+          
+          &:first-child {
+            margin-top: 14px;
+          }
+          
+          &:last-child {
+            margin-bottom: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+
 
 section.chapter-menu {
   background: rgb(80,80,80);
