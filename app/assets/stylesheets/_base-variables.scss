@@ -11,3 +11,15 @@ $pink: rgb(255, 75, 126);
 $button-pink: rgb(252, 103, 147);
 
 $blue: rgb(34,122,255); //blue
+
+/**
+ * Base mobile styling to apply to all dashboard views
+ *
+ * The idea: two width cutoffs:
+ * $narrow = iPad portrait and narrower
+ * $phone = iPhone portrait and narrower
+ *
+ * The $phone cuttoff is particularly relevant for the main header nav
+ */
+$narrow: 768px;
+$phone: 480px;

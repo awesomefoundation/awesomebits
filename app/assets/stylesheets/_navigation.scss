@@ -1,18 +1,6 @@
-/**
- * Base mobile styling to apply to all dashboard views
- *
- * The idea: two width cutoffs:
- * $narrow = iPad portrait and narrower
- * $phone = iPhone portrait and narrower
- *
- * The $phone cuttoff is particularly relevant for the main header nav
- */
-$narrow: 768px;
-$phone: 480px;
-
 @media all and (max-width: $narrow) {
 
-  body.projects-index, body.finalists-index {
+  body {
     section.container, footer {
       width: 100%;
       padding: 10px 0 30px 0;
@@ -51,12 +39,13 @@ $phone: 480px;
   cursor: pointer;
   padding: 10px;
 }
+
 .shownav > ol {
   display: block !important;
 }
 
 @media all and (max-width: $phone) {
-  body.projects-index, body.finalists-index {
+  body {
     header.main {
       nav a.logo h1 {
         font-size: 13px;
