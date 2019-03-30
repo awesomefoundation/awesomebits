@@ -12,7 +12,7 @@ body.projects-index {
   padding: 0px 20px 20px 0px;
   width: 180px;
 
-  @media all and (max-width: $narrow) {
+  @media all and (max-width: $mobile-max) {
     float: none;
     border-right: none;
     width: 100%;
@@ -34,7 +34,7 @@ body.projects-index {
 
   .user-profile-image {
     @extend .user-avatar;
-    @media all and (max-width: $narrow) {
+    @media all and (max-width: $mobile-max) {
       padding: 0px;
       width: 40px;
       height: 40px;
@@ -55,7 +55,7 @@ body.projects-index {
     margin: 15px 0px;
     padding-bottom: 30px;
     text-align: center;
-    @media all and (max-width: $narrow) {
+    @media all and (max-width: $mobile-max) {
       border-bottom: 1px solid rgb(200,200,200);
       margin-bottom: 0px;
       text-align: left;
@@ -73,7 +73,7 @@ body.projects-index {
       margin-bottom: 15px;
       padding: 0px 0px 15px 0px;
 
-      @media all and (max-width: $narrow) {
+      @media all and (max-width: $mobile-max) {
         margin: 0px 0px;
         padding: 0px;
       }
@@ -84,7 +84,7 @@ body.projects-index {
 
       &.section-title {
         padding: 15px 0px 5px 0px;
-        @media all and (max-width: $narrow) {
+        @media all and (max-width: $mobile-max) {
           padding-left: 15px;
         }
       }
@@ -100,7 +100,7 @@ body.projects-index {
         font: normal 12px/14px $sans-serif;
         padding: 5px 0px 5px 10px;
         text-decoration: none;
-        @media all and (max-width: $narrow) {
+        @media all and (max-width: $mobile-max) {
           padding: 12px 20px;
         }
 
@@ -117,14 +117,14 @@ body.projects-index {
   float: left;
   width: grid-width(9);
 
-  @media all and (max-width: $narrow) {
+  @media all and (max-width: $mobile-max) {
     width: 100%;
   }
 
   .exports {
     text-align: right;
     margin-bottom: 40px;
-    @media all and (max-width: $narrow) {
+    @media all and (max-width: $mobile-max) {
       display: none;
     }
   }
@@ -139,7 +139,7 @@ body.projects-index {
     margin-bottom: 10px;
     position: relative;
     width: grid-width(9);
-    @media all and (max-width: $narrow) {
+    @media all and (max-width: $mobile-max) {
       width: 100%;
       @include border-radius(0);
     }
@@ -310,7 +310,7 @@ body.projects-index {
     text-transform: uppercase;
   }
 
-  @media all and (max-width: $narrow) {
+  @media all and (max-width: $mobile-max) {
     h1, p {
       padding: 5px 15px;
     }
@@ -323,7 +323,7 @@ body.projects-index {
     @include box-shadow(0 1px 6px 0 rgba(0,0,0, 0.15));
     margin-bottom: 40px;
 
-    @media all and (max-width: $narrow) {
+    @media all and (max-width: $mobile-max) {
       @include border-radius(0);
       border-left: 6px solid rgb(200,200,200);
       border-right: none;
@@ -494,7 +494,7 @@ body.projects-index {
     border: 1px solid $pink;
     @include box-shadow(0 1px 6px 0 rgba($pink, 0.6));
 
-    @media all and (max-width: $narrow) {
+    @media all and (max-width: $mobile-max) {
       border: 1px solid rgba($pink, 0.6);
       border-left: 6px solid $pink;
       padding-left: -3px;
@@ -513,7 +513,7 @@ body.projects-index {
     border: 1px solid $blue;
     @include box-shadow(0 1px 6px 0 rgba($blue, 0.6));
 
-    @media all and (max-width: $narrow) {
+    @media all and (max-width: $mobile-max) {
       border: 1px solid rgba($blue, 0.6);
       border-left: 6px solid $blue;
       padding-left: -3px;

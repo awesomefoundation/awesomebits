@@ -1,4 +1,4 @@
-@media all and (max-width: $narrow) {
+@media all and (max-width:60em) {
 
   body {
     section.container, footer {
@@ -44,7 +44,7 @@
   display: block !important;
 }
 
-@media all and (max-width: $phone) {
+@media all and (max-width: $mobile-min) {
   body {
     header.main {
       nav a.logo h1 {
