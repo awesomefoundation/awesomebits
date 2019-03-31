@@ -5,7 +5,7 @@
 </section>
 
 <section class="applications">
-  <h1><%= t ".title", :name => @chapter.name %></h1>
+  <h1><%= t ".title", :name => @chapter.name, :count => @projects.count %></h1>
   <section class="application-filters">
     <nav>
       <%= link_to '#', :class => 'chapter-selection' do %>
@@ -27,11 +27,11 @@
 
       <div class="input string optional date-range">
         <label class="string optional" for="filter_start"><%= t ".start-date" %></label>
-        <input class="string optional prefilled" id="filter_start" name="start" size="50" type="text" value="<%= @start_date %>">
+        <input class="string optional prefilled" id="filter_start" name="start" size="50" type="text" value="<%= @start_date %>" autocomplete="off">
       </div>
       <div class="input string optional date-range">
         <label class="string optional" for="filter_end"><%= t ".end-date" %></label>
-        <input class="string optional prefilled" id="filter_end" name="end" size="50" type="text" value="<%= @end_date %>">
+        <input class="string optional prefilled" id="filter_end" name="end" size="50" type="text" value="<%= @end_date %>" autocomplete="off">
       </div>
 
       <div class="input string optional search">
@@ -45,9 +45,9 @@
     </form>
   </section>
   <p class="exports">
-    <%= link_to t('.export-projects'), params.merge(:format => :csv) %>
+    <%= link_to t('.export-projects'), params.permit!.merge(format: :csv, only_path: true) %>
     <% if current_user.admin? %>
-      | <%= link_to t('.export-all-projects'), params.merge(:format => :csv, :export_all => :true) %>
+      | <%= link_to t('.export-all-projects'), params.permit!.merge(format: :csv, export_all: true, only_path: true) %>
     <% end %>
   </p>
 
@@ -58,10 +58,11 @@
 <% content_for :javascript do %>
   <% javascript_tag do %>
     $(window).load(function(){
-      $('#filter_start').datepicker({dateFormat: 'yy-mm-dd', onClose: function(){ $('#filter_start').blur() }});
+      $('#filter_start').datepicker({dateFormat: 'yy-mm-dd', onClose: function(dateText){ $('#filter_start').blur(); $('#filter_end').datepicker('option', 'defaultDate', dateText); $('#filter_end').blur() }});
       $('#filter_end').datepicker({dateFormat: 'yy-mm-dd', onClose: function(){ $('#filter_end').blur() }});
     });
   <% end %>
 <% end %>
 
 <%= render "shared/lightbox" %>
+<% render "project_actions_js" %>

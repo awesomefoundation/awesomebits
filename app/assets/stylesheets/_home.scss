@@ -17,13 +17,13 @@ body.home-index {
 
     .tagline {
       @extend .animation-tagline-enter;
-      @include inline-block;
+      display: inline-block;
       position: relative;
       width: 60%;
       vertical-align: top;
 
       .inner-wrapping {
-        background: url('chapter_bg.png');
+        background: image-url('chapter_bg.png');
         background-repeat: repeat-x;
         background-size: cover;
         height: 100%;
@@ -61,7 +61,7 @@ body.home-index {
       @extend .animation-tilefill;
       @include transition;
       background: transparent;
-      @include inline-block;
+      display: inline-block;
       margin: 0px;
       overflow: hidden;
       position: relative;
@@ -102,7 +102,7 @@ body.home-index {
             text-transform: uppercase;
 
             img {
-              @include inline-block;
+              display: inline-block;
               margin-right: 5px;
               vertical-align: bottom;
             }
@@ -180,7 +180,7 @@ body.home-index {
 
     span.divider {
       @include background-image(linear-gradient(-90deg, rgba($base-font-color, 0) 0%, rgba($base-font-color, 0.5) 25%, rgba($base-font-color, 0.6) 50%, rgba($base-font-color, 0.6) 75%, rgba($base-font-color, 0) 100%));
-      @include inline-block;
+      display: inline-block;
       height: 60px;
       margin: 0px 10px -15px;
       width: 1px;
@@ -192,8 +192,8 @@ body.home-index {
   @extend .animation-content-appear;
   background: rgb(240,240,240);
   border: 1px solid rgb(210,210,210);
-  @include border-radius(4px);
-  @include box-shadow(inset 0 0 5px 0 rgba(0,0,0, 0.1));
+  border-radius: 4px;
+  box-shadow: inset 0 0 5px 0 rgba(0,0,0, 0.1);
   margin: 0 auto 100px;
   padding: 20px;
   width: grid-width(12) - 40;
@@ -245,7 +245,7 @@ body.home-index {
 
       .graphic {
         border: 1px dashed rgb(200,200,200);
-        @include border-radius(4px);
+        border-radius: 4px;
         height: 70px;
         padding: 15px 0px;
         width: 100%;
@@ -298,8 +298,8 @@ body.home-index {
   @extend .animation-content-appear;
   background: rgb(240,240,240);
   border: 1px solid rgb(210,210,210);
-  @include border-radius(4px);
-  @include box-shadow(inset 0 0 5px 0 rgba(0,0,0, 0.1));
+  border-radius: 4px;
+  box-shadow: inset 0 0 5px 0 rgba(0,0,0, 0.1);
   margin: 0 auto;
   position: relative;
   width: grid-width(12);
@@ -335,10 +335,10 @@ body.home-index {
 
         a {
           @include background-image(linear-gradient(-90deg, rgb(250,250,250), rgb(240,240,240)));
-          @include border-radius(3px);
+          border-radius: 3px;
           border: 1px solid rgb(200,200,200);
           @include box-sizing(border-box);
-          @include box-shadow(0 1px 0 0 rgba(255,255,255, 0.6));
+          box-shadow: 0 1px 0 0 rgba(255,255,255, 0.6);
           color: $lighter-base-font-color;
           display: block;
           font: bold 14px/14px $sans-serif;
@@ -349,7 +349,7 @@ body.home-index {
           white-space: nowrap;
 
           span.post-date {
-            @include inline-block;
+            display: inline-block;
             margin: 0px 10px 3px 0px;
             font: normal 14px/14px $serif;
           }
@@ -369,7 +369,7 @@ body.home-index {
 
 .awesome-chapters {
   display: none;
-  @include border-radius(4px);
+  border-radius: 4px;
   @include column-count(4);
   @include column-gap($gw-gutter);
   @include column-width(grid-width(3));

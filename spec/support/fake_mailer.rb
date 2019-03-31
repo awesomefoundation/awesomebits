@@ -24,7 +24,7 @@ class FakeMailer
 
     attr_reader :name
 
-    def deliver
+    def deliver_now
       @delivered = true
     end
 

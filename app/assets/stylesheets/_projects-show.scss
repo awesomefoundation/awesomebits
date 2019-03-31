@@ -45,7 +45,7 @@ header.project {
 
   h1 {
     font: normal 34px $sans-serif;
-    @include inline-block;
+    display: inline-block;
     margin: 0px;
   }
 }
@@ -62,7 +62,7 @@ header.project {
 
   .arrow {
     background: rgba(0,0,0, 0.4);
-    @include border-radius(60px);
+    border-radius: 60px;
     color: rgba(255,255,255, 0.6);
     font: normal 40px $sans-serif;
     height: 120px;
@@ -80,14 +80,14 @@ header.project {
     }
 
     &.left {
-      background-image: url("arrow_left.png");
+      background-image: image-url('arrow_left.png');
       background-position: center center;
       background-repeat: no-repeat;
       left: -60px;
     }
 
     &.right {
-      background-image: url("arrow_right.png");
+      background-image: image-url('arrow_right.png');
       background-position: center center;
       background-repeat: no-repeat;
       right: -60px;
@@ -200,7 +200,7 @@ header.project {
     .project-rss {
       background: rgb(240,240,240);
       border: 1px solid rgb(200,200,200);
-      @include border-radius(3px);
+      border-radius: 3px;
       margin-bottom: 15px;
       padding: 20px 15px 30px;
 

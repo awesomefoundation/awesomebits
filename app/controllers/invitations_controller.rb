@@ -1,13 +1,13 @@
 class InvitationsController < ApplicationController
-  before_filter :must_be_logged_in
-  before_filter :must_be_able_to_invite
+  before_action :must_be_logged_in
+  before_action :must_be_able_to_invite
 
   def new
     @invitation = Invitation.new
   end
 
   def create
-    @invitation = find_invitation(params[:invitation])
+    @invitation = find_invitation(invitation_params)
     @invitation.inviter = current_user
     if @invitation.save
       @invitation.send_invitation
@@ -18,6 +18,10 @@ class InvitationsController < ApplicationController
   end
 
   private
+
+  def invitation_params
+    params.require(:invitation).permit(:email, :first_name, :last_name, :chapter_id)
+  end
 
   def find_invitation(attributes)
     invitation = Invitation.where(:email => attributes[:email]).

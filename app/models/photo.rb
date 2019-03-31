@@ -1,11 +1,13 @@
-class Photo < ActiveRecord::Base
+class Photo < ApplicationRecord
   MAIN_DIMENSIONS = "940x470"
 
-  belongs_to :project
+  belongs_to :project, optional: true
   has_attached_file :image,
-                    :default_url => "/assets/no-image-:style.png"
+                    default_url: "no-image-:style.png"
 
-  attr_accessible :image, :direct_upload_url
+  # Added when migrating to Paperclip 4.1 and since Paperclip
+  # is deprecated, we will handle content validations later
+  do_not_validate_attachment_file_type :image
 
   after_create do
     DirectUploadJob.new.async.perform(self)

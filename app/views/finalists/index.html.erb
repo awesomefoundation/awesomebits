@@ -22,12 +22,12 @@
     <form accept-charset="UTF-8" action="<%= chapter_finalists_path(@chapter) %>" class="simple_form filter" method="get">
       <div class="input string optional date-range">
         <label class="string optional" for="filter_start"><%= t ".start-date" %></label>
-        <input class="string optional prefilled" id="filter_start" name="start" size="50" type="text" value="<%= @start_date %>">
+        <input class="string optional prefilled" id="filter_start" name="start" size="50" type="text" value="<%= @start_date %>" autocomplete="off">
       </div>
 
       <div class="input string optional date-range">
         <label class="string optional" for="filter_end"><%= t ".end-date" %></label>
-        <input class="string optional prefilled" id="filter_end" name="end" size="50" type="text" value="<%= @end_date %>">
+        <input class="string optional prefilled" id="filter_end" name="end" size="50" type="text" value="<%= @end_date %>" autocomplete="off">
       </div>
 
       <input name="" type="submit" value="<%= t(".filter-button") %>">
@@ -56,7 +56,7 @@
 <% content_for :javascript do %>
   <% javascript_tag do %>
     $(window).load(function(){
-      $('#filter_start').datepicker({dateFormat: 'yy-mm-dd', onClose: function(){ $('#filter_start').blur() }});
+      $('#filter_start').datepicker({dateFormat: 'yy-mm-dd', onClose: function(dateText){ $('#filter_start').blur(); $('#filter_end').datepicker('option', 'defaultDate', dateText); $('#filter_end').blur() }});
       $('#filter_end').datepicker({dateFormat: 'yy-mm-dd', onClose: function(){ $('#filter_end').blur() }});
     });
   <% end %>

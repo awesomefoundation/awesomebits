@@ -69,6 +69,7 @@ step "I update my password" do
 end
 
 step "I should be able to log in with updated password" do
+  visit sign_in_path
   fill_in("Email",    :with => @current_user.email)
   fill_in("Password", :with => @updated_password)
   click_button("Sign in")

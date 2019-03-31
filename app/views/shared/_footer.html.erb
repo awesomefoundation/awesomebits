@@ -14,11 +14,12 @@
   </p>
 
   <p>
-    <%= link_to "Български", params.merge(:locale => "bg") %>
-    <%= link_to "English", params.merge(:locale => "en") %>
-    <%= link_to "Español", params.merge(:locale => "es") %>
-    <%= link_to "Français", params.merge(:locale => "fr") %>
-    <%= link_to "Português", params.merge(:locale => "pt") %>
-    <%= link_to "Русский", params.merge(:locale => "ru") %>
+    <%= link_to "Български", params.permit!.merge(locale: "bg", only_path: true) %>
+    <%= link_to "English", params.permit!.merge(locale: "en", only_path: true) %>
+    <%= link_to "Español", params.permit!.merge(locale: "es", only_path: true) %>
+    <%= link_to "Français", params.permit!.merge(locale: "fr", only_path: true) %>
+    <%= link_to "ՀԱՅԵՐԵՆ", params.permit!.merge(locale: "hy", only_path: true) %>
+    <%= link_to "Português", params.permit!.merge(locale: "pt", only_path: true) %>
+    <%= link_to "Русский", params.permit!.merge(locale: "ru", only_path: true) %>
   </p>
 </footer>

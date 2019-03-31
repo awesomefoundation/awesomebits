@@ -50,7 +50,7 @@ describe Project do
     let!(:any_project){ FactoryGirl.create(:project, :chapter => any_chapter) }
 
     it 'finds the projects a user has access to' do
-      projects = Project.visible_to(user).all
+      projects = Project.visible_to(user)
       expect(projects).to include(good_project)
       expect(projects).to include(any_project)
       expect(projects).not_to include(bad_project)
@@ -135,8 +135,8 @@ describe Project do
     end
 
     it 'gives each returned project a #vote_count getter with its count' do
-      expect(Project.by_vote_count[0].vote_count).to eq("2")
-      expect(Project.by_vote_count[1].vote_count).to eq("1")
+      expect(Project.by_vote_count[0].vote_count).to eq(2)
+      expect(Project.by_vote_count[1].vote_count).to eq(1)
     end
   end
 
@@ -146,7 +146,7 @@ describe Project do
     let!(:new_winner) { FactoryGirl.create(:project, :funded_on => 1.days.ago) }
     let!(:ignored_winner) { FactoryGirl.create(:project, :funded_on => 1.week.ago, :chapter_id => new_winner.chapter_id) }
     it 'returns one project per chapter  by descending funding date' do
-      expect(Project.recent_winners.all).to eq([new_winner, old_winner])
+      expect(Project.recent_winners).to eq([new_winner, old_winner])
     end
   end
 
@@ -409,16 +409,18 @@ describe Project, 'csv_export' do
     :title => 'Title',
     :funded_on => Date.new(2012,1,1),
     :rss_feed_url => 'http://example.com/rss',
-    :use_for_money => 'Fun'
+    :use_for_money => 'Fun',
+    :hidden_at => Time.new(2012, 1, 2).utc,
+    :hidden_reason => 'not awesome'
   end
   subject { Project.csv_export([project]) }
   let(:parsed)  { CSV.parse(subject).to_a }
 
   it 'adds headers' do
-    expect(parsed.first).to eq(%w(name title about_project use_for_money about_me url email phone chapter_name id created_at funded_on extra_question_1 extra_answer_1 extra_question_2 extra_answer_2 extra_question_3 extra_answer_3 rss_feed_url))
+    expect(parsed.first).to eq(%w(name title about_project use_for_money about_me url email phone chapter_name id created_at funded_on extra_question_1 extra_answer_1 extra_question_2 extra_answer_2 extra_question_3 extra_answer_3 rss_feed_url hidden_at hidden_reason))
   end
 
   it 'includes basic information for a project' do
-    expect(parsed).to include(['Name', 'Title', 'About project', 'Fun', 'About me', 'http://example.com','mail@example.com','555-555-5555', project.chapter.name.to_s, project.id.to_s, project.created_at.to_s, '2012-01-01', '', '', '', '', '', '', 'http://example.com/rss'])
+    expect(parsed).to include(['Name', 'Title', 'About project', 'Fun', 'About me', 'http://example.com','mail@example.com','555-555-5555', project.chapter.name.to_s, project.id.to_s, project.created_at.to_s, '2012-01-01', '', '', '', '', '', '', 'http://example.com/rss', Time.new(2012, 1, 2).utc.to_s, 'not awesome'])
   end
 end

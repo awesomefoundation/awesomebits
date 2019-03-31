@@ -122,7 +122,7 @@ step 'I should see the questions and my answers to them' do
   expect(question_2).to have_css("p", text: @extra_answer_2)
 
   question_3 = page.find(:css, ".project-pitch h3", text: @extra_question_3).find(:xpath, "./..")
-  expect(question_3).to have_css("p", @extra_answer_3)
+  expect(question_3).to have_css("p", text: @extra_answer_3)
 end
 
 step 'I go to the recently submitted project' do
@@ -253,6 +253,11 @@ step 'I should see no feed for the project' do
   page.should have_no_css(".project-rss")
 end
 
-step 'I should be on the projects index for the chapter I am a dean for' do
-  expect(page.current_path).to eq(chapter_projects_path(@current_chapter))
+step 'I should be on the project page for that project' do
+  expect(page.current_path).to eq(chapter_project_path(@current_chapter, @winning_project))
+end
+
+step 'I expand the project menu' do
+  project = page.find("article.project", match: :first)
+  project.find(".project-actions-toggle").click
 end

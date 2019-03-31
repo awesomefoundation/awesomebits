@@ -1,6 +1,6 @@
 body.chapters-index {
   section.container-wrapper {
-    background: url('chapter_bg.png');
+    background: image-url('chapter_bg.png');
     background-repeat: repeat-x;
     background-size: contain;
   }
@@ -57,7 +57,7 @@ section.chapters {
 
   .inner-wrapper {
     @extend .clearfix;
-    @include border-radius(4px);
+    border-radius: 4px;
     padding: 10px 0px;
   }
 
@@ -102,15 +102,19 @@ section.chapters {
       }
 
       &.twitter_url {
-        background: url("twitter.png");
+        background: image-url('twitter.png');
       }
 
       &.facebook_url {
-        background: url("fb.png");
+        background: image-url('fb.png');
       }
 
       &.blog_url {
-        background: url("blog-2.png");
+        background: image-url('blog-2.png');
+      }
+
+      &.instagram_url {
+        background: image-url('instagram.png');
       }
     }
   }

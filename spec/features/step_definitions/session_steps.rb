@@ -72,7 +72,7 @@ end
 
 step "the trustee can log in" do
   visit root_path
-  click_link("Sign out")
+  click_link("Sign in")
   fill_in("Email", :with => @invitation_address)
   fill_in("Password", :with => "12345")
   click_button("Sign in")
@@ -92,5 +92,5 @@ end
 
 step "I log out" do
   click_link("Sign out")
-  expect(page).to have_content("Sign in")
+  expect(page).to have_content(/Sign in/i)
 end

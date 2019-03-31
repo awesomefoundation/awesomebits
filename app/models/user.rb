@@ -1,6 +1,5 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   include Clearance::User
-  attr_accessible :first_name, :last_name, :email, :bio, :url, :last_viewed_chapter_id
 
   before_validation UrlNormalizer.new(:url)
 
@@ -12,11 +11,11 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
 
   has_many :roles
-  has_many :chapters, :through => :roles
-  has_many :dean_chapters, :source => :chapter, :through => :roles, :conditions => "roles.name = 'dean'"
+  has_many :chapters, through: :roles
+  has_many :dean_chapters, -> { where(roles: { name: 'dean' }) }, through: :roles, source: :chapter
 
   has_many :votes
-  has_many :projects, :through => :votes
+  has_many :projects, through: :votes
 
   def logged_in?
     true

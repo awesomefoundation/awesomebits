@@ -6,6 +6,7 @@ $sans-serif: 'museo-sans', 'proxima-nova', $helvetica;
 
 $base-font-color: rgb(55,55,55);
 $lighter-base-font-color: rgb(46,46,46);
+$muted-color: #ccc;
 
 $pink: rgb(255, 75, 126);
 $button-pink: rgb(252, 103, 147);
@@ -19,3 +20,17 @@ $blue: rgb(34,122,255); //blue
 $mobile-large: 60em; // Was 768px;
 $mobile-standard: 30em; // Was 480px;
 $mobile-small: 20em;
+
+/**
+ * Base mobile styling to apply to all dashboard views
+ *
+ * The idea: three width cutoffs:
+ * $wide   = widths lower than that have main container covering the whole screen (which is otherwise centered with paddings)
+ * $narrow = iPad portrait and narrower
+ * $phone  = iPhone portrait and narrower
+ *
+ * The $phone cutoff is particularly relevant for the main header nav
+ */
+$wide:   1060px;
+$narrow: 768px;
+$phone:  480px;

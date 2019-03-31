@@ -46,6 +46,7 @@ en:
       want_to_help: Get Involved
       sign-out: Sign out
       sign-in: Sign in
+  shared:
     sidebar:
       projects: Projects
       finalists: Finalists
@@ -57,6 +58,7 @@ en:
       edit-chapter-profile: Edit Chapter Profile
       view-all-users: View all Users
       trustee-resources: Trustee Resources
+      admin: Admin
   home:
     index:
       title: Forwarding the interest of Awesome in the universe, $1,000 at a time.
@@ -114,10 +116,11 @@ en:
       awesome: Awesome
       delete: Delete this project
       see-the-rest: See the rest →
-      view-public-page: View the public page →
-      edit: Edit Project →
+      view-public-page: View the public page
+      edit: Edit project
       confirm-delete: Really delete this?
       winner: "Winner for %{name}"
+      edit-winner: Update winning project details
       about-me: "A little about me:"
       about-project: "Here's my idea:"
       use-for-money: "How I will use the money:"
@@ -148,7 +151,9 @@ en:
       start-date: start date
       end-date: end date
       short-list-filter: My short-list
-      title: "Projects for %{name}"
+      title:
+        one: "%{count} Project for %{name}"
+        other: "%{count} Projects for %{name}"
       export-projects: Export Filtered
       export-all-projects: Export All From Date Range
     public_show:
@@ -226,9 +231,6 @@ en:
       chapter:
         name: Name
         slug: Name in the URL
-        twitter_url: Twitter URL
-        facebook_url: Facebook URL
-        blog_url: Blog URL
         rss_feed_url: RSS Feed URL
         description: Description
         extra_question_1: Extra question 1
@@ -257,8 +259,15 @@ en:
       user:
         user_image: Set your user image at <a href="https://en.gravatar.com/site/signup/%{email}" target="_blank">gravatar.com</a> using your email address above
       chapter:
-        submission_response_email: This text will be included in the confirmation emails sent to your grant applicants
+        submission_response_email: This text will be included in the confirmation email sent to your grant applicants
+        hide_trustees: Prevent the trustee list from being displayed on the public chapter page
   activerecord:
+    attributes:
+      chapter:
+        twitter_url: Twitter URL
+        facebook_url: Facebook URL
+        instagram_url: Instagram URL
+        blog_url: Blog URL
     errors:
       models:
         chapter:

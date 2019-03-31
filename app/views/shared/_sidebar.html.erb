@@ -7,28 +7,40 @@
 <h2><%= current_user.first_name %> <%= current_user.last_name %></h2>
 
 <ol>
-  <li><%= link_to t("layouts.sidebar.edit-profile"), edit_user_path(current_user) %></li>
-  <% if current_user.can_invite? %>
-    <li><%= link_to t("layouts.sidebar.invite-trustee"), new_invitation_path %></li>
-  <% end %>
-  <% if current_user.can_create_chapters? %>
-    <li><%= link_to t("layouts.sidebar.create-chapter"), new_chapter_path %></li>
-  <% end %>
-  <% if current_user.admin? %>
-    <li><%= link_to t("layouts.sidebar.view-all-users"), users_path %></li>
-  <% end %>
+  <li>
+    <%= link_to "http://wiki.awesomestudies.org", :target => "_blank" do %>
+      <%= t(".trustee-resources") %> <i class="icon-external-link"></i>
+    <% end %>
+  </li>
 
-  <li><%= link_to t("layouts.sidebar.trustee-resources"), "http://wiki.awesomestudies.org", :target => "_blank" %></li>
+  <li><%= link_to t(".edit-profile"), edit_user_path(current_user) %></li>
+  <% if current_user.can_invite? %>
+    <li><%= link_to t(".invite-trustee"), new_invitation_path %></li>
+  <% end %>
 
   <li class="section-title">
     <h3><%= chapter.name %></h3>
   </li>
-  <li><%= link_to t("layouts.sidebar.projects"), chapter_projects_path(chapter) %></li>
+  <li><%= link_to t(".projects"), chapter_projects_path(chapter) %></li>
   <% unless chapter.any_chapter? %>
-    <li><%= link_to t("layouts.sidebar.finalists"), chapter_finalists_path(chapter) %></li>
-    <li><%= link_to t("layouts.sidebar.members"), chapter_users_path(chapter) %></li>
+    <li><%= link_to t(".finalists"), chapter_finalists_path(chapter) %></li>
+    <li><%= link_to t(".members"), chapter_users_path(chapter) %></li>
   <% end %>
   <% if current_user.can_manage_chapter?(chapter) %>
-    <li><%= link_to t("layouts.sidebar.edit-chapter-profile"), edit_chapter_path(chapter) %></li>
+    <li><%= link_to t(".edit-chapter-profile"), edit_chapter_path(chapter) %></li>
+  <% end %>
+
+  <% if current_user.admin? || current_user.can_create_chapters? %>
+    <li class="section-title">
+      <h3><%= t(".admin") %></h3>
+    </li>
+
+    <% if current_user.can_create_chapters? %>
+      <li><%= link_to t(".create-chapter"), new_chapter_path %></li>
+    <% end %>
+
+    <% if current_user.admin? %>
+      <li><%= link_to t(".view-all-users"), users_path %></li>
+    <% end %>
   <% end %>
 </ol>

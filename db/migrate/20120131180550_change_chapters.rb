@@ -1,4 +1,4 @@
-class ChangeChapters < ActiveRecord::Migration
+class ChangeChapters < ActiveRecord::Migration[4.2]
   def up
     remove_column :chapters, :slug
     rename_column :chapters, :body, :description

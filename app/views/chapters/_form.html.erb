@@ -7,13 +7,17 @@
 
   <%= form.input :name %>
   <%= form.input :slug %>
-  <%= form.input :twitter_url, :label => "Twitter URL" %>
-  <%= form.input :facebook_url, :label => "Facebook URL" %>
-  <%= form.input :email_address, :label => "Email Address" %>
-  <%= form.input :blog_url, :label => "Blog URL" %>
-  <%= form.input :rss_feed_url, :label => "RSS Feed URL" %>
+  <%= form.input :twitter_url %>
+  <%= form.input :facebook_url %>
+  <%= form.input :instagram_url %>
+  <%= form.input :email_address %>
+  <%= form.input :blog_url %>
+  <%= form.input :rss_feed_url %>
   <%= form.input :description %>
-  <%= form.input :country, :priority => COUNTRY_PRIORITY %>
+  <%= form.input :hide_trustees %>
+  <%= form.input :country do %>
+    <% form.select :country, CountryOptions.countries_for_select(include_blank: true, selected: form.object.country) %>
+  <% end %>
   <%= form.input :time_zone %>
   <%= form.input :locale, :collection => I18n.available_locales, :include_blank => false, :label => t('simple_form.labels.chapter.locale', :slug => chapter.slug) %>
   <%= form.input :extra_question_1 %>

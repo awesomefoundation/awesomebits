@@ -46,6 +46,7 @@ fr:
       want_to_help: Participer
       sign-out: Déconnexion
       sign-in: Connexion
+  shared:
     sidebar:
       projects: Projets
       finalists: Finalistes
@@ -57,6 +58,7 @@ fr:
       edit-chapter-profile: Editer la Branche
       view-all-users: Voir tous les utilisateurs
       trustee-resources: Ressources Donateur
+      admin: Administrateur
   home:
     index:
       title: Rendre l'univers génial, 1.000€ à la fois.
@@ -114,8 +116,8 @@ fr:
       awesome: Awesome
       delete: Supprimer ce projet
       see-the-rest: Voir le reste →
-      view-public-page: Voir la page publique →
-      edit: Editer le Projet →
+      view-public-page: Voir la page publique
+      edit: Editer le Projet
       confirm-delete: Confirmer la suppression ?
       winner: "Gagnant pour %{name}"
       about-me: "A propos de moi :"
@@ -147,7 +149,9 @@ fr:
       start-date: date de début
       end-date: date de fin
       short-list-filter: Ma short-list
-      title: "Projets pour %{name}"
+      title:
+        one: "%{count} Projet pour %{name}"
+        other: "%{count} Projets pour %{name}"
       export-projects: Exporter le filtre
       export-all-projects: Exporter toute la période
     public_show:

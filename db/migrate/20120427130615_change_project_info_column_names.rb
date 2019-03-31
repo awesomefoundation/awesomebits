@@ -1,4 +1,4 @@
-class ChangeProjectInfoColumnNames < ActiveRecord::Migration
+class ChangeProjectInfoColumnNames < ActiveRecord::Migration[4.2]
   def up
     rename_column :projects, :description, :about_me
     rename_column :projects, :use, :about_project

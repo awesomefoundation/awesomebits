@@ -30,7 +30,7 @@ describe HomeController do
 
   context 'with an invalid locale' do
     it 'should use the default locale' do
-      get :index, :locale => 'INVALID LOCALE'
+      get :index, params: { locale: 'INVALID LOCALE' }
 
       expect(I18n.locale).to eq(I18n.default_locale)
     end

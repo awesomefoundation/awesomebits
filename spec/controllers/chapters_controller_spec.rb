@@ -17,7 +17,7 @@ describe ChaptersController do
 
   context "viewing a chapter page with uppercase characters" do
     before do
-      get :show, :id => "BOSTON"
+      get :show, params: { id: "BOSTON" }
     end
 
     it { is_expected.to redirect_to(chapter_url(:id => "boston")) }
@@ -25,7 +25,7 @@ describe ChaptersController do
 
   context "viewing a chapter edit page with uppercase characters" do
     before do
-      get :edit, :id => "BOSTON"
+      get :edit, params: { id: "BOSTON" }
     end
 
     it { is_expected.to redirect_to(edit_chapter_url(:id => "boston")) }

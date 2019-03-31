@@ -1,4 +1,4 @@
-class AddFullTextIndexToProjects < ActiveRecord::Migration
+class AddFullTextIndexToProjects < ActiveRecord::Migration[4.2]
 
   COLUMN = [:name, :title, :about_me, :about_project, :use_for_money,
               :extra_answer_1, :extra_answer_2, :extra_answer_3]

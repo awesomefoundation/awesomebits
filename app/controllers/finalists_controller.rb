@@ -1,7 +1,7 @@
 class FinalistsController < ApplicationController
-  before_filter :must_be_able_to_view_finalists
+  before_action :must_be_able_to_view_finalists
 
-  around_filter :set_time_zone
+  around_action :set_time_zone
 
   include ApplicationHelper
 

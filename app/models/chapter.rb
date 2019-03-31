@@ -1,26 +1,21 @@
-class Chapter < ActiveRecord::Base
+class Chapter < ApplicationRecord
   EXTRA_QUESTIONS_COUNT = 3
 
   DEFAULT_SUBMISSION_RESPONSE_EMAIL = <<-EOT
-We wanted to send you this (automated) email to let you know that we have
-received your Awesome Foundation application. Your application will be
-considered at the specified chapter's next deliberation meeting.
+We wanted to send you this (automated) email to let you know that we have received your Awesome Foundation application. Your application will be considered at the specified chapter's next deliberation meeting.
 
-Unfortunately, we are not able to personally respond to all of our
-applicants, but be sure to follow our Twitter account at
-http://twitter.com/awesomefound for information about grants from all
-of our chapters.
+Unfortunately, we are not able to personally respond to all of our applicants, but be sure to follow our Twitter account at http://twitter.com/awesomefound for information about grants from all of our chapters.
 
 Thanks for your interest in the Awesome Foundation!
 EOT
 
   extend FriendlyId
-  friendly_id :name, use: :slugged
+  friendly_id :name, use: [:slugged, :finders]
 
   has_many :roles
   has_many :users, :through => :roles
   has_many :projects
-  has_many :winning_projects, :class_name => "Project", :conditions => "funded_on IS NOT NULL", :order => "funded_on DESC"
+  has_many :winning_projects, -> { where.not(funded_on: nil).order(funded_on: :desc) }, class_name: "Project"
   has_many :invitations
 
   validates_presence_of :name
@@ -31,16 +26,12 @@ EOT
 
   validates_format_of :slug, :with => /\A[a-z0-9-]+\Z/
 
-  attr_accessible :name, :twitter_url, :facebook_url, :blog_url, :rss_feed_url, :description,
-                  :country, :extra_question_1, :extra_question_2, :extra_question_3, :slug,
-                  :email_address, :time_zone, :inactive, :locale, :submission_response_email
-
   def should_generate_new_friendly_id?
     slug.blank?
   end
 
   def self.country_count
-    select("count(distinct country) as country_count").first.country_count
+    where(arel_table[:country].not_eq("Worldwide")).select(:country).distinct.count
   end
 
   def self.visitable

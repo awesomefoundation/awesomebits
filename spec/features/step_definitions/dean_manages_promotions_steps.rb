@@ -6,6 +6,6 @@ end
 
 step 'I remove trustee from my chapter' do
   visit chapter_users_path(@current_chapter)
-  click_link("Remove")
+  accept_confirm { click_link("Remove") }
   page.evaluate_script('window.confirm = function() { return true; }')
 end

@@ -46,6 +46,7 @@ pt:
       want_to_help: Junte-se a Nós
       sign-out: Sair
       sign-in: Entrar
+  shared:
     sidebar:
       projects: Projetos
       finalists: Finalistas
@@ -57,13 +58,14 @@ pt:
       edit-chapter-profile: Editar Perfil do Capítulo
       view-all-users: Ver Todos os Usuários
       trustee-resources: Recursos para Curadores
+      admin: Administrador
   home:
     index:
       title: Tornando o universo mais irado, $1.000 de cada vez.
       by: "Por %{name}"
       what:
         header: Vai uma ajudinha aí?
-        body-html: "Tem uma idéia genial que precisa de apoio financeiro? Nós oferecemos um <strong>apoio de $1.000 a cada mês</strong>. Não podia ser mais simples! Sua idéia continua sendo toda sua. Não queremos qualquer parte dela. Queremos apenas ajudar você a fazê-la acontecer!"
+        body-html: "Tem uma ideia genial que precisa de apoio financeiro? Nós oferecemos um <strong>apoio de $1.000 a cada mês</strong>. Não podia ser mais simples! Sua ideia continua sendo toda sua. Não queremos qualquer parte dela. Queremos apenas ajudar você a fazê-la acontecer!"
       call-to-action: Envie agora sua proposta para concorrer a um apoio financeiro da Awesome Foundation!
       who:
         header: Awesome Está por Toda Parte!
@@ -114,12 +116,13 @@ pt:
       awesome: Awesome
       delete: Excluir este projeto
       see-the-rest: Veja mais →
-      view-public-page: Ver a página pública →
-      edit: Editar Projeto →
+      view-public-page: Ver a página pública
+      edit: Editar Projeto
       confirm-delete: Deseja mesmo excluir?
       winner: "Vencedor do capítulo %{name}"
+      edit-winner: Atualize os detalhes do projeto escolhido
       about-me: "Um pouco sobre mim:"
-      about-project: "Eis a minha idéia:"
+      about-project: "Eis a minha ideia:"
       use-for-money: "Como usarei o dinheiro:"
       not-answered: Não Respondido
       images: "Imagens:"
@@ -134,7 +137,7 @@ pt:
       unhiding-explanation: "Restaurar o projeto para que possa ser visualizado por todos novamente."
     new:
       title: Você está pronto para ser Irado!?
-      description: Apenas preencha o formulário abaixo com seus dados e detalhes do seu projeto.
+      description: Preencha o formulário abaixo com seus dados e detalhes do seu projeto.
       apply: "Enviar"
     form:
       save: Salvar
@@ -147,7 +150,9 @@ pt:
       start-date: data inicial
       end-date: data final
       short-list-filter: Marcados por mim
-      title: "Projetos do capítulo %{name}"
+      title:
+        one: "%{count} Projeto do capítulo %{name}"
+        other: "%{count} Projetos do capítulo %{name}"
       export-projects: Exportar Filtrados
       export-all-projects: Exportar Todos do Período
     public_show:
@@ -218,7 +223,7 @@ pt:
         chapter_id: Selecione o capítulo ao qual quer enviar sua proposta
         rss_feed_url: URL de RSS do projeto
         about_me: Fale-nos um pouco sobre você
-        about_project: Fale sobre seu projeto incrível!
+        about_project: Fale sobre seu projeto ou ideia!
         use_for_money: Como você vai usar o dinheiro?
         funded_on: Financiado em
         funded_description: Descrição do Projeto Financiado
@@ -257,7 +262,14 @@ pt:
         user_image: Defina sua imagem em <a href="https://en.gravatar.com/site/signup/%{email}" target="_blank">gravatar.com</a> usando seu endereço de e-mail informado acima
       chapter:
         submission_response_email: Esse texto será incluído no email de confirmação enviado para os projetos candidatos ao prêmio
+        hide_trustees: Impedir que a lista de trustees seja exibida na página do capítulo público
   activerecord:
+    attributes:
+      chapter:
+        email_address: Endereço de e-mail
+        hide_trustees: Ocultar curadores
+        country: País
+        time_zone: Fuso horário
     errors:
       models:
         chapter:
@@ -270,3 +282,10 @@ pt:
               invalid: não é um endereço válido de site
   meta:
     description: Tornando o universo mais Irado, $1.000 de cada vez.
+  will_paginate:
+    previous_label: "&#8592; Anterior"
+    next_label: "Próximo &#8594;"
+  helpers:
+    submit:
+      chapter:
+        update: Atualizar capítulo

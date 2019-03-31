@@ -78,8 +78,8 @@
           li {
             background: rgb(255, 255,255);
             border: 1px solid rgb(200,200,200);
-            @include border-radius(20px);
-            @include box-shadow(0 1px 0 0 rgba(255,255,255, 0.75), inset 0 0 3px 0 rgba(0,0,0, 0.2));
+            border-radius: 20px;
+            box-shadow: 0 1px 0 0 rgba(255,255,255, 0.75), inset 0 0 3px 0 rgba(0,0,0, 0.2);
             @include linear-gradient(rgb(246,246,246), rgb(253,253,253));
             list-style: none;
             margin-bottom: 10px;
@@ -126,8 +126,8 @@
         background: rgb(255,255,255);
         border-top: 1px solid rgb(200,200,200);
         border: 1px solid rgb(200,200,200);
-        @include border-radius(20px);
-        @include box-shadow(0 1px 0 0 rgba(255,255,255, 0.75), inset 0 0 3px 0 rgba(0,0,0, 0.2));
+        border-radius: 20px;
+        box-shadow: 0 1px 0 0 rgba(255,255,255, 0.75), inset 0 0 3px 0 rgba(0,0,0, 0.2);
         @include linear-gradient(rgb(246,246,246), rgb(253,253,253));
         margin-bottom: 10px;
         padding: 8px 15px;
@@ -139,7 +139,7 @@
         &.noremove {
           background: transparent;
           border: none;
-          @include box-shadow(none);
+          box-shadow: none;
           margin: 5px 0 10px 0;
 
           a.remove-image {

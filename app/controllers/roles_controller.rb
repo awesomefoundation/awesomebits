@@ -1,5 +1,5 @@
 class RolesController < ApplicationController
-  before_filter { |c| c.must_be_able_to_manage_chapter_users(params[:id]) }
+  before_action { |c| c.must_be_able_to_manage_chapter_users(params[:id]) }
 
   def destroy
     role = Role.find(params[:id])

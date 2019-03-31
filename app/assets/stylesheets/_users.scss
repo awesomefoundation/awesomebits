@@ -12,7 +12,7 @@ header.users {
 section.awesome-members {
   background: rgb(240,240,240);
   border: 1px solid rgb(170,170,170);
-  @include border-radius(4px);
+  border-radius: 4px;
   margin: 20px auto;
   padding: 30px 40px;
 
@@ -29,13 +29,13 @@ section.awesome-members {
         .promote-user,
         .remove-user, {
           @include button(rgb(240,240,240));
-          @include inline-block;
           font-weight: normal;
           padding: 5px 0px 3px;
           text-align: center;
           text-decoration: none;
           text-shadow: 0 1px rgba(255,255,255, 0.4);
           display: block;
+          font-size: 11px;
         }
 
         .demote-user,

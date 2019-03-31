@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_filter :must_be_logged_in
-  before_filter :ensure_chapter, :only => [:index]
-  before_filter :ensure_current_user_or_admin, :only => [:update, :edit]
+  before_action :must_be_logged_in
+  before_action :ensure_chapter, :only => [:index]
+  before_action :ensure_current_user_or_admin, :only => [:update, :edit]
 
   def index
     @users = User.all_with_chapter(params[:chapter_id])
@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.set_password(params[:user].delete(:new_password))
-    if @user.update_attributes(params[:user])
+    if @user.update_attributes(user_params)
       if params[:return_to].present?
         redirect_to params[:return_to]
       else
@@ -26,6 +26,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :email, :bio, :url)
+  end
 
   def ensure_current_user_or_admin
     unless current_user.can_edit_profile?(params[:id])

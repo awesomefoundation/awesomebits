@@ -1,6 +1,6 @@
 body.chapters-show {
   section.container {
-    background: url('chapter_bg.png');
+    background: image-url('chapter_bg.png');
     background-repeat: repeat-x;
     background-size: contain;
     padding-top: 0px;
@@ -70,21 +70,75 @@ body.chapters-show {
         }
 
         &.twitter {
-          background: url("twitter.png");
+          background: image-url('twitter.png');
         }
 
         &.facebook {
-          background: url("fb.png");
+          background: image-url('fb.png');
         }
 
         &.email {
-          background: url("mail.png");
+          background: image-url('mail.png');
         }
 
         &.blog {
-          background: url("blog-2.png");
+          background: image-url('blog-2.png');
+        }
+
+        &.instagram {
+          background: image-url('instagram.png');
         }
       }
+    }
+  }
+
+  .owl-dots-wrapper {
+    @extend .clearfix;
+    margin-top: 20px;
+
+    .owl-dots{
+      float: left;
+      width: 100%;
+    }
+
+    .owl-dots, .owl-nav-round {
+      text-align: center;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .owl-dots .owl-dot {
+      display: inline-block;
+      zoom: 1;
+    }
+
+    button.owl-dot {
+      background: 0 0;
+      color: inherit;
+      border: none;
+      padding: 0!important;
+      font: inherit;
+    }
+
+    .owl-dots .owl-dot.active span, .owl-dots .owl-dot:hover span {
+      background: #869791;
+    }
+
+    .owl-dots .owl-dot span {
+      width: 10px;
+      height: 10px;
+      margin: 5px 7px;
+      background: #D6D6D6;
+      display: block;
+      -webkit-backface-visibility: visible;
+      transition: opacity 0.2s ease;
+      border-radius: 30px;
+    }
+
+  }
+
+  .owl-carousel {
+    .project {
+      width: 500px !important;
     }
   }
 }
@@ -96,22 +150,23 @@ body.chapters-show {
 
 .chapter-header-wrapper {
   height: 300px;
-  margin: 0 auto;
-  padding: 40px 0px 0px;
+  margin: 0 0 0 auto;
+  padding: 40px 0px 20px;
   position: relative;
-  width: 1020px;
+  width: 95%;
 
   &:hover {
-    a.nav {
+    .owl-nav-round button {
       opacity: 1;
     }
   }
 
-  a.nav {
+  .owl-nav-round button {
     background: rgba(0,0,0, 0.6);
     background-position: center center;
     background-repeat: no-repeat;
-    @include border-radius(60px);
+    border: 0;
+    border-radius: 60px;
     display: block;
     height: 120px;
     opacity: 0;
@@ -125,14 +180,19 @@ body.chapters-show {
       background-color: rgba($pink, 1);
     }
 
-    &.left {
-      background-image: url("arrow_left.png");
+    &.owl-nav-left {
+      background-image: image-url('arrow_left.png');
       left: -60px;
     }
 
-    &.right {
-      background-image: url("arrow_right.png");
-      right: -60px;
+    &.owl-nav-right {
+      background-image: image-url('arrow_right.png');
+      right: -55px;
+      margin-right: 5%;
+    }
+
+    &.disabled {
+      display: none;
     }
   }
 
@@ -142,18 +202,27 @@ body.chapters-show {
 
   .chapter-projects {
     @extend .clearfix;
-    @include inline-block;
+    display: inline-block;
     left: 0px;
     position: relative;
     top: 0px;
 
+    // make slides (display: inline-block) stack horizontally before the carousel is on
+    white-space: nowrap;
+    overflow: hidden;
+
+    &.owl-loaded {
+      // when the carousel is on, reset overflow: hidden added to hide off screen slides
+      overflow: visible !important;
+    }
+
     .project {
+      display: inline-block;
       background: transparent;
       height: auto;
-      float: left;
       margin: 0px;
       overflow: hidden;
-      width: 510px;
+      width: 500px;
 
       a {
         text-decoration: none;
@@ -161,7 +230,6 @@ body.chapters-show {
 
       .image-wrapper {
         height: 100%;
-        margin: 0px 5px;
         overflow: hidden;
         position: relative;
         text-decoration: none;
@@ -246,7 +314,7 @@ body.chapters-show {
 
         article.dean {
           div.hat {
-            background: url('dean-hat.png');
+            background: image-url('dean-hat.png');
             background-position: top center;
             background-repeat: no-repeat;
             height: 94px;
@@ -271,8 +339,8 @@ body.chapters-show {
             .trustee-details {
               background: rgba($pink, 0.9);
               border: 1px solid rgba($pink, 1);
-              @include border-radius(2px);
-              @include box-shadow(0 1px 5px 0 rgba(0, 0, 0, 0.3));
+              border-radius: 2px;
+              box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.3);
               opacity: 0;
               padding: 8px;
               position: absolute;
@@ -291,7 +359,7 @@ body.chapters-show {
 
             &:hover {
               div.avatar {
-                @include box-shadow(0 1px 6px 0 rgba(0, 0, 0, 0.2));
+                box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.2);
                 top: -5px;
               }
 

@@ -1,6 +1,6 @@
-class Invitation < ActiveRecord::Base
-  belongs_to :inviter, :class_name => "User"
-  belongs_to :invitee, :class_name => "User"
+class Invitation < ApplicationRecord
+  belongs_to :inviter, class_name: "User"
+  belongs_to :invitee, class_name: "User", optional: true
   belongs_to :chapter
 
   validates_presence_of :email
@@ -8,8 +8,6 @@ class Invitation < ActiveRecord::Base
   validates_presence_of :inviter
   validates_uniqueness_of :email, :scope => :chapter_id
   validate :ensure_inviter_can_invite_to_chapter
-
-  attr_accessible :email, :first_name, :last_name, :chapter_id
 
   cattr_accessor :mailer
   self.mailer = InvitationMailer
@@ -25,14 +23,14 @@ class Invitation < ActiveRecord::Base
                                :chapter => chapter)
 
     if factory.create
-      mailer.welcome_trustee(self).deliver
+      mailer.welcome_trustee(self).deliver_now
       self.invitee = factory.user
       self.accepted = true
       self.save
     else
       unless factory.errors.blank?
         factory.errors.each do |key, error|
-          self.errors[key] = error
+          self.errors.add(:key, error)
         end
       end
       false
@@ -40,7 +38,7 @@ class Invitation < ActiveRecord::Base
   end
 
   def send_invitation
-    mailer.invite_trustee(self).deliver
+    mailer.invite_trustee(self).deliver_now
   end
 
   def ensure_inviter_can_invite_to_chapter

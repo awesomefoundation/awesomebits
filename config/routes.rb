@@ -1,15 +1,15 @@
-Awesomefoundation::Application.routes.draw do
+Rails.application.routes.draw do
   constraints(SubdomainConstraint) do
-    match "/apply" => "subdomains#apply"
-    match "*url"   => "subdomains#chapter"
-    match "/"      => "subdomains#chapter"
+    get "/apply" => "subdomains#apply"
+    get "*url"   => "subdomains#chapter"
+    get "/"      => "subdomains#chapter"
   end
 
-  match "/blog/contact/" => redirect("/en/contact")
-  match "/blog/about/"   => redirect("/en/about_us")
-  match "/blog"          => redirect("http://blog.awesomefoundation.org")
-  match "/blog/*path"    => redirect { |params, request| "http://blog.awesomefoundation.org/#{URI.escape(params[:path])}" }, :format => false
-  match "/apply"         => redirect("/en/submissions/new")
+  get "/blog/contact/" => redirect("/en/contact")
+  get "/blog/about/"   => redirect("/en/about_us")
+  get "/blog"          => redirect("http://blog.awesomefoundation.org")
+  get "/blog/*path"    => redirect { |params, request| "http://blog.awesomefoundation.org/#{URI.escape(params[:path])}" }, :format => false
+  get "/apply"         => redirect("/en/submissions/new")
 
   resources :passwords, :controller => 'clearance/passwords', :only => [:new, :create]
 
@@ -17,11 +17,11 @@ Awesomefoundation::Application.routes.draw do
     resource :password, :controller => 'clearance/passwords', :only => [:create, :edit, :update]
   end
 
-  scope "(:locale)", :locale => /bg|en|es|fr|pt|ru/ do
+  scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     resource  :session, controller: :sessions, only: [:new, :create, :destroy]
 
-    match "sign_in",  :to => "sessions#new"
-    match "sign_out", :to => "sessions#destroy", :via => :delete
+    get "sign_in",  :to => "sessions#new"
+    delete "sign_out", :to => "sessions#destroy"
 
     resources :users, :only => [:index, :update, :edit] do
       resource :admins, :only => [:create, :destroy]
@@ -55,20 +55,16 @@ Awesomefoundation::Application.routes.draw do
     end
 
     %w(about_us faq).each do |page|
-      match page, :to => 'high_voltage/pages#show', :id => page
+      get page, :to => 'high_voltage/pages#show', :id => page
     end
 
     root :to => 'home#index'
   end
 
-  match "/404", :to => "errors#not_found"
-
-  # With the catchall route, explicitly mount Evergreen
-  if Rails.env.development? || Rails.env.test?
-    mount Evergreen::Application, :at => '/evergreen'
-  end
+  get "/404", :to => "errors#not_found"
+  get "/500", :to => "errors#internal_server_error"
 
   # All other routes are considered 404s. ActionController::RoutingError
   # will catch them, but that fills our logs with noisy exceptions.
-  match '*url', :to => 'errors#not_found', :via => [:get]
+  get '*url', :to => 'errors#not_found'
 end

@@ -1,10 +1,10 @@
 class WinnersController < ApplicationController
-  before_filter :must_be_able_to_mark_winner
+  before_action :must_be_able_to_mark_winner
 
   def create
     @project = Project.find(params[:project_id])
     response_json = { winner: true, project_id: @project.id }
-    response_json[:location] = chapter_projects_url(winning_chapter) if winning_chapter != @project.chapter
+    response_json[:location] = chapter_project_url(winning_chapter, @project) if winning_chapter != @project.chapter
     @project.declare_winner!(winning_chapter)
     render :json => response_json
   end
@@ -28,9 +28,9 @@ class WinnersController < ApplicationController
   end
 
   def must_be_able_to_mark_winner
-    unless current_user.admin? || current_user.can_mark_winner?(current_project)
+    unless current_user.admin? || (current_user.can_mark_winner?(current_project) && current_user.chapters.include?(winning_chapter))
       flash[:notice] = t("flash.permissions.cannot-mark-winner")
-      redirect_to submissions_path
+      render :json => { :location => chapter_projects_path(current_project.chapter) }
     end
   end
 end

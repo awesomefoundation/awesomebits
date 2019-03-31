@@ -1,5 +1,5 @@
 class VotesController < ApplicationController
-  before_filter :must_be_logged_in
+  before_action :must_be_logged_in
 
   def create
     @project = Project.find(params[:project_id])

@@ -1,36 +1,27 @@
 source 'http://rubygems.org'
 
-ruby '2.1.7'
+ruby '2.4.5'
 
-gem 'rails', '3.2.22.5'
+gem 'rails', '5.2.2.1'
 gem 'rake', '< 11.0'
+gem 'bootsnap','>= 1.1.0', require: false
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails'
-  gem 'coffee-rails'
-  gem 'uglifier'
-end
-
-gem 'country_select'
-gem 'pg', '~> 0.13.2'
-gem 'texticle', '~> 2.0', :require => 'texticle/rails'
-gem 'jquery-rails'
-gem 'clearance', '~> 0.16.2'
-gem 'thin'
-gem 'sass'
-gem 'high_voltage'
-gem 'paperclip', '~> 3.0.3'
-gem 'fog'
+gem 'pg', '~> 0.20.0'
+gem 'textacular', '~> 5.1.0'
+gem 'jquery-rails', '~> 4.1.1'
+gem 'jquery-ui-rails', '~> 3.0.1'
+gem 'clearance', '~> 1.13.0'
+gem 'clearance-deprecated_password_strategies'
+gem 'high_voltage', '~> 1'
+gem 'paperclip', '~> 4.1.1'
+gem 'fog', '~> 1.41.0'
 gem 'formtastic'
 gem 'flutie'
-gem 'bourbon', '~> 1.4.0'
-gem 'copycopter_client'
-gem "simple_form", "~> 2.1.3"
-gem 'nokogiri'
-gem "will_paginate", "~> 3.0.3"
-gem "friendly_id", "~> 4.0.9"
+gem 'bourbon', '~> 4.0.2'
+gem 'simple_form', '~> 4.1'
+gem 'nokogiri', '~> 1.10.1'
+gem "will_paginate", "~> 3.1.6"
+gem "friendly_id", "~> 5.2.4"
 gem 'redcarpet'
 gem 'honeypot-captcha'
 gem 'sucker_punch', '~> 1.0'
@@ -40,38 +31,46 @@ gem 'magnific-popup-rails'
 gem 'rack-attack'
 gem 'rack-ssl-enforcer'
 gem 'rollbar'
+gem 'sass-rails', '~> 5.0'
+gem 'coffee-rails'
+gem 'uglifier'
+gem 'xmlrpc'
 
 group :development do
   gem "letter_opener"
+  gem "listen"
+  gem 'puma'
+  gem 'web-console'
 end
 
 group :development, :test do
-  gem "rspec-rails", "~> 3.6"
+  gem "rspec-rails", "~> 3.6.1"
   gem "byebug"
   gem "sham_rack"
   gem "pry"
   gem "pry-nav"
-  gem "evergreen", "~> 1.1.3", :require => "evergreen/rails"
   gem "dotenv-rails"
 end
 
 group :test do
   gem "turnip"
-  gem "capybara"
+  gem "capybara", "~> 2.18.0"
+  gem "capybara-screenshot", "~> 1.0.11"
+  gem "chromedriver-helper"
   gem "database_cleaner"
-  gem "capybara-webkit", "~> 1.3.0"
-  gem 'capybara-screenshot'
   gem "factory_girl_rails"
   gem "faker"
   gem "bourne"
   gem "timecop"
+  gem "rails-controller-testing"
+  gem "selenium-webdriver"
   gem "shoulda-matchers"
   gem "launchy"
   gem "email_spec"
 end
 
 group :staging, :production do
-  gem 'newrelic_rpm'
+  gem 'newrelic_rpm', '~> 3.18.1'
   gem 'sprockets-redirect'
   gem 'passenger'
   gem 'rails_12factor'

@@ -1,4 +1,4 @@
-class Vote < ActiveRecord::Base
+class Vote < ApplicationRecord
   belongs_to :user
   belongs_to :project
 
@@ -6,8 +6,6 @@ class Vote < ActiveRecord::Base
   validates_presence_of :project_id
 
   validates_uniqueness_of :user_id, :scope => :project_id
-
-  attr_accessible :user, :project
 
   def self.by(user)
     where(:user_id => user.id)

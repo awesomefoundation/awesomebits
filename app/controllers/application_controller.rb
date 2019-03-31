@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
-  include Clearance::Authentication
-  protect_from_forgery
-  before_filter :set_locale
-  before_filter :fix_chapter_ids
+  include Clearance::Controller
+
+  before_action :set_locale
+  before_action :fix_chapter_ids
 
   def must_be_logged_in
     if current_user.blank? || !current_user.logged_in?
@@ -64,8 +64,7 @@ class ApplicationController < ActionController::Base
 
   def render_404
     respond_to do |format|
-      format.html { render :status => 404, :template => "errors/not_found" }
-      format.all { render :nothing => true, :status => 404 }
+      format.all { render status: :not_found, template: "errors/not_found", formats: [:html], content_type: [:html] }
     end
   end
 end

@@ -1,5 +1,5 @@
 class SubdomainsController < ApplicationController
-  before_filter :find_chapter
+  before_action :find_chapter
 
   def chapter
     if @chapter

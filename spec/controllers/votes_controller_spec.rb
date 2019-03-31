@@ -9,7 +9,7 @@ describe VotesController do
   context "user can vote on a project" do
     before do
       sign_in_as user
-      post :create, :project_id => project.id
+      post :create, params: { project_id: project.id }
     end
     it { is_expected.to respond_with(:success) }
     it { expect(response.header['Content-Type']).to include 'json' }
@@ -19,7 +19,7 @@ describe VotesController do
     let!(:vote) { FactoryGirl.create(:vote, :project => project, :user => user) }
     before do
       sign_in_as user
-      delete :destroy, :project_id => project.id
+      delete :destroy, params: { project_id: project.id }
     end
     it { is_expected.to respond_with(:success) }
     it { expect(response.header['Content-Type']).to include 'json' }
@@ -29,7 +29,7 @@ describe VotesController do
     let!(:vote) { FactoryGirl.create(:vote, :project => project, :user => user) }
     before do
       sign_in_as user
-      post :create, :project_id => project.id
+      post :create, params: { project_id: project.id }
     end
     it { is_expected.to respond_with(400) }
     it { expect(response.header['Content-Type']).to include 'json' }
@@ -38,7 +38,7 @@ describe VotesController do
   context "error when user trieds to delete a vote that doesn't exist" do
     before do
       sign_in_as user
-      delete :destroy, :project_id => project.id
+      delete :destroy, params: { project_id: project.id }
     end
     it { is_expected.to respond_with(400) }
     it { expect(response.header['Content-Type']).to include 'json' }

@@ -1,19 +1,12 @@
-require "texticle/searchable"
+require "textacular/searchable"
 
-class Project < ActiveRecord::Base
+class Project < ApplicationRecord
   belongs_to :chapter
-  belongs_to :hidden_by_user, class_name: "User"
+  belongs_to :hidden_by_user, class_name: "User", optional: true
   has_many :votes
   has_many :users, :through => :votes
-  has_many :photos, :order => "photos.sort_order asc, photos.id asc"
-  has_many :real_photos, :order => "photos.sort_order asc, photos.id asc", :conditions => proc { Photo.arel_table[:image_content_type].matches('image/%') }, :class_name => "Photo"
-
-  attr_accessible :name, :title, :url, :email, :phone, :about_me, :about_project,
-                  :chapter_id, :extra_question_1, :extra_question_2, :extra_question_3,
-                  :extra_answer_1, :extra_answer_2, :extra_answer_3,
-                  :new_photos, :photo_order, :rss_feed_url, :use_for_money, :funded_on, :funded_description,
-                  :new_photo_direct_upload_urls,
-                  :hidden_by_user_id, :hidden_reason, :hidden_at
+  has_many :photos, -> { order(sort_order: :asc, id: :asc) }
+  has_many :real_photos, -> { where(Photo.arel_table[:image_content_type].matches('image/%')).order(sort_order: :asc, id: :asc) }, class_name: "Photo"
 
   before_validation UrlNormalizer.new(:url, :rss_feed_url)
 
@@ -37,7 +30,7 @@ class Project < ActiveRecord::Base
   self.mailer = ProjectMailer
 
   # specify the default fields on which full text search will be performed
-  extend Searchable(:name, :title, :about_me, :about_project, :use_for_money,
+  extend Searchable(:name, :title, :email, :about_me, :about_project, :use_for_money,
                     :extra_answer_1, :extra_answer_2, :extra_answer_3)
 
   def self.winner_count
@@ -81,7 +74,7 @@ class Project < ActiveRecord::Base
 
   def self.recent_winners
     subquery = select("DISTINCT ON (chapter_id) projects.*").where("projects.funded_on IS NOT NULL").order(:chapter_id, :funded_on).reverse_order
-    select("*").from("(#{subquery.to_sql}) AS distinct_chapters").order(:funded_on).reverse_order
+    select("*").from("(#{subquery.to_sql}) AS distinct_chapters").order("distinct_chapters.funded_on").reverse_order
   end
 
   def self.csv_export(projects)
@@ -94,7 +87,7 @@ class Project < ActiveRecord::Base
   end
 
   def self.attributes_for_export
-    %w(name title about_project use_for_money about_me url email phone chapter_name id created_at funded_on extra_question_1 extra_answer_1 extra_question_2 extra_answer_2 extra_question_3 extra_answer_3 rss_feed_url)
+    %w(name title about_project use_for_money about_me url email phone chapter_name id created_at funded_on extra_question_1 extra_answer_1 extra_question_2 extra_answer_2 extra_question_3 extra_answer_3 rss_feed_url hidden_at hidden_reason)
   end
 
   def to_a
@@ -110,7 +103,7 @@ class Project < ActiveRecord::Base
   end
 
   def deliver_winning_email
-    mailer.winner(self).deliver
+    mailer.winner(self).deliver_now
   end
 
   def declare_winner!(new_chapter = nil)
