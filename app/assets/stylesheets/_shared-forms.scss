@@ -94,7 +94,7 @@ body.sessions-create {
     @include border-radius(4px);
     margin: 0px auto;
     padding: 30px 40px;
-    width: grid-width(6);
+    max-width: grid-width(6);
   }
 
   h2 {
@@ -106,7 +106,7 @@ body.sessions-create {
 
   form {
     margin: 0 auto;
-    width: grid-width(6);
+    max-width: grid-width(6);
 
     div.text_field {
       margin: 0 0 20px 0;
@@ -140,6 +140,12 @@ body.sessions-create {
 //
 //*******************************************************************
 
+.form-wrapper {
+  margin-right: 1em;
+  margin-left: 1em;
+}
+
+
 section.user-form,
 section.project-form,
 section.invitation-form,
@@ -148,8 +154,8 @@ section.chapter-form {
   border: 1px solid rgb(200,200,200);
   @include border-radius(4px);
   margin: 0 auto;
-  padding: 30px 40px;
-  width: grid-width(6);
+  padding: 2.5em;
+  max-width: grid-width(6);
 
   h1 {
     border-bottom: 1px solid rgb(200,200,200);
@@ -160,7 +166,7 @@ section.chapter-form {
 
   form {
     margin: 0 auto;
-    width: grid-width(6);
+    max-width: grid-width(6);
   }
 
   div.input {
@@ -192,4 +198,29 @@ section.chapter-form {
     display: block;
     font-style: italic;
   }
+}
+
+
+/**********************************************/
+/*               Responsiveness               */
+/**********************************************/
+
+@media (max-width:$mobile-standard) {
+  section.user-form,
+  section.project-form,
+  section.invitation-form,
+  section.chapter-form {
+    padding: 1.25em;
+  }
+
+}
+
+@media (max-width:$mobile-small) {
+  section.user-form,
+  section.project-form,
+  section.invitation-form,
+  section.chapter-form {
+    max-width: 250px;
+  }
+
 }

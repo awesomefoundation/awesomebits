@@ -1,4 +1,4 @@
-@media all and (max-width:$mobile-max) {
+@media all and (max-width:$mobile-large) {
   body {
     section.container, footer {
       width: 100%;
@@ -43,7 +43,7 @@
   display: block !important;
 }
 
-@media all and (max-width: $mobile-min) {
+@media all and (max-width: $mobile-standard) {
   body {
     header.main {
       nav a.logo h1 {

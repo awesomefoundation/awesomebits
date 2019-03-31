@@ -1,11 +1,13 @@
-<section class="application-intro">
-  <h1><%= t ".title" %></h1>
-  <p><%= t ".description" %></p>
-</section>
+<div class="form-wrapper flexbox vertical center">
+  <section class="application-intro">
+    <h1><%= t ".title" %></h1>
+    <p><%= t ".description" %></p>
+  </section>
 
-<section class="project-form">
-  <%= simple_form_for @project, :url => submissions_url, :html => { :multipart => true, :honeypot => true, "data-uploading-alert-text" => strip_tags(t("projects.wait-for-uploads-to-complete")) } do |form| %>
-    <%= render 'form', :project => @project, :form => form %>
-    <%= submit_tag t ".apply" %>
-  <% end %>
-</section>
+  <section class="project-form">
+    <%= simple_form_for @project, :url => submissions_url, :html => { :multipart => true, :honeypot => true, "data-uploading-alert-text" => strip_tags(t("projects.wait-for-uploads-to-complete")) } do |form| %>
+      <%= render 'form', :project => @project, :form => form %>
+      <%= submit_tag t ".apply" %>
+    <% end %>
+  </section>
+</div>
