@@ -113,6 +113,10 @@ body.sessions-create {
     }
   }
 
+  p {
+    font-size: 0.8em;
+  }
+
   ul {
     @extend .clearfix;
 
@@ -120,6 +124,7 @@ body.sessions-create {
       list-style: none;
       float: right;
       margin-left: 10px;
+      font-size: 0.8em;
 
       a {
         color: $lighter-base-font-color;
@@ -172,6 +177,7 @@ section.chapter-form {
   div.chars_left {
     margin-top: -15px;
     margin-bottom: 15px;
+    font-size: 0.8em;
   }
 
   label {
@@ -190,6 +196,8 @@ section.chapter-form {
   }
 
   .hint {
+    font-size: 0.8em;
+    line-height: 1.4;
     margin-top: .5em;
     display: block;
     font-style: italic;
