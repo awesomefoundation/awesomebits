@@ -140,11 +140,6 @@ body.sessions-create {
 //
 //*******************************************************************
 
-.form-wrapper {
-  margin-right: 1em;
-  margin-left: 1em;
-}
-
 
 section.user-form,
 section.project-form,
@@ -153,7 +148,8 @@ section.chapter-form {
   background: rgb(240,240,240);
   border: 1px solid rgb(200,200,200);
   @include border-radius(4px);
-  margin: 0 auto;
+  margin-right: 1em;
+  margin-left: 1em;
   padding: 2.5em;
   max-width: grid-width(6);
 
