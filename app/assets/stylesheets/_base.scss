@@ -35,7 +35,7 @@ body {
   background: var(--site-bg-color);
 }
 
-body.home-index, body.chapters-show {
+body.home-index, body.chapters-show, body.chapters-index {
   #main-container {
     max-width: none;
   }
