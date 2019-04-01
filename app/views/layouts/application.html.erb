@@ -24,11 +24,15 @@
 <body class="<%= body_class %>">
   <div id="site-container" class="flexbox vertical stretch">
     <%= render 'shared/navigation' %>
-    <div id="main-container" class="flexbox vertical center">
-      <section class="container">
-      <%= render 'shared/flashes' -%>
-      <%= yield %>
-      </section>
+    <div class="flexbox vertical center">
+      <div id="main-container" class="flexbox vertical stretch">
+        <section class="container-wrapper flexbox vertical center">
+          <section class="container">
+            <%= render 'shared/flashes' %>
+            <%= yield %>
+          </section>
+        </section>
+      </div>
     </div>
     <%= render 'shared/footer' %>
     <%= render 'shared/javascript' %>

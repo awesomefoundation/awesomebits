@@ -29,6 +29,10 @@
     text-transform: uppercase;
   }
 
+  .our-story {
+    margin-right: 3em;
+  }
+
   .our-story,
   .contact {
     max-width: 27em;
@@ -42,6 +46,10 @@
 
 @media (max-width:$mobile-large) {
   .about-wrapper {
+    .our-story {
+      margin-right: 0em;
+    }
+    
     .our-story,
     .contact {
       max-width: 100%;

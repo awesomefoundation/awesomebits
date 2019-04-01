@@ -31,10 +31,17 @@ body {
 
 #main-container {
   width: 100%;
-  background: var(--site-bg-color); 
+  max-width: 60em;
+  background: var(--site-bg-color);
 }
 
-body:not(.home-index):not(.chapters-show) {
+body.home-index, body.chapters-show {
+  #main-container {
+    max-width: none;
+  }
+}
+
+body:not(.home-index):not(.chapters-show) {  
   section.container {
     margin-top: 3em;
   }
