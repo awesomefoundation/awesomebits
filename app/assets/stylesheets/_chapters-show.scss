@@ -9,7 +9,7 @@ body.chapters-show {
       border-bottom: 1px solid rgb(200,200,200);
       margin: 0 auto;
       padding: 60px 0px 10px;
-      width: grid-width(12);
+      max-width: grid-width(12);
     }
 
     .inactive-notice {
@@ -25,7 +25,7 @@ body.chapters-show {
       @extend .clearfix;
       margin: 0 auto;
       padding-bottom: 0px;
-      width: grid-width(12);
+      max-width: grid-width(12);
 
       h1 {
         color: rgba(55,55,55, 1);
@@ -280,7 +280,7 @@ body.chapters-show {
 .chapter-info {
   @extend .clearfix;
   margin: 40px auto 40px;
-  width: grid-width(12);
+  max-width: grid-width(12);
 
   h2 {
     font: normal 18px/22px $sans-serif;
@@ -296,7 +296,7 @@ body.chapters-show {
     border-top: 1px solid rgb(200,200,200);
     margin-bottom: 40px;
     padding: 40px 0px 40px;
-    width: grid-width(12);
+    max-width: grid-width(12);
 
     ol {
       @extend .clearfix;
@@ -306,7 +306,7 @@ body.chapters-show {
         float: left;
         list-style: none;
         margin: 0 $gw-gutter $gw-gutter 0;
-        width: grid-width(2);
+        max-width: grid-width(2);
 
         &:nth-child(6n) {
           margin-right: 0;
@@ -345,7 +345,7 @@ body.chapters-show {
               padding: 8px;
               position: absolute;
               top: 80px;
-              width: grid-width(2);
+              max-width: grid-width(2);
               z-index: 3;
 
               h3 {
@@ -398,13 +398,13 @@ body.chapters-show {
   .description {
     @extend .clearfix;
     margin: 0px auto 40px;
-    width: grid-width(12);
+    max-width: grid-width(12);
 
     article {
       float: left;
 
       &.half {
-        width: grid-width(6);
+        max-width: grid-width(6);
       }
 
       h2 {
@@ -465,12 +465,12 @@ body.chapters-show {
   @extend .clearfix;
   padding-top: 40px;
   border-top: 1px solid rgb(200,200,200);
-  width: grid-width(12);
+  max-width: grid-width(12);
   margin: 0 auto;
 
   .apply-button {
     margin: 0 auto;
-    width: grid-width(6);
+    max-width: grid-width(6);
 
     a {
       @include button(pill, $button-pink);
