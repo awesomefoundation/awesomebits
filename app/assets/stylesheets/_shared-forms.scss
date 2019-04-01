@@ -70,7 +70,7 @@ textarea {
   padding: 10px 8px;
   resize: vertical;
   width: 100%;
-}
+} 
 
 //*******************************************************************
 //
@@ -149,8 +149,7 @@ body.sessions-create {
 section.user-form,
 section.project-form,
 section.invitation-form,
-section.chapter-form,
-section.signin-form {
+section.chapter-form {
   background: rgb(240,240,240);
   border: 1px solid rgb(200,200,200);
   border-radius: 4px;

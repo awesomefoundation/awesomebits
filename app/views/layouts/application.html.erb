@@ -26,8 +26,10 @@
     <%= render 'shared/navigation' %>
     <div class="flexbox vertical center">
       <div id="main-container" class="flexbox vertical stretch">
+        <section class="container">
         <%= render 'shared/flashes' -%>
         <%= yield %>
+      </section>
       </div>
       <%= render 'shared/footer' %>
       <%= render 'shared/javascript' %>

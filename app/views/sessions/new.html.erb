@@ -1,13 +1,9 @@
-<div class="flexbox vertical center">
-  <section class="signin-form">
-    <h2><%= t(".sign-in") %></h2>
+<h2><%= t(".sign-in") %></h2>
 
-    <p><%= t(".intro") %></p>
+<p><%= t(".intro") %></p>
 
-    <%= render 'sessions/form' %>
+<%= render 'sessions/form' %>
 
-    <ul>
-      <li><%= link_to t(".forgot-password"), new_password_path %></li>
-    </ul>
-  </section>
-</div>
+<ul>
+  <li><%= link_to t(".forgot-password"), new_password_path %></li>
+</ul>
