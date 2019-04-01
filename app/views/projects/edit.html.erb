@@ -1,8 +1,6 @@
-<div class="flexbox vertical center">
-  <section class="project-form">
-  <%= simple_form_for @project, :html => { :multipart => true, "data-uploading-alert-text" => strip_tags(t("projects.wait-for-uploads-to-complete")) } do |form| %>
-      <%= render 'form', :project => @project, :form => form %>
-      <%= submit_tag t("projects.form.save") %>
-    <% end %>
-  </section>
-</div>
+<section class="project-form">
+<%= simple_form_for @project, :html => { :multipart => true, "data-uploading-alert-text" => strip_tags(t("projects.wait-for-uploads-to-complete")) } do |form| %>
+    <%= render 'form', :project => @project, :form => form %>
+    <%= submit_tag t("projects.form.save") %>
+  <% end %>
+</section>
