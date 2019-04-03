@@ -110,6 +110,15 @@ en:
         title: Title
         id: ID
         votes: Votes
+  passwords:
+    create:
+      description: You will receive an email within the next few minutes. It contains instructions for changing your password.
+    edit:
+      description: Your password has been reset. Choose a new password below.
+      title: Change your password
+    new:
+      description: To be emailed a link to reset your password, please enter your email address.
+      title: Reset your password
   projects:
     wait-for-uploads-to-complete: Please wait for your images to finish uploading before submitting your application.
     project:
