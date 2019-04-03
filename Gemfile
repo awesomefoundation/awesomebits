@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 ruby '2.4.5'
 
-gem 'rails', '5.2.2.1'
+gem 'rails', '5.2.3'
 gem 'rake', '< 11.0'
 gem 'bootsnap','>= 1.1.0', require: false
 
@@ -20,7 +20,7 @@ gem 'flutie'
 gem 'bourbon', '~> 4.0.2'
 gem 'simple_form', '~> 4.1'
 gem 'nokogiri', '~> 1.10.1'
-gem "will_paginate", "~> 3.1.6"
+gem "will_paginate", "~> 3.1.7"
 gem "friendly_id", "~> 5.2.4"
 gem 'redcarpet'
 gem 'honeypot-captcha'
