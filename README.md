@@ -40,6 +40,14 @@ If successful, your terminal should look something like this:
 
 ![Docker Compose Up Success](doc/awesomebits-docker-compose-up.gif)
 
+#### Changes to the Dockerfile
+
+If there are any changes made to the `Dockerfile` (for example, if the Ruby version changes), you will have rebuild the Docker container that runs the app. You will only have to do this once:
+
+```bash
+docker-compose up --build
+```
+
 #### Executing arbitary commands with Docker Compose
 
 You can also run arbitrary commands within the Docker container. For example, to run `rails console`, do the following:
