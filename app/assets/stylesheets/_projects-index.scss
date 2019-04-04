@@ -142,6 +142,7 @@ body.projects-index {
     @media all and (max-width: $narrow) {
       width: 100%;
       border-radius: 0;
+      box-sizing: border-box;
     }
 
     nav {
