@@ -6,10 +6,7 @@ body.chapters-show {
     padding-top: 0px;
 
     header {
-      border-bottom: 1px solid rgb(200,200,200);
-      margin: 0 auto;
       padding: 60px 0px 10px;
-      max-width: grid-width(12);
     }
 
     .inactive-notice {
@@ -21,72 +18,75 @@ body.chapters-show {
       font: normal 14px/22px $sans-serif;
     }
 
-    .title {
-      @extend .clearfix;
-      margin: 0 auto;
-      padding-bottom: 0px;
-      max-width: grid-width(12);
+    .title-wrapper {
+      max-width: $maximum-width;
+      width: 100%;
 
-      h1 {
-        color: rgba(55,55,55, 1);
-        float: left;
-        font: 900 38px/44px $sans-serif;
-        margin: 0px;
-        text-transform: uppercase;
-      }
+      .title {
+        margin-right: 1.5em;
+        margin-left: 1.5em;      
+        border-bottom: 1px solid rgb(200,200,200); 
+        padding-bottom: 10px;
 
-      a.edit-chapter {
-        @include button(rgb(240,240,240));
-        float: right;
-        margin: 10px 0px 0px 10px;
-        text-decoration: none;
-        padding: 7px 12px 6px;
-      }
-
-      a.apply-chapter {
-        @include button(pill, $button-pink);
-        float: right;
-        margin: 12px 0px 0px 10px;
-        text-decoration: none;
-        padding: 7px 12px 6px;
-      }
-
-      a.external {
-        background: transparent;
-        display: block;
-        float: right;
-        height: 25px;
-        margin: 12px 0px 0px 10px;
-        opacity: 0.7;
-        position: relative;
-        width: 25px;
-
-        &:hover {
-          opacity: 1;
+        h1 {
+          color: rgba(55,55,55, 1);
+          font: 900 38px/44px $sans-serif;
+          margin: 0px;
+          text-transform: uppercase;
         }
 
-        &:active {
-          top: 1px;
+        a.edit-chapter {
+          @include button(rgb(240,240,240));
+          margin: 6px;
+          text-decoration: none;
+          padding: 7px 12px 6px;
+          font-size: 0.8em;
         }
 
-        &.twitter {
-          background: image-url('twitter.png');
+        a.apply-chapter {
+          @include button(pill, $button-pink);
+          margin: 6px;
+          text-decoration: none;
+          padding: 7px 12px 6px;
+          font-size: 0.8em;
         }
 
-        &.facebook {
-          background: image-url('fb.png');
-        }
+        a.external {
+          background: transparent;
+          display: block;
+          height: 25px;
+          margin: 6px;
+          opacity: 0.7;
+          position: relative;
+          width: 25px;
 
-        &.email {
-          background: image-url('mail.png');
-        }
+          &:hover {
+            opacity: 1;
+          }
 
-        &.blog {
-          background: image-url('blog-2.png');
-        }
+          &:active {
+            top: 1px;
+          }
 
-        &.instagram {
-          background: image-url('instagram.png');
+          &.twitter {
+            background: image-url('twitter.png');
+          }
+
+          &.facebook {
+            background: image-url('fb.png');
+          }
+
+          &.email {
+            background: image-url('mail.png');
+          }
+
+          &.blog {
+            background: image-url('blog-2.png');
+          }
+
+          &.instagram {
+            background: image-url('instagram.png');
+          }
         }
       }
     }
@@ -276,9 +276,9 @@ body.chapters-show {
 }
 
 .chapter-info {
-  @extend .clearfix;
-  margin: 40px auto 40px;
-  max-width: grid-width(12);
+  max-width: $maximum-width;
+  width: 100%;
+  margin-top: 40px;
 
   h2 {
     font: normal 18px/22px $sans-serif;
@@ -290,12 +290,18 @@ body.chapters-show {
     border-bottom: 1px solid rgb(200,200,200);
   }
 
-  .trustees {
-    border-top: 1px solid rgb(200,200,200);
-    margin-bottom: 40px;
-    padding: 40px 0px 40px;
+  .trustees {    
+    padding-bottom: 40px;
+    margin-left: 1.5em;
+    margin-right: 1.5em;
     max-width: grid-width(12);
+        border-bottom: 1px solid #c8c8c8;
 
+    h2 {
+      border-bottom: 1px solid rgb(200,200,200);
+      padding-bottom: 15px;
+    }
+    
     ol {
       @extend .clearfix;
       margin: 0px;
@@ -395,7 +401,9 @@ body.chapters-show {
 
   .description {
     @extend .clearfix;
-    margin: 0px auto 40px;
+    margin-bottom: 40px;
+    margin-left: 1.5em;
+    margin-right: 1.5em;
     max-width: grid-width(12);
 
     article {
@@ -460,20 +468,20 @@ body.chapters-show {
 }
 
 .chapter-apply {
-  @extend .clearfix;
   padding-top: 40px;
-  border-top: 1px solid rgb(200,200,200);
-  max-width: grid-width(12);
-  margin: 0 auto;
+  max-width: $maximum-width;
+  width: 100%;
 
   .apply-button {
-    margin: 0 auto;
     max-width: grid-width(6);
+    width: 100%;
 
     a {
       @include button(pill, $button-pink);
+      margin-left: 1.5em;
+      margin-right: 1.5em;
       font: normal 18px/22px $sans-serif;
-      width: 100%;
+      max-width: 100%;
       display: block;
 
       text: {
@@ -504,9 +512,7 @@ body.chapters-show {
 
       &.owl-nav-right {
         background-size: 50%;
-      }
-      
-      
+      } 
     }
     
     .chapter-projects {
