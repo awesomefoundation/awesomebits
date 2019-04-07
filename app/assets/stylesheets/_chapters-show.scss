@@ -112,6 +112,8 @@ body.chapters-show {
     }
 
     button.owl-dot {
+      outline: 0 none;
+      cursor: pointer;
       background: 0 0;
       color: inherit;
       border: none;
@@ -135,12 +137,6 @@ body.chapters-show {
     }
 
   }
-
-  .owl-carousel {
-    .project {
-      width: 500px !important;
-    }
-  }
 }
 
 .gallery-overflow-wrapper {
@@ -149,11 +145,8 @@ body.chapters-show {
 }
 
 .chapter-header-wrapper {
-  height: 300px;
-  margin: 0 0 0 auto;
-  padding: 40px 0px 20px;
   position: relative;
-  width: 95%;
+  margin-top: 2em;
 
   &:hover {
     .owl-nav-round button {
@@ -162,18 +155,21 @@ body.chapters-show {
   }
 
   .owl-nav-round button {
+    outline: 0 none;
+    cursor: pointer;
+    display: block;
     background: rgba(0,0,0, 0.6);
     background-position: center center;
     background-repeat: no-repeat;
     border: 0;
-    border-radius: 60px;
-    display: block;
-    height: 120px;
+    border-radius: 50px;
+    height: 100px;
+    width: 100px;
     opacity: 0;
     position: absolute;
     @include transition((opacity, background-color), 0.2s, ease-out);
-    top: 90px;
-    width: 120px;
+    top: 98px;
+
     z-index: 3;
 
     &:hover {
@@ -182,13 +178,12 @@ body.chapters-show {
 
     &.owl-nav-left {
       background-image: image-url('arrow_left.png');
-      left: -60px;
+      left: 10px;
     }
 
     &.owl-nav-right {
       background-image: image-url('arrow_right.png');
-      right: -55px;
-      margin-right: 5%;
+      right: 10px;
     }
 
     &.disabled {
@@ -222,7 +217,7 @@ body.chapters-show {
       height: auto;
       margin: 0px;
       overflow: hidden;
-      width: 500px;
+      max-width: 500px;
 
       a {
         text-decoration: none;
@@ -255,6 +250,8 @@ body.chapters-show {
           span {
             color: rgba(255,255,255, 0.7);
             margin-right: 10px;
+            font-size: 0.8em;
+            line-height: 1.4em;
           }
         }
 
@@ -483,6 +480,38 @@ body.chapters-show {
         decoration: none;
         align: center;
         transform: uppercase;
+      }
+    }
+  }
+}
+
+/**********************************************/
+/*               Responsiveness               */
+/**********************************************/
+
+@media (max-width:$maximum-width) {
+  .chapter-header-wrapper {
+    
+    .owl-nav-round button {
+      border-radius: 30px;
+      height: 60px;
+      width: 60px;
+      top: 58px;
+      
+      &.owl-nav-left {
+        background-size: 50%;
+      }
+
+      &.owl-nav-right {
+        background-size: 50%;
+      }
+      
+      
+    }
+    
+    .chapter-projects {
+      .project {
+        max-width: 300px
       }
     }
   }
