@@ -3,6 +3,13 @@ body.projects-index {
   section.container {
     @extend .clearfix;
   }
+  
+  @media all and (max-width: $maximum-width) {
+    section.container {
+      margin-top: 0em !important;
+    }
+  }
+  
 }
 
 .admin-panel {
