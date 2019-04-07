@@ -160,6 +160,7 @@ section.password-reset-form {
       margin-left: 10px;
 
       a {
+        font-size: 0.8em;
         color: $lighter-base-font-color;
         text-decoration: none;
 
@@ -170,6 +171,11 @@ section.password-reset-form {
       }
     }
   }
+  
+  p {
+    font-size: 0.8em;
+  }
+  
 }
 
 /**********************************************/
