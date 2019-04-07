@@ -12,7 +12,7 @@ body.projects-index {
   padding: 0px 20px 20px 0px;
   width: 180px;
 
-  @media all and (max-width: $mobile-large) {
+  @media all and (max-width: $maximum-width) {
     float: none;
     border-right: none;
     width: 100%;
@@ -34,7 +34,7 @@ body.projects-index {
 
   .user-profile-image {
     @extend .user-avatar;
-    @media all and (max-width: $mobile-large) {
+    @media all and (max-width: $maximum-width) {
       padding: 0px;
       width: 40px;
       height: 40px;
@@ -55,7 +55,7 @@ body.projects-index {
     margin: 15px 0px;
     padding-bottom: 30px;
     text-align: center;
-    @media all and (max-width: $mobile-large) {
+    @media all and (max-width: $maximum-width) {
       border-bottom: 1px solid rgb(200,200,200);
       margin-bottom: 0px;
       text-align: left;
@@ -73,7 +73,7 @@ body.projects-index {
       margin-bottom: 15px;
       padding: 0px 0px 15px 0px;
 
-      @media all and (max-width: $mobile-large) {
+      @media all and (max-width: $maximum-width) {
         margin: 0px 0px;
         padding: 0px;
       }
@@ -84,7 +84,7 @@ body.projects-index {
 
       &.section-title {
         padding: 15px 0px 5px 0px;
-        @media all and (max-width: $mobile-large) {
+        @media all and (max-width: $maximum-width) {
           padding-left: 15px;
         }
       }
@@ -100,7 +100,7 @@ body.projects-index {
         font: normal 12px/14px $sans-serif;
         padding: 5px 0px 5px 10px;
         text-decoration: none;
-        @media all and (max-width: $mobile-large) {
+        @media all and (max-width: $maximum-width) {
           padding: 12px 20px;
         }
 
@@ -117,14 +117,14 @@ body.projects-index {
   float: left;
   width: grid-width(9);
 
-  @media all and (max-width: $mobile-large) {
+  @media all and (max-width: $maximum-width) {
     width: 100%;
   }
 
   .exports {
     text-align: right;
     margin-bottom: 40px;
-    @media all and (max-width: $mobile-large) {
+    @media all and (max-width: $maximum-width) {
       display: none;
     }
   }
@@ -139,7 +139,7 @@ body.projects-index {
     margin-bottom: 10px;
     position: relative;
     width: grid-width(9);
-    @media all and (max-width: $mobile-large) {
+    @media all and (max-width: $maximum-width) {
       width: 100%;
       border-radius: 0;
       box-sizing: border-box;
@@ -312,7 +312,7 @@ body.projects-index {
     text-transform: uppercase;
   }
 
-  @media all and (max-width: $mobile-large) {
+  @media all and (max-width: $maximum-width) {
     h1, p {
       padding: 5px 15px;
     }
@@ -325,7 +325,7 @@ body.projects-index {
     box-shadow: 0 1px 6px 0 rgba(0,0,0, 0.15);
     margin-bottom: 40px;
 
-    @media all and (max-width: $mobile-large) {
+    @media all and (max-width: $maximum-width) {
       border-radius: 0;
       border-left: 6px solid rgb(200,200,200);
       border-right: none;
@@ -562,7 +562,7 @@ body.projects-index {
     border: 1px solid $pink;
     box-shadow: 0 1px 6px 0 rgba($pink, 0.6);
 
-    @media all and (max-width: $mobile-large) {
+    @media all and (max-width: $maximum-width) {
       border: 1px solid rgba($pink, 0.6);
       border-left: 6px solid $pink;
       padding-left: -3px;
@@ -581,7 +581,7 @@ body.projects-index {
     border: 1px solid $blue;
     box-shadow: 0 1px 6px 0 rgba($blue, 0.6);
 
-    @media all and (max-width: $mobile-large) {
+    @media all and (max-width: $maximum-width) {
       border: 1px solid rgba($blue, 0.6);
       border-left: 6px solid $blue;
       padding-left: -3px;
