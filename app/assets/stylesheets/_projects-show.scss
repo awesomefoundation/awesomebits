@@ -10,6 +10,7 @@ header {
     padding: 7px 12px 6px;
     margin-top: 10px;
     float: right;
+    font-size: 0.8em;
   }
   
   .prev-next-links {
@@ -18,6 +19,7 @@ header {
     a {
       color: $pink;
       text-decoration: none;
+      font-size: 0.8em;
 
       &:hover {
         text-decoration: underline;
