@@ -74,69 +74,6 @@ textarea {
 
 //*******************************************************************
 //
-// Shared form styles: Clearance & Sessions
-//
-//*******************************************************************
-
-body.clearance,
-body.clearance-passwords,
-body.clearance-users,
-body.sessions,
-body.sessions-new,
-body.sessions-create {
-
-  section.container {
-    background: rgb(240,240,240);
-    border: 1px solid rgb(200,200,200);
-    border-radius: 4px;
-    padding: 30px 40px;
-    max-width: grid-width(6);
-  }
-
-  h2 {
-    border-bottom: 1px solid rgb(200,200,200);
-    font: 300 28px $sans-serif;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-  }
-
-  form {
-    margin: 0 auto;
-    max-width: grid-width(6);
-
-    div.text_field, div.text-field, div.password-field {
-      margin: 0 0 20px 0;
-    }
-  }
-
-  p {
-    font-size: 0.8em;
-  }
-
-  ul {
-    @extend .clearfix;
-
-    li {
-      list-style: none;
-      float: right;
-      margin-left: 10px;
-      font-size: 0.8em;
-
-      a {
-        color: $lighter-base-font-color;
-        text-decoration: none;
-
-        &:hover {
-          color: $pink;
-          text-decoration: underline;
-        }
-      }
-    }
-  }
-}
-
-//*******************************************************************
-//
 // Shared form styles:
 //
 //*******************************************************************
@@ -145,7 +82,9 @@ body.sessions-create {
 section.user-form,
 section.project-form,
 section.invitation-form,
-section.chapter-form {
+section.chapter-form,
+section.session-form,
+section.password-reset-form {
   background: rgb(240,240,240);
   border: 1px solid rgb(200,200,200);
   border-radius: 4px;
@@ -200,6 +139,38 @@ section.chapter-form {
   }
 }
 
+//*******************************************************************
+//
+// Shared form styles: Sessions, Password Resets
+//
+//*******************************************************************
+
+section.session-form,
+section.password-reset-form {
+  h1 {
+    margin-bottom: 10px;
+  }
+
+  ul {
+    @extend .clearfix;
+
+    li {
+      list-style: none;
+      float: right;
+      margin-left: 10px;
+
+      a {
+        color: $lighter-base-font-color;
+        text-decoration: none;
+
+        &:hover {
+          color: $pink;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
 
 /**********************************************/
 /*               Responsiveness               */
@@ -222,5 +193,4 @@ section.chapter-form {
   section.chapter-form {
     max-width: 250px;
   }
-
 }

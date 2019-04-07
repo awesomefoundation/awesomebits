@@ -1,0 +1,14 @@
+<section class="password-reset-form">
+  <h1><%= t(".title") %></h1>
+
+  <p><%= t(".description") %></p>
+
+  <%= form_for :password, url: passwords_path do |form| %>
+    <div class="input text-field">
+      <%= form.label :email %>
+      <%= form.text_field :email, type: 'email' %>
+    </div>
+
+    <%= form.submit %>
+  <% end %>
+</section>
