@@ -178,11 +178,13 @@ body.chapters-show {
 
     &.owl-nav-left {
       background-image: image-url('arrow_left.png');
+      background-size: 50%;
       left: 10px;
     }
 
     &.owl-nav-right {
       background-image: image-url('arrow_right.png');
+      background-size: 50%;
       right: 10px;
     }
 
@@ -506,13 +508,6 @@ body.chapters-show {
       width: 60px;
       top: 58px;
       
-      &.owl-nav-left {
-        background-size: 50%;
-      }
-
-      &.owl-nav-right {
-        background-size: 50%;
-      } 
     }
     
     .chapter-projects {
