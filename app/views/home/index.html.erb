@@ -46,47 +46,51 @@
   </section>
 </section>
 
-<section class="what-how">
-  <hgroup>
-    <h2><%= t(".funding-html", :amount => funding_amount_for(Project.winner_count)) %> <span class="divider"></span> <%= t(".winner-count-html", :amount => Project.winner_count) %></h2>
-  </hgroup>
-  <div class="need-funding">
-    <div class="description">
-      <h3><%= t ".what.header" %></h3>
-      <p><%= t ".what.body-html" %></p>
-    </div>
-    <div class="info-graphic">
-      <div class="graphic">
-        <%= image_tag("info_graphic.png") %>
+<div class="flexbox vertical center">
+  <section class="what-how">
+    <hgroup>
+      <h2><%= t(".funding-html", :amount => funding_amount_for(Project.winner_count)) %> <span class="divider"></span> <%= t(".winner-count-html", :amount => Project.winner_count) %></h2>
+    </hgroup>
+    <div class="need-funding flexbox horizontal wrap justify-space-around">
+      <div class="description">
+        <h3><%= t ".what.header" %></h3>
+        <p><%= t ".what.body-html" %></p>
+      </div>
+      <div class="info-graphic">
+        <div class="graphic flexbox vertical center">
+          <%= image_tag("info_graphic.png") %>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="call-to-action">
-  <%= link_to t(".call-to-action"), new_submission_path %>
-</section>
-
-<section class ="who-where">
-  <hgroup>
-    <h2><%= t(".chapter-count-html", :count => Chapter.active.visitable.count) %> <span class="divider"></span> <%= t(".country-count-html", :count => Chapter.active.visitable.country_count) %></h2>
-  </hgroup>
-
-  <div class="about-preview">
-    <div class="mini-map">
-      <%= image_tag("mini_map.png") %>
+  <section class="call-to-action flexbox vertical stretch">
+    <div class="button-wrapper">
+      <%= link_to t(".call-to-action"), new_submission_path %>
     </div>
-    <div class="intro">
-      <h3><%= t ".who.header" %></h3>
-      <p><%= t ".who.body" %></p>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section class="awesome-chapters">
-  <% @chapters.each do |chapter| %>
-      <%= link_to chapter, :class => "image-wrapper" do %>
-        <%= chapter.name %>
-      <% end %>
-  <% end %>
-</section>
+  <section class ="who-where">
+    <hgroup>
+      <h2><%= t(".chapter-count-html", :count => Chapter.active.visitable.count) %> <span class="divider"></span> <%= t(".country-count-html", :count => Chapter.active.visitable.country_count) %></h2>
+    </hgroup>
+
+    <div class="about-preview flexbox horizontal wrap justify-space-around">
+      <div class="mini-map">
+        <%= image_tag("mini_map.png") %>
+      </div>
+      <div class="intro">
+        <h3><%= t ".who.header" %></h3>
+        <p><%= t ".who.body" %></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="awesome-chapters">
+    <% @chapters.each do |chapter| %>
+        <%= link_to chapter, :class => "image-wrapper" do %>
+          <%= chapter.name %>
+        <% end %>
+    <% end %>
+  </section>
+</div>
