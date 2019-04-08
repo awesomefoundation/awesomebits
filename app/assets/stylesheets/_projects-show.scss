@@ -1,6 +1,11 @@
 body.projects-show {
   section.container {
   }
+  
+  .container-wrapper {
+    margin-left: 1.5em;
+    margin-right: 1.5em;
+  }
 }
 
 header {
@@ -117,8 +122,9 @@ header.project {
 .project-details {
   @extend .clearfix;
   margin: 0px auto;
-  width: grid-width(12);
-
+  max-width: grid-width(12);
+  width: 100%;
+  
   .meta-data {
     @extend .clearfix;
     border-bottom: 1px solid rgb(220,220,220);
@@ -147,9 +153,7 @@ header.project {
   }
 
   .project-description {
-    float: left;
-    margin-right: $gw-gutter;
-    width: grid-width(8);
+    max-width: grid-width(8);
 
     h2 {
       font: normal 18px/22px $sans-serif;
@@ -168,9 +172,9 @@ header.project {
   }
 
   .project-side-bar {
-    float: left;
-    width: grid-width(4);
-
+    max-width: grid-width(4);
+    margin-bottom: 20px;
+    
     .project-state {
       margin-bottom: 15px;
 
@@ -249,9 +253,6 @@ header.project {
 
 
 
-
-
-
 /**********************************************/
 /*               Responsiveness               */
 /**********************************************/
@@ -293,14 +294,14 @@ header.project {
 @media (max-width:$mobile-standard) {
   
   .project-gallery {
-    height: 150px;
-    width: 300px;
+    height: 135px;
+    width: 270px;
 
     .arrow {
       background-size: 50%;
       border-radius: 30px;
       height: 60px;
-      top: 45px;
+      top: 36px;
       width: 60px;
 
       &:hover {
@@ -308,17 +309,17 @@ header.project {
       }
       
       &.left {
-        left: -5px;
+        left: -15px;
       }
 
       &.right {
-        right: -5px;
+        right: -15px;
       }
     }
 
     .image-wrapper {
-      height: 150px;
-      width: 300px;
+      height: 135px;
+      width: 270px;
     }
   }
  

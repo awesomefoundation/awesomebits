@@ -44,64 +44,66 @@
     <script type="text/javascript" src="https://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4f46fdff2154a73e"></script>
   </section>
 
-  <section class="project-description">
-    <% if @project.winner? %>
-      <%= markdown @project.funded_description, :link_attributes => { :target => "_blank" }, :hard_wrap => true %>
-
-    <% else %>
-      <h2><%= t ".description.header" %></h2>
-      <%= markdown @project.about_project %>
-
-      <% if @project.extra_answer_1? %>
-        <h2><%= @project.extra_question_1 %></h2>
-        <p><%= @project.extra_answer_1 %></p>
-      <% end %>
-
-      <% if @project.extra_answer_2? %>
-        <h2><%= @project.extra_question_2 %></h2>
-        <p><%= @project.extra_answer_2 %></p>
-      <% end %>
-
-      <% if @project.extra_answer_3? %>
-        <h2><%= @project.extra_question_3 %></h2>
-        <p><%= @project.extra_answer_3 %></p>
-      <% end %>
-    <% end %>
-  </section>
-
-  <section class="project-side-bar">
-    <article class="project-state">
+  <div class="flexbox horizontal wrap-reverse justify-space-between">
+    <section class="project-description">
       <% if @project.winner? %>
-        <div class="state funded">
-          <p><%= t(".funder-html", :name => @project.chapter.name) %> <span class="funded-on">(<%= l @project.funded_on, :format => :funding %>)</span></p>
-        </div>
-      <% else %>
-        <div class="state applied">
-          <p><%= t(".submitted-to-html", :name => @project.chapter.name) %></p>
-        </div>
-      <% end %>
-    </article>
+        <%= markdown @project.funded_description, :link_attributes => { :target => "_blank" }, :hard_wrap => true %>
 
-    <% if @project.url? %>
-      <article class="project-site-link">
-        <%= link_to @project.url do %>
-          Visit this project's web site
-          <span>→</span>
+      <% else %>
+        <h2><%= t ".description.header" %></h2>
+        <%= markdown @project.about_project %>
+
+        <% if @project.extra_answer_1? %>
+          <h2><%= @project.extra_question_1 %></h2>
+          <p><%= @project.extra_answer_1 %></p>
+        <% end %>
+
+        <% if @project.extra_answer_2? %>
+          <h2><%= @project.extra_question_2 %></h2>
+          <p><%= @project.extra_answer_2 %></p>
+        <% end %>
+
+        <% if @project.extra_answer_3? %>
+          <h2><%= @project.extra_question_3 %></h2>
+          <p><%= @project.extra_answer_3 %></p>
+        <% end %>
+      <% end %>
+    </section>
+
+    <section class="project-side-bar">
+      <article class="project-state">
+        <% if @project.winner? %>
+          <div class="state funded">
+            <p><%= t(".funder-html", :name => @project.chapter.name) %> <span class="funded-on">(<%= l @project.funded_on, :format => :funding %>)</span></p>
+          </div>
+        <% else %>
+          <div class="state applied">
+            <p><%= t(".submitted-to-html", :name => @project.chapter.name) %></p>
+          </div>
         <% end %>
       </article>
-    <% end %>
 
-    <% if @project.rss_feed_url? %>
-      <article class="project-rss">
-        <h2><%= t ".feed-title" %></h2>
-        <section class="rss" id="rss-feeds"></section>
-      </article>
-      <% content_for :javascript do -%>
-        <%= render 'shared/rssfeed', rss_feed_url: @project.rss_feed_url %>
-      <% end -%>
-    <% end %>
+      <% if @project.url? %>
+        <article class="project-site-link">
+          <%= link_to @project.url do %>
+            Visit this project's web site
+            <span>→</span>
+          <% end %>
+        </article>
+      <% end %>
 
-  </section>
+      <% if @project.rss_feed_url? %>
+        <article class="project-rss">
+          <h2><%= t ".feed-title" %></h2>
+          <section class="rss" id="rss-feeds"></section>
+        </article>
+        <% content_for :javascript do -%>
+          <%= render 'shared/rssfeed', rss_feed_url: @project.rss_feed_url %>
+        <% end -%>
+      <% end %>
+    </section>
+  </div>
+  
 </section>
 
 <%= content_for :javascript do %>
