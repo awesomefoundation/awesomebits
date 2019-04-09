@@ -408,40 +408,6 @@ body.home-index {
 /*               Responsiveness               */
 /**********************************************/
 
-
-//@media (max-width:50em) {
-//  .awesome-wrapper {
-//    .awesome-projects {
-//
-//      .tagline {
-//        .inner-wrapping {
-//          .wrapper-2 {
-//            .message {
-//              h1 {
-//                font-size: 14px;
-//                line-height: 18px;
-//              }
-//            }
-//          }
-//        }
-//      }
-//
-//      .project {
-//        .image-wrapper {
-//          .funding-chapter {
-//            h3 {
-//              display: none;
-//            }
-//          }
-//          .project-name {
-//            display: none;
-//          }
-//        }
-//      }
-//    }
-//  }
-//}
-
 @media (max-width:$maximum-width) {
   .awesome-wrapper {
     .awesome-projects {
