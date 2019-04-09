@@ -1,6 +1,13 @@
-<%= simple_form_for @invitation, :url => invitation_acceptances_path(@invitation), :method => :post do |form| %>
-  <%= form.input :first_name, :required => true %>
-  <%= form.input :last_name, :required => true %>
-  <%= form.input :password, :required => true %>
-  <%= submit_tag "Accept the invitation!" %>
-<% end %>
+<div class="flexbox vertical center">
+  <section class="invitation-form">
+    <h1>Accept the trustee invitation</h1>
+    <%= simple_form_for @invitation, :url => invitation_acceptances_path(@invitation), :method => :post do |form| %>
+      <div class="invitee-name">
+        <%= form.input :first_name, :required => true %>
+        <%= form.input :last_name, :required => true %>
+      </div>
+      <%= form.input :password, :required => true %>
+      <%= submit_tag "Accept" %>
+    <% end %>
+  </section>
+</div>
