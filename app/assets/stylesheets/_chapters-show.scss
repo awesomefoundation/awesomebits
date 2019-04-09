@@ -297,7 +297,7 @@ body.chapters-show {
     margin-left: 1.5em;
     margin-right: 1.5em;
     max-width: grid-width(12);
-        border-bottom: 1px solid #c8c8c8;
+    border-bottom: 1px solid #c8c8c8;
 
     h2 {
       border-bottom: 1px solid rgb(200,200,200);
@@ -311,12 +311,8 @@ body.chapters-show {
       li {
         float: left;
         list-style: none;
-        margin: 0 $gw-gutter $gw-gutter 0;
+        margin: 0 8px 16px 8px;
         max-width: grid-width(2);
-
-        &:nth-child(6n) {
-          margin-right: 0;
-        }
 
         article.dean {
           div.hat {
@@ -500,19 +496,41 @@ body.chapters-show {
 /**********************************************/
 
 @media (max-width:$maximum-width) {
-  .chapter-header-wrapper {
-    
+  .chapter-header-wrapper {   
     .owl-nav-round button {
       border-radius: 30px;
       height: 60px;
       width: 60px;
-      top: 58px;
-      
+      top: 58px; 
     }
-    
     .chapter-projects {
       .project {
         max-width: 300px
+      }
+    }
+  }  
+}
+
+@media (max-width:31.1em) {
+  .chapter-info {
+    .trustees {
+      ol {
+        li {          
+          transform: scale(0.9);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width:21.8em) {
+  .chapter-info {
+    .trustees {
+      ol {
+        li {
+          margin: 0px;
+          transform: scale(0.8);
+        }
       }
     }
   }
