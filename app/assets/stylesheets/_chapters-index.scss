@@ -37,7 +37,7 @@ body.chapters-index {
   }
 }
 
-section.chapters {
+section.chapters:not(.in-menu) {
   @extend .clearfix;
   margin: 0 auto;
   width: grid-width(11);

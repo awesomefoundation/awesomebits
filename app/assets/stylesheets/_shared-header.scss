@@ -130,9 +130,10 @@ section.chapter-menu {
   }
 
   .inner-wrapper {
-    margin: 40px auto 0;
+    margin-top: 40px;
     padding: 0;
-    width: grid-width(12);
+    max-width: grid-width(12);
+    width: 100%;
 
     h1 {
       display: none;
@@ -148,8 +149,8 @@ section.chapter-menu {
       @include column-width(grid-width(3));
 
       article.country {
-        display: inline-block;
-        width: grid-width(3);
+        margin-right: 50px;
+        margin-bottom: 30px;
       }
 
       h3 {
@@ -161,14 +162,8 @@ section.chapter-menu {
         text-shadow: 0 1px rgba(0,0,0, 0.3);
       }
 
-      p + h3 {
-        margin-top: 30px;
-      }
-
       p {
-        &:last-child {
-          margin-bottom: 30px;
-        }
+        margin-right: 30px;
 
         a {
           color: rgb(180,180,180);
