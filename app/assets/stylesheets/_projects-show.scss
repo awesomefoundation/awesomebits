@@ -1,7 +1,4 @@
-body.projects-show {
-  section.container {
-  }
-  
+body.projects-show:not(.projects-index) {
   .container-wrapper {
     margin-left: 1.5em;
     margin-right: 1.5em;
