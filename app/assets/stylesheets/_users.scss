@@ -13,8 +13,9 @@ section.awesome-members {
   background: rgb(240,240,240);
   border: 1px solid rgb(170,170,170);
   border-radius: 4px;
-  margin: 20px auto;
+  margin: 20px 1.5em;
   padding: 30px 40px;
+  overflow: scroll;
 
   table.members {
     tr {
