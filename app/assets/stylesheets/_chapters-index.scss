@@ -5,11 +5,20 @@ body.chapters-index {
     background-size: contain;
   }
 
+  section.container {
+    max-width: $maximum-width;
+    width: 100%;
+  }
+  
+  section.inner-container {
+    margin-right: 1.5em;
+    margin-left: 1.5em;
+  }
+
   hgroup {
     border-bottom: 3px solid rgb(220,220,220);
-    margin: 0 auto 80px;
+    margin-bottom: 80px;
     padding-bottom: 10px;
-    width: grid-width(11);
 
     h2 {
       font: bold 38px/44px $sans-serif;
@@ -37,23 +46,12 @@ body.chapters-index {
   }
 }
 
-section.chapters:not(.in-menu) {
-  @extend .clearfix;
-  margin: 0 auto;
-  width: grid-width(11);
-}
-
 .chapter {
   border-bottom: 3px solid $pink;
-  float: left;
-  margin-right: grid-width(1);
   margin-bottom: 60px;
   position: relative;
-  width: grid-width(5) + $gw-gutter;
-
-  &:nth-child(2n) {
-    margin-right: 0px;
-  }
+  max-width: grid-width(5) + $gw-gutter;
+  width: 100%;
 
   .inner-wrapper {
     @extend .clearfix;
@@ -130,3 +128,13 @@ section.chapters:not(.in-menu) {
   }
 }
 
+/**********************************************/
+/*               Responsiveness               */
+/**********************************************/
+
+@media (max-width:54em) {
+
+.chapter {
+  max-width: none;
+}
+}
