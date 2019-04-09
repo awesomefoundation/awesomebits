@@ -286,6 +286,17 @@ header.project {
     }
   }
  
+  .project-details {
+    .project-description {
+      max-width: 100%;
+      }
+    
+    .project-side-bar {
+      margin-top: 24px;
+      max-width: 100%;
+    }
+  }
+ 
 }
 
 @media (max-width:$mobile-standard) {

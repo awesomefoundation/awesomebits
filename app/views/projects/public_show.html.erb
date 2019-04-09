@@ -44,7 +44,7 @@
     <script type="text/javascript" src="https://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4f46fdff2154a73e"></script>
   </section>
 
-  <div class="flexbox horizontal wrap-reverse justify-space-between">
+  <div class="flexbox horizontal wrap justify-space-between">
     <section class="project-description">
       <% if @project.winner? %>
         <%= markdown @project.funded_description, :link_attributes => { :target => "_blank" }, :hard_wrap => true %>
@@ -70,7 +70,7 @@
       <% end %>
     </section>
 
-    <section class="project-side-bar">
+    <section class="project-side-bar flexbox vertical flex-1">
       <article class="project-state">
         <% if @project.winner? %>
           <div class="state funded">
