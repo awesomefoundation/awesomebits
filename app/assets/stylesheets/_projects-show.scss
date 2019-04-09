@@ -109,7 +109,8 @@ header.project {
     }
   }
 
-  &:hover {
+  &:hover,
+  &.touch-device {
     .arrow {
       opacity: 1;
     }
