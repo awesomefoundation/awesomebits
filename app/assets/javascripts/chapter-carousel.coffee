@@ -21,11 +21,14 @@ $ ->
     navText:            ["", ""]
     navClass:           ["owl-nav-left", "owl-nav-right"],
     margin:             10,
-    autoWidth:          true,
+    autoWidth:          false,
     dotsContainer:      ".owl-dots-wrapper #owl-dots",
+    callbacks:          true,
+    responsiveClass:    true,
     responsive:
-      0:    {items: 2},
-      1200: {items: 3},
+      0:     {items: 1},
+      800:   {items: 2},
+      1200:  {items: 3},
 
   # add custom left/right nav button triggers
   $(".owl-wrapper .left").click (e)->

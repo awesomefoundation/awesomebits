@@ -6,4 +6,9 @@ if (carousel != null) {
   carousel.addEventListener('touchmove', function(e) {
     e.preventDefault();
   }, false);
+  
+  if ('ontouchstart' in window) {
+    $(carousel).addClass("touch-device");
+  }
+  
 }

@@ -36,7 +36,7 @@
 </header>
 
 <% unless @chapter.winning_projects.empty? %>
-  <section class="chapter-header-wrapper owl-wrapper">
+  <section class="chapter-header-wrapper owl-wrapper flexbox vertical">
      <section id="owl-carousel" class="chapter-projects owl-carousel owl-theme">
         <% @chapter.winning_projects.each do |project| %>
           <article class="project item" data-id="<%= project.id %>">
