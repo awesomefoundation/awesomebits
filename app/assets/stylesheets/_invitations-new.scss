@@ -1,9 +1,5 @@
 .invitation-form {
   form {
-    .invitee-name {
-      @extend .clearfix;
-    }
-
     p {
       font: bold 14px/16px $sans-serif;
       margin-bottom: 35px;
@@ -17,16 +13,6 @@
     }
 
     div.input {
-      &.string {
-        float: left;
-        margin-right: $gw-gutter;
-        width: grid-width(3);
-
-        &:last-child {
-          margin-right: 0px;
-        }
-      }
-
       &.select {
         border: {
           bottom: 1px solid rgb(200,200,200);

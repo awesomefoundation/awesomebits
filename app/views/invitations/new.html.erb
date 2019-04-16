@@ -10,9 +10,9 @@
         </p>
         <%= form.input :chapter_id, :as => :hidden, :input_html => { :value => primary_invitable_chapter.id } %>
       <% end %>
-      <div class="invitee-name">
-        <%= form.input :first_name %>
-        <%= form.input :last_name %>
+      <div class="flexbox horizontal wrap justify-space-between">      
+        <%= form.input :first_name, wrapper_html: { class: "half-width" } %>
+        <%= form.input :last_name, wrapper_html: { class: "half-width" } %>
       </div>
       <%= form.input :email %>
       <%= submit_tag "Invite" %>

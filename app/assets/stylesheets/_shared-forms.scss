@@ -92,6 +92,7 @@ section.password-reset-form {
   margin-left: 1em;
   padding: 2.5em;
   max-width: grid-width(6);
+  min-width: grid-width(6);
 
   h1 {
     border-bottom: 1px solid rgb(200,200,200);
@@ -103,10 +104,16 @@ section.password-reset-form {
   form {
     margin: 0 auto;
     max-width: grid-width(6);
+    width: 100%;
   }
 
   div.input {
     margin: 0 0 20px 0;
+    
+    &.half-width {
+      max-width: grid-width(3);
+      width: 100%;
+    }  
   }
 
   div.chars_left {
@@ -181,6 +188,21 @@ section.password-reset-form {
 /**********************************************/
 /*               Responsiveness               */
 /**********************************************/
+
+@media (max-width:37.5em) {
+  section.user-form,
+  section.project-form,
+  section.invitation-form,
+  section.chapter-form {
+    min-width: 0px;
+    
+    div.input {    
+      &.half-width {
+        max-width: none;
+      }
+    } 
+  }
+}
 
 @media (max-width:$mobile-standard) {
   section.user-form,
