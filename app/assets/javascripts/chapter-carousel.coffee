@@ -1,8 +1,8 @@
 $ ->
   $owl = $(".chapter-projects")
 
-  # dotsEach on the smallest size reduces the number of dots on the screen tenfold,
-  # which should ensure that the dots don't flow to a second line
+  slidesCount = $owl.children().length
+
   $owl.owlCarousel
     loop:               false,
     nav:                true,
@@ -15,9 +15,9 @@ $ ->
     callbacks:          true,
     responsiveClass:    true,
     responsive:
-      0:     {items: 1, dotsEach: 10},
-      800:   {items: 2},
-      1200:  {items: 3},
+      0:     {items: 1, dotsEach: Math.ceil(slidesCount / 10) },
+      800:   {items: 2, dotsEach: Math.ceil(slidesCount / 20) },
+      1200:  {items: 3, dotsEach: Math.ceil(slidesCount / 30) },
 
   # add custom left/right nav button triggers
   $(".owl-wrapper .left").click (e)->
