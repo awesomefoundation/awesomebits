@@ -424,7 +424,6 @@ body.home-index {
       }
     }
   }
-  
   .what-how,
   .who-where {
     h2 {
@@ -436,9 +435,7 @@ body.home-index {
         width: 90px;
       }
     }
-  }
-  
-  
+  } 
 }
 
 @media (max-width:46em) { 
@@ -453,6 +450,22 @@ body.home-index {
   }
 }
 
+@media (max-width:40em) { 
+  .awesome-wrapper {
+    .awesome-projects {
+      .project {
+        .image-wrapper {
+          .project-name {
+            z-index: 10;
+            h2 {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
 
 @media (max-width:$mobile-standard) { 
   .awesome-wrapper {
