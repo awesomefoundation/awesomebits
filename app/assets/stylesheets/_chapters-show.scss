@@ -93,11 +93,9 @@ body.chapters-show {
   }
 
   .owl-dots-wrapper {
-    @extend .clearfix;
     margin-top: 20px;
 
     .owl-dots{
-      float: left;
       width: 100%;
     }
 
@@ -135,8 +133,8 @@ body.chapters-show {
       transition: opacity 0.2s ease;
       border-radius: 30px;
     }
-
   }
+
 }
 
 .chapter-header-wrapper {
