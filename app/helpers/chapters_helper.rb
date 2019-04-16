@@ -43,8 +43,4 @@ module ChaptersHelper
   def instagram_link(chapter)
     link_if_not_blank(chapter.instagram_url, "external instagram", :title => Chapter.human_attribute_name(:instagram_url))
   end
-
-  def about_class(chapter)
-    chapter.rss_feed_url.present? ? "half" : ""
-  end
 end

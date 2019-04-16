@@ -384,19 +384,11 @@ body.chapters-show {
   }
 
   .description {
-    @extend .clearfix;
     margin-bottom: 40px;
     margin-left: 1.5em;
     margin-right: 1.5em;
-    max-width: grid-width(12);
 
     article {
-      float: left;
-
-      &.half {
-        max-width: grid-width(6);
-      }
-
       h2 {
         font: normal 18px/22px $sans-serif;
         margin-bottom: 15px;
@@ -408,11 +400,8 @@ body.chapters-show {
         font: normal 14px/22px $sans-serif;
       }
 
-      &.about {
-        margin-right: $gw-gutter;
-      }
-
       &.rss-feed {
+        margin-top: 24px;
       }
     }
   }

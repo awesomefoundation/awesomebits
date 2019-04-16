@@ -62,13 +62,13 @@
 <div class="flexbox vertical center">
   <section class="chapter-info">
     <section class="description">
-      <article class="about <%= about_class(@chapter) %>">
+      <article class="about">
         <h2><%= t(".trustees.about") %></h2>
         <%= markdown @chapter.description %>
       </article>
 
       <% if @chapter.rss_feed_url.present? %>
-      <article class="rss-feed half" data-feed-url="<%= @chapter.rss_feed_url %>">
+      <article class="rss-feed" data-feed-url="<%= @chapter.rss_feed_url %>">
         <h2><%= t(".trustees.news", :name => @chapter.name) %></h2>
         <section class="rss" id="rss-feeds"></section>
       </article>
