@@ -144,12 +144,8 @@ section.chapter-menu {
 
     .chapters {
       border-radius: 4px;
-      @include column-count(4);
-      @include column-gap($gw-gutter);
-      @include column-width(grid-width(3));
 
       article.country {
-        margin-right: 50px;
         margin-bottom: 30px;
       }
 
@@ -163,7 +159,8 @@ section.chapter-menu {
       }
 
       p {
-        margin-right: 30px;
+        width: 180px;
+        margin-right: 8px;
 
         a {
           color: rgb(180,180,180);
