@@ -6,7 +6,7 @@
 
 <section class="applications">
   <h1><%= t ".title", :name => @chapter.name %></h1>
-  <section class="application-filters">
+  <section class="application-filters flexbox vertical">
     <nav>
       <%= link_to '#', :class => 'chapter-selection' do %>
         <span><%= @chapter.name %></span>
