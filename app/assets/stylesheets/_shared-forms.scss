@@ -193,7 +193,9 @@ section.password-reset-form {
   section.user-form,
   section.project-form,
   section.invitation-form,
-  section.chapter-form {
+  section.chapter-form,
+  section.session-form,
+  section.password-reset-form {
     min-width: 0px;
     
     div.input {    
@@ -208,7 +210,9 @@ section.password-reset-form {
   section.user-form,
   section.project-form,
   section.invitation-form,
-  section.chapter-form {
+  section.chapter-form,
+  section.session-form,
+  section.password-reset-form {
     padding: 1.25em;
   }
 
@@ -218,7 +222,9 @@ section.password-reset-form {
   section.user-form,
   section.project-form,
   section.invitation-form,
-  section.chapter-form {
+  section.chapter-form,
+  section.session-form,
+  section.password-reset-form {
     max-width: 250px;
   }
 }
