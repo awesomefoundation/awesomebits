@@ -347,6 +347,7 @@ body.projects-index {
         .public-link {
           display: none;
           padding-top: .5em;
+          font-size: 0.9em;
           clear: both;
 
           a {
@@ -397,6 +398,7 @@ body.projects-index {
       .meta-data {
         border-bottom: 1px solid rgb(200,200,200);
         padding: 10px;
+        font-size: 0.8em;
 
         a {
           color: $base-font-color;
@@ -516,6 +518,7 @@ body.projects-index {
     .filtering {
       border-top: 1px solid rgb(200,200,200);
       padding: 10px;
+      font-size: 0.8em;
 
       .hiding-form, .unhiding-form {
         &.hiding-form {
