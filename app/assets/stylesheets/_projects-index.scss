@@ -134,6 +134,7 @@ body.projects-index {
   .exports {
     text-align: right;
     margin-bottom: 20px;
+    font-size: 0.8em;
     @media all and (max-width: $maximum-width) {
       display: none;
     }
