@@ -15,9 +15,9 @@ $ ->
     callbacks:          true,
     responsiveClass:    true,
     responsive:
-      0:     {items: 1, dotsEach: Math.ceil(slidesCount / 10) },
-      800:   {items: 2, dotsEach: Math.ceil(slidesCount / 20) },
-      1200:  {items: 3, dotsEach: Math.ceil(slidesCount / 30) },
+      0:     {items: 1, dotsEach: Math.ceil(slidesCount / 10), slideBy: 1 },
+      800:   {items: 2, dotsEach: Math.ceil(slidesCount / 20), slideBy: 2 },
+      1200:  {items: 3, dotsEach: Math.ceil(slidesCount / 30), slideBy: 3 },
 
   # add custom left/right nav button triggers
   $(".owl-wrapper .left").click (e)->
