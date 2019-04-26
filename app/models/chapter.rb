@@ -87,7 +87,7 @@ EOT
     end
   end
 
-  def name
+  def display_name
     if inactive?
       "#{self[:name]} (#{I18n.t('word.inactive')})"
     else

@@ -19,7 +19,7 @@
   <% end %>
 
   <li class="section-title">
-    <h3><%= chapter.name %></h3>
+    <h3><%= chapter.display_name %></h3>
   </li>
   <li><%= link_to t(".projects"), chapter_projects_path(chapter) %></li>
   <% unless chapter.any_chapter? %>

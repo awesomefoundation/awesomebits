@@ -1,9 +1,9 @@
-<%= provide(:page_title, @chapter.name) %>
+<%= provide(:page_title, @chapter.display_name) %>
 
 <header>
   <div class="title">
     <h1>
-      <%= @chapter.name %>
+      <%= @chapter.display_name %>
     </h1>
 
     <% if can_manage_chapter?(@chapter) %>
@@ -62,7 +62,7 @@
 
     <% if @chapter.rss_feed_url.present? %>
     <article class="rss-feed half" data-feed-url="<%= @chapter.rss_feed_url %>">
-      <h2><%= t(".trustees.news", :name => @chapter.name) %></h2>
+      <h2><%= t(".trustees.news", :name => @chapter.display_name) %></h2>
       <section class="rss" id="rss-feeds"></section>
     </article>
     <% end %>
