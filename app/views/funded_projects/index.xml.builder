@@ -4,7 +4,7 @@ atom_feed(language: I18n.locale, "xmlns:awesome" => "http://www.awesomefoundatio
 
   @projects.each do |project|
     feed.entry(project, :published => project.funded_on) do |entry|
-      entry.title "#{project.chapter.name} – #{project.title}"
+      entry.title "#{project.chapter.display_name} – #{project.title}"
       entry.content(project.funded_description, type: 'html') unless project.funded_description.blank?
 
       if mime_type = MIME::Types.type_for(project.primary_image.url).first
@@ -23,7 +23,7 @@ atom_feed(language: I18n.locale, "xmlns:awesome" => "http://www.awesomefoundatio
 
         awesome.chapter do |chapter|
           chapter.country project.chapter.country
-          chapter.name    project.chapter.name
+          chapter.name    project.chapter.display_name
           chapter.url     chapter_url(project.chapter)
         end
       end
