@@ -10,6 +10,14 @@ describe SubdomainsController do
     it { is_expected.to route(:get, "http://www.test.host").to(:controller => "home", :action => "index") }
   end
 
+  context "with ENV subdomain" do
+    before do
+      ENV["SUBDOMAIN"] = "env"
+    end
+
+    it { is_expected.to route(:get, "http://env.test.host").to(:controller => "home", :action => "index") }
+  end
+
   context 'with chapter subdomain' do
     it { is_expected.to route(:get, "http://subdomain.test.host").to(:controller => "subdomains", :action => "chapter") }
     it { is_expected.to route(:get, "http://subdomain.test.host/apply").to(:controller => "subdomains", :action => "apply") }

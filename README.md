@@ -69,10 +69,24 @@ AWS_SECRET_ACCESS_KEY=YYY
 AWS_BUCKET=your-bucket-name
 ```
 
+Subdomains
+----------
+
+The site supports chapter subdomain redirects. When a wildcard DNS record is set up to point at the app, all traffic to subdomains other than `www` and the subdomain that is contained in the `SUBDOMAIN` environment variable will be redirected to the chapter page with that subdomain set as the chapter slug.
+
+For example, `nyc.awesomefoundation.org` redirects to `www.awesomefoundation.org/en/chapters/nyc`
+
+In order to prevent that redirect for other installations (such as staging environments), or for testing with a service like [ngrok](https://ngrok.io), set the `SUBDOMAIN` environment variable to the site's subdomain.
+
+```shell
+SUBDOMAIN=staging
+```
+
+
 Secret Token
 ------------
 
-When deploying to production, the SECRET_TOKEN environment variable must
+When deploying to production, the SECRET_KEY_BASE environment variable must
 be set. This token only needs to be generated once and then stored in
 the environment variable, but it must be kept secret. This does not need
 to be set in development or test environments.
@@ -80,7 +94,7 @@ to be set in development or test environments.
 For a Heroku deployment, something like the following could be used:
 
 ```shell
-$ heroku config:set SECRET_TOKEN=`rake secret`
+$ heroku config:set SECRET_KEY_BASE=`rake secret`
 ```
 
 

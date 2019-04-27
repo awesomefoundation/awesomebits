@@ -12,7 +12,7 @@
           <p><%= t ".by", :name => project.name %></p>
         </div>
         <div class="funding-chapter">
-          <h3><%= image_tag("location_pin_small.png") %> <%= project.chapter.name %></h3>
+          <h3><%= image_tag("location_pin_small.png") %> <%= project.chapter.display_name %></h3>
         </div>
         <%= image_tag(project.primary_image.url(:index)) %>
       <% end %>
@@ -37,7 +37,7 @@
           <p><%= t ".by", :name => project.name %></p>
         </div>
         <div class="funding-chapter">
-          <h3><%= image_tag("location_pin_small.png") %> <%= project.chapter.name %></h3>
+          <h3><%= image_tag("location_pin_small.png") %> <%= project.chapter.display_name %></h3>
         </div>
         <%= image_tag(project.primary_image.url(:index)) %>
       <% end %>
@@ -89,7 +89,7 @@
   <section class="awesome-chapters">
     <% @chapters.each do |chapter| %>
         <%= link_to chapter, :class => "image-wrapper" do %>
-          <%= chapter.name %>
+          <%= chapter.display_name %>
         <% end %>
     <% end %>
   </section>

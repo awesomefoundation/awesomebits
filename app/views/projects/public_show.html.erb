@@ -32,7 +32,7 @@
 
 <section class="project-details">
   <section class="meta-data">
-    <p><%= t(".byline-html", :chapter_name => link_to(@project.chapter.name, chapter_path(@project.chapter)), :submitter_name => @project.name) %></p>
+    <p><%= t(".byline-html", :chapter_name => link_to(@project.chapter.display_name, chapter_path(@project.chapter)), :submitter_name => @project.name) %></p>
     <div class="addthis_toolbox addthis_default_style ">
       <a class="addthis_button_twitter"></a>
       <a class="addthis_button_facebook"></a>

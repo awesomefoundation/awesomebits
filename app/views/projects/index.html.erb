@@ -5,16 +5,16 @@
 </section>
 
 <section class="applications">
-  <h1><%= t ".title", :name => @chapter.name, :count => @projects.count %></h1>
+  <h1><%= t ".title", :name => @chapter.display_name, :count => @projects.count %></h1>
   <section class="application-filters flexbox vertical">
     <nav>
       <%= link_to '#', :class => 'chapter-selection' do %>
-        <span><%= @chapter.name %></span>
+        <span><%= @chapter.display_name %></span>
         <span class="arrow"></span>
       <% end %>
       <ol class="chapter-selector">
         <% selectable_chapters_for(current_user).each do |chapter| %>
-          <li><%= link_to chapter.name, chapter_projects_path(chapter) %></li>
+          <li><%= link_to chapter.display_name, chapter_projects_path(chapter) %></li>
         <% end %>
       </ol>
     </nav>

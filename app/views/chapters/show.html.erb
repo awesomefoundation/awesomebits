@@ -1,10 +1,10 @@
-<%= provide(:page_title, @chapter.name) %>
+<%= provide(:page_title, @chapter.display_name) %>
 
 <header class="flexbox vertical center">
   <div class="title-wrapper">
     <div class="title flexbox horizontal wrap">
       <h1 class="flexbox vertical stretch flex-1">
-        <%= @chapter.name %>
+        <%= @chapter.display_name %>
       </h1>
       <div class="flexbox horizontal center wrap">
         <div class="flexbox horizontal center wrap">
@@ -69,7 +69,7 @@
 
       <% if @chapter.rss_feed_url.present? %>
       <article class="rss-feed" data-feed-url="<%= @chapter.rss_feed_url %>">
-        <h2><%= t(".trustees.news", :name => @chapter.name) %></h2>
+        <h2><%= t(".trustees.news", :name => @chapter.display_name) %></h2>
         <section class="rss" id="rss-feeds"></section>
       </article>
       <% end %>

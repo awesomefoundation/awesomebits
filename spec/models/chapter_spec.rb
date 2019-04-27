@@ -149,7 +149,7 @@ describe Chapter do
     it 'indicates that an inactive chapter is Inactive' do
       chapter = FactoryGirl.build(:inactive_chapter, :name => 'Inactive Chapter')
 
-      expect(chapter.name).to eq('Inactive Chapter (Inactive)')
+      expect(chapter.display_name).to eq('Inactive Chapter (Inactive)')
     end
   end
 end
