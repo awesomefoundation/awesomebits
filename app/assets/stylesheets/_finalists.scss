@@ -12,11 +12,26 @@ body.finalists-index {
 
 section.applications {
   table {
+    font-family: $sans-serif;
+    font-size: 0.8em;
+    
     tr {
       td {
+        &:first-child {
+          width: 75%;
+        }
+        
+        &:nth-child(2) {
+          width: 15%;
+        }
+        
+        &:nth-child(3) {
+          width: 10%;
+        }
+        
         a {
+          font-weight: bold;
           color: rgb(55,55,55);
-          font: bold 12px/14px $sans-serif;
           text-decoration: none;
 
           &:hover {
