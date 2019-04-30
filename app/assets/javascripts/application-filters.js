@@ -9,6 +9,12 @@ $('a.chapter-selection').on('click', function(event) {
     applicationFilterChapterMenuVisible = true;
     $('.chapter-selector').addClass('expanded');
     $('a.chapter-selection').addClass('expanded');
+    
+    /* Vertically bound chapter selection dropdown menu on admin panel for non-mobile/touch devices */
+    if (!('ontouchstart' in window)) {
+      $('.chapter-selector').addClass('bounded');
+    }
+    
   }
   else {
     applicationFilterChapterMenuVisible = false;
