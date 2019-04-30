@@ -4,12 +4,10 @@ cache: bundler
 bundler_args: --without production
 rvm:
   - 2.5.5
+services:
+  # https://docs.travis-ci.com/user/gui-and-headless-browsers/#using-xvfb-to-run-tests-that-require-a-gui
+  - xvfb
 before_install:
-  # Get the headless webkit running on Travis
-  # http://stackoverflow.com/questions/11448806/headless-gem-webkit-server-cannot-connect-to-x-server
-  - "echo 'gem: --no-document' > ~/.gemrc"
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
   # To keep using bundler < 2.0
   - gem uninstall -v '>= 2' -i $(rvm gemdir)@global -ax bundler || true
   - gem install bundler -v '< 2'
