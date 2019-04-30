@@ -123,6 +123,10 @@ body.projects-index {
 .applications {
   float: left;
   max-width: grid-width(9);
+  
+  p:nth-child(2) {
+    font-size: 0.8em;
+  }
 
   @media all and (max-width: $maximum-width) {
     max-width: 100%;
