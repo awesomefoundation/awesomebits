@@ -261,7 +261,14 @@ fr:
         user_image: Réglez votre image utilisateur à <a href="https://fr.gravatar.com/site/signup/%{email}" target="_blank">gravatar.com</a> en utilisant l'adresse mail ci-dessus
       chapter:
         submission_response_email: Ce texte sera inclu dans les messages de confirmation envoyés à vos candidats
+        hide_trustees: Empêcher l'affichage de la liste des donateurs sur la page publique de la branche
   activerecord:
+    attributes:
+      chapter:
+        email_address: Email
+        hide_trustees: Cacher les donateurs
+        country: Pays
+        time_zone: Fuseau horaire
     errors:
       models:
         chapter:
@@ -274,3 +281,10 @@ fr:
               invalid: n'est pas un lien valide
   meta:
     description: Rendre l'univers génial, 1.000€ à la fois.
+  will_paginate:
+    previous_label: "&#8592; Précédent"
+    next_label: "Prochain &#8594;"
+  helpers:
+    submit:
+      chapter:
+        update: Mettre à jour la branche
