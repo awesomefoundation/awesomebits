@@ -94,7 +94,7 @@ step 'they accept the invitation' do
   visit(accept_url)
   fill_in("First name", :with => "Joe")
   fill_in("Last name", :with => "Schmoe")
-  fill_in("Password", :with => "12345")
+  fill_in("Set a new password", :with => "12345")
   click_button("Accept")
 end
 
