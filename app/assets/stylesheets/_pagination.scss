@@ -47,3 +47,21 @@
     margin-left: 1em;
   }
 }
+
+
+
+/**********************************************/
+/*               Responsiveness               */
+/**********************************************/
+
+@media (max-width:$maximum-width) {
+  .pagination {
+    a:not(.previous_page):not(.next_page) {
+      display: none;
+    }
+    
+    .gap {
+      display: none;
+    }
+  }
+}
