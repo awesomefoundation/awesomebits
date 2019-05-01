@@ -1,9 +1,7 @@
-@media all and (max-width: $narrow) {
-
-  body.projects-index, body.finalists-index {
+@media all and (max-width:$maximum-width) {
+  body {
     section.container, footer {
       width: 100%;
-      padding: 10px 0 30px 0;
     }
 
     header.main {
@@ -39,12 +37,13 @@
   cursor: pointer;
   padding: 10px;
 }
+
 .shownav > ol {
   display: block !important;
 }
 
-@media all and (max-width: $phone) {
-  body.projects-index, body.finalists-index {
+@media all and (max-width: $mobile-standard) {
+  body {
     header.main {
       nav a.logo h1 {
         font-size: 13px;

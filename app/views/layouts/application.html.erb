@@ -5,7 +5,7 @@
   <%= content_tag :title, page_title(app_name: 'The Awesome Foundation') %>
   <%= stylesheet_link_tag "application", media: "all" %>
   <%= csrf_meta_tags %>
-  <%= meta_tag :viewport, '', :name => 'viewport' %>
+  <%= meta_tag :viewport, "width=device-width, initial-scale=1", :name => 'viewport' %>
   <%= meta_tag :description, t("meta.description"), :name => "description", :property => "og:description" %>
   <%= meta_tag :image, image_url("logo-1500x750.png"), :property => "og:image" %>
 
@@ -22,14 +22,20 @@
   <%= content_for :head %>
 </head>
 <body class="<%= body_class %>">
-  <%= render 'shared/navigation' %>
-  <section class="container-wrapper">
-    <section class="container">
-      <%= render 'shared/flashes' -%>
-      <%= yield %>
-    </section>
-  </section>
-  <%= render 'shared/footer' %>
-  <%= render 'shared/javascript' %>
+  <div id="site-container" class="flexbox vertical stretch">
+    <%= render 'shared/navigation' %>
+    <div class="flexbox vertical center">
+      <div id="main-container" class="flexbox vertical stretch">
+        <section class="container-wrapper flexbox vertical center">
+          <section class="container">
+            <%= render 'shared/flashes' %>
+            <%= yield %>
+          </section>
+        </section>
+      </div>
+    <%= render 'shared/footer' %>
+    </div>
+    <%= render 'shared/javascript' %>
+  </div>  
 </body>
 </html>

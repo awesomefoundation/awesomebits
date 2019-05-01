@@ -3,8 +3,10 @@
 </div>
 <div class="personal-info">
   <%= form.input :name %>
-  <%= form.input :email %>
-  <%= form.input :phone %>
+  <div class="flexbox horizontal wrap justify-space-between">
+    <%= form.input :email, wrapper_html: { class: "half-width" } %>
+    <%= form.input :phone, wrapper_html: { class: "half-width" } %>
+  </div>
 </div>
 <div class="project-info">
   <%= form.input :title, :maxlength => 50 %>

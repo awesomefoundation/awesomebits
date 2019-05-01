@@ -1,19 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 html, body {
-  background: rgb(255,255,255);
-  color: $base-font-color;
-  font: normal 12px/14px $sans-serif;
   height: 100%;
-  -webkit-font-smoothing: antialiased;
 }
 
 body {
-  .container-wrapper {
-  }
+  font-size: 12pt;
+  -webkit-text-size-adjust:none;
+  -moz-text-size-adjust:none;
+  -ms-text-size-adjust:none;
+  -webkit-text-size-adjust:100%;
+  -moz-text-size-adjust:100%;
+  -ms-text-size-adjust:100%;
+}
 
+#site-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  height: auto !important;
+  min-height: 100%;
+  background: rgb(255,255,255);
+  color: $base-font-color;
+  font-family: $sans-serif;
+  -webkit-font-smoothing: antialiased; /* Necessary??? */
+}
+
+#main-container {
+  width: 100%;
+  max-width: 60em;
+  background: var(--site-bg-color);
+}
+
+body.home-index, body.chapters-show, body.chapters-index {
+  #main-container {
+    max-width: none;
+  }
+}
+
+body:not(.home-index):not(.chapters-show) {  
   section.container {
-    margin: 0px auto;
-    padding: 50px 0px 100px;
-    width: grid-width(12);
+    margin-top: 3em;
+  }
+}
+
+body {
+  section.container {
+    margin-bottom: 3em;
   }
 }
 

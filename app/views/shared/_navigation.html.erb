@@ -17,17 +17,19 @@
   </nav>
 </header>
 
-<section class="chapter-menu">
+<section class="chapter-menu flexbox vertical center">
   <div class="inner-wrapper">
     <h1><%= t("layouts.application.chapter_header") %></h1>
-    <section class="chapters">
+    <section class="chapters in-menu flexbox horizontal wrap">
       <% Chapter.active.visitable.sort_by(&CountrySortCriteria.new(COUNTRY_PRIORITY)).each do |chapter| %>
         <% if display_country?(chapter.country) %>
           <% unless @first_country %>
+              </div>
             </article>
           <% end %>
           <article class="country">
             <h3><%= chapter.country %></h3>
+            <div class="flexbox horizontal wrap">
         <% end %>
         <p><%= link_to chapter.display_name, chapter %></p>
       <% end %>

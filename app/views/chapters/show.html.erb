@@ -1,24 +1,30 @@
 <%= provide(:page_title, @chapter.display_name) %>
 
-<header>
-  <div class="title">
-    <h1>
-      <%= @chapter.display_name %>
-    </h1>
+<header class="flexbox vertical center">
+  <div class="title-wrapper">
+    <div class="title flexbox horizontal wrap">
+      <h1 class="flexbox vertical stretch flex-1">
+        <%= @chapter.display_name %>
+      </h1>
+      <div class="flexbox horizontal center wrap">
+        <div class="flexbox horizontal center wrap">
+        <%= email_link @chapter %>
+        <%= blog_link @chapter %>
+        <%= instagram_link @chapter %>
+        <%= facebook_link @chapter %>
+        <%= twitter_link @chapter %>
+        </div>
+        <div class="flexbox horizontal center wrap">
+          <% if can_manage_chapter?(@chapter) %>
+            <%= link_to t(".edit"), edit_chapter_path(@chapter), :class => 'edit-chapter' %>
+          <% end %>
 
-    <% if can_manage_chapter?(@chapter) %>
-      <%= link_to t(".edit"), edit_chapter_path(@chapter), :class => 'edit-chapter' %>
-    <% end %>
-
-    <% if can_apply_to_chapter?(@chapter) %>
-      <%= link_to t(".apply-for-grant"), new_submission_path(:chapter => @chapter), :class => 'apply-chapter' %>
-    <% end %>
-
-    <%= email_link @chapter %>
-    <%= blog_link @chapter %>
-    <%= instagram_link @chapter %>
-    <%= facebook_link @chapter %>
-    <%= twitter_link @chapter %>
+          <% if can_apply_to_chapter?(@chapter) %>
+            <%= link_to t(".apply-for-grant"), new_submission_path(:chapter => @chapter), :class => 'apply-chapter' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 
   <% if @chapter.inactive? %>
@@ -30,8 +36,8 @@
 </header>
 
 <% unless @chapter.winning_projects.empty? %>
-  <section class="chapter-header-wrapper owl-wrapper">
-     <section class="chapter-projects owl-carousel owl-theme">
+  <section class="chapter-header-wrapper owl-wrapper flexbox vertical">
+     <section id="owl-carousel" class="chapter-projects owl-carousel owl-theme">
         <% @chapter.winning_projects.each do |project| %>
           <article class="project item" data-id="<%= project.id %>">
             <%= link_to project do %>
@@ -47,60 +53,65 @@
           </article>
        <% end %>
       </section>
-    <div class="owl-dots-wrapper">
+    <div class="owl-dots-wrapper flexbox horizontal wrap">
       <div id="owl-dots" class="owl-dots"></div>
     </div>
   </section>
 <% end %>
 
-<section class="chapter-info">
-  <section class="description">
-    <article class="about <%= about_class(@chapter) %>">
-      <h2><%= t(".trustees.about") %></h2>
-      <%= markdown @chapter.description %>
-    </article>
+<div class="flexbox vertical center">
+  <section class="chapter-info">
+    <section class="description">
+      <article class="about">
+        <h2><%= t(".trustees.about") %></h2>
+        <%= markdown @chapter.description %>
+      </article>
 
-    <% if @chapter.rss_feed_url.present? %>
-    <article class="rss-feed half" data-feed-url="<%= @chapter.rss_feed_url %>">
-      <h2><%= t(".trustees.news", :name => @chapter.display_name) %></h2>
-      <section class="rss" id="rss-feeds"></section>
-    </article>
-    <% end %>
-  </section>
-
-  <% if !@chapter.hide_trustees? && @chapter.users.present? %>
-  <h2><%= t(".trustees.header") %></h2>
-  <section class="trustees">
-    <ol>
-      <% @chapter.users.deans_first.including_role.distinct.each do |user| %>
-      <li>
-        <article class="trustee <%= user.role %>">
-          <%= link_to user.url, :class => :avatar do %>
-            <div class="hat"></div>
-            <div class="trustee-details">
-              <h3><%= user.first_name %> <%= user.last_name %></h3>
-            </div>
-            <div class="avatar">
-              <%= image_tag user.gravatar_url, :alt => t(".trustees.photo-alt-text", :name => user.name) %>
-            </div>
-          <% end %>
-        </article>
-      </li>
+      <% if @chapter.rss_feed_url.present? %>
+      <article class="rss-feed" data-feed-url="<%= @chapter.rss_feed_url %>">
+        <h2><%= t(".trustees.news", :name => @chapter.display_name) %></h2>
+        <section class="rss" id="rss-feeds"></section>
+      </article>
       <% end %>
-    </ol>
+    </section>
+
+    <% if !@chapter.hide_trustees? && @chapter.users.present? %>
+    <section class="trustees">
+      <h2><%= t(".trustees.header") %></h2>
+      <ol>
+        <% @chapter.users.deans_first.including_role.distinct.each do |user| %>
+        <li>
+          <article class="trustee <%= user.role %>">
+            <%= link_to user.url, :class => :avatar do %>
+              <div class="hat"></div>
+              <div class="trustee-details">
+                <h3><%= user.first_name %> <%= user.last_name %></h3>
+              </div>
+              <div class="avatar">
+                <%= image_tag user.gravatar_url, :alt => t(".trustees.photo-alt-text", :name => user.name) %>
+              </div>
+            <% end %>
+          </article>
+        </li>
+        <% end %>
+      </ol>
+    </section>
+    <% end %>
+
   </section>
+
+  <% if can_apply_to_chapter?(@chapter) %>
+    <section class="chapter-apply flexbox vertical center">
+      <div class="apply-button">
+        <%= link_to t(".apply-for-grant"), new_submission_path(:chapter => @chapter) %>
+      </div>
+    </section>
   <% end %>
-
-</section>
-
-<% if can_apply_to_chapter?(@chapter) %>
-  <section class="chapter-apply">
-    <div class="apply-button">
-      <%= link_to t(".apply-for-grant"), new_submission_path(:chapter => @chapter) %>
-    </div>
-  </section>
-<% end %>
+  
+</div>
 
 <% content_for :javascript do -%>
   <%= render 'shared/rssfeed', rss_feed_url: @chapter.rss_feed_url %>
 <% end -%>
+
+

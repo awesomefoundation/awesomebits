@@ -1,73 +1,62 @@
 .about-wrapper {
-  @extend .clearfix;
-  margin: 0 auto;
+  margin-right: 1.5em;
+  margin-left: 1.5em;
+  
+  p {
+    color: $lighter-base-font-color;
+    font: normal 14px/20px $sans-serif;
+  }
 
-  header {
-    border-bottom: 3px solid rgb(220,220,220);
-    margin: 0 auto 60px;
-    width: grid-width(12);
+  a {
+    color: $pink;
+    text-decoration: none;
 
-    h1 {
-      color: $base-font-color;
-      font: bold 38px/44px $sans-serif;
-      margin: 0;
-      padding-bottom: 5px;
-      text-align: center;
-      text-transform: uppercase;
-    }
-
-    h2 {
-      color: $lighter-base-font-color;
-      font: normal italic 14px/16px $serif;
-      padding-bottom: 20px;
-      text-align: center;
+    &:hover {
+      text-decoration: underline;
     }
   }
 
-  .wrapper {
-    p {
-      color: $lighter-base-font-color;
-      font: normal 14px/20px $sans-serif;
-    }
-
-    a {
-      color: $pink;
-      text-decoration: none;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-
-    h1 {
-      color: $base-font-color;
-      text-transform: uppercase;
-    }
-
-    h2 {
-      color: $base-font-color;
-      font: normal 18px/22px $sans-serif;
-      margin-bottom: 15px;
-      margin-top: 1.5em;
-      text-transform: uppercase;
-    }
-
-    .our-story {
-      float: left;
-      margin-right: $gw-gutter;
-      width: grid-width(6);
-    }
-
-    .contact {
-      float: left;
-      width: grid-width(6);
-    }
-  }
-
-  h3 {
-    font: 18px/22px "museo-sans", "brandon-grotesque", "proxima-nova", "Open Sans", "helvetica neue", sans-serif;
-    line-height: 1.6em;
+  h1 {
+    color: $base-font-color;
     text-transform: uppercase;
-    margin: 0 0 15px 0;
+  }
+
+  h2 {
+    color: $base-font-color;
+    font: normal 18px/22px $sans-serif;
+    margin-bottom: 15px;
+    margin-top: 1.5em;
+    text-transform: uppercase;
+  }
+
+  .our-story {
+    margin-right: 3em;
+  }
+
+  .our-story,
+  .contact {
+    max-width: 27em;
+  }
+
+}
+
+/**********************************************/
+/*               Responsiveness               */
+/**********************************************/
+
+@media (max-width:$maximum-width) {
+  .about-wrapper {
+    .our-story {
+      margin-right: 0em;
+    }
+    
+    .our-story,
+    .contact {
+      max-width: 100%;
+    }
+    
+    .contact {
+      margin-top: 2em;
+    }
   }
 }

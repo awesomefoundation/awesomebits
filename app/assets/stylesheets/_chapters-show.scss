@@ -6,10 +6,7 @@ body.chapters-show {
     padding-top: 0px;
 
     header {
-      border-bottom: 1px solid rgb(200,200,200);
-      margin: 0 auto;
       padding: 60px 0px 10px;
-      width: grid-width(12);
     }
 
     .inactive-notice {
@@ -21,83 +18,88 @@ body.chapters-show {
       font: normal 14px/22px $sans-serif;
     }
 
-    .title {
-      @extend .clearfix;
-      margin: 0 auto;
-      padding-bottom: 0px;
-      width: grid-width(12);
+    .title-wrapper {
+      max-width: $maximum-width;
+      width: 100%;
 
-      h1 {
-        color: rgba(55,55,55, 1);
-        float: left;
-        font: 900 38px/44px $sans-serif;
-        margin: 0px;
-        text-transform: uppercase;
-      }
+      .title {
+        margin-right: 1.5em;
+        margin-left: 1.5em;      
+        border-bottom: 1px solid rgb(200,200,200); 
+        padding-bottom: 10px;
 
-      a.edit-chapter {
-        @include button(rgb(240,240,240));
-        float: right;
-        margin: 10px 0px 0px 10px;
-        text-decoration: none;
-        padding: 7px 12px 6px;
-      }
-
-      a.apply-chapter {
-        @include button(pill, $button-pink);
-        float: right;
-        margin: 12px 0px 0px 10px;
-        text-decoration: none;
-        padding: 7px 12px 6px;
-      }
-
-      a.external {
-        background: transparent;
-        display: block;
-        float: right;
-        height: 25px;
-        margin: 12px 0px 0px 10px;
-        opacity: 0.7;
-        position: relative;
-        width: 25px;
-
-        &:hover {
-          opacity: 1;
+        h1 {
+          color: rgba(55,55,55, 1);
+          font: 900 38px/44px $sans-serif;
+          margin: 0px;
+          text-transform: uppercase;
         }
 
-        &:active {
-          top: 1px;
+        a.edit-chapter {
+          @include button(rgb(240,240,240));
+          margin: 6px;
+          text-decoration: none;
+          padding: 7px 12px 6px;
+          font-size: 0.8em;
         }
 
-        &.twitter {
-          background: image-url('twitter.png');
+        a.apply-chapter {
+          @include button(pill, $button-pink);
+          margin: 6px;
+          text-decoration: none;
+          padding: 7px 12px 6px;
+          font-size: 0.8em;
         }
 
-        &.facebook {
-          background: image-url('fb.png');
-        }
+        a.external {
+          background: transparent;
+          display: block;
+          height: 25px;
+          margin: 6px;
+          opacity: 0.7;
+          position: relative;
+          width: 25px;
 
-        &.email {
-          background: image-url('mail.png');
-        }
+          &:hover {
+            opacity: 1;
+          }
 
-        &.blog {
-          background: image-url('blog-2.png');
-        }
+          &:active {
+            top: 1px;
+          }
 
-        &.instagram {
-          background: image-url('instagram.png');
+          &.twitter {
+            background: image-url('twitter.png');
+          }
+
+          &.facebook {
+            background: image-url('fb.png');
+          }
+
+          &.email {
+            background: image-url('mail.png');
+          }
+
+          &.blog {
+            background: image-url('blog-2.png');
+          }
+
+          &.instagram {
+            background: image-url('instagram.png');
+          }
         }
       }
     }
   }
+  
+  .owl-stage {
+    margin: 0 auto;
+  }
 
   .owl-dots-wrapper {
-    @extend .clearfix;
     margin-top: 20px;
 
     .owl-dots{
-      float: left;
       width: 100%;
     }
 
@@ -112,6 +114,8 @@ body.chapters-show {
     }
 
     button.owl-dot {
+      outline: 0 none;
+      cursor: pointer;
       background: 0 0;
       color: inherit;
       border: none;
@@ -133,47 +137,49 @@ body.chapters-show {
       transition: opacity 0.2s ease;
       border-radius: 30px;
     }
-
   }
 
-  .owl-carousel {
-    .project {
-      width: 500px !important;
-    }
-  }
-}
-
-.gallery-overflow-wrapper {
-  overflow: hidden;
-  width: 100%;
 }
 
 .chapter-header-wrapper {
-  height: 300px;
-  margin: 0 0 0 auto;
-  padding: 40px 0px 20px;
   position: relative;
-  width: 95%;
+  margin-top: 2em;
+  margin-left: 1.5em;
+  margin-right: 1.5em;
 
   &:hover {
     .owl-nav-round button {
       opacity: 1;
     }
   }
+  
+  .chapter-projects.touch-device {
+      .owl-nav-round button {
+        display: none !important;
+      }
+  }
 
   .owl-nav-round button {
+    outline: 0 none;
+    cursor: pointer;
+    display: block;
     background: rgba(0,0,0, 0.6);
     background-position: center center;
     background-repeat: no-repeat;
     border: 0;
-    border-radius: 60px;
-    display: block;
-    height: 120px;
+    border-radius: 50px;
+    height: 100px;
+    width: 100px;
     opacity: 0;
     position: absolute;
     @include transition((opacity, background-color), 0.2s, ease-out);
-    top: 90px;
-    width: 120px;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
     z-index: 3;
 
     &:hover {
@@ -182,13 +188,14 @@ body.chapters-show {
 
     &.owl-nav-left {
       background-image: image-url('arrow_left.png');
-      left: -60px;
+      background-size: 50%;
+      left: 60px;
     }
 
     &.owl-nav-right {
       background-image: image-url('arrow_right.png');
-      right: -55px;
-      margin-right: 5%;
+      background-size: 50%;
+      right: -40px;
     }
 
     &.disabled {
@@ -196,33 +203,13 @@ body.chapters-show {
     }
   }
 
-  .gallery-container {
-    position: absolute;
-  }
-
+  
   .chapter-projects {
-    @extend .clearfix;
-    display: inline-block;
-    left: 0px;
-    position: relative;
-    top: 0px;
-
-    // make slides (display: inline-block) stack horizontally before the carousel is on
     white-space: nowrap;
     overflow: hidden;
 
-    &.owl-loaded {
-      // when the carousel is on, reset overflow: hidden added to hide off screen slides
-      overflow: visible !important;
-    }
-
     .project {
-      display: inline-block;
       background: transparent;
-      height: auto;
-      margin: 0px;
-      overflow: hidden;
-      width: 500px;
 
       a {
         text-decoration: none;
@@ -255,6 +242,8 @@ body.chapters-show {
           span {
             color: rgba(255,255,255, 0.7);
             margin-right: 10px;
+            font-size: 0.8em;
+            line-height: 1.4em;
           }
         }
 
@@ -279,9 +268,9 @@ body.chapters-show {
 }
 
 .chapter-info {
-  @extend .clearfix;
-  margin: 40px auto 40px;
-  width: grid-width(12);
+  max-width: $maximum-width;
+  width: 100%;
+  margin-top: 40px;
 
   h2 {
     font: normal 18px/22px $sans-serif;
@@ -293,12 +282,18 @@ body.chapters-show {
     border-bottom: 1px solid rgb(200,200,200);
   }
 
-  .trustees {
-    border-top: 1px solid rgb(200,200,200);
-    margin-bottom: 40px;
-    padding: 40px 0px 40px;
-    width: grid-width(12);
+  .trustees {    
+    padding-bottom: 40px;
+    margin-left: 1.5em;
+    margin-right: 1.5em;
+    max-width: grid-width(12);
+    border-bottom: 1px solid #c8c8c8;
 
+    h2 {
+      border-bottom: 1px solid rgb(200,200,200);
+      padding-bottom: 15px;
+    }
+    
     ol {
       @extend .clearfix;
       margin: 0px;
@@ -306,12 +301,8 @@ body.chapters-show {
       li {
         float: left;
         list-style: none;
-        margin: 0 $gw-gutter $gw-gutter 0;
-        width: grid-width(2);
-
-        &:nth-child(6n) {
-          margin-right: 0;
-        }
+        margin: 0 8px 16px 8px;
+        max-width: grid-width(2);
 
         article.dean {
           div.hat {
@@ -346,7 +337,7 @@ body.chapters-show {
               padding: 8px;
               position: absolute;
               top: 80px;
-              width: grid-width(2);
+              max-width: grid-width(2);
               z-index: 3;
 
               h3 {
@@ -397,17 +388,11 @@ body.chapters-show {
   }
 
   .description {
-    @extend .clearfix;
-    margin: 0px auto 40px;
-    width: grid-width(12);
+    margin-bottom: 40px;
+    margin-left: 1.5em;
+    margin-right: 1.5em;
 
     article {
-      float: left;
-
-      &.half {
-        width: grid-width(6);
-      }
-
       h2 {
         font: normal 18px/22px $sans-serif;
         margin-bottom: 15px;
@@ -419,11 +404,8 @@ body.chapters-show {
         font: normal 14px/22px $sans-serif;
       }
 
-      &.about {
-        margin-right: $gw-gutter;
-      }
-
       &.rss-feed {
+        margin-top: 24px;
       }
     }
   }
@@ -463,26 +445,55 @@ body.chapters-show {
 }
 
 .chapter-apply {
-  @extend .clearfix;
   padding-top: 40px;
-  border-top: 1px solid rgb(200,200,200);
-  width: grid-width(12);
-  margin: 0 auto;
+  max-width: $maximum-width;
+  width: 100%;
 
   .apply-button {
-    margin: 0 auto;
-    width: grid-width(6);
+    max-width: grid-width(6);
+    width: 100%;
 
     a {
       @include button(pill, $button-pink);
+      margin-left: 1.5em;
+      margin-right: 1.5em;
       font: normal 18px/22px $sans-serif;
-      width: 100%;
+      max-width: 100%;
       display: block;
 
       text: {
         decoration: none;
         align: center;
         transform: uppercase;
+      }
+    }
+  }
+}
+
+/**********************************************/
+/*               Responsiveness               */
+/**********************************************/
+
+@media (max-width:31.1em) {
+  .chapter-info {
+    .trustees {
+      ol {
+        li {          
+          transform: scale(0.9);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width:21.8em) {
+  .chapter-info {
+    .trustees {
+      ol {
+        li {
+          margin: 0px;
+          transform: scale(0.8);
+        }
       }
     }
   }

@@ -18,3 +18,4 @@ vendor/bundler_gems
 bin
 .tddium*
 .tddium
+.tm_properties

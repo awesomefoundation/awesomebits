@@ -3,6 +3,13 @@ body.projects-index {
   section.container {
     @extend .clearfix;
   }
+  
+  @media all and (max-width: $maximum-width) {
+    section.container {
+      margin-top: 0.5em !important;
+    }
+  }
+  
 }
 
 .admin-panel {
@@ -12,7 +19,7 @@ body.projects-index {
   padding: 0px 20px 20px 0px;
   width: 180px;
 
-  @media all and (max-width: $narrow) {
+  @media all and (max-width: $maximum-width) {
     float: none;
     border-right: none;
     width: 100%;
@@ -34,7 +41,7 @@ body.projects-index {
 
   .user-profile-image {
     @extend .user-avatar;
-    @media all and (max-width: $narrow) {
+    @media all and (max-width: $maximum-width) {
       padding: 0px;
       width: 40px;
       height: 40px;
@@ -55,7 +62,7 @@ body.projects-index {
     margin: 15px 0px;
     padding-bottom: 30px;
     text-align: center;
-    @media all and (max-width: $narrow) {
+    @media all and (max-width: $maximum-width) {
       border-bottom: 1px solid rgb(200,200,200);
       margin-bottom: 0px;
       text-align: left;
@@ -73,7 +80,7 @@ body.projects-index {
       margin-bottom: 15px;
       padding: 0px 0px 15px 0px;
 
-      @media all and (max-width: $narrow) {
+      @media all and (max-width: $maximum-width) {
         margin: 0px 0px;
         padding: 0px;
       }
@@ -84,7 +91,7 @@ body.projects-index {
 
       &.section-title {
         padding: 15px 0px 5px 0px;
-        @media all and (max-width: $narrow) {
+        @media all and (max-width: $maximum-width) {
           padding-left: 15px;
         }
       }
@@ -100,7 +107,7 @@ body.projects-index {
         font: normal 12px/14px $sans-serif;
         padding: 5px 0px 5px 10px;
         text-decoration: none;
-        @media all and (max-width: $narrow) {
+        @media all and (max-width: $maximum-width) {
           padding: 12px 20px;
         }
 
@@ -115,22 +122,29 @@ body.projects-index {
 
 .applications {
   float: left;
-  width: grid-width(9);
+  max-width: grid-width(9);
+  
+  p:nth-child(2) {
+    font-size: 0.8em;
+  }
 
-  @media all and (max-width: $narrow) {
-    width: 100%;
+  @media all and (max-width: $maximum-width) {
+    max-width: 100%;
+    float: none;
+    margin-left: 1em;
+    margin-right: 1em;
   }
 
   .exports {
     text-align: right;
-    margin-bottom: 40px;
-    @media all and (max-width: $narrow) {
+    margin-bottom: 20px;
+    font-size: 0.8em;
+    @media all and (max-width: $maximum-width) {
       display: none;
     }
   }
 
   .application-filters {
-    @extend .clearfix;
     background: rgb(230,230,230);
     border: 1px solid rgb(200,200,200);
     border-radius: 4px;
@@ -139,15 +153,13 @@ body.projects-index {
     margin-bottom: 10px;
     position: relative;
     width: grid-width(9);
-    @media all and (max-width: $narrow) {
+    @media all and (max-width: $maximum-width) {
       width: 100%;
-      border-radius: 0;
       box-sizing: border-box;
     }
 
     nav {
-      float: left;
-      padding: 10px;
+      padding: 10px 10px 0px 10px;
       position: relative;
 
       a.chapter-selection {
@@ -155,10 +167,8 @@ body.projects-index {
         border: 1px solid rgb(190,190,190);
         border-radius: 3px;
         display: block;
-        margin: 1px 0 0 0;
         padding: 5px 40px 5px 10px;
         text-decoration: none;
-        width: 100px;
         z-index: 2;
 
         &:hover {
@@ -196,16 +206,17 @@ body.projects-index {
         border: 1px solid rgb(150,150,150);
         @include border-bottom-radius(4px);
         box-shadow: 0 3px 5px 0 rgba(0,0,0, 0.2);
-        max-height: 450px;
-        left: 10px;
         opacity: 0;
         overflow-y: auto;
-        padding-bottom: 10px;
-        position: absolute;
-        top: 39px;
-        visibility: hidden;
-        width: 200px;
+        position: relative;
+        display: none;
         z-index: 1;
+        margin-top: -1px;
+        margin-bottom: 0px;
+        
+        &.bounded {
+          max-height: 428px;          
+        }
 
         li {
           border-bottom: 1px solid rgb(200,200,200);
@@ -232,18 +243,19 @@ body.projects-index {
 
         &.expanded {
           opacity: 1;
-          visibility: visible;
+          display: block;
         }
       }
     }
 
     form.filter {
       float: right;
-      padding: 10px 10px 10px 0;
+      padding: 0px 10px 10px 10px;
 
       div.short-list-toggle {
         float: left;
         margin-right: 10px;
+        margin-top: 20px;
         position: relative;
 
         input[type="checkbox"] {
@@ -277,6 +289,7 @@ body.projects-index {
       div.date-range, div.search {
         float: left;
         margin-right: 10px;
+        margin-top: 20px;
 
         label {
           display: none;
@@ -300,6 +313,7 @@ body.projects-index {
       input[type="submit"], button[type="submit"] {
         @include button(rgb(230,230,230));
         margin: 0px;
+        margin-top: 20px;
         width: auto;
         font-size: 11px;
       }
@@ -312,26 +326,13 @@ body.projects-index {
     text-transform: uppercase;
   }
 
-  @media all and (max-width: $narrow) {
-    h1, p {
-      padding: 5px 15px;
-    }
-  }
-
   article.project {
     border: 1px solid rgb(200,200,200);
     background: rgb(255,255,255);
     border-radius: 4px;
     box-shadow: 0 1px 6px 0 rgba(0,0,0, 0.15);
-    margin-bottom: 40px;
-
-    @media all and (max-width: $narrow) {
-      border-radius: 0;
-      border-left: 6px solid rgb(200,200,200);
-      border-right: none;
-      box-shadow: none;
-      margin-bottom: 0px;
-    }
+    margin-top: 20px;
+    margin-bottom: 20px;
 
     header {
       @include border-top-radius(4px);
@@ -355,6 +356,7 @@ body.projects-index {
         .public-link {
           display: none;
           padding-top: .5em;
+          font-size: 0.8em;
           clear: both;
 
           a {
@@ -405,6 +407,7 @@ body.projects-index {
       .meta-data {
         border-bottom: 1px solid rgb(200,200,200);
         padding: 10px;
+        font-size: 0.8em;
 
         a {
           color: $base-font-color;
@@ -524,6 +527,7 @@ body.projects-index {
     .filtering {
       border-top: 1px solid rgb(200,200,200);
       padding: 10px;
+      font-size: 0.8em;
 
       .hiding-form, .unhiding-form {
         &.hiding-form {
@@ -562,14 +566,6 @@ body.projects-index {
     border: 1px solid $pink;
     box-shadow: 0 1px 6px 0 rgba($pink, 0.6);
 
-    @media all and (max-width: $narrow) {
-      border: 1px solid rgba($pink, 0.6);
-      border-left: 6px solid $pink;
-      padding-left: -3px;
-      border-right: 0px;
-      box-shadow: inset 3px -5px 10px 0px rgba($pink, 0.6);
-    }
-
     div.title {
       a.short-list {
         @include button($pink);
@@ -580,14 +576,6 @@ body.projects-index {
   article.project.winner {
     border: 1px solid $blue;
     box-shadow: 0 1px 6px 0 rgba($blue, 0.6);
-
-    @media all and (max-width: $narrow) {
-      border: 1px solid rgba($blue, 0.6);
-      border-left: 6px solid $blue;
-      padding-left: -3px;
-      border-right: 0px;
-      box-shadow: inset 3px -5px 10px 0px rgba($blue, 0.6);
-    }
 
     header {
       div.title {

@@ -1,19 +1,21 @@
-<section class="invitation-form">
-  <h1>Invite a new trustee</h1>
-  <%= simple_form_for  @invitation do |form| %>
-    <% if show_chapters_dropdown? %>
-      <%= form.input :chapter_id, :as => :select, :collection => invitable_chapters, :group_method => :name, :label => "Select a chapter", :prompt => "- Select -" %>
-    <% else %>
-      <p>Trustee will be invited to:
-        <span><%= primary_invitable_chapter.display_name %></span>
-      </p>
-      <%= form.input :chapter_id, :as => :hidden, :input_html => { :value => primary_invitable_chapter.id } %>
+<div class="flexbox vertical center">
+  <section class="invitation-form">
+    <h1>Invite a new trustee</h1>
+    <%= simple_form_for  @invitation do |form| %>
+      <% if show_chapters_dropdown? %>
+        <%= form.input :chapter_id, :as => :select, :collection => invitable_chapters, :group_method => :name, :label => "Select a chapter", :prompt => "- Select -" %>
+      <% else %>
+        <p>Trustee will be invited to:
+          <span><%= primary_invitable_chapter.display_name %></span>
+        </p>
+        <%= form.input :chapter_id, :as => :hidden, :input_html => { :value => primary_invitable_chapter.id } %>
+      <% end %>
+      <div class="flexbox horizontal wrap justify-space-between">      
+        <%= form.input :first_name, wrapper_html: { class: "half-width" } %>
+        <%= form.input :last_name, wrapper_html: { class: "half-width" } %>
+      </div>
+      <%= form.input :email %>
+      <%= submit_tag "Invite" %>
     <% end %>
-    <div class="invitee-name">
-      <%= form.input :first_name %>
-      <%= form.input :last_name %>
-    </div>
-    <%= form.input :email %>
-    <%= submit_tag "Invite" %>
-  <% end %>
-</section>
+  </section>
+</div>

@@ -1,15 +1,19 @@
 footer {
-  @extend .clearfix;
-  border-top: 1px solid rgb(200,200,200);
   height: 100px;
-  margin: 0 auto;
-  padding-top: 10px;
-  width: grid-width(12);
+  max-width: $maximum-width;
+  width: 100%;
 
   p {
     padding: 10px 0;
     text-align: center;
-
+    margin-left: 1.5em;
+    margin-right: 1.5em;
+    
+    &:first-child {
+      padding-top: 20px;  
+      border-top: 1px solid rgb(200,200,200);
+    }
+    
     a:link, a:visited {
       color: $lighter-base-font-color;
       font: normal 12px/14px $sans-serif;
@@ -17,6 +21,7 @@ footer {
       padding-bottom: 3px;
       text-decoration: none;
       text-transform: uppercase;
+      white-space: nowrap;
 
       &:hover {
         border-bottom: 3px solid $pink;

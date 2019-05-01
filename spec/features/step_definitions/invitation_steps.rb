@@ -95,7 +95,7 @@ step 'they accept the invitation' do
   fill_in("First name", :with => "Joe")
   fill_in("Last name", :with => "Schmoe")
   fill_in("Password", :with => "12345")
-  click_button("Accept the invitation!")
+  click_button("Accept")
 end
 
 step 'the trustee tries to accept the invitation yet again' do

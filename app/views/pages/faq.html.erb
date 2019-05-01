@@ -1,12 +1,12 @@
 <% provide(:page_title, t(".title_tag")) %>
 <% content_for(:extra_body_classes, 'pages-about_us') %>
 
-<section class="faq-wrapper">
+<section class="faq-wrapper flexbox vertical center">
   <header>
     <h1><%= t(".headline") %></h1>
   </header>
 
-  <section class="faq-answers">
+  <section class="faq-answers flexbox vertical start">
     <article>
       <%= render("locales/faq").html_safe %>
     </article>

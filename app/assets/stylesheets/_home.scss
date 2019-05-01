@@ -6,14 +6,13 @@ body.home-index {
 }
 
 .awesome-wrapper {
-  margin: 0 auto 80px;
+  margin: 0 auto 4em;
   position: relative;
 
   .awesome-projects {
     @extend .clearfix;
     font-size: 0px;
     margin-left: 10px;
-    min-width: grid-width(12);
 
     .tagline {
       @extend .animation-tagline-enter;
@@ -44,7 +43,9 @@ body.home-index {
             h1 {
               color: rgba(255,255,255, 1);
               font: normal 18px/22px $sans-serif;
-              margin-bottom: 10px;
+              margin-bottom: 0px;
+              margin-left: 1.5em;
+              margin-right: 1.5em;
               text-align: center;
               text-transform: uppercase;
             }
@@ -159,20 +160,23 @@ body.home-index {
 .what-how,
 .who-where {
   @extend .animation-content-appear;
-  width: grid-width(12);
+  max-width: $maximum-width;
+  width: 100%;
 
   hgroup {
     border-bottom: 2px solid rgb(220,220,220);
-    margin-bottom: 50px;
+    margin-bottom: 3.25em;
+    margin-right: 1.5em;
+    margin-left: 1.5em;
   }
 
   h2 {
     color: $base-font-color;
     font: 500 32px/48px $sans-serif;
-    padding-bottom: 10px;
     text-align: center;
     text-transform: uppercase;
-
+    padding-bottom: 1.5em;
+    
     em {
       color: $pink;
       font: bold 48px/48px $sans-serif;
@@ -188,39 +192,45 @@ body.home-index {
   }
 }
 
+
 .call-to-action {
   @extend .animation-content-appear;
-  background: rgb(240,240,240);
-  border: 1px solid rgb(210,210,210);
-  border-radius: 4px;
-  box-shadow: inset 0 0 5px 0 rgba(0,0,0, 0.1);
-  margin: 0 auto 100px;
-  padding: 20px;
-  width: grid-width(12) - 40;
+  
+  max-width: grid-width(12) - 40;
+  width: 100%;
 
-  a {
-    @include button($button-pink);
-    display: block;
-    font: normal 18px/22px $sans-serif;
-    margin: 0 auto;
-    text-align: center;
-    text-decoration: none;
-    text-transform: uppercase;
-    padding: 20px 0px;
-    width: 100%;
+  .button-wrapper {
+    background: rgb(240,240,240);
+    border: 1px solid rgb(210,210,210);
+    border-radius: 4px;
+    box-shadow: inset 0 0 5px 0 rgba(0,0,0, 0.1);
+    margin-bottom: 3.25em;
+    padding: 20px;
+    margin-right: 1.5em;
+    margin-left: 1.5em;
+    
+    a {
+      @include button($button-pink);
+      display: block;
+      font: normal 18px/22px $sans-serif;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      padding: 20px;
+    }
   }
+  
 }
 
 .what-how {
-  margin: 0 auto 100px;
 
   .need-funding {
-    @include clearfix();
+    margin-right: 1.5em;
+    margin-left: 1.5em;
 
     .description {
-      float: left;
-      margin-right: $gw-gutter;
-      width: grid-width(6);
+      max-width: 26em;
+      margin-bottom: 4em;
 
       h3 {
         color: $base-font-color;
@@ -240,19 +250,19 @@ body.home-index {
     }
 
     .info-graphic {
-      float: left;
-      width: grid-width(6);
+      max-width: 26em;
+      width: 100%;
+      margin-bottom: 4em;
 
       .graphic {
         border: 1px dashed rgb(200,200,200);
         border-radius: 4px;
-        height: 70px;
         padding: 15px 0px;
         width: 100%;
 
         img {
           display: block;
-          margin: 0 auto;
+          margin: 0;
           width: 352px;
         }
       }
@@ -261,15 +271,16 @@ body.home-index {
 }
 
 .who-where {
-  margin: 0 auto 100px;
 
   .about-preview {
-    @extend .clearfix;
-
+    margin-right: 1.5em;
+    margin-left: 1.5em;
+    
     .intro {
-      float: left;
-      width: grid-width(6);
-
+      max-width: 26em;
+      margin-top: 1em;
+      margin-bottom: 1em;
+      
       h3 {
         color: $base-font-color;
         font: normal 18px/22px $sans-serif;
@@ -284,12 +295,14 @@ body.home-index {
     }
 
     .mini-map {
-      float: left;
-      margin-right: $gw-gutter;
       padding-top: 5px;
-      width: grid-width(6);
+      max-width: 26em;
+      margin-top: 1em;
+      margin-bottom: 1em;
 
-      img {}
+      img {
+        max-width: 26em;
+      }
     }
   }
 }
@@ -388,3 +401,117 @@ body.home-index {
     }
   }
 }
+
+
+
+
+/**********************************************/
+/*               Responsiveness               */
+/**********************************************/
+
+@media (max-width:$maximum-width) {
+  .awesome-wrapper {
+    .awesome-projects {
+      .tagline {
+        width: 100%;
+        display: block;
+        .inner-wrapping {
+          margin-right: 18px;
+          margin-bottom: 10px;
+        }
+      }
+      .project {
+        width: 33%;
+      }
+    }
+  }
+  .what-how,
+  .who-where {
+    h2 {
+      span.divider {
+        @include background-image(linear-gradient(0deg, rgba($base-font-color, 0) 0%, rgba($base-font-color, 0.5) 25%, rgba($base-font-color, 0.6) 50%, rgba($base-font-color, 0.6) 75%, rgba($base-font-color, 0) 100%));
+        display: block;
+        height: 1px;
+        margin: 15px auto;
+        width: 90px;
+      }
+    }
+  } 
+}
+
+@media (max-width:46em) { 
+  .awesome-wrapper {
+    .awesome-projects {
+      .tagline {
+      .inner-wrapping {
+          margin-right: 16px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width:40em) { 
+  .awesome-wrapper {
+    .awesome-projects {
+      .project {
+        .image-wrapper {
+          .project-name {
+            z-index: 10;
+            h2 {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width:$mobile-standard) { 
+  .awesome-wrapper {
+    .awesome-projects {
+      .tagline {
+        .inner-wrapping {
+          margin-right: 10px;
+          .wrapper-2 {
+            .message {
+              h1 {
+                font-size: 16px;
+                line-height: 18px;
+              }
+            }
+          }
+        }
+      }
+      .project {
+        width: 50%;
+      }
+    }
+  }
+  .who-where {
+    .about-preview {
+      .mini-map {
+        max-width: 260px;
+        img {
+          max-width: 260px;
+        }
+      }
+    }
+  }
+  .what-how {
+    .need-funding {
+      .description {
+        margin-bottom: 2em;
+      }
+      .info-graphic {
+        .graphic {
+          img {
+            width: 200px;
+          }
+        }
+      }
+    }
+  }
+}
+

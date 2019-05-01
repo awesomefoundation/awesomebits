@@ -1,4 +1,6 @@
 .application-intro {
+  margin-right: 1em;
+  margin-left: 1em;
   margin-bottom: 40px;
 
   h1 {
@@ -20,7 +22,6 @@
     .personal-info,
     .project-info,
     .extra-questions {
-      @extend .clearfix;
       border-bottom: 1px solid rgb(200,200,200);
       margin-bottom: 30px;
       padding-bottom: 20px;
@@ -31,17 +32,6 @@
     }
 
     div.input {
-      &.tel {
-        float: left;
-        width: grid-width(3);
-      }
-
-      &.email {
-        float: left;
-        margin-right: $gw-gutter;
-        width: grid-width(3);
-      }
-
       &.select {
         border-bottom: 1px solid rgb(200,200,200);
         margin-bottom: 20px;
@@ -107,6 +97,8 @@
     }
 
     .input.file {
+      font-size: 0.8em;
+      line-height: 1.4;
       label {
         span {
           font-weight: normal;

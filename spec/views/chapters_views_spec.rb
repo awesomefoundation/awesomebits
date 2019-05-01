@@ -63,7 +63,6 @@ describe 'chapters/show' do
 
     render
     expect(rendered).not_to have_selector('section.description article.rss-feed')
-    expect(rendered).not_to have_selector('section.description article.about.half')
   end
 
   context 'with projects' do
@@ -99,7 +98,6 @@ describe 'chapters/show' do
 
       render
       expect(rendered).to have_selector('section.description article.rss-feed')
-      expect(rendered).to have_selector('section.description article.about.half')
     end
   end
 end

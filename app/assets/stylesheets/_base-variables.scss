@@ -13,16 +13,15 @@ $button-pink: rgb(252, 103, 147);
 
 $blue: rgb(34,122,255); //blue
 
-/**
- * Base mobile styling to apply to all dashboard views
+/***
+ * Responsiveness Sizes        
  *
- * The idea: three width cutoffs:
- * $wide   = widths lower than that have main container covering the whole screen (which is otherwise centered with paddings)
- * $narrow = iPad portrait and narrower
- * $phone  = iPhone portrait and narrower
- *
- * The $phone cutoff is particularly relevant for the main header nav
- */
-$wide:   1060px;
-$narrow: 768px;
-$phone:  480px;
+ * Three distinct stop points are defined:
+ * maximum-width:   largest size the main body of the page grows to
+ * mobile-standard: for layout changes on average mobile phone screens
+ * mobile-small:    for additional changes that accommdate very small screens like iPhone 5S
+***/
+
+$maximum-width: 60em;   // Equivalent to 969px;
+$mobile-standard: 30em; // Equivalent to 480px;
+$mobile-small: 20em;    // Equivalent to 320px;

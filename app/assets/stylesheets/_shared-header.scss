@@ -58,11 +58,7 @@ header.main {
       li {
         float: left;
         list-style: none;
-        margin: 28px 0px 20px 2px;
-
-        &:last-child {
-          margin-left: 0;
-        }
+        margin: 28px 0px 20px 0px;
 
         a {
           color: rgb(155,155,155);
@@ -88,6 +84,34 @@ header.main {
   }
 }
 
+
+/**********************************************/
+/*               Responsiveness               */
+/**********************************************/
+
+@media (max-width:$mobile-standard) {
+  header.main {
+    nav {
+      ol {
+        li {
+          float: left;
+          clear: both;
+          margin: 10px 0px;
+          
+          &:first-child {
+            margin-top: 14px;
+          }
+          
+          &:last-child {
+            margin-bottom: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+
+
 section.chapter-menu {
   background: rgb(80,80,80);
   @include background-image(radial-gradient(circle farthest-corner at 50% 50%, rgb(110, 110, 110), rgb(70,70,70)));
@@ -106,9 +130,10 @@ section.chapter-menu {
   }
 
   .inner-wrapper {
-    margin: 40px auto 0;
+    margin-top: 40px;
     padding: 0;
-    width: grid-width(12);
+    max-width: grid-width(12);
+    width: 100%;
 
     h1 {
       display: none;
@@ -119,13 +144,9 @@ section.chapter-menu {
 
     .chapters {
       border-radius: 4px;
-      @include column-count(4);
-      @include column-gap($gw-gutter);
-      @include column-width(grid-width(3));
 
       article.country {
-        display: inline-block;
-        width: grid-width(3);
+        margin-bottom: 30px;
       }
 
       h3 {
@@ -137,14 +158,9 @@ section.chapter-menu {
         text-shadow: 0 1px rgba(0,0,0, 0.3);
       }
 
-      p + h3 {
-        margin-top: 30px;
-      }
-
       p {
-        &:last-child {
-          margin-bottom: 30px;
-        }
+        width: 180px;
+        margin-right: 8px;
 
         a {
           color: rgb(180,180,180);

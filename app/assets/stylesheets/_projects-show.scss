@@ -1,5 +1,7 @@
-body.projects-show {
-  section.container {
+body.projects-show:not(.projects-index) {
+  .container-wrapper {
+    margin-left: 1.5em;
+    margin-right: 1.5em;
   }
 }
 
@@ -10,6 +12,7 @@ header {
     padding: 7px 12px 6px;
     margin-top: 10px;
     float: right;
+    font-size: 0.8em;
   }
   
   .prev-next-links {
@@ -18,6 +21,7 @@ header {
     a {
       color: $pink;
       text-decoration: none;
+      font-size: 0.8em;
 
       &:hover {
         text-decoration: underline;
@@ -105,7 +109,8 @@ header.project {
     }
   }
 
-  &:hover {
+  &:hover,
+  &.touch-device {
     .arrow {
       opacity: 1;
     }
@@ -115,8 +120,9 @@ header.project {
 .project-details {
   @extend .clearfix;
   margin: 0px auto;
-  width: grid-width(12);
-
+  max-width: grid-width(12);
+  width: 100%;
+  
   .meta-data {
     @extend .clearfix;
     border-bottom: 1px solid rgb(220,220,220);
@@ -145,9 +151,7 @@ header.project {
   }
 
   .project-description {
-    float: left;
-    margin-right: $gw-gutter;
-    width: grid-width(8);
+    max-width: grid-width(8);
 
     h2 {
       font: normal 18px/22px $sans-serif;
@@ -166,9 +170,9 @@ header.project {
   }
 
   .project-side-bar {
-    float: left;
-    width: grid-width(4);
-
+    max-width: grid-width(4);
+    margin-bottom: 20px;
+    
     .project-state {
       margin-bottom: 15px;
 
@@ -244,3 +248,91 @@ header.project {
     }
   }
 }
+
+
+
+/**********************************************/
+/*               Responsiveness               */
+/**********************************************/
+
+@media (max-width:$maximum-width) {
+  
+  .project-gallery {
+    height: 220px;
+    width: 440px;
+
+    .arrow {
+      background-size: 50%;
+      border-radius: 30px;
+      height: 60px;
+      top: 80px;
+      width: 60px;
+
+      &:hover {
+        background-size: 50%;
+      }
+      
+      &.left {
+        left: -30px;
+      }
+
+      &.right {
+        right: -30px;
+      }
+    }
+
+    .image-wrapper {
+      height: 220px;
+      width: 440px;
+    }
+  }
+ 
+  .project-details {
+    .project-description {
+      max-width: 100%;
+      }
+    
+    .project-side-bar {
+      margin-top: 24px;
+      max-width: 100%;
+    }
+  }
+ 
+}
+
+@media (max-width:$mobile-standard) {
+  
+  .project-gallery {
+    height: 135px;
+    width: 270px;
+
+    .arrow {
+      background-size: 50%;
+      border-radius: 30px;
+      height: 60px;
+      top: 36px;
+      width: 60px;
+
+      &:hover {
+        background-size: 50%;
+      }
+      
+      &.left {
+        left: -15px;
+      }
+
+      &.right {
+        right: -15px;
+      }
+    }
+
+    .image-wrapper {
+      height: 135px;
+      width: 270px;
+    }
+  }
+ 
+}
+
+
+

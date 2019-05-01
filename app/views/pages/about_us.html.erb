@@ -1,13 +1,11 @@
 <% provide(:page_title, t(".title_tag")) %>
 <% content_for(:extra_body_classes, 'pages-about_us') %>
 
-<section class="about-wrapper">
-  <div class="wrapper">
-    <section class="our-story">
+<div class="about-wrapper flexbox horizontal wrap justify-space-between">
+    <div class="our-story">
       <%= render("locales/about_us").html_safe %>
-    </section>
-    <section class="contact">
+    </div>
+    <div class="contact">
       <%= render("locales/contact").html_safe %>
-    </section>
-  </div>
-</section>
+    </div>
+</div>

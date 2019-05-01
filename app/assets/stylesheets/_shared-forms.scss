@@ -70,13 +70,14 @@ textarea {
   padding: 10px 8px;
   resize: vertical;
   width: 100%;
-}
+} 
 
 //*******************************************************************
 //
 // Shared form styles:
 //
 //*******************************************************************
+
 
 section.user-form,
 section.project-form,
@@ -87,9 +88,11 @@ section.password-reset-form {
   background: rgb(240,240,240);
   border: 1px solid rgb(200,200,200);
   border-radius: 4px;
-  margin: 0 auto;
-  padding: 30px 40px;
-  width: grid-width(6);
+  margin-right: 1em;
+  margin-left: 1em;
+  padding: 2.5em;
+  max-width: grid-width(6);
+  min-width: grid-width(6);
 
   h1 {
     border-bottom: 1px solid rgb(200,200,200);
@@ -100,16 +103,23 @@ section.password-reset-form {
 
   form {
     margin: 0 auto;
-    width: grid-width(6);
+    max-width: grid-width(6);
+    width: 100%;
   }
 
   div.input {
     margin: 0 0 20px 0;
+    
+    &.half-width {
+      max-width: grid-width(3);
+      width: 100%;
+    }  
   }
 
   div.chars_left {
     margin-top: -15px;
     margin-bottom: 15px;
+    font-size: 0.8em;
   }
 
   label {
@@ -128,6 +138,8 @@ section.password-reset-form {
   }
 
   .hint {
+    font-size: 0.8em;
+    line-height: 1.4;
     margin-top: .5em;
     display: block;
     font-style: italic;
@@ -155,6 +167,7 @@ section.password-reset-form {
       margin-left: 10px;
 
       a {
+        font-size: 0.8em;
         color: $lighter-base-font-color;
         text-decoration: none;
 
@@ -164,5 +177,54 @@ section.password-reset-form {
         }
       }
     }
+  }
+  
+  p {
+    font-size: 0.8em;
+  }
+  
+}
+
+/**********************************************/
+/*               Responsiveness               */
+/**********************************************/
+
+@media (max-width:37.5em) {
+  section.user-form,
+  section.project-form,
+  section.invitation-form,
+  section.chapter-form,
+  section.session-form,
+  section.password-reset-form {
+    min-width: 0px;
+    
+    div.input {    
+      &.half-width {
+        max-width: none;
+      }
+    } 
+  }
+}
+
+@media (max-width:$mobile-standard) {
+  section.user-form,
+  section.project-form,
+  section.invitation-form,
+  section.chapter-form,
+  section.session-form,
+  section.password-reset-form {
+    padding: 1.25em;
+  }
+
+}
+
+@media (max-width:$mobile-small) {
+  section.user-form,
+  section.project-form,
+  section.invitation-form,
+  section.chapter-form,
+  section.session-form,
+  section.password-reset-form {
+    max-width: 250px;
   }
 }

@@ -1,10 +1,8 @@
 .faq-wrapper {
-  @include clearfix();
+  margin-right: 1.5em;
+  margin-left: 1.5em;
 
   header {
-    margin: 0 auto;
-    width: grid-width(12);
-
     h1 {
       color: $base-font-color;
       font: bold 38px/44px $sans-serif;
@@ -13,30 +11,10 @@
       text-align: center;
       text-transform: uppercase;
     }
-
-    h2 {
-      color: $lighter-base-font-color;
-      font: normal italic 14px/16px $serif;
-      padding-bottom: 20px;
-      text-align: center;
-    }
   }
 
   .faq-answers {
-    width: grid-width(9);
-    margin: 0 auto;
-
-    .answer-block {
-      margin-bottom: 80px;
-    }
-
-    h2 {
-      border-bottom: 3px solid $pink;
-      color: $base-font-color;
-      font: normal 26px/30px $sans-serif;
-      margin-bottom: 0px;
-      padding-bottom: 5px;
-    }
+    max-width: 45em;
 
     article {
       &:target {
@@ -67,13 +45,6 @@
           text-decoration: underline;
         }
       }
-
-      ol {
-        list-style: disc;
-        margin: 0;
-        padding: 10px 0px 10px 15px;
-      }
     }
-
   }
 }
