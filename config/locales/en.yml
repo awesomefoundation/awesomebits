@@ -212,6 +212,15 @@ en:
       remove: Remove
       dean: Dean
       admin: Admin
+  invitations:
+    new:
+      title: Invite a new trustee
+      invite_to_chapter: "Trustee will be invited to:"
+      invite: Invite
+  acceptances:
+    new:
+      title: Accept your trustee invitation
+      accept: Accept
   pages:
     about_us:
       title_tag: About Us
@@ -261,6 +270,9 @@ en:
         new_password: New Password
         submit: Submit
         user_image: User Image
+      invitation:
+        chapter_id: Select a chapter
+        password: Set a new password
     hints:
       project:
         funded_description: Only visible on the funded project page
@@ -270,6 +282,9 @@ en:
       chapter:
         submission_response_email: This text will be included in the confirmation email sent to your grant applicants
         hide_trustees: Prevent the trustee list from being displayed on the public chapter page
+    prompts:
+      invitation:
+        chapter_id: "- Select -"
   activerecord:
     attributes:
       chapter:
