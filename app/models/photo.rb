@@ -1,5 +1,8 @@
 class Photo < ApplicationRecord
-  MAIN_DIMENSIONS = "940x470"
+  DIMENSIONS = {
+    main: "940x470",
+    index: "500x300"
+  }
 
   belongs_to :project, optional: true
   has_attached_file :image,
@@ -19,13 +22,8 @@ class Photo < ApplicationRecord
   # Build a URL to dynamically resize application images via an external service
   # Currently using http://magickly.afeld.me/
   def url(size = nil)
-    case size
-
-    when :main
-      image.present? ? cropped_image_url("#{MAIN_DIMENSIONS}#") : image.url(:main)
-
-    when :index
-      image.present? ? cropped_image_url("500x300#") : image.url(:index)
+    if crop = DIMENSIONS[size]
+      image.present? ? cropped_image_url(crop) : image.url(size)
 
     else
       image_url
@@ -52,28 +50,7 @@ class Photo < ApplicationRecord
     end
   end
 
-  protected
-
-  def image_url
-    image.url(:original, :timestamp => false)
-  end
-
-  def cropped_image_url(crop)
-    [image_host, "q", image_path(crop)].join("/")
-  end
-
-  def image_host
-    ENV['MAGICKLY_HOST']
-  end
-
-  def image_path(crop)
-    # We unescape before re-escaping because the URL that comes from Paperclip is already
-    # escaped, so without unescaping, we'd be double-escaping the URL, which causes problems
-    # especially with UTF-8 encoded filenames.
-    [ "src", URI.unescape(image_with_host(image_url)), "output", "jpg", "convert", "-auto-orient", "thumb", crop ].collect { |part| CGI.escape(part) }.join("/")
-  end
-
-  def image_with_host(image_url)
+  def original_url
     base_uri = URI(ENV['DEFAULT_URL'] || "http://localhost:3000")
 
     uri = URI(image_url)
@@ -82,6 +59,17 @@ class Photo < ApplicationRecord
     uri.port   ||= base_uri.port
 
     uri.to_s
+  end
+
+  protected
+
+  def image_url
+    image.url(:original, :timestamp => false)
+  end
+
+  def cropped_image_url(crop)
+    cropper = ENV['THUMBOR_HOST'] ? :thumbor : :magickly
+    ImageCropper.new(cropper, self).crop_url(crop)
   end
 
   def fog
