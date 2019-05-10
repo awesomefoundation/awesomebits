@@ -6,7 +6,8 @@ class AcceptancesController < ApplicationController
   def create
     @invitation = Invitation.find(params[:invitation_id])
     if @invitation.accept(params[:invitation])
-      redirect_to chapter_url(@invitation.chapter)
+      flash[:notice] = t(".success")
+      redirect_to sign_in_path
     else
       flash[:notice] = t("flash.acceptances.cannot")
       render :new

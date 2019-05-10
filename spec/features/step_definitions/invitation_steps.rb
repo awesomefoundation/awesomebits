@@ -10,6 +10,19 @@ step 'I invite a new trustee to the :name chapter' do |name|
   click_button("Invite")
 end
 
+step 'I invite a new dean to the :name chapter' do |name|
+  @chapter = FactoryGirl.create(:chapter, :name => name)
+  visit submissions_path
+  click_link("Invite a Trustee")
+  fill_in("First name", :with => "Joe")
+  fill_in("Last name", :with => "Schmoe")
+  select(@chapter.name, :from => "Select a chapter")
+  @invitation_address = FactoryGirl.generate(:email)
+  fill_in("Email", :with => @invitation_address)
+  check("invitation_role_name")
+  click_button("Invite")
+end
+
 step 'I invite the same trustee to the :name chapter' do |name|
   visit submissions_path
   click_link("Invite a Trustee")
@@ -109,4 +122,11 @@ step 'they should get (yet) another email welcoming them' do
     email.subject =~ /Welcome/ && email.to.include?(@invitation_address)
   end
   expect(deliveries.size).to eq(1)
+end
+
+step 'they should be a :role_name' do |role_name|
+  user = User.find_by_email(@invitation_address)
+  expect(user).not_to be_nil
+  expect(user.roles.first).not_to be_nil
+  expect(user.roles.first.name).to eq(role_name)
 end

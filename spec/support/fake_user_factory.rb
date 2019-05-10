@@ -14,9 +14,16 @@ class FakeUserFactory
     @users.last
   end
 
+  def role
+    Role.new(user: user, chapter: @chapter, name: @role_name)
+  end
+
   def new(attributes)
     @attributes = attributes
-    @attributes.delete(:chapter)
+
+    @chapter   = @attributes.delete(:chapter)
+    @role_name = @attributes.delete(:role_name)
+
     self
   end
 

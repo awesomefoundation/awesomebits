@@ -1,8 +1,12 @@
 Hi <%= @invitation.first_name %> <%= @invitation.last_name %>!
 
+<% if @invitation.accepted_role == "dean" %>
+Congrats! You’re now officially registered with the Awesome Foundation system as a dean.
+<% else %>
 Congrats! You’re now officially registered with the Awesome Foundation
 system as a trustee. If you are actually the Dean of your chapter, please
 contact join@awesomefoundation.org to get access to more controls.
+<% end %>
 
 The picture associated with your account is automatically pulled from
 http://www.gravatar.com, a global avatar hosting system. Just create an

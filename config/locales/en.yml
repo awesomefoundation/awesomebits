@@ -217,10 +217,14 @@ en:
       title: Invite a new trustee
       invite_to_chapter: "Trustee will be invited to:"
       invite: Invite
+    create:
+      invitation_sent: Your invitation was sent to %{email}
   acceptances:
     new:
       title: Accept your trustee invitation
       accept: Accept
+    create:
+      success: Your account was successfully created
   pages:
     about_us:
       title_tag: About Us
@@ -273,6 +277,7 @@ en:
       invitation:
         chapter_id: Select a chapter
         password: Set a new password
+        role_name: Invite this user as a dean
     hints:
       project:
         funded_description: Only visible on the funded project page

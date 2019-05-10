@@ -11,6 +11,7 @@ class InvitationsController < ApplicationController
     @invitation.inviter = current_user
     if @invitation.save
       @invitation.send_invitation
+      flash[:notice] = t(".invitation_sent", email: @invitation.email)
       redirect_to submissions_path
     else
       render :new
@@ -20,7 +21,7 @@ class InvitationsController < ApplicationController
   private
 
   def invitation_params
-    params.require(:invitation).permit(:email, :first_name, :last_name, :chapter_id)
+    params.require(:invitation).permit(:email, :first_name, :last_name, :chapter_id, :role_name)
   end
 
   def find_invitation(attributes)

@@ -1,4 +1,8 @@
 class Invitation < ApplicationRecord
+  attr_reader :factory
+
+  attribute :role_name, default: "trustee"
+
   belongs_to :inviter, class_name: "User"
   belongs_to :invitee, class_name: "User", optional: true
   belongs_to :chapter
@@ -7,6 +11,9 @@ class Invitation < ApplicationRecord
   validates_presence_of :chapter_id
   validates_presence_of :inviter
   validates_uniqueness_of :email, :scope => :chapter_id
+
+  validates :role_name, inclusion: { in: Role::NAMES }
+
   validate :ensure_inviter_can_invite_to_chapter
 
   cattr_accessor :mailer
@@ -16,25 +23,30 @@ class Invitation < ApplicationRecord
   self.user_factory = UserFactory
 
   def accept(new_attributes)
-    factory = user_factory.new(:first_name => new_attributes[:first_name] || first_name,
-                               :last_name => new_attributes[:last_name] || last_name,
-                               :password => new_attributes[:password],
-                               :email => email,
-                               :chapter => chapter)
+    @factory = user_factory.new(:first_name => new_attributes[:first_name] || first_name,
+                                :last_name => new_attributes[:last_name] || last_name,
+                                :password => new_attributes[:password],
+                                :email => email,
+                                :chapter => chapter,
+                                :role_name => role_name)
 
-    if factory.create
+    if @factory.create
       mailer.welcome_trustee(self).deliver_now
-      self.invitee = factory.user
+      self.invitee = @factory.user
       self.accepted = true
       self.save
     else
-      unless factory.errors.blank?
-        factory.errors.each do |key, error|
+      unless @factory.errors.blank?
+        @factory.errors.each do |key, error|
           self.errors.add(:key, error)
         end
       end
       false
     end
+  end
+
+  def accepted_role
+    @factory.role.name if @factory
   end
 
   def send_invitation

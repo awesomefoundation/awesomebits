@@ -12,6 +12,20 @@ describe Invitation do
     it { is_expected.to validate_uniqueness_of(:email).scoped_to(:chapter_id) }
   end
 
+  context "defaults" do
+    let(:invitation) { FactoryGirl.build(:invitation) }
+
+    it { expect(invitation.role_name).to eq("trustee") }
+  end
+
+  describe "invalid role_name" do
+    let(:invitation) { FactoryGirl.build(:invitation, role_name: "INVALID") }
+
+    it "should not be valid" do
+      expect(invitation).not_to be_valid
+    end
+  end
+
   context "#save" do
     let(:user) { FactoryGirl.create(:user) }
     let(:chapter) { FactoryGirl.create(:chapter) }

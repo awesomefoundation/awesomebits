@@ -1,12 +1,13 @@
 Feature: Admins and Deans can invite users to chapters they have access to
 
-  Scenario: Admin invites to any chapter
+  Scenario: Admin invites trustee to any chapter
     Given I am logged in as an admin
     When I invite a new trustee to the "Boston" chapter
     And I log out
     Then that person should get an invitation email
     When they accept the invitation
     Then they should get another email welcoming them
+    And they should be a trustee
     And the trustee can log in
 
     Given I log out
@@ -38,6 +39,14 @@ Feature: Admins and Deans can invite users to chapters they have access to
     Given the email backlog has been cleared
     When the trustee tries to accept the invitation yet again
     Then they should get yet another email welcoming them
+
+  Scenario: Invite a user to be a dean
+    Given I am logged in as an admin
+    When I invite a new dean to the "Boston" chapter
+    And I log out
+    Then that person should get an invitation email
+    When they accept the invitation
+    Then they should be a dean
 
   @dean
   Scenario: Dean can only invite to their chapter
