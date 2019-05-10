@@ -14,7 +14,11 @@
         <%= form.input :first_name, wrapper_html: { class: "half-width" } %>
         <%= form.input :last_name, wrapper_html: { class: "half-width" } %>
       </div>
+
       <%= form.input :email %>
+
+      <%= form.input :role_name, as: :boolean, checked_value: "dean", unchecked_value: "trustee" %>
+
       <%= submit_tag t(".invite") %>
     <% end %>
   </section>

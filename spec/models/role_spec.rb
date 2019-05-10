@@ -10,6 +10,12 @@ describe Role do
     it { is_expected.to validate_uniqueness_of(:user_id).scoped_to(:chapter_id) }
   end
 
+  it "should be invalid with an invalid name" do
+    role = FactoryGirl.build(:role, name: "INVALID")
+
+    expect(role).not_to be_valid
+  end
+
   it '#trustee? always returns true' do
     expect(Role.new.trustee?).to eq(true)
   end

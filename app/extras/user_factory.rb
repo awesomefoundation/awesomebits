@@ -4,8 +4,9 @@ class UserFactory
   def initialize(attributes)
     @attributes = attributes
 
-    @chapter  = @attributes.delete(:chapter)
-    @password = @attributes.delete(:password)
+    @chapter   = @attributes.delete(:chapter)
+    @password  = @attributes.delete(:password)
+    @role_name = @attributes.delete(:role_name)
   end
 
   def create
@@ -35,7 +36,7 @@ class UserFactory
     @role ||= Role.where(user_id: user).where(chapter_id: @chapter).first
     if @role.nil?
       @role = Role.new
-      @role.name = "trustee"
+      @role.name = @role_name if @role_name
       @role.user = user
       @role.chapter = @chapter
     end

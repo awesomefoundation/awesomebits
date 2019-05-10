@@ -1,6 +1,6 @@
 Hi <%= @invitation.first_name %> <%= @invitation.last_name %>!
 
-You have been invited to join AwesomeFoundation.org as a trustee of the
+You have been invited to join AwesomeFoundation.org as a <%= @invitation.role_name %> of the
 <%= @invitation.chapter.display_name %> chapter! Yay!
 
 <%= new_invitation_acceptance_url(@invitation, :locale => I18n.locale) %>

@@ -1,8 +1,12 @@
 class Role < ApplicationRecord
+  NAMES = %w(dean trustee)
+
   belongs_to :user
   belongs_to :chapter
 
   validates_uniqueness_of :user_id, :scope => :chapter_id
+
+  validates :name, inclusion: { in: NAMES }
 
   def self.can_invite?
     where(:name => "dean").any?
