@@ -120,6 +120,7 @@ fr:
       edit: Editer le Projet
       confirm-delete: Confirmer la suppression ?
       winner: "Gagnant pour %{name}"
+      edit-winner: Mettre à jour les détails du projet gagnant
       about-me: "A propos de moi :"
       about-project: "Voici mon idée :"
       use-for-money: "Comment j'utiliserai l'argent :"
@@ -266,7 +267,7 @@ fr:
     attributes:
       chapter:
         email_address: Email
-        hide_trustees: Cacher les donateurs
+        hide_trustees: Masquer les donateurs
         country: Pays
         time_zone: Fuseau horaire
     errors:
@@ -283,7 +284,7 @@ fr:
     description: Rendre l'univers génial, 1.000€ à la fois.
   will_paginate:
     previous_label: "&#8592; Précédent"
-    next_label: "Prochain &#8594;"
+    next_label: "Suivant &#8594;"
   helpers:
     submit:
       chapter:
