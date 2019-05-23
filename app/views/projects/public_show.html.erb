@@ -17,11 +17,11 @@
 </header>
 
 <section id="project-gallery">
-  <% @project.display_images.each do |image| %>
-  <div class="image" data-src="<%= image.url(:main) %>">
-    <%= image_tag(image.url(:main)) %>
-  </div>
- <% end %>
+  <% if @project.display_images.count < 5 %>
+    <%= render "projects/#{@project.display_images.count}up_gallery", project: @project  %>
+  <% else %>
+    <%= render "projects/5up_gallery", project: @project %>
+  <% end %>    
 </section>
 
 <section class="project-details">

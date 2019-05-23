@@ -1,0 +1,5 @@
+<% project.display_images.each do |image| %>
+<div class="image" data-src="<%= image.url(:main) %>">
+  <%= image_tag(image.url(:main)) %>
+</div>
+<% end %>
