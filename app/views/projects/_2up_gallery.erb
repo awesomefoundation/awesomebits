@@ -1,5 +1,6 @@
-<% project.display_images.each do |image| %>
-<div class="image" data-src="<%= image.url(:main) %>">
-  <%= image_tag(image.url(:main)) %>
+<div class="image" data-src="<%= project.display_images[0].url %>">
+  <%= image_tag(project.display_images[0].url(:large_square)) %>
 </div>
-<% end %>
+<div class="image" data-src="<%= project.display_images[1].url %>">
+  <%= image_tag(project.display_images[1].url(:large_square)) %>
+</div>
