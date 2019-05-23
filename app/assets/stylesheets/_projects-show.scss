@@ -54,28 +54,16 @@ header.project {
   }
 }
 
-.project-gallery {
-  background: rgb(255,255,255);
-  border: 1px solid rgb(200,200,200);
+#project-gallery {
   margin: 0px auto 40px;
-  padding: 1px;
-  position: relative;
-  width: grid-width(12);
   
-  ul {
-    margin-bottom: 0px;
-  }
-  .image-wrapper {
-    height: 470px;
-    overflow: hidden;
-    width: grid-width(12);
-    list-style: none;
-
+  .image {
+    line-height: 0;
+    
     img {
-      max-width: 100%;
+      margin: 0px;
     }
   }
-
 }
 
 .project-details {
