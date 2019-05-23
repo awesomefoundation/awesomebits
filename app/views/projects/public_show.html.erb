@@ -16,7 +16,7 @@
   <h1><%= @project.title %></h1>
 </header>
 
-<section id="project-gallery">
+<section id="project-gallery" class="flexbox horizontal">
   <% if @project.display_images.count < 5 %>
     <%= render "projects/#{@project.display_images.count}up_gallery", project: @project  %>
   <% else %>
@@ -102,6 +102,6 @@
 
 <% content_for :javascript do -%>
 <script>
-  lightGallery(document.getElementById('project-gallery'));
+  lightGallery(document.getElementById('project-gallery'), {selector: '.image'});
 </script>
 <% end -%>

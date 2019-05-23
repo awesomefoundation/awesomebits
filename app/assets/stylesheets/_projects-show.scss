@@ -60,10 +60,33 @@ header.project {
   .image {
     line-height: 0;
     
+    &.large-rectangle img {
+      max-width: 940px;
+      max-height: 470px;
+    }
+    
+    &.small-rectangle img {
+      max-width: 470px;
+      max-height: 235px;
+    }
+    
+    &.large-square img {
+      max-width: 470px;
+      max-height: 470px;
+    }
+    
+    &.small-square img {
+      max-width: 235px;
+      max-height: 235px;
+    }
+    
     img {
       margin: 0px;
+      width: 100%;
+      height: auto;        
     }
   }
+  
 }
 
 .project-details {
