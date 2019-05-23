@@ -17,9 +17,11 @@
 </header>
 
 <section class="project-gallery" id="project-gallery">
-  <ul class="viewport">
+  <ul id="lightgallery">
     <% @project.display_images.each do |image| %>
-    <li class="piece image-wrapper"> <%= image_tag(image.url(:main)) %> </li>
+    <li data-src="<%= image.url(:main) %>" class="image-wrapper">
+      <%= image_tag(image.url(:main)) %>
+    </li>
    <% end %>
   </ul>
 </section>
@@ -99,3 +101,9 @@
   </div>
   
 </section>
+
+<% content_for :javascript do -%>
+<script>
+  lightGallery(document.getElementById('lightgallery'));
+</script>
+<% end -%>

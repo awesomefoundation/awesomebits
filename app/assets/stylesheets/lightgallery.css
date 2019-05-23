@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'lg';
-  src: url("../fonts/lg.eot?n1z373");
-  src: url("../fonts/lg.eot?#iefixn1z373") format("embedded-opentype"), url("../fonts/lg.woff?n1z373") format("woff"), url("../fonts/lg.ttf?n1z373") format("truetype"), url("../fonts/lg.svg?n1z373#lg") format("svg");
+  src: url("/fonts/lg.eot");
+  src: url("/fonts/lg.eot#iefixn1z373") format("embedded-opentype"), url("/fonts/lg.woff") format("woff"), url("/fonts/lg.ttf") format("truetype"), url("/fonts/lg.svg#lg") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -398,13 +398,13 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
   cursor: pointer;
 }
 .lg-outer .lg-has-vimeo .lg-video-play {
-  background: url("../img/vimeo-play.png") no-repeat scroll 0 0 transparent;
+  background: url("/images/vimeo-play.png") no-repeat scroll 0 0 transparent;
 }
 .lg-outer .lg-has-vimeo:hover .lg-video-play {
-  background: url("../img/vimeo-play.png") no-repeat scroll 0 -58px transparent;
+  background: url("/images/vimeo-play.png") no-repeat scroll 0 -58px transparent;
 }
 .lg-outer .lg-has-html5 .lg-video-play {
-  background: transparent url("../img/video-play.png") no-repeat scroll 0 0;
+  background: transparent url("/images/video-play.png") no-repeat scroll 0 0;
   height: 64px;
   margin-left: -32px;
   margin-top: -32px;
@@ -415,10 +415,10 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
   opacity: 1;
 }
 .lg-outer .lg-has-youtube .lg-video-play {
-  background: url("../img/youtube-play.png") no-repeat scroll 0 0 transparent;
+  background: url("/images/youtube-play.png") no-repeat scroll 0 0 transparent;
 }
 .lg-outer .lg-has-youtube:hover .lg-video-play {
-  background: url("../img/youtube-play.png") no-repeat scroll 0 -60px transparent;
+  background: url("/images/youtube-play.png") no-repeat scroll 0 -60px transparent;
 }
 .lg-outer .lg-video-object {
   width: 100% !important;
@@ -827,7 +827,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
   white-space: nowrap;
 }
 .lg-outer .lg-item {
-  background: url("../img/loading.gif") no-repeat scroll center center transparent;
+  background: url("/images/loading.gif") no-repeat scroll center center transparent;
   display: none !important;
 }
 .lg-outer.lg-css3 .lg-prev-slide, .lg-outer.lg-css3 .lg-current, .lg-outer.lg-css3 .lg-next-slide {
