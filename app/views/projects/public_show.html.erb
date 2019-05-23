@@ -16,19 +16,13 @@
   <h1><%= @project.title %></h1>
 </header>
 
- <section class="project-gallery" id="project-gallery">
-   <ul class="viewport">
-     <% @project.display_images.reverse_each do |image| %>
-       <li class="piece image-wrapper"> <%= image_tag(image.url(:main)) %> </li>
-     <% end %>
-   </ul>
-   <% if @project.display_images.count > 1 %>
-     <div class="arrows">
-       <a class="arrow left"></a>
-       <a class="arrow right"></a>
-     </div>
+<section class="project-gallery" id="project-gallery">
+  <ul class="viewport">
+    <% @project.display_images.reverse_each do |image| %>
+    <li class="piece image-wrapper"> <%= image_tag(image.url(:main)) %> </li>
    <% end %>
-   </section>
+  </ul>
+</section>
 
 <section class="project-details">
   <section class="meta-data">
@@ -105,11 +99,3 @@
   </div>
   
 </section>
-
-<%= content_for :javascript do %>
-  <%= javascript_tag do %>
-    $(document).ready(function(){
-      Slideshow("#project-gallery .piece").run();
-    });
-  <% end %>
-<% end %>

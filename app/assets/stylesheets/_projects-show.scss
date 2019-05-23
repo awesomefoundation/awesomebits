@@ -57,12 +57,14 @@ header.project {
 .project-gallery {
   background: rgb(255,255,255);
   border: 1px solid rgb(200,200,200);
-  height: 470px;
   margin: 0px auto 40px;
   padding: 1px;
   position: relative;
   width: grid-width(12);
-  @extend .clearfix;
+  
+  ul {
+    margin-bottom: 0px;
+  }
 
   .arrow {
     background: rgba(0,0,0, 0.4);
