@@ -18,7 +18,7 @@
 
 <section class="project-gallery" id="project-gallery">
   <ul class="viewport">
-    <% @project.display_images.reverse_each do |image| %>
+    <% @project.display_images.each do |image| %>
     <li class="piece image-wrapper"> <%= image_tag(image.url(:main)) %> </li>
    <% end %>
   </ul>
