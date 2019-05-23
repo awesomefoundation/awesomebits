@@ -100,8 +100,10 @@
   
 </section>
 
+<% if @project.has_images? %>
 <% content_for :javascript do -%>
 <script>
   lightGallery(document.getElementById('project-gallery'), {selector: '.image'});
 </script>
 <% end -%>
+<% end %>
