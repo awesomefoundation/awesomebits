@@ -62,6 +62,7 @@ header.project {
   
   .image {
     line-height: 0;
+    overflow: hidden;
     
     &.large-square:first-child {
       margin-right: 2px;
@@ -102,8 +103,25 @@ header.project {
     img {
       margin: 0px;
       width: 100%;
-      height: auto;        
+      height: auto;
+      -moz-transform: scale(1);
+      -webkit-transform: scale(1);
+      transform: scale(1);
+      -moz-transition-duration: .5s;
+      -webkit-transition-duration: .5s;
+      transition-duration: .5s;
     }
+    
+    &:hover img {
+      cursor: pointer;
+      -moz-transform: scale(1.1);
+      -webkit-transform: scale(1.1);
+      transform: scale(1.1);
+      -moz-transition-duration: .5s;
+      -webkit-transition-duration: .5s;
+      transition-duration: .5s;
+    }
+    
   }
   
   .view-photos {
@@ -115,7 +133,6 @@ header.project {
     text-decoration: none;
     padding: 7px 12px 6px;
     font-size: 0.8em;
-  
   }
   
 }
