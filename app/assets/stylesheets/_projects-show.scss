@@ -56,9 +56,27 @@ header.project {
 
 #project-gallery {
   margin: 0px auto 40px;
+  background: #646464;
+  border: 2px solid #646464;
   
   .image {
     line-height: 0;
+    
+    &.large-square:first-child {
+      margin-right: 2px;
+    }
+    
+    &.small-rectangle:first-child {
+      margin-bottom: 2px;
+    }
+    
+    &.small-square:first-child {
+      margin-right: 2px;
+    }
+    
+    &.small-square.on-top {
+      margin-bottom: 2px;
+    }
     
     &.large-rectangle img {
       max-width: 940px;
@@ -66,8 +84,8 @@ header.project {
     }
     
     &.small-rectangle img {
-      max-width: 470px;
-      max-height: 235px;
+      max-width: 468px;
+      max-height: 234px;
     }
     
     &.large-square img {
@@ -76,8 +94,8 @@ header.project {
     }
     
     &.small-square img {
-      max-width: 235px;
-      max-height: 235px;
+      max-width: 234px;
+      max-height: 234px;
     }
     
     img {
