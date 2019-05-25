@@ -55,6 +55,7 @@ header.project {
 }
 
 #project-gallery {
+  position: relative;
   margin: 0px auto 40px;
   background: #646464;
   border: 2px solid #646464;
@@ -103,6 +104,18 @@ header.project {
       width: 100%;
       height: auto;        
     }
+  }
+  
+  .view-photos {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+        
+    @include button(rgb(240,240,240));
+    text-decoration: none;
+    padding: 7px 12px 6px;
+    font-size: 0.8em;
+  
   }
   
 }
@@ -247,36 +260,6 @@ header.project {
 
 @media (max-width:$maximum-width) {
   
-  .project-gallery {
-    height: 220px;
-    width: 440px;
-
-    .arrow {
-      background-size: 50%;
-      border-radius: 30px;
-      height: 60px;
-      top: 80px;
-      width: 60px;
-
-      &:hover {
-        background-size: 50%;
-      }
-      
-      &.left {
-        left: -30px;
-      }
-
-      &.right {
-        right: -30px;
-      }
-    }
-
-    .image-wrapper {
-      height: 220px;
-      width: 440px;
-    }
-  }
- 
   .project-details {
     .project-description {
       max-width: 100%;
@@ -285,40 +268,6 @@ header.project {
     .project-side-bar {
       margin-top: 24px;
       max-width: 100%;
-    }
-  }
- 
-}
-
-@media (max-width:$mobile-standard) {
-  
-  .project-gallery {
-    height: 135px;
-    width: 270px;
-
-    .arrow {
-      background-size: 50%;
-      border-radius: 30px;
-      height: 60px;
-      top: 36px;
-      width: 60px;
-
-      &:hover {
-        background-size: 50%;
-      }
-      
-      &.left {
-        left: -15px;
-      }
-
-      &.right {
-        right: -15px;
-      }
-    }
-
-    .image-wrapper {
-      height: 135px;
-      width: 270px;
     }
   }
  

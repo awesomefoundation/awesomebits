@@ -21,7 +21,10 @@
     <%= render "projects/#{@project.display_images.count}up_gallery", project: @project  %>
   <% else %>
     <%= render "projects/5up_gallery", project: @project %>
-  <% end %>    
+  <% end %>
+  <% if @project.has_images? %>
+    <%= link_to t(".view-photos"), "#", id: "launch-gallery", class: "view-photos" %>
+  <% end %>  
 </section>
 
 <section class="project-details">
