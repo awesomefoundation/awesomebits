@@ -8,4 +8,5 @@
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require magnific-popup
+//= require lightgallery
 //= require_tree .
