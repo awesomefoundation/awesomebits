@@ -19,3 +19,10 @@
     </div>
   </div>
 </div>
+<% if @project.display_images.count > 5 %>
+<% (5..@project.display_images.count-1).each do |i| %>
+<div class="image not-shown" data-src="<%= project.display_images[i].url %>">
+  <%= image_tag(project.display_images[i].url) %>
+</div>
+<% end %>
+<% end %>
