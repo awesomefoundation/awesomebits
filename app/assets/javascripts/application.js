@@ -9,4 +9,5 @@
 //= require jquery.ui.all
 //= require magnific-popup
 //= require lightgallery
+//= require lg-zoom
 //= require_tree .
