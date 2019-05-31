@@ -10,17 +10,17 @@ Feature: Guest views a project's page
     Given there is a project with 0 photos
     And I am on the homepage
     When I view the project
-    Then I should not see the carousel buttons
-    And I should see a placeholder image
+    Then I should see 1 project image on the page
+    And I should see the placeholder image
 
   Scenario: Guest views project with one image
     Given there is a project with 1 photo
     And I am on the homepage
     When I view the project
-    Then I should not see the carousel buttons
+    Then I should see 1 project image on the page
 
   Scenario: Guest views a project with multiple images
     Given there is a project with 3 photos
     And I am on the homepage
     When I view the project
-    Then I should see the carousel buttons
+    Then I should see 3 project images on the page
