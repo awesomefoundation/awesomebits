@@ -7,7 +7,7 @@ Feature: Dean edits a project
     When I edit that winning project
     And I attach 3 photos
     And I go to the public page for that project
-    Then I should see the three photos in the carousel
+    Then I should see 3 project images on the page
 
     When I edit that winning project
     And I set the last image to be first

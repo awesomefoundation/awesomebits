@@ -8,6 +8,6 @@ step 'I view the project' do
   visit project_path(@project)
 end
 
-step 'I should see a placeholder image' do
-  expect(page).to have_css('#project-gallery img[src^="/assets/no-image-main"]')
+step 'I should see the placeholder image' do
+  expect(page).to have_css('#project-gallery img[src^="/assets/no-image-large_rectangle"]')
 end
