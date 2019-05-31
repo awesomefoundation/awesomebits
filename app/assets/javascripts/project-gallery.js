@@ -2,5 +2,5 @@
 
 $("#launch-gallery").on("click", function(event) {
   event.preventDefault();
-  $("#project-gallery .image:first-child > img").trigger("click");
+  document.getElementById('project-gallery').querySelector('.image').click();
 });
