@@ -106,7 +106,7 @@
 <% if @project.has_images? %>
 <% content_for :javascript do -%>
 <script>
-  lightGallery(document.getElementById('project-gallery'), {selector: '.image'});
+  lightGallery(document.getElementById('project-gallery'), {selector: '.image', donload: false});
 </script>
 <% end -%>
 <% end %>
