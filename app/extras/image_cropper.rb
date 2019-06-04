@@ -39,7 +39,7 @@ class ImageCropper
         "src", URI.unescape(@photo.original_url),
         "output", "jpg",
         "convert", "-auto-orient",
-        "thumb", "#{crop}#",
+        "thumb", "#{crop}#{'#' if crop.match(/\d$/)}",
       ].collect { |part| CGI.escape(part) }.join("/")
     end
   end
@@ -54,7 +54,29 @@ class ImageCropper
     end
 
     def path(crop)
-      [ "unsafe", crop, "smart", URI.unescape(@photo.original_url) ].join("/")
+      [ "unsafe", crop_string(crop), "smart", URI.unescape(@photo.original_url) ].join("/")
+    end
+
+    protected
+
+    # Turn ImageMagick geometry into Thumbor geometry
+    def crop_string(crop)
+      if crop.match(/\d+x\d+/)
+        crop
+      elsif crop.match(/>/)
+        # In ImageMagick, this means only crop if the image is larger
+        # than the crop size. If we are specifying this, we don't want
+        # to scale up. Thumbor doesn't know how to not scale up, so in
+        # the abesence of image metadata, just don't scale in this case
+        "0x0"
+      elsif m = crop.match(/^(\D*)x(\d+)/)
+        "0x#{m[1]}"
+      elsif m = crop.match(/^(\d+)x(\D*)$/)
+        "#{m[1]}x0"
+      else
+        # If we can't handle the crop string, don't crop at all
+        "0x0"
+      end
     end
   end
 end
