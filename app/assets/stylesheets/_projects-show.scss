@@ -54,67 +54,91 @@ header.project {
   }
 }
 
-.project-gallery {
-  background: rgb(255,255,255);
-  border: 1px solid rgb(200,200,200);
-  height: 470px;
-  margin: 0px auto 40px;
-  padding: 1px;
+#project-gallery {
   position: relative;
-  width: grid-width(12);
-  @extend .clearfix;
-
-  .arrow {
-    background: rgba(0,0,0, 0.4);
-    border-radius: 60px;
-    color: rgba(255,255,255, 0.6);
-    font: normal 40px $sans-serif;
-    height: 120px;
-    opacity: 0;
-    position: absolute;
-    text-align: center;
-    text-decoration: none;
-    top: 175px;
-    @include transition(all 0.15s ease-in);
-    width: 120px;
-
-    &:hover {
-      background: rgba($pink, 1);
-      cursor: pointer;
-    }
-
-    &.left {
-      background-image: image-url('arrow_left.png');
-      background-position: center center;
-      background-repeat: no-repeat;
-      left: -60px;
-    }
-
-    &.right {
-      background-image: image-url('arrow_right.png');
-      background-position: center center;
-      background-repeat: no-repeat;
-      right: -60px;
-    }
-  }
-
-  .image-wrapper {
-    height: 470px;
+  margin: 0px auto 40px;
+  background: #646464;
+  border: 2px solid #646464;
+  
+  .image {
+    line-height: 0;
     overflow: hidden;
-    width: grid-width(12);
-    list-style: none;
-
+    
+    &.large-square:first-child {
+      margin-right: 2px;
+    }
+    
+    &.small-rectangle:first-child {
+      margin-bottom: 2px;
+    }
+    
+    &.small-square:first-child {
+      margin-right: 2px;
+    }
+    
+    &.small-square.on-top {
+      margin-bottom: 2px;
+    }
+    
+    &.large-rectangle img {
+      max-width: 940px;
+      max-height: 470px;
+    }
+    
+    &.small-rectangle img {
+      max-width: 468px;
+      max-height: 234px;
+    }
+    
+    &.large-square img {
+      max-width: 470px;
+      max-height: 470px;
+    }
+    
+    &.small-square img {
+      max-width: 234px;
+      max-height: 234px;
+    }
+    
+    &.not-shown {
+      display: none;
+    }
+    
     img {
-      max-width: 100%;
+      margin: 0px;
+      width: 100%;
+      height: auto;
+      -moz-transform: scale(1);
+      -webkit-transform: scale(1);
+      transform: scale(1);
+      -moz-transition-duration: .5s;
+      -webkit-transition-duration: .5s;
+      transition-duration: .5s;
     }
-  }
-
-  &:hover,
-  &.touch-device {
-    .arrow {
-      opacity: 1;
+    
+    &:not(.placeholder):hover img {
+      cursor: pointer;
+      -moz-transform: scale(1.1);
+      -webkit-transform: scale(1.1);
+      transform: scale(1.1);
+      -moz-transition-duration: .5s;
+      -webkit-transition-duration: .5s;
+      transition-duration: .5s;
     }
+    
   }
+  
+  .view-photos {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+        
+    @include button(rgb(240,240,240));
+    text-decoration: none;
+    padding: 7px 12px 6px;
+    font-size: 0.8em;
+  }
+  
 }
 
 .project-details {
@@ -151,7 +175,7 @@ header.project {
   }
 
   .project-description {
-    max-width: grid-width(8);
+    max-width: 580px;
 
     h2 {
       font: normal 18px/22px $sans-serif;
@@ -257,36 +281,6 @@ header.project {
 
 @media (max-width:$maximum-width) {
   
-  .project-gallery {
-    height: 220px;
-    width: 440px;
-
-    .arrow {
-      background-size: 50%;
-      border-radius: 30px;
-      height: 60px;
-      top: 80px;
-      width: 60px;
-
-      &:hover {
-        background-size: 50%;
-      }
-      
-      &.left {
-        left: -30px;
-      }
-
-      &.right {
-        right: -30px;
-      }
-    }
-
-    .image-wrapper {
-      height: 220px;
-      width: 440px;
-    }
-  }
- 
   .project-details {
     .project-description {
       max-width: 100%;
@@ -295,40 +289,6 @@ header.project {
     .project-side-bar {
       margin-top: 24px;
       max-width: 100%;
-    }
-  }
- 
-}
-
-@media (max-width:$mobile-standard) {
-  
-  .project-gallery {
-    height: 135px;
-    width: 270px;
-
-    .arrow {
-      background-size: 50%;
-      border-radius: 30px;
-      height: 60px;
-      top: 36px;
-      width: 60px;
-
-      &:hover {
-        background-size: 50%;
-      }
-      
-      &.left {
-        left: -15px;
-      }
-
-      &.right {
-        right: -15px;
-      }
-    }
-
-    .image-wrapper {
-      height: 135px;
-      width: 270px;
     }
   }
  

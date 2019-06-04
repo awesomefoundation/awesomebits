@@ -121,6 +121,7 @@ en:
       title: Reset your password
   projects:
     wait-for-uploads-to-complete: Please wait for your images to finish uploading before submitting your application.
+    
     project:
       awesome: Awesome
       delete: Delete this project
@@ -143,7 +144,7 @@ en:
       hidden-details: "Hidden by %{username} on %{hidden_at} because %{reason}."
       view-application: view application
       hiding-explanation: "Hiding a project will hide its details from everyone; the title and why it was hidden will still be visible, and it can be easily unhidden."
-      unhiding-explanation: "Restore this project so everyone will be able to see it again."
+      unhiding-explanation: "Restore this project so everyone will be able to see it again."      
 
     new:
       title: Are you ready to get Awesome!?
@@ -166,6 +167,7 @@ en:
       export-projects: Export Filtered
       export-all-projects: Export All From Date Range
     public_show:
+      view-photos: "View Photos"
       edit: Edit Project
       byline-html: "<span class='chapter-name'>%{chapter_name}</span> project created by <span class='project-starter'>%{submitter_name}</span>"
       funder-html: "Funded by <span class='chapter-name'>%{name}</span>"

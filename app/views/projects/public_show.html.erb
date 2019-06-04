@@ -16,19 +16,16 @@
   <h1><%= @project.title %></h1>
 </header>
 
- <section class="project-gallery" id="project-gallery">
-   <ul class="viewport">
-     <% @project.display_images.reverse_each do |image| %>
-       <li class="piece image-wrapper"> <%= image_tag(image.url(:main)) %> </li>
-     <% end %>
-   </ul>
-   <% if @project.display_images.count > 1 %>
-     <div class="arrows">
-       <a class="arrow left"></a>
-       <a class="arrow right"></a>
-     </div>
-   <% end %>
-   </section>
+<section id="project-gallery" class="flexbox horizontal">
+  <% if @project.display_images.count < 5 %>
+    <%= render "projects/#{@project.display_images.count}up_gallery", project: @project  %>
+  <% else %>
+    <%= render "projects/5up_gallery", project: @project %>
+  <% end %>
+  <% if @project.has_images? %>
+    <%= link_to t(".view-photos"), "#", id: "launch-gallery", class: "view-photos" %>
+  <% end %>  
+</section>
 
 <section class="project-details">
   <section class="meta-data">
@@ -106,10 +103,10 @@
   
 </section>
 
-<%= content_for :javascript do %>
-  <%= javascript_tag do %>
-    $(document).ready(function(){
-      Slideshow("#project-gallery .piece").run();
-    });
-  <% end %>
+<% if @project.has_images? %>
+<% content_for :javascript do -%>
+<script>
+  lightGallery(document.getElementById('project-gallery'), {selector: '.image', download: false});
+</script>
+<% end -%>
 <% end %>
