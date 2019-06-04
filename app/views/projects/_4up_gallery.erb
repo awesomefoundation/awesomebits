@@ -1,15 +1,15 @@
-<div class="image large-square" data-src="<%= project.display_images[0].url %>">
+<div class="image large-square" data-src="<%= project.display_images[0].url(:gallery) %>">
   <%= image_tag(project.display_images[0].url(:large_square)) %>
 </div>
 <div class="flexbox vertical">
-  <div class="image small-rectangle" data-src="<%= project.display_images[1].url %>">
+  <div class="image small-rectangle" data-src="<%= project.display_images[1].url(:gallery) %>">
     <%= image_tag(project.display_images[1].url(:small_rectangle)) %>
   </div>
   <div class="flexbox horizontal">
-    <div class="image small-square" data-src="<%= project.display_images[2].url %>">
+    <div class="image small-square" data-src="<%= project.display_images[2].url(:gallery) %>">
       <%= image_tag(project.display_images[2].url(:small_square)) %>
     </div>
-    <div class="image small-square" data-src="<%= project.display_images[3].url %>">
+    <div class="image small-square" data-src="<%= project.display_images[3].url(:gallery) %>">
       <%= image_tag(project.display_images[3].url(:small_square)) %>
     </div>
   </div>

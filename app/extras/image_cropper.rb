@@ -39,7 +39,7 @@ class ImageCropper
         "src", URI.unescape(@photo.original_url),
         "output", "jpg",
         "convert", "-auto-orient",
-        "thumb", "#{crop}#",
+        "thumb", "#{crop}#{'#' if crop.match(/\d$/)}",
       ].collect { |part| CGI.escape(part) }.join("/")
     end
   end

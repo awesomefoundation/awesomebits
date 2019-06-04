@@ -1,11 +1,12 @@
 class Photo < ApplicationRecord
   DIMENSIONS = {
     main:            "940x470",
-    index:           "500x300", 
+    index:           "500x300",
     large_rectangle: "940x470",
     small_rectangle: "470x235",
     large_square:    "470x470",
-    small_square:    "235x235"
+    small_square:    "235x235",
+    gallery:         "2000x>",
   }
 
   belongs_to :project, optional: true
