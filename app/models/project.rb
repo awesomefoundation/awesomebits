@@ -175,7 +175,7 @@ class Project < ApplicationRecord
   end
 
   def has_images?
-    photos.present?
+    real_photos.present?
   end
 
   def save
