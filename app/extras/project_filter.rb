@@ -24,6 +24,11 @@ class ProjectFilter
     self
   end
 
+  def funded
+    @projects = @projects.where.not(funded_on: nil)
+    self
+  end
+
   def result
     @projects
   end

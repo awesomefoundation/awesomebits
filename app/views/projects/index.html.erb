@@ -24,6 +24,11 @@
         <input class="" id="my-short-list" name="short_list" <%= checked_attribute_if(@short_listed) %> type="checkbox">
         <label for="my-short-list"><%= t ".short-list-filter" %></label>
       </div>
+
+      <div class="input funded-toggle">
+        <%= check_box_tag "funded", nil, params[:funded].present? %>
+        <%= label_tag "funded", t(".funded-filter") %>
+      </div>
       
       <div>
         <div class="input string optional date-range">

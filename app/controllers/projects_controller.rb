@@ -19,6 +19,10 @@ class ProjectsController < ApplicationController
       project_filter.shortlisted_by(current_user)
     end
 
+    if params[:funded]
+      project_filter.funded
+    end
+
     @q = params[:q].to_s.strip
 
     unless @q.blank?

@@ -35,4 +35,12 @@ describe ProjectFilter do
     project_filter = ProjectFilter.new(Project)
     expect(project_filter.shortlisted_by(user).result).to eq([shortlisted_project])
   end
+
+  it 'can filter the projects to winners only' do
+    application = FactoryGirl.create(:project)
+    winner = FactoryGirl.create(:winning_project, chapter: application.chapter)
+
+    project_filter = ProjectFilter.new(Project)
+    expect(project_filter.funded.result).to eq([winner])
+  end
 end

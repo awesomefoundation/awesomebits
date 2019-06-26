@@ -161,6 +161,7 @@ en:
       start-date: start date
       end-date: end date
       short-list-filter: My short-list
+      funded-filter: Winners only
       title:
         one: "%{count} Project for %{name}"
         other: "%{count} Projects for %{name}"
