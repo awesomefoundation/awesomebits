@@ -150,6 +150,7 @@ bg:
       start-date: начална дата 
       end-date: крайна дата
       short-list-filter: Моят кратък списък
+      funded-filter: Само победители
       title:
         one: "%{count} Проект за %{name}"
         other: "%{count} Проекти за %{name}"
