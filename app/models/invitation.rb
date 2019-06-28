@@ -13,6 +13,7 @@ class Invitation < ApplicationRecord
   validates_uniqueness_of :email, :scope => :chapter_id
 
   validates :role_name, inclusion: { in: Role::NAMES }
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
   validate :ensure_inviter_can_invite_to_chapter
 
