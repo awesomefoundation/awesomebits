@@ -261,3 +261,8 @@ step 'I expand the project menu' do
   project = page.find("article.project", match: :first)
   project.find(".project-actions-toggle").click
 end
+
+step 'I view only funded projects' do
+  check('funded')
+  click_button('Filter')
+end
