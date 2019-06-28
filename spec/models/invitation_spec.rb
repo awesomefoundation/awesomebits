@@ -12,6 +12,18 @@ describe Invitation do
     it { is_expected.to validate_uniqueness_of(:email).scoped_to(:chapter_id) }
   end
 
+  context "email validations" do
+    it "should not accept Test <test@example.com>" do
+      invitation = FactoryGirl.build(:invitation, email: "Test <test@example.com>")
+      expect(invitation).not_to be_valid
+    end
+
+    it "should accept a valid email" do
+      invitation = FactoryGirl.build(:invitation)
+      expect(invitation).to be_valid
+    end
+  end
+
   context "defaults" do
     let(:invitation) { FactoryGirl.build(:invitation) }
 

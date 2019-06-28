@@ -72,6 +72,23 @@ textarea {
   width: 100%;
 } 
 
+
+form {
+  span.error {
+    color: #D12F19;
+    display: inline-block;
+  }
+
+  input + span.error {
+    padding-top: 0.5em;
+  }
+
+  select + span.error {
+    padding-left: 0.5em;
+  }
+}
+
+
 //*******************************************************************
 //
 // Shared form styles:
