@@ -151,6 +151,7 @@
       start-date: մեկնարկի օր
       end-date: ավարտի օր
       short-list-filter: Իմ սեղմ ցուցակը
+      funded-filter: Միայն հաղթողներին
       title:
         one: "%{count} նախագիծ %{name} համար"
         other: "%{count} նախագիծ %{name} համար"

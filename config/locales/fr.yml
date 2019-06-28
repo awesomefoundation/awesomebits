@@ -150,6 +150,7 @@ fr:
       start-date: date de début
       end-date: date de fin
       short-list-filter: Ma short-list
+      funded-filter: Gagnants seulement
       title:
         one: "%{count} Projet pour %{name}"
         other: "%{count} Projets pour %{name}"
