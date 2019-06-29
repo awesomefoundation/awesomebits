@@ -72,6 +72,8 @@
             list-style: none;
             margin-bottom: 10px;
             padding: 10px 15px;
+            overflow: hidden;
+            text-overflow: ellipsis;
 
             &:last-child {
               margin: 0px;
