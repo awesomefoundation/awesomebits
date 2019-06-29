@@ -1,6 +1,9 @@
 require "textacular/searchable"
 
 class Project < ApplicationRecord
+  attr_accessor :photo_order
+  attr_accessor :photo_ids_to_delete
+
   belongs_to :chapter
   belongs_to :hidden_by_user, class_name: "User", optional: true
   has_many :votes
@@ -24,6 +27,8 @@ class Project < ApplicationRecord
   delegate :name, :to => :chapter, :prefix => true
 
   before_save :ensure_funded_description
+  before_save :update_photo_order
+  before_save :delete_photos
 
   # For dependency injection
   cattr_accessor :mailer
@@ -131,15 +136,6 @@ class Project < ApplicationRecord
     photos.map(&:id).join(" ")
   end
 
-  def photo_order=(order_string)
-    ids = order_string.split(" ").map(&:to_i)
-    ordered_photos = ids.map do |id|
-      photos.find(id)
-    end
-    ordered_photos.each_with_index{|photo, i| photo.update_attribute(:sort_order, i) }
-    self.photos = ordered_photos
-  end
-
   def new_photos=(photos)
     photos.each do |photo|
       if photo.present?
@@ -224,5 +220,26 @@ class Project < ApplicationRecord
     end
 
     true
+  end
+
+  def update_photo_order
+    return unless @photo_order.present?
+
+    ids = @photo_order.split(" ").map(&:to_i)
+
+    # Update the sort order for each photo
+    ids.each_with_index do |id, index|
+      photos.where(id: id).update_all(sort_order: index)
+    end
+  end
+
+  def delete_photos
+    return unless @photo_ids_to_delete.present?
+
+    @photo_ids_to_delete.each do |id|
+      if photo = photos.find(id)
+        photo.destroy
+      end
+    end
   end
 end
