@@ -399,13 +399,17 @@ body.chapters-show {
         text-transform: uppercase;
       }
 
-      p {
+      p, li {
         color: $lighter-base-font-color;
         font: normal 14px/22px $sans-serif;
       }
 
       &.rss-feed {
         margin-top: 24px;
+      }
+
+      ul {
+        margin-left: 1em;
       }
     }
   }
