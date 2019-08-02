@@ -6,9 +6,13 @@ That means that you can start an Awesome Foundation chapter right now, in your o
 
 We’re probably biased, but it’s a heckuva lot of fun. Chapters have made amazing things happen all around the world, from building a giant hammock and assembling swings in public places, to helping dogs play poker and letting anyone be Indiana Jones for a day.
 
-HOW DO YOU DO IT?
+### How do you do it?
+
+
 
 Getting a new Awesome Foundation chapter up and running is straightforward – we like keeping things simple.
+
+![Five steps to starting an Awesome Foundation Chapter](/images/new-chapter-steps.png)
 
 The big task is finding ten or so people who will form the core of your chapter. These “trustees” will be the ones funding grants and deciding who to fund, and you’ll be spending a lot of time with them. So, find the most awesome people you can think of and get ‘em on board.
 
