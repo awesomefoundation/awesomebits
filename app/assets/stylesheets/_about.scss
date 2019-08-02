@@ -1,7 +1,7 @@
 .about-wrapper {
   margin-right: 1.5em;
   margin-left: 1.5em;
-  
+
   p {
     color: $lighter-base-font-color;
     font: normal 14px/20px $sans-serif;
@@ -38,6 +38,9 @@
     max-width: 27em;
   }
 
+  .start-a-chapter {
+    margin-top: 40px;
+  }
 }
 
 /**********************************************/
@@ -49,12 +52,12 @@
     .our-story {
       margin-right: 0em;
     }
-    
+
     .our-story,
     .contact {
       max-width: 100%;
     }
-    
+
     .contact {
       margin-top: 2em;
     }

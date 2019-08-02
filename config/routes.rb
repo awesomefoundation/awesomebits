@@ -54,7 +54,7 @@ Rails.application.routes.draw do
       resource :promotions, :only => [:create, :destroy]
     end
 
-    %w(about_us faq).each do |page|
+    %w(about_us faq start_a_chapter).each do |page|
       get page, :to => 'high_voltage/pages#show', :id => page
     end
 
