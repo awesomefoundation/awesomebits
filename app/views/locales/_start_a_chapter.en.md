@@ -8,8 +8,6 @@ We’re probably biased, but it’s a heckuva lot of fun. Chapters have made ama
 
 ### How do you do it?
 
-
-
 Getting a new Awesome Foundation chapter up and running is straightforward – we like keeping things simple.
 
 ![Five steps to starting an Awesome Foundation Chapter](/images/new-chapter-steps.png)
