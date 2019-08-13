@@ -47,9 +47,9 @@
       border-radius: 4px;
       box-shadow: inset 0 0 5px 0 rgba(0,0,0, 0.1);
       margin-bottom: 3.25em;
-      padding: 20px;
-      margin-right: 1.5em;
-      margin-left: 1.5em;
+      padding: 10px;
+      margin: 0 auto;
+      width: 200px;
 
       a {
         @include button($button-pink);
@@ -58,8 +58,29 @@
         text-align: center;
         text-decoration: none;
         text-transform: uppercase;
-        padding: 20px;
+        padding: 10px;
       }
+    }
+  }
+}
+
+
+.pages-start-a-chapter {
+  img {
+    text-align: center;
+  }
+
+  .image-holder {
+    text-align: center;
+    margin: 20px 0;
+  }
+
+  li {
+    font-weight: bold;
+    margin-bottom: 12px;
+
+    p {
+      display: inline;
     }
   }
 }
