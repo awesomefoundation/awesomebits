@@ -12,7 +12,7 @@ We’re probably biased, but it’s a lot of fun. Chapters have made amazing thi
 
 Getting a new Awesome Foundation chapter up and running is straightforward – we like keeping things simple.
 
-<div class="image-holder">
+<div class="image-holder" style="margin-top: 40px">
   <img src="/images/new-chapter-steps.png" alt="Five steps to starting an Awesome Foundation Chapter">
 </div>
 
