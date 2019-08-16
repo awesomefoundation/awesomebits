@@ -36,4 +36,4 @@ Most chapters meet monthly to review applications and decide on a recipient &#15
  
 ### How can I get involved?
 
-We'd love for you to help out! First and foremost, if you know someone with awesome ideas that need support, you should send them our way. But if you want to go the next mile and become a trustee, please reach out to your local chapter. If there isn't a local chapter, and you'd like to start one, [you can learn more about how to do that here.](/en/start_a_chapter)
+We'd love for you to help out! First and foremost, if you know someone with awesome ideas that need support, you should send them our way. But if you want to go the next mile and become a trustee, please reach out to your local chapter. If there isn't a local chapter, and you'd like to start one, [you can learn more about how to do that here](<%= start_a_chapter_path %>).

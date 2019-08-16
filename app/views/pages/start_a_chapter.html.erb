@@ -2,8 +2,50 @@
 <% content_for(:extra_body_classes, 'pages-start-a-chapter') %>
 
 <div class="about-wrapper flexbox horizontal wrap justify-space-between">
-    <div class="start-a-chapter">
-      <%= render("locales/start_a_chapter").html_safe %>
+    <div class="start-a-chapter-wrapper">
+      <section class="intro">
+        <h1><%= t(".headline") %></h1>
+
+        <%= markdown(t(".intro"), link_attributes: { target: "_blank" }) %>
+      </section>
+
+      <section class="photo-strip flexbox horizontal justify-space-between wrap">
+        <%= image_tag "start-a-chapter/start-a-chapter-0.jpg", alt: t(".photo_alt_0") %>
+        <%= image_tag "start-a-chapter/start-a-chapter-2.jpg", alt: t(".photo_alt_2") %>
+        <%= image_tag "start-a-chapter/start-a-chapter-1.jpg", alt: t(".photo_alt_1") %>
+      </section>
+
+      <section class="steps">
+        <h2><%= t(".steps_headline") %></h2>
+
+        <p><%= t(".steps_intro") %></p>
+
+        <ol class="steps-list">
+          <li class="flexbox center wrap">
+            <div class="step-icon"><%= image_tag("start-a-chapter/globe-icon.png", "aria-hidden": true) %></div>
+            <div class="step-text"><strong><%= t(".existing_chapters_header") %></strong> <%= markdown(t(".existing_chapters_text"), link_attributes: { target: "_blank" }) %></div>
+          </li>
+
+          <li class="flexbox center wrap">
+            <div class="step-icon"><%= image_tag("start-a-chapter/book-icon.png", "aria-hidden": true) %></div>
+            <div class="step-text"><strong><%= t(".handbook_header") %></strong> <%= markdown(t(".handbook_text"), link_attributes: { target: "_blank" }) %></div>
+          </li>
+
+          <li class="flexbox center wrap">
+            <div class="step-icon"><%= image_tag("start-a-chapter/plane-icon.png", "aria-hidden": true) %></div>
+            <div class="step-text"><strong><%= t(".contact_header") %></strong> <%= markdown(t(".contact_text"), link_attributes: { target: "_blank" }) %></div>
+          </li>
+
+          <li class="flexbox center wrap">
+            <div class="step-icon"><%= image_tag("start-a-chapter/people-icon.png", "aria-hidden": true) %></div>
+            <div class="step-text"><strong><%= t(".trustees_header") %></strong> <%= markdown(t(".trustees_text"), link_attributes: { target: "_blank" }) %></div>
+          </li>
+
+          <li class="flexbox center wrap">
+            <div class="step-icon"><%= image_tag("start-a-chapter/tada-icon.png", "aria-hidden": true) %></div>
+            <div class="step-text"><strong><%= t(".launch_header") %></strong> <%= markdown(t(".launch_text"), link_attributes: { target: "_blank" }) %></div>
+          </li>
+        </ol>
+      </section>
     </div>
 </div>
-
