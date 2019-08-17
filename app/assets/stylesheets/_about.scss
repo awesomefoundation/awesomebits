@@ -55,8 +55,13 @@
     }
   }
 
-  .photo-strip img {
-    max-width: 33%;
+  .photo-strip {
+    .photo-wrapper {
+      max-width: 33%;
+    }
+    img {
+      width: 100%;
+    }
   }
 
   .steps-list {
@@ -123,8 +128,10 @@
       max-width: 100%;
     }
 
-    .photo-strip img {
-      max-width: 100%;
+    .photo-strip {
+      .photo-wrapper {
+        max-width: 100%;
+      }
     }
   }
 }
