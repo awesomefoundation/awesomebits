@@ -96,7 +96,7 @@ en:
         photo-alt-text: "Photo of %{name}"
       apply-for-grant: Apply For a Grant
       inactive-chapter: This chapter is currently inactive.
-      inactive-chapter-reason: An inactive chapter is one that has not given a grant in six months. If you are interested in re-starting this chapter, please <a href="/en/start_a_chapter">click here</a>.
+      inactive-chapter-reason: An inactive chapter is one that has not given a grant in six months. If you are interested in re-activating this chapter, you can %{start_link:learn more about getting started}.
     edit:
       title: Edit chapter information
     new:

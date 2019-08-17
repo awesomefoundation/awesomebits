@@ -8,6 +8,7 @@ gem 'bootsnap','>= 1.1.0', require: false
 
 gem 'pg', '~> 0.20.0'
 gem 'textacular', '~> 5.1.0'
+gem 'it'
 gem 'jquery-rails', '~> 4.1.1'
 gem 'jquery-ui-rails', '~> 3.0.1'
 gem 'clearance', '~> 1.13.0'

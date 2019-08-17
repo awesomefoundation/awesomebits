@@ -10,12 +10,17 @@ body.chapters-show {
     }
 
     .inactive-notice {
-      margin-top: 2em;
+      margin: 2em 1em;
       border: $pink solid 2px;
       background: #fff;
       padding: 10px;
       color: $lighter-base-font-color;
       font: normal 14px/22px $sans-serif;
+
+      strong {
+        display: block;
+        margin-bottom: 0.5em;
+      }
     }
 
     .title-wrapper {
