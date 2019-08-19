@@ -3,8 +3,8 @@ require 'spec_helper'
 describe HighVoltage::PagesController, '#show' do
   render_views
 
-  %w(about_us faq).each do |page|
     %w(bg en es fr pt ru).each do |locale|
+  %w(about_us faq start_a_chapter).each do |page|
       context "on GET to /#{locale}/#{page}" do
         before do
           get :show, params: { id: page, locale: locale }
