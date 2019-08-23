@@ -30,7 +30,7 @@
   <% if @chapter.inactive? %>
     <p class="inactive-notice">
       <strong><%= t(".inactive-chapter") %></strong>
-      <%= t(".inactive-chapter-reason").html_safe %>
+      <%= it(".inactive-chapter-reason", start_link: start_a_chapter_path) %>
     </p>
   <% end %>
 </header>
