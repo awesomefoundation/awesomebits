@@ -1,4 +1,4 @@
-# Contact
+# Contato
 
 Tem uma ideia irada? [Concorra ao nosso prêmio!](<%= new_submission_path %>)
 
