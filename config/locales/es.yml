@@ -325,7 +325,7 @@ es:
         facebook_url: Facebook URL
         instagram_url: Instagram URL
         blog_url: Blog URL
-        mail_address: Dirección de Email
+        email_address: Dirección de Email
         hide_trustees: Ocultar administradores
         country: País
         time_zone: Zona horaria
