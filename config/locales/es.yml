@@ -1,4 +1,4 @@
-en:
+es:
   number:
     delimiter: ","
     separator: "."
@@ -96,7 +96,7 @@ en:
         photo-alt-text: "Foto de %{name}"
       apply-for-grant: Solicita una beca
       inactive-chapter: Este capítulo está inactivo.
-      inactive-chapter-reason: Un capítulos inactivo es uno que no ha otorgado una beca en seis meses. Si estás interesado en reiniciar este capítulo, por favor <a href="mailto:join@awesomefoundation.org">comunícate con nosotros</a>.
+      inactive-chapter-reason: Un capítulo inactivo es uno que no ha otorgado una beca en seis meses. Si estás interesado en reiniciar este capítulo, por favor <a href="mailto:join@awesomefoundation.org">comunícate con nosotros</a>.
     edit:
       title: Editar información del capítulo
     new:
@@ -109,7 +109,7 @@ en:
       end-date: fecha final
       table:
         title: Título
-        id: IIdentificaciónD
+        id: Identificación
         votes: Votos
   passwords:
     create:
@@ -122,7 +122,6 @@ en:
       title: Restablecer su contraseña
   projects:
     wait-for-uploads-to-complete: Por favor espera a que tus imágenes terminen de subir antes de someter tu solicitud.
-
     project:
       awesome: Impresionante
       delete: Elimina este proyecto
@@ -150,7 +149,7 @@ en:
     new:
       title: ¿Estás listo para ser impresionante!?
       description: Simplemente completa la solicitud a continuación con información sobre tí y los detalles de tu proyecto.
-      apply: AppSolicitaly
+      apply: Solicita
     form:
       save: Guarda
       image-notes: La imagen superior está fijada como la imagen de la cubierta. El tamaño de las imágenes será ajustado a %{dimensions} pixels. Si recibes un mensaje de error, por favor intenta nuevamente con menos archivos o archivos más pequeños.
@@ -249,9 +248,9 @@ en:
       steps_headline: Cinco sencillos pasos
       steps_intro: Poner en marcha un nuevo capítulo de Awesome Foundation es sencillo - nos gusta mantener las cosas simples.
       existing_chapters_header: Mira los capítulos existentes
-      existing_chapters_text: Hay los capítulos de Awesome Foundation alrededor del mundo si es posible que ya hay un capítulo en su área. Mira el menú de "Capítulos" encima a ver si hay uno, y ponerse en contacto con ellos si ves uno cerca.
+      existing_chapters_text: Hay los capítulos de Awesome Foundation alrededor del mundo si es posible que ya hay un capítulo en su área. Mira el menú de "Capítulos" encima a ver si hay uno, y ponerse en contacto con ellos si ves uno cerca. 
       handbook_header: Descargar el manual
-      handbook_text: To help you get started, we collected the wisdom we've gained from giving out thousands of grants since 2009 and put it in our [New Chapter Handbook](http://wiki.awesomestudies.org/images/9/92/Awesome_Foundation_New_Chapter_Handbook.pdf). Para ayudarlo a comenzar, recogimos la sabiduría hemos ganado dando miles de subvenciones desde 2009 y ponerlo en nuestro [Nuevo manual de capítulos](http://wiki.awesomestudies.org/images/9/92/Awesome_Foundation_New_Chapter_Handbook.pdf).
+      handbook_text: Para ayudarlo a comenzar, recogimos la sabiduría hemos ganado dando miles de subvenciones desde 2009 y ponerlo en nuestro [Nuevo manual de capítulos](http://wiki.awesomestudies.org/images/9/92/Awesome_Foundation_New_Chapter_Handbook.pdf).
       Descárguelo y léalo para descubrir qué se necesita para comenzar su propio capítulo. Haz eso ahora, ¡esperaremos!
       contact_header: Ponerse en contacto
       contact_text: Entonces ha leído el manual y está listo para comenzar. ¡Excelente! Envíe un correo electrónico a join@awesomefoundation.org y díganos quién es usted y dónde comienza su capítulo. Lo conectaremos con la comunidad global de Awesome Foundation y responderemos cualquier pregunta que pueda tener sobre cómo poner en marcha su capítulo.
@@ -326,6 +325,10 @@ en:
         facebook_url: Facebook URL
         instagram_url: Instagram URL
         blog_url: Blog URL
+        mail_address: Dirección de Email
+        hide_trustees: Ocultar administradores
+        country: País
+        time_zone: Zona horaria
     errors:
       models:
         chapter:
@@ -338,5 +341,12 @@ en:
               invalid: no es un sitio web válido
   meta:
     description: Promover los intereses de lo impresionante en el universo, $1,000 a la vez.
+  will_paginate:
+    previous_label: "&#8592; Anterior"
+    next_label: "Siguiente &#8594;"
+  helpers:
+    submit:
+      chapter:
+        update: Actualize el Capítulo
   feed:
     title: Awesome Foundation - Proyectos
