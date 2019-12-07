@@ -357,7 +357,8 @@ GEM
     rack (2.0.7)
     rack-attack (4.3.1)
       rack
-    rack-cors (1.0.3)
+    rack-cors (1.0.5)
+      rack (>= 1.6.0)
     rack-ssl-enforcer (0.2.9)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
