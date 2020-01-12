@@ -21,12 +21,13 @@ mark_as_winner_before_send = (event, data, xhr) ->
 
 mark_as_winner_success = (event, data, status, xhr) ->
   project_container = $('article[data-id="'+data.project_id+'"]')
+
   if data.winner
     project_container.addClass('winner')
-    # project_container.find('a.mark-as-winner').attr('data-method', 'delete')
+    project_container.find('a.mark-as-winner').attr('data-method', 'delete')
   else
     project_container.removeClass('winner')
-    # project_container.find('a.mark-as-winner').attr('data-method', 'post')
+    project_container.find('a.mark-as-winner').attr('data-method', 'post')
 
   if data.location
     window.location = data.location
@@ -46,7 +47,7 @@ $(".short-list")
   .bind("ajax:success", shortlist_success)
   .bind("ajax:failure", shortlist_failure)
 
-$(".mark-as-winner")
+$(".mark-as-winner, .remove-as-winner")
   .bind("ajax:beforeSend", mark_as_winner_before_send)
   .bind("ajax:success", mark_as_winner_success)
   .bind("ajax:failure", mark_as_winner_failure)
