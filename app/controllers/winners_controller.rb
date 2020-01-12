@@ -36,7 +36,7 @@ class WinnersController < ApplicationController
     permitted = [:funded_on, :title, :name, :url, :rss_feed_url, :funded_description, photo_ids_to_delete: [], new_photos: [], new_photo_direct_upload_urls: [] ]
     permitted << :chapter_id if helpers.winnable_chapters_for(@project).count > 1
 
-    params.require(:project).permit(permitted)
+    params.require(:funded_project).permit(permitted)
   end
 
   def winning_chapter
