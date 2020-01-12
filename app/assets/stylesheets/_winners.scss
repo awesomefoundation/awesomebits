@@ -1,0 +1,14 @@
+.center-form__cancel {
+  text-align: center;
+}
+
+.center-form__cancel-link {
+  color: $lighter-base-font-color !important;
+  font-size: .85em;
+
+  text-decoration: none !important;
+
+  &:hover {
+    text-decoration: underline !important;
+  }
+}

@@ -1,0 +1,16 @@
+<div class="chapter-select">
+  <%= form.input :chapter_id, collection: winnable_chapters_for(form.object), label: t(".chapter_id"), include_blank: false, disabled: winnable_chapters_for(form.object).count == 1, hint: t(".hints.chapter_id") %>
+</div>
+<div class="personal-info">
+  <%= render partial: "projects/funded_date", locals: { form: form, required: true, hint: t(".hints.funded_on") } %>
+  <%= form.input :title, maxlength: 50 %>
+  <%= form.input :name, label: t(".name") %>
+  <%= form.input :url %>
+  <%= form.input :rss_feed_url %>
+</div>
+<div class="project-info">
+  <%= form.input :funded_description, required: true %>
+</div>
+
+<%= render partial: "projects/image_upload", locals: { form: form, image_notes: t(".image-notes") } %>
+

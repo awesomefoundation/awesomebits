@@ -9,6 +9,21 @@ class WinnersController < ApplicationController
     render :json => response_json
   end
 
+  def edit
+    @project = FundedProject.find(params[:project_id])
+  end
+
+  def update
+    @project = FundedProject.find(params[:project_id])
+    @project.attributes = winner_params
+
+    if @project.save
+      redirect_to params[:return_to] || chapter_project_path(@project.chapter, @project)
+    else
+      render action: "edit"
+    end
+  end
+
   def destroy
     @project = Project.find(params[:project_id])
     @project.revoke_winner!
@@ -16,6 +31,13 @@ class WinnersController < ApplicationController
   end
 
   private
+
+  def winner_params
+    permitted = [:funded_on, :title, :name, :url, :rss_feed_url, :funded_description, photo_ids_to_delete: [], new_photos: [], new_photo_direct_upload_urls: [] ]
+    permitted << :chapter_id if helpers.winnable_chapters_for(@project).count > 1
+
+    params.require(:project).permit(permitted)
+  end
 
   def winning_chapter
     if params[:chapter_id].present?

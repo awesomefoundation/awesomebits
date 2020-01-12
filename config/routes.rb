@@ -29,7 +29,9 @@ Rails.application.routes.draw do
 
     resources :chapters, :only => [:index, :show, :new, :create, :edit, :update] do
       resources :finalists, :only => [:index]
-      resources :projects,  :only => [:index, :show]
+      resources :projects,  :only => [:index, :show] do
+        resource :winner, :only => [:edit]
+      end
       resources :users,     :only => [:index]
     end
 
@@ -44,7 +46,7 @@ Rails.application.routes.draw do
         put "hide"
         put "unhide"
       end
-      resource :winner, :only => [:create, :destroy]
+      resource :winner, :only => [:create, :update, :destroy]
       resource :vote, :only => [:create, :destroy]
     end
 
