@@ -44,8 +44,6 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     addressable (2.2.8)
-    archive-zip (0.12.0)
-      io-like (~> 0.3.0)
     arel (9.0.0)
     bcrypt (3.1.12)
     bindex (0.5.0)
@@ -74,9 +72,6 @@ GEM
       timers (~> 1.1.0)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
-    chromedriver-helper (2.1.0)
-      archive-zip (~> 0.10)
-      nokogiri (~> 1.8)
     clearance (1.13.0)
       bcrypt
       email_validator (~> 1.4)
@@ -290,7 +285,6 @@ GEM
       html-pipeline
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
-    io-like (0.3.0)
     ipaddress (0.8.3)
     it (1.0.0)
       actionpack (>= 3.0.0)
@@ -498,6 +492,10 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
+    webdrivers (4.1.2)
+      nokogiri (~> 1.6)
+      rubyzip (~> 1.0)
+      selenium-webdriver (>= 3.0, < 4.0)
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
@@ -517,7 +515,6 @@ DEPENDENCIES
   byebug
   capybara (~> 2.18.0)
   capybara-screenshot (~> 1.0.11)
-  chromedriver-helper
   clearance (~> 1.13.0)
   clearance-deprecated_password_strategies
   coffee-rails
@@ -571,6 +568,7 @@ DEPENDENCIES
   turnip
   uglifier
   web-console
+  webdrivers
   will_paginate (~> 3.1.7)
   xmlrpc
 
