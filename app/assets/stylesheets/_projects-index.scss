@@ -460,7 +460,10 @@ body.projects-index {
             }
           }
 
-          &.edit-winner {
+          &.non-winner-action {
+            display: block;
+          }
+          &.winner-action {
             display: none;
           }
         }
@@ -590,8 +593,11 @@ body.projects-index {
         color: $blue;
         font-weight: bolder;
       }
-      li.edit-winner {
+      li.winner-action {
         display: block;
+      }
+      li.non-winner-action {
+        display: none;
       }
     }
 

@@ -27,10 +27,22 @@
     <section class="project-actions">
       <ul class="icons-ul">
         <% if current_user.can_mark_winner?(project) %>
-          <%= show_winner_buttons_for(project, { :pre => "<li>", :post => "</li>", :link_prefix => '<i class="icon-li icon-forward"></i>' }) %>
+          <li class="non-winner-action">
+            <%= link_to edit_chapter_project_winner_path(project.chapter, project, return_to: "#{request.path}#project#{project.id}"), class: "mark-as-winner" do %>
+              <i class="icon-li icon-forward"></i>
+              <%= t("projects.project.publish-as-winner") %>
+            <% end %>
+          </li>
 
-          <li class="edit-winner">
-            <%= link_to edit_project_path(project, :anchor => "winner") do %>
+          <li class="winner-action">
+            <%= link_to project_winner_path(project), remote: true, method: :delete, class: "mark-as-winner" do %>
+              <i class="icon-li icon-forward"></i>
+              <%= t("projects.project.unpublish-as-winner") %>
+            <% end %>
+          </li>
+
+          <li class="winner-action">
+            <%= link_to edit_chapter_project_winner_path(project.chapter, project, return_to: "#{request.path}#project#{project.id}") do %>
               <i class="icon-li icon-ellipsis-horizontal"></i> <%= t("projects.project.edit-winner") %>
             <% end %>
           </li>

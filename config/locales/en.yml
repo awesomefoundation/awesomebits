@@ -131,6 +131,8 @@ en:
       edit: Edit project
       confirm-delete: Really delete this?
       winner: "Winner for %{name}"
+      publish-as-winner: Publish as winner
+      unpublish-as-winner: Unpublish as winner
       edit-winner: Update winning project details
       about-me: "A little about me:"
       about-project: "Here's my idea:"

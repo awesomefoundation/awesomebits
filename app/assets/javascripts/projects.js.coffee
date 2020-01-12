@@ -23,10 +23,10 @@ mark_as_winner_success = (event, data, status, xhr) ->
   project_container = $('article[data-id="'+data.project_id+'"]')
   if data.winner
     project_container.addClass('winner')
-    project_container.find('a.mark-as-winner').attr('data-method', 'delete')
+    # project_container.find('a.mark-as-winner').attr('data-method', 'delete')
   else
     project_container.removeClass('winner')
-    project_container.find('a.mark-as-winner').attr('data-method', 'post')
+    # project_container.find('a.mark-as-winner').attr('data-method', 'post')
 
   if data.location
     window.location = data.location
