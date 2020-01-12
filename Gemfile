@@ -58,7 +58,7 @@ group :test do
   gem "turnip"
   gem "capybara", "~> 2.18.0"
   gem "capybara-screenshot", "~> 1.0.11"
-  gem "chromedriver-helper"
+  gem "webdrivers"
   gem "database_cleaner"
   gem "factory_girl_rails"
   gem "faker"
