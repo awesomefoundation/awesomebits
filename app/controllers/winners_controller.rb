@@ -11,6 +11,7 @@ class WinnersController < ApplicationController
 
   def edit
     @project = FundedProject.find(params[:project_id])
+    @project.funded_description = @project.about_project if @project.funded_description.blank?
   end
 
   def update
@@ -18,7 +19,11 @@ class WinnersController < ApplicationController
     @project.attributes = winner_params
 
     if @project.save
-      redirect_to params[:return_to] || chapter_project_path(@project.chapter, @project)
+      if @project.chapter_id_previously_changed? || params[:return_to].blank?
+        redirect_to chapter_project_path(@project.chapter, @project)
+      else
+        redirect_to params[:return_to]
+      end
     else
       render action: "edit"
     end
@@ -34,7 +39,7 @@ class WinnersController < ApplicationController
 
   def winner_params
     permitted = [:funded_on, :title, :name, :url, :rss_feed_url, :funded_description, photo_ids_to_delete: [], new_photos: [], new_photo_direct_upload_urls: [] ]
-    permitted << :chapter_id if helpers.winnable_chapters_for(@project).count > 1
+    permitted << :chapter_id if current_project.in_any_chapter?
 
     params.require(:funded_project).permit(permitted)
   end
@@ -42,6 +47,8 @@ class WinnersController < ApplicationController
   def winning_chapter
     if params[:chapter_id].present?
       @chapter ||= Chapter.find(params[:chapter_id])
+    else
+      @chapter = current_project.chapter
     end
   end
 
@@ -50,9 +57,14 @@ class WinnersController < ApplicationController
   end
 
   def must_be_able_to_mark_winner
-    unless current_user.admin? || (current_user.can_mark_winner?(current_project) && current_user.chapters.include?(winning_chapter))
+    unless current_user.can_mark_winner?(current_project, chapter: winning_chapter)
       flash[:notice] = t("flash.permissions.cannot-mark-winner")
-      render :json => { :location => chapter_projects_path(current_project.chapter) }
+      redirect_location = chapter_projects_path(current_project.chapter)
+
+      respond_to do |format|
+        format.js { render json: { :location => redirect_location } }
+        format.html { redirect_to redirect_location and return }
+      end
     end
   end
 end
