@@ -57,7 +57,7 @@ class WinnersController < ApplicationController
   end
 
   def must_be_able_to_mark_winner
-    unless current_user.can_mark_winner?(current_project, chapter: winning_chapter)
+    unless current_project.in_any_chapter? || (current_user.can_mark_winner?(current_project) && current_user.chapters.include?(winning_chapter))
       flash[:notice] = t("flash.permissions.cannot-mark-winner")
       redirect_location = chapter_projects_path(current_project.chapter)
 

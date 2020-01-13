@@ -81,13 +81,8 @@ class User < ApplicationRecord
     admin? || roles.can_view_finalists_for?(chapter)
   end
 
-  # If chapter is present, check if this user can mark a winner for that chapter
-  # otherwise, check if the user can theoretically mark as a winner for at least
-  # one of its chapters
-  def can_mark_winner?(project, chapter: nil)
-    roles_scope = chapter ? roles.where(chapter: chapter) : roles
-
-    admin? || project.in_any_chapter? || roles_scope.can_mark_winner?(project)
+  def can_mark_winner?(project)
+    admin? || project.in_any_chapter? || roles.can_mark_winner?(project)
   end
 
   def can_edit_project?(project)
