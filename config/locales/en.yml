@@ -325,7 +325,7 @@ en:
         password: Set a new password
         role_name: Invite this user as a dean
     hints:
-      funded_project:
+      project:
         funded_description: "This is the description shown to the public. We encourage you to rewrite this description to include details about why you funded this project and why your chapter thinks that it is awesome. Formatting: **bold** _italics_ [link](http://example.com)"
         rss_feed_url: If present, posts from this feed will be shown on the project page
       user:

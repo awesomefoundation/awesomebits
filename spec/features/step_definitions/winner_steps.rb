@@ -2,7 +2,7 @@ step 'I pick a winner' do
   project = page.find("article.project", match: :first)
   @winning_project = Project.find(project['data-id'])
   project.click_link(I18n.t("projects.project.publish-as-winner"))
-  fill_in("Funded on", with: 1.day.ago.strftime("%Y-%m-%d"))
+  fill_in("Funding date", with: 1.day.ago.strftime("%Y-%m-%d"))
   click_button(I18n.t("winners.edit.save"))
 end
 
@@ -10,7 +10,7 @@ step 'I pick a winner for my chapter' do
   project = page.find("article.project", match: :first)
   @winning_project = Project.find(project['data-id'])
   project.click_link(I18n.t("projects.project.publish-as-winner"))
-  fill_in("Funded on", with: 1.day.ago.strftime("%Y-%m-%d"))
+  fill_in("Funding date", with: 1.day.ago.strftime("%Y-%m-%d"))
   click_button(I18n.t("winners.edit.save"))
 end
 

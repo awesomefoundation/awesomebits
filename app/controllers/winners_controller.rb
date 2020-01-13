@@ -1,5 +1,5 @@
 class WinnersController < ApplicationController
-  before_action :must_be_able_to_mark_winner
+  before_action :must_be_able_to_mark_winner, only: [:create, :update, :destroy]
 
   def create
     @project = Project.find(params[:project_id])
@@ -39,16 +39,18 @@ class WinnersController < ApplicationController
 
   def winner_params
     permitted = [:funded_on, :title, :name, :url, :rss_feed_url, :funded_description, photo_ids_to_delete: [], new_photos: [], new_photo_direct_upload_urls: [] ]
-    permitted << :chapter_id if current_project.in_any_chapter?
+    permitted << :chapter_id if current_project.in_any_chapter? || current_user.admin?
 
-    params.require(:funded_project).permit(permitted)
+    params.require(:project).permit(permitted)
   end
 
   def winning_chapter
     if params[:chapter_id].present?
       @chapter ||= Chapter.find(params[:chapter_id])
+    elsif params.dig(:project, :chapter_id).present?
+      @chapter ||= Chapter.find(params[:project][:chapter_id])
     else
-      @chapter = current_project.chapter
+      @chapter ||= current_project.chapter
     end
   end
 
@@ -57,7 +59,7 @@ class WinnersController < ApplicationController
   end
 
   def must_be_able_to_mark_winner
-    unless current_project.in_any_chapter? || (current_user.can_mark_winner?(current_project) && current_user.chapters.include?(winning_chapter))
+    unless current_user.can_mark_winner?(current_project) && current_user.chapters.include?(winning_chapter)
       flash[:notice] = t("flash.permissions.cannot-mark-winner")
       redirect_location = chapter_projects_path(current_project.chapter)
 
