@@ -237,7 +237,7 @@ en:
       description: |
         The following details will be posted on the winning project's public page as well as your chapter's page.
       save: Publish winning project
-      cancel: Go back without setting this project as the winner
+      cancel: or go back without setting this project as the winner
     form:
       chapter_id: Funding chapter
       name: Project creator's name
