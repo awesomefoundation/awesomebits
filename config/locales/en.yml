@@ -31,6 +31,7 @@ en:
       cannot: "Could not accept the invitation"
     projects:
       hide-reason-required: You must supply a reason a to hide a project
+      error: There was a problem saving your project
   layouts:
     application:
       main-header: The Awesome Foundation

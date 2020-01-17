@@ -25,6 +25,7 @@ class WinnersController < ApplicationController
         redirect_to params[:return_to]
       end
     else
+      flash.now[:notice] = t("flash.projects.error")
       render action: "edit"
     end
   end
