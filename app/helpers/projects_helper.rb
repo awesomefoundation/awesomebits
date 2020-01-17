@@ -10,7 +10,7 @@ module ProjectsHelper
 
   def winnable_chapters_for(project)
     if current_user.admin?
-      Chapter.visitable
+      Chapter.visitable.for_display
     else
       project.in_any_chapter? ? current_user.dean_chapters : Array(project.chapter)
     end
