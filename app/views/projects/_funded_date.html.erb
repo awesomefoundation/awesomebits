@@ -1,0 +1,14 @@
+  <div class="funded_on">
+    <%= form.input :funded_on, as: :string, input_html: { class: "datepicker", autocomplete: "off" }, required: local_assigns[:required], hint: local_assigns[:hint] %>
+  </div>
+
+<% content_for :javascript do %>
+  <%= javascript_tag do %>
+    $(window).load(function(){
+      $('.datepicker').datepicker({
+        dateFormat: 'yy-mm-dd',
+        onClose: function(){ $('.datepicker').blur() }
+      });
+    });
+  <% end %>
+<% end %>

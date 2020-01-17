@@ -1,18 +1,22 @@
 step 'I pick a winner' do
   project = page.find("article.project", match: :first)
   @winning_project = Project.find(project['data-id'])
-  project.find(".mark-as-winner").click
+  project.click_link(I18n.t("projects.project.publish-as-winner"))
+  fill_in("Funding date", with: 1.day.ago.strftime("%Y-%m-%d"))
+  click_button(I18n.t("winners.edit.save"))
 end
 
 step 'I pick a winner for my chapter' do
   project = page.find("article.project", match: :first)
   @winning_project = Project.find(project['data-id'])
-  project.find(".mark-as-winner.chapter-#{@current_chapter.id}").click
+  project.click_link(I18n.t("projects.project.publish-as-winner"))
+  fill_in("Funding date", with: 1.day.ago.strftime("%Y-%m-%d"))
+  click_button(I18n.t("winners.edit.save"))
 end
 
 step 'I revoke the win from that project' do
   project_element = page.find("article.winner[data-id='#{@winning_project.id}']")
-  project_element.find(".mark-as-winner").click
+  project_element.click_link(I18n.t("projects.project.unpublish-as-winner"))
 end
 
 step 'the project is no longer visible to the public' do

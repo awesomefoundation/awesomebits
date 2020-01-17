@@ -31,6 +31,7 @@ en:
       cannot: "Could not accept the invitation"
     projects:
       hide-reason-required: You must supply a reason a to hide a project
+      error: There was a problem saving your project
   layouts:
     application:
       main-header: The Awesome Foundation
@@ -131,6 +132,8 @@ en:
       edit: Edit project
       confirm-delete: Really delete this?
       winner: "Winner for %{name}"
+      publish-as-winner: Publish as winner
+      unpublish-as-winner: Unpublish as winner
       edit-winner: Update winning project details
       about-me: "A little about me:"
       about-project: "Here's my idea:"
@@ -153,7 +156,7 @@ en:
       apply: Apply
     form:
       save: Save
-      image-notes: The top image is set as the cover image. Images will be resized to %{dimensions} pixels. If you get an error message, please try again with fewer or smaller files.
+      image-notes: Upload up to 5 images that will help the trustees better understand your project. If you get an error message, please try again with a smaller file.
       use-classic-uploader: Switch to the classic uploader
       use-default-uploader: Switch to the default uploader
     index:
@@ -229,6 +232,20 @@ en:
       accept: Accept
     create:
       success: Your account was successfully created
+  winners:
+    edit:
+      title: Publish a winning project
+      description: |
+        The following details will be posted on the winning project's public page as well as your chapter's page.
+      save: Publish winning project
+      cancel: or go back without setting this project as the winner
+    form:
+      chapter_id: Funding chapter
+      name: Project creator's name
+      image-notes: "**Please upload at least 1 image since it will be displayed on the homepage with a link to your project.** If you get an error message, please try again with a smaller file."
+      hints:
+        chapter_id: This can only be changed for projects that were submitted to the Any chapter.
+        funded_on: When did you give this grant out? This date can be in the past and it determines the order your project is shown on your chapter page and on the homepage.
   pages:
     about_us:
       title_tag: About Us
@@ -278,8 +295,8 @@ en:
         about_me: Tell us a little about yourself
         about_project: Tell us about your awesome project!
         use_for_money: How will you use the money?
-        funded_on: Funded On
-        funded_description: Funded Description
+        funded_on: Funding date
+        funded_description: Funded description
       chapter:
         name: Name
         slug: Name in the URL
@@ -310,8 +327,8 @@ en:
         role_name: Invite this user as a dean
     hints:
       project:
-        funded_description: Only visible on the funded project page
-        rss_feed_url: Links to posts from this feed will be displayed on the funded project page
+        funded_description: "This is the description shown to the public. We encourage you to rewrite this description to include details about why you funded this project and why your chapter thinks that it is awesome. Formatting: **bold** _italics_ [link](http://example.com)"
+        rss_feed_url: If present, posts from this feed will be shown on the project page
       user:
         user_image: Set your user image at <a href="https://en.gravatar.com/site/signup/%{email}" target="_blank">gravatar.com</a> using your email address above
       chapter:

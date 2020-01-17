@@ -1,6 +1,8 @@
 require "textacular/searchable"
 
 class Project < ApplicationRecord
+  MAX_PHOTOS = 5
+
   attr_accessor :photo_order
   attr_accessor :photo_ids_to_delete
 

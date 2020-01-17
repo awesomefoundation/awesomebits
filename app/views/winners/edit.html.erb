@@ -1,0 +1,19 @@
+<% provide(:page_title, t(".title")) %>
+
+<div class="flexbox vertical center">
+  <section class="application-intro">
+    <h1><%= t(".title") %></h1>
+    <%= simple_format t(".description") %>
+  </section>
+
+  <section class="project-form">
+    <%= simple_form_for @project, as: :project, url: project_winner_path(@project), method: :put, html: { multipart: true, "data-uploading-alert-text": strip_tags(t("projects.wait-for-uploads-to-complete")) } do |form| %>
+      <%= render "form", form: form %>
+      <%= submit_tag t(".save") %>
+
+      <p class="center-form__cancel">
+        <%= link_to t(".cancel"), params[:return_to] || chapter_project_path(@project.chapter, @project), class: "center-form__cancel-link" %>
+      </p>
+    <% end %>
+  </section>
+</div>

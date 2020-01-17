@@ -8,6 +8,14 @@ module ProjectsHelper
     end
   end
 
+  def winnable_chapters_for(project)
+    if current_user.admin?
+      Chapter.visitable.for_display
+    else
+      project.in_any_chapter? ? current_user.dean_chapters : Array(project.chapter)
+    end
+  end
+
   def show_winner_buttons_for(project, options = {})
     if @chapter.any_chapter?
       winnable_chapters = current_user.dean_chapters

@@ -1,0 +1,54 @@
+<div class="image-upload">
+  <% if form.object.photos.present? %>
+    <section class="current-images">
+    <label><%= t "simple_form.labels.project.current_photos-html" %></label>
+      <ul class="old-photos">
+        <%= form.input :photo_order, as: :hidden %>
+        <% form.object.photos.each do |photo| %>
+          <li data-id="<%= photo.id %>">
+            <span><%= photo.image_file_name %></span>
+            <a href="#" class="remove-image" data-remove="true">remove</a>
+          </li>
+        <% end %>
+      </ul>
+    </section>
+  <% end %>
+
+  <% if s3_uploader_available? %>
+    <%= render partial: "projects/image_form", locals: { form: form, upload_mechanism: :s3, image_notes: local_assigns[:image_notes] } %>
+  <% else %>
+    <%= render partial: "projects/image_form", locals: { form: form, upload_mechanism: :classic, image_notes: local_assigns[:image_notes] } %>
+  <% end %>
+
+</div>
+
+<% content_for :javascript do %>
+  <%= javascript_tag do %>
+    window.awesomeEnvironment.remainingUploads = 0;
+
+    function reorderPhotos(){
+      var photo_order = $('.old-photos li[data-id]').map(function(x, el){
+        return $(el).attr('data-id')
+      });
+      $('#project_photo_order').val($.makeArray(photo_order).join(" "));
+    }
+
+    $(".old-photos *[data-remove='true']").on("click", function(){
+      var val = $('#project_photo_order').val();
+      val = val.replace($(this.parentNode).attr('data-id'), '');
+      $('#project_photo_order').val(val);
+
+      el = document.createElement('input');
+      el.type = 'hidden';
+      el.name = 'project[photo_ids_to_delete][]';
+      el.value = $(this.parentNode).attr('data-id');
+
+      $('#project_photo_order').after(el);
+    });
+
+    $(window).load(function(){
+    $(".old-photos").sortable({
+      update: reorderPhotos
+    })});
+  <% end %>
+<% end %>
