@@ -1,0 +1,46 @@
+
+.project__comments {
+  padding: 1.5em 10px;
+  border-top: 1px solid #c8c8c8;
+}
+
+.project__comment-wrapper {
+  display: flex;
+  margin-bottom: .8em;
+}
+
+.comment-form__label--inline {
+  float: left;
+  padding-right: 10px;
+}
+
+.comment-form__viewable-by {
+  margin-bottom: .5em;
+}
+
+.project__comment header {
+  font-size: 0.8em;
+  font-weight: bold;
+  margin-bottom: .4em;
+}
+
+.project__comment time {
+  font-weight: normal;
+}
+
+.user__image img {
+  border-radius: 50%;
+}
+
+.project__comment-wrapper .user__image  img {
+  height: 2em;
+  margin-right: 10px;
+}
+
+.comment__visible-icon {
+  color: $lighter-base-font-color;
+}
+
+.project__comment-wrapper header .comment__visible-icon {
+  margin-left: 4px;
+}

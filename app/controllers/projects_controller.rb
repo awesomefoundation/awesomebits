@@ -81,6 +81,7 @@ class ProjectsController < ApplicationController
 
     else
       @display_project_even_if_hidden = true
+      @comments = @project.comments
       must_be_logged_in || render
     end
   end

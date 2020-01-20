@@ -337,6 +337,9 @@ en:
     prompts:
       invitation:
         chapter_id: "- Select -"
+    placeholders:
+      comment:
+        body: Type your comment and press Enter to submit
   activerecord:
     attributes:
       chapter:

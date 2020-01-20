@@ -59,4 +59,17 @@ module ProjectsHelper
       uploader.to_s == "classic"
     end
   end
+
+  def comment_visibility_icon(comment)
+    icon = case comment.viewable_by
+           when "myself" then
+             "user"
+           when "chapter" then
+             "group"
+           when "anyone" then
+             "globe"
+           end
+
+    tag.i(class: "icon icon-#{icon} comment__visible-icon", title: comment.viewable_by)
+  end
 end

@@ -8,6 +8,7 @@ class Project < ApplicationRecord
 
   belongs_to :chapter
   belongs_to :hidden_by_user, class_name: "User", optional: true
+  has_many :comments
   has_many :votes
   has_many :users, :through => :votes
   has_many :photos, -> { order(sort_order: :asc, id: :asc) }
@@ -191,6 +192,13 @@ class Project < ApplicationRecord
 
   def extra_answer(num)
     (answer = read_attribute("extra_answer_#{num}".to_sym)) && answer.present? ? answer : nil
+  end
+
+  def filtered_comments(user: nil, chapter: nil)
+    scope = comments.where(viewable_by: "anyone")
+    scope = scope.or(comments.where(viewable_by: "myself", user: user)) if user.present?
+    scope = scope.or(comments.where(viewable_by: "chapter").where(viewable_chapter: chapter)) if chapter.present?
+    scope
   end
 
   def hide!(reason, user)

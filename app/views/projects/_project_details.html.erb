@@ -114,3 +114,27 @@
   </div>
 
 </section>
+
+
+  <section class="project__comments">
+    <% @comments&.each do |comment| %>
+      <div class="project__comment-wrapper">
+        <figure class="user__image">
+          <%= image_tag(comment.user.gravatar_url) %>
+        </figure>
+        <div class="project__comment">
+          <header>
+            <%= comment.user.name %>
+            <time datetime="<%= comment.created_at %>">- <%= comment.created_at.to_s(:long) %></time>
+            <%= comment_visibility_icon(comment).html_safe %>
+          </header>
+          <%= markdown(comment.body) %>
+      </div>
+        </div>
+    <% end %>
+
+    <%= simple_form_for [project, project.comments.build], method: :post, html: { class: "comment-form" } do |f| %>
+      <%= f.input :viewable_by, collection: Comment::VIEWABLE_OPTIONS, include_blank: false, wrapper_html: { class: "comment-form__viewable-by" }, label_html: { class: "comment-form__label--inline" } %>
+      <%= f.input_field :body, as: :string, class: "comment-form__input--textarea" %>
+    <% end %>
+  </section>
