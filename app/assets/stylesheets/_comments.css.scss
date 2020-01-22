@@ -1,10 +1,22 @@
 .project__comments {
   padding: 1.5em 10px;
   border-top: 1px solid #c8c8c8;
+  font-size: 0.8em;
+}
+
+.comment-form {
+  display: none;
+}
+
+.comment-form-wrapper.expanded .comment-form {
+  display: block;
+}
+
+.comment-form-wrapper.expanded .comment-form-expand {
+  display: none;
 }
 
 .project__comment-wrapper {
-  font-size: 0.8em;
   display: flex;
   margin-bottom: .8em;
 }

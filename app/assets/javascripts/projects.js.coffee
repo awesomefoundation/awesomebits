@@ -70,3 +70,18 @@ showHideOptions = ->
   false
 
 $(".hideFormLink").click(showHideOptions)
+
+showCommentForm = ->
+  $(this).parent().addClass("expanded")
+  false
+
+$(".comment-form-expand").click(showCommentForm)
+
+$(".comment-form")
+  .on("ajax:success", (event, data, status, xhr) ->
+    CommentStore.setComments(data.comments, data.project_id)
+    $(this).find('.comment-form__input--textarea').val('')
+    $(this).find('.comment-form__input--textarea').blur()
+  ).on("ajax:error", (event, xhr, status, error) ->
+    alert(xhr.responseJSON.message)
+  )

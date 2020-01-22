@@ -116,28 +116,16 @@
 </section>
 
   <section class="project__comments">
-    <%= react_component("CommentList", { projectId: project.id, initialComments: @initial_comments }, { prerender: true }) %>
+    <div class="project__comments-inner">
+      <%= react_component("CommentList", { projectId: project.id, initialComments: @initial_comments }, { prerender: true }) %>
 
-<!--
-    <% @comments&.each do |comment| %>
-      <div class="project__comment-wrapper">
-        <figure class="user__image">
-          <%= image_tag(comment.user.gravatar_url) %>
-        </figure>
-        <div class="project__comment">
-          <header>
-            <%= comment.user.name %>
-            <time datetime="<%= comment.created_at %>">- <%= comment.created_at.to_s(:long) %></time>
-            <%= comment_visibility_icon(comment).html_safe %>
-          </header>
-          <%= markdown(comment.body) %>
-        </div>
+      <div class="comment-form-wrapper">
+        <%= link_to I18n.t(".add-comment", scope: "projects.project"), "javascript:void(0)", class: "comment-form-expand" %>
+
+        <%= simple_form_for [project, Comment.new], method: :post, remote: true, html: { class: "comment-form" } do |f| %>
+          <%= f.input :viewable_by, collection: Comment::VIEWABLE_OPTIONS, include_blank: false, wrapper_html: { class: "comment-form__viewable-by" }, label_html: { class: "comment-form__label--inline" } %>
+          <%= f.input_field :body, as: :string, class: "comment-form__input--textarea", autocomplete: "off" %>
+        <% end %>
       </div>
-    <% end %>
--->
-
-    <%= simple_form_for [project, Comment.new], method: :post, remote: true, html: { class: "comment-form" } do |f| %>
-      <%= f.input :viewable_by, collection: Comment::VIEWABLE_OPTIONS, include_blank: false, wrapper_html: { class: "comment-form__viewable-by" }, label_html: { class: "comment-form__label--inline" } %>
-      <%= f.input_field :body, as: :string, class: "comment-form__input--textarea" %>
-    <% end %>
+    </div>
   </section>

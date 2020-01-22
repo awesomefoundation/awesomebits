@@ -5,11 +5,12 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
-    else
-      flash[:notice] = @comment.errors.full_messages.join(", ")
-    end
+      @comments = @project.comments.viewable_by(user: current_user, chapter: @project.chapter).by_date
 
-    redirect_to [@project.chapter, @project]
+      render json: { comments: @comments, project_id: @project.id }
+    else
+      render status: 400, json: { message: @comment.errors.full_messages.join(", ") }
+    end
   end
 
   private
