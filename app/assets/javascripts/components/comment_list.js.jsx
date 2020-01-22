@@ -49,7 +49,7 @@ var CommentList = createReactClass({
           <header>
             {comment.user_name}
             <i className={"icon icon-"+comment.visibility_class+" comment__visible-icon"} title={comment.viewable_by}></i>
-            <time dateTime={comment.createdAt}> - {comment.created_at_human}</time>
+            <time datetime={comment.created_at}> - {comment.created_at_human}</time>
 
             { (this.props.deletePermission || this.props.currentUserId == comment.user_id) &&
               <a className="comment__trash-link" href="#" onClick={this.handleDelete.bind(this, comment.id)}><i className="icon icon-trash" title={this.props.deleteIconText}></i></a>

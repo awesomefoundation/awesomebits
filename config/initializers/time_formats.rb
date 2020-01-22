@@ -4,3 +4,5 @@
 # }.each do |format_name, format_string|
 #   Time::DATE_FORMATS[format_name] = format_string
 # end
+
+Time::DATE_FORMATS[:long_with_zone] = "%B %d, %Y %H:%m %Z"
