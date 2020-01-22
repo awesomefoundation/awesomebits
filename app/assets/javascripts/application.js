@@ -10,4 +10,7 @@
 //= require magnific-popup
 //= require lightgallery
 //= require lg-zoom
+//= require react
+//= require react_ujs
+//= require components
 //= require_tree .

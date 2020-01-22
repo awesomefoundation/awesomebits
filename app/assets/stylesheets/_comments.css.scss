@@ -1,10 +1,10 @@
-
 .project__comments {
   padding: 1.5em 10px;
   border-top: 1px solid #c8c8c8;
 }
 
 .project__comment-wrapper {
+  font-size: 0.8em;
   display: flex;
   margin-bottom: .8em;
 }
@@ -19,7 +19,6 @@
 }
 
 .project__comment header {
-  font-size: 0.8em;
   font-weight: bold;
   margin-bottom: .4em;
 }
@@ -38,9 +37,10 @@
 }
 
 .comment__visible-icon {
+  font-weight: normal;
   color: $lighter-base-font-color;
 }
 
 .project__comment-wrapper header .comment__visible-icon {
-  margin-left: 4px;
+  margin-left: 6px;
 }

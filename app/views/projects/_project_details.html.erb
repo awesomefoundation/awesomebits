@@ -115,8 +115,10 @@
 
 </section>
 
-
   <section class="project__comments">
+    <%= react_component("CommentList", { projectId: project.id, initialComments: @initial_comments }, { prerender: true }) %>
+
+<!--
     <% @comments&.each do |comment| %>
       <div class="project__comment-wrapper">
         <figure class="user__image">
@@ -129,11 +131,12 @@
             <%= comment_visibility_icon(comment).html_safe %>
           </header>
           <%= markdown(comment.body) %>
-      </div>
         </div>
+      </div>
     <% end %>
+-->
 
-    <%= simple_form_for [project, project.comments.build], method: :post, html: { class: "comment-form" } do |f| %>
+    <%= simple_form_for [project, Comment.new], method: :post, remote: true, html: { class: "comment-form" } do |f| %>
       <%= f.input :viewable_by, collection: Comment::VIEWABLE_OPTIONS, include_blank: false, wrapper_html: { class: "comment-form__viewable-by" }, label_html: { class: "comment-form__label--inline" } %>
       <%= f.input_field :body, as: :string, class: "comment-form__input--textarea" %>
     <% end %>

@@ -36,6 +36,7 @@ gem 'rollbar'
 gem 'sassc-rails', '~> 2.1'
 gem 'coffee-rails'
 gem 'uglifier'
+gem 'react-rails'
 gem 'xmlrpc'
 
 group :development do
