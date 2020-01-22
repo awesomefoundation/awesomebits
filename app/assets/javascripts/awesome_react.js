@@ -7,7 +7,17 @@ var CommentStore = {
   },
 
   unsubscribe: function(parent, callback) {
-    this.subscribers.filter(subscriber => (subscriber.parent == parent && subscriber.callback == callback));
+    this.subscribers = this.subscribers.filter(subscriber => (subscriber.parent == parent && subscriber.callback == callback));
+  },
+
+  notifySubscribers: function() {
+    this.subscribers.map((subscriber) => {
+      subscriber.callback(subscriber.parent);
+    });
+  },
+
+  getComments: function(projectId) {
+    return this.items.filter(comment => comment.project_id == projectId);
   },
 
   setComments: function(comments, projectId) {
@@ -19,12 +29,12 @@ var CommentStore = {
       this.items = comments;
     }
 
-    this.subscribers.map((subscriber) => {
-      subscriber.callback(subscriber.parent);
-    });
+    this.notifySubscribers();
   },
 
-  getComments: function(projectId) {
-    return this.items.filter(comment => comment.project_id == projectId);
+  removeComment: function(commentId) {
+    this.items = this.items.filter(item => item.id != commentId);
+
+    this.notifySubscribers();
   }
 };

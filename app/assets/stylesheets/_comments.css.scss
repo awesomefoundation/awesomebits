@@ -53,6 +53,17 @@
   color: $lighter-base-font-color;
 }
 
+.project__comment-wrapper:hover .comment__trash-link {
+  display: inline;
+}
+
+.comment__trash-link {
+  font-weight: normal;
+  margin-left: 6px;
+  text-decoration: none !important;
+  display: none;
+}
+
 .project__comment-wrapper header .comment__visible-icon {
   margin-left: 6px;
 }

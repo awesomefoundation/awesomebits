@@ -15,6 +15,8 @@ class Comment < ApplicationRecord
   validates :viewable_by, inclusion: { in: VIEWABLE_OPTIONS }
   validates :body, presence: true
 
+  before_save :sanitize_fields
+
   scope :by_date, -> { order(created_at: :asc) }
 
   def self.viewable_by(user: nil, chapter: nil)
@@ -32,5 +34,11 @@ class Comment < ApplicationRecord
       created_at_human: created_at.to_s(:long),
       visibility_class: ApplicationController.helpers.comment_visibility_class(self)
     })
+  end
+
+  private
+
+  def sanitize_fields
+    self.body = ApplicationController.helpers.strip_tags(body)
   end
 end

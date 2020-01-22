@@ -32,7 +32,7 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       format.html do
         @projects = project_filter.page(params[:page]).result
-        @comments = Comment.where(project_id: @projects).viewable_by(user: current_user, chapter: @chapter).by_date
+        @comments = Comment.where(project_id: @projects).includes(:user).viewable_by(user: current_user, chapter: @chapter).by_date
 
         current_user.mark_last_viewed_chapter(params[:chapter_id])
       end
@@ -83,7 +83,7 @@ class ProjectsController < ApplicationController
 
     else
       @display_project_even_if_hidden = true
-      @initial_comments = @project.comments.viewable_by(user: current_user, chapter: @chapter).by_date
+      @initial_comments = @project.comments.includes(:user).viewable_by(user: current_user, chapter: @chapter).by_date
       must_be_logged_in || render
     end
   end

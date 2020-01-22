@@ -70,11 +70,10 @@
     $(window).load(function(){
       $('#filter_start').datepicker({dateFormat: 'yy-mm-dd', onClose: function(dateText){ $('#filter_start').blur(); $('#filter_end').datepicker('option', 'defaultDate', dateText); $('#filter_end').blur() }});
       $('#filter_end').datepicker({dateFormat: 'yy-mm-dd', onClose: function(){ $('#filter_end').blur() }});
-
-      CommentStore.setComments(<%= @comments.to_json.html_safe %>);
     });
   <% end %>
 <% end %>
 
 <%= render "shared/lightbox" %>
 <% render "project_actions_js" %>
+<%= render partial: "comments_js", locals: { comments: @comments } %>

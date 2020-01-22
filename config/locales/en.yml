@@ -150,6 +150,8 @@ en:
       hiding-explanation: "Hiding a project will hide its details from everyone; the title and why it was hidden will still be visible, and it can be easily unhidden."
       unhiding-explanation: "Restore this project so everyone will be able to see it again."
       add-comment: Add a comment
+      confirm-delete-comment: Are you sure you want to remove this comment?
+      delete-comment: Delete comment
 
     new:
       title: Are you ready to get Awesome!?

@@ -1,6 +1,9 @@
 var CommentList = createReactClass({
   propTypes: {
     projectId: PropTypes.number,
+    currentUserId: PropTypes.number,
+    deleteBasePath: PropTypes.string,
+    deletePermission: PropTypes.bool,
     initialComments: PropTypes.array
   },
 
@@ -19,6 +22,20 @@ var CommentList = createReactClass({
   updateComments: function(that) {
     that.setState({ comments: CommentStore.getComments(that.props.projectId) });
   },
+
+  handleDelete: function(id, e) {
+    e.preventDefault();
+
+    if (window.confirm(this.props.deleteConfirmationText)) {
+      $.ajax({
+        url: this.props.deleteBasePath+"/"+id,
+        type: 'DELETE',
+        success:() => {
+          CommentStore.removeComment(id);
+        }
+      });
+    }
+  },
   
   render: function() {
     comments = this.state.comments || [];
@@ -31,8 +48,12 @@ var CommentList = createReactClass({
         <div className="project__comment">
           <header>
             {comment.user_name}
-            <time dateTime={comment.createdAt}> - {comment.created_at_human}</time>
             <i className={"icon icon-"+comment.visibility_class+" comment__visible-icon"} title={comment.viewable_by}></i>
+            <time dateTime={comment.createdAt}> - {comment.created_at_human}</time>
+
+            { (this.props.deletePermission || this.props.currentUserId == comment.user_id) &&
+              <a className="comment__trash-link" href="#" onClick={this.handleDelete.bind(this, comment.id)}><i className="icon icon-trash" title={this.props.deleteIconText}></i></a>
+            }
           </header>
           <div dangerouslySetInnerHTML={{__html: comment.body}}></div>
         </div>

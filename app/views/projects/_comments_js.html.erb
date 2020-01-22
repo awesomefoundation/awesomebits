@@ -1,0 +1,7 @@
+<% content_for :javascript do %>
+  <% javascript_tag do %>
+    $(window).load(function() {
+      CommentStore.setComments(<%= comments.to_json.html_safe %>);
+    });
+  <% end %>
+<% end %>
