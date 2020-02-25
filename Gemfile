@@ -74,6 +74,5 @@ end
 group :staging, :production do
   gem 'newrelic_rpm', '~> 3.18.1'
   gem 'sprockets-redirect'
-  gem 'passenger'
   gem 'rails_12factor'
 end
