@@ -9,6 +9,8 @@ class Photo < ApplicationRecord
     gallery:         "2000x>",
   }
 
+  MAX_FILE_SIZE = 20.megabytes
+
   belongs_to :project, optional: true
   has_attached_file :image,
                     default_url: "no-image-:style.png"
