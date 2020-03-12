@@ -3,9 +3,10 @@ source 'https://rubygems.org'
 ruby '2.5.5'
 
 gem 'rails', '5.2.4'
-gem 'rake', '< 11.0'
+gem 'rake', '< 13.0'
 gem 'bootsnap','>= 1.1.0', require: false
 
+gem 'puma'
 gem 'pg', '~> 0.20.0'
 gem 'textacular', '~> 5.1.0'
 gem 'it'
@@ -20,7 +21,7 @@ gem 'formtastic'
 gem 'flutie'
 gem 'bourbon', '~> 4.0.2'
 gem 'simple_form', '~> 4.1'
-gem 'nokogiri', '~> 1.10.4'
+gem 'nokogiri', '~> 1.10.8'
 gem "will_paginate", "~> 3.1.7"
 gem "friendly_id", "~> 5.2.4"
 gem 'redcarpet'
@@ -42,7 +43,6 @@ gem 'xmlrpc'
 group :development do
   gem "letter_opener"
   gem "listen"
-  gem 'puma'
   gem 'web-console'
 end
 
@@ -75,6 +75,5 @@ end
 group :staging, :production do
   gem 'newrelic_rpm', '~> 3.18.1'
   gem 'sprockets-redirect'
-  gem 'passenger'
   gem 'rails_12factor'
 end

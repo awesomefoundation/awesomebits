@@ -9,6 +9,8 @@ class Photo < ApplicationRecord
     gallery:         "2000x>",
   }
 
+  MAX_FILE_SIZE = 20.megabytes
+
   belongs_to :project, optional: true
   has_attached_file :image,
                     default_url: "no-image-:style.png"
@@ -39,10 +41,10 @@ class Photo < ApplicationRecord
     if persisted? && direct_upload_url.present?
       set_attributes_from_direct_upload
 
-      if uploaded_file = bucket.files.get(direct_upload_path)
+      if uploaded_file = bucket.files.head(direct_upload_path)
         uploaded_file.copy(fog_config.bucket, image.path)
 
-        destination_file = bucket.files.get(image.path)
+        destination_file = bucket.files.head(image.path)
         destination_file.public = true
         destination_file.save
 
@@ -86,7 +88,7 @@ class Photo < ApplicationRecord
   end
 
   def set_attributes_from_direct_upload
-    file = bucket.files.get(direct_upload_path)
+    file = bucket.files.head(direct_upload_path)
 
     self.image_file_name = File.basename(direct_upload_path).gsub(image.options[:restricted_characters], "_")
     self.image_content_type = file.content_type

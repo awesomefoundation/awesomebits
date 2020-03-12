@@ -2,7 +2,7 @@
     <label class="file optional"><%= t "simple_form.labels.project.new_photos-html" %></label>
     <div class="multi-input first noremove" data-num-files="<%= Project::MAX_PHOTOS %>">
       <% if upload_mechanism == :s3 %>
-        <%= form.s3_file_field :new_photos, :class => "s3_upload_field", :name => "project[new_photo_direct_upload_urls][]", :accept => "image/*"  %>
+        <%= form.s3_file_field :new_photos, :class => "s3_upload_field", :name => "project[new_photo_direct_upload_urls][]", :accept => "image/*", :max_file_size => Photo::MAX_FILE_SIZE %>
       <% else %>
         <input class="file optional multi new_photo" id="project_new_photos" name="project[new_photos][]" type="file" value="" accept="image/*">
       <% end %>
