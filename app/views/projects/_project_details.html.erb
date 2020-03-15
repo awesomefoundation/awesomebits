@@ -117,7 +117,7 @@
 
   <section class="project__comments">
     <div class="project__comments-inner">
-      <%= react_component("CommentList", { projectId: project.id, currentUserId: current_user.id, deleteBasePath: project_comments_path(project), initialComments: @initial_comments, deleteConfirmationText: I18n.t(".confirm-delete-comment", scope: "projects.project"), deleteIconText: I18n.t(".delete-comment", scope: "projects.project"), deletePermission: current_user.can_edit_project?(project) }, { prerender: true }) %>
+      <%= react_component("CommentList", { projectId: project.id, currentUserId: current_user.id, deleteBasePath: project_comments_path(project), initialComments: @initial_comments, deleteConfirmationText: I18n.t(".confirm-delete-comment", scope: "projects.project"), deleteIconText: I18n.t(".delete-comment", scope: "projects.project"), deletePermission: current_user.can_edit_project?(project) }, { prerender: @initial_comments.present? }) %>
 
       <div class="comment-form-wrapper">
         <%= link_to I18n.t(".add-comment", scope: "projects.project"), "javascript:void(0)", class: "comment-form-expand" %>
