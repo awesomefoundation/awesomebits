@@ -8,7 +8,8 @@ var CommentList = createReactClass({
   },
 
   getInitialState: function() {
-    CommentStore.subscribe(this, this.updateComments);
+    // Note: `bind` is not needed: https://reactjs.org/docs/react-without-es6.html#autobinding
+    CommentStore.subscribe(this.updateComments);
 
     return {
       comments: this.props.initialComments
@@ -16,11 +17,11 @@ var CommentList = createReactClass({
   },
 
   componentWillUnmount: function() {
-    CommentStore.unsubscribe(this, this.updateComments);
+    CommentStore.unsubscribe(this.updateComments);
   },
 
-  updateComments: function(that) {
-    that.setState({ comments: CommentStore.getComments(that.props.projectId) });
+  updateComments: function() {
+    this.setState({ comments: CommentStore.getComments(this.props.projectId) });
   },
 
   handleDelete: function(id, e) {

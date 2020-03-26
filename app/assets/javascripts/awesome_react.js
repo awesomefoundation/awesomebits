@@ -2,17 +2,17 @@ var CommentStore = {
   items: [],
   subscribers: [],
 
-  subscribe: function(parent, callback) {
-    this.subscribers.push({ parent: parent, callback: callback });
+  subscribe: function(callback) {
+    this.subscribers.push(callback);
   },
 
-  unsubscribe: function(parent, callback) {
-    this.subscribers = this.subscribers.filter(subscriber => (subscriber.parent == parent && subscriber.callback == callback));
+  unsubscribe: function(callback) {
+    this.subscribers = this.subscribers.filter(subscriber => (subscriber !== callback));
   },
 
   notifySubscribers: function() {
     this.subscribers.map((subscriber) => {
-      subscriber.callback(subscriber.parent);
+      subscriber();
     });
   },
 
