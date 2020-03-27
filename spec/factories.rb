@@ -86,4 +86,10 @@ FactoryGirl.define do
       image { File.new(Rails.root.join("spec", "support", "fixtures", "1.pdf")) }
     end
   end
+
+  factory :comment do
+    project
+    user
+    body "This is the body of my comment."
+  end
 end

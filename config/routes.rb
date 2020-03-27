@@ -46,6 +46,7 @@ Rails.application.routes.draw do
         put "hide"
         put "unhide"
       end
+      resources :comments
       resource :winner, :only => [:create, :update, :destroy]
       resource :vote, :only => [:create, :destroy]
     end
