@@ -25,7 +25,7 @@ class CommentsController < ApplicationController
     if @comment.destroy
       head :ok
     else
-      rener status: 400, json: { message: @comment.errors.full_messages.join(", ") }
+      render status: 400, json: { message: @comment.errors.full_messages.join(", ") }
     end
   end
 
