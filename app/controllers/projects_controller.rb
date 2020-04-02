@@ -32,7 +32,7 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       format.html do
         @projects = project_filter.page(params[:page]).result.includes(:users, :photos, :real_photos)
-        @comments = Comment.where(project_id: @projects).includes(:user, :project).viewable_by(user: current_user, chapter: @chapter).by_date
+        @comments = Comment.where(project_id: @projects.collect(&:id)).includes(:user, :project).viewable_by(user: current_user, chapter: @chapter).by_date
 
         current_user.mark_last_viewed_chapter(params[:chapter_id])
       end

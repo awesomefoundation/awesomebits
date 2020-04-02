@@ -23,6 +23,26 @@ describe ProjectsController do
     it { is_expected.to redirect_to(root_path) }
   end
 
+  context 'viewing the index with a search term' do
+    render_views
+
+    let(:user) { FactoryGirl.create(:user) }
+    let(:project) { FactoryGirl.create(:project, title: "Find Me") }
+    let!(:missing_project) { FactoryGirl.create(:project, chapter: project.chapter) }
+
+    before do
+      sign_in_as user
+    end
+
+    it "returns the matching project only" do
+      get :index, params: { chapter_id: project.chapter, q: "Find Me" }
+
+      expect(response.status).to eq(200)
+      expect(response.body).to match("Find Me")
+      expect(response.body).to match("1 Project")
+    end
+  end
+
   context 'attempting to delete a project as a trustee who is not the dean or an admin' do
     let(:user) { FactoryGirl.create(:user) }
     let(:project) { FactoryGirl.create(:project) }
