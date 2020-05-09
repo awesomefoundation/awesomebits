@@ -124,7 +124,8 @@ body.projects-index {
   float: left;
   max-width: grid-width(9);
   
-  p:nth-child(2) {
+  /* Ensure 'Back to Chapter' link on admin view of project page is the correct font size */
+  > p:nth-child(2) {
     font-size: 0.8em;
   }
 
