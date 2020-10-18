@@ -43,7 +43,7 @@ class ChaptersController < ApplicationController
   protected
 
   def chapter_params
-    params.require(:chapter).permit(:name, :twitter_url, :facebook_url, :instagram_url, :blog_url, :rss_feed_url, :description, :country, :extra_question_1, :extra_question_2, :extra_question_3, :slug, :email_address, :time_zone, :inactive, :locale, :submission_response_email, :hide_trustees)
+    params.require(:chapter).permit(:name, :twitter_url, :facebook_url, :instagram_url, :blog_url, :rss_feed_url, :description, :country, :extra_question_1, :extra_question_2, :extra_question_3, :slug, :email_address, :time_zone, :inactive, :locale, :submission_response_email, :hide_trustees, :application_intro)
   end
 
   def ensure_lowercase_id

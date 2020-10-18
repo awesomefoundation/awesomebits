@@ -58,6 +58,15 @@ step 'I enter different questions for applicants to answer' do
   click_button("Update")
 end
 
+step 'I update a chapter with custom application intro text' do
+  fill_in "Application Intro Text", :with => "This is my custom intro text"
+  click_button "Update"
+end
+
+step 'I should see custom intro text' do
+  expect(page).to have_content "This is my custom intro text"
+end
+
 step 'I go to the chapters index' do
   visit(chapters_url)
 end
