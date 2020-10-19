@@ -33,6 +33,10 @@ step 'I should see them on the application form' do
   click_button("Apply")
 end
 
+step 'I select the chapter to apply to' do
+  select(@current_chapter.name, :from => "Select chapter to apply to")
+end
+
 step 'I submit a project to the :name chapter with the extra questions answered' do |name|
   @project_title = "Crusades!"
   click_link("Apply")
