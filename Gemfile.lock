@@ -183,7 +183,7 @@ GEM
     mime-types-data (3.2018.0812)
     mimemagic (0.3.5)
     mini_mime (1.0.2)
-    mini_portile2 (2.4.0)
+    mini_portile2 (2.5.0)
     minitest (5.14.3)
     mocha (1.2.1)
       metaclass (~> 0.0.1)
@@ -191,8 +191,9 @@ GEM
     multi_json (1.13.1)
     newrelic_rpm (3.18.1.330)
     nio4r (2.5.4)
-    nokogiri (1.10.10)
-      mini_portile2 (~> 2.4.0)
+    nokogiri (1.11.0)
+      mini_portile2 (~> 2.5.0)
+      racc (~> 1.4)
     paperclip (4.1.1)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -206,6 +207,7 @@ GEM
     pry-nav (0.2.1)
       pry (~> 0.9.9)
     puma (3.12.6)
+    racc (1.5.2)
     rack (2.2.3)
     rack-attack (4.3.1)
       rack
@@ -394,7 +396,7 @@ DEPENDENCIES
   listen
   magnific-popup-rails
   newrelic_rpm (~> 3.18.1)
-  nokogiri (~> 1.10.8)
+  nokogiri (~> 1.11.0)
   paperclip (~> 4.1.1)
   pg (~> 0.20.0)
   pry
