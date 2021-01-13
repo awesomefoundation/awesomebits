@@ -27,12 +27,6 @@ jobs:
       with:
         bundler-cache: true # runs 'bundle install' and caches installed gems
 
-    - uses: nanasess/setup-chromedriver@master
-    - run: |
-        export DISPLAY=:99
-        chromedriver --url-base=/wd/hub &
-        sudo Xvfb -ac :99 -screen 0 1270x1024x24 > /dev/null 2>&1 &
-
     - name: Build and test
       env:
         POSTGRES_HOST: localhost
