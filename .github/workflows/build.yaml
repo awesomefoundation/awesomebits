@@ -34,4 +34,6 @@ jobs:
         POSTGRES_PASSWORD: postgres
         RAILS_ENV: test
       run: |
+        bundle exec rake db:create
+        bundle exec rake db:test:prepare --trace
         bundle exec rake
