@@ -23,7 +23,7 @@ jobs:
         sudo apt-get install -yqq libpq-dev
 
     - name: Set up Ruby
-      uses: actions/setup-ruby@v1
+      uses: ruby/setup-ruby@v1
       with:
         bundler-cache: true # runs 'bundle install' and caches installed gems
 
