@@ -30,7 +30,7 @@ jobs:
     - name: Build and test
       env:
         POSTGRES_HOST: localhost
-        POSTGRES_USER: posgres
+        POSTGRES_USER: postgres
         POSTGRES_PASSWORD: postgres
         RAILS_ENV: test
       run: |
