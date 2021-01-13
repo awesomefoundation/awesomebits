@@ -399,7 +399,7 @@ GEM
       execjs
       railties (>= 3.2)
       tilt
-    redcarpet (3.4.0)
+    redcarpet (3.5.1)
     rollbar (2.15.5)
       multi_json
     rspec (3.6.0)
