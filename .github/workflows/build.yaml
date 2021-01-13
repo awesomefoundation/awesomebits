@@ -1,0 +1,37 @@
+name: Build
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+
+    services:
+      postgres:
+        image: postgres:11
+	env:
+	  POSTGRES_PASSWORD: postgres
+	ports:
+	- 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Postgres Libraries
+      run: |
+        sudo apt-get install -yqq libpq-dev
+
+    - name: Set up Ruby
+      uses: actions/setup-ruby@v1
+      with:
+	bundler-cache: true # runs 'bundle install' and caches installed gems
+
+    - name: Build and test
+      env:
+        POSTGRES_HOST: localhost
+	POSTGRES_USER: posgres
+	POSTGRES_PASSWORD: postgres
+	RAILS_ENV: test
+      run: |
+	bundle exec rake
