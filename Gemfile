@@ -38,6 +38,7 @@ gem 'coffee-rails'
 gem 'uglifier'
 gem 'react-rails'
 gem 'xmlrpc'
+gem 'jbuilder'
 
 group :development do
   gem "letter_opener"

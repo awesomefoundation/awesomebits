@@ -26,10 +26,6 @@ EOT
 
   validates_format_of :slug, :with => /\A[a-z0-9-]+\Z/
 
-  def should_generate_new_friendly_id?
-    slug.blank?
-  end
-
   def self.country_count
     where(arel_table[:country].not_eq("Worldwide")).select(:country).distinct.count
   end
@@ -75,16 +71,24 @@ EOT
     countries
   end
 
-  def any_chapter?
-    name == "Any"
-  end
-
   def self.current_chapter_for_user(user)
     if user.admin?
       user.chapters.first || Chapter.first
     else
       user.chapters.first
     end
+  end
+
+  def any_chapter?
+    name == "Any"
+  end
+
+  def global?
+    country == "Worldwide"
+  end
+
+  def should_generate_new_friendly_id?
+    slug.blank?
   end
 
   def display_name
@@ -97,6 +101,14 @@ EOT
 
   def time_zone
     self[:time_zone] || 'UTC'
+  end
+
+  def grant_amount_dollars
+    1000.00
+  end
+
+  def grant_frequency
+    I18n.t('word.monthly')
   end
 
   def inactive
