@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :ensure_current_user_or_admin, :only => [:update, :edit]
 
   def index
-    @users = User.all_with_chapter(params[:chapter_id])
+    @users = User.all_with_chapter(params[:chapter_id]).paginate(page: params[:page], per_page: 500)
   end
 
   def update
