@@ -30,5 +30,23 @@ describe ChaptersController do
 
     it { is_expected.to redirect_to(edit_chapter_url(:id => "boston")) }
   end
+
+  context "#index" do
+    render_views
+
+    before do
+      5.times do
+        FactoryGirl.create(:project)
+      end
+    end
+
+    it "renders a JSON request with included projects" do
+      get :index, format: :json, params: { include_projects: true }
+    end
+
+    it "renders an HTML request" do
+      get :index
+    end
+  end
 end
 

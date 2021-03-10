@@ -150,6 +150,8 @@ GEM
     ipaddress (0.8.3)
     it (1.0.0)
       actionpack (>= 3.0.0)
+    jbuilder (2.10.1)
+      activesupport (>= 5.0.0)
     jquery-fileupload-rails (0.4.1)
       actionpack (>= 3.1)
       railties (>= 3.1)
@@ -389,6 +391,7 @@ DEPENDENCIES
   high_voltage (~> 1)
   honeypot-captcha
   it
+  jbuilder
   jquery-rails (~> 4.1.1)
   jquery-ui-rails (~> 3.0.1)
   launchy

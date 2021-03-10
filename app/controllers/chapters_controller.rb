@@ -7,7 +7,13 @@ class ChaptersController < ApplicationController
   # everything gets crawled for SEO purposes. This can be rethought
   # in the future if needed.
   def index
-    @chapters = chapter_source.visitable.sort_by(&CountrySortCriteria.new(COUNTRY_PRIORITY))
+    @chapters = chapter_source.visitable
+
+    if request.format.json?
+      @chapters = @chapters.includes(:users)
+    end
+
+    @chapters = @chapters.sort_by(&CountrySortCriteria.new(COUNTRY_PRIORITY))
   end
 
   def show
@@ -53,10 +59,16 @@ class ChaptersController < ApplicationController
   end
 
   def chapter_source
-    if params[:include_inactive]
-      Chapter
-    else
-      Chapter.active
+    source = Chapter
+
+    if params[:include_inactive].blank?
+      source = source.active
     end
+
+    if params[:include_projects].present?
+      source = source.includes(:winning_projects)
+    end
+
+    source
   end
 end

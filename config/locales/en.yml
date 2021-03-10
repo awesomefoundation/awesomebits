@@ -10,6 +10,7 @@ en:
     inactive: Inactive
     twitter: Twitter
     facebook: Facebook
+    monthly: Monthly
   flash:
     permissions:
       must-be-logged-in: You must be logged in.
