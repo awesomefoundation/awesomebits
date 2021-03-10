@@ -26,6 +26,7 @@ json.data do
       json.projects chapter.winning_projects do |project|
         json.recipient project.title
         json.date project.funded_on
+        json.amount_in_dollars chapter.grant_amount_dollars
       end
     end
   end
