@@ -6,6 +6,12 @@ jobs:
   build:
     runs-on: ubuntu-18.04
 
+    env:
+      PGHOST: localhost
+      PGUSER: postgres
+      PGPASSWORD: postgres
+      RAILS_ENV: test
+
     services:
       postgres:
         image: postgres:11
@@ -27,13 +33,10 @@ jobs:
       with:
         bundler-cache: true # runs 'bundle install' and caches installed gems
 
-    - name: Build and test
-      env:
-        POSTGRES_HOST: localhost
-        POSTGRES_USER: postgres
-        POSTGRES_PASSWORD: postgres
-        RAILS_ENV: test
+    - name: Set up database
       run: |
         bundle exec rake db:create
         bundle exec rake db:migrate --trace
-        bundle exec rake
+
+    - name: Build and test
+      run: bundle exec rake
