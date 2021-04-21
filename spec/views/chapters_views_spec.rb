@@ -70,6 +70,7 @@ describe 'chapters/show' do
 
     it 'renders the project section' do
       assign(:chapter, chapter)
+      assign(:projects, chapter.winning_projects)
       view.stubs(:current_user).returns(nil)
 
       render

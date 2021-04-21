@@ -11,8 +11,9 @@ class Project < ApplicationRecord
   has_many :comments
   has_many :votes
   has_many :users, :through => :votes
-  has_many :photos, -> { order(sort_order: :asc, id: :asc) }
-  has_many :real_photos, -> { where(Photo.arel_table[:image_content_type].matches('image/%')).order(sort_order: :asc, id: :asc) }, class_name: "Photo"
+  has_many :photos, -> { merge(Photo.sorted) }
+  has_many :real_photos, -> { merge(Photo.image_files.sorted) }, class_name: "Photo"
+  has_one  :primary_photo, -> { merge(Photo.image_files.sorted) }, class_name: "Photo"
 
   before_validation UrlNormalizer.new(:url, :rss_feed_url)
 
@@ -170,7 +171,7 @@ class Project < ApplicationRecord
   end
 
   def primary_image
-    display_images.first
+    primary_photo || Photo.new
   end
 
   def has_images?

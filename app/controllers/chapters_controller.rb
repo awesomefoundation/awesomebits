@@ -18,6 +18,7 @@ class ChaptersController < ApplicationController
 
   def show
     @chapter = Chapter.find(params[:id])
+    @projects = @chapter.winning_projects.includes(:primary_photo)
   end
 
   def new
