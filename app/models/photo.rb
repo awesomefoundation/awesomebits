@@ -11,6 +11,9 @@ class Photo < ApplicationRecord
 
   MAX_FILE_SIZE = 20.megabytes
 
+  scope :sorted, -> { order(sort_order: :asc, id: :asc) }
+  scope :image_files, -> { where(Photo.arel_table[:image_content_type].matches('image/%')) }
+
   belongs_to :project, optional: true
   has_attached_file :image,
                     default_url: "no-image-:style.png"
