@@ -322,7 +322,7 @@ GEM
       rack
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
-    simple_form (4.1.0)
+    simple_form (5.0.0)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
     slop (2.4.4)
@@ -424,7 +424,7 @@ DEPENDENCIES
   selenium-webdriver
   sham_rack
   shoulda-matchers
-  simple_form (~> 4.1)
+  simple_form (~> 5.0)
   sprockets-redirect
   sucker_punch (~> 1.0)
   textacular (~> 5.1.0)
