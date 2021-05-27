@@ -195,7 +195,7 @@ GEM
     multi_json (1.13.1)
     newrelic_rpm (3.18.1.330)
     nio4r (2.5.7)
-    nokogiri (1.11.3)
+    nokogiri (1.11.4)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     paperclip (4.1.1)
@@ -402,7 +402,7 @@ DEPENDENCIES
   listen
   magnific-popup-rails
   newrelic_rpm (~> 3.18.1)
-  nokogiri (~> 1.11.0)
+  nokogiri (~> 1.11.4)
   paperclip (~> 4.1.1)
   pg (~> 0.20.0)
   pry
