@@ -95,7 +95,7 @@ pt:
         photo-alt-text: "Foto de %{name}"
       apply-for-grant: Envie Sua Proposta
       inactive-chapter: Este capítulo está inativo.
-      inactive-chapter-reason: Um capítulo é considerado inativo quando não tiver apoiado projetos em um período de seis meses. Se você estiver interessado em reiniciar este capítulo, por favor <a href="mailto:join@awesomefoundation.org">entre em contato</a>.
+      inactive-chapter-reason: Um capítulo é considerado inativo quando não tiver apoiado projetos em um período de seis meses. Se você estiver interessado em reiniciar este capítulo, por favor %{contact_link:entre em contato}.
     edit:
       title: Editar informações do capítulo
     new:

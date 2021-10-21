@@ -95,7 +95,7 @@ fr:
         photo-alt-text: "Photo de %{name}"
       apply-for-grant: Postuler à une bourse
       inactive-chapter: Cette branche n'est actuellement non-active.
-      inactive-chapter-reason: Une branche non-active est une branche qui n’a pas remis de bourse au cours des six derniers mois. Veuillez <a href="mailto:join@awesomefoundation.org">nous contacter</a> si cela vous intéresse de relancer cette branche.
+      inactive-chapter-reason: Une branche non-active est une branche qui n’a pas remis de bourse au cours des six derniers mois. Veuillez %{contact_link:nous contacter} si cela vous intéresse de relancer cette branche.
     edit:
       title: Editer les infos de la branche
     new:

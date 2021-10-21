@@ -30,7 +30,7 @@
   <% if @chapter.inactive? %>
     <p class="inactive-notice">
       <strong><%= t(".inactive-chapter") %></strong>
-      <%= it(".inactive-chapter-reason", start_link: start_a_chapter_path) %>
+      <%= it(".inactive-chapter-reason", start_link: start_a_chapter_path, contact_link: "mailto:join@awesomefoundation.org") %>
     </p>
   <% end %>
 </header>
