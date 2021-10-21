@@ -96,7 +96,7 @@ es:
         photo-alt-text: "Foto de %{name}"
       apply-for-grant: Solicita una beca
       inactive-chapter: Este capítulo está inactivo.
-      inactive-chapter-reason: Un capítulo inactivo es uno que no ha otorgado una beca en seis meses. Si estás interesado en reiniciar este capítulo, por favor <a href="mailto:join@awesomefoundation.org">comunícate con nosotros</a>.
+      inactive-chapter-reason: Un capítulo inactivo es uno que no ha otorgado una beca en seis meses. Si estás interesado en reiniciar este capítulo, por favor %{contact_link:comunícate con nosotros}.
     edit:
       title: Editar información del capítulo
     new:

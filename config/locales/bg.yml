@@ -95,7 +95,7 @@ bg:
         photo-alt-text: "Снимка на %{name}"
       apply-for-grant: Кандидатствайте За Грант
       inactive-chapter: Този епизод е неактивен в момента
-      inactive-chapter-reason: Неактивен епизод е такъв, който не е давал грант повече от 6 месеца.I Ако се интересувате да рестартирате епизода, моля изпратете до <a href="mailto:join@awesomefoundation.org">contact us</a>.
+      inactive-chapter-reason: Неактивен епизод е такъв, който не е давал грант повече от 6 месеца.I Ако се интересувате да рестартирате епизода, моля изпратете до %{contact_link:contact us}.
     edit:
       title: Коригирайте информацията за епизода
     new:
