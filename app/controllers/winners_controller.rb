@@ -1,4 +1,5 @@
 class WinnersController < ApplicationController
+  before_action :must_be_logged_in
   before_action :must_be_able_to_mark_winner, only: [:create, :update, :destroy]
 
   def create

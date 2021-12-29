@@ -4,7 +4,18 @@ describe WinnersController do
   let(:other_chapter) { FactoryGirl.create(:chapter) }
 
   before do
-    sign_in_as user
+    sign_in_as(user) if defined?(user)
+  end
+
+  context "user is not logged in" do
+    let(:project) { FactoryGirl.create(:project) }
+
+    it "redirects when trying to view the edit page" do
+      get :edit, params: { chapter_id: project.chapter_id, project_id: project.id }
+
+      expect(response.status).to eq(302)
+      expect(flash[:notice]).to eq(I18n.t("flash.permissions.must-be-logged-in"))
+    end
   end
 
   context "a dean is logged in" do
