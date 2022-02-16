@@ -45,6 +45,9 @@
         <td>
           <%= link_to project.title, chapter_project_path(project.chapter, project) %>
           <%= link_to(raw('<i class="icon-ok-sign winner"></i>'), project_path(project), :target => "_blank", :title => t("projects.project.winner", :name => project.chapter.display_name)) if project.winner? %>
+          <% if project.chapter != @chapter %>
+            - <em><%= project.chapter.display_name %></em>
+          <% end %>
         </td>
         <td><%= project.id %></td>
         <td class="vote-count"><%= project.vote_count %></td>
