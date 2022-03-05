@@ -1,8 +1,8 @@
 module ProjectsHelper
   def selectable_chapters_for(user)
-    any_chapter = Chapter.where(:name => "Any").first
+    any_chapter = Chapter.where(:name => Chapter::ANY_CHAPTER_NAME).first
     if user.admin?
-      [any_chapter] + Chapter.where("name != 'Any'").order(:name)
+      [any_chapter] + Chapter.where.not(name: Chapter::ANY_CHAPTER_NAME).order(:name)
     else
       [any_chapter] + user.chapters.order(:name)
     end
