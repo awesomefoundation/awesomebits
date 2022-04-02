@@ -5,13 +5,15 @@ shortlist_before_send = (event, data, xhr) ->
 
 shortlist_success = (event, data, status, xhr) ->
   project_container = $('article[data-id="'+data.project_id+'"]')
+  vote_button = project_container.find('a.short-list[data-chapter="'+data.chapter_id+'"]')
   $(event.currentTarget).blur()
   if data.shortlisted
     project_container.addClass('shortlisted')
-    project_container.find('a.short-list').attr('data-method', 'delete')
+    vote_button.attr('data-method', 'delete')
   else
     project_container.removeClass('shortlisted')
-    project_container.find('a.short-list').attr('data-method', 'post')
+    vote_button.attr('data-method', 'post')
+    project_container.find('a.short-list[data-chapter=""]').remove()
 
 shortlist_failure = (xhr, status, error) ->
   alert(error.message)

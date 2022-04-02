@@ -4,9 +4,10 @@
 
     <div class="actions">
     <% if project.shortlisted_by?(current_user) %>
-      <%= link_to I18n.t(".awesome", scope: "projects.project"), project_vote_path(project), :method => :delete, :remote => true, :class => "short-list" %>
-    <% else %>
-      <%= link_to I18n.t(".awesome", scope: "projects.project"), project_vote_path(project), :method => :post, :remote => true, :class => "short-list" %>
+      <%= link_to I18n.t(".awesome", scope: "projects.project", count: 1), project_vote_path(project), :method => :delete, :remote => true, :class => "short-list", data: { chapter: "" } %>
+    <% end %>
+    <% voting_chapters.each do |voting_chapter| %>
+      <%= link_to I18n.t(".awesome", scope: "projects.project", count: voting_chapters.size, chapter: voting_chapter.slug), project_vote_path(project, chapter_id: voting_chapter.id), :method => :post, :remote => true, :class => "short-list", data: { chapter: voting_chapter.id } %>
     <% end %>
 
     <% if display_project_actions?(current_user, project) %>

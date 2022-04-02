@@ -1,3 +1,4 @@
+# coding: utf-8
 FactoryGirl.define do
   sequence(:email) {|n| "user#{n}@example.com" }
   sequence(:title) {|n| "Something Awesome ##{n}" }
@@ -29,6 +30,10 @@ FactoryGirl.define do
         FactoryGirl.create(:role, :user => user, :name => "dean")
         user.reload
       end
+    end
+
+    factory :user_with_trustee_role do
+      chapters { [association(:chapter) ] }
     end
   end
 
@@ -70,8 +75,12 @@ FactoryGirl.define do
   end
 
   factory :vote do
-    user
+    association :user, factory: :user_with_trustee_role
     project
+
+    after(:build) do |vote|
+      vote.chapter ||= vote.user.chapters.first
+    end
   end
 
   factory :photo do

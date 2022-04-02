@@ -16,6 +16,22 @@ module ProjectsHelper
     end
   end
 
+  def voting_chapters
+    return @voting_chapters if @voting_chapters
+
+    if current_user
+      @voting_chapters = current_user.chapters
+
+      if @voting_chapters.include?(@chapter)
+        @voting_chapters = [@chapter]
+      end
+    else
+      @voting_chapters = []
+    end
+
+    @voting_chapters
+  end
+
   def show_winner_buttons_for(project, options = {})
     if @chapter.any_chapter?
       winnable_chapters = current_user.dean_chapters

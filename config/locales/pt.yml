@@ -113,7 +113,9 @@ pt:
   projects:
     wait-for-uploads-to-complete: Por favor aguarde o upload de suas imagens terminar antes de submeter seu application.
     project:
-      awesome: Awesome
+      awesome:
+        one: Awesome
+        other: Awesome (%{chapter})
       delete: Excluir este projeto
       see-the-rest: Veja mais →
       view-public-page: Ver a página pública

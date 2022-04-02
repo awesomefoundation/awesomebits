@@ -36,7 +36,7 @@ Feature: A trustee can see all of the projects up for discussion and shortlist t
     And I shortlist a project
     Then the project indicates that I have shortlisted it
     When I look at the other chapter's finalists
-    Then I should see the project I shortlisted
+    Then I should not see the project I shortlisted
     When I look at my chapter's finalists
     Then I should see the project I shortlisted
 

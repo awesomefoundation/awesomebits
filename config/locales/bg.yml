@@ -113,7 +113,9 @@ bg:
   projects:
     wait-for-uploads-to-complete: Моля, изчакайте качването на изображенията да приключи, преди да изпратите кандидатурата.   
     project:
-      awesome: Awesome
+      awesome:
+        one: Awesome
+        other: Awesome (%{chapter})
       delete: Изтрий този проект
       see-the-rest: Виж останалите →
       view-public-page: Виж публичната сраница

@@ -30,6 +30,11 @@
         <input class="string optional prefilled" id="filter_end" name="end" size="50" type="text" value="<%= @end_date %>" autocomplete="off">
       </div>
 
+      <div class="input toggle">
+        <%= check_box_tag "past_trustees", nil, params[:past_trustees].present? %>
+        <%= label_tag "past_trustees", t(".past-trustees-filter") %>
+      </div>
+
       <input name="" type="submit" value="<%= t(".filter-button") %>">
     </form>
   </section>

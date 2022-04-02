@@ -109,6 +109,7 @@ en:
       filter-button: Filter
       start-date: start date
       end-date: end date
+      past-trustees-filter: Include votes from past trustees
       table:
         title: Title
         id: ID
@@ -126,7 +127,9 @@ en:
     wait-for-uploads-to-complete: Please wait for your images to finish uploading before submitting your application.
 
     project:
-      awesome: Awesome
+      awesome:
+        one: Awesome
+        other: Awesome (%{chapter})
       delete: Delete this project
       see-the-rest: See the rest →
       view-public-page: View the public page
@@ -363,6 +366,10 @@ en:
           attributes:
             url:
               invalid: is not a valid website
+        vote:
+          attributes:
+            chapter_id:
+              invalid_for_user: is not valid for this user
   meta:
     description: Forwarding the interest of Awesome in the universe, $1,000 at a time.
   feed:

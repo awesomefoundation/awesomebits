@@ -113,7 +113,9 @@ fr:
   projects:
     wait-for-uploads-to-complete: "Veuillez attendre la fin du chargement de vos images pour envoyer votre candidature."
     project:
-      awesome: Awesome
+      awesome:
+        one: Awesome
+        other: Awesome (%{chapter})
       delete: Supprimer ce projet
       see-the-rest: Voir le reste →
       view-public-page: Voir la page publique
