@@ -123,7 +123,9 @@ es:
   projects:
     wait-for-uploads-to-complete: Por favor espera a que tus imágenes terminen de subir antes de someter tu solicitud.
     project:
-      awesome: Impresionante
+      awesome:
+        one: Impresionante
+        other: Impresionante (%{chapter})
       delete: Elimina este proyecto
       see-the-rest: Vea el resto  →
       view-public-page: Vea la página pública

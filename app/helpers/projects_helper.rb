@@ -1,8 +1,8 @@
 module ProjectsHelper
   def selectable_chapters_for(user)
-    any_chapter = Chapter.where(:name => "Any").first
+    any_chapter = Chapter.where(:name => Chapter::ANY_CHAPTER_NAME).first
     if user.admin?
-      [any_chapter] + Chapter.where("name != 'Any'").order(:name)
+      [any_chapter] + Chapter.where.not(name: Chapter::ANY_CHAPTER_NAME).order(:name)
     else
       [any_chapter] + user.chapters.order(:name)
     end
@@ -14,6 +14,22 @@ module ProjectsHelper
     else
       project.in_any_chapter? ? current_user.dean_chapters : Array(project.chapter)
     end
+  end
+
+  def voting_chapters
+    return @voting_chapters if @voting_chapters
+
+    if current_user
+      @voting_chapters = current_user.chapters
+
+      if @voting_chapters.include?(@chapter)
+        @voting_chapters = [@chapter]
+      end
+    else
+      @voting_chapters = []
+    end
+
+    @voting_chapters
   end
 
   def show_winner_buttons_for(project, options = {})

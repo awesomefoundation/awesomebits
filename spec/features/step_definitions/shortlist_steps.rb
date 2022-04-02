@@ -2,7 +2,7 @@ step 'I shortlist a project' do
   # just choose the first project
   project_element = page.find(:css, "article.project", match: :first)
   @shortlisted_project_id = project_element['data-id'].to_i
-  project_element.find(:css, "header a.short-list").click
+  project_element.find(:css, "header a.short-list[data-chapter='#{@current_chapter.id}']").click
 end
 
 step 'I shortlist a project on the second page' do
@@ -42,8 +42,8 @@ step ':count people/person have/has voted on a/another project in my chapter' do
   project = FactoryGirl.create(:project, :chapter => @current_chapter, :created_at => count.to_i.days.ago)
   @finalist_projects << [project, count] if count.to_i > 0
   count.to_i.times do |x|
-    vote = FactoryGirl.create(:vote, :project => project, :created_at => x.days.ago)
-    FactoryGirl.create(:role, :user => vote.user, :chapter => @current_chapter)
+    role = FactoryGirl.create(:role, :chapter => @current_chapter)
+    vote = FactoryGirl.create(:vote, :user => role.user, :project => project, :chapter => @current_chapter, :created_at => x.days.ago)
   end
 end
 
@@ -51,7 +51,7 @@ step 'there are some projects for this month with votes' do
   role = FactoryGirl.create(:role, :chapter => @current_chapter)
   3.times do
     project = FactoryGirl.create(:project, :chapter => @current_chapter)
-    FactoryGirl.create(:vote, :user => role.user, :project => project)
+    FactoryGirl.create(:vote, :user => role.user, :project => project, :chapter => @current_chapter)
   end
 end
 
@@ -60,7 +60,7 @@ step 'there are some projects in the "Any" chapter for this month with votes' do
   role = FactoryGirl.create(:role, :chapter => @current_chapter)
   3.times do
     project = FactoryGirl.create(:project, :chapter => @any_chapter)
-    FactoryGirl.create(:vote, :user => role.user, :project => project)
+    FactoryGirl.create(:vote, :user => role.user, :project => project, :chapter => @current_chapter)
   end
 end
 

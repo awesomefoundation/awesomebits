@@ -9,9 +9,13 @@ class FinalistsController < ApplicationController
     @start_date, @end_date = extract_timeframe
     @projects = Project.
                   includes(:chapter).
-                  voted_for_by_members_of(current_chapter).
+                  with_votes_for_chapter(current_chapter).
                   during_timeframe(@start_date, @end_date).
                   by_vote_count
+
+    unless params[:past_trustees].present?
+      @projects = @projects.with_votes_by_members_of_chapter(current_chapter)
+    end
   end
 
   private

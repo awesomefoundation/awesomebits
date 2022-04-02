@@ -1,5 +1,6 @@
 class Chapter < ApplicationRecord
   EXTRA_QUESTIONS_COUNT = 3
+  ANY_CHAPTER_NAME = "Any"
 
   DEFAULT_SUBMISSION_RESPONSE_EMAIL = <<-EOT
 We wanted to send you this (automated) email to let you know that we have received your Awesome Foundation application. Your application will be considered at the specified chapter's next deliberation meeting.
@@ -26,12 +27,16 @@ EOT
 
   validates_format_of :slug, :with => /\A[a-z0-9-]+\Z/
 
+  def self.any_chapter
+    find_by(name: ANY_CHAPTER_NAME)
+  end
+
   def self.country_count
     where(arel_table[:country].not_eq("Worldwide")).select(:country).distinct.count
   end
 
   def self.visitable
-    where("chapters.name != ?", "Any")
+    where.not(name: ANY_CHAPTER_NAME)
   end
 
   def self.active
@@ -39,24 +44,24 @@ EOT
   end
 
   def self.for_display
-    select("(case chapters.name when 'Any' then '0 Any' end) as sort_name, chapters.*").
+    select("(case chapters.name when '#{ANY_CHAPTER_NAME}' then '0 #{ANY_CHAPTER_NAME}' end) as sort_name, chapters.*").
     order("sort_name, chapters.name")
   end
 
   def self.invitable_by(user)
     if user.admin?
-      where("chapters.name != 'Any'")
+      where.not(name: ANY_CHAPTER_NAME)
     else
       joins(:roles).
         where("roles.name = 'dean'").
         where("roles.user_id = ?", user.id).
-        where("chapters.name != 'Any'")
+        where.not(name: ANY_CHAPTER_NAME)
     end
   end
 
   # Scope can be :active or :all
   def self.select_data(scope = :active)
-    countries = [OpenStruct.new(:name => "Any Chapter", :chapters => where("chapters.name = ?", "Any"))]
+    countries = [OpenStruct.new(:name => "Any Chapter", :chapters => where(name: ANY_CHAPTER_NAME))]
 
     selection = scope == :all ? visitable : active.visitable
 
@@ -80,7 +85,7 @@ EOT
   end
 
   def any_chapter?
-    name == "Any"
+    name == ANY_CHAPTER_NAME
   end
 
   def global?

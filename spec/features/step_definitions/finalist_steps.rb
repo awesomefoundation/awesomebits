@@ -54,3 +54,7 @@ end
 step 'I should see the project I shortlisted' do
   expect(page).to have_css("tr.finalist[data-id='#{@shortlisted_project_id}']")
 end
+
+step 'I should not see the project I shortlisted' do
+  expect(page).to_not have_css("tr.finalist[data-id='#{@shortlisted_project_id}']")
+end

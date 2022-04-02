@@ -107,7 +107,9 @@ ru:
   projects:
     wait-for-uploads-to-complete: Пожалуйста, дождитесь пока ваши изображения загрузятся на наш сайт, после этого отправляйте вашу заявку.
     project:
-      awesome: Потрясающий
+      awesome:
+        one: Потрясающий
+        other: Потрясающий (%{chapter})
       delete: Удалить этот проект
       see-the-rest: Посмотреть остальное →
       view-public-page: Посмотреть общую страницу

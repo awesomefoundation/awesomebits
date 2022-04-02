@@ -113,7 +113,9 @@
   projects:
     wait-for-uploads-to-complete: "Խնդրում ենք սպասել լուսանկարի բեռնման ավարտին նախքան Ձեր դիմումը ուղարկելը:"
     project:
-      awesome: Օսմ
+      awesome:
+        one: Օսմ
+        other: Օսմ (%{chapter})
       delete: Ջնջել այս նախագիծը
       see-the-rest: Դիտել մնացյալը →
       view-public-page: Դիտել հրապարակային էջը

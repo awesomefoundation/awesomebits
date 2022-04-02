@@ -29,8 +29,8 @@ describe ProjectFilter do
     shortlisted_project = FactoryGirl.create(:project, :chapter => chapter)
     project = FactoryGirl.create(:project, :chapter => chapter)
     user = FactoryGirl.create(:user_with_dean_role, :chapters => [chapter])
-    FactoryGirl.create(:vote, :user => user, :project => shortlisted_project)
-    FactoryGirl.create(:vote, :user => FactoryGirl.create(:user), :project => shortlisted_project)
+    FactoryGirl.create(:vote, :user => user, :project => shortlisted_project, :chapter => chapter)
+    FactoryGirl.create(:vote, :user => FactoryGirl.create(:user, chapters: [chapter]), :project => shortlisted_project, :chapter => chapter)
 
     project_filter = ProjectFilter.new(Project)
     expect(project_filter.shortlisted_by(user).result).to eq([shortlisted_project])

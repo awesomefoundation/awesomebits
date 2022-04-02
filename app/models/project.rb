@@ -49,11 +49,19 @@ class Project < ApplicationRecord
   def self.visible_to(user)
     joins(:chapter).
       joins("LEFT OUTER JOIN roles ON roles.chapter_id = chapters.id").
-      where("roles.user_id = #{user.id} OR chapters.name = 'Any'")
+      where("roles.user_id = #{user.id} OR chapters.name = ?", Chapter::ANY_CHAPTER_NAME)
+  end
+
+  def self.with_votes_for_chapter(c)
+    where(id: Vote.where(chapter: c).select(:project_id))
+  end
+
+  def self.with_votes_by_members_of_chapter(c)
+    joins(:users).merge(User.where(id: c.users.select(:id)))
   end
 
   def self.voted_for_by_members_of(chapter)
-    joins(:users => :chapters).where("chapters.id = #{chapter.id} OR chapters.name = 'Any'")
+    joins(:users => :chapters).where("chapters.id = ? OR chapters.name = ?", chapter.id, Chapter::ANY_CHAPTER_NAME)
   end
 
   def self.during_timeframe(start_date, end_date)
