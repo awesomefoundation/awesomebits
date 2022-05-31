@@ -32,3 +32,9 @@ Feature: A visitor to the site submits an application
     When I fix the error and resubmit
     Then I should be thanked
     And I should get an email telling me the application went through
+
+  Scenario: A visitor is trying to submit a spam application
+    Given I am on the submission page
+    When I submit a spam project to the "Boston" chapter
+    Then I should see the notice flash
+    And the project count should be 0

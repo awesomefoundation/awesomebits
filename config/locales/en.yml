@@ -366,6 +366,8 @@ en:
           attributes:
             url:
               invalid: is not a valid website
+            base:
+              spam_detected: Application is not complete
         vote:
           attributes:
             chapter_id:

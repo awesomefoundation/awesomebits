@@ -61,7 +61,10 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(create_project_params)
 
-    if @project.save
+    if SpamChecker::Project.new(@project).spam?
+      flash[:notice] = t("flash.applications.error")
+      render :new
+    elsif @project.save
       flash[:thanks] = t("flash.applications.thanks")
       redirect_to root_path
     else

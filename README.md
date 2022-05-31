@@ -133,6 +133,13 @@ e.g. If you are running Magickly localy on port 8888, add the following line to 
 MAGICKLY_HOST=http://localhost:8888
 ```
 
+Spam Protection
+---------------
+
+We implement very basic spam projection on applications. Set the environment
+variable SPAM_REGEXP to be a `|` separated list of blocked strings which will
+be rejected at the time of project creation.
+
 
 Blacklist
 ---------
