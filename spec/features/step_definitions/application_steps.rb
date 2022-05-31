@@ -13,15 +13,21 @@ step 'I submit a project to the :name chapter' do |name|
 end
 
 step 'I fill in the application form' do
+  @about_me ||= "I am awesome"
   fill_in("Your name", :with => "Mr. Awesome")
   fill_in("Project title", :with => "Awesomeness")
   fill_in("Project website", :with => "http://awesome.com")
   fill_in("Email", :with => "awesome@awesome.com")
   fill_in("Phone", :with => "")
-  fill_in("project_about_me", :with => "I am awesome.")
+  fill_in("project_about_me", :with => @about_me)
   fill_in("project_about_project", :with => "I want to make awesomeness.")
   fill_in("project_use_for_money", :with => "I'll spend it on stuff. Obviously.")
   select("Any", :from => "Select chapter to apply to")
+end
+
+step 'I submit a spam project to the :name chapter' do |name|
+  @about_me = "--test-spam-string--"
+  step "I submit a project to the #{name} chapter"
 end
 
 step 'I should see them on the application form' do
@@ -76,6 +82,14 @@ end
 
 step 'I should see the error' do
   expect(page).to have_css(%q[.field_with_errors #project_title+.error:contains("can't be blank")])
+end
+
+step 'I should see the notice flash' do
+  expect(page).to show_the_flash("notice")
+end
+
+step 'the project count should be :num' do |num|
+  expect(Project.count).to eq(num.to_i)
 end
 
 step 'I fix the error and resubmit' do
