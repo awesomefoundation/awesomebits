@@ -1,0 +1,126 @@
+.funded_projects-index #main-container {
+    max-width: none;
+}
+
+.filters-wrapper {
+    background: rgb(230,230,230);
+    border: 1px solid rgb(200,200,200);
+    border-radius: 4px;
+    box-shadow: inset 0 -1px 0 0 rgba(255,255,255, 0.3), inset 0 1px 0 0 rgba(255,255,255, 0.8);
+    @include linear-gradient(rgb(240,240,240), rgb(220,220,220));
+    margin: 0 auto 10px;
+    padding: 10px;
+    position: relative;
+    @media all and (max-width: $maximum-width) {
+        margin: 0 10px 10px;
+        box-sizing: border-box;
+    }
+}
+
+.projects-filters {
+    max-width: $maximum-width;
+}
+
+.filters-wrapper__submit {
+    @include button(rgb(230,230,230));
+    margin: 0px;
+    margin-top: 20px;
+    width: auto;
+    font-size: 11px;
+}
+
+.filters-wrapper__select {
+    border-bottom: 1px solid rgb(200,200,200);
+    margin-bottom: 20px;
+    padding-bottom: 30px;
+}
+
+.projects-grid {
+    margin-left: 10px;
+    max-width: 1600px;
+    min-width: calc(100% - 10px);
+}
+
+.project-with-image {
+    width: 100%;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+@media (min-width: $mobile-standard) {
+    .project-with-image {
+        width: calc(50% - 10px);
+    }
+}
+
+@media (min-width: $tablet-standard) {
+    .project-with-image {
+        width: calc(25% - 10px);
+    }
+}
+
+.project-with-image__image-wrapper {
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+    width: auto;
+    z-index: 1;
+}
+
+.project-with-image__chapter {
+    margin: 1em 0;
+    color: rgba(255,255,255, 0.7);
+}
+
+.project-with-image__project-name {
+    background: rgba(0,0,0,0.5);
+    @include box-sizing(border-box);
+    padding: 10px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    white-space: normal;
+    top: calc(100% - 40px);
+    transition: top .3s ease-out;
+
+    h2 {
+        color: #fff;
+        font: normal 22px $sans-serif;
+        margin: 0px;
+        text-transform: uppercase;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    span {
+        color: rgba(255, 255, 255, 0.7);
+        margin-right: 10px;
+        font-size: 0.8em;
+        line-height: 1.4em;
+    }
+}
+
+.project-with-image:hover {
+    .project-with-image__project-name {
+        background: rgba($pink, 1);
+        top: 0;
+
+        h2 {
+            text-overflow: unset;
+            white-space: normal;
+        }
+
+        span {
+            color: $base-font-color;
+        }
+    }
+}
+
+.project-with-image__image {
+    max-width: 100%;
+    height: 100%;
+    margin: 0;
+}
