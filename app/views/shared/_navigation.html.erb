@@ -5,7 +5,7 @@
       <h1><%= t "layouts.application.main-header" %></h1>
     <% end -%>
     <button class='hamburger'></button>
-    <ol>
+    <ol class="flexbox horizontal">
       <li><%= link_to t("layouts.application.home"), root_path, :class => :home %></li>
       <li><%= link_to t("layouts.application.about_us"), about_us_path, :class => :about_us %></li>
       <li><%= link_to t("layouts.application.chapters"), chapters_path, :class => :chapters %></li>

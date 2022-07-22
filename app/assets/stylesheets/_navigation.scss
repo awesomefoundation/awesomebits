@@ -13,6 +13,7 @@
           float: none;
           clear: both;
           display: none;
+          max-width: unset;
         }
       }
       .hamburger {
@@ -40,6 +41,16 @@
 
 .shownav > ol {
   display: block !important;
+}
+
+header.main {
+    ol {
+        li {
+            white-space: nowrap;
+        }
+
+        max-width: 600px;
+    }
 }
 
 @media all and (max-width: $mobile-standard) {
