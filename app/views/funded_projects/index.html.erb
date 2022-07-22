@@ -1,3 +1,7 @@
+<% page_title = " (#{params[:q]})" if params[:q].present? %>
+<% page_title = page_title.to_s + " - " + @chapter.name if @chapter.present? %>
+<% provide :page_title, t("layouts.application.projects") + page_title.to_s %>
+
 <section class="filters-wrapper projects-filters">
   <h1 class="filters-wrapper__title"><%= t("layouts.application.projects") %></h1>
   <%= form_with method: :get, local: true do |f| %>
