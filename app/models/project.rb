@@ -42,6 +42,8 @@ class Project < ApplicationRecord
   extend Searchable(:name, :title, :email, :about_me, :about_project, :use_for_money,
                     :extra_answer_1, :extra_answer_2, :extra_answer_3)
 
+  scope :public_search, lambda { |query| search({ name: query, title: query, funded_description: query, url: query }, false) }
+
   def self.winner_count
     where("funded_on IS NOT NULL").count
   end
