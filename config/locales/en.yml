@@ -117,6 +117,7 @@ en:
         votes: Votes
   funded_projects:
     index:
+      all_chapters: All Chapters
       reset: Reset
   passwords:
     create:

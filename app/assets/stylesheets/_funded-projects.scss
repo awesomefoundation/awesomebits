@@ -19,6 +19,7 @@
 
 .projects-filters {
     max-width: $maximum-width;
+    margin-bottom: 3em;
 }
 
 .filters-wrapper__submit {
@@ -33,6 +34,10 @@
     border-bottom: 1px solid rgb(200,200,200);
     margin-bottom: 20px;
     padding-bottom: 30px;
+}
+
+.filters-wrapper__title {
+    text-transform: uppercase;
 }
 
 .projects-grid {

@@ -1,7 +1,8 @@
 <section class="filters-wrapper projects-filters">
+  <h1 class="filters-wrapper__title"><%= t("layout.application.projects") %></h1>
   <%= form_with method: :get, local: true do |f| %>
   <%= f.text_field :q, class: "filters-wrapper__text-field", value: params[:q] %>
-  <%= f.select :chapter, @chapters, include_blank: "All chapters", selected: params[:chapter] %>
+  <%= f.select :chapter, @chapters, include_blank: t(".all_chapters"), selected: params[:chapter] %>
   <button type="submit" title="<%= t("filter-button", scope: [:projects, :index]) %>" class="filters-wrapper__submit">
     <span class="icon-search"></span>
   </button>
