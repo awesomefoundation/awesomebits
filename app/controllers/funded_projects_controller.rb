@@ -3,7 +3,7 @@ class FundedProjectsController < ApplicationController
     @projects = Project.preload(:primary_photo, :chapter).winners.order(funded_on: :desc)
 
     if params[:q].present?
-      @projects = @projects.search(params[:q]) if params[:q].present?
+      @projects = @projects.public_search(params[:q]) if params[:q].present?
     end
 
     if params[:chapter].present?
