@@ -86,7 +86,7 @@ class Project < ApplicationRecord
   end
 
   def self.winners
-    where("funded_on IS NOT NULL")
+    where.not(funded_on: nil)
   end
 
   def self.recent_winners

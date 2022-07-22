@@ -41,6 +41,7 @@ en:
       blog: Blog
       chapters: Chapters
       chapter_header: Awesome Everywhere!
+      projects: Projects
       home: Home
       about_us: About Us
       start_a_chapter: Start a Chapter
@@ -114,6 +115,10 @@ en:
         title: Title
         id: ID
         votes: Votes
+  funded_projects:
+    index:
+      all_chapters: All Chapters
+      reset: Reset
   passwords:
     create:
       description: You will receive an email within the next few minutes. It contains instructions for changing your password.

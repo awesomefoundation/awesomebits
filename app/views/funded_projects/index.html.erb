@@ -1,0 +1,31 @@
+<section class="filters-wrapper projects-filters">
+  <h1 class="filters-wrapper__title"><%= t("layout.application.projects") %></h1>
+  <%= form_with method: :get, local: true do |f| %>
+  <%= f.text_field :q, class: "filters-wrapper__text-field", value: params[:q] %>
+  <%= f.select :chapter, @chapters, include_blank: t(".all_chapters"), selected: params[:chapter] %>
+  <button type="submit" title="<%= t("filter-button", scope: [:projects, :index]) %>" class="filters-wrapper__submit">
+    <span class="icon-search"></span>
+  </button>
+  <%= link_to t(".reset"), funded_projects_path %>
+  <% end %>
+</section>
+
+<div class="projects-grid flexbox wrap horizontal">
+<% @projects.each do |project| %>
+<article class="project-with-image">
+  <%= link_to project do %>
+  <div class="project-with-image__image-wrapper">
+    <div class="project-with-image__project-name">
+      <h2><%= project.title %></h2>
+      <div class="project-with-image__chapter"><%= project.chapter.display_name %></div>
+      <span><%= t("byline", name: project.name, scope: [:chapters, :show]) %></span>
+      <span><%= l project.funded_on, format: :funding %></span>
+    </div>
+    <%= image_tag(project.primary_image.url(:index), class: "project-with-image__image") %>
+  </div>
+  <% end %>
+</article>
+<% end %>
+</div>
+
+<%= will_paginate(@projects) %>

@@ -60,8 +60,8 @@ EOT
   end
 
   # Scope can be :active or :all
-  def self.select_data(scope = :active)
-    countries = [OpenStruct.new(:name => "Any Chapter", :chapters => where(name: ANY_CHAPTER_NAME))]
+  def self.select_data(scope = :active, include_any: true)
+    countries = include_any ? [OpenStruct.new(:name => "Any Chapter", :chapters => where(name: ANY_CHAPTER_NAME))] : []
 
     selection = scope == :all ? visitable : active.visitable
 
