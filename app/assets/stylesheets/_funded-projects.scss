@@ -61,12 +61,10 @@
 }
 
 .project-with-image__image-wrapper {
-    height: 100%;
     overflow: hidden;
     position: relative;
     text-decoration: none;
     width: auto;
-    z-index: 1;
 }
 
 .project-with-image__chapter {
@@ -84,6 +82,7 @@
     white-space: normal;
     top: calc(100% - 40px);
     transition: top .3s ease-out;
+    z-index: 1;
 
     h2 {
         color: #fff;
@@ -121,6 +120,6 @@
 
 .project-with-image__image {
     max-width: 100%;
-    height: 100%;
     margin: 0;
+    display: block;
 }
