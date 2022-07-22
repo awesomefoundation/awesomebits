@@ -1,3 +1,4 @@
+<% provide(:page_title, t(".title", name: @chapter.display_name, count: @projects.count)) %>
 <% provide(:meta_viewport, 'width=device-width, initial-scale=1, maximum-scale=1') %>
 
 <section class="admin-panel">
@@ -5,7 +6,7 @@
 </section>
 
 <section class="applications">
-  <h1><%= t ".title", :name => @chapter.display_name, :count => @projects.count %></h1>
+  <h1><%= t ".title", name:  @chapter.display_name, count: @projects.count %></h1>
   <section class="application-filters flexbox vertical">
     <nav>
       <%= link_to '#', :class => 'chapter-selection' do %>

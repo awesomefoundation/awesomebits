@@ -15,6 +15,7 @@ class FundedProjectsController < ApplicationController
     respond_to do |format|
       format.xml
       format.html do
+        @chapter = Chapter.find(params[:chapter]) if params[:chapter].present?
         @chapters = Chapter.joins(:winning_projects).distinct.select_data(:all, include_any: false).collect { |c| [c.name, c.chapters.collect { |chapter| [chapter.name, chapter.slug] }] }
       end
     end
