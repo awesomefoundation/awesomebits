@@ -190,6 +190,11 @@ header.project {
     p, li {
       color: $lighter-base-font-color;
       font: normal 14px/22px $sans-serif;
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
     }
   }
 
