@@ -6,8 +6,12 @@
   <%= stylesheet_link_tag "application", media: "all" %>
   <%= csrf_meta_tags %>
   <%= meta_tag :viewport, "width=device-width, initial-scale=1", :name => 'viewport' %>
-  <%= meta_tag :description, t("meta.description"), :name => "description", :property => "og:description" %>
-  <%= meta_tag :image, image_url("logo-1500x750.png"), :property => "og:image" %>
+  <%= meta_tag :description, t("meta.description"), name: "description" %>
+  <%= meta_tag :description, t("meta.description"), property: "og:description" %>
+  <%= meta_tag :image, image_url("logo-1500x750.png"), property: "og:image" %>
+  <%= tag :meta, property: "og:title" , content: content_for?(:page_title) ? content_for(:page_title) : t(".main-header")%>
+  <%= tag :meta, property: "og:url", content: url_for(only_path: false) %>
+  <%= meta_tag :type, "website", property: "og:type" %>
 
   <%= render "layouts/locales" %>
 
