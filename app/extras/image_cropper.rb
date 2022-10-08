@@ -3,7 +3,7 @@ class ImageCropper
   # (so we don't have to set ENV in the test suite)
   attr_accessor :host
 
-  # service can be one of [:magickly, :thumbor]
+  # service can be one of [:magickly, :thumbor, :imgproxy]
   # photo is a Photo object
   def initialize(service, photo)
     service = "ImageCropper::#{service.to_s.classify}".constantize
@@ -41,6 +41,56 @@ class ImageCropper
         "convert", "-auto-orient",
         "thumb", "#{crop}#{'#' if crop.match(/\d$/)}",
       ].collect { |part| CGI.escape(part) }.join("/")
+    end
+  end
+
+  class Imgproxy
+    def initialize(photo)
+      @photo = photo
+    end
+
+    def host
+      ENV.fetch("IMGPROXY_HOST")
+    end
+
+    def path(crop)
+      sign([ crop_string(crop), "format:jpg", "plain", CGI.escape(URI.unescape(@photo.original_url)) ].compact.join("/"))
+    end
+
+    protected
+
+    def sign(path_string)
+      if ENV["IMGPROXY_KEY"] && ENV["IMGPROXY_SALT"]
+        key = [ENV["IMGPROXY_KEY"]].pack("H*")
+        salt = [ENV["IMGPROXY_SALT"]].pack("H*")
+
+        digest = OpenSSL::Digest.new("sha256")
+        hmac = Base64.urlsafe_encode64(OpenSSL::HMAC.digest(digest, key, "#{salt}/#{path_string}")).tr("=", "")
+
+        [hmac, path_string].join("/")
+
+      else
+        ["insecure", path_string].join("/")
+      end
+    end
+
+    def crop_string(crop)
+      if match = crop.match(/(\d*)x(\d*)(>?)/)
+        parts = ["rs", "fill"]
+
+        parts << match[1].presence || "0"
+        parts << match[2].presence || "0"
+
+        # By default imgproxy does not scale up, but that is counter to the
+        # ImageMagick cropping strings, so flip the logic here
+        parts << "1" unless match[3].present?
+
+        parts.join(":")
+
+      else
+        # This is not a string format we recognize, so no parsing
+        nil
+      end
     end
   end
 

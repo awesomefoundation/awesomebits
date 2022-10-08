@@ -78,7 +78,13 @@ class Photo < ApplicationRecord
   end
 
   def cropped_image_url(crop)
-    cropper = ENV['THUMBOR_HOST'] ? :thumbor : :magickly
+    cropper = if ENV['IMGPROXY_HOST']
+                :imgproxy
+              elsif ENV['THUMBOR_HOST']
+                :thumbor
+              else
+                :magickly
+              end
     ImageCropper.new(cropper, self).crop_url(crop)
   end
 
