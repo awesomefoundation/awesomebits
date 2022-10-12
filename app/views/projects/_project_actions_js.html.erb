@@ -7,5 +7,19 @@
         $(this).blur();
       });
     });
+
+    const projectNavigator = new ProjectNavigator();
+
+    document.addEventListener("keydown", (event) => {
+      if (event.target.tagName == "INPUT" || event.target.tagName == "TEXTAREA") {
+        return;
+      }
+
+      if (event.key == "d") {
+        projectNavigator.nextProject();
+      } else if (event.key == "a") {
+        projectNavigator.previousProject();
+      }
+    });
   <% end %>
 <% end %>
