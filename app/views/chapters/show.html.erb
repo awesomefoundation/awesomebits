@@ -47,7 +47,7 @@
                   <span><%= t(".byline", :name => project.name) %> </span>
                   <span><%= l project.funded_on, :format => :funding %></span>
                 </div>
-                <%= image_tag(project.primary_image.url(:index)) %>
+                <%= image_tag(project.primary_image.url(:index), loading: "lazy") %>
               </div>
             <% end %>
           </article>
