@@ -91,7 +91,7 @@
 <section class="project-proposal-details">
   <div class="project-pitch">
     <% if project.photos.any? %>
-      <% if current_user.admin? # TODO: just here for initial testing before going live to everyone %>
+      <% if ENV['APPLICATION_IMAGE_PREVIEWS'].present? %>
       <div class="gallery flexbox wrap">
       <% project.photos.each_with_index do |image, index| %>
         <div class="application__image-wrapper">
