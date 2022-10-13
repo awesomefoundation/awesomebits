@@ -30,7 +30,7 @@ class Photo < ApplicationRecord
   self.fog_config = Rails.configuration.fog
 
   def image?
-    image_content_type.match?(/^image\//)
+    image_content_type.to_s.match?(/^image\//)
   end
 
   # Build a URL to dynamically resize application images via an external service
