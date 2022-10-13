@@ -90,15 +90,32 @@
 
 <section class="project-proposal-details">
   <div class="project-pitch">
-    <% if project.has_images? %>
+    <% if project.photos.any? %>
+      <% if current_user.admin? # TODO: just here for initial testing before going live to everyone %>
+      <div class="gallery flexbox wrap">
+      <% project.photos.each_with_index do |image, index| %>
+        <div class="application__image-wrapper">
+          <%= link_to(image_path(image.url), rel: "project-#{project.id}-images", class: "lightbox", target: "_blank") do -%>
+            <% if image.image? %>
+              <%= image_tag(image.url(:small_square), height: "auto", width: "100%", loading: "lazy") -%>
+            <% else %>
+              <%= image_tag("document-svgrepo-com.svg", class: "application__image-placeholder") %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+      </div>
+      <% else %>
       <h3><%= I18n.t(".images", scope: "projects.project") %></h3>
       <p class="gallery">
-      <% project.photos.each_with_index do |image, index| %>
-        <%= link_to I18n.t(".image", scope: "projects.project", index: index + 1), image_path(image.url), :rel => "project-#{project.id}-images", :class => "lightbox", :target => "blank" %>
-      <% end %>
+        <% project.photos.each_with_index do |image, index| %>
+          <%= link_to I18n.t(".image", scope: "projects.project", index: index + 1), image_path(image.url), :rel => "project-#{project.id}-images", :class => "lightbox", :target => "blank" %>
+        <% end %>
       </p>
     <% end %>
+    <% end %>
 
+    <div class="application__body">
     <h3><%= I18n.t(".about-project", scope: "projects.project") %></h3>
     <%= markdown project.about_project, :link_attributes => { :target => "_blank" }, :hard_wrap => true %>
     <h3><%= I18n.t(".use-for-money", scope: "projects.project") %></h3>
@@ -112,6 +129,7 @@
         <%= markdown project.extra_answer(num), :link_attributes => { :target => "_blank" } || "_#{I18n.t '.not-answered', scope: 'projects.project'}_" %>
       <% end %>
     <% end %>
+    </div>
   </div>
 
 </section>

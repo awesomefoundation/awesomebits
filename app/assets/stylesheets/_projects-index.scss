@@ -12,6 +12,25 @@ body.projects-index {
   
 }
 
+.application__image-wrapper {
+  margin-right: 5px;
+  width: 10%;
+  display: block;
+  float: left;
+
+  @media all and (max-width: $maximum-width) {
+    width: 18%;
+  }
+}
+
+.application__image-placeholder {
+  opacity: 0.4;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
 .admin-panel {
   border-right: 1px solid rgb(200,200,200);
   float: left;
@@ -127,6 +146,10 @@ body.projects-index {
   /* Ensure 'Back to Chapter' link on admin view of project page is the correct font size */
   > p:nth-child(2) {
     font-size: 0.8em;
+  }
+
+  @media all and (min-width: $maximum-width) {
+    width: grid-width(9);
   }
 
   @media all and (max-width: $maximum-width) {
@@ -498,6 +521,21 @@ body.projects-index {
 
         p {
           margin-bottom: 10px;
+        }
+
+        .gallery {
+          margin-bottom: 1em;
+
+          img {
+            width: 100%;
+            margin: 0;
+            border-radius: 4px;
+            filter: grayscale(100%);
+
+            &:hover {
+              filter: none;
+            }
+          }
         }
       }
 
