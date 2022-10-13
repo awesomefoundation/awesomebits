@@ -25,6 +25,10 @@ body.projects-index {
 
 .application__image-placeholder {
   opacity: 0.4;
+
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .admin-panel {
@@ -523,8 +527,14 @@ body.projects-index {
           margin-bottom: 1em;
 
           img {
-              width: 100%;
-              margin: 0;
+            width: 100%;
+            margin: 0;
+            border-radius: 4px;
+            filter: grayscale(100%);
+
+            &:hover {
+              filter: none;
+            }
           }
         }
       }

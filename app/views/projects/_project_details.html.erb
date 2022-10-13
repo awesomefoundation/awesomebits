@@ -97,7 +97,7 @@
         <div class="application__image-wrapper">
           <%= link_to(image_path(image.url), rel: "project-#{project.id}-images", class: "lightbox", target: "_blank") do -%>
             <% if image.image? %>
-              <%= image_tag(image.url(:small_square), loading: "lazy") -%>
+              <%= image_tag(image.url(:small_square), height: "auto", width: "100%", loading: "lazy") -%>
             <% else %>
               <%= image_tag("document-svgrepo-com.svg", class: "application__image-placeholder") %>
             <% end %>
