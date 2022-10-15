@@ -179,9 +179,12 @@ GEM
     marcel (1.0.2)
     metaclass (0.0.4)
     method_source (0.7.1)
-    mime-types (3.2.2)
+    mime-types (3.4.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2018.0812)
+    mime-types-data (3.2022.0105)
+    mimemagic (0.3.10)
+      nokogiri (~> 1)
+      rake
     mini_mime (1.1.2)
     mini_portile2 (2.6.1)
     minitest (5.15.0)
@@ -194,11 +197,12 @@ GEM
     nokogiri (1.12.5)
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
-    paperclip (4.1.1)
-      activemodel (>= 3.0.0)
-      activesupport (>= 3.0.0)
-      cocaine (~> 0.5.3)
+    paperclip (5.2.0)
+      activemodel (>= 4.2.0)
+      activesupport (>= 4.2.0)
+      cocaine (~> 0.5.5)
       mime-types
+      mimemagic (~> 0.3.0)
     pg (0.20.0)
     pry (0.9.9.6)
       coderay (~> 1.0.5)
@@ -399,7 +403,7 @@ DEPENDENCIES
   magnific-popup-rails
   newrelic_rpm (~> 3.18.1)
   nokogiri (~> 1.12.5)
-  paperclip (~> 4.1.1)
+  paperclip (~> 5.2.0)
   pg (~> 0.20.0)
   pry
   pry-nav
