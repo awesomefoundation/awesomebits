@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.5.5'
+ruby '2.5.9'
 
-gem 'rails', '5.2.4.6'
+gem 'rails', '5.2.8.1'
 gem 'rake', '< 13.0'
 gem 'bootsnap','>= 1.1.0', require: false
 
