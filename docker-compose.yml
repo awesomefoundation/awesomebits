@@ -1,18 +1,33 @@
-db:
-  image: postgres
-  environment:
-    POSTGRES_USER: "postgres"
-    POSTGRES_PASSWORD: "mysecretpassword"
-web:
-  build: .
-  volumes:
-    - .:/app
-  ports:
-    - "3000:3000"
-  links:
-    - db
-  environment:
-    POSTGRES_HOST: "db"
-    POSTGRES_USER: "postgres"
-    POSTGRES_PASSWORD: "mysecretpassword"
-    DB_NAME: "postgres"
+services:
+  db:
+    image: postgres
+    volumes:
+      - postgresqldata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "mysecretpassword"
+
+  web:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    environment:
+      APPLICATION_IMAGE_PREVIEWS: true
+      DB_NAME: postgres
+      DEFAULT_URL: http://host.docker.internal:3000
+      POSTGRES_HOST: db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mysecretpassword
+      IMGPROXY_HOST: //localhost:8080
+    depends_on:
+      - db
+
+  imgproxy:
+    image: darthsim/imgproxy:v3.8
+    ports:
+      - 8080:8080
+
+volumes:
+  postgresqldata:
