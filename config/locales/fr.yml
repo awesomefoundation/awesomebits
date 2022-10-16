@@ -142,6 +142,8 @@ fr:
       title: Êtes-vous prêt à devenir Awesome !?
       description: Remplissez simplement le formulaire ci-dessous avec des informations sur vous et sur votre projet.
       apply: Envoyer
+    success:
+      title: Merci pour votre candidature !
     form:
       save: Sauvegarder
       image-notes: "L'image d'en haut sert d'image de couverture. Les images seront redimensionnées à %{dimensions} pixels. En cas d'erreur, merci de réessayer avec de plus petites images."

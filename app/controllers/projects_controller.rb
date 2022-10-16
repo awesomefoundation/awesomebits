@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :must_be_logged_in, :except => [:show, :new, :create]
+  before_action :must_be_logged_in, :except => [:show, :new, :create, :success]
   before_action :verify_user_can_edit, :only => [:destroy]
   before_action :redirect_to_chapter_or_sign_in, :only => [:index], :if => :chapter_missing?
   before_action :handle_unpublished_projects, :only => [:show]
@@ -65,12 +65,20 @@ class ProjectsController < ApplicationController
       flash[:notice] = t("flash.applications.error")
       render :new
     elsif @project.save
-      flash[:thanks] = t("flash.applications.thanks")
-      redirect_to root_path
+      redirect_to success_submissions_path(chapter: @project.chapter)
     else
       flash.now[:notice] = t("flash.applications.error")
       render :new
     end
+  end
+
+  def success
+    if params[:chapter]
+      @chapter = Chapter.find(params[:chapter].downcase) rescue nil
+      @twitter_account = @chapter.twitter_account
+    end
+
+    @share_url = root_url
   end
 
   def show

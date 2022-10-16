@@ -65,7 +65,7 @@ step 'I submit a project to the :name chapter with the extra questions answered'
 end
 
 step 'I should be thanked' do
-  expect(page).to show_the_flash("thanks")
+  expect(page.body).to match(/#{I18n.t("projects.success.title")}/)
 end
 
 step 'I should get an email telling me the application went through' do

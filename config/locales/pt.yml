@@ -142,6 +142,8 @@ pt:
       title: Você está pronto para ser Irado!?
       description: Preencha o formulário abaixo com seus dados e detalhes do seu projeto.
       apply: "Enviar"
+    success:
+      title: Obrigado pelo envio!
     form:
       save: Salvar
       image-notes: A primeira imagem é usada como imagem de capa. As imagens serão redimensionadas para %{dimensions} pixels. Se você receber uma mensagem de erro, por favor tente novamente com menos arquivos ou arquivos menores.

@@ -12,6 +12,15 @@
     font: normal 14px/20px $sans-serif;
     text-align: center;
   }
+
+  a {
+    color: $pink;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .project-form {

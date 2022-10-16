@@ -1,0 +1,15 @@
+<% provide :page_title, t(".title") %>
+
+<div class="flexbox vertical center">
+  <section class="application-intro">
+    <h1><%= t ".title" %></h1>
+    <p><%= t(".description", chapter: @chapter.name) %></p>
+    <p><%= link_to t(".explore-projects"), projects_path %></p>
+    <p>
+      <%= link_to t(".share-on-twitter"), "https://twitter.com/intent/tweet?text=#{t('.i-just-applied-tweet', twitter: @twitter_account || '@awesomefound')}&url=#{@share_url}&related=#{@twitter_account},@awesomefound", class: "button--pill button--small", target: "_blank" %>
+      <%= link_to t(".share-on-facebook"), "https://www.facebook.com/sharer.php?u=#{@share_url}", class: "button--pill button--small", target: "_blank" %>
+    </p>
+    
+  </section>
+
+</div>

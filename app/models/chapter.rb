@@ -135,4 +135,11 @@ EOT
       self.inactive_at = nil
     end
   end
+
+  def twitter_account
+    if account = twitter_url.to_s.split("/").compact.last
+      account = "@#{account}" unless account.match(/^@/)
+      account
+    end
+  end
 end

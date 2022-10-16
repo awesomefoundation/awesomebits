@@ -1,0 +1,24 @@
+.button--pill {
+  @include button(pill, $button-pink);
+  margin: 6px;
+  text-decoration: none;
+  color: white;
+
+  &:visited {
+    color: white;
+  }
+
+  &:link {
+    color: white;
+    text-decoration: none;
+  }
+
+  &:hover, &:hover:not(:disabled) {
+    text-decoration: none;
+  }
+}
+
+.button--small {
+  padding: 7px 12px 6px;
+  font-size: 0.8em;
+}
