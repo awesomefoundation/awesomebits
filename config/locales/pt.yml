@@ -144,6 +144,11 @@ pt:
       apply: "Enviar"
     success:
       title: Obrigado pelo envio!
+      description: A sua proposta enviada para o capítulo %{chapter} será revisada e avaliada.
+      explore-projects: Veja mais Projetos Incríveis
+      share-on-twitter: Compartilhe no Twitter
+      share-on-facebook: Compartilhe no Facebook
+      i-just-applied-tweet: Acabo de me inscrever em um edital de %{twitter}!
     form:
       save: Salvar
       image-notes: A primeira imagem é usada como imagem de capa. As imagens serão redimensionadas para %{dimensions} pixels. Se você receber uma mensagem de erro, por favor tente novamente com menos arquivos ou arquivos menores.
