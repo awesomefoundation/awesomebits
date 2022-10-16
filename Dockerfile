@@ -1,7 +1,9 @@
-FROM ruby:2.5.9
+FROM ruby:2.5.9-alpine
 
-RUN apt-get update -qq \
-  && apt-get install -y build-essential libpq-dev nodejs
+RUN apk update && \
+    apk upgrade && \
+    apk add --no-cache linux-headers libxml2-dev make gcc libc-dev nodejs tzdata postgresql-dev postgresql && \
+    apk add --virtual build-packages --no-cache build-base curl-dev
 
 WORKDIR /app
 ADD Gemfile /app/Gemfile
