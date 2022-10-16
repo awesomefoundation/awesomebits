@@ -166,6 +166,13 @@ en:
       title: Are you ready to get Awesome!?
       description: Just fill out the application below with information about yourself and the details of your project.
       apply: Apply
+    success:
+      title: Thanks for applying!
+      description: We look forward to reviewing your application to the %{chapter} chapter.
+      explore-projects: Explore more Awesome Projects
+      share-on-twitter: Share on Twitter
+      share-on-facebook: Share on Facebook
+      i-just-applied-tweet: I just applied for a grant from %{twitter}!
     form:
       save: Save
       image-notes: Upload up to 5 images that will help the trustees better understand your project. If you get an error message, please try again with a smaller file.

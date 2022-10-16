@@ -153,6 +153,8 @@ es:
       title: ¿Estás listo para ser impresionante!?
       description: Simplemente completa la solicitud a continuación con información sobre tí y los detalles de tu proyecto.
       apply: Solicita
+    success:
+      title: ¡Gracias por solicitar!
     form:
       save: Guarda
       image-notes: La imagen superior está fijada como la imagen de la cubierta. El tamaño de las imágenes será ajustado a %{dimensions} pixels. Si recibes un mensaje de error, por favor intenta nuevamente con menos archivos o archivos más pequeños.

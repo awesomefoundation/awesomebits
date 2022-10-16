@@ -51,7 +51,11 @@ Rails.application.routes.draw do
       resource :vote, :only => [:create, :destroy]
     end
 
-    resources :submissions, :controller => "projects"
+    resources :submissions, controller: "projects" do
+      collection do
+        get "success"
+      end
+    end
 
     resources :roles, :only => [:destroy] do
       resource :promotions, :only => [:create, :destroy]
