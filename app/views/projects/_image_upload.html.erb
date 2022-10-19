@@ -6,7 +6,7 @@
         <%= form.input :photo_order, as: :hidden %>
         <% form.object.photos.each do |photo| %>
           <li data-id="<%= photo.id %>">
-            <span><%= photo.image_file_name %></span>
+            <span><%= photo.image.original_filename %></span>
             <a href="#" class="remove-image" data-remove="true">remove</a>
           </li>
         <% end %>

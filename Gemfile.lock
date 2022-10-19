@@ -42,8 +42,25 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    addressable (2.2.8)
+    addressable (2.8.1)
+      public_suffix (>= 2.0.2, < 6.0)
     arel (9.0.0)
+    aws-eventstream (1.2.0)
+    aws-partitions (1.646.0)
+    aws-sdk-core (3.160.0)
+      aws-eventstream (~> 1, >= 1.0.2)
+      aws-partitions (~> 1, >= 1.525.0)
+      aws-sigv4 (~> 1.1)
+      jmespath (~> 1, >= 1.6.1)
+    aws-sdk-kms (1.58.0)
+      aws-sdk-core (~> 3, >= 3.127.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-s3 (1.114.0)
+      aws-sdk-core (~> 3, >= 3.127.0)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.4)
+    aws-sigv4 (1.5.2)
+      aws-eventstream (~> 1, >= 1.0.2)
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
@@ -96,6 +113,7 @@ GEM
     columnize (0.8.9)
     concurrent-ruby (1.1.10)
     connection_pool (2.2.2)
+    content_disposition (1.0.0)
     crass (1.0.6)
     database_cleaner (1.7.0)
     debugger-linecache (1.2.0)
@@ -103,6 +121,8 @@ GEM
     dotenv (1.0.2)
     dotenv-rails (1.0.2)
       dotenv (= 1.0.2)
+    down (5.3.1)
+      addressable (~> 2.8)
     email_spec (1.6.0)
       launchy (~> 2.1)
       mail (~> 2.2)
@@ -152,6 +172,7 @@ GEM
       actionpack (>= 3.0.0)
     jbuilder (2.10.1)
       activesupport (>= 5.0.0)
+    jmespath (1.6.1)
     jquery-fileupload-rails (0.4.1)
       actionpack (>= 3.1)
       railties (>= 3.1)
@@ -162,10 +183,10 @@ GEM
     jquery-ui-rails (3.0.1)
       jquery-rails
       railties (>= 3.1.0)
-    launchy (2.1.0)
-      addressable (~> 2.2.6)
-    letter_opener (1.0.0)
-      launchy (>= 2.0.4)
+    launchy (2.5.0)
+      addressable (~> 2.7)
+    letter_opener (1.8.1)
+      launchy (>= 2.2, < 3)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -206,6 +227,7 @@ GEM
       slop (>= 2.4.4, < 3)
     pry-nav (0.2.1)
       pry (~> 0.9.9)
+    public_suffix (4.0.7)
     puma (5.6.4)
       nio4r (~> 2.0)
     racc (1.6.0)
@@ -318,6 +340,9 @@ GEM
       rack
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
+    shrine (3.4.0)
+      content_disposition (~> 1.0)
+      down (~> 5.1)
     simple_form (4.1.0)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -369,6 +394,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aws-sdk-s3
   bootsnap (>= 1.1.0)
   bourbon (~> 4.0.2)
   bourne
@@ -377,6 +403,7 @@ DEPENDENCIES
   capybara-screenshot (~> 1.0.11)
   clearance (~> 1.13.0)
   clearance-deprecated_password_strategies
+  climate_control
   coffee-rails
   database_cleaner
   dotenv-rails
@@ -420,6 +447,7 @@ DEPENDENCIES
   selenium-webdriver
   sham_rack
   shoulda-matchers
+  shrine (~> 3)
   simple_form (~> 4.1)
   sprockets-redirect
   sucker_punch (~> 1.0)
