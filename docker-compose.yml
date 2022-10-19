@@ -17,10 +17,11 @@ services:
       APPLICATION_IMAGE_PREVIEWS: true
       DB_NAME: postgres
       DEFAULT_URL: http://host.docker.internal:3000
+      IMGPROXY_HOST: //localhost:8080
       POSTGRES_HOST: db
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: mysecretpassword
-      IMGPROXY_HOST: //localhost:8080
+      SHRINE_UPLOADS:
     depends_on:
       - db
 

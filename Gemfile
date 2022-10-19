@@ -6,6 +6,7 @@ gem 'rails', '5.2.8.1'
 gem 'rake', '< 13.0'
 gem 'bootsnap','>= 1.1.0', require: false
 
+gem 'aws-sdk-s3'
 gem 'puma'
 gem 'pg', '~> 0.20.0'
 gem 'textacular', '~> 5.1.0'
@@ -34,6 +35,7 @@ gem 'rack-cors'
 gem 'rack-ssl-enforcer'
 gem 'rollbar'
 gem 'sassc-rails', '~> 2.1'
+gem 'shrine', '~> 3'
 gem 'coffee-rails'
 gem 'uglifier'
 gem 'react-rails'
@@ -44,6 +46,7 @@ group :development do
   gem "letter_opener"
   gem "listen"
   gem 'web-console'
+  gem "dotenv-rails"
 end
 
 group :development, :test do
@@ -52,13 +55,13 @@ group :development, :test do
   gem "sham_rack"
   gem "pry"
   gem "pry-nav"
-  gem "dotenv-rails"
 end
 
 group :test do
   gem "turnip"
   gem "capybara", "~> 2.18.0"
   gem "capybara-screenshot", "~> 1.0.11"
+  gem "climate_control"
   gem "webdrivers"
   gem "database_cleaner"
   gem "factory_girl_rails"
