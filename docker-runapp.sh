@@ -2,7 +2,7 @@
 
 set -e
 
-rm tmp/pids/server.pid
+rm -f tmp/pids/server.pid
 
 bundle install
 bundle exec rake db:migrate
