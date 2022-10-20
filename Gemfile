@@ -1,11 +1,12 @@
 source 'https://rubygems.org'
 
-ruby '2.5.9'
+ruby '2.7.6'
 
 gem 'rails', '5.2.8.1'
 gem 'rake', '< 13.0'
 gem 'bootsnap','>= 1.1.0', require: false
 
+gem 'addressable'
 gem 'aws-sdk-s3'
 gem 'puma'
 gem 'pg', '~> 0.20.0'
@@ -66,7 +67,7 @@ group :test do
   gem "bourne"
   gem "timecop"
   gem "rails-controller-testing"
-  gem "shoulda-matchers"
+  gem "shoulda-matchers", "~> 3"
   gem "launchy"
   gem "email_spec"
 end

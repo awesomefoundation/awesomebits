@@ -36,7 +36,7 @@ class ImageCropper
       # especially with UTF-8 encoded filenames.
       [
         "q",
-        "src", URI.unescape(@photo.original_url),
+        "src", Addressable::URI.unescape(@photo.original_url),
         "output", "jpg",
         "convert", "-auto-orient",
         "thumb", "#{crop}#{'#' if crop.match(/\d$/)}",
@@ -54,7 +54,7 @@ class ImageCropper
     end
 
     def path(crop)
-      sign([ crop_string(crop), "format:jpg", "plain", CGI.escape(URI.unescape(@photo.original_url)) ].compact.join("/"))
+      sign([ crop_string(crop), "format:jpg", "plain", CGI.escape(Addressable::URI.unescape(@photo.original_url)) ].compact.join("/"))
     end
 
     protected
@@ -104,7 +104,7 @@ class ImageCropper
     end
 
     def path(crop)
-      [ "unsafe", crop_string(crop), "smart", URI.unescape(@photo.original_url) ].join("/")
+      [ "unsafe", crop_string(crop), "smart", Addressable::URI.unescape(@photo.original_url) ].join("/")
     end
 
     protected
