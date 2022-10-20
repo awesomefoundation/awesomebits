@@ -4,13 +4,22 @@ class ImageUploader < Shrine
   plugin :model
   plugin :activerecord
   plugin :default_url
+  plugin :default_storage
 
   Attacher.default_url do |derivative: nil, **|
     "no-image-#{derivative || "original"}.png"
   end
 
+  Attacher.default_store {
+    record.storage_keys[:store].presence || :store
+  }
+
+  Attacher.default_cache {
+    record.storage_keys[:cache].presence || :cache
+  }
+
   def generate_location(io, record: nil, name: nil, derivative: nil, metadata: {}, **)
-    return super unless storage_key == :store
+    return super unless storage_key == record.image_attacher.store_key
     
     # photos/images/id/original/file
 
@@ -36,9 +45,8 @@ class ImageUploader < Shrine
   end
 
   class Attacher
-
     private
-    
+
     def activerecord_after_save
       super
 

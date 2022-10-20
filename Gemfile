@@ -16,8 +16,6 @@ gem 'jquery-ui-rails', '~> 3.0.1'
 gem 'clearance', '~> 1.13.0'
 gem 'clearance-deprecated_password_strategies'
 gem 'high_voltage', '~> 1'
-gem 'paperclip', '~> 4.1.1'
-gem 'fog-aws', '~> 2.0.1'
 gem 'formtastic'
 gem 'flutie'
 gem 'bourbon', '~> 4.0.2'
@@ -59,9 +57,8 @@ end
 
 group :test do
   gem "turnip"
-  gem "capybara", "~> 2.18.0"
-  gem "capybara-screenshot", "~> 1.0.11"
-  gem "climate_control"
+  gem "capybara", "~> 3"
+  gem "capybara-screenshot", "~> 1.0"
   gem "webdrivers"
   gem "database_cleaner"
   gem "factory_girl_rails"
@@ -69,7 +66,6 @@ group :test do
   gem "bourne"
   gem "timecop"
   gem "rails-controller-testing"
-  gem "selenium-webdriver"
   gem "shoulda-matchers"
   gem "launchy"
   gem "email_spec"

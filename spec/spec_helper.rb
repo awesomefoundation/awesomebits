@@ -6,7 +6,6 @@ require 'clearance/rspec'
 require 'turnip'
 require 'turnip/capybara'
 require 'database_cleaner'
-require 'paperclip/matchers'
 require 'sucker_punch/testing/inline'
 
 DatabaseCleaner.strategy = :truncation
@@ -23,5 +22,4 @@ RSpec.configure do |config|
   config.after(:each){ DatabaseCleaner.clean }
   config.before(:each){ FactoryGirl.create(:chapter, :name => "Any") }
   config.before(:each){ ActionMailer::Base.deliveries.clear }
-  config.include(Paperclip::Shoulda::Matchers)
 end

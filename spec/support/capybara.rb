@@ -1,6 +1,21 @@
 require 'capybara/rspec'
 require 'capybara-screenshot/rspec'
 
+Capybara.server = :puma, { Silent: true }
+
+Capybara.register_driver :firefox do |app|
+  Capybara::Selenium::Driver.load_selenium
+  browser_options = ::Selenium::WebDriver::Firefox::Options.new
+  Capybara::Selenium::Driver.new(app, browser: :firefox, options: browser_options)
+end
+
+Capybara.register_driver :headless_firefox do |app|
+  Capybara::Selenium::Driver.load_selenium
+  browser_options = ::Selenium::WebDriver::Firefox::Options.new
+  browser_options.args << '-headless'
+  Capybara::Selenium::Driver.new(app, browser: :firefox, options: browser_options)
+end
+
 Capybara.register_driver :chrome do |app|
   Capybara::Selenium::Driver.new(app, browser: :chrome)
 end
@@ -17,9 +32,9 @@ end
 Capybara.configure do |config|
   # change this to :chrome to observe tests in a real browser
   if ENV['HEADLESS'] == 'false'
-    config.javascript_driver = :chrome
+    config.javascript_driver = :firefox
   else
-    config.javascript_driver = :headless_chrome
+    config.javascript_driver = :headless_firefox
   end
 end
 
@@ -30,5 +45,13 @@ Capybara::Screenshot.register_driver(:chrome) do |driver, path|
 end
 
 Capybara::Screenshot.register_driver(:headless_chrome) do |driver, path|
+  driver.browser.save_screenshot(path)
+end
+
+Capybara::Screenshot.register_driver(:firefox) do |driver, path|
+  driver.browser.save_screenshot(path)
+end
+
+Capybara::Screenshot.register_driver(:headless_firefox) do |driver, path|
   driver.browser.save_screenshot(path)
 end

@@ -22,7 +22,8 @@ step 'I set the last image to be first' do
 end
 
 step 'I should see that last image when I load the page' do
-  expect(page).to have_css("#project-gallery .image:first-child img[src*='3.JPG']")
+  expect(page).to have_selector("#project-gallery > * img", count: 3)
+  expect(page).to have_css("#project-gallery .image:first-child img[src*='#{File.basename(@project.photos.first.url)}']")
 end
 
 step 'I should see :count project image(s) on the page' do |count|

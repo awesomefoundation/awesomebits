@@ -230,8 +230,8 @@ end
 
 step 'that chapter has 5 winning projects' do
   @winning_projects = (1..5).map do |x|
-    p = FactoryGirl.build(:project, :chapter => @current_chapter, :funded_on => x.months.ago)
-    p.photos = [Photo.new(:image => File.new(Rails.root.join("spec", "support", "fixtures", "1.JPG")))]
+    p = FactoryGirl.build(:project, chapter: @current_chapter, funded_on: x.months.ago)
+    p.photos = [FactoryGirl.build(:photo, project: nil)]
     p.save
     p
   end
@@ -239,7 +239,7 @@ end
 
 step 'I should see those 5 projects' do
   @winning_projects.each_with_index do |project, x|
-    expect(page).to have_css(".image-wrapper img[src*='#{project.photos[0].image_file_name}']")
+    expect(page).to have_css(".image-wrapper img[src*='#{File.basename(project.photos[0].url)}']")
   end
 end
 

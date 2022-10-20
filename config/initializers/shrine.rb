@@ -7,9 +7,17 @@ Shrine.plugin :instrumentation
 Shrine.logger = Rails.logger
 
 if Rails.env.test?
+  s3_options = {
+    bucket: "af-mock",
+    region: "us-east-1",
+    stub_responses: true
+  }
+
   Shrine.storages = {
     cache: Shrine::Storage::Memory.new,
-    store: Shrine::Storage::Memory.new
+    store: Shrine::Storage::Memory.new,
+    s3_cache: Shrine::Storage::S3.new(prefix: "uploads", **s3_options),
+    s3_store: Shrine::Storage::S3.new(public: true, **s3_options)
   }
 
 elsif Rails.env.development? && !ENV["AWS_BUCKET"]
@@ -28,7 +36,6 @@ else
   
   Shrine.storages = {
     cache: Shrine::Storage::S3.new(prefix: "uploads", **s3_options),
-    store: Shrine::Storage::S3.new(public: true, **s3_options)
-    
+    store: Shrine::Storage::S3.new(public: true, **s3_options),
   }
 end
