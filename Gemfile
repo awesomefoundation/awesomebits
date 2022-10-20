@@ -6,6 +6,7 @@ gem 'rails', '5.2.8.1'
 gem 'rake', '< 13.0'
 gem 'bootsnap','>= 1.1.0', require: false
 
+gem 'addressable'
 gem 'aws-sdk-s3'
 gem 'puma'
 gem 'pg', '~> 0.20.0'
