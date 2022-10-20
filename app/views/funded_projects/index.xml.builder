@@ -7,7 +7,7 @@ atom_feed(language: I18n.locale, "xmlns:awesome" => "http://www.awesomefoundatio
       entry.title "#{project.chapter.display_name} – #{project.title}"
       entry.content(project.funded_description, type: 'html') unless project.funded_description.blank?
 
-      if mime_type = MIME::Types.type_for(project.primary_image.url).first
+      if mime_type = Marcel::MimeType.for(extension: File.extname(project.primary_image.url))
         entry.link(href: image_url(project.primary_image.url), rel: 'enclosure', type: mime_type)
       end
 

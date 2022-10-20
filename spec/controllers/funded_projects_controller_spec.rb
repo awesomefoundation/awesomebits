@@ -2,7 +2,11 @@ require 'spec_helper'
 
 describe FundedProjectsController do
   context 'getting an Atom feed of winning projects' do
+    render_views
+
     let!(:chapter) { FactoryGirl.create(:chapter, country: 'United States') }
+    let!(:project) { FactoryGirl.create(:winning_project, chapter: chapter) }
+    let!(:image) { FactoryGirl.create(:photo, project: project) }
 
     before do
       get :index, format: :xml
