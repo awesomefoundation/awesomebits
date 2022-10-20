@@ -161,6 +161,19 @@ describe ProjectsController do
 
   end
 
+  context "creating a project submission" do
+    context "when incomplete but with an image" do
+      render_views
+
+      before do
+        post :create, params: { project: { new_photo_direct_upload_urls: ["http://example.com/test.png"] } }
+      end
+
+      it { is_expected.to respond_with(:success) }
+      it { is_expected.to render_template("new") }
+    end
+  end
+
   describe "#hide" do
     let(:user) { FactoryGirl.create(:user) }
     let(:reason) { Faker::Company.bs }
