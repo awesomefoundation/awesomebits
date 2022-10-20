@@ -1,4 +1,4 @@
-FROM ruby:2.5.9-alpine
+FROM ruby:2.7.6-alpine
 
 RUN apk update && \
     apk upgrade && \
