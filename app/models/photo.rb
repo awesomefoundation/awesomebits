@@ -91,6 +91,10 @@ class Photo < ApplicationRecord
     uri.to_s
   end
 
+  def original_filename
+    image&.original_filename || (direct_upload_url && File.basename(direct_upload_url))
+  end
+
   protected
 
   def image_url

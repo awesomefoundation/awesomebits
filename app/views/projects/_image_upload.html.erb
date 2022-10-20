@@ -6,8 +6,13 @@
         <%= form.input :photo_order, as: :hidden %>
         <% form.object.photos.each do |photo| %>
           <li data-id="<%= photo.id %>">
-            <span><%= photo.image.original_filename %></span>
+            <span><%= photo.original_filename %></span>
             <a href="#" class="remove-image" data-remove="true">remove</a>
+            <% unless photo.persisted? %>
+              <% if photo.direct_upload_url.present? %>
+                <%= hidden_field_tag "project[new_photo_direct_upload_urls][]", photo.direct_upload_url %>
+              <% end %>
+            <% end %>
           </li>
         <% end %>
       </ul>
