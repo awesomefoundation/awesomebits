@@ -33,7 +33,7 @@ describe Photo do
       let(:image) { FakeData.fixture_file("מדהים.png") }
 
       it "returns a dynamic photo url that is escaped properly" do
-        expect(photo.url(:main)).to match(/#{CGI.escape(URI.unescape(photo.url))}/)
+        expect(photo.url(:main)).to match(/#{CGI.escape(Addressable::URI.unescape(photo.url))}/)
       end
     end
 

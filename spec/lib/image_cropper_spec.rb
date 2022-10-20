@@ -25,7 +25,7 @@ describe ImageCropper do
       let(:photo) { FactoryGirl.create(:utf8_photo) }
 
       it "generates a Magickly URL with an escaped filename" do
-        expect(@cropper.crop_url(main_crop)).to match(/#{CGI.escape(URI.unescape(photo.original_url))}/)
+        expect(@cropper.crop_url(main_crop)).to match(/#{CGI.escape(Addressable::URI.unescape(photo.original_url))}/)
       end
     end
   end
@@ -52,7 +52,7 @@ describe ImageCropper do
       let(:photo) { FactoryGirl.create(:utf8_photo) }
 
       it "generates a Thumbor URL without an escaped filename" do
-        expect(@cropper.crop_url(main_crop)).to match(/#{URI.unescape(photo.original_url)}/)
+        expect(@cropper.crop_url(main_crop)).to match(/#{Addressable::URI.unescape(photo.original_url)}/)
       end
     end
   end

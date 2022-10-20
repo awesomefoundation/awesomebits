@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get "/blog/contact/" => redirect("/en/contact")
   get "/blog/about/"   => redirect("/en/about_us")
   get "/blog"          => redirect("http://blog.awesomefoundation.org")
-  get "/blog/*path"    => redirect { |params, request| "http://blog.awesomefoundation.org/#{URI.escape(params[:path])}" }, :format => false
+  get "/blog/*path"    => redirect { |params, request| "http://blog.awesomefoundation.org/#{Addressable::URI.escape(params[:path])}" }, :format => false
   get "/apply"         => redirect("/en/submissions/new")
 
   resources :passwords, :controller => 'clearance/passwords', :only => [:new, :create]

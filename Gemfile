@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.5.9'
+ruby '2.7.6'
 
 gem 'rails', '5.2.8.1'
 gem 'rake', '< 13.0'
@@ -66,7 +66,7 @@ group :test do
   gem "bourne"
   gem "timecop"
   gem "rails-controller-testing"
-  gem "shoulda-matchers"
+  gem "shoulda-matchers", "~> 3"
   gem "launchy"
   gem "email_spec"
 end
