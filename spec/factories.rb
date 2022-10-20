@@ -85,16 +85,27 @@ FactoryGirl.define do
 
   factory :photo do
     project
-    image { File.new(Rails.root.join("spec", "support", "fixtures", "1.JPG")) }
+    image_data { FakeData.shrine_uploaded_file("1.JPG") }
 
     factory :utf8_photo do
-      image { File.new(Rails.root.join("spec", "support", "fixtures", "מדהים.png"))}
+      image_data { FakeData.shrine_uploaded_file("מדהים.png") }
     end
 
     factory :pdf do
-      image { File.new(Rails.root.join("spec", "support", "fixtures", "1.pdf")) }
+      image_data { FakeData.shrine_uploaded_file("1.pdf") }
     end
   end
+
+  # This needs to live outside of the :photo definition because otherwise
+  # the `storage_keys` accessor is not getting written before the `image`
+  # is assigned, which is preventing us from being able to set Shrine
+  # custom storage the way we do.
+  factory :s3_photo, class: "Photo" do
+    project
+    storage_keys { { store: :s3_store, cache: :s3_cache } }
+    image_data { FakeData.shrine_uploaded_file("1.JPG") }
+  end
+
 
   factory :comment do
     project

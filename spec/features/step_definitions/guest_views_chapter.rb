@@ -10,7 +10,7 @@ end
 
 step 'I should see the trustees' do
   @trustees.each do |trustee|
-    page.should have_selector(".trustee-details h3", :text => "#{trustee.first_name} #{trustee.last_name}")
+    expect(page).to have_selector(".trustee-details h3", :text => "#{trustee.first_name} #{trustee.last_name}")
   end
 end
 
