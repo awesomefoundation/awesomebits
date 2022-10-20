@@ -20,7 +20,7 @@ gem 'high_voltage', '~> 1'
 gem 'formtastic'
 gem 'flutie'
 gem 'bourbon', '~> 4.0.2'
-gem 'simple_form', '~> 4.1'
+gem 'simple_form', '~> 5.0'
 gem 'nokogiri', '~> 1.12.5'
 gem "will_paginate", "~> 3.1.7"
 gem "friendly_id", "~> 5.2.4"

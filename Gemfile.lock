@@ -320,7 +320,7 @@ GEM
     shrine (3.4.0)
       content_disposition (~> 1.0)
       down (~> 5.1)
-    simple_form (4.1.0)
+    simple_form (5.0.0)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
     slop (2.4.4)
@@ -422,7 +422,7 @@ DEPENDENCIES
   sham_rack
   shoulda-matchers (~> 3)
   shrine (~> 3)
-  simple_form (~> 4.1)
+  simple_form (~> 5.0)
   sprockets-redirect
   sucker_punch (~> 1.0)
   textacular (~> 5.1.0)
