@@ -183,7 +183,6 @@ GEM
     mocha (1.2.1)
       metaclass (~> 0.0.1)
     msgpack (1.6.0)
-    multi_json (1.13.1)
     newrelic_rpm (8.11.0)
     nio4r (2.5.8)
     nokogiri (1.13.9)
@@ -258,8 +257,7 @@ GEM
       tilt
     redcarpet (3.5.1)
     regexp_parser (2.6.0)
-    rollbar (2.15.5)
-      multi_json
+    rollbar (3.3.2)
     rspec (3.6.0)
       rspec-core (~> 3.6.0)
       rspec-expectations (~> 3.6.0)
