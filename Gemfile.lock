@@ -198,7 +198,7 @@ GEM
     nokogiri (1.13.9)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
-    pg (0.20.0)
+    pg (1.4.4)
     protobuf-cucumber (3.10.8)
       activesupport (>= 3.2)
       middleware
@@ -407,7 +407,7 @@ DEPENDENCIES
   magnific-popup-rails
   newrelic_rpm (~> 8.11.0)
   nokogiri (~> 1.13.9)
-  pg (~> 0.20.0)
+  pg (~> 1.4.4)
   pry
   pry-nav
   puma
