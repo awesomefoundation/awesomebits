@@ -180,7 +180,7 @@ GEM
     method_source (0.7.1)
     middleware (0.1.0)
     mini_mime (1.1.2)
-    mini_portile2 (2.6.1)
+    mini_portile2 (2.8.0)
     minitest (5.16.3)
     mocha (1.2.1)
       metaclass (~> 0.0.1)
@@ -188,8 +188,8 @@ GEM
     multi_json (1.13.1)
     newrelic_rpm (3.18.1.330)
     nio4r (2.5.8)
-    nokogiri (1.12.5)
-      mini_portile2 (~> 2.6.1)
+    nokogiri (1.13.9)
+      mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     pg (0.20.0)
     protobuf-cucumber (3.10.8)
@@ -401,7 +401,7 @@ DEPENDENCIES
   listen
   magnific-popup-rails
   newrelic_rpm (~> 3.18.1)
-  nokogiri (~> 1.12.5)
+  nokogiri (~> 1.13.9)
   pg (~> 0.20.0)
   pry
   pry-nav
