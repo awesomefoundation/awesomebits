@@ -73,7 +73,7 @@ group :test do
 end
 
 group :staging, :production do
-  gem 'newrelic_rpm', '~> 8.11.0'
+  gem 'newrelic_rpm', '~> 7.2'
   gem 'rails_12factor'
   gem 'sprockets-redirect'
 end
