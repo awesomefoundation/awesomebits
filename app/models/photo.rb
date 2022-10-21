@@ -22,7 +22,7 @@ class Photo < ApplicationRecord
   include ImageUploader::Attachment(:image)
 
   after_create do
-    DirectUploadJob.new.async.perform(self)
+    DirectUploadJob.perform_async(self)
   end
 
   def image?

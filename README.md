@@ -121,13 +121,13 @@ Spam Protection
 We implement very basic spam projection on applications. Set the environment variable SPAM_REGEXP to be a `|` separated list of blocked strings which will be rejected at the time of project creation.
 
 
-Blacklist
+Blocklist
 ---------
 
-Very basic blacklisting is implemented using [Rack::Attack](https://github.com/kickstarter/rack-attack). To blacklist an IP, simply add the IP address to the BLACKLIST_IPS environment variable. Multiple IPs should be comma separated:
+Very basic blocklisting is implemented using [Rack::Attack](https://github.com/kickstarter/rack-attack). To block an IP, simply add the IP address to the BLOCKLIST_IPS environment variable. Multiple IPs should be comma separated:
 
 ```shell
-BLACKLIST_IPS=10.0.0.1,10.0.0.2
+BLOCKLIST_IPS=10.0.0.1,10.0.0.2
 ```
 
 Password Protection

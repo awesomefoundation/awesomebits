@@ -192,7 +192,7 @@ class Project < ApplicationRecord
     was_new_record = new_record?
     saved = super
     if saved && was_new_record
-      ProjectMailerJob.new.async.perform(self)
+      ProjectMailerJob.perform_async(self)
     end
     saved
   end
