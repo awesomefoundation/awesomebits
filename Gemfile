@@ -26,7 +26,7 @@ gem 'nokogiri', '~> 1.13.9'
 gem 'pg', '~> 1.4.4'
 gem 'puma'
 gem 'redcarpet'
-gem 'simple_form', '~> 4.1'
+gem 'simple_form', '~> 5.1'
 gem 'sucker_punch', '~> 3.1'
 gem 'textacular', '~> 5.1.0'
 gem "will_paginate", "~> 3.1.7"
