@@ -186,7 +186,7 @@ GEM
       metaclass (~> 0.0.1)
     msgpack (1.6.0)
     multi_json (1.13.1)
-    newrelic_rpm (3.18.1.330)
+    newrelic_rpm (8.11.0)
     nio4r (2.5.8)
     nokogiri (1.13.9)
       mini_portile2 (~> 2.8.0)
@@ -400,7 +400,7 @@ DEPENDENCIES
   letter_opener
   listen
   magnific-popup-rails
-  newrelic_rpm (~> 3.18.1)
+  newrelic_rpm (~> 8.11.0)
   nokogiri (~> 1.13.9)
   pg (~> 0.20.0)
   pry
