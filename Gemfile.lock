@@ -367,7 +367,7 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    will_paginate (3.1.7)
+    will_paginate (3.3.1)
     xmlrpc (0.3.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
@@ -436,7 +436,7 @@ DEPENDENCIES
   uglifier
   web-console
   webdrivers
-  will_paginate (~> 3.1.7)
+  will_paginate (~> 3.3.1)
   xmlrpc
 
 RUBY VERSION
