@@ -28,7 +28,7 @@ gem 'puma'
 gem 'redcarpet'
 gem 'simple_form', '~> 5.1'
 gem 'sucker_punch', '~> 3.1'
-gem 'textacular', '~> 5.1.0'
+gem 'textacular', '~> 5.5.1'
 gem "will_paginate", "~> 3.1.7"
 gem 'rack-attack'
 gem 'rack-cors'

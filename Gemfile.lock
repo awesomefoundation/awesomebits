@@ -342,8 +342,8 @@ GEM
       rack
     sucker_punch (3.1.0)
       concurrent-ruby (~> 1.0)
-    textacular (5.1.0)
-      activerecord (>= 5.0, < 6.0)
+    textacular (5.5.1)
+      activerecord (>= 5.0, < 7.1)
     thor (1.2.1)
     thread_safe (0.3.6)
     tilt (2.0.9)
@@ -430,7 +430,7 @@ DEPENDENCIES
   simple_form (~> 5.1)
   sprockets-redirect
   sucker_punch (~> 3.1)
-  textacular (~> 5.1.0)
+  textacular (~> 5.5.1)
   timecop
   turnip
   uglifier
