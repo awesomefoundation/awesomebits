@@ -87,8 +87,6 @@ GEM
     capybara-screenshot (1.0.26)
       capybara (>= 1.0, < 4)
       launchy
-    celluloid (0.15.2)
-      timers (~> 1.1.0)
     childprocess (3.0.0)
     clearance (1.13.0)
       bcrypt
@@ -334,15 +332,14 @@ GEM
     sprockets-redirect (0.1.0)
       activesupport (>= 3.1.0)
       rack
-    sucker_punch (1.2.1)
-      celluloid (~> 0.15.2)
+    sucker_punch (3.1.0)
+      concurrent-ruby (~> 1.0)
     textacular (5.1.0)
       activerecord (>= 5.0, < 6.0)
     thor (1.2.1)
     thread_safe (0.3.6)
     tilt (2.0.9)
     timecop (0.3.5)
-    timers (1.1.0)
     turnip (4.3.0)
       cucumber-gherkin (~> 14.0)
       rspec (>= 3.0, < 4.0)
@@ -424,7 +421,7 @@ DEPENDENCIES
   shrine (~> 3)
   simple_form (~> 4.1)
   sprockets-redirect
-  sucker_punch (~> 1.0)
+  sucker_punch (~> 3.1)
   textacular (~> 5.1.0)
   timecop
   turnip

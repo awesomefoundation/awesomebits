@@ -26,7 +26,7 @@ gem "will_paginate", "~> 3.1.7"
 gem "friendly_id", "~> 5.2.4"
 gem 'redcarpet'
 gem 'honeypot-captcha'
-gem 'sucker_punch', '~> 1.0'
+gem 'sucker_punch', '~> 3.1'
 gem 's3_file_field'
 gem 'magnific-popup-rails'
 gem 'rack-attack'
