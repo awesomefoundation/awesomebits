@@ -1,7 +1,7 @@
 class Rack::Attack
-  blacklist_ips = ENV['BLACKLIST_IPS'] ? ENV['BLACKLIST_IPS'].split(/,\s*/) : []
+  blocklist_ips = ENV['BLOCKLIST_IPS'] ? ENV['BLOCKLIST_IPS'].split(/,\s*/) : []
 
-  blacklist("blacklisted ips") do |request|
-    blacklist_ips.include? request.ip
+  blocklist("blacklisted ips") do |request|
+    blocklist_ips.include? request.ip
   end
 end
