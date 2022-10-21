@@ -146,7 +146,7 @@ GEM
     flutie (2.1.0)
     formtastic (2.2.0)
       actionpack (>= 3.0)
-    friendly_id (5.2.5)
+    friendly_id (5.4.2)
       activerecord (>= 4.0.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -394,7 +394,7 @@ DEPENDENCIES
   faker
   flutie
   formtastic
-  friendly_id (~> 5.2.4)
+  friendly_id (~> 5.4.2)
   high_voltage (~> 1)
   honeypot-captcha
   it

@@ -14,7 +14,7 @@ gem 'clearance-deprecated_password_strategies'
 gem 'coffee-rails'
 gem 'flutie'
 gem 'formtastic'
-gem "friendly_id", "~> 5.2.4"
+gem 'friendly_id', '~> 5.4.2'
 gem 'high_voltage', '~> 1'
 gem 'honeypot-captcha'
 gem 'it'
