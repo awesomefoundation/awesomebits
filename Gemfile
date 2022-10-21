@@ -9,7 +9,7 @@ gem 'bootsnap','>= 1.1.0', require: false
 gem 'addressable'
 gem 'aws-sdk-s3'
 gem 'bourbon', '~> 4.0.2'
-gem 'clearance', '~> 1.13.0'
+gem 'clearance', '~> 2.5.0'
 gem 'clearance-deprecated_password_strategies'
 gem 'coffee-rails'
 gem 'flutie'
