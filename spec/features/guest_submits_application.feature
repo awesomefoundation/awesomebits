@@ -36,3 +36,12 @@ Feature: A visitor to the site submits an application
     When I submit a spam project to the "Boston" chapter
     Then I should see the notice flash
     And the project count should be 0
+
+  Scenario: A visitor submits an application in embed mode
+    Given I am on the submission page in embed mode
+    Then I should not see a header or footer
+    And I should not see the chapter selection dropdown
+    When I fill in the application form
+    And I submit the form
+    Then I should be thanked
+    And I should not see a header or footer

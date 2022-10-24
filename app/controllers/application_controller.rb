@@ -3,6 +3,9 @@ class ApplicationController < ActionController::Base
 
   before_action :set_locale
   before_action :fix_chapter_ids
+  before_action :allow_embedding
+
+  helper_method :embed?
 
   def must_be_logged_in
     if current_user.blank? || !current_user.logged_in?
@@ -62,9 +65,21 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def allow_embedding
+    if embed?
+      response.headers.except! "X-Frame-Options"
+    end
+  end
+
   def render_404
     respond_to do |format|
       format.all { render status: :not_found, template: "errors/not_found", formats: [:html], content_type: "text/html" }
     end
+  end
+
+  protected
+
+  def embed?
+    false
   end
 end

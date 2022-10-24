@@ -22,7 +22,7 @@ step 'I fill in the application form' do
   fill_in("project_about_me", :with => @about_me)
   fill_in("project_about_project", :with => "I want to make awesomeness.")
   fill_in("project_use_for_money", :with => "I'll spend it on stuff. Obviously.")
-  select("Any", :from => "Select chapter to apply to")
+  select("Any", :from => "Select chapter to apply to") if page.has_selector?("#project_chapter_id", visible: true)
 end
 
 step 'I submit a spam project to the :name chapter' do |name|
@@ -111,4 +111,13 @@ end
 
 step 'I refresh the page' do
   visit(page.current_path)
+end
+
+step 'I should not see a header or footer' do
+  expect(page).to_not have_selector("header")
+  expect(page).to_not have_selector("footer")
+end
+
+step 'I should not see the chapter selection dropdown' do
+  expect(page).to_not have_selector(".chapter-select")
 end
