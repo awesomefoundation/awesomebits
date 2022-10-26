@@ -2,6 +2,7 @@ require "shrine"
 require "shrine/storage/file_system"
 require "shrine/storage/memory"
 require "shrine/storage/s3"
+require "uppy/s3_multipart"
 
 Shrine.plugin :instrumentation
 Shrine.logger = Rails.logger
@@ -39,3 +40,5 @@ else
     store: Shrine::Storage::S3.new(public: true, **s3_options),
   }
 end
+
+Shrine.plugin :uppy_s3_multipart

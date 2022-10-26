@@ -40,7 +40,7 @@ class WinnersController < ApplicationController
   private
 
   def winner_params
-    permitted = [:funded_on, :title, :name, :url, :rss_feed_url, :funded_description, photo_ids_to_delete: [], new_photos: [], new_photo_direct_upload_urls: [] ]
+    permitted = [:funded_on, :title, :name, :url, :rss_feed_url, :funded_description, photo_ids_to_delete: [], new_photos: [], new_photo_direct_upload_urls: [], photos_attributes: [:id, :image, :caption, :sort_order, :_destroy] ]
     permitted << :chapter_id if current_project.in_any_chapter? || current_user.admin?
 
     params.require(:project).permit(permitted)

@@ -159,9 +159,6 @@ GEM
     jbuilder (2.10.1)
       activesupport (>= 5.0.0)
     jmespath (1.6.1)
-    jquery-fileupload-rails (0.4.1)
-      actionpack (>= 3.1)
-      railties (>= 3.1)
     jquery-rails (4.1.1)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -267,6 +264,8 @@ GEM
       tilt
     redcarpet (3.5.1)
     regexp_parser (2.6.0)
+    roda (3.61.0)
+      rack
     rollbar (3.3.2)
     rspec (3.6.0)
       rspec-core (~> 3.6.0)
@@ -291,22 +290,11 @@ GEM
     rspec-support (3.6.0)
     ruby_dep (1.5.0)
     rubyzip (2.3.2)
-    s3_file_field (1.3.0)
-      coffee-rails (>= 3.2.1)
-      jquery-fileupload-rails (~> 0.4.1)
-      rails (>= 3.2)
-      sass-rails (>= 3.2.5)
     sass (3.7.3)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
-    sass-rails (5.0.7)
-      railties (>= 4.0.0, < 6)
-      sass (~> 3.1)
-      sprockets (>= 2.8, < 4.0)
-      sprockets-rails (>= 2.0, < 4.0)
-      tilt (>= 1.1, < 3)
     sassc (2.0.1)
       ffi (~> 1.9)
       rake
@@ -355,6 +343,10 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.20)
       execjs (>= 0.3.0, < 3)
+    uppy-s3_multipart (1.2.0)
+      aws-sdk-s3 (~> 1.0)
+      content_disposition (~> 1.0)
+      roda (>= 2.27, < 4)
     web-console (3.7.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -422,7 +414,6 @@ DEPENDENCIES
   redcarpet
   rollbar
   rspec-rails (~> 3.6.1)
-  s3_file_field
   sassc-rails (~> 2.1)
   sham_rack
   shoulda-matchers (~> 3)
@@ -434,6 +425,7 @@ DEPENDENCIES
   timecop
   turnip
   uglifier
+  uppy-s3_multipart (~> 1.2)
   web-console
   webdrivers
   will_paginate (~> 3.3.1)

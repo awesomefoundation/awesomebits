@@ -61,9 +61,6 @@
 
     .image-upload {
       .current-images {
-        border-bottom: 1px solid rgb(200,200,200);
-        margin-bottom: 30px;
-        padding-bottom: 20px;
 
         label {
           margin-bottom: 15px;
@@ -177,6 +174,49 @@
           width: 0;
         }
       }
+    }
+  }
+}
+
+input.form__image-element-caption[type="text"] {
+    margin-top: 10px;
+    border-radius: 10px;
+    width: calc(100% - 80px - 10px);
+}
+
+.project-form div.input.project_photos_caption {
+    margin-bottom: 0;
+}
+
+.form__image-element-image {
+    width: 80px;
+    height: 80px;
+    float: left;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-bottom: 0;
+    object-fit: cover;
+}
+
+.form__dropzone {
+  padding: 10px 0;
+
+  .uppy-DragDrop-inner {
+    padding: 40px 20px;
+  }
+
+  .uppy-DragDrop-arrow {
+    display: none;
+  }
+
+  button:disabled {
+    filter: grayscale(100%);
+    opacity: .6;
+    user-select: none;
+    cursor: not-allowed;
+
+    .uppy-DragDrop-inner {
+        pointer-events: none;
     }
   }
 }

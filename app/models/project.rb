@@ -44,6 +44,8 @@ class Project < ApplicationRecord
 
   scope :public_search, lambda { |query| search({ name: query, title: query, funded_description: query, url: query }, false) }
 
+  accepts_nested_attributes_for :photos, allow_destroy: true
+
   def self.winner_count
     where("funded_on IS NOT NULL").count
   end

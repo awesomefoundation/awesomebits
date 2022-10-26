@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount Shrine.uppy_s3_multipart(:cache) => '/s3/multipart'
+
   constraints(SubdomainConstraint) do
     get "/apply" => "subdomains#apply"
     get "*url"   => "subdomains#chapter"
