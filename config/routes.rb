@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  mount Shrine.uppy_s3_multipart(:cache) => '/s3/multipart'
+  if ENV["AWS_BUCKET"].present?
+    mount Shrine.uppy_s3_multipart(:cache) => '/s3/multipart'
+  else
+    mount Tus::Server => '/uploads'
+  end
 
   constraints(SubdomainConstraint) do
     get "/apply" => "subdomains#apply"

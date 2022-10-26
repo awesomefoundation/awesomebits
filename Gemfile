@@ -36,7 +36,6 @@ gem 'rack-cors'
 gem 'rack-ssl-enforcer'
 gem 'react-rails'
 gem 'rollbar'
-#gem 's3_file_field'
 gem 'sassc-rails', '~> 2.1'
 gem 'shrine', '~> 3'
 gem 'uglifier'
@@ -55,6 +54,8 @@ group :development, :test do
   gem 'pry-nav'
   gem 'rspec-rails', '~> 3.6.1'
   gem 'sham_rack'
+  gem 'shrine-tus', '~> 2.1'
+  gem 'tus-server', '~> 2.3'
 end
 
 group :test do

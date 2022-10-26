@@ -22,6 +22,7 @@ RSpec.configure do |config|
   config.after(:each){ DatabaseCleaner.clean }
   config.before(:each){ FactoryGirl.create(:chapter, :name => "Any") }
   config.before(:each){ ActionMailer::Base.deliveries.clear }
+  config.after(:all) { FileUtils.rm_f Dir.glob(Rails.root.join("tmp", "tus-test", "*")) }
 end
 
 Shoulda::Matchers.configure do |config|

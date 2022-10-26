@@ -62,20 +62,6 @@ module ProjectsHelper
     ENV['AWS_BUCKET'].present?
   end
 
-  def display_uploader?(uploader)
-    if s3_uploader_available?
-      if params[:uploader]
-        uploader.to_s == params[:uploader]
-
-      else
-        uploader.to_s == "s3"
-      end
-
-    else
-      uploader.to_s == "classic"
-    end
-  end
-
   def comment_visibility_icon(comment)
     tag.i(class: "icon icon-#{comment_visibility_class(comment)} comment__visible-icon", title: comment.viewable_by)
   end

@@ -215,25 +215,6 @@ describe Project do
     end
   end
 
-  context '#new_photos=' do
-    let(:project) { FactoryGirl.build(:project) }
-
-    it 'creates new Photo records' do
-      project.new_photos = [FakeData.fixture_file("1.JPG")]
-      expect(project.photos.first.image.original_filename).to eq("1.JPG")
-    end
-
-    it 'creates and saves new Photo records if the Project has been saved' do
-      project.new_photos = [FakeData.fixture_file("1.JPG")]
-      expect(project.photos.first.image.original_filename).to eq("1.JPG")
-      project.save
-      expect(project.photos.first.new_record?).to be_falsey
-
-      project.new_photos = [FakeData.fixture_file("2.JPG")]
-      expect(project.photos.last.image.original_filename).to eq("2.JPG")
-    end
-  end
-
   context '#photo_order' do
     let(:project) { FactoryGirl.create(:project) }
     let(:photo1)  { FactoryGirl.create(:photo, :project => project) }

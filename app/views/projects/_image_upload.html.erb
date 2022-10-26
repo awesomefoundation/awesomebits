@@ -1,9 +1,5 @@
-<div class="image-upload js-uploader" data-max-files="<%= Project::MAX_PHOTOS %>" data-uploader-name="project-<%= form.object&.id || 'new' %>" data-file-types="image/*">
-  <% if s3_uploader_available? %>
-    <%= render partial: "projects/image_form", locals: { form: form, upload_mechanism: :s3, image_notes: local_assigns[:image_notes] } %>
-  <% else %>
-    <%= render partial: "projects/image_form", locals: { form: form, upload_mechanism: :classic, image_notes: local_assigns[:image_notes] } %>
-  <% end %>
+<div class="image-upload js-uploader" data-max-files="<%= Project::MAX_PHOTOS %>" data-uploader-name="project-<%= form.object&.id || 'new' %>" data-file-types="image/*" data-uploader-strategy="<%= s3_uploader_available? ? 's3' : 'tus' %>">
+  <%= render partial: "projects/image_form", locals: { form: form, upload_mechanism: :s3, image_notes: local_assigns[:image_notes] } %>
 
   <template id="js-uploader__file-template">
     <%= form.simple_fields_for :photos, Photo.new do |photo_fields| %>

@@ -152,28 +152,6 @@ class Project < ApplicationRecord
     photos.map(&:id).join(" ")
   end
 
-  def new_photos=(photos)
-    photos.each do |photo|
-      if photo.present?
-        new_photo = self.photos.build(:image => photo)
-        if persisted?
-          new_photo.save
-        end
-      end
-    end
-  end
-
-  def new_photo_direct_upload_urls=(urls)
-    urls.each do |url|
-      if url.present?
-        new_photo = self.photos.build(:direct_upload_url => url)
-        if persisted?
-          new_photo.save
-        end
-      end
-    end
-  end
-
   def display_images
     if real_photos.empty?
       [Photo.new]

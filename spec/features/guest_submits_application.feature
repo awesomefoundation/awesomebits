@@ -15,12 +15,10 @@ Feature: A visitor to the site submits an application
   @javascript
   Scenario: A visitor uploads multiple images
     Given I am on the submission page
-    When I attach a file to the submission
-    Then I should see the attachment was recognized
-    But I should only see one file upload field
-    When I attach another file to the submission
-    Then I should see the attachment was recognized
-    But I should still only see one file upload field
+    When I attach the file "1.JPG" to the submission
+    Then I should see 1 attachment recognized
+    When I attach the file "2.JPG" to the submission
+    Then I should see 2 attachments recognized
     When I fill out the rest of the form
     And I submit the form
     Then the files I attached should have been uploaded

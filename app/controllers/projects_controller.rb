@@ -145,7 +145,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    [ :name, :title, :url, :email, :phone, :about_me, :about_project, :chapter_id, :extra_question_1, :extra_question_2, :extra_question_3, :extra_answer_1, :extra_answer_2, :extra_answer_3, :photo_order, :rss_feed_url, :use_for_money, photo_ids_to_delete: [], new_photos: [], new_photo_direct_upload_urls: [], photos_attributes: [:id, :image, :caption, :sort_order, :_destroy] ]
+    [ :name, :title, :url, :email, :phone, :about_me, :about_project, :chapter_id, :extra_question_1, :extra_question_2, :extra_question_3, :extra_answer_1, :extra_answer_2, :extra_answer_3, :photo_order, :rss_feed_url, :use_for_money, photo_ids_to_delete: [], photos_attributes: [:id, :image, :caption, :sort_order, :_destroy] ]
   end
 
   def create_project_params

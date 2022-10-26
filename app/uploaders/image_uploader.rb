@@ -6,6 +6,11 @@ class ImageUploader < Shrine
   plugin :default_url
   plugin :default_storage
 
+  # Use local tus server in development and testing
+  unless ENV["AWS_BUCKET"].present?
+    storages[:cache] = storages[:tus]
+  end
+
   Attacher.default_url do |derivative: nil, **|
     "no-image-#{derivative || "original"}.png"
   end

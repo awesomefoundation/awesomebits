@@ -1,6 +1,8 @@
 let uploaders = [];
 
 function addUploadedFile(element, file, response) {
+  const strategy = element.dataset.uploaderStrategy;
+
   const original = document.getElementById('js-uploader__file-template');
   const clone = original.content.cloneNode(true);
 
@@ -16,8 +18,16 @@ function addUploadedFile(element, file, response) {
 
   img.src = response.uploadURL;
   name.innerHTML = file.data.name;
+
+  let uploadId = response.uploadURL;
+
+  if (strategy == "s3") {
+    // extract key without prefix
+    uploadId = uploadId.match(/\/uploads\/([^\?]+)/)[1];
+  }
+
   imageData.value = JSON.stringify({
-    id: response.uploadURL.match(/\/uploads\/([^\?]+)/)[1], // extract key without prefix
+    id: uploadId,
     storage: 'cache',
     metadata: {
       size:      file.size,
@@ -87,6 +97,9 @@ function registerRemoveClicks(container) {
 
     $(this.parentNode).addClass('hidden');
 
+    // TODO Call uppy.removeFile to remove the file from the uploader
+    // so the user can upload it again if they removed it by accident
+
     updateFileRestrictions(container);
   })
 }
@@ -116,15 +129,24 @@ window.onload = function() {
 
     const uploaderName = container.dataset.uploaderName;
     const fileTypes = container.dataset.fileTypes;
+    const strategy = container.dataset.uploaderStrategy;
 
     let uppy = new Uppy.Uppy({ id: uploaderName, debug: true, autoProceed: true })
     uppy.use(Uppy.DragDrop, { target: '.js-uploader__dropzone' })
     uppy.use(Uppy.ProgressBar, { target: '.js-uploader__progress-bar', hideAfterFinish: true })
-    uppy.use(Uppy.AwsS3Multipart, {
-      limit: 5,
-      timeout: 60 * 1000,
-      companionUrl: '/',
-    })
+
+    if (strategy == "s3") {
+      uppy.use(Uppy.AwsS3Multipart, {
+        limit: 5,
+        timeout: 60 * 1000,
+        companionUrl: '/',
+      })
+    } else {
+      uppy.use(Uppy.Tus, {
+        endpoint: '/uploads',
+        chunksize: 5*1024*1024,
+      })
+    }
 
     if (fileTypes) {
       uppy.setOptions({ restrictions: { allowedFileTypes: fileTypes.split(",") } })

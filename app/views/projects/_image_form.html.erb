@@ -1,12 +1,8 @@
-  <div class="input file optional" style="<%= 'display:none' unless display_uploader?(upload_mechanism) %>">
+  <div class="input file optional">
     <label class="file optional"><%= t "simple_form.labels.project.new_photos-html" %></label>
 
-    <% if upload_mechanism == :s3 %>
-      <div class="form__dropzone js-uploader__dropzone"></div>
-      <div class="js-uploader__progress-bar"></div>
-    <% else %>
-      <input class="file optional multi new_photo" id="project_new_photos" name="project[new_photos][]" type="file" value="" accept="image/*">
-    <% end %>
+    <div class="form__dropzone js-uploader__dropzone"></div>
+    <div class="js-uploader__progress-bar"></div>
 
     <div><%= markdown(local_assigns[:image_notes].presence || t("projects.form.image-notes", :dimensions => Photo::DIMENSIONS[:main])) %></div>
   </div>
