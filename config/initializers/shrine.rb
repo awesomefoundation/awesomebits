@@ -3,7 +3,10 @@ require "shrine/storage/file_system"
 require "shrine/storage/memory"
 require "shrine/storage/s3"
 require "uppy/s3_multipart"
-require "shrine/storage/tus"
+
+unless ENV['AWS_BUCKET']
+  require "shrine/storage/tus"
+end
 
 Shrine.plugin :instrumentation
 Shrine.logger = Rails.logger

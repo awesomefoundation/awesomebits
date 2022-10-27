@@ -38,6 +38,8 @@ gem 'react-rails'
 gem 'rollbar'
 gem 'sassc-rails', '~> 2.1'
 gem 'shrine', '~> 3'
+gem 'shrine-tus', '~> 2.1', require: false
+gem 'tus-server', '~> 2.3', require: false
 gem 'uglifier'
 gem 'xmlrpc'
 
@@ -54,8 +56,6 @@ group :development, :test do
   gem 'pry-nav'
   gem 'rspec-rails', '~> 3.6.1'
   gem 'sham_rack'
-  gem 'shrine-tus', '~> 2.1'
-  gem 'tus-server', '~> 2.3'
 end
 
 group :test do
