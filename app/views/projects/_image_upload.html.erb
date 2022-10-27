@@ -1,4 +1,4 @@
-<div class="image-upload js-uploader" data-max-files="<%= Project::MAX_PHOTOS %>" data-uploader-name="project-<%= form.object&.id || 'new' %>" data-file-types="image/*" data-uploader-strategy="<%= s3_uploader_available? ? 's3' : 'tus' %>">
+<div class="image-upload js-uploader" data-max-files="<%= Project::MAX_PHOTOS %>" data-uploader-name="project-<%= form.object&.id || 'new' %>" data-file-types="image/*" data-uploader-strategy="<%= s3_uploader_available? ? 's3' : 'tus' %>" data-uploader-debug="<%= ENV['UPPY_DEBUG'] || 'false' %>">
   <%= render partial: "projects/image_form", locals: { form: form, upload_mechanism: :s3, image_notes: local_assigns[:image_notes] } %>
 
   <template id="js-uploader__file-template">
@@ -10,7 +10,6 @@
   <section class="current-images">
     <ul class="old-photos js-uploader__uploaded-files">
       <% if form.object.photos.present? %>
-        <% # = form.input :photo_order, as: :hidden %>
         <% form.object.photos.each do |photo| %>
           <%= form.simple_fields_for :photos, photo do |photo_fields| %>
             <%= render "projects/image_form_element", photo: photo, f: photo_fields %>

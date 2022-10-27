@@ -4,13 +4,16 @@ function addUploadedFile(element, file, response) {
   const strategy = element.dataset.uploaderStrategy;
 
   const original = document.getElementById('js-uploader__file-template');
-  const clone = original.content.cloneNode(true);
+  const clone = original.content.firstElementChild.cloneNode(true);
 
   const img = clone.querySelector('img');
   const name = clone.querySelector('span')
   const imageData = clone.querySelector('.js-image-data');
 
   const randomId = Math.floor(Math.random() * 1000000000);
+
+  // Hold onto the uppy ID so we can remove the file from uppy if we need to
+  clone.dataset.uppyId = file.id;
 
   clone.querySelectorAll('input').forEach((item) => {
     item.name = item.name.replace(/\[\d+\]/, `[${randomId}]`);
@@ -97,8 +100,10 @@ function registerRemoveClicks(container) {
 
     $(this.parentNode).addClass('hidden');
 
-    // TODO Call uppy.removeFile to remove the file from the uploader
-    // so the user can upload it again if they removed it by accident
+    // Remove the file from the uploader so the user can upload it again if they want
+    if (this.parentNode.dataset.uppyId) {
+      uploaders[container.dataset.uploaderName].removeFile(this.parentNode.dataset.uppyId)
+    }
 
     updateFileRestrictions(container);
   })
@@ -130,10 +135,11 @@ window.onload = function() {
     const uploaderName = container.dataset.uploaderName;
     const fileTypes = container.dataset.fileTypes;
     const strategy = container.dataset.uploaderStrategy;
+    const debug = container.dataset.uploaderDebug == 'true';
 
-    let uppy = new Uppy.Uppy({ id: uploaderName, debug: true, autoProceed: true })
-    uppy.use(Uppy.DragDrop, { target: '.js-uploader__dropzone' })
-    uppy.use(Uppy.ProgressBar, { target: '.js-uploader__progress-bar', hideAfterFinish: true })
+    let uppy = new Uppy.Uppy({ id: uploaderName, debug: debug, autoProceed: true })
+    uppy.use(Uppy.DragDrop, { target: container.querySelector('.js-uploader__dropzone') })
+    uppy.use(Uppy.ProgressBar, { target: container.querySelector('.js-uploader__progress-bar'), hideAfterFinish: true })
 
     if (strategy == "s3") {
       uppy.use(Uppy.AwsS3Multipart, {
