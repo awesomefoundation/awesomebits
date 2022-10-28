@@ -7,7 +7,6 @@ function addUploadedFile(element, file, response) {
   const clone = original.content.firstElementChild.cloneNode(true);
 
   const img = clone.querySelector('img');
-  const name = clone.querySelector('span')
   const imageData = clone.querySelector('.js-image-data');
 
   const randomId = Math.floor(Math.random() * 1000000000);

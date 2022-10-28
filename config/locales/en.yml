@@ -316,6 +316,8 @@ en:
         use_for_money: How will you use the money?
         funded_on: Funding date
         funded_description: Funded description
+        photos:
+          caption: Add an optional caption
       chapter:
         name: Name
         slug: Name in the URL
@@ -360,6 +362,9 @@ en:
     placeholders:
       comment:
         body: Type your comment and press Enter to submit
+      project:
+        photos:
+          caption: e.g. Photo credit, brief description of the image
   activerecord:
     attributes:
       chapter:
