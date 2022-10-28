@@ -1,7 +1,7 @@
 <li data-id="<%= photo&.id %>" class="js-uploader__element <%= 'hidden' if photo._destroy %>">
   <a href="#" class="remove-image" data-remove="true">remove</a>
   <%= image_tag(photo.url(:small_square), class: "form__image-element-image") %>
-  <%= f.input :caption, as: :string, input_html: { class: "form__image-element-caption" } %>
+  <%= f.input :caption, as: :string, input_html: { class: "form__image-element-caption", autocomplete: "off" } %>
   <%= f.input(:image, as: :hidden, input_html: { class: "js-image-data" }) unless photo.persisted? %>
   <%= f.input :sort_order, as: :hidden, input_html: { class: "js-uploader__sort-field" } %>
   <%= f.input :_destroy, as: :hidden, input_html: { class: "js-uploader__destroy-field" } %>
