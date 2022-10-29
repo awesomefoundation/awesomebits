@@ -68,11 +68,11 @@ step 'I should see custom intro text' do
 end
 
 step 'I go to the chapters index' do
-  visit(chapters_url)
+  visit(chapters_path)
 end
 
 step 'I click the Show Inactive Chapters link' do
-  visit(chapters_url)
+  visit(chapters_path)
   click_link(I18n.t("chapters.index.show_inactive_chapters"))
 end
 
@@ -93,7 +93,7 @@ step 'I should see this new chapter' do
 end
 
 step 'I edit a chapter' do
-  visit(chapters_url)
+  visit(chapters_path)
   click_link(@current_chapter.name, match: :first)
   click_link('Edit Chapter')
   @new_chapter_name = "Montecito"

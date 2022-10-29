@@ -38,8 +38,8 @@ class Invitation < ApplicationRecord
       self.save
     else
       unless @factory.errors.blank?
-        @factory.errors.each do |key, error|
-          self.errors.add(:key, error)
+        @factory.errors.each do |error|
+          self.errors.add(error.attribute, error.message)
         end
       end
       false
