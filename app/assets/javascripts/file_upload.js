@@ -18,7 +18,10 @@ function addUploadedFile(container, file, response) {
     item.name = item.name.replace(/\[\d+\]/, `[${randomId}]`);
   });
 
-  img.src = response.uploadURL;
+  if (file.preview) {
+    img.src = file.preview;
+  }
+  img.title = file.name;
   name.innerHTML = file.data.name;
 
   let uploadId = response.uploadURL;
@@ -144,6 +147,7 @@ window.onload = function() {
     let uppy = new Uppy.Uppy({ id: uploaderName, debug: debug, autoProceed: true })
     uppy.use(Uppy.DragDrop, { target: container.querySelector('.js-uploader__dropzone') })
     uppy.use(Uppy.ProgressBar, { target: container.querySelector('.js-uploader__progress-bar'), hideAfterFinish: true })
+    uppy.use(Uppy.ThumbnailGenerator, { thumbnailWidth: 200, waitForThumbnailsBeforeUpload: true })
 
     if (strategy == "s3") {
       uppy.use(Uppy.AwsS3Multipart, {
