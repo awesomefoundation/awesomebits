@@ -40,7 +40,7 @@ class ChaptersController < ApplicationController
 
   def update
     @chapter = Chapter.find(params[:id])
-    if @chapter.update_attributes(chapter_params)
+    if @chapter.update(chapter_params)
       redirect_to(@chapter)
     else
       render :edit

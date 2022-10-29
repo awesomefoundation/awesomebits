@@ -13,7 +13,7 @@ describe FundedProjectsController do
     end
 
     it 'should return parseable XML' do
-      expect(response.content_type).to eq('application/xml')
+      expect(response.media_type).to eq('application/xml')
       expect { Nokogiri::XML(response.body) }.not_to raise_error
     end
   end

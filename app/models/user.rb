@@ -98,7 +98,7 @@ class User < ApplicationRecord
   end
 
   def mark_last_viewed_chapter(chapter_id)
-    update_attributes(:last_viewed_chapter_id => chapter_id)
+    update(last_viewed_chapter_id: chapter_id)
   end
 
   def set_password(new_password)

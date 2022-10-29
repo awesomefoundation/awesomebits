@@ -3,11 +3,8 @@ module MarkdownHandler
     @erb ||= ActionView::Template.registered_template_handler(:erb)
   end
 
-  # TODO when upgrading to Rails 6, change this call to
-  # def self.call(template, source)
-  #   compiled_source = erb.call(template, source)
-  def self.call(template)
-    compiled_source = erb.call(template)
+  def self.call(template, source)
+    compiled_source = erb.call(template, source)
     "Redcarpet::Markdown.new(Redcarpet::Render::HTML, no_intra_emphasis: true, autolink: true).render(begin;#{compiled_source};end).html_safe"
   end
 end

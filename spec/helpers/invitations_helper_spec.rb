@@ -21,9 +21,9 @@ describe InvitationsHelper do
   describe '#invitable_chapters' do
     it 'returns an array of chapters available to user, alphabetically by name' do
       helper.stubs(:current_user).returns(user)
-      chapter.update_attributes(name: "Alpha")
-      another_chapter.update_attributes(name: "Gamma")
-      yet_another_chapter.update_attributes(name: "Beta")
+      chapter.update(name: "Alpha")
+      another_chapter.update(name: "Gamma")
+      yet_another_chapter.update(name: "Beta")
       expect(helper.invitable_chapters).to eq([chapter, yet_another_chapter, another_chapter])
     end
   end
