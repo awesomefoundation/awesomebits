@@ -14,22 +14,16 @@ step "I should see the amount of characters remaining" do
   expect(page).to have_selector("#project_use_for_money_chars_left", :text => "476")
 end
 
-step "I attach a/another file to the submission" do
-  page.attach_file('project_new_photos', File.expand_path("./app/assets/images/logo.png"))
+step "I attach the file :filename to the submission" do |filename|
+  photos = Rails.root.join("spec", "support", "fixtures")
+  page.attach_file("files[]", Rails.root.join("spec", "support", "fixtures", filename), make_visible: true)
 end
 
-step "I should see the attachment was recognized" do
-  expect(page).to have_css(".image-upload .uploading")
-end
-
-step "I should (still) only see one file upload field" do
-  ignore_hidden_elements = Capybara.ignore_hidden_elements
-  begin
-    Capybara.ignore_hidden_elements = true
-    expect(page.all("input[type='file']").size).to eq(1)
-  ensure
-    Capybara.ignore_hidden_elements = ignore_hidden_elements
-  end
+step "I should see :num attachment/attachments recognized" do |num|
+  # This sleep is not the right solution and we should do something
+  # else to test for whether the file was added to the page
+  sleep(1)
+  expect(page.all(".js-uploader__element").count).to eq(num.to_i)
 end
 
 step 'I fill out the rest of the form' do

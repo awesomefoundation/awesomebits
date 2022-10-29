@@ -52,9 +52,7 @@
   </div>
 
   <%= form.input :rss_feed_url, :as => :string %>
-
 <% end %>
-
 
 <% content_for :javascript do %>
   <%= javascript_tag do %>
@@ -72,6 +70,13 @@
         "intro": "<%= escape_javascript(markdown(chapter.application_intro)) %>"
       },
     <% end %>}
-
   <% end %>
+<% end %>
+
+<% content_for :javascript do %>
+  <%= javascript_include_tag "https://releases.transloadit.com/uppy/v3.2.1/uppy.min.js" %>
+<% end %>
+
+<% content_for :head do %>
+  <%= stylesheet_link_tag "https://releases.transloadit.com/uppy/v3.2.1/uppy.min.css" %>
 <% end %>

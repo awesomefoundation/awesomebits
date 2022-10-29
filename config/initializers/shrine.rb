@@ -2,6 +2,11 @@ require "shrine"
 require "shrine/storage/file_system"
 require "shrine/storage/memory"
 require "shrine/storage/s3"
+require "uppy/s3_multipart"
+
+unless ENV['AWS_BUCKET']
+  require "shrine/storage/tus"
+end
 
 Shrine.plugin :instrumentation
 Shrine.logger = Rails.logger
@@ -17,13 +22,15 @@ if Rails.env.test?
     cache: Shrine::Storage::Memory.new,
     store: Shrine::Storage::Memory.new,
     s3_cache: Shrine::Storage::S3.new(prefix: "uploads", **s3_options),
-    s3_store: Shrine::Storage::S3.new(public: true, **s3_options)
+    s3_store: Shrine::Storage::S3.new(public: true, **s3_options),
+    tus: Shrine::Storage::Tus.new
   }
 
 elsif Rails.env.development? && !ENV["AWS_BUCKET"]
   Shrine.storages = {
     cache: Shrine::Storage::FileSystem.new("public", prefix: "system/cache"),
-    store: Shrine::Storage::FileSystem.new("public", prefix: "system")
+    store: Shrine::Storage::FileSystem.new("public", prefix: "system"),
+    tus: Shrine::Storage::Tus.new
   }
 
 else
@@ -39,3 +46,5 @@ else
     store: Shrine::Storage::S3.new(public: true, **s3_options),
   }
 end
+
+Shrine.plugin :uppy_s3_multipart

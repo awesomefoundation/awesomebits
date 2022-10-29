@@ -1,16 +1,8 @@
-  <div class="input file optional" style="<%= 'display:none' unless display_uploader?(upload_mechanism) %>">
+  <div class="input file optional">
     <label class="file optional"><%= t "simple_form.labels.project.new_photos-html" %></label>
-    <div class="multi-input first noremove" data-num-files="<%= Project::MAX_PHOTOS %>">
-      <% if upload_mechanism == :s3 %>
-        <%= form.s3_file_field :new_photos, :class => "s3_upload_field", :name => "project[new_photo_direct_upload_urls][]", :accept => "image/*", :max_file_size => Photo::MAX_FILE_SIZE %>
-      <% else %>
-        <input class="file optional multi new_photo" id="project_new_photos" name="project[new_photos][]" type="file" value="" accept="image/*">
-      <% end %>
-      <a href="#" class="remove-image" data-remove="true">remove</a>
-      <i class="upload-status icon-spin icon-spinner"></i>
-      <p class="filename"></p>
-      <div class="progress-meter"></div>
-    </div>
+
+    <div class="form__dropzone js-uploader__dropzone"></div>
+    <div class="js-uploader__progress-bar"></div>
 
     <div><%= markdown(local_assigns[:image_notes].presence || t("projects.form.image-notes", :dimensions => Photo::DIMENSIONS[:main])) %></div>
   </div>

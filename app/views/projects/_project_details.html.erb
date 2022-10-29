@@ -95,7 +95,7 @@
       <div class="gallery flexbox wrap">
       <% project.photos.each_with_index do |image, index| %>
         <div class="application__image-wrapper">
-          <%= link_to(image_path(image.url), rel: "project-#{project.id}-images", class: "lightbox", target: "_blank") do -%>
+          <%= link_to(image_path(image.url), rel: "project-#{project.id}-images", class: "lightbox", target: "_blank", title: image.caption) do -%>
             <% if image.image? %>
               <%= image_tag(image.url(:small_square), height: "auto", width: "100%", loading: "lazy") -%>
             <% else %>

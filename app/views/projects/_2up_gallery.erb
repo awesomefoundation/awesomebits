@@ -1,6 +1,6 @@
-<div class="image large-square" data-src="<%= project.display_images[0].url(:gallery) %>">
+<div class="image large-square" data-src="<%= project.display_images[0].url(:gallery) %>" data-sub-html="<%= project.display_images[0].caption %>">
   <%= image_tag(project.display_images[0].url(:large_square)) %>
 </div>
-<div class="image large-square" data-src="<%= project.display_images[1].url(:gallery) %>">
+<div class="image large-square" data-src="<%= project.display_images[1].url(:gallery) %>" data-sub-html="<%= project.display_images[1].caption %>">
   <%= image_tag(project.display_images[1].url(:large_square)) %>
 </div>

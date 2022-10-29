@@ -29,15 +29,17 @@ gem 'redcarpet'
 gem 'simple_form', '~> 5.1'
 gem 'sucker_punch', '~> 3.1'
 gem 'textacular', '~> 5.5.1'
+gem 'uppy-s3_multipart', '~> 1.2'
 gem 'will_paginate', '~> 3.3.1'
 gem 'rack-attack'
 gem 'rack-cors'
 gem 'rack-ssl-enforcer'
 gem 'react-rails'
 gem 'rollbar'
-gem 's3_file_field'
 gem 'sassc-rails', '~> 2.1'
 gem 'shrine', '~> 3'
+gem 'shrine-tus', '~> 2.1', require: false
+gem 'tus-server', '~> 2.3', require: false
 gem 'uglifier'
 gem 'xmlrpc'
 

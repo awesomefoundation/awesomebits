@@ -44,6 +44,8 @@ class Project < ApplicationRecord
 
   scope :public_search, lambda { |query| search({ name: query, title: query, funded_description: query, url: query }, false) }
 
+  accepts_nested_attributes_for :photos, allow_destroy: true
+
   def self.winner_count
     where("funded_on IS NOT NULL").count
   end
@@ -148,28 +150,6 @@ class Project < ApplicationRecord
 
   def photo_order
     photos.map(&:id).join(" ")
-  end
-
-  def new_photos=(photos)
-    photos.each do |photo|
-      if photo.present?
-        new_photo = self.photos.build(:image => photo)
-        if persisted?
-          new_photo.save
-        end
-      end
-    end
-  end
-
-  def new_photo_direct_upload_urls=(urls)
-    urls.each do |url|
-      if url.present?
-        new_photo = self.photos.build(:direct_upload_url => url)
-        if persisted?
-          new_photo.save
-        end
-      end
-    end
   end
 
   def display_images
