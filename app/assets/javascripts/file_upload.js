@@ -1,7 +1,7 @@
 let uploaders = [];
 
-function addUploadedFile(element, file, response) {
-  const strategy = element.dataset.uploaderStrategy;
+function addUploadedFile(container, file, response) {
+  const strategy = container.dataset.uploaderStrategy;
 
   const original = document.getElementById('js-uploader__file-template');
   const clone = original.content.firstElementChild.cloneNode(true);
@@ -38,14 +38,15 @@ function addUploadedFile(element, file, response) {
     }
   });
 
-  const target = element.querySelector('.js-uploader__uploaded-files');
+  const target = container.querySelector('.js-uploader__uploaded-files');
 
   if (target) {
     target.appendChild(clone);
     reorderPhotos(target);
   }
 
-  updateFileRestrictions(element);
+  removeUppyFile(container, file.id);
+  updateFileRestrictions(container);
 }
 
 function addUploadError(container, message) {
@@ -66,10 +67,10 @@ function clearUploadError(container) {
   }
 }
 
-function updateFileRestrictions(element) {
-  const uploaderName = element.dataset.uploaderName;
-  const maxFiles = parseInt(element.dataset.maxFiles);
-  const remainingFiles = maxFiles - element.querySelectorAll('.js-uploader__element:not(.hidden)').length;
+function updateFileRestrictions(container) {
+  const uploaderName = container.dataset.uploaderName;
+  const maxFiles = parseInt(container.dataset.maxFiles);
+  const remainingFiles = maxFiles - container.querySelectorAll('.js-uploader__element:not(.hidden)').length;
 
   if (maxFiles) {
     uploaders[uploaderName].setOptions({
@@ -78,7 +79,7 @@ function updateFileRestrictions(element) {
       }
     })
 
-    const button = element.querySelector('.js-uploader__dropzone').querySelector('button');
+    const button = container.querySelector('.js-uploader__dropzone').querySelector('button');
 
     if (remainingFiles < 1) {
       button.disabled = true;
@@ -86,6 +87,10 @@ function updateFileRestrictions(element) {
       button.disabled = false;
     }
   }
+}
+
+function removeUppyFile(container, uppyId) {
+  uploaders[container.dataset.uploaderName].removeFile(uppyId);
 }
 
 function registerRemoveClicks(container) {
@@ -101,7 +106,7 @@ function registerRemoveClicks(container) {
 
     // Remove the file from the uploader so the user can upload it again if they want
     if (this.parentNode.dataset.uppyId) {
-      uploaders[container.dataset.uploaderName].removeFile(this.parentNode.dataset.uppyId)
+      removeUppyFile(container, this.parentNode.dataset.uppyId);
     }
 
     updateFileRestrictions(container);
