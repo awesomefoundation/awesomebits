@@ -2,8 +2,8 @@ source 'https://rubygems.org'
 
 ruby '2.7.6'
 
-gem 'rails', '5.2.8.1'
-gem 'rake', '< 13.0'
+gem 'rails', '6.1.7'
+gem 'rake'
 gem 'bootsnap','>= 1.1.0', require: false
 
 gem 'addressable'
@@ -15,7 +15,7 @@ gem 'coffee-rails'
 gem 'flutie'
 gem 'formtastic'
 gem 'friendly_id', '~> 5.4.2'
-gem 'high_voltage', '~> 1'
+gem 'high_voltage'
 gem 'honeypot-captcha'
 gem 'it'
 gem 'jquery-rails', '~> 4.1.1'
@@ -54,7 +54,7 @@ group :development, :test do
   gem 'byebug'
   gem 'pry'
   gem 'pry-nav'
-  gem 'rspec-rails', '~> 3.6.1'
+  gem 'rspec-rails', '~> 6.0.1'
   gem 'sham_rack'
 end
 

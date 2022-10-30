@@ -3,7 +3,7 @@ step 'save and open the page' do
 end
 
 step 'I am on the homepage' do
-  visit(root_url)
+  visit(root_path)
 end
 
 step 'I submit a project to the :name chapter' do |name|

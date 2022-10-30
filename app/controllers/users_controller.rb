@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.set_password(params[:user].delete(:new_password))
-    if @user.update_attributes(user_params)
+    if @user.update(user_params)
       if params[:return_to].present?
         redirect_to params[:return_to]
       else

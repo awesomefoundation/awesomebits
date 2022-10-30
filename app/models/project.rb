@@ -186,7 +186,7 @@ class Project < ApplicationRecord
   end
 
   def hide!(reason, user)
-    update_attributes(
+    update(
       hidden_reason: reason,
       hidden_by_user_id: user.id,
       hidden_at: Time.zone.now
@@ -194,7 +194,7 @@ class Project < ApplicationRecord
   end
 
   def unhide!
-    update_attributes(
+    update(
       hidden_reason: nil,
       hidden_by_user_id: nil,
       hidden_at: nil
