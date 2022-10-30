@@ -1,6 +1,7 @@
 <% provide(:page_title, @project.title) %>
 <% provide(:meta_description, strip_tags(@project.funded_description.truncate(150))) if @project.funded_description %>
 <% provide(:meta_image, image_url(@project.primary_image.url)) if @project.has_images? %>
+<% content_for(:extra_body_classes, 'funded_projects-show') %>
 
 <header class="project">
   <% prev_project, next_project = project_winning_siblings(@project) %>
