@@ -210,4 +210,11 @@ body {
       @extend .active-link;
     }
   }
+
+  &.funded_projects-index,
+  &.funded_projects-show {
+    a.funded_projects {
+      @extend .active-link;
+    }
+  }
 }
