@@ -12,7 +12,6 @@ fr:
     facebook: Facebook
   flash:
     permissions:
-      must-be-logged-in: Vous devez être connecté.
       must-be-admin: Vous devez être administrateur.
       cannot-remove-user: Vous n'êtes pas autorisé à retirer cet utilisateur.
       must-be-dean-or-admin: Vous devez être administrateur ou doyen pour accéder à cette page.
@@ -31,6 +30,8 @@ fr:
       cannot: "Ne peut pas accepter l'invitation"
     projects:
       hide-reason-required: Vous devez donner une raison pour masquer un projet
+  flashes:
+    failure_when_not_signed_in: Vous devez être connecté.
   layouts:
     application:
       main-header: L'Awesome Foundation

@@ -12,7 +12,6 @@ pt:
     facebook: Facebook
   flash:
     permissions:
-      must-be-logged-in: Você deve estar autenticado.
       must-be-admin: Você deve ser um administrador.
       cannot-remove-user: Você não tem permissão para remover este usuário.
       must-be-dean-or-admin: Você deve ser um administrador ou decano para acessar esta página.
@@ -31,6 +30,8 @@ pt:
       cannot: "Não foi possível aceitar o convite"
     projects:
       hide-reason-required: Você deve apresentar uma razão para esconder um projeto
+  flashes:
+    failure_when_not_signed_in: Você deve estar autenticado.
   layouts:
     application:
       main-header: The Awesome Foundation

@@ -24,6 +24,6 @@ describe UsersController do
       sign_out
       get :index
     end
-    it { is_expected.to redirect_to(root_url) }
+    it { is_expected.to redirect_to(sign_in_path) }
   end
 end

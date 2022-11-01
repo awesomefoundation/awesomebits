@@ -13,7 +13,6 @@ en:
     monthly: Monthly
   flash:
     permissions:
-      must-be-logged-in: You must be logged in.
       must-be-admin: You must be an administrator.
       cannot-remove-user: You are not allowed to remove this user.
       must-be-dean-or-admin: You must be an admin or dean to access this page.
@@ -33,6 +32,8 @@ en:
     projects:
       hide-reason-required: You must supply a reason a to hide a project
       error: There was a problem saving your project
+  flashes:
+    failure_when_not_signed_in: You must be logged in.
   layouts:
     application:
       main-header: The Awesome Foundation

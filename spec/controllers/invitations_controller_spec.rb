@@ -8,9 +8,9 @@ describe InvitationsController do
       before do
         get :new
       end
-      it { is_expected.to redirect_to(root_path) }
+      it { is_expected.to redirect_to(sign_in_path) }
       it 'sets the flash' do
-        expect(flash[:notice]).to eq("You must be logged in.")
+        expect(flash[:alert]).to eq(I18n.t("flashes.failure_when_not_signed_in"))
       end
     end
   end

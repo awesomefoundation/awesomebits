@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :must_be_logged_in, except: [:new, :create, :success]
+  before_action :require_login, except: [:new, :create, :success]
   before_action :verify_user_can_edit, :only => [:destroy]
   before_action :redirect_to_chapter_or_sign_in, :only => [:index], :if => :chapter_missing?
   before_action :find_chapter, :only => [:index, :show]

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :must_be_logged_in
+  before_action :require_login
   before_action :ensure_chapter, :only => [:index]
   before_action :ensure_current_user_or_admin, :only => [:update, :edit]
 
