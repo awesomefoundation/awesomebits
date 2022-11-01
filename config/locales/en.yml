@@ -119,6 +119,17 @@ en:
     index:
       all_chapters: All Chapters
       reset: Reset
+    show:
+      view-photos: "View Photos"
+      edit: Edit Project
+      byline-html: "<span class='chapter-name'>%{chapter_name}</span> project created by <span class='project-starter'>%{submitter_name}</span>"
+      funder-html: "Funded by <span class='chapter-name'>%{name}</span>"
+      submitted-to-html: "Project application submitted to <span class=''>%{name}</span>"
+      description:
+        header: Project Description
+      feed-title: Recent Posts
+      prev-project: Previous Project
+      next-project: Next Project
   passwords:
     create:
       description: You will receive an email within the next few minutes. It contains instructions for changing your password.
@@ -190,17 +201,6 @@ en:
         other: "%{count} Projects for %{name}"
       export-projects: Export Filtered
       export-all-projects: Export All From Date Range
-    public_show:
-      view-photos: "View Photos"
-      edit: Edit Project
-      byline-html: "<span class='chapter-name'>%{chapter_name}</span> project created by <span class='project-starter'>%{submitter_name}</span>"
-      funder-html: "Funded by <span class='chapter-name'>%{name}</span>"
-      submitted-to-html: "Project application submitted to <span class=''>%{name}</span>"
-      description:
-        header: Project Description
-      feed-title: Recent Posts
-      prev-project: Previous Project
-      next-project: Next Project
     show:
       back-to: 'Back to <a href="%{url}">%{name}</a>'
   emails:

@@ -50,7 +50,7 @@
       <tr class="finalist" data-count="<%= project.vote_count %>" data-id="<%= project.id %>">
         <td>
           <%= link_to project.title, chapter_project_path(project.chapter, project) %>
-          <%= link_to(raw('<i class="icon-ok-sign winner"></i>'), project_path(project), :target => "_blank", :title => t("projects.project.winner", :name => project.chapter.display_name)) if project.winner? %>
+          <%= link_to(raw('<i class="icon-ok-sign winner"></i>'), funded_project_path(project), target: "_blank", title: t("projects.project.winner", name: project.chapter.display_name)) if project.winner? %>
           <% if project.chapter != @chapter %>
             - <em><%= project.chapter.display_name %></em>
           <% end %>

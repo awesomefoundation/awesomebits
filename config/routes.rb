@@ -45,9 +45,9 @@ Rails.application.routes.draw do
       resources :acceptances, :only => [:new, :create]
     end
 
-    resources :funded_projects, :path => "projects", :only => [:index]
+    resources :funded_projects, path: "projects", only: [:index, :show]
 
-    resources :projects, :except => [:index] do
+    resources :projects, except: [:index, :show] do
       member do
         put "hide"
         put "unhide"

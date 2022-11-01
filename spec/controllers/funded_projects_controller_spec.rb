@@ -40,4 +40,49 @@ describe FundedProjectsController do
       expect(response.body.scan("project-with-image__project-name").size).to eq(1)
     end
   end
+
+  context 'viewing a project that has won while logged out' do
+    let!(:project) { FactoryGirl.create(:project, funded_on: Date.today) }
+
+    context "with the correct slug" do
+      before do
+        get :show, params: { id: project, locale: I18n.locale }
+      end
+
+      it { is_expected.to respond_with(:success) }
+      it { is_expected.to render_template("show") }
+    end
+
+    context "with an incorrect slug" do
+      before do
+        get :show, params: { id: "#{project.id}-this-is-a-bad-slug", locale: I18n.locale }
+      end
+
+      it { is_expected.to respond_with(:moved_permanently) }
+      it { is_expected.to redirect_to(funded_project_path(project)) }
+    end
+  end
+
+  context 'viewing a public project page that has not won yet' do
+    let!(:project) { FactoryGirl.create(:project) }
+    let!(:user) { FactoryGirl.create(:user) }
+    let!(:role) { FactoryGirl.create(:role, user: user) }
+
+    context 'while logged in' do
+      before do
+        sign_in_as user
+        get :show, params: { id: project }
+      end
+      it { is_expected.to respond_with(:redirect) }
+      it { is_expected.to redirect_to(chapter_project_path(project.chapter, project)) }
+    end
+
+    context 'while not logged in' do
+      before do
+        sign_out
+        get :show, params: { id: project }
+      end
+      it { is_expected.to respond_with(:missing) }
+    end
+  end
 end

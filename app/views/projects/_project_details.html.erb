@@ -16,7 +16,7 @@
     </div>
 
     <div class="public-link">
-      <%= link_to project_path(project), :target => "blank" do %>
+      <%= link_to funded_project_path(project), target: "blank" do %>
         <%= I18n.t(".view-public-page", scope: "projects.project") %> <i class="icon-ok-sign"></i>
       <% end %>
     </div>

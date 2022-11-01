@@ -111,6 +111,17 @@ fr:
         title: Titre
         id: ID
         votes: Votes
+  funded_projects:
+    show:
+      edit: Editer le Projet
+      byline-html: "Un projet <span class='chapter-name'>%{chapter_name}</span> créé par <span class='project-starter'>%{submitter_name}</span>"
+      funder-html: "Financé par <span class='chapter-name'>%{name}</span>"
+      submitted-to-html: "Dossier envoyé à <span class=''>%{name}</span>"
+      description:
+        header: Description du Projet
+      feed-title: Articles Récents
+      prev-project: Projet précédent
+      next-project: Le prochain projet
   projects:
     wait-for-uploads-to-complete: "Veuillez attendre la fin du chargement de vos images pour envoyer votre candidature."
     project:
@@ -161,16 +172,6 @@ fr:
         other: "%{count} Projets pour %{name}"
       export-projects: Exporter le filtre
       export-all-projects: Exporter toute la période
-    public_show:
-      edit: Editer le Projet
-      byline-html: "Un projet <span class='chapter-name'>%{chapter_name}</span> créé par <span class='project-starter'>%{submitter_name}</span>"
-      funder-html: "Financé par <span class='chapter-name'>%{name}</span>"
-      submitted-to-html: "Dossier envoyé à <span class=''>%{name}</span>"
-      description:
-        header: Description du Projet
-      feed-title: Articles Récents
-      prev-project: Projet précédent
-      next-project: Le prochain projet
     show:
       back-to: 'Retour à <a href="%{url}">%{name}</a>'
   emails:

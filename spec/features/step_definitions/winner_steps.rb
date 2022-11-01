@@ -20,13 +20,13 @@ step 'I revoke the win from that project' do
 end
 
 step 'the project is no longer visible to the public' do
-  visit(project_path(@winning_project))
+  visit(funded_project_path(@winning_project))
   expect(page).to have_no_content(@winning_project.title)
 end
 
 step 'the project is visible to the public' do
-  visit(project_path(@winning_project))
-  expect(page).to have_css("body.projects")
+  visit(funded_project_path(@winning_project))
+  expect(page).to have_css("body.funded_projects")
   expect(page).to have_content(@winning_project.title)
 end
 
@@ -40,6 +40,6 @@ step 'the project looks normal' do
 end
 
 step 'the winning project should belong to my chapter' do
-  visit(project_path(@winning_project))
+  visit(funded_project_path(@winning_project))
   expect(page).to have_css(".meta-data p", text: "#{@current_chapter.name} project")
 end

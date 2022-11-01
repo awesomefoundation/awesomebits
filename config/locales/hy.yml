@@ -111,6 +111,17 @@
         title: Անվանում
         id: ID
         votes: Քվեներ
+  funded_projects:
+    show:
+      edit: Խմբագրել նախագիծ
+      byline-html: "<span class='chapter-name'>%{chapter_name}</span> նախագիծ՝ ստեղծված <span class='project-starter'>%{submitter_name}</span>"
+      funder-html: "Ֆինանսավորված <span class='chapter-name'>%{name}</span> կողմից"
+      submitted-to-html: "Նախագծի դիմումը ուղարկված <span class=''>%{name}</span>"
+      description:
+        header: Նախագծի նկարագրությունը
+      feed-title: Վերջին գրառումները
+      prev-project: Նախորդ Նախագիծը
+      next-project: Հաջորդ Նախագիծը
   projects:
     wait-for-uploads-to-complete: "Խնդրում ենք սպասել լուսանկարի բեռնման ավարտին նախքան Ձեր դիմումը ուղարկելը:"
     project:
@@ -162,16 +173,6 @@
         other: "%{count} նախագիծ %{name} համար"
       export-projects: Արտահանել զտվածը
       export-all-projects: Արտահանել նշված ամսաթվի շրջանակից
-    public_show:
-      edit: Խմբագրել նախագիծ
-      byline-html: "<span class='chapter-name'>%{chapter_name}</span> նախագիծ՝ ստեղծված <span class='project-starter'>%{submitter_name}</span>"
-      funder-html: "Ֆինանսավորված <span class='chapter-name'>%{name}</span> կողմից"
-      submitted-to-html: "Նախագծի դիմումը ուղարկված <span class=''>%{name}</span>"
-      description:
-        header: Նախագծի նկարագրությունը
-      feed-title: Վերջին գրառումները
-      prev-project: Նախորդ Նախագիծը
-      next-project: Հաջորդ Նախագիծը
     show:
       back-to: 'Ետ դեպի <a href="%{url}">%{name}</a>'
   emails:
