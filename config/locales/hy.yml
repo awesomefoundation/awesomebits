@@ -12,7 +12,6 @@
     facebook: Facebook
   flash:
     permissions:
-      must-be-logged-in: "Դուք պետք է գրանցված լինեք:"
       must-be-admin: "Դուք պետք է ադմինիստրատոր լինեք:"
       cannot-remove-user: "Դուք իրավունք չունեք հեռացնել այս օգտատիրոջը:"
       must-be-dean-or-admin: "Դուք պետք է ադմինիստրատոր կամ դեկան լինեք, որպեսզի մուտք գործեք այս էջ:"
@@ -31,6 +30,8 @@
       cannot: "Չի կարող ընդունել հրավերը"
     projects:
       hide-reason-required: "Դուք պետք է ներկայացնեք նախագիծը թաքցնելու պատճառը:"
+  flashes:
+    failure_when_not_signed_in: "Դուք պետք է գրանցված լինեք:"
   layouts:
     application:
       main-header: Օսմ հիմնադրամ

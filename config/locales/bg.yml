@@ -12,7 +12,6 @@ bg:
     facebook: Facebook
   flash:
     permissions:
-      must-be-logged-in: Влезте в профила си.
       must-be-admin: Трябва да сте админ.
       cannot-remove-user: Не може да премахнете този потребител.
       must-be-dean-or-admin: Трябва да сте админ или декан, за да влезнете.
@@ -31,6 +30,8 @@ bg:
       cannot: "Неуспешно приемане на поканата"
     projects:
       hide-reason-required: Трабва да индикирате защо скривате проект
+  flashes:
+    failure_when_not_signed_in: Влезте в профила си.
   layouts:
     application:
       main-header: The Awesome Foundation

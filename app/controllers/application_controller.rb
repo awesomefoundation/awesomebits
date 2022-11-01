@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   def must_be_logged_in
     if current_user.blank? || !current_user.logged_in?
-      flash[:notice] = t("flash.permissions.must-be-logged-in")
+      flash[:notice] = t("flashes.failure_when_not_signed_in")
       redirect_to root_url
     end
   end

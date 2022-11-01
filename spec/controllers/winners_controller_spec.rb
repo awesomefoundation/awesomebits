@@ -14,7 +14,8 @@ describe WinnersController do
       get :edit, params: { chapter_id: project.chapter_id, project_id: project.id }
 
       expect(response.status).to eq(302)
-      expect(flash[:notice]).to eq(I18n.t("flash.permissions.must-be-logged-in"))
+      expect(response).to redirect_to(sign_in_path)
+      expect(flash[:alert]).to eq(I18n.t("flashes.failure_when_not_signed_in"))
     end
   end
 

@@ -12,7 +12,6 @@ ru:
     facebook: Facebook
   flash:
     permissions:
-      must-be-logged-in: Вы должны авторизоваться.
       must-be-admin: Вы должны быть администратором.
       cannot-remove-user: Вы не можете удалить этого пользователя.
       must-be-dean-or-admin: Только администратор или декан может просматривать эту страницу.
@@ -28,6 +27,8 @@ ru:
       thanks: "Спасибо за Вашу заявку!"
     acceptances:
       cannot: "Приглашение не может быть получено"
+  flashes:
+    failure_when_not_signed_in: Вы должны авторизоваться.
   layouts:
     application:
       main-header: Потрясающая организация

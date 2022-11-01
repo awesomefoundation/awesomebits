@@ -20,7 +20,7 @@ describe ProjectsController do
       get :index
     end
 
-    it { is_expected.to redirect_to(root_path) }
+    it { is_expected.to redirect_to(sign_in_path) }
   end
 
   context 'viewing the index with a search term' do
@@ -93,7 +93,7 @@ describe ProjectsController do
         get :show, params: { chapter_id: project.chapter, id: project }
       end
 
-      it { is_expected.to redirect_to root_path }
+      it { is_expected.to redirect_to sign_in_path }
     end
 
     context "while logged in as a trustee" do
