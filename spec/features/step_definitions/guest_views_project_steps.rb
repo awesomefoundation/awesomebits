@@ -5,7 +5,7 @@ step 'there is a project with :count photo(s)' do |count|
 end
 
 step 'I view the project' do
-  visit project_path(@project)
+  visit funded_project_path(@project)
 end
 
 step 'I should see the placeholder image' do

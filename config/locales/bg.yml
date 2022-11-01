@@ -111,6 +111,17 @@ bg:
         title: Заглавие
         id: ID
         votes: Гласове
+  funded_projects:
+    show:
+      edit: Редактирай проект
+      byline-html: "<span class='chapter-name'>%{chapter_name}</span> проект от <span class='project-starter'>%{submitter_name}</span>"
+      funder-html: "Подкрепен от <span class='chapter-name'>%{name}</span>"
+      submitted-to-html: "Кандидатурата е изпратена към <span class=''>%{name}</span>"
+      description:
+        header: Описание на проекта
+      feed-title: Последни постове
+      prev-project: Предишен проект
+      next-project: Следващият проект
   projects:
     wait-for-uploads-to-complete: Моля, изчакайте качването на изображенията да приключи, преди да изпратите кандидатурата.   
     project:
@@ -161,16 +172,6 @@ bg:
         other: "%{count} Проекти за %{name}"
       export-projects: Експортирай Филтрирани
       export-all-projects: Експортирай всички от Data Range          
-    public_show:
-      edit: Редактирай проект      
-      byline-html: "<span class='chapter-name'>%{chapter_name}</span> проект от <span class='project-starter'>%{submitter_name}</span>"
-      funder-html: "Подкрепен от <span class='chapter-name'>%{name}</span>"
-      submitted-to-html: "Кандидатурата е изпратена към <span class=''>%{name}</span>"
-      description:
-        header: Описание на проекта 
-      feed-title: Последни постове
-      prev-project: Предишен проект
-      next-project: Следващият проект
     show:
       back-to: 'Назад към <a href="%{url}">%{name}</a>'
   emails:

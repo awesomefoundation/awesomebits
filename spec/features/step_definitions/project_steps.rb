@@ -126,7 +126,7 @@ step 'I should see the questions and my answers to them' do
 end
 
 step 'I go to the recently submitted project' do
-  visit(project_path(Project.last))
+  visit(chapter_project_path(Project.last.chapter, Project.last))
 end
 
 step 'there is/are :count winning project(s)' do |count|
@@ -143,7 +143,7 @@ step 'there are enough winning projects in my chapter to spread over two pages' 
 end
 
 step 'I edit that winning project' do
-  visit(project_path(@project))
+  visit(funded_project_path(@project))
   click_link "Edit Project"
 end
 
@@ -163,7 +163,7 @@ end
 
 step 'I should see the page describing it and all its details' do
   project = @projects.first
-  expect(page).to have_css(".projects-show")
+  expect(page).to have_css(".funded_projects-show")
   expect(page).to have_css("header h1:contains('#{project.title}')")
   expect(page).to have_css(".project-details .chapter-name a:contains('#{project.chapter.name}')")
   expect(page).to have_css(".project-details .project-starter:contains('#{project.name}')")
@@ -199,7 +199,7 @@ step 'I should see only those 5 winning projects for this chapter listed' do
     expect(page).to have_no_css(".chapter-projects .project[data-id='#{project.id}']")
   end
   @winning_projects.each do |project|
-    expect(page).to have_css(".chapter-projects .project[data-id='#{project.id}'] a[href*='#{project_path(project)}']")
+    expect(page).to have_css(".chapter-projects .project[data-id='#{project.id}'] a[href*='#{funded_project_path(project)}']")
   end
 end
 
@@ -220,7 +220,7 @@ step 'I should not see the project anymore' do
 end
 
 step 'I go to the public page for that project' do
-  visit(project_path(@project))
+  visit(funded_project_path(@project))
 end
 
 step 'I should see that 5 projects have been funded for $5000' do

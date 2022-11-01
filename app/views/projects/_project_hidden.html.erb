@@ -7,7 +7,7 @@
     <%= project.created_at %> (<%= project.chapter.display_name %>)
 
     <% if project.winner? %>
-      · <%= link_to I18n.t(".view-public-page", scope: "projects.project"), project_path(project), :target => "blank" %>
+      · <%= link_to I18n.t(".view-public-page", scope: "projects.project"), funded_project_path(project), target: "blank" %>
     <% end %>
   </section>
 

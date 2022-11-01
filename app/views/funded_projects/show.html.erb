@@ -1,27 +1,26 @@
 <% provide(:page_title, @project.title) %>
 <% provide(:meta_description, strip_tags(@project.funded_description.truncate(150))) if @project.funded_description %>
 <% provide(:meta_image, image_url(@project.primary_image.url)) if @project.has_images? %>
-<% content_for(:extra_body_classes, 'funded_projects-show') %>
 
 <header class="project">
   <% prev_project, next_project = project_winning_siblings(@project) %>
   <% if prev_project || next_project %>
     <div class="prev-next-links">
-      <%= link_to t('.prev-project'), prev_project, :class => 'prev-project' if prev_project %>
-      <%= link_to t('.next-project'), next_project, :class => 'next-project' if next_project %>
+      <%= link_to t('.prev-project'), prev_project, class: 'prev-project' if prev_project %>
+      <%= link_to t('.next-project'), next_project, class: 'next-project' if next_project %>
     </div>
   <% end %>
   <% if can_manage_chapter?(@project.chapter) %>
-    <%= link_to t(".edit"), edit_project_path(@project), :class => 'edit-project' %>
+    <%= link_to t(".edit"), edit_project_path(@project), class: 'edit-project' %>
   <% end %>
   <h1><%= @project.title %></h1>
 </header>
 
 <section id="project-gallery" class="flexbox horizontal">
   <% if @project.display_images.count < 5 %>
-    <%= render "projects/#{@project.display_images.count}up_gallery", project: @project  %>
+    <%= render "#{@project.display_images.count}up_gallery", project: @project  %>
   <% else %>
-    <%= render "projects/5up_gallery", project: @project %>
+    <%= render "5up_gallery", project: @project %>
   <% end %>
   <% if @project.has_images? %>
     <%= link_to t(".view-photos"), "#", id: "launch-gallery", class: "view-photos" %>
@@ -30,12 +29,10 @@
 
 <section class="project-details">
   <section class="meta-data">
-    <p><%= t(".byline-html", :chapter_name => link_to(@project.chapter.display_name, chapter_path(@project.chapter)), :submitter_name => @project.name) %></p>
+    <p><%= t(".byline-html", chapter_name: link_to(@project.chapter.display_name, chapter_path(@project.chapter)), submitter_name: @project.name) %></p>
     <div class="addthis_toolbox addthis_default_style ">
       <a class="addthis_button_twitter"></a>
       <a class="addthis_button_facebook"></a>
-      <a class="addthis_button_google"></a>
-      <a class="addthis_button_email"></a>
       <a class="addthis_button_compact"></a>
       <a class="addthis_counter addthis_bubble_style"></a>
     </div>
@@ -45,7 +42,7 @@
   <div class="flexbox horizontal wrap justify-space-between">
     <section class="project-description">
       <% if @project.winner? %>
-        <%= markdown @project.funded_description, :link_attributes => { :target => "_blank" }, :hard_wrap => true %>
+        <%= markdown @project.funded_description, link_attributes: { target: "_blank" }, hard_wrap: true %>
 
       <% else %>
         <h2><%= t ".description.header" %></h2>
@@ -72,11 +69,11 @@
       <article class="project-state">
         <% if @project.winner? %>
           <div class="state funded">
-            <p><%= t(".funder-html", :name => @project.chapter.name) %> <span class="funded-on">(<%= l @project.funded_on, :format => :funding %>)</span></p>
+            <p><%= t(".funder-html", name: @project.chapter.name) %> <span class="funded-on">(<%= l @project.funded_on, format: :funding %>)</span></p>
           </div>
         <% else %>
           <div class="state applied">
-            <p><%= t(".submitted-to-html", :name => @project.chapter.name) %></p>
+            <p><%= t(".submitted-to-html", name: @project.chapter.name) %></p>
           </div>
         <% end %>
       </article>

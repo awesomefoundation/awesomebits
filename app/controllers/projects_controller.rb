@@ -1,8 +1,7 @@
 class ProjectsController < ApplicationController
-  before_action :must_be_logged_in, :except => [:show, :new, :create, :success]
+  before_action :must_be_logged_in, except: [:new, :create, :success]
   before_action :verify_user_can_edit, :only => [:destroy]
   before_action :redirect_to_chapter_or_sign_in, :only => [:index], :if => :chapter_missing?
-  before_action :handle_unpublished_projects, :only => [:show]
   before_action :find_chapter, :only => [:index, :show]
 
   around_action :set_time_zone, :only => [:index, :show]
@@ -84,19 +83,8 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
 
-    if public_view?
-      # Ensure the canonical path
-      if project_path(@project) != request.path
-        redirect_to project_path(@project), :status => :moved_permanently and return
-      end
-
-      render :action => "public_show"
-
-    else
-      @display_project_even_if_hidden = true
-      @initial_comments = @project.comments.includes(:user).viewable_by(user: current_user, chapter: @chapter).by_date
-      must_be_logged_in || render
-    end
+    @display_project_even_if_hidden = true
+    @initial_comments = @project.comments.includes(:user).viewable_by(user: current_user, chapter: @chapter).by_date
   end
 
   def edit
@@ -186,20 +174,6 @@ class ProjectsController < ApplicationController
 
   def chapter_missing?
     params[:chapter_id].blank?
-  end
-
-  def public_view?
-    params[:chapter_id].blank?
-  end
-
-  def handle_unpublished_projects
-    if public_view? && !current_project.try(:winner?)
-      if current_user.logged_in?
-        redirect_to chapter_project_path(current_project.chapter, current_project) and return
-      else
-        render_404 && return
-      end
-    end
   end
 
   def find_chapter

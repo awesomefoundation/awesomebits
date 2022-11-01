@@ -105,6 +105,17 @@ ru:
         title: название
         id: ID-номер
         votes: голос(ов)
+  funded_projects:
+    show:
+      edit: Редактировать проект
+      byline-html: "<span class='chapter-name'>%{chapter_name}</span> создатель проекта <span class='project-starter'>%{submitter_name}</span>"
+      funder-html: "Грант предоставил <span class='chapter-name'>%{name}</span>"
+      submitted-to-html: "Заявка проекта подана попечителю <span class=''>%{name}</span>"
+      description:
+        header: Описание проекта
+      feed-title: Недавние публикации
+      prev-project: Предыдущий проект
+      next-project: Следующий проект
   projects:
     wait-for-uploads-to-complete: Пожалуйста, дождитесь пока ваши изображения загрузятся на наш сайт, после этого отправляйте вашу заявку.
     project:
@@ -146,16 +157,6 @@ ru:
         other: "%{count} Проекты в %{name}"
       export-projects: Экспортировать отфильтрованные
       export-all-projects: Экспортировать всё в указанном периоде
-    public_show:
-      edit: Редактировать проект
-      byline-html: "<span class='chapter-name'>%{chapter_name}</span> создатель проекта <span class='project-starter'>%{submitter_name}</span>"
-      funder-html: "Грант предоставил <span class='chapter-name'>%{name}</span>"
-      submitted-to-html: "Заявка проекта подана попечителю <span class=''>%{name}</span>"
-      description:
-        header: Описание проекта
-      feed-title: Недавние публикации
-      prev-project: Предыдущий проект
-      next-project: Следующий проект
     show:
       back-to: 'Назад к <a href="%{url}">%{name}</a>'
   emails:

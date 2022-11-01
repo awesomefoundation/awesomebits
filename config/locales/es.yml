@@ -112,6 +112,18 @@ es:
         title: Título
         id: Identificación
         votes: Votos
+  funded_projects:
+    show:
+      view-photos: "Ver fotos"
+      edit: Editar proyecto
+      byline-html: "<span class='chapter-name'>%{chapter_name}</span> proyecto creado por <span class='proyecto-starter'>%{submitter_name}</span>"
+      funder-html: "Fondos becados por <span class='chapter-name'>%{name}</span>"
+      submitted-to-html: "Solicitud del proyecto sometido a <span class=''>%{name}</span>"
+      description:
+        header: Descripción del proyecto
+      feed-title: Entradas recientes
+      prev-project: Proyecto anterior
+      next-project: El próximo proyecto
   passwords:
     create:
       description: Usted recibirá un correo electrónico dentro de los próximos minutos. Contiene las instrucciones para cambiar su contraseña.
@@ -172,17 +184,6 @@ es:
         other: "%{count} Proyectos para %{name}"
       export-projects: Exportación filtrada
       export-all-projects: Exportar todo desde el intervalo de fechas
-    public_show:
-      view-photos: "Ver fotos"
-      edit: Editar proyecto
-      byline-html: "<span class='chapter-name'>%{chapter_name}</span> proyecto creado por <span class='proyecto-starter'>%{submitter_name}</span>"
-      funder-html: "Fondos becados por <span class='chapter-name'>%{name}</span>"
-      submitted-to-html: "Solicitud del proyecto sometido a <span class=''>%{name}</span>"
-      description:
-        header: Descripción del proyecto
-      feed-title: Entradas recientes
-      prev-project: Proyecto anterior
-      next-project: El próximo proyecto
     show:
       back-to: 'Regreso a <a href="%{url}">%{name}</a>'
   emails:
