@@ -3,6 +3,7 @@ class ImageUploader < Shrine
   
   plugin :model
   plugin :activerecord
+  plugin :cached_attachment_data
   plugin :default_url
   plugin :default_storage
 
