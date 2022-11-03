@@ -37,9 +37,9 @@ gem 'shrine', '~> 3'
 gem 'shrine-tus', '~> 2.1', require: false
 gem 'simple_form', '~> 5.1'
 gem 'sucker_punch', '~> 3.1'
+gem 'terser'
 gem 'textacular', '~> 5.5.1'
 gem 'tus-server', '~> 2.3', require: false
-gem 'uglifier'
 gem 'uppy-s3_multipart', '~> 1.2'
 gem 'will_paginate', '~> 3.3.1'
 gem 'xmlrpc'
