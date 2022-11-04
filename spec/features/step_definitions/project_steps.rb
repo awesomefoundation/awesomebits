@@ -258,6 +258,7 @@ step 'I should be on the project page for that project' do
 end
 
 step 'I expand the project menu' do
+  ensure_js_is_ready
   project = page.find("article.project", match: :first)
   project.find(".project-actions-toggle").click
 end
