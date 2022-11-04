@@ -40,6 +40,7 @@ gem 'stimulus-rails'
 gem 'sucker_punch', '~> 3.1'
 gem 'terser'
 gem 'textacular', '~> 5.5.1'
+gem 'turbo-rails'
 gem 'tus-server', '~> 2.3', require: false
 gem 'uppy-s3_multipart', '~> 1.2'
 gem 'will_paginate', '~> 3.3.1'

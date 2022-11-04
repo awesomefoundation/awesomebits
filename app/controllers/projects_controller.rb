@@ -103,17 +103,28 @@ class ProjectsController < ApplicationController
 
   def hide
     @project = Project.find(params[:id])
+    @display_project_even_if_hidden = (params[:context] == "show")
 
     if params[:hidden_reason].present?
       @project.hide!(params[:hidden_reason], current_user)
     else
-      flash[:notice] = t("flash.projects.hide-reason-required")
+      @error_message = t("flash.projects.hide-reason-required")
     end
 
-    return_to = params[:return_to] ? URI(params[:return_to]) : URI(chapter_projects_path(@project.chapter))
-    return_to.fragment = "project#{@project.id}"
+    respond_to do |format|
+      format.turbo_stream do
+        render "hide", locals: { project: @project }
+      end
 
-    redirect_to return_to.to_s
+      format.html do
+        flash[:notice] = @error_message
+
+        return_to = params[:return_to] ? URI(params[:return_to]) : URI(chapter_projects_path(@project.chapter))
+        return_to.fragment = "project#{@project.id}"
+
+        redirect_to return_to.to_s
+      end
+    end
   end
 
   def unhide

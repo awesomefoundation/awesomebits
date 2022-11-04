@@ -153,6 +153,7 @@ es:
       not-answered: No se ha respondido
       images: "Imágenes:"
       image: "Imagen #%{index}"
+    hide_form:
       hide: Esconder
       unhide: Mostrar
       consider-hiding: "¿No es un proyecto adecuado?"

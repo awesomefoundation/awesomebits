@@ -1,43 +1,9 @@
-<article class="project <%= "shortlisted" if project.shortlisted_by?(current_user) %> <%= "winner" if project.winner? %>" id="project<%= project.id %>" data-id="<%= project.id %>">
+<article class="project <%= "shortlisted" if project.shortlisted_by?(current_user) %> <%= "winner" if project.winner? %>" id="project<%= project.id %>" data-id="<%= project.id %>" data-controller="jump" data-jump-scroll-value="<%= local_assigns[:scroll] == true %>">
   <% if !project.hidden? || @display_project_even_if_hidden %>
     <%= render "projects/project_details", project: project %>
   <% else %>
     <%= render "projects/project_hidden", project: project %>
   <% end %>
 
-  <section class="filtering" data-controller="revealer" data-revealer-expanded-class-value="show-form">
-    <% if project.hidden? %>
-      <div>
-        <%= t(".hidden-details", username: project.hidden_by_user.name, hidden_at: l(project.hidden_at.to_date), reason: project.hidden_reason) %>
-        <% unless @display_project_even_if_hidden %>
-          (<%= link_to t(".view-application"), chapter_project_path(project.chapter, project), :class => "title" %>)
-        <% end %>
-      </div>
-      <%# only display the unhide button if we are reviewing the whole project %>
-      <% if @display_project_even_if_hidden %>
-        <div class="unhiding-form">
-          <%= button_to t(".unhide"), unhide_project_path(id: project.id), method: :put, class: "hide-action" %>
-          <div class="explanation">
-            <%= t(".unhiding-explanation") %>
-          </div>
-        </div>
-      <% end %>
-    <% else %>
-      <div class="consider-hiding">
-        <%= t(".consider-hiding") %>
-        <%= link_to t(".hide"), "#", data: { project_id: project.id, action: "click->revealer#reveal" }, class: "hideFormLink" %>
-      </div>
-      <div class="hiding-form">
-        <%= form_tag hide_project_path(project), method: :put, class: "hide-form" do %>
-          <%= t(".hide-reason") %>
-          <%= text_field_tag :hidden_reason, "", class: "reason" %>
-          <%= hidden_field_tag :return_to, request.original_url %>
-          <%= submit_tag t(".hide"), class: "hide-action" %>
-        <% end %>
-        <div class="explanation">
-          <%= t(".hiding-explanation") %>
-        </div>
-      </div>
-    <% end %>
-  </section>
+  <%= render "projects/hide_form", project: project %>
 </article>

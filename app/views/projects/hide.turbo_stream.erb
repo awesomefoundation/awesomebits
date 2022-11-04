@@ -1,0 +1,9 @@
+<% if @error_message.present? || @display_project_even_if_hidden %>
+  <%= turbo_stream.replace_all "#project#{project.id} .filtering" do %>
+    <%= render "projects/hide_form", project: project, error_message: @error_message, expanded: true %>
+  <% end %>
+<% else %>
+  <%= turbo_stream.replace "project#{project.id}" do %>
+    <%= render @project, scroll: true %>
+  <% end %>
+<% end %>

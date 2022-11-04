@@ -142,6 +142,7 @@ bg:
       not-answered: Не е отговорено
       images: "Изображения:"
       image: "Изображение #%{index}"
+    hide_form:
       hide: Скрий
       unhide: Покажи
       consider-hiding: Проекта не е подходящ?
