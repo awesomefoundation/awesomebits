@@ -370,6 +370,8 @@ GEM
     sprockets-redirect (0.1.0)
       activesupport (>= 3.1.0)
       rack
+    stimulus-rails (1.1.1)
+      railties (>= 6.0.0)
     sucker_punch (3.1.0)
       concurrent-ruby (~> 1.0)
     terser (1.1.12)
@@ -471,6 +473,7 @@ DEPENDENCIES
   shrine-tus (~> 2.1)
   simple_form (~> 5.1)
   sprockets-redirect
+  stimulus-rails
   sucker_punch (~> 3.1)
   terser
   textacular (~> 5.5.1)

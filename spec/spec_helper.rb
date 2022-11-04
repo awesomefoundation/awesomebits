@@ -31,3 +31,7 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+def ensure_js_is_ready
+  expect(page).to have_css('[data-js-loaded-value="true"]')
+end

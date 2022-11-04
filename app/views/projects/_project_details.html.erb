@@ -1,4 +1,4 @@
-<header>
+<header data-controller="toggler">
   <div class="title">
     <%= link_to project.title, chapter_project_path(project.chapter, project), :class => "title" %>
 
@@ -11,7 +11,7 @@
     <% end %>
 
     <% if display_project_actions?(current_user, project) %>
-      <%= link_to '<i class="icon-gear"></i>'.html_safe, "#", :class => "project-actions-toggle" %>
+      <%= link_to '<i class="icon-gear"></i>'.html_safe, "#", class: "project-actions-toggle", data: { action: "click->toggler#toggle" } %>
     <% end %>
     </div>
 
@@ -25,7 +25,7 @@
   <section class="meta-data">
     <%= project.created_at %> (<%= project.chapter.display_name %>)
 
-    <section class="project-actions">
+    <section class="project-actions" data-toggler-target="toggleable">
       <ul class="icons-ul">
         <% if current_user.can_mark_winner?(project) %>
           <li class="non-winner-action">
@@ -138,8 +138,8 @@
     <div class="project__comments-inner">
       <%= react_component("CommentList", { projectId: project.id, currentUserId: current_user.id, deleteBasePath: project_comments_path(project), initialComments: @initial_comments, deleteConfirmationText: I18n.t(".confirm-delete-comment", scope: "projects.project"), deleteIconText: I18n.t(".delete-comment", scope: "projects.project"), deletePermission: current_user.can_edit_project?(project) }, { prerender: @initial_comments.present? }) %>
 
-      <div class="comment-form-wrapper">
-        <%= link_to I18n.t(".add-comment", scope: "projects.project"), "javascript:void(0)", class: "comment-form-expand" %>
+      <div class="comment-form-wrapper" data-controller="revealer">
+        <%= link_to I18n.t(".add-comment", scope: "projects.project"), "#", class: "comment-form-expand", data: { action: "click->revealer#reveal" } %>
 
         <%= simple_form_for [project, Comment.new], method: :post, remote: true, html: { class: "comment-form" } do |f| %>
           <%= f.input :viewable_by, collection: Comment::VIEWABLE_OPTIONS, include_blank: false, wrapper_html: { class: "comment-form__viewable-by" }, label_html: { class: "comment-form__label--inline" } %>
