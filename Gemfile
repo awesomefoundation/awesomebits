@@ -36,6 +36,7 @@ gem 'sassc-rails', '~> 2.1'
 gem 'shrine', '~> 3'
 gem 'shrine-tus', '~> 2.1', require: false
 gem 'simple_form', '~> 5.1'
+gem 'stimulus-rails'
 gem 'sucker_punch', '~> 3.1'
 gem 'terser'
 gem 'textacular', '~> 5.5.1'

@@ -65,18 +65,6 @@ populate_funded_description = ->
 
 $('#project_funded_on').blur(populate_funded_description)
 
-showHideOptions = ->
-  $("#project#{$(this).data("projectId")} .filtering").addClass("show-form")
-  false
-
-$(".hideFormLink").click(showHideOptions)
-
-showCommentForm = ->
-  $(this).parent().addClass("expanded")
-  false
-
-$(".comment-form-expand").click(showCommentForm)
-
 $(".comment-form")
   .on("ajax:success", (event, data, status, xhr) ->
     CommentStore.setComments(data.comments, data.project_id)

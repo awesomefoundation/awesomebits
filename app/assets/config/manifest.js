@@ -8,6 +8,7 @@
 // importmap links
 //= link application.js
 //= link_tree ../../../vendor/javascript .js
+//= link_tree ../../javascript .js
 
 // To render React components in production, precompile the server rendering manifest
 //= link server_rendering.js
