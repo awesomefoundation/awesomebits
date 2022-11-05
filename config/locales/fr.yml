@@ -142,6 +142,7 @@ fr:
       not-answered: Pas répondu
       images: "Images :"
       image: "Image #%{index}"
+    hide_form:
       hide: Masquer
       unhide: Montrer
       consider-hiding: Projet inapproprié ?

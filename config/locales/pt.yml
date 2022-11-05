@@ -142,6 +142,7 @@ pt:
       not-answered: Não Respondido
       images: "Imagens:"
       image: "Imagen #%{index}"
+    hide_form:
       hide: Esconder
       unhide: Mostrar
       consider-hiding: Projeto inadequado?

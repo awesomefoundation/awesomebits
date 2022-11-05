@@ -142,6 +142,7 @@
       not-answered: Չպատասխանված
       images: "Լուսանկարներ:"
       image: "Լուսանկար #%{index}"
+    hide_form:
       hide: Թաքցնել
       unhide: Ցուցադրել
       consider-hiding: "Անհամապատասխա՞ն նախագիծ"

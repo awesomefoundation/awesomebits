@@ -572,23 +572,30 @@ body.projects-index {
       font-size: 0.8em;
 
       .hiding-form, .unhiding-form {
+        p {
+          margin: 0;
+        }
         &.hiding-form {
           display: none;
         }
 
-        form, .explanation {
-          display: inline-block;
+        form {
+          margin-bottom: 10px;
         }
 
         input.reason {
           width: 200px;
         }
 
+        label {
+          display: inline-block;
+        }
+
         input.hide-action {
           @include button(rgb(230,230,230));
           width: 80px;
           position: relative;
-          top: -10px;
+          margin: 0;
         }
       }
 
