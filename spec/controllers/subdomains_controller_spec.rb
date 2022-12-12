@@ -42,4 +42,31 @@ describe SubdomainsController do
       it { is_expected.to redirect_to("http://www.test.host/#{I18n.default_locale}") }
     end
   end
+
+  context "with canonical host" do
+    around(:each) do |example|
+      ENV['CANONICAL_HOST'] = "www.test.host"
+      example.run
+      ENV['CANONICAL_HOST'] = nil
+    end
+
+    before do
+      @request.host = "www.dummy.test.host"
+    end
+
+    it { is_expected.to route(:get, "http://www.dummy.test.host").to(controller: "subdomains", action: "canonical") }
+    it { is_expected.to route(:get, "http://www.dummy.test.host/en/projects").to(controller: "subdomains", action: "canonical", url: "en/projects") }
+    it { is_expected.to route(:get, "http://nyc.test.host").to(controller: "subdomains", action: "chapter") }
+
+    it "should redirect homepage without locale" do
+      get :canonical
+
+      expect(response).to redirect_to("http://www.test.host/")
+    end
+
+    it "should redirect project page with locale" do
+      get :canonical, params: { url: "pt/projects" }
+      expect(response).to redirect_to("http://www.test.host/pt/projects")
+    end
+  end
 end

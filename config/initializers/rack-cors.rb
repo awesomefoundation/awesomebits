@@ -4,8 +4,13 @@
 # https://devcenter.heroku.com/articles/using-amazon-cloudfront-cdn#cors
 Rails.configuration.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins "https://#{ ENV['SUBDOMAIN'] || "www" }.awesomefoundation.org",
-             "http://#{ ENV['SUBDOMAIN'] || "www" }.awesomefoundation.org"
+    if ENV['CANONICAL_HOST'].present?
+      origins "https://#{ENV['CANONICAL_HOST']}",
+              "http://#{ENV['CANONICAL_HOST']}"
+    else
+      origins "https://#{ ENV['SUBDOMAIN'] || "www" }.awesomefoundation.org",
+              "http://#{ ENV['SUBDOMAIN'] || "www" }.awesomefoundation.org"
+    end
 
     resource '/assets/*', headers: :any, methods: [:get, :post, :options]
   end

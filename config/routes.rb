@@ -11,6 +11,11 @@ Rails.application.routes.draw do
     get "/"      => "subdomains#chapter"
   end
 
+  constraints(DomainConstraint) do
+    get "*url" => "subdomains#canonical"
+    get "/"    => "subdomains#canonical"
+  end
+
   get "/blog/contact/" => redirect("/en/contact")
   get "/blog/about/"   => redirect("/en/about_us")
   get "/blog"          => redirect("http://blog.awesomefoundation.org")
