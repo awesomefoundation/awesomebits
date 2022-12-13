@@ -75,6 +75,12 @@ In order to prevent that redirect for other installations (such as staging envir
 SUBDOMAIN=staging
 ```
 
+Alternately, you can set the `CANONICAL_HOST` environment variable which will force all non-chapter subdomain redirects to be redirected to the canonical hostname. This is necessary to ensure that the main site is not served up by stray hostnames due to wildcard DNS. i.e. www.m.awesomefoundation.org should redirect to the canonical www.awesomefoundation.org host for SEO and overall confusion reasons.
+
+```shell
+CANONICAL_HOST=www.awesomefoundation.org
+```
+
 
 Secret Token
 ------------

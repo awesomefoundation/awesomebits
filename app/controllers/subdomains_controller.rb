@@ -3,18 +3,30 @@ class SubdomainsController < ApplicationController
 
   def chapter
     if @chapter
-      redirect_to(chapter_url(@chapter.slug, :subdomain => @subdomain)) and return
+      redirect_to(chapter_url(@chapter.slug, url_parts))
 
     else
-      redirect_to(root_url(:subdomain => @subdomain)) and return
+      redirect_to(root_url(url_parts))
     end
   end
 
   def apply
-    redirect_to(new_submission_url(:subdomain => @subdomain, :chapter => @chapter)) and return
+    redirect_to(new_submission_url({ chapter: @chapter }.merge(url_parts)))
+  end
+
+  def canonical
+    redirect_to({ locale: nil }.merge(url_parts), status: :moved_permanently)
   end
 
   protected
+
+  def url_parts
+    if ENV['CANONICAL_HOST'].present?
+      { host: ENV['CANONICAL_HOST'] }
+    else
+      { subdomain: @subdomain }
+    end
+  end
 
   def find_chapter
     subdomains = request.subdomains
