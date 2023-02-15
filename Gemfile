@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.7.6'
 
-gem 'rails', '6.1.7'
+gem 'rails', '6.1.7.1'
 gem 'rake'
 gem 'bootsnap','>= 1.1.0', require: false
 
@@ -24,6 +24,7 @@ gem 'jbuilder'
 gem 'jquery-ui-rails', '~> 3.0.1'
 gem 'magnific-popup-rails'
 gem 'nokogiri', '~> 1.13.10'
+gem 'open-uri', require: false # TODO might not be necessary in Ruby 3
 gem 'pg', '~> 1.4.4'
 gem 'puma'
 gem 'rack-attack'
@@ -43,6 +44,7 @@ gem 'textacular', '~> 5.5.1'
 gem 'turbo-rails'
 gem 'tus-server', '~> 2.3', require: false
 gem 'uppy-s3_multipart', '~> 1.2'
+gem 'uri', '0.10.0'
 gem 'will_paginate', '~> 3.3.1'
 gem 'xmlrpc'
 
