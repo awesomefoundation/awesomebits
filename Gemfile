@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.7.7'
 
-gem 'rails', '6.1.7'
+gem 'rails', '6.1.7.1'
 gem 'rake'
 gem 'bootsnap','>= 1.1.0', require: false
 
@@ -19,10 +19,11 @@ gem 'high_voltage'
 gem 'honeypot-captcha'
 gem 'importmap-rails'
 gem 'it'
-gem 'jquery-rails', '~> 4.1.1'
 gem 'jbuilder'
+gem 'jquery-rails', '~> 4.1.1'
 gem 'jquery-ui-rails', '~> 3.0.1'
 gem 'magnific-popup-rails'
+gem 'mail', '~> 2.7.1' # TODO see if this is still required in Ruby 3
 gem 'nokogiri', '~> 1.13.10'
 gem 'pg', '~> 1.4.4'
 gem 'puma'
