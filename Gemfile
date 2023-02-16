@@ -21,7 +21,7 @@ gem 'importmap-rails'
 gem 'it'
 gem 'jbuilder'
 gem 'jquery-rails', '~> 4.1.1'
-gem 'jquery-ui-rails', '~> 3.0.1'
+gem 'jquery-ui-rails', '~> 6.0.0'
 gem 'magnific-popup-rails'
 gem 'mail', '~> 2.7.1' # TODO see if this is still required in Ruby 3
 gem 'nokogiri', '~> 1.13.10'
