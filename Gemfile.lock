@@ -461,7 +461,7 @@ DEPENDENCIES
   pg (~> 1.4.4)
   pry
   pry-nav
-  puma
+  puma (< 7)
   rack-attack
   rack-cors
   rack-ssl-enforcer
