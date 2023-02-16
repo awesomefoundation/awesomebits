@@ -96,8 +96,9 @@ GEM
       mocha (~> 1.1)
     builder (3.2.4)
     byebug (11.1.3)
-    capybara (3.35.3)
+    capybara (3.38.0)
       addressable
+      matrix
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
       rack (>= 1.6.0)
@@ -213,6 +214,7 @@ GEM
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     marcel (1.0.2)
+    matrix (0.4.2)
     metaclass (0.0.4)
     method_source (0.7.1)
     middleware (0.1.0)
@@ -239,8 +241,8 @@ GEM
       slop (>= 2.4.4, < 3)
     pry-nav (0.2.1)
       pry (~> 0.9.9)
-    public_suffix (4.0.7)
-    puma (5.6.4)
+    public_suffix (5.0.1)
+    puma (6.1.0)
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.6.2)
@@ -297,7 +299,7 @@ GEM
       railties (>= 3.2)
       tilt
     redcarpet (3.5.1)
-    regexp_parser (2.6.0)
+    regexp_parser (2.7.0)
     roda (3.61.0)
       rack
     rollbar (3.3.2)
