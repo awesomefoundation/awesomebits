@@ -1,8 +1,10 @@
 class ProjectsController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: [:new, :create, :success], if: :embed?
+
   before_action :require_login, except: [:new, :create, :success]
   before_action :verify_user_can_edit, :only => [:destroy]
   before_action :redirect_to_chapter_or_sign_in, :only => [:index], :if => :chapter_missing?
-  before_action :find_chapter, :only => [:index, :show]
+  before_action :find_chapter
 
   around_action :set_time_zone, :only => [:index, :show]
 
@@ -50,11 +52,9 @@ class ProjectsController < ApplicationController
   end
 
   def new
-    @project = Project.new
+    render_404 and return if embed? && !@chapter
 
-    if params[:chapter]
-      @project.chapter = Chapter.find(params[:chapter].downcase) rescue nil
-    end
+    @project = Project.new(chapter: @chapter)
   end
 
   def create
@@ -64,7 +64,7 @@ class ProjectsController < ApplicationController
       flash[:notice] = t("flash.applications.error")
       render :new
     elsif @project.save
-      redirect_to success_submissions_path(chapter: @project.chapter)
+      redirect_to success_submissions_path({ chapter: @project.chapter, mode: params[:mode] }.reject { |_, v| v.blank? })
     else
       flash.now[:notice] = t("flash.applications.error")
       render :new
@@ -143,6 +143,10 @@ class ProjectsController < ApplicationController
 
   private
 
+  def embed?
+    params[:mode] == "embed"
+  end
+
   def project_params
     [ :name, :title, :url, :email, :phone, :about_me, :about_project, :chapter_id, :extra_question_1, :extra_question_2, :extra_question_3, :extra_answer_1, :extra_answer_2, :extra_answer_3, :photo_order, :rss_feed_url, :use_for_money, photo_ids_to_delete: [], photos_attributes: [:id, :image, :caption, :sort_order, :_destroy] ]
   end
@@ -190,6 +194,8 @@ class ProjectsController < ApplicationController
   def find_chapter
     if params[:chapter_id]
       @chapter = Chapter.find(params[:chapter_id])
+    elsif params[:chapter]
+      @chapter = Chapter.friendly.find(params[:chapter].downcase, allow_nil: !embed?)
     end
   end
 

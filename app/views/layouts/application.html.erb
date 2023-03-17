@@ -28,7 +28,7 @@
 </head>
 <body class="<%= body_class %>" data-controller="js">
   <div id="site-container" class="flexbox vertical stretch">
-    <%= render 'shared/navigation' %>
+    <%= render 'shared/navigation' unless embed? %>
     <div class="flexbox vertical center">
       <div id="main-container" class="flexbox vertical stretch">
         <section class="container-wrapper flexbox vertical center">
@@ -38,7 +38,7 @@
           </section>
         </section>
       </div>
-    <%= render 'shared/footer' %>
+    <%= render 'shared/footer' unless embed? %>
     </div>
     <%= render 'shared/javascript' %>
   </div>  

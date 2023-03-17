@@ -129,6 +129,56 @@ describe ProjectsController do
     end
   end
 
+  context "the project submission form" do
+    let(:mode) { nil }
+
+    context "with a chapter" do
+      let(:chapter) { FactoryGirl.create(:chapter) }
+
+      before do
+        get :new, params: { chapter: chapter.slug, mode: mode }
+      end
+
+      it { is_expected.to respond_with(:success) }
+
+      context "in embed mode" do
+        let(:mode) { "embed" }
+
+        it { is_expected.to respond_with(:success) }
+      end
+    end
+
+    context "with an invalid chapter" do
+      it "displays successfully" do
+        get :new, params: { chapter: "invalid" }
+
+        expect(response.status).to eq(200)
+      end
+
+      context "in embed mode" do
+        it "raises an exception if the Chapter is not set" do
+          expect {
+            get :new, params: { mode: "embed", chapter: "invalid" }
+          }.to raise_exception(ActiveRecord::RecordNotFound)
+        end
+      end
+    end
+
+    context "without a chapter" do
+      before do
+        get :new, params: { mode: mode }
+      end
+
+      it { is_expected.to respond_with(:success) }
+
+      context "in embed mode" do
+        let(:mode) { "embed" }
+
+        it { is_expected.to respond_with(:missing) }
+      end
+    end
+  end
+
   describe "#hide" do
     let(:user) { FactoryGirl.create(:user) }
     let(:reason) { Faker::Company.bs }

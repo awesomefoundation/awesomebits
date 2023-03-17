@@ -1,9 +1,11 @@
 <% provide(:page_title, t(".title")) %>
 <div class="flexbox vertical center">
+  <% unless embed? %>
   <section class="application-intro">
     <h1><%= t ".title" %></h1>
     <p><%= t ".description" %></p>
   </section>
+  <% end %>
 
   <section class="project-form">
     <%= simple_form_for @project, :url => submissions_url, :html => { :multipart => true, :honeypot => true, "data-uploading-alert-text" => strip_tags(t("projects.wait-for-uploads-to-complete")) } do |form| %>
