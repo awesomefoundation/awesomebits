@@ -35,4 +35,8 @@ module ApplicationHelper
 
     tag :meta, options.merge(:content => content_for?(content_tag) ? content_for(content_tag) : content)
   end
+
+  def current_params_with_locale(locale)
+    params.reject { |p| %w(params).include?(p) }.permit!.merge(locale: locale, only_path: true)
+  end
 end
