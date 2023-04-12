@@ -24,7 +24,7 @@ gem 'jquery-rails', '~> 4.1.1'
 gem 'jquery-ui-rails', '~> 3.0.1'
 gem 'magnific-popup-rails'
 gem 'mail', '~> 2.7.1' # TODO see if this is still required in Ruby 3
-gem 'nokogiri', '~> 1.13.10'
+gem 'nokogiri', '~> 1.14.3'
 gem 'pg', '~> 1.4.4'
 gem 'puma', '< 7'
 gem 'rack-attack'

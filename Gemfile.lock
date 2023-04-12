@@ -226,7 +226,7 @@ GEM
     msgpack (1.6.0)
     newrelic_rpm (7.2.0)
     nio4r (2.5.8)
-    nokogiri (1.13.10)
+    nokogiri (1.14.3)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     pg (1.4.4)
@@ -456,7 +456,7 @@ DEPENDENCIES
   magnific-popup-rails
   mail (~> 2.7.1)
   newrelic_rpm (~> 7.2)
-  nokogiri (~> 1.13.10)
+  nokogiri (~> 1.14.3)
   pg (~> 1.4.4)
   pry
   pry-nav
