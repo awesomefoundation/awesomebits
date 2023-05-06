@@ -36,6 +36,16 @@
         <%= label_tag "past_trustees", t(".past-trustees-filter") %>
       </div>
 
+      <div class="input toggle">
+        <%= check_box_tag "funded", nil, params[:funded].present? %>
+        <%= label_tag "funded", t(".funded-filter") %>
+      </div>
+
+      <div class="input toggle">
+        <%= check_box_tag "hidden", nil, params[:hidden].present? %>
+        <%= label_tag "hidden", t(".hidden-filter") %>
+      </div>
+
       <input name="" type="submit" value="<%= t(".filter-button") %>">
     </form>
   </section>

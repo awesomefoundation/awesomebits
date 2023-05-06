@@ -108,6 +108,8 @@ pt:
       filter-button: Filtro
       start-date: data inicial
       end-date: data final
+      hidden-filter: Escondido
+      funded-filter: Financiado
       table:
         title: Título
         id: ID

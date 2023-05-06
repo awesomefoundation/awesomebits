@@ -16,6 +16,14 @@ class FinalistsController < ApplicationController
     unless params[:past_trustees].present?
       @projects = @projects.with_votes_by_members_of_chapter(current_chapter)
     end
+
+    unless params[:hidden].present?
+      @projects = @projects.where(hidden_at: nil)
+    end
+
+    unless params[:funded].present?
+      @projects = @projects.where(funded_on: nil)
+    end
   end
 
   private

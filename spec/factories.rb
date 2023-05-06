@@ -72,6 +72,11 @@ FactoryGirl.define do
     factory :winning_project do
       sequence(:funded_on) { |n| (3000-n.to_i).days.ago }
     end
+
+    factory :hidden_project do
+      hidden_reason "Hidden"
+      hidden_at { rand(30).days.ago }
+    end
   end
 
   factory :vote do

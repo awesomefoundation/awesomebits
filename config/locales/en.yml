@@ -111,7 +111,9 @@ en:
       filter-button: Filter
       start-date: start date
       end-date: end date
-      past-trustees-filter: Include votes from past trustees
+      past-trustees-filter: Votes from past trustees
+      hidden-filter: Hidden
+      funded-filter: Funded
       table:
         title: Title
         id: ID

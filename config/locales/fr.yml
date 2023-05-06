@@ -108,6 +108,8 @@ fr:
       filter-button: Filtrer
       start-date: Date de début
       end-date: Date de fin
+      hidden-filter: Masqué
+      funded-filter: Financé
       table:
         title: Titre
         id: ID

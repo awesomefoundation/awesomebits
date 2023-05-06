@@ -108,6 +108,8 @@
       filter-button: Զտել
       start-date: Մեկնարկի օր
       end-date: Ավարտի օր
+      hidden-filter: Թաքցված
+      funded-filter: հաղթողներին
       table:
         title: Անվանում
         id: ID
