@@ -109,10 +109,13 @@ es:
       filter-button: Filtro
       start-date: fecha de inicio
       end-date: fecha final
+      hidden-filter: Escondido
+      funded-filter: Fondos
       table:
         title: Título
         id: Identificación
         votes: Votos
+        date: Fecha
   funded_projects:
     show:
       view-photos: "Ver fotos"

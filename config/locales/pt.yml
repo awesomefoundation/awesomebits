@@ -108,10 +108,13 @@ pt:
       filter-button: Filtro
       start-date: data inicial
       end-date: data final
+      hidden-filter: Escondido
+      funded-filter: Financiado
       table:
         title: Título
         id: ID
         votes: Votos
+        date: Data
   funded_projects:
     show:
       edit: Editar Projeto

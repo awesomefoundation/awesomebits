@@ -82,11 +82,17 @@ class Project < ApplicationRecord
     )
   end
 
-  def self.by_vote_count
-    select("projects.chapter_id, projects.id, projects.title, projects.funded_on, COUNT(votes.project_id) as vote_count").
+  def self.by_vote_count(sort: nil)
+    order = case sort
+            when "date" then "projects.created_at DESC, vote_count DESC"
+            when "title" then "projects.title ASC, vote_count DESC"
+            else "vote_count DESC, projects.created_at ASC"
+            end
+
+    select("projects.chapter_id, projects.id, projects.title, projects.funded_on, COUNT(votes.project_id) as vote_count, projects.created_at").
       group("projects.id, projects.title, votes.project_id").
       joins(:users).
-      order("vote_count DESC, projects.created_at ASC")
+      order(order)
   end
 
   def self.winners

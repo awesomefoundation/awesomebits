@@ -57,7 +57,7 @@ FactoryGirl.define do
 
   factory :project do
     name "Joe Schmoe"
-    title
+    title { Faker::Lorem.sentence(word_count: 5) }
     email
     url "http://something.com"
     about_project "I am awesome."
@@ -71,6 +71,11 @@ FactoryGirl.define do
 
     factory :winning_project do
       sequence(:funded_on) { |n| (3000-n.to_i).days.ago }
+    end
+
+    factory :hidden_project do
+      hidden_reason "Hidden"
+      hidden_at { rand(30).days.ago }
     end
   end
 

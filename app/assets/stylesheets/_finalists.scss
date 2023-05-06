@@ -16,7 +16,7 @@ section.applications {
     font-size: 0.8em;
     
     tr {
-      td {
+      td, th {
         &:first-child {
           width: 75%;
         }
@@ -28,7 +28,11 @@ section.applications {
         &:nth-child(3) {
           width: 10%;
         }
-        
+
+        &.vote-count {
+            text-align: center;
+        }
+
         a {
           font-weight: bold;
           color: rgb(55,55,55);
@@ -41,7 +45,13 @@ section.applications {
         .winner {
           color: $pink;
         }
+        .sorted:after {
+            content: ' \21c5';
+        }
 
+      }
+      th {
+          white-space: nowrap;
       }
     }
   }

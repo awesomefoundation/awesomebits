@@ -106,6 +106,7 @@ ru:
         title: название
         id: ID-номер
         votes: голос(ов)
+        date: дата
   funded_projects:
     show:
       edit: Редактировать проект

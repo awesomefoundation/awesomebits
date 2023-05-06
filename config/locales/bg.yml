@@ -108,10 +108,13 @@ bg:
       filter-button: Филтър
       start-date: стартова дата
       end-date: крайна дата
+      hidden-filter: Скрит
+      funded-filter: победители
       table:
         title: Заглавие
         id: ID
         votes: Гласове
+        date: дата
   funded_projects:
     show:
       edit: Редактирай проект

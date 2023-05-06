@@ -5,6 +5,10 @@ describe 'finalists/index' do
   let!(:project1) { FactoryGirl.create(:project, chapter: user.chapters.first) }
   let!(:project2) { FactoryGirl.create(:project) }
 
+  before(:each) do
+    controller.request.params[:chapter_id] = project1.chapter
+  end
+
   describe 'when a project from another chapter has votes from our trustees' do
     it 'displays the name of the other chapter next to that project title' do
       Vote.create(user: user, project: project1, chapter: project1.chapter)
