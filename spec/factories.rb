@@ -57,7 +57,7 @@ FactoryGirl.define do
 
   factory :project do
     name "Joe Schmoe"
-    title
+    title { Faker::Lorem.sentence(word_count: 5) }
     email
     url "http://something.com"
     about_project "I am awesome."

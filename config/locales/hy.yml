@@ -114,6 +114,7 @@
         title: Անվանում
         id: ID
         votes: Քվեներ
+        date: օր
   funded_projects:
     show:
       edit: Խմբագրել նախագիծ

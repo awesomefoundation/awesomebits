@@ -10,6 +10,7 @@ describe FinalistsController do
     let(:trustee_role) { FactoryGirl.create(:role, :trustee, chapter: chapter) }
     let(:past_trustee_role) { FactoryGirl.create(:role, :trustee, chapter: chapter) }
     let!(:past_trustee) { past_trustee_role.user }
+    let(:projects) { [project1, project2, funded_project, hidden_project] }
 
     before do
       Vote.create!(project: project1, user: trustee_role.user, chapter: chapter)
@@ -50,6 +51,20 @@ describe FinalistsController do
       get :index, params: { chapter_id: chapter, funded: "on" }
 
       expect(response.body).to have_selector("tr.finalist[data-id='#{funded_project.id}']")
+    end
+
+    context "sorting" do
+      it "sorts by title" do
+        get :index, params: { chapter_id: chapter, past_trustees: "on", funded: "on", "hidden": "on", sort: "title" }
+
+        expect(controller.view_assigns['projects'].collect { |p| p.id }).to eq(projects.sort { |a, b| a.title <=> b.title }.collect { |p| p.id })
+      end
+
+      it "sorts by creation date" do
+        get :index, params: { chapter_id: chapter, past_trustees: "on", funded: "on", "hidden": "on", sort: "date" }
+
+        expect(controller.view_assigns['projects'].collect { |p| p.id }).to eq(projects.sort { |a, b| b.created_at <=> a.created_at }.collect { |p| p.id })
+      end
     end
   end
 end

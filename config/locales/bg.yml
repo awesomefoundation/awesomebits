@@ -114,6 +114,7 @@ bg:
         title: Заглавие
         id: ID
         votes: Гласове
+        date: дата
   funded_projects:
     show:
       edit: Редактирай проект

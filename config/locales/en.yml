@@ -118,6 +118,7 @@ en:
         title: Title
         id: ID
         votes: Votes
+        date: Date
   funded_projects:
     index:
       all_chapters: All Chapters

@@ -114,6 +114,7 @@ pt:
         title: Título
         id: ID
         votes: Votos
+        date: Data
   funded_projects:
     show:
       edit: Editar Projeto

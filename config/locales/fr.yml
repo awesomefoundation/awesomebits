@@ -114,6 +114,7 @@ fr:
         title: Titre
         id: ID
         votes: Votes
+        date: Date
   funded_projects:
     show:
       edit: Editer le Projet

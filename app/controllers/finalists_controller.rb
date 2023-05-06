@@ -6,12 +6,14 @@ class FinalistsController < ApplicationController
   include ApplicationHelper
 
   def index
+    @sort = %w(title date).include?(params[:sort]) ? params[:sort] : "votes"
+
     @start_date, @end_date = extract_timeframe
     @projects = Project.
                   includes(:chapter).
                   with_votes_for_chapter(current_chapter).
                   during_timeframe(@start_date, @end_date).
-                  by_vote_count
+                  by_vote_count(sort: @sort)
 
     unless params[:past_trustees].present?
       @projects = @projects.with_votes_by_members_of_chapter(current_chapter)

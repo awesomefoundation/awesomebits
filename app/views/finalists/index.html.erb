@@ -52,9 +52,9 @@
 
   <table>
     <tr class="headers">
-      <th><%= t ".table.title" %></th>
-      <th><%= t ".table.id " %></th>
-      <th><%= t ".table.votes" %></th>
+      <th><%= link_to t(".table.title"), request.params.merge(sort: "title"), class: ("sorted" if @sort == "title") %></th>
+      <th><%= link_to t(".table.date"),  request.params.merge(sort: "date"),  class: ("sorted" if @sort == "date") %></th>
+      <th><%= link_to t(".table.votes"), request.params.merge(sort: "votes"), class: ("sorted" if @sort == "votes") %></th>
     </tr>
     <% @projects.each do |project| %>
       <tr class="finalist" data-count="<%= project.vote_count %>" data-id="<%= project.id %>">
@@ -65,7 +65,7 @@
             - <em><%= project.chapter.display_name %></em>
           <% end %>
         </td>
-        <td><%= project.id %></td>
+        <td><%= project.created_at.strftime("%Y-%m-%d") %></td>
         <td class="vote-count"><%= project.vote_count %></td>
       </tr>
     <% end %>

@@ -115,6 +115,7 @@ es:
         title: Título
         id: Identificación
         votes: Votos
+        date: Fecha
   funded_projects:
     show:
       view-photos: "Ver fotos"
