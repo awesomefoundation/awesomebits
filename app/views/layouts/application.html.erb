@@ -17,6 +17,8 @@
 
   <%= stylesheet_link_tag "//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" %>
 
+  <%= javascript_importmap_tags %>
+
   <script type="text/javascript" src="https://use.typekit.com/xhz4kzm.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   <!--[if lt IE 9]>
@@ -24,7 +26,6 @@
   <![endif]-->
 
   <%= content_for :head %>
-  <%= javascript_importmap_tags %>
 </head>
 <body class="<%= body_class %>" data-controller="js">
   <div id="site-container" class="flexbox vertical stretch">
