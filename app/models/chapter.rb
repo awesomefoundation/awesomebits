@@ -25,6 +25,8 @@ EOT
   validates_presence_of :slug
   validates_uniqueness_of :name
 
+  validates :name, :slug, :twitter_url, :facebook_url, :instagram_url, :email_address, :blog_url, :rss_feed_url, :extra_question_1, :extra_question_2, :extra_question_3, length: {maximum: 255}
+
   validates_format_of :slug, :with => /\A[a-z0-9-]+\Z/
 
   def self.any_chapter
