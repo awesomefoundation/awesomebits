@@ -1,13 +1,25 @@
 require 'spec_helper'
 
-describe UsersController do
+describe UsersController, type: :controller do
   context "signed in as admin user" do
+    render_views
+
     let(:user) { FactoryGirl.create(:user, :admin => true) }
     before do
       sign_in_as user
-      get :index
     end
-    it { is_expected.to respond_with(:success) }
+
+    context "fetching an HTML file" do
+      before { get :index }
+      it { is_expected.to respond_with(:success) }
+      it { should render_template("index") }
+    end
+
+    context "fetching a CSV file" do
+      before { get :index, format: "csv" }
+      it { is_expected.to respond_with(:success) }
+      it { should render_template("index") }
+    end
   end
   context "signed in as non-admin user" do
     let(:role) { FactoryGirl.create(:role) }

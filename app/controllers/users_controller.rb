@@ -4,7 +4,15 @@ class UsersController < ApplicationController
   before_action :ensure_current_user_or_admin, :only => [:update, :edit]
 
   def index
-    @users = User.all_with_chapter(params[:chapter_id]).paginate(page: params[:page], per_page: 250)
+    @users = User.all_with_chapter(params[:chapter_id])
+
+    respond_to do |format|
+      format.html do
+        @users = @users.paginate(page: params[:page], per_page: 250)
+      end
+      format.csv do
+      end
+    end
   end
 
   def update
