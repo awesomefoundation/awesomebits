@@ -11,6 +11,7 @@ class UsersController < ApplicationController
         @users = @users.paginate(page: params[:page], per_page: 250)
       end
       format.csv do
+        headers["Content-Disposition"] = "attachment; filename=#{current_chapter.slug}_users.csv" if current_chapter.present?
       end
     end
   end
