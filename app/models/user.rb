@@ -24,7 +24,7 @@ class User < ApplicationRecord
   def self.all_with_chapter(chapter_id)
     association = joins("LEFT JOIN roles ON users.id = roles.user_id").
       joins("LEFT JOIN chapters ON chapters.id = roles.chapter_id").
-      select("users.*, chapters.name AS chapter_name, roles.id AS role_id, roles.name AS role_name").
+      select("users.*, chapters.name AS chapter_name, chapters.inactive_at AS chapter_inactive_at, roles.id AS role_id, roles.name AS role_name").
       order(:first_name, :id)
     if chapter_id.nil?
       association

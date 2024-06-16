@@ -1,4 +1,4 @@
-<%= CSV.generate_line %w[id first_name last_name email url chapter_name role created_at updated_at] -%>
+<%= CSV.generate_line %w[id first_name last_name email url chapter_name role created_at updated_at chapter_active] -%>
 <%- @users.each do |user| -%>
-  <%= CSV.generate_line([user.id, user.first_name, user.last_name, user.email, user.url, user.chapter_name, user.role_name, user.created_at.to_s(:iso8601), user.updated_at.to_s(:iso8601)]).html_safe -%>
+  <%= CSV.generate_line([user.id, user.first_name, user.last_name, user.email, user.url, user.chapter_name, user.role_name, user.created_at.to_s(:iso8601), user.updated_at.to_s(:iso8601), (user.chapter_name.blank? ? nil : user.chapter_inactive_at.blank?)]).html_safe -%>
 <%- end -%>
