@@ -86,6 +86,7 @@ GEM
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
+    base64 (0.2.0)
     bcrypt (3.1.20)
     bindex (0.8.1)
     bootsnap (1.13.0)
@@ -152,6 +153,7 @@ GEM
     email_validator (2.2.3)
       activemodel
     erubi (1.12.0)
+    event_stream_parser (1.0.0)
     execjs (2.8.1)
     factory_girl (3.5.0)
       activesupport (>= 3.0.0)
@@ -160,6 +162,13 @@ GEM
       railties (>= 3.0.0)
     faker (2.23.0)
       i18n (>= 1.8.11, < 2)
+    faraday (2.8.1)
+      base64
+      faraday-net_http (>= 2.0, < 3.1)
+      ruby2_keywords (>= 0.0.4)
+    faraday-multipart (1.0.4)
+      multipart-post (~> 2)
+    faraday-net_http (3.0.2)
     ffi (1.15.5)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
@@ -228,6 +237,7 @@ GEM
     mocha (1.2.1)
       metaclass (~> 0.0.1)
     msgpack (1.6.0)
+    multipart-post (2.4.1)
     newrelic_rpm (7.2.0)
     nio4r (2.7.3)
     nokogiri (1.14.3)
@@ -350,7 +360,12 @@ GEM
     rubocop-performance (1.21.1)
       rubocop (>= 1.48.1, < 2.0)
       rubocop-ast (>= 1.31.1, < 2.0)
+    ruby-openai (7.3.1)
+      event_stream_parser (>= 0.3.0, < 2.0.0)
+      faraday (>= 1)
+      faraday-multipart (>= 1)
     ruby-progressbar (1.13.0)
+    ruby2_keywords (0.0.5)
     ruby_dep (1.5.0)
     rubyzip (2.3.2)
     sass (3.7.3)
@@ -514,6 +529,7 @@ DEPENDENCIES
   redcarpet
   rollbar
   rspec-rails (~> 6.0.1)
+  ruby-openai
   sassc-rails (~> 2.1)
   sham_rack
   shoulda-matchers (~> 3)
