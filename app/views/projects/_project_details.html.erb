@@ -12,6 +12,7 @@
 
     <% if display_project_actions?(current_user, project) %>
       <%= link_to '<i class="icon-gear"></i>'.html_safe, "#", class: "project-actions-toggle", data: { action: "click->toggler#toggle" } %>
+      <%= link_to I18n.t("auto_awesome", scope: "projects.project.buttons"), show_or_create_project_project_analysis_path(project), class: "auto-awesome" %>
     <% end %>
     </div>
 

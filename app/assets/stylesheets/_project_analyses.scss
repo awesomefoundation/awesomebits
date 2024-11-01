@@ -1,0 +1,45 @@
+// @import "base_variables";
+
+body.project-analysis-show {
+  h1 {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+
+  .scores-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+
+    th,
+    td {
+      padding: 8px;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f0f0f0;
+      text-align: left;
+      font-weight: bold;
+    }
+
+    // Define classes for score rows using the color variables
+    tr.score-row--high {
+      background-color: $green-background;
+      color: $green-text;
+      font-weight: 900;
+    }
+
+    tr.score-row--medium {
+      background-color: $yellow-background;
+      color: $yellow-text;
+    }
+
+    tr.score-row--low {
+      background-color: $red-background;
+      color: $red-text;
+    }
+  }
+
+  // Additional styles can be defined here, following your SCSS strategies
+}

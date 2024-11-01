@@ -1,7 +1,6 @@
-# coding: utf-8
 FactoryGirl.define do
-  sequence(:email) {|n| "user#{n}@example.com" }
-  sequence(:title) {|n| "Something Awesome ##{n}" }
+  sequence(:email) { |n| "user#{n}@example.com" }
+  sequence(:title) { |n| "Something Awesome ##{n}" }
   sequence(:index)
 
   factory :chapter do
@@ -14,7 +13,7 @@ FactoryGirl.define do
     end
   end
 
-  factory :user, :aliases => [:inviter, :invitee] do
+  factory :user, aliases: [:inviter, :invitee] do
     first_name "Joe"
     last_name "Schmoe"
     email
@@ -27,13 +26,13 @@ FactoryGirl.define do
 
     factory :user_with_dean_role do
       after(:create) do |user|
-        FactoryGirl.create(:role, :user => user, :name => "dean")
+        FactoryGirl.create(:role, user: user, name: "dean")
         user.reload
       end
     end
 
     factory :user_with_trustee_role do
-      chapters { [association(:chapter) ] }
+      chapters { [association(:chapter)] }
     end
   end
 
@@ -48,7 +47,7 @@ FactoryGirl.define do
 
   factory :invitation do
     email
-    association :inviter, :factory => :user_with_dean_role
+    association :inviter, factory: :user_with_dean_role
 
     after(:build) do |invitation, proxy|
       invitation.chapter = invitation.inviter.chapters.first
@@ -66,11 +65,11 @@ FactoryGirl.define do
     chapter
 
     factory :project_with_rss_feed do
-      rss_feed_url Rails.root.join('spec', 'support', 'feed.xml').to_s
+      rss_feed_url Rails.root.join("spec", "support", "feed.xml").to_s
     end
 
     factory :winning_project do
-      sequence(:funded_on) { |n| (3000-n.to_i).days.ago }
+      sequence(:funded_on) { |n| (3000 - n.to_i).days.ago }
     end
 
     factory :hidden_project do
@@ -107,10 +106,9 @@ FactoryGirl.define do
   # custom storage the way we do.
   factory :s3_photo, class: "Photo" do
     project
-    storage_keys { { store: :s3_store, cache: :s3_cache } }
+    storage_keys { {store: :s3_store, cache: :s3_cache} }
     image_data { FakeData.shrine_uploaded_file("1.JPG") }
   end
-
 
   factory :comment do
     project

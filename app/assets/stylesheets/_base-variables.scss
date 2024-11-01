@@ -2,16 +2,28 @@ $gw-column: 60px;
 $gw-gutter: 20px;
 
 $serif: Georgia, Cambria, serif;
-$sans-serif: 'museo-sans', 'proxima-nova', $helvetica;
+$sans-serif: "museo-sans", "proxima-nova", $helvetica;
 
-$base-font-color: rgb(55,55,55);
-$lighter-base-font-color: rgb(46,46,46);
+$base-font-color: rgb(55, 55, 55);
+$lighter-base-font-color: rgb(46, 46, 46);
 $muted-color: #ccc;
 
 $pink: rgb(255, 75, 126);
 $button-pink: rgb(252, 103, 147);
 
-$blue: rgb(34,122,255); //blue
+$blue: rgb(34, 122, 255); //blue
+
+$green-background: #a7f3d0;
+$green-text: #065f46;
+
+$yellow-background: #fef08a;
+$yellow-text: #854d0e;
+
+$red-background: #fecaca;
+$red-text: #7f1d1d;
+
+$base-font-color: rgb(55, 55, 55);
+$lighter-base-font-color: rgb(46, 46, 46);
 
 /***
  * Responsiveness Sizes        
@@ -22,7 +34,7 @@ $blue: rgb(34,122,255); //blue
  * mobile-small:    for additional changes that accommdate very small screens like iPhone 5S
 ***/
 
-$maximum-width: 60em;   // Equivalent to 969px;
+$maximum-width: 60em; // Equivalent to 969px;
 $tablet-standard: 60em;
 $mobile-standard: 30em; // Equivalent to 480px;
-$mobile-small: 20em;    // Equivalent to 320px;
+$mobile-small: 20em; // Equivalent to 320px;
