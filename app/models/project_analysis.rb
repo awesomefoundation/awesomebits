@@ -6,7 +6,7 @@ class ProjectAnalysis < ApplicationRecord
   validate :validate_scores
 
   # Serialize the tags array
-  serialize :tags, Array
+  # serialize :tags, Array
 
   # Access scores as a nested object
   def scores

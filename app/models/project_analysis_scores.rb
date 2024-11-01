@@ -1,21 +1,22 @@
 class ProjectAnalysisScores
   SCORE_FIELDS = %w[
-    reach
-    proximity
     self_interest
+    proximity
+    novelty
     budget_clarity
-    impact_of_grant
+    whimsy
+    social_good
+    reach
     feasibility
+    urgency
+    impact_of_grant
     credibility
     innovation
     sustainability
     community_involvement
     cultural_relevance
     scalability
-    urgency
     alignment_with_mission
-    whimsy
-    social_good
     artistic_merit
   ]
 
