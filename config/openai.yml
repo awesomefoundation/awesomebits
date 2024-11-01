@@ -141,77 +141,61 @@ default_settings: &default
           properties:
             reach:
               "$ref": "#/$defs/Score"
-              description: Number of people impacted, focusing on those local to the chapter's region.
-            proximity:
-              "$ref": "#/$defs/Score"
-              description: Geographic closeness of project and applicant to chapter community.
-            novelty:
-              "$ref": "#/$defs/Score"
-              description: Originality and uniqueness of the project’s concept or approach.
-            public_beneficiary:
+              description: |
+                Number of people impacted, focusing on those local to the chapter's region.
+            alignment:
               "$ref": "#/$defs/Score"
               description: |
-                Prioritizes funds that benefit the public or community over the applicant’s personal gain.
-                Score low if funds are mainly used for applicant’s personal expenses (e.g., stipends).
-            budget_clarity:
+                Project alignment with the Awesome Foundation’s mission and geographical focus.
+            novelty:
               "$ref": "#/$defs/Score"
-              description: Clarity and detail of fund allocation within the proposal.
+              description: |
+                Originality, cleverness, and uniqueness of the project’s concept or approach. Should
+                not be an obvious idea that replicates other existing work.
+            use_of_proceeds:
+              "$ref": "#/$defs/Score"
+              description: |
+                Clarity and detail of fund allocation within the proposal, as well as ensuring the
+                funds will NOT finacially enrich the applicant directly (e.g., stipends paid to the
+                applicant).
             impact_of_grant:
               "$ref": "#/$defs/Score"
-              description: Significance of the $1000 grant in achieving the project’s goals.
+              description: |
+                Significance of the $1000 grant in achieving the project’s goals. The grant should
+                be executable solely with no additional outside funding.
             feasibility:
               "$ref": "#/$defs/Score"
-              description: Practicality of executing the project within the stated timeline and budget.
-            credibility:
-              "$ref": "#/$defs/Score"
-              description: Applicant’s experience and credibility relevant to the project’s scope.
-            innovation:
-              "$ref": "#/$defs/Score"
-              description: Originality of the idea and potential to introduce new solutions.
+              description: |
+                Practicality of executing the project within the stated timeline and budget. Also
+                evaluate applicant’s experience and credibility relevant to the project’s scope.
             sustainability:
               "$ref": "#/$defs/Score"
-              description: Long-term viability and potential for impact beyond the grant period.
-            community_involvement:
-              "$ref": "#/$defs/Score"
-              description: Degree of community engagement and opportunities for collaboration.
-            cultural_relevance:
-              "$ref": "#/$defs/Score"
-              description: Alignment with local cultural values and potential to raise awareness.
-            scalability:
-              "$ref": "#/$defs/Score"
-              description: Potential for project expansion or replication in other contexts.
+              description: |
+                Long-term viability and potential for impact beyond the grant period,
+                as well as potential for project expansion or replication in other contexts.
             urgency:
               "$ref": "#/$defs/Score"
-              description: Immediacy of need for funds; score lower if impact isn’t time-sensitive.
-            alignment_with_mission:
-              "$ref": "#/$defs/Score"
-              description: Project alignment with the Awesome Foundation’s mission or chapter focus.
+              description: |
+                Immediacy of need for funds; score lower if impact isn’t time-sensitive.
             whimsy:
               "$ref": "#/$defs/Score"
-              description: Playful, imaginative qualities that inspire curiosity or delight.
+              description: |
+                Playful, imaginative qualities that inspire curiosity or delight.
             social_good:
               "$ref": "#/$defs/Score"
-              description: Potential for positive social impact and contribution to community welfare.
-            artistic_merit:
-              "$ref": "#/$defs/Score"
-              description: Artistic quality or creativity, especially for arts-focused projects.
+              description: |
+                Potential for positive social impact and contribution to community welfare.
           required:
             - reach
-            - proximity
-            - public_beneficiary
-            - budget_clarity
+            - alignment
+            - novelty
+            - use_of_proceeds
             - impact_of_grant
             - feasibility
-            - innovation
             - sustainability
-            - community_involvement
-            - cultural_relevance
-            - scalability
             - urgency
-            - alignment_with_mission
             - whimsy
             - social_good
-            - artistic_merit
           title: Scores
           type: object
       properties:
