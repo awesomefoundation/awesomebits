@@ -20,7 +20,7 @@ gem 'honeypot-captcha'
 gem 'importmap-rails'
 gem 'it'
 gem 'jbuilder'
-gem 'jquery-rails', '~> 4.1.1'
+gem 'jquery-rails', '~> 4.4.0'
 gem 'jquery-ui-rails', '~> 3.0.1'
 gem 'magnific-popup-rails'
 gem 'mail', '~> 2.7.1' # TODO see if this is still required in Ruby 3
