@@ -168,6 +168,8 @@ en:
       add-comment: Add a comment
       confirm-delete-comment: Are you sure you want to remove this comment?
       delete-comment: Delete comment
+      buttons:
+        auto_awesome: Auto-awesome
     hide_form:
       hide: Hide
       unhide: Unhide

@@ -9,6 +9,7 @@ gem 'bootsnap','>= 1.1.0', require: false
 gem 'addressable'
 gem 'aws-sdk-s3'
 gem 'bourbon', '~> 4.0.2'
+gem 'bcrypt', '~> 3.1.7'
 gem 'clearance', '~> 2.5.0'
 gem 'clearance-deprecated_password_strategies'
 gem 'coffee-rails'
@@ -24,7 +25,9 @@ gem 'jquery-rails', '~> 4.1.1'
 gem 'jquery-ui-rails', '~> 3.0.1'
 gem 'magnific-popup-rails'
 gem 'mail', '~> 2.7.1' # TODO see if this is still required in Ruby 3
+gem 'nio4r', '>= 2.7.3'
 gem 'nokogiri', '~> 1.14.3'
+gem 'ruby-openai'
 gem 'pg', '~> 1.4.4'
 gem 'puma', '< 7'
 gem 'rack-attack'
@@ -51,6 +54,7 @@ group :development do
   gem 'dotenv-rails'
   gem 'letter_opener'
   gem 'listen'
+  gem 'standard'
   gem 'web-console'
 end
 

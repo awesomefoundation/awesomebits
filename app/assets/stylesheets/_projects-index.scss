@@ -1,15 +1,13 @@
 body.projects-index {
-
   section.container {
     @extend .clearfix;
   }
-  
+
   @media all and (max-width: $maximum-width) {
     section.container {
       margin-top: 0.5em !important;
     }
   }
-  
 }
 
 .application__image-wrapper {
@@ -32,7 +30,7 @@ body.projects-index {
 }
 
 .admin-panel {
-  border-right: 1px solid rgb(200,200,200);
+  border-right: 1px solid rgb(200, 200, 200);
   float: left;
   margin-right: 39px;
   padding: 0px 20px 20px 0px;
@@ -76,13 +74,13 @@ body.projects-index {
   }
 
   h2 {
-    border-bottom: 1px dotted rgb(200,200,200);
+    border-bottom: 1px dotted rgb(200, 200, 200);
     font: 300 18px/20px $sans-serif;
     margin: 15px 0px;
     padding-bottom: 30px;
     text-align: center;
     @media all and (max-width: $maximum-width) {
-      border-bottom: 1px solid rgb(200,200,200);
+      border-bottom: 1px solid rgb(200, 200, 200);
       margin-bottom: 0px;
       text-align: left;
       padding-left: 70px;
@@ -94,7 +92,7 @@ body.projects-index {
     margin: 0px;
 
     li {
-      border-bottom: 1px dotted rgb(200,200,200);
+      border-bottom: 1px dotted rgb(200, 200, 200);
       list-style: none;
       margin-bottom: 15px;
       padding: 0px 0px 15px 0px;
@@ -121,7 +119,7 @@ body.projects-index {
       }
 
       a {
-        color: rgb(55,55,55);
+        color: rgb(55, 55, 55);
         display: block;
         font: normal 12px/14px $sans-serif;
         padding: 5px 0px 5px 10px;
@@ -132,7 +130,7 @@ body.projects-index {
 
         &:hover {
           background: $pink;
-          color: rgb(255,255,255);
+          color: rgb(255, 255, 255);
         }
       }
     }
@@ -142,7 +140,7 @@ body.projects-index {
 .applications {
   float: left;
   max-width: grid-width(9);
-  
+
   /* Ensure 'Back to Chapter' link on admin view of project page is the correct font size */
   > p:nth-child(2) {
     font-size: 0.8em;
@@ -169,11 +167,12 @@ body.projects-index {
   }
 
   .application-filters {
-    background: rgb(230,230,230);
-    border: 1px solid rgb(200,200,200);
+    background: rgb(230, 230, 230);
+    border: 1px solid rgb(200, 200, 200);
     border-radius: 4px;
-    box-shadow: inset 0 -1px 0 0 rgba(255,255,255, 0.3), inset 0 1px 0 0 rgba(255,255,255, 0.8);
-    @include linear-gradient(rgb(240,240,240), rgb(220,220,220));
+    box-shadow: inset 0 -1px 0 0 rgba(255, 255, 255, 0.3),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
+    @include linear-gradient(rgb(240, 240, 240), rgb(220, 220, 220));
     margin-bottom: 10px;
     position: relative;
     width: grid-width(9);
@@ -187,8 +186,8 @@ body.projects-index {
       position: relative;
 
       a.chapter-selection {
-        background: rgb(230,230,230);
-        border: 1px solid rgb(190,190,190);
+        background: rgb(230, 230, 230);
+        border: 1px solid rgb(190, 190, 190);
         border-radius: 3px;
         display: block;
         padding: 5px 40px 5px 10px;
@@ -196,18 +195,18 @@ body.projects-index {
         z-index: 2;
 
         &:hover {
-          background: rgb(220,220,220);
+          background: rgb(220, 220, 220);
         }
 
         span {
-          color: rgb(55,55,55);
+          color: rgb(55, 55, 55);
           font: normal 16px/18px $sans-serif;
-          text-shadow: 0 1px rgba(255,255,255, 0.75);
+          text-shadow: 0 1px rgba(255, 255, 255, 0.75);
         }
 
         span.arrow {
           border: {
-            top: 7px solid rgb(150,150,150);
+            top: 7px solid rgb(150, 150, 150);
             right: 7px solid transparent;
             bottom: 7px solid transparent;
             left: 7px solid transparent;
@@ -218,18 +217,18 @@ body.projects-index {
         }
 
         &.expanded {
-          background: rgb(220,220,220);
-          border: 1px solid rgb(150,150,150);
+          background: rgb(220, 220, 220);
+          border: 1px solid rgb(150, 150, 150);
           border-radius: 3px 3px 0px 0px;
           cursor: pointer;
         }
       }
 
       ol.chapter-selector {
-        background: rgb(255,255,255);
-        border: 1px solid rgb(150,150,150);
+        background: rgb(255, 255, 255);
+        border: 1px solid rgb(150, 150, 150);
         @include border-bottom-radius(4px);
-        box-shadow: 0 3px 5px 0 rgba(0,0,0, 0.2);
+        box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.2);
         opacity: 0;
         overflow-y: auto;
         position: relative;
@@ -237,13 +236,13 @@ body.projects-index {
         z-index: 1;
         margin-top: -1px;
         margin-bottom: 0px;
-        
+
         &.bounded {
-          max-height: 428px;          
+          max-height: 428px;
         }
 
         li {
-          border-bottom: 1px solid rgb(200,200,200);
+          border-bottom: 1px solid rgb(200, 200, 200);
           list-style: none;
           margin: 0 5px;
           padding: 3px 0px;
@@ -253,14 +252,14 @@ body.projects-index {
           }
 
           a {
-            color: rgb(55,55,55);
+            color: rgb(55, 55, 55);
             display: block;
             padding: 5px 8px;
             text-decoration: none;
 
             &:hover {
               background: $pink;
-              color: rgb(255,255,255);
+              color: rgb(255, 255, 255);
             }
           }
         }
@@ -276,7 +275,9 @@ body.projects-index {
       float: right;
       padding: 0px 10px 10px 10px;
 
-      div.short-list-toggle, div.funded-toggle, div.toggle {
+      div.short-list-toggle,
+      div.funded-toggle,
+      div.toggle {
         float: left;
         margin-right: 10px;
         margin-top: 20px;
@@ -289,28 +290,29 @@ body.projects-index {
         }
 
         label {
-          background: rgb(230,230,230);
-          border: 1px solid rgb(190,190,190);
+          background: rgb(230, 230, 230);
+          border: 1px solid rgb(190, 190, 190);
           border-radius: 3px;
           font: normal 12px $sans-serif;
           height: 21px;
           margin: 0px;
-          text-shadow: 0 1px rgba(255,255,255, 0.8);
+          text-shadow: 0 1px rgba(255, 255, 255, 0.8);
           padding: 8px 12px 0px 30px;
 
           &:hover {
-            background: rgb(220,220,220);
+            background: rgb(220, 220, 220);
             cursor: pointer;
           }
         }
 
         input[type="checkbox"]:checked + label {
-          background: rgb(220,220,220);
+          background: rgb(220, 220, 220);
           cursor: pointer;
         }
       }
 
-      div.date-range, div.search {
+      div.date-range,
+      div.search {
         float: left;
         margin-right: 10px;
         margin-top: 20px;
@@ -320,12 +322,12 @@ body.projects-index {
         }
 
         input[type="text"] {
-          color: rgb(180,180,180);
+          color: rgb(180, 180, 180);
           height: 30px;
           width: 90px;
 
           &:focus {
-            color: rgb(55,55,55);
+            color: rgb(55, 55, 55);
           }
         }
 
@@ -334,8 +336,9 @@ body.projects-index {
         }
       }
 
-      input[type="submit"], button[type="submit"] {
-        @include button(rgb(230,230,230));
+      input[type="submit"],
+      button[type="submit"] {
+        @include button(rgb(230, 230, 230));
         margin: 0px;
         margin-top: 20px;
         width: auto;
@@ -351,10 +354,10 @@ body.projects-index {
   }
 
   article.project {
-    border: 1px solid rgb(200,200,200);
-    background: rgb(255,255,255);
+    border: 1px solid rgb(200, 200, 200);
+    background: rgb(255, 255, 255);
     border-radius: 4px;
-    box-shadow: 0 1px 6px 0 rgba(0,0,0, 0.15);
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.15);
     margin-top: 20px;
     margin-bottom: 20px;
 
@@ -363,7 +366,7 @@ body.projects-index {
 
       div.title {
         @extend .clearfix;
-        border-bottom: 1px solid rgb(200,200,200);
+        border-bottom: 1px solid rgb(200, 200, 200);
         padding: 10px;
 
         a.title {
@@ -379,7 +382,7 @@ body.projects-index {
 
         .public-link {
           display: none;
-          padding-top: .5em;
+          padding-top: 0.5em;
           font-size: 0.8em;
           clear: both;
 
@@ -400,7 +403,7 @@ body.projects-index {
         a.short-list,
         a.mark-as-winner,
         a.project-actions-toggle {
-          @include button(rgb(240,240,240));
+          @include button(rgb(240, 240, 240));
           float: right;
           margin-left: 10px;
           text-decoration: none;
@@ -410,12 +413,27 @@ body.projects-index {
           }
 
           &.mark-as-winner:hover {
-            @include button(rgb(34,122,255));
+            @include button(rgb(34, 122, 255));
           }
         }
 
         a.project-actions-toggle {
           font-size: 1.1em;
+        }
+
+        a.auto-awesome {
+          @include button(rgb(240, 240, 240));
+          float: right;
+          margin-left: 10px;
+          text-decoration: none;
+
+          &.auto-awesome:hover {
+            @include button($pink);
+          }
+
+          // &.mark-as-winner:hover {
+          //   @include button(rgb(34,122,255));
+          // }
         }
       }
 
@@ -429,7 +447,7 @@ body.projects-index {
       }
 
       .meta-data {
-        border-bottom: 1px solid rgb(200,200,200);
+        border-bottom: 1px solid rgb(200, 200, 200);
         padding: 10px;
         font-size: 0.8em;
 
@@ -439,7 +457,7 @@ body.projects-index {
         }
 
         .project-actions-toggle {
-          margin-left: .25em;
+          margin-left: 0.25em;
           font-size: 1.2em;
           float: right;
         }
@@ -474,7 +492,7 @@ body.projects-index {
         margin-bottom: 0;
 
         li {
-          padding-bottom: .5em;
+          padding-bottom: 0.5em;
 
           a {
             text-decoration: none;
@@ -509,7 +527,8 @@ body.projects-index {
         font: normal 16px/20px $serif;
         padding: 10px;
 
-        h3, p {
+        h3,
+        p {
           margin: 0;
           padding: 0;
           font: normal 14px/20px $serif;
@@ -544,7 +563,7 @@ body.projects-index {
 
       .see-more {
         background: rgba(245, 245, 245, 1);
-        border-top: 1px solid rgb(200,200,200);
+        border-top: 1px solid rgb(200, 200, 200);
         @include border-bottom-radius(4px);
         display: block;
         text-decoration: none;
@@ -567,11 +586,12 @@ body.projects-index {
     }
 
     .filtering {
-      border-top: 1px solid rgb(200,200,200);
+      border-top: 1px solid rgb(200, 200, 200);
       padding: 10px;
       font-size: 0.8em;
 
-      .hiding-form, .unhiding-form {
+      .hiding-form,
+      .unhiding-form {
         p {
           margin: 0;
         }
@@ -592,7 +612,7 @@ body.projects-index {
         }
 
         input.hide-action {
-          @include button(rgb(230,230,230));
+          @include button(rgb(230, 230, 230));
           width: 80px;
           position: relative;
           margin: 0;
