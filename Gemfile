@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '3.3.6'
 
-gem 'rails', '7.0.8.7'
+gem 'rails', '7.1.5.1'
 gem 'rake'
 gem 'bootsnap','>= 1.1.0', require: false
 
@@ -42,7 +42,7 @@ gem 'sprockets-rails', require: "sprockets/railtie"
 gem 'stimulus-rails'
 gem 'sucker_punch', '~> 3.1'
 gem 'terser'
-gem 'textacular', '~> 5.5.1'
+gem 'textacular', '~> 5.7'
 gem 'turbo-rails'
 gem 'tus-server', '~> 2.3', require: false
 gem 'uppy-s3_multipart', '~> 1.2'
