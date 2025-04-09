@@ -24,13 +24,8 @@ module Awesomefoundation
     end
 
     # Custom directories with classes and modules you want to be autoloadable.
-    config.autoload_paths += [
-                              Rails.root.join('app', 'extras'),
-                              Rails.root.join('app', 'models','callbacks')
-                             ]
-
-    # Add to assets path
-    config.assets.paths << Rails.root.join("vendor", "assets", "colorbox")
+    config.autoload_paths << Rails.root.join('app', 'extras')
+    config.autoload_paths << Rails.root.join('app', 'models','callbacks')
 
     # Use our own app as the handler for errors.
     config.exceptions_app = self.routes

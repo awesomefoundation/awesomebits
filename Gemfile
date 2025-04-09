@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.7.7'
+ruby '3.3.6'
 
 gem 'rails', '7.0.8.7'
 gem 'rake'
@@ -25,7 +25,7 @@ gem 'jquery-rails', '~> 4.1.1'
 gem 'jquery-ui-rails', '~> 3.0.1'
 gem 'magnific-popup-rails'
 gem 'mail', '~> 2.7.1' # TODO see if this is still required in Ruby 3
-gem 'nokogiri', '~> 1.14.3'
+gem 'nokogiri', '~> 1.18.6'
 gem 'pg', '~> 1.4.4'
 gem 'puma', '< 7'
 gem 'rack-attack'
@@ -38,7 +38,7 @@ gem 'sassc-rails', '~> 2.1'
 gem 'shrine', '~> 3'
 gem 'shrine-tus', '~> 2.1', require: false
 gem 'simple_form', '~> 5.1'
-gem 'sprockets-rails'
+gem 'sprockets-rails', require: "sprockets/railtie"
 gem 'stimulus-rails'
 gem 'sucker_punch', '~> 3.1'
 gem 'terser'
@@ -66,7 +66,7 @@ end
 
 group :test do
   gem 'bourne'
-  gem 'capybara', '~> 3'
+  gem 'capybara'
   gem 'capybara-screenshot', '~> 1.0'
   gem 'database_cleaner'
   gem 'email_spec'
@@ -74,10 +74,10 @@ group :test do
   gem 'faker'
   gem 'launchy'
   gem 'rails-controller-testing'
+  gem 'selenium-webdriver'
   gem 'shoulda-matchers', '~> 3'
   gem 'timecop'
   gem 'turnip'
-  gem 'webdrivers'
 end
 
 group :staging, :production do
