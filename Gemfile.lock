@@ -154,6 +154,7 @@ GEM
     connection_pool (2.5.0)
     content_disposition (1.0.0)
     crass (1.0.6)
+    csv (3.3.3)
     cucumber-gherkin (28.0.0)
       cucumber-messages (>= 19.1.4, < 24)
     cucumber-messages (23.0.0)
@@ -495,6 +496,7 @@ DEPENDENCIES
   clearance-deprecated_password_strategies
   coffee-rails
   concurrent-ruby (= 1.3.4)
+  csv
   database_cleaner
   dotenv-rails
   email_spec
