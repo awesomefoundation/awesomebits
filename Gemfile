@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.7.7'
 
-gem 'rails', '6.1.7.3'
+gem 'rails', '7.0.8.7'
 gem 'rake'
 gem 'bootsnap','>= 1.1.0', require: false
 
@@ -12,6 +12,7 @@ gem 'bourbon', '~> 4.0.2'
 gem 'clearance', '~> 2.5.0'
 gem 'clearance-deprecated_password_strategies'
 gem 'coffee-rails'
+gem 'concurrent-ruby', '1.3.4' # TODO remove after upgrading to 7.1
 gem 'flutie'
 gem 'formtastic'
 gem 'friendly_id', '~> 5.5.0'
@@ -37,6 +38,7 @@ gem 'sassc-rails', '~> 2.1'
 gem 'shrine', '~> 3'
 gem 'shrine-tus', '~> 2.1', require: false
 gem 'simple_form', '~> 5.1'
+gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'sucker_punch', '~> 3.1'
 gem 'terser'
