@@ -13,10 +13,8 @@ describe Invitation do
   end
 
   context "email validations" do
-    let(:chapter) { FactoryBot.create(:chapter) }
-
     it "should not accept Test <test@example.com>" do
-      invitation = FactoryBot.build(:invitation, email: "Test <test@example.com>", chapter: chapter)
+      invitation = FactoryBot.build(:invitation, email: "Test <test@example.com>")
       expect(invitation).not_to be_valid
     end
 
