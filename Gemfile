@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '3.3.6'
 
-gem 'rails', '7.1.5.1'
+gem 'rails', '7.2.2.1'
 gem 'rake'
 gem 'bootsnap','>= 1.1.0', require: false
 
@@ -25,7 +25,6 @@ gem 'jbuilder'
 gem 'jquery-rails', '~> 4.1.1'
 gem 'jquery-ui-rails', '~> 3.0.1'
 gem 'magnific-popup-rails'
-gem 'mail', '~> 2.7.1' # TODO see if this is still required in Ruby 3
 gem 'nokogiri', '~> 1.18.6'
 gem 'pg', '~> 1.4.4'
 gem 'puma', '< 7'
