@@ -19,8 +19,9 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 
   config.mock_with :mocha
-  config.after(:each){ DatabaseCleaner.clean }
-  config.before(:each){ FactoryGirl.create(:chapter, :name => "Any") }
+  config.before(:each){ DatabaseCleaner.start }
+  config.append_after(:each){ DatabaseCleaner.clean }
+  config.before(:each){ FactoryBot.create(:chapter, :name => "Any") }
   config.before(:each){ ActionMailer::Base.deliveries.clear }
   config.after(:all) { FileUtils.rm_f Dir.glob(Rails.root.join("tmp", "tus-test", "*")) }
 end

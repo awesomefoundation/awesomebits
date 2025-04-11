@@ -2,8 +2,13 @@ step 'I attach 3 photos' do
   photos = Rails.root.join("spec", "support", "fixtures")
 
   attach_file "files[]", (photos / "1.JPG"), make_visible: true
+  page.has_css?(".form__image-element-image[title='1.JPG']")
+
   attach_file "files[]", (photos / "2.JPG"), make_visible: true
+  page.has_css?(".form__image-element-image[title='2.JPG']")
+
   attach_file "files[]", (photos / "3.JPG"), make_visible: true
+  page.has_css?(".form__image-element-image[title='3.JPG']")
 
   click_button("Save")
 end

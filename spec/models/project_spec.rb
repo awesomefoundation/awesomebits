@@ -15,7 +15,8 @@ describe Project do
 
   context '#save' do
     let(:fake_mailer) { FakeMailer.new }
-    let(:project) { FactoryGirl.build(:project) }
+    let(:chapter) { FactoryBot.create(:chapter) }
+    let(:project) { FactoryBot.build(:project, chapter: chapter) }
 
     it 'sends an email to the applicant on successful save' do
       project.mailer = fake_mailer
@@ -25,29 +26,29 @@ describe Project do
   end
 
   context '#chapter_name' do
-    let(:chapter) { FactoryGirl.create :chapter, :name => 'Test chapter' }
-    let(:project) { FactoryGirl.create :project, :chapter => chapter }
+    let(:chapter) { FactoryBot.create :chapter, :name => 'Test chapter' }
+    let(:project) { FactoryBot.create :project, :chapter => chapter }
     it 'should delegate to chapter' do
       expect(project.chapter_name).to eq('Test chapter')
     end
   end
 
   context '.winner_count' do
-    let!(:winners) { (1..2).map{|x| FactoryGirl.create(:project, :funded_on => Date.today) } }
-    let!(:non_winners){ (1..3).map{|x| FactoryGirl.create(:project, :funded_on => nil) } }
+    let!(:winners) { (1..2).map{|x| FactoryBot.create(:project, :funded_on => Date.today) } }
+    let!(:non_winners){ (1..3).map{|x| FactoryBot.create(:project, :funded_on => nil) } }
     it 'counts the winners' do
       expect(Project.winner_count).to eq(2)
     end
   end
 
   context '.visible_to' do
-    let(:role){ FactoryGirl.create(:role) }
+    let(:role){ FactoryBot.create(:role) }
     let(:user){ role.user }
     let(:chapter){ role.chapter }
     let(:any_chapter){ Chapter.find_by_name("Any") }
-    let!(:good_project){ FactoryGirl.create(:project, :chapter => chapter) }
-    let!(:bad_project){ FactoryGirl.create(:project) }
-    let!(:any_project){ FactoryGirl.create(:project, :chapter => any_chapter) }
+    let!(:good_project){ FactoryBot.create(:project, :chapter => chapter) }
+    let!(:bad_project){ FactoryBot.create(:project) }
+    let!(:any_project){ FactoryBot.create(:project, :chapter => any_chapter) }
 
     it 'finds the projects a user has access to' do
       projects = Project.visible_to(user)
@@ -60,10 +61,10 @@ describe Project do
   context '.during_timeframe' do
     let(:start_date) { "2001-01-01" }
     let(:end_date) { "2010-10-10" }
-    let!(:before_start) { FactoryGirl.create(:project, :created_at => Date.parse("2000-12-31")) }
-    let!(:before_end) { FactoryGirl.create(:project, :created_at => Date.parse("2001-01-02")) }
-    let!(:after_start) { FactoryGirl.create(:project, :created_at => Date.parse("2010-10-09")) }
-    let!(:after_end) { FactoryGirl.create(:project, :created_at => Date.parse("2010-10-11")) }
+    let!(:before_start) { FactoryBot.create(:project, :created_at => Date.parse("2000-12-31")) }
+    let!(:before_end) { FactoryBot.create(:project, :created_at => Date.parse("2001-01-02")) }
+    let!(:after_start) { FactoryBot.create(:project, :created_at => Date.parse("2010-10-09")) }
+    let!(:after_end) { FactoryBot.create(:project, :created_at => Date.parse("2010-10-11")) }
 
     it 'searches between two dates' do
       actual = Project.during_timeframe(start_date, end_date)
@@ -83,10 +84,10 @@ describe Project do
   end
 
   context '#shortlisted_by?' do
-    let!(:vote){ FactoryGirl.create(:vote) }
+    let!(:vote){ FactoryBot.create(:vote) }
     let!(:user){ vote.user }
     let!(:project){ vote.project }
-    let!(:other_user) { FactoryGirl.create(:user) }
+    let!(:other_user) { FactoryBot.create(:user) }
 
     it 'returns true if this project had been shortlisted by the given user' do
       expect(project.shortlisted_by?(user)).to be_truthy
@@ -98,19 +99,19 @@ describe Project do
   end
 
   context '.voted_for_by_members_of' do
-    let(:boston){ FactoryGirl.create(:chapter) }
-    let(:boston_project) { FactoryGirl.create(:project, :chapter => boston) }
-    let(:boston_trustee) { FactoryGirl.create(:user) }
-    let!(:boston_role) { FactoryGirl.create(:role, :user => boston_trustee, :chapter => boston) }
+    let(:boston){ FactoryBot.create(:chapter) }
+    let(:boston_project) { FactoryBot.create(:project, :chapter => boston) }
+    let(:boston_trustee) { FactoryBot.create(:user) }
+    let!(:boston_role) { FactoryBot.create(:role, :user => boston_trustee, :chapter => boston) }
     let!(:boston_vote) do
-      FactoryGirl.create(:vote, :project => boston_project, :user => boston_trustee)
+      FactoryBot.create(:vote, :project => boston_project, :user => boston_trustee)
     end
-    let(:chicago){ FactoryGirl.create(:chapter) }
-    let(:chicago_project) { FactoryGirl.create(:project, :chapter => chicago) }
-    let(:chicago_trustee) { FactoryGirl.create(:user) }
-    let!(:chicago_role) { FactoryGirl.create(:role, :user => chicago_trustee, :chapter => chicago) }
+    let(:chicago){ FactoryBot.create(:chapter) }
+    let(:chicago_project) { FactoryBot.create(:project, :chapter => chicago) }
+    let(:chicago_trustee) { FactoryBot.create(:user) }
+    let!(:chicago_role) { FactoryBot.create(:role, :user => chicago_trustee, :chapter => chicago) }
     let!(:chicago_vote) do
-      FactoryGirl.create(:vote, :project => chicago_project, :user => chicago_trustee)
+      FactoryBot.create(:vote, :project => chicago_project, :user => chicago_trustee)
     end
 
     it 'returns the projects that the given chapter has voted on' do
@@ -120,14 +121,14 @@ describe Project do
   end
 
   context '.by_vote_count' do
-    let(:chapter) { FactoryGirl.create(:chapter) }
-    let(:projects) { [FactoryGirl.create(:project, :chapter => chapter),
-                      FactoryGirl.create(:project, :chapter => chapter),
-                      FactoryGirl.create(:project, :chapter => chapter)] }
+    let(:chapter) { FactoryBot.create(:chapter) }
+    let(:projects) { [FactoryBot.create(:project, :chapter => chapter),
+                      FactoryBot.create(:project, :chapter => chapter),
+                      FactoryBot.create(:project, :chapter => chapter)] }
     before do
-      2.times{ FactoryGirl.create(:vote, :project => projects[1]) }
-      1.times{ FactoryGirl.create(:vote, :project => projects[2]) }
-      0.times{ FactoryGirl.create(:vote, :project => projects[0]) }
+      2.times{ FactoryBot.create(:vote, :project => projects[1]) }
+      1.times{ FactoryBot.create(:vote, :project => projects[2]) }
+      0.times{ FactoryBot.create(:vote, :project => projects[0]) }
     end
 
     it 'returns the projects in descending order of vote_count' do
@@ -141,19 +142,19 @@ describe Project do
   end
 
   context '.recent_winners' do
-    let!(:loser) { FactoryGirl.create(:project) }
-    let!(:old_winner) { FactoryGirl.create(:project, :funded_on => 2.days.ago) }
-    let!(:new_winner) { FactoryGirl.create(:project, :funded_on => 1.days.ago) }
-    let!(:ignored_winner) { FactoryGirl.create(:project, :funded_on => 1.week.ago, :chapter_id => new_winner.chapter_id) }
+    let!(:loser) { FactoryBot.create(:project) }
+    let!(:old_winner) { FactoryBot.create(:project, :funded_on => 2.days.ago) }
+    let!(:new_winner) { FactoryBot.create(:project, :funded_on => 1.days.ago) }
+    let!(:ignored_winner) { FactoryBot.create(:project, :funded_on => 1.week.ago, :chapter_id => new_winner.chapter_id) }
     it 'returns one project per chapter  by descending funding date' do
       expect(Project.recent_winners).to eq([new_winner, old_winner])
     end
   end
 
   context "#declare_winner!" do
-    let(:project) { FactoryGirl.create(:project) }
+    let(:project) { FactoryBot.create(:project) }
     let(:chapter) { project.chapter }
-    let(:other_chapter) { FactoryGirl.create(:chapter) }
+    let(:other_chapter) { FactoryBot.create(:chapter) }
 
     it 'sets the #funded_on attribute' do
       project.declare_winner!
@@ -188,7 +189,7 @@ describe Project do
   end
 
   context "#revoke_winner!" do
-    let(:project) { FactoryGirl.create(:project) }
+    let(:project) { FactoryBot.create(:project) }
     before{ project.declare_winner! }
 
     it 'sets the #funded_on attribute' do
@@ -203,8 +204,8 @@ describe Project do
   end
 
   context "#in_any_chapter?" do
-    let(:project){ FactoryGirl.build(:project, :chapter => Chapter.where(:name == "Any").first) }
-    let(:other_project) { FactoryGirl.build(:project) }
+    let(:project){ FactoryBot.build(:project, :chapter => Chapter.where(:name == "Any").first) }
+    let(:other_project) { FactoryBot.build(:project) }
 
     it 'is true when the project is in the Any chapter' do
       expect(project.in_any_chapter?).to be_truthy
@@ -216,10 +217,10 @@ describe Project do
   end
 
   context '#photo_order' do
-    let(:project) { FactoryGirl.create(:project) }
-    let(:photo1)  { FactoryGirl.create(:photo, :project => project) }
-    let(:photo2)  { FactoryGirl.create(:photo, :project => project) }
-    let(:photo3)  { FactoryGirl.create(:photo, :project => project) }
+    let(:project) { FactoryBot.create(:project) }
+    let(:photo1)  { FactoryBot.create(:photo, :project => project) }
+    let(:photo2)  { FactoryBot.create(:photo, :project => project) }
+    let(:photo3)  { FactoryBot.create(:photo, :project => project) }
 
     it "returns a string of the photos' ids in order" do
       project.photos = [photo1, photo2, photo3]
@@ -230,10 +231,10 @@ describe Project do
 
   context '#photo_order=' do
     before do
-      @project = FactoryGirl.create(:project)
-      @photo1  = FactoryGirl.create(:photo, :project => @project)
-      @photo2  = FactoryGirl.create(:photo, :project => @project)
-      @photo3  = FactoryGirl.create(:photo, :project => @project)
+      @project = FactoryBot.create(:project)
+      @photo1  = FactoryBot.create(:photo, :project => @project)
+      @photo2  = FactoryBot.create(:photo, :project => @project)
+      @photo3  = FactoryBot.create(:photo, :project => @project)
     end
 
     it 'sets the order of the photos based on their position in the string' do
@@ -254,9 +255,9 @@ describe Project do
 
   context "#photo_ids_to_delete=" do
     before do
-      @project = FactoryGirl.create(:project)
-      @photo1  = FactoryGirl.create(:photo, :project => @project)
-      @photo2  = FactoryGirl.create(:photo, :project => @project)
+      @project = FactoryBot.create(:project)
+      @photo1  = FactoryBot.create(:photo, :project => @project)
+      @photo2  = FactoryBot.create(:photo, :project => @project)
     end
 
     it 'removes photos if they are in the array' do
@@ -268,9 +269,9 @@ describe Project do
   end
 
   context '#display_images' do
-    let(:project) { FactoryGirl.build_stubbed(:project) }
+    let(:project) { FactoryBot.build_stubbed(:project) }
     it "returns the photos if there are any" do
-      photo = FactoryGirl.create(:photo)
+      photo = FactoryBot.create(:photo)
       project.photos = [photo]
       expect(project.display_images.map(&:url)).to eq([photo.url])
     end
@@ -280,13 +281,13 @@ describe Project do
     end
 
     it "returns a new photo if the only photo is a non-image" do
-      project.photos = [FactoryGirl.create(:pdf)]
+      project.photos = [FactoryBot.create(:pdf)]
       expect(project.display_images.map(&:url)).to eq([Photo.new.url])
     end
 
     it "only returns image files for display" do
-      pdf = FactoryGirl.create(:pdf)
-      image = FactoryGirl.create(:photo)
+      pdf = FactoryBot.create(:pdf)
+      image = FactoryBot.create(:photo)
       project.photos = [pdf, image]
       expect(project.display_images).to eq([image])
     end
@@ -299,7 +300,7 @@ describe Project do
   end
 
   context "url validation" do
-    let(:project) { FactoryGirl.build(:project) }
+    let(:project) { FactoryBot.build(:project) }
 
     it 'leaves the url alone if it has a scheme' do
       project.url = "https://example.com"
@@ -353,8 +354,8 @@ describe Project do
   end
 
   describe "#hide! / #hidden?" do
-    let(:project) { FactoryGirl.create(:project) }
-    let(:user) { FactoryGirl.create(:user) }
+    let(:project) { FactoryBot.create(:project) }
+    let(:user) { FactoryBot.create(:user) }
     let(:reason) { Faker::Company.bs }
 
     it "saves the reason" do
@@ -383,7 +384,7 @@ describe Project do
 
   describe "#unhide! / #hidden?" do
     let(:project) {
-      FactoryGirl.create(:project, {
+      FactoryBot.create(:project, {
         hidden_reason: Faker::Company.bs,
         hidden_by_user_id: 123,
         hidden_at: Time.now
@@ -400,7 +401,7 @@ end
 
 describe Project, 'csv_export' do
   let!(:project) do
-    FactoryGirl.create :project,
+    FactoryBot.create :project,
     :name => 'Name',
     :url => 'http://example.com',
     :email => 'mail@example.com',

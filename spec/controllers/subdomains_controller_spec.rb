@@ -23,7 +23,7 @@ describe SubdomainsController do
     it { is_expected.to route(:get, "http://subdomain.test.host/apply").to(:controller => "subdomains", :action => "apply") }
 
     context 'for a valid chapter' do
-      let!(:chapter) { FactoryGirl.create(:chapter, :country => "United States", :locale => "es") }
+      let!(:chapter) { FactoryBot.create(:chapter, :country => "United States", :locale => "es") }
 
       before do
         @request.host = "#{chapter.slug}.test.host"
