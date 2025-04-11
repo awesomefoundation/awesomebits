@@ -60,7 +60,7 @@ group :development, :test do
   gem 'byebug'
   gem 'pry'
   gem 'pry-nav'
-  gem 'rspec-rails', '~> 6.0.1'
+  gem 'rspec-rails', '~> 7.0.2'
   gem 'sham_rack'
 end
 
