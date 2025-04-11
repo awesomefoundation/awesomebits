@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 describe VotesController do
-  let(:role) { FactoryGirl.create(:role) }
+  let(:role) { FactoryBot.create(:role) }
   let(:user) { role.user }
   let(:chapter) { role.chapter }
-  let(:project) { FactoryGirl.create(:project, :chapter => chapter) }
+  let(:project) { FactoryBot.create(:project, :chapter => chapter) }
 
   context "user can vote on a project" do
     before do
@@ -16,7 +16,7 @@ describe VotesController do
   end
 
   context "user can remove vote from project" do
-    let!(:vote) { FactoryGirl.create(:vote, :project => project, :user => user) }
+    let!(:vote) { FactoryBot.create(:vote, :project => project, :user => user) }
     before do
       sign_in_as user
       delete :destroy, params: { project_id: project.id }
@@ -26,7 +26,7 @@ describe VotesController do
   end
 
   context "error when user votes for a second time on a project" do
-    let!(:vote) { FactoryGirl.create(:vote, project: project, user: user, chapter: project.chapter) }
+    let!(:vote) { FactoryBot.create(:vote, project: project, user: user, chapter: project.chapter) }
     before do
       sign_in_as user
       post :create, params: { project_id: project.id, chapter_id: project.chapter.id }

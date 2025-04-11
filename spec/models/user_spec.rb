@@ -10,9 +10,9 @@ describe User do
   it { is_expected.to have_many(:projects).through(:votes) }
 
   context "#trustee?" do
-    let(:user){ FactoryGirl.build(:user) }
-    let(:chapter){ FactoryGirl.build(:chapter) }
-    let(:role){ FactoryGirl.build(:role, :user => user, :chapter => chapter) }
+    let(:user){ FactoryBot.build(:user) }
+    let(:chapter){ FactoryBot.build(:chapter) }
+    let(:role){ FactoryBot.build(:role, :user => user, :chapter => chapter) }
     before do
       user.roles = [role]
     end
@@ -39,7 +39,7 @@ describe User do
   end
 
   context '#can_invite?' do
-    let(:user) { FactoryGirl.build(:user) }
+    let(:user) { FactoryBot.build(:user) }
     it 'returns true if the user is an admin' do
       user.admin = true
       expect(user.can_invite?).to be_truthy
@@ -53,7 +53,7 @@ describe User do
   end
 
   context '#can_invite_to_chapter?' do
-    let(:user) { FactoryGirl.build(:user) }
+    let(:user) { FactoryBot.build(:user) }
     it 'returns true if the user is an admin' do
       user.admin = true
       expect(user.can_invite_to_chapter?(:chapter)).to be_truthy
@@ -67,7 +67,7 @@ describe User do
   end
 
   context "#can_manage_chapter?" do
-    let(:user) { FactoryGirl.build(:user) }
+    let(:user) { FactoryBot.build(:user) }
     it 'returns true if the user is an admin' do
       user.admin = true
       expect(user.can_manage_chapter?(:chapter)).to be_truthy
@@ -81,7 +81,7 @@ describe User do
   end
 
   context "#can_manage_users?" do
-    let(:user) { FactoryGirl.build(:user) }
+    let(:user) { FactoryBot.build(:user) }
     it 'returns true if the user is an admin' do
       user.admin = true
       expect(user.can_manage_chapter?(:chapter)).to be_truthy
@@ -95,7 +95,7 @@ describe User do
   end
 
   context "#can_view_finalists_for?" do
-    let(:user) { FactoryGirl.build(:user) }
+    let(:user) { FactoryBot.build(:user) }
     it 'returns true if the user is an admin' do
       user.admin = true
       expect(user.can_view_finalists_for?(:chapter)).to be_truthy
@@ -109,7 +109,7 @@ describe User do
   end
 
   context "#can_edit_project?" do
-    let(:user) { FactoryGirl.build(:user) }
+    let(:user) { FactoryBot.build(:user) }
     it 'returns true if the user is an admin' do
       user.admin = true
       expect(user.can_edit_project?(:chapter)).to be_truthy
@@ -123,7 +123,7 @@ describe User do
   end
 
   context "#can_edit_all_profiles?" do
-    let(:user) { FactoryGirl.build(:user) }
+    let(:user) { FactoryBot.build(:user) }
     it 'returns true if the user is an admin' do
       user.admin = true
       expect(user.can_edit_all_profiles?).to be_truthy
@@ -135,7 +135,7 @@ describe User do
   end
 
   context "#can_mark_winner?" do
-    let(:user) { FactoryGirl.build(:user) }
+    let(:user) { FactoryBot.build(:user) }
     let(:project) { stub }
     it 'returns true if the user is an admin' do
       project.stubs(:in_any_chapter?).returns(false)
@@ -157,18 +157,18 @@ describe User do
   end
 
   context ".deans_first" do
-    let(:chapter){ FactoryGirl.create(:chapter) }
-    let!(:trustee){ FactoryGirl.create(:role, :chapter => chapter) }
-    let!(:dean){ FactoryGirl.create(:role, :name => "dean", :chapter => chapter) }
+    let(:chapter){ FactoryBot.create(:chapter) }
+    let!(:trustee){ FactoryBot.create(:role, :chapter => chapter) }
+    let!(:dean){ FactoryBot.create(:role, :name => "dean", :chapter => chapter) }
     it 'orders the users so deans are first' do
       expect(chapter.users.deans_first).to eq([dean.user, trustee.user])
     end
   end
 
   context ".including_role" do
-    let(:chapter){ FactoryGirl.create(:chapter) }
-    let!(:trustee){ FactoryGirl.create(:role, :chapter => chapter) }
-    let!(:dean){ FactoryGirl.create(:role, :name => "dean", :chapter => chapter) }
+    let(:chapter){ FactoryBot.create(:chapter) }
+    let!(:trustee){ FactoryBot.create(:role, :chapter => chapter) }
+    let!(:dean){ FactoryBot.create(:role, :name => "dean", :chapter => chapter) }
     it 'includes the role name on the records' do
       expect(User.including_role.where(:id => dean.user.id).first.role).to eq("dean")
       expect(User.including_role.where(:id => trustee.user.id).first.role).to eq("trustee")
@@ -176,10 +176,10 @@ describe User do
   end
 
   context ".all_with_chapter" do
-    let!(:chapter) { FactoryGirl.create(:chapter) }
-    let!(:trustee) { FactoryGirl.create(:user) }
-    let!(:role) { FactoryGirl.create(:role, :user => trustee, :chapter => chapter) }
-    let!(:admin) { FactoryGirl.create(:user) }
+    let!(:chapter) { FactoryBot.create(:chapter) }
+    let!(:trustee) { FactoryBot.create(:user) }
+    let!(:role) { FactoryBot.create(:role, :user => trustee, :chapter => chapter) }
+    let!(:admin) { FactoryBot.create(:user) }
     it 'includes all users' do
       expect(User.all_with_chapter(nil)).to eq([trustee, admin])
     end
@@ -189,7 +189,7 @@ describe User do
   end
 
   context "url validation" do
-    let(:user){ FactoryGirl.build(:user) }
+    let(:user){ FactoryBot.build(:user) }
 
     it 'adds a url scheme if it does not have one' do
       user.url = 'example.com'

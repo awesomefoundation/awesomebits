@@ -6,31 +6,31 @@ namespace :app do
       DatabaseCleaner.strategy = :truncation
       DatabaseCleaner.clean
 
-      require 'factory_girl_rails'
+      require 'factory_bot_rails'
 
       Rake::Task['db:seed'].execute
 
-      chapter_boston = FactoryGirl.create(:chapter, :name => "Boston")
+      chapter_boston = FactoryBot.create(:chapter, :name => "Boston")
 
-      user = FactoryGirl.create(:user, :email => "boston@example.com")
+      user = FactoryBot.create(:user, :email => "boston@example.com")
       user.update_password("12345")
-      FactoryGirl.create(:role, :user => user, :chapter => chapter_boston)
-      user = FactoryGirl.create(:user, :email => "boston+dean@example.com")
+      FactoryBot.create(:role, :user => user, :chapter => chapter_boston)
+      user = FactoryBot.create(:user, :email => "boston+dean@example.com")
       user.update_password("12345")
-      FactoryGirl.create(:role, :user => user, :chapter => chapter_boston, :name => "dean")
+      FactoryBot.create(:role, :user => user, :chapter => chapter_boston, :name => "dean")
 
-      chapter_la = FactoryGirl.create(:chapter, :name => "LA")
+      chapter_la = FactoryBot.create(:chapter, :name => "LA")
 
-      user = FactoryGirl.create(:user, :email => "la@example.com")
+      user = FactoryBot.create(:user, :email => "la@example.com")
       user.update_password("12345")
-      FactoryGirl.create(:role, :user => user, :chapter => chapter_la)
-      user = FactoryGirl.create(:user, :email => "la+dean@example.com")
+      FactoryBot.create(:role, :user => user, :chapter => chapter_la)
+      user = FactoryBot.create(:user, :email => "la+dean@example.com")
       user.update_password("12345")
-      FactoryGirl.create(:role, :user => user, :chapter => chapter_la, :name => "dean")
+      FactoryBot.create(:role, :user => user, :chapter => chapter_la, :name => "dean")
 
-      project = FactoryGirl.create(:project, :chapter => chapter_boston)
-      project = FactoryGirl.create(:project, :chapter => chapter_boston)
-      project = FactoryGirl.create(:project, :chapter => chapter_la)
+      project = FactoryBot.create(:project, :chapter => chapter_boston)
+      project = FactoryBot.create(:project, :chapter => chapter_boston)
+      project = FactoryBot.create(:project, :chapter => chapter_la)
 
       puts <<-end_doc
 An admin user has been created: admin@awesomefoundation.org / gnarly

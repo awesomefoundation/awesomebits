@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 describe ProjectMailer, :type => :mailer do
-  let(:project) { FactoryGirl.create(:project, :chapter => chapter) }
+  let(:project) { FactoryBot.create(:project, :chapter => chapter) }
   let(:mail) { ProjectMailer.new_application(project) }
 
   describe 'in a chapter without custom email response' do
-    let(:chapter) { FactoryGirl.create(:chapter) }
+    let(:chapter) { FactoryBot.create(:chapter) }
 
     it 'includes the default email text' do
       # No idea why this works with "include" and not "match" and
@@ -15,7 +15,7 @@ describe ProjectMailer, :type => :mailer do
   end
 
   describe 'in a chapter with a custom email response' do
-    let(:chapter) { FactoryGirl.create(:chapter, :submission_response_email => "This is a custom email response") }
+    let(:chapter) { FactoryBot.create(:chapter, :submission_response_email => "This is a custom email response") }
 
     it 'includes the custom response' do
       expect(mail.body.encoded).to match("This is a custom email response")

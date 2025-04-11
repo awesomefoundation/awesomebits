@@ -1,23 +1,23 @@
 step 'I invite a new trustee to the :name chapter' do |name|
-  @chapter = FactoryGirl.create(:chapter, :name => name)
+  @chapter = FactoryBot.create(:chapter, :name => name)
   visit submissions_path
   click_link("Invite a Trustee")
   fill_in("First name", :with => "Joe")
   fill_in("Last name", :with => "Schmoe")
   select(@chapter.name, :from => "Select a chapter")
-  @invitation_address = FactoryGirl.generate(:email)
+  @invitation_address = FactoryBot.generate(:email)
   fill_in("Email", :with => @invitation_address)
   click_button("Invite")
 end
 
 step 'I invite a new dean to the :name chapter' do |name|
-  @chapter = FactoryGirl.create(:chapter, :name => name)
+  @chapter = FactoryBot.create(:chapter, :name => name)
   visit submissions_path
   click_link("Invite a Trustee")
   fill_in("First name", :with => "Joe")
   fill_in("Last name", :with => "Schmoe")
   select(@chapter.name, :from => "Select a chapter")
-  @invitation_address = FactoryGirl.generate(:email)
+  @invitation_address = FactoryBot.generate(:email)
   fill_in("Email", :with => @invitation_address)
   check("invitation_role_name")
   click_button("Invite")
@@ -34,13 +34,13 @@ step 'I invite the same trustee to the :name chapter' do |name|
 end
 
 step 'I invite a new trustee to a different chapter' do |name|
-  @chapter = FactoryGirl.create(:chapter)
+  @chapter = FactoryBot.create(:chapter)
   visit submissions_path
   click_link("Invite a Trustee")
   fill_in("First name", :with => "Joe")
   fill_in("Last name", :with => "Schmoe")
   select(@chapter.name, :from => "Select a chapter")
-  @invitation_address = FactoryGirl.generate(:email)
+  @invitation_address = FactoryBot.generate(:email)
   fill_in("Email", :with => @invitation_address)
   click_button("Invite")
 end
@@ -66,13 +66,13 @@ step 'I invite a new trustee to my chapter' do
   click_link("Invite a Trustee")
   fill_in("First name", :with => "Joe")
   fill_in("Last name", :with => "Schmoe")
-  @invitation_address = FactoryGirl.generate(:email)
+  @invitation_address = FactoryBot.generate(:email)
   fill_in("Email", :with => @invitation_address)
   click_button("Invite")
 end
 
 step 'I try to invite a new trustee to a chapter I am not dean of' do
-  @inaccessible_chapter = FactoryGirl.create(:chapter)
+  @inaccessible_chapter = FactoryBot.create(:chapter)
   visit new_invitation_path
 end
 

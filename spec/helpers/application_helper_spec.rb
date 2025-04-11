@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe ApplicationHelper, '#display_country?' do
 
-  let(:chapter1) { FactoryGirl.create(:chapter, :country => 'Australia') }
-  let(:chapter2) { FactoryGirl.create(:chapter, :country => 'Australia') }
-  let(:chapter3) { FactoryGirl.create(:chapter, :country => 'America') }
+  let(:chapter1) { FactoryBot.create(:chapter, :country => 'Australia') }
+  let(:chapter2) { FactoryBot.create(:chapter, :country => 'Australia') }
+  let(:chapter3) { FactoryBot.create(:chapter, :country => 'America') }
 
   it 'returns true/false based on current/previous chapters country' do
     expect(helper.display_country?(chapter1.country)).to be_truthy

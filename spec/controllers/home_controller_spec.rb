@@ -4,8 +4,8 @@ describe HomeController do
   render_views
 
   context 'displaying the homepage' do
-    let!(:chapter) { FactoryGirl.create(:chapter, :country => "United States") }
-    let!(:inactive) { FactoryGirl.create(:inactive_chapter, :country => "Canada") }
+    let!(:chapter) { FactoryBot.create(:chapter, :country => "United States") }
+    let!(:inactive) { FactoryBot.create(:inactive_chapter, :country => "Canada") }
 
     before do
       get :index

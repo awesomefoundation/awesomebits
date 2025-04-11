@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe InvitationsController do
-  let(:chapter) { FactoryGirl.create(:chapter) }
+  let(:chapter) { FactoryBot.create(:chapter) }
 
   context 'not logged in' do
     context 'GET to #new' do
@@ -16,9 +16,9 @@ describe InvitationsController do
   end
 
   context 'logged in as a trustee' do
-    let(:other_chapter) { FactoryGirl.create(:chapter) }
-    let(:user) { FactoryGirl.create(:user) }
-    let(:role) { FactoryGirl.create(:role, :user => user, :chapter => chapter, :name => "trustee") }
+    let(:other_chapter) { FactoryBot.create(:chapter) }
+    let(:user) { FactoryBot.create(:user) }
+    let(:role) { FactoryBot.create(:role, :user => user, :chapter => chapter, :name => "trustee") }
     context 'GET to #new' do
       before do
         sign_in_as user
@@ -33,7 +33,7 @@ describe InvitationsController do
 
   context 'logged in as a dean' do
     let(:user) { role.user }
-    let(:role) { FactoryGirl.create(:role, :name => "dean") }
+    let(:role) { FactoryBot.create(:role, :name => "dean") }
     context 'GET to #new' do
       before do
         sign_in_as user

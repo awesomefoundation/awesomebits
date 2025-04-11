@@ -26,9 +26,9 @@ describe ProjectsController do
   context 'viewing the index with a search term' do
     render_views
 
-    let(:user) { FactoryGirl.create(:user) }
-    let(:project) { FactoryGirl.create(:project, title: "Find Me") }
-    let!(:missing_project) { FactoryGirl.create(:project, chapter: project.chapter) }
+    let(:user) { FactoryBot.create(:user) }
+    let(:project) { FactoryBot.create(:project, title: "Find Me") }
+    let!(:missing_project) { FactoryBot.create(:project, chapter: project.chapter) }
 
     before do
       sign_in_as user
@@ -44,8 +44,8 @@ describe ProjectsController do
   end
 
   context 'attempting to delete a project as a trustee who is not the dean or an admin' do
-    let(:user) { FactoryGirl.create(:user) }
-    let(:project) { FactoryGirl.create(:project) }
+    let(:user) { FactoryBot.create(:user) }
+    let(:project) { FactoryBot.create(:project) }
     before do
       sign_in_as user
       delete :destroy, params: { id: project }
@@ -54,9 +54,9 @@ describe ProjectsController do
   end
 
   context 'viewing the index without a chapter' do
-    let(:chapter) { FactoryGirl.create(:chapter) }
-    let(:user) { FactoryGirl.create(:user) }
-    let!(:role) { FactoryGirl.create(:role, :user => user, :chapter => chapter) }
+    let(:chapter) { FactoryBot.create(:chapter) }
+    let(:user) { FactoryBot.create(:user) }
+    let!(:role) { FactoryBot.create(:role, :user => user, :chapter => chapter) }
 
     before do
       sign_in_as user
@@ -67,10 +67,10 @@ describe ProjectsController do
   end
 
   context 'downloading the csv report' do
-    let!(:project)  { FactoryGirl.create :project }
-    let!(:user)     { FactoryGirl.create :user }
-    let!(:chapter)  { FactoryGirl.create :chapter }
-    let!(:role)     { FactoryGirl.create :role, :user => user, :chapter => chapter }
+    let!(:project)  { FactoryBot.create :project }
+    let!(:user)     { FactoryBot.create :user }
+    let!(:chapter)  { FactoryBot.create :chapter }
+    let!(:role)     { FactoryBot.create :role, :user => user, :chapter => chapter }
 
     before do
       sign_in_as user
@@ -83,9 +83,9 @@ describe ProjectsController do
   context "viewing a private project page" do
     render_views
 
-    let!(:project) { FactoryGirl.create(:project) }
-    let!(:trustee) { FactoryGirl.create(:user) }
-    let!(:admin)   { FactoryGirl.create(:admin) }
+    let!(:project) { FactoryBot.create(:project) }
+    let!(:trustee) { FactoryBot.create(:user) }
+    let!(:admin)   { FactoryBot.create(:admin) }
 
     context "while not logged in" do
       before do
@@ -133,7 +133,7 @@ describe ProjectsController do
     let(:mode) { nil }
 
     context "with a chapter" do
-      let(:chapter) { FactoryGirl.create(:chapter) }
+      let(:chapter) { FactoryBot.create(:chapter) }
 
       before do
         get :new, params: { chapter: chapter.slug, mode: mode }
@@ -180,9 +180,9 @@ describe ProjectsController do
   end
 
   describe "#hide" do
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { FactoryBot.create(:user) }
     let(:reason) { Faker::Company.bs }
-    let(:project) { FactoryGirl.create(:project) }
+    let(:project) { FactoryBot.create(:project) }
     before do
       sign_in_as user
     end
@@ -238,9 +238,9 @@ describe ProjectsController do
   end
 
   describe "#unhide" do
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { FactoryBot.create(:user) }
     let(:reason) { Faker::Company.bs }
-    let(:project) { FactoryGirl.create(:project) }
+    let(:project) { FactoryBot.create(:project) }
     before do
       sign_in_as user
       project.hide!(reason, user)

@@ -68,7 +68,7 @@ group :test do
   gem 'capybara-screenshot', '~> 1.0'
   gem 'database_cleaner'
   gem 'email_spec'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'faker'
   gem 'launchy'
   gem 'rails-controller-testing'

@@ -20,7 +20,7 @@ RSpec.configure do |config|
 
   config.mock_with :mocha
   config.after(:each){ DatabaseCleaner.clean }
-  config.before(:each){ FactoryGirl.create(:chapter, :name => "Any") }
+  config.before(:each){ FactoryBot.create(:chapter, :name => "Any") }
   config.before(:each){ ActionMailer::Base.deliveries.clear }
   config.after(:all) { FileUtils.rm_f Dir.glob(Rails.root.join("tmp", "tus-test", "*")) }
 end

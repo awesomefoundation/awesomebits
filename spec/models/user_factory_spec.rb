@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe UserFactory do
   let(:factory) { UserFactory.new(user_attributes) }
-  let(:chapter) { FactoryGirl.create(:chapter) }
+  let(:chapter) { FactoryBot.create(:chapter) }
 
   describe "#create" do
     let(:user_attributes) {{
@@ -25,7 +25,7 @@ describe UserFactory do
     end
 
     it "creates a new Role, but not a User, if the User exists already" do
-      existing_user = FactoryGirl.create(:user, :email => user_attributes[:email])
+      existing_user = FactoryBot.create(:user, :email => user_attributes[:email])
 
       factory.create
       user = factory.user
@@ -38,8 +38,8 @@ describe UserFactory do
     end
 
     it "uses an existing Role if it exists already" do
-      existing_user = FactoryGirl.create(:user, :email => user_attributes[:email])
-      existing_role = FactoryGirl.create(:role, :user => existing_user, :chapter => chapter)
+      existing_user = FactoryBot.create(:user, :email => user_attributes[:email])
+      existing_role = FactoryBot.create(:role, :user => existing_user, :chapter => chapter)
 
       factory.create
       role = factory.role

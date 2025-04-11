@@ -1,12 +1,12 @@
 require 'spec_helper'
 
 describe ProjectsHelper, '#selectable_chapters_for' do
-  let!(:admin) { FactoryGirl.create :admin }
-  let!(:user) { FactoryGirl.create :user }
+  let!(:admin) { FactoryBot.create :admin }
+  let!(:user) { FactoryBot.create :user }
   let!(:any_chapter) { Chapter.find_by_name 'Any' }
-  let!(:boston_chapter) { FactoryGirl.create :chapter, :name => 'Boston' }
-  let!(:nyc_chapter) { FactoryGirl.create :chapter, :name => 'NYC' }
-  let!(:role) { FactoryGirl.create :role, :user => user, :chapter => boston_chapter }
+  let!(:boston_chapter) { FactoryBot.create :chapter, :name => 'Boston' }
+  let!(:nyc_chapter) { FactoryBot.create :chapter, :name => 'NYC' }
+  let!(:role) { FactoryBot.create :role, :user => user, :chapter => boston_chapter }
 
   it 'should return all chapters for admin user' do
     expect(helper.selectable_chapters_for(admin)).to eq([any_chapter, boston_chapter, nyc_chapter])

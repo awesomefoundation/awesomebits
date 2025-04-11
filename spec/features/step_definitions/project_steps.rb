@@ -17,7 +17,7 @@ end
 step 'a project was created on each of the last 7 days for my chapter' do
   @my_projects = []
   7.times do |x|
-    @my_projects << FactoryGirl.create(:project,
+    @my_projects << FactoryBot.create(:project,
                            :chapter => @current_chapter,
                            :created_at => x.days.ago)
   end
@@ -26,29 +26,29 @@ end
 step 'a project was created on each of the last 50 days for my chapter and I voted for them all' do
   @my_projects = []
   50.times do |x|
-    @my_projects << FactoryGirl.create(:project,
+    @my_projects << FactoryBot.create(:project,
                            :chapter => @current_chapter,
                            :created_at => x.days.ago)
 
-    FactoryGirl.create(:vote, :project => @my_projects.last, :user => @current_user)
+    FactoryBot.create(:vote, :project => @my_projects.last, :user => @current_user)
   end
 end
 
 step 'a project was created on each of the last 7 days for one chapter' do
-  @my_chapter = FactoryGirl.create(:chapter)
+  @my_chapter = FactoryBot.create(:chapter)
   @my_projects = []
   7.times do |x|
-    @my_projects << FactoryGirl.create(:project,
+    @my_projects << FactoryBot.create(:project,
                            :chapter => @my_chapter,
                            :created_at => x.days.ago)
   end
 end
 
 step 'a project was created on each of the last 7 days for a different chapter' do
-  @other_chapter = FactoryGirl.create(:chapter)
+  @other_chapter = FactoryBot.create(:chapter)
   @other_projects = []
   7.times do |x|
-    @other_projects << FactoryGirl.create(:project,
+    @other_projects << FactoryBot.create(:project,
                               :chapter => @other_chapter,
                               :created_at => x.days.ago)
   end
@@ -58,7 +58,7 @@ step 'a project was created on each of the last 7 days for any chapter' do
   any_chapter = Chapter.find_by_name("Any") || raise("'Any' chapter not found")
   @any_projects = []
   7.times do |x|
-    @any_projects << FactoryGirl.create(:project, {
+    @any_projects << FactoryBot.create(:project, {
       :chapter => any_chapter,
       :created_at => x.days.ago
     })
@@ -131,15 +131,15 @@ end
 
 step 'there is/are :count winning project(s)' do |count|
   count = count.to_i
-  @projects = (1..count).map{|x| FactoryGirl.create(:project_with_rss_feed, :funded_on => x.days.ago) }
+  @projects = (1..count).map{|x| FactoryBot.create(:project_with_rss_feed, :funded_on => x.days.ago) }
 end
 
 step 'there is 1 winning project in my chapter' do
-  @project = FactoryGirl.create(:winning_project, :chapter => @current_chapter)
+  @project = FactoryBot.create(:winning_project, :chapter => @current_chapter)
 end
 
 step 'there are enough winning projects in my chapter to spread over two pages' do
-  FactoryGirl.create_list(:winning_project, Project.per_page + 1, :chapter => @current_chapter)
+  FactoryBot.create_list(:winning_project, Project.per_page + 1, :chapter => @current_chapter)
 end
 
 step 'I edit that winning project' do
@@ -174,20 +174,20 @@ end
 
 step '5 projects have won for this chapter' do
   @winning_projects = (1..5).map do |x|
-    FactoryGirl.create(:project, :chapter => @current_chapter, :funded_on => x.days.ago)
+    FactoryBot.create(:project, :chapter => @current_chapter, :funded_on => x.days.ago)
   end
 end
 
 step '5 projects have not won for this chapter' do
   @not_winning_projects = (1..5).map do |x|
-    FactoryGirl.create(:project, :chapter => @current_chapter)
+    FactoryBot.create(:project, :chapter => @current_chapter)
   end
 end
 
 step '5 projects have won, but not for this chapter' do
-  @other_chapter = FactoryGirl.create(:chapter)
+  @other_chapter = FactoryBot.create(:chapter)
   @winning_projects_for_other_chapter = (1..5).map do |x|
-    FactoryGirl.create(:project, :chapter => @other_chapter)
+    FactoryBot.create(:project, :chapter => @other_chapter)
   end
 end
 
@@ -204,7 +204,7 @@ step 'I should see only those 5 winning projects for this chapter listed' do
 end
 
 step 'someone has submitted spam to my chapter' do
-  @spam_project = FactoryGirl.create(:project, :chapter => @current_chapter)
+  @spam_project = FactoryBot.create(:project, :chapter => @current_chapter)
 end
 
 step 'I go to the projects list' do
@@ -230,8 +230,8 @@ end
 
 step 'that chapter has 5 winning projects' do
   @winning_projects = (1..5).map do |x|
-    p = FactoryGirl.build(:project, chapter: @current_chapter, funded_on: x.months.ago)
-    p.photos = [FactoryGirl.build(:photo, project: nil)]
+    p = FactoryBot.build(:project, chapter: @current_chapter, funded_on: x.months.ago)
+    p.photos = [FactoryBot.build(:photo, project: nil)]
     p.save
     p
   end

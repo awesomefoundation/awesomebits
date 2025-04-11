@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe 'finalists/index' do
-  let!(:user) { FactoryGirl.create(:user_with_dean_role) }
-  let!(:project1) { FactoryGirl.create(:project, chapter: user.chapters.first) }
-  let!(:project2) { FactoryGirl.create(:project) }
+  let!(:user) { FactoryBot.create(:user_with_dean_role) }
+  let!(:project1) { FactoryBot.create(:project, chapter: user.chapters.first) }
+  let!(:project2) { FactoryBot.create(:project) }
 
   before(:each) do
     controller.request.params[:chapter_id] = project1.chapter

@@ -2,13 +2,13 @@ require 'spec_helper'
 
 describe FinalistsController do
   context '#index' do
-    let(:chapter) { FactoryGirl.create(:chapter) }
-    let(:project1) { FactoryGirl.create(:project, chapter: chapter) }
-    let(:project2) { FactoryGirl.create(:project, chapter: chapter) }
-    let(:funded_project) { FactoryGirl.create(:winning_project, chapter: chapter) }
-    let(:hidden_project) { FactoryGirl.create(:hidden_project, chapter: chapter) }
-    let(:trustee_role) { FactoryGirl.create(:role, :trustee, chapter: chapter) }
-    let(:past_trustee_role) { FactoryGirl.create(:role, :trustee, chapter: chapter) }
+    let(:chapter) { FactoryBot.create(:chapter) }
+    let(:project1) { FactoryBot.create(:project, chapter: chapter) }
+    let(:project2) { FactoryBot.create(:project, chapter: chapter) }
+    let(:funded_project) { FactoryBot.create(:winning_project, chapter: chapter) }
+    let(:hidden_project) { FactoryBot.create(:hidden_project, chapter: chapter) }
+    let(:trustee_role) { FactoryBot.create(:role, :trustee, chapter: chapter) }
+    let(:past_trustee_role) { FactoryBot.create(:role, :trustee, chapter: chapter) }
     let!(:past_trustee) { past_trustee_role.user }
     let(:projects) { [project1, project2, funded_project, hidden_project] }
 
