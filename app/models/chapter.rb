@@ -63,13 +63,13 @@ EOT
 
   # Scope can be :active or :all
   def self.select_data(scope = :active, include_any: true)
-    countries = include_any ? [OpenStruct.new(:name => "Any Chapter", :chapters => where(name: ANY_CHAPTER_NAME))] : []
+    countries = include_any ? [Collection.new(:name => "Any Chapter", :chapters => where(name: ANY_CHAPTER_NAME))] : []
 
     selection = scope == :all ? visitable : active.visitable
 
     selection.sort_by(&CountrySortCriteria.new(COUNTRY_PRIORITY)).each do |chapter|
       if countries.last.try(:name) != chapter.country
-        countries.push OpenStruct.new(:name => chapter.country, :chapters => [])
+        countries.push Collection.new(:name => chapter.country, :chapters => [])
       end
 
       countries.last.chapters.push chapter
@@ -142,6 +142,16 @@ EOT
     if account = twitter_url.to_s.split("/").compact.last
       account = "@#{account}" unless account.match(/^@/)
       account
+    end
+  end
+
+  class Collection
+    attr_accessor :name
+    attr_accessor :chapters
+
+    def initialize(name:, chapters:)
+      @name = name
+      @chapters = chapters
     end
   end
 end
