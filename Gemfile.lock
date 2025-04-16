@@ -494,7 +494,6 @@ DEPENDENCIES
   clearance (~> 2.5.0)
   clearance-deprecated_password_strategies
   coffee-rails
-  concurrent-ruby (= 1.3.4)
   csv
   database_cleaner
   dotenv-rails

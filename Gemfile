@@ -12,7 +12,6 @@ gem 'bourbon', '~> 4.0.2'
 gem 'clearance', '~> 2.5.0'
 gem 'clearance-deprecated_password_strategies'
 gem 'coffee-rails'
-gem 'concurrent-ruby', '1.3.4' # TODO remove after upgrading to 7.1
 gem 'csv'
 gem 'flutie'
 gem 'formtastic'
