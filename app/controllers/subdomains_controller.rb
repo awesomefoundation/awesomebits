@@ -3,19 +3,19 @@ class SubdomainsController < ApplicationController
 
   def chapter
     if @chapter
-      redirect_to(chapter_url(@chapter.slug, url_parts))
+      redirect_to(chapter_url(@chapter.slug, url_parts), allow_other_host: true)
 
     else
-      redirect_to(root_url(url_parts))
+      redirect_to(root_url(url_parts), allow_other_host: true)
     end
   end
 
   def apply
-    redirect_to(new_submission_url({ chapter: @chapter }.merge(url_parts)))
+    redirect_to(new_submission_url({ chapter: @chapter }.merge(url_parts)), allow_other_host: true)
   end
 
   def canonical
-    redirect_to({ locale: nil }.merge(url_parts), status: :moved_permanently)
+    redirect_to({ locale: nil }.merge(url_parts), status: :moved_permanently, allow_other_host: true)
   end
 
   protected
