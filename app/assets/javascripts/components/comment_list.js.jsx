@@ -16,6 +16,11 @@ var CommentList = createReactClass({
     }
   },
 
+  componentDidMount: function() {
+    // Force an update after mounting to ensure we have the latest data
+    this.updateComments();
+  },
+
   componentWillUnmount: function() {
     CommentStore.unsubscribe(this.updateComments);
   },
