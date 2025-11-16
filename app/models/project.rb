@@ -34,6 +34,8 @@ class Project < ApplicationRecord
   before_save :update_photo_order
   before_save :delete_photos
 
+  before_create :collect_metadata
+
   # For dependency injection
   cattr_accessor :mailer
   self.mailer = ProjectMailer
@@ -209,6 +211,16 @@ class Project < ApplicationRecord
 
   def hidden?
     !!hidden_at
+  end
+
+  def collect_metadata
+    return unless @request_metadata.present?
+
+    self.metadata = @request_metadata
+  end
+
+  def set_request_metadata(metadata)
+    @request_metadata = metadata
   end
 
   protected

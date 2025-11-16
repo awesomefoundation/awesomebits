@@ -59,6 +59,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(create_project_params)
+    @project.set_request_metadata(collect_request_metadata)
 
     if SpamChecker::Project.new(@project).spam?
       flash[:notice] = t("flash.applications.error")
@@ -205,5 +206,36 @@ class ProjectsController < ApplicationController
     else
       yield
     end
+  end
+
+  def collect_request_metadata
+    client_data = {}
+
+    if params[:client_metadata].present?
+      begin
+        client_data = JSON.parse(params[:client_metadata])
+      rescue JSON::ParserError
+        client_data = {}
+      end
+    end
+
+    {
+      ip_address: real_ip_address,
+      user_agent: request.user_agent,
+      referrer: request.referer,
+      time_on_page_ms: client_data["time_on_page_ms"],
+      timezone: client_data["timezone"],
+      screen_resolution: client_data["screen_resolution"],
+      form_interactions_count: client_data["form_interactions_count"],
+      keystroke_count: client_data["keystroke_count"],
+      paste_count: client_data["paste_count"]
+    }
+  end
+
+  def real_ip_address
+    # CloudFront sends real IP in CF-Connecting-IP header
+    request.headers["CF-Connecting-IP"] ||
+      request.headers["X-Forwarded-For"]&.split(",")&.first&.strip ||
+      request.remote_ip
   end
 end
