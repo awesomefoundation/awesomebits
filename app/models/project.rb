@@ -224,7 +224,7 @@ class Project < ApplicationRecord
       form_interactions_count: client_data[:form_interactions_count],
       keystroke_count: client_data[:keystroke_count],
       paste_count: client_data[:paste_count]
-    }
+    }.compact
   end
 
   private
