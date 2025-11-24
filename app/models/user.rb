@@ -81,6 +81,10 @@ class User < ApplicationRecord
     admin? || roles.can_view_finalists_for?(chapter)
   end
 
+  def can_moderate_for?(chapter)
+    admin? || chapter&.any_chapter? || (chapter && chapters.include?(chapter))
+  end
+
   def can_mark_winner?(project)
     admin? || project.in_any_chapter? || roles.can_mark_winner?(project)
   end

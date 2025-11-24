@@ -117,4 +117,10 @@ FactoryBot.define do
     user
     body { "This is the body of my comment." }
   end
+
+  factory :project_moderation do
+    project
+    status { "suspected" }
+    moderation_type { "spam" }
+  end
 end

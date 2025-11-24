@@ -2,18 +2,22 @@
   <div class="title">
     <%= link_to project.title, chapter_project_path(project.chapter, project), :class => "title" %>
 
+    <% if local_assigns[:moderation].present? && project.project_moderation %>
+      <%= render "projects/moderation", project: project %>
+    <% else %>
     <div class="actions">
-    <% if project.shortlisted_by?(current_user) %>
-      <%= link_to I18n.t(".awesome", scope: "projects.project", count: 1), project_vote_path(project), :method => :delete, :remote => true, :class => "short-list", data: { chapter: "" } %>
-    <% end %>
-    <% voting_chapters.each do |voting_chapter| %>
-      <%= link_to I18n.t(".awesome", scope: "projects.project", count: voting_chapters.size, chapter: voting_chapter.slug), project_vote_path(project, chapter_id: voting_chapter.id), :method => :post, :remote => true, :class => "short-list", data: { chapter: voting_chapter.id } %>
-    <% end %>
+      <% if project.shortlisted_by?(current_user) %>
+        <%= link_to I18n.t(".awesome", scope: "projects.project", count: 1), project_vote_path(project), :method => :delete, :remote => true, :class => "short-list", data: { chapter: "" } %>
+      <% end %>
+      <% voting_chapters.each do |voting_chapter| %>
+        <%= link_to I18n.t(".awesome", scope: "projects.project", count: voting_chapters.size, chapter: voting_chapter.slug), project_vote_path(project, chapter_id: voting_chapter.id), :method => :post, :remote => true, :class => "short-list", data: { chapter: voting_chapter.id } %>
+      <% end %>
 
-    <% if display_project_actions?(current_user, project) %>
-      <%= link_to '<i class="icon-gear"></i>'.html_safe, "#", class: "project-actions-toggle", data: { action: "click->toggler#toggle" } %>
-    <% end %>
+      <% if display_project_actions?(current_user, project) %>
+        <%= link_to '<i class="icon-gear"></i>'.html_safe, "#", class: "project-actions-toggle", data: { action: "click->toggler#toggle" } %>
+      <% end %>
     </div>
+    <% end %>
 
     <div class="public-link">
       <%= link_to funded_project_path(project), target: "blank" do %>
@@ -60,6 +64,7 @@
             <%= link_to project_path(project), :method => :delete, :data => { :confirm => I18n.t("projects.project.confirm-delete") }, :class => "text-muted delete-spam" do %>
               <i class="icon-li icon-remove"></i> <%= t("projects.project.delete") %>
             <% end %>
+          </li>
         <% end %>
       </ul>
     </section>

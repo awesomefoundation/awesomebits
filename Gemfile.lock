@@ -74,6 +74,8 @@ GEM
       tzinfo (~> 2.0, >= 2.0.5)
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
+    anyway_config (2.7.2)
+      ruby-next-core (~> 1.0)
     argon2 (2.3.2)
       ffi (~> 1.15)
       ffi-compiler (~> 1.0)
@@ -383,6 +385,7 @@ GEM
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
     rspec-support (3.13.2)
+    ruby-next-core (1.1.2)
     rubyzip (2.4.1)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
@@ -484,6 +487,7 @@ PLATFORMS
 
 DEPENDENCIES
   addressable
+  anyway_config
   aws-sdk-s3
   bootsnap (>= 1.1.0)
   bourbon (~> 4.0.2)

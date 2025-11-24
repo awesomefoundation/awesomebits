@@ -1,6 +1,9 @@
 <header>
   <div class="title">
     <%= link_to project.title, chapter_project_path(project.chapter, project), :class => "title" %>
+    <% if local_assigns[:moderation].present? && project.project_moderation %>
+      <%= render "projects/moderation", project: project %>
+    <% end %>
   </div>
 
   <section class="meta-data">
