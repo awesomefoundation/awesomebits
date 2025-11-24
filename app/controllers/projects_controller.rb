@@ -210,16 +210,9 @@ class ProjectsController < ApplicationController
 
   def collect_server_metadata
     {
-      ip_address: real_ip_address,
+      ip_address: request.remote_ip,
       user_agent: request.user_agent,
       referrer: request.referer
     }
-  end
-
-  def real_ip_address
-    # CloudFront sends real IP in CF-Connecting-IP header
-    request.headers["CF-Connecting-IP"] ||
-      request.headers["X-Forwarded-For"]&.split(",")&.first&.strip ||
-      request.remote_ip
   end
 end
