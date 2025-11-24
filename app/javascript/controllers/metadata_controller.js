@@ -15,6 +15,15 @@ export default class extends Controller {
   }
 
   trackKeystroke(event) {
+    const tgt = event.target
+    const tag = tgt && tgt.tagName && tgt.tagName.toLowerCase()
+
+    // Only count keystrokes in form fields
+    if (!(tag === 'input' || tag === 'textarea' || tgt.isContentEditable)) return
+
+    // Only count printable keys (skip modifiers, arrows, etc.)
+    if (event.key && event.key.length !== 1) return
+
     this.keystrokeCount++
   }
 
@@ -47,7 +56,7 @@ export default class extends Controller {
     metadataField.type = 'hidden'
     metadataField.name = 'client_metadata'
     metadataField.value = JSON.stringify(this.getMetadata())
-    
+
     this.formTarget.appendChild(metadataField)
   }
 }
