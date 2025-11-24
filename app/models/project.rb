@@ -242,7 +242,8 @@ class Project < ApplicationRecord
         keystroke_count: sanitize_integer(raw_data["keystroke_count"]),
         paste_count: sanitize_integer(raw_data["paste_count"])
       }
-    rescue JSON::ParserError
+    rescue JSON::ParserError => e
+      Rails.logger.warn "Invalid client_metadata JSON: #{e.message}"
       {}
     end
   end
