@@ -418,8 +418,8 @@ describe Project do
         paste_count: 0
       }
 
-      # Call your setter
-      project.set_request_metadata(server_metadata.merge(client_metadata))
+      # Call your setter with separate server and client data
+      project.set_request_metadata(server_metadata, client_metadata.to_json)
       project.save!
 
       expect(HashWithIndifferentAccess.new(project.metadata)).to include(

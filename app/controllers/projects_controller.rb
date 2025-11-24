@@ -59,7 +59,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(create_project_params)
-    @project.set_request_metadata(collect_request_metadata)
+    @project.set_request_metadata(collect_server_metadata, params[:client_metadata])
 
     if SpamChecker::Project.new(@project).spam?
       flash[:notice] = t("flash.applications.error")
@@ -208,27 +208,11 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def collect_request_metadata
-    client_data = {}
-
-    if params[:client_metadata].present?
-      begin
-        client_data = JSON.parse(params[:client_metadata])
-      rescue JSON::ParserError
-        client_data = {}
-      end
-    end
-
+  def collect_server_metadata
     {
       ip_address: real_ip_address,
       user_agent: request.user_agent,
-      referrer: request.referer,
-      time_on_page_ms: client_data["time_on_page_ms"],
-      timezone: client_data["timezone"],
-      screen_resolution: client_data["screen_resolution"],
-      form_interactions_count: client_data["form_interactions_count"],
-      keystroke_count: client_data["keystroke_count"],
-      paste_count: client_data["paste_count"]
+      referrer: request.referer
     }
   end
 
