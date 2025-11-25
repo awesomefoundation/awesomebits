@@ -8,8 +8,8 @@
   <% end %>
 
   <section class="project-form">
-    <%= simple_form_for @project, :url => submissions_url, :html => { :multipart => true, :honeypot => true, "data-uploading-alert-text" => strip_tags(t("projects.wait-for-uploads-to-complete")) } do |form| %>
-      <%= render 'form', :project => @project, :form => form %>
+    <%= simple_form_for @project, url: submissions_url, html: { multipart: true, honeypot: true, data: { uploading_alert_text: strip_tags(t("projects.wait-for-uploads-to-complete")), controller: "metadata", metadata_target: "form", action: "submit->metadata#submit focusin->metadata#trackInteraction keydown->metadata#trackKeystroke paste->metadata#trackPaste" } } do |form| %>
+      <%= render 'form', project: @project, form: form %>
       <%= submit_tag t ".apply" %>
     <% end %>
   </section>

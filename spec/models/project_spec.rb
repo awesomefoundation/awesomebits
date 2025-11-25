@@ -397,6 +397,44 @@ describe Project do
       expect(project).not_to be_hidden
     end
   end
+
+  describe '#set_request_metadata' do
+    let(:chapter) { FactoryBot.create(:chapter) }
+    let(:project) { FactoryBot.build(:project, chapter: chapter) }
+
+    it 'stores server-side and client-side metadata in the metadata field' do
+      server_metadata = {
+        ip_address: "1.2.3.4",
+        user_agent: "RSpec",
+        referrer: "http://example.com"
+      }
+
+      client_metadata = {
+        time_on_page_ms: 5000,
+        keystroke_count: 10,
+        form_interactions_count: 3,
+        screen_resolution: "1440x900",
+        timezone: "America/New_York",
+        paste_count: 0
+      }
+
+      # Call your setter with separate server and client data
+      project.set_request_metadata(server_metadata, client_metadata.to_json)
+      project.save!
+
+      expect(HashWithIndifferentAccess.new(project.metadata)).to include(
+        ip_address: "1.2.3.4",
+        user_agent: "RSpec",
+        referrer: "http://example.com",
+        time_on_page_ms: 5000,
+        keystroke_count: 10,
+        form_interactions_count: 3,
+        screen_resolution: "1440x900",
+        timezone: "America/New_York",
+        paste_count: 0
+      )
+    end
+  end
 end
 
 describe Project, 'csv_export' do

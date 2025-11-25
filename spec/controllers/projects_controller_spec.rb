@@ -127,6 +127,73 @@ describe ProjectsController do
       it { is_expected.to respond_with(:success) }
       it { is_expected.to render_template("new") }
     end
+
+    context "with client_metadata" do
+      let(:chapter) { FactoryBot.create(:chapter) }
+      let(:valid_project_params) do
+        {
+          chapter_id: chapter.id,
+          name: "Test User",
+          title: "Test Project",
+          email: "test@example.com",
+          about_me: "About me",
+          about_project: "About project",
+          use_for_money: "Use for money"
+        }
+      end
+
+      it "sanitizes malicious client_metadata fields" do
+        malicious_metadata = {
+          time_on_page_ms: "not_a_number",
+          timezone: "x" * 1000, # Very long string
+          screen_resolution: "1920x1080" * 100, # Very long string
+          form_interactions_count: "5",
+          keystroke_count: 42,
+          paste_count: "invalid"
+        }.to_json
+
+        post :create, params: {
+          project: valid_project_params,
+          client_metadata: malicious_metadata
+        }
+
+        expect(response).to redirect_to(success_submissions_path(chapter: chapter))
+
+        project = Project.last
+        expect(project.metadata["time_on_page_ms"]).to be_nil # Invalid integer
+        expect(project.metadata["timezone"].length).to eq(50) # Truncated
+        expect(project.metadata["screen_resolution"].length).to eq(20) # Truncated
+        expect(project.metadata["form_interactions_count"]).to eq(5) # Valid integer from string
+        expect(project.metadata["keystroke_count"]).to eq(42) # Valid integer
+        expect(project.metadata["paste_count"]).to be_nil # Invalid integer
+      end
+
+      it "processes valid client_metadata correctly" do
+        valid_metadata = {
+          time_on_page_ms: 5000,
+          timezone: "America/New_York",
+          screen_resolution: "1920x1080",
+          form_interactions_count: 3,
+          keystroke_count: 42,
+          paste_count: 1
+        }.to_json
+
+        post :create, params: {
+          project: valid_project_params,
+          client_metadata: valid_metadata
+        }
+
+        expect(response).to redirect_to(success_submissions_path(chapter: chapter))
+
+        project = Project.last
+        expect(project.metadata["time_on_page_ms"]).to eq(5000)
+        expect(project.metadata["timezone"]).to eq("America/New_York")
+        expect(project.metadata["screen_resolution"]).to eq("1920x1080")
+        expect(project.metadata["form_interactions_count"]).to eq(3)
+        expect(project.metadata["keystroke_count"]).to eq(42)
+        expect(project.metadata["paste_count"]).to eq(1)
+      end
+    end
   end
 
   context "the project submission form" do
