@@ -210,9 +210,17 @@ class ProjectsController < ApplicationController
 
   def server_metadata
     {
-      ip_address: request.remote_ip,
+      ip_address: real_ip_for_spam_detection,
       user_agent: request.user_agent,
       referrer: request.referer
     }
+  end
+
+  def real_ip_for_spam_detection
+    # CloudFront-Viewer-Address is the most accurate (requires CloudFront config)
+    # Fall back to X-Forwarded-For parsing, then Rails default
+    request.headers['CloudFront-Viewer-Address']&.split(':')&.first&.strip ||
+      request.headers['X-Forwarded-For']&.split(',')&.first&.strip ||
+      request.remote_ip
   end
 end
