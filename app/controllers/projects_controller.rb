@@ -59,7 +59,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(create_project_params)
-    @project.set_request_metadata(collect_server_metadata, params[:client_metadata])
+    @project.set_request_metadata(server_metadata, params[:client_metadata])
 
     if SpamChecker::Project.new(@project).spam?
       flash[:notice] = t("flash.applications.error")
@@ -208,7 +208,7 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def collect_server_metadata
+  def server_metadata
     {
       ip_address: request.remote_ip,
       user_agent: request.user_agent,
