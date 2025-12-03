@@ -41,7 +41,7 @@ body.home-index, body.chapters-show, body.chapters-index {
   }
 }
 
-body:not(.home-index):not(.chapters-show) {  
+body:not(.home-index):not(.chapters-show) {
   section.container {
     margin-top: 3em;
   }
@@ -72,4 +72,16 @@ table {
     padding: 10px 0px;
     width: 100%;
   }
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.block {
+  display: block;
+}
+
+.clear-both {
+  clear: both;
 }

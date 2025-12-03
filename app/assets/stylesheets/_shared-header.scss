@@ -97,11 +97,11 @@ header.main {
           float: left;
           clear: both;
           margin: 10px 0px;
-          
+
           &:first-child {
             margin-top: 14px;
           }
-          
+
           &:last-child {
             margin-bottom: 14px;
           }
@@ -206,6 +206,13 @@ body {
 
   &.projects-index,
   &.finalists-index {
+    a.dashboard {
+      @extend .active-link;
+    }
+  }
+
+
+  &.moderations-index {
     a.dashboard {
       @extend .active-link;
     }

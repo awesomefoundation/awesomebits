@@ -7,6 +7,14 @@
 
 <section class="applications">
   <h1><%= t ".title", name:  @chapter.display_name, count: @projects.count %></h1>
+
+  <% if @moderation_count&.positive? && current_user.can_moderate_for?(@chapter) %>
+    <div class="application__moderation-notice notice flexbox justify-space-between center">
+      <strong><%= t(".held-for-review", count: @moderation_count) %></strong>
+      <%= link_to t(".review-now"), chapter_moderations_path(@chapter), class: "application__moderation-button" %>
+    </div>
+  <% end %>
+
   <section class="application-filters flexbox vertical">
     <nav>
       <%= link_to '#', :class => 'chapter-selection' do %>
@@ -30,7 +38,7 @@
         <%= check_box_tag "funded", nil, params[:funded].present? %>
         <%= label_tag "funded", t(".funded-filter") %>
       </div>
-      
+
       <div>
         <div class="input string optional date-range">
           <label class="string optional" for="filter_start"><%= t ".start-date" %></label>
@@ -52,9 +60,10 @@
           <span class="icon-search"></span>
         </button>
       </div>
-      
+
     </form>
   </section>
+
   <p class="exports">
     <%= link_to t('.export-projects'), params.permit!.merge(format: :csv, only_path: true) %>
     <% if current_user.admin? %>

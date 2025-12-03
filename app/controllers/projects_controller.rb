@@ -16,6 +16,9 @@ class ProjectsController < ApplicationController
 
     project_filter = ProjectFilter.new(@chapter.projects).during(@start_date, @end_date)
 
+    # Only display projects that do not require human review
+    project_filter.not_pending_moderation
+
     if params[:short_list]
       project_filter.shortlisted_by(current_user)
     end
@@ -29,6 +32,9 @@ class ProjectsController < ApplicationController
     unless @q.blank?
       project_filter.search(@q)
     end
+
+    # Count projects under moderation for the notification box
+    @moderation_count = @chapter.projects_pending_moderation.count
 
     respond_to do |format|
       format.html do

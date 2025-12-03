@@ -16,6 +16,7 @@ EOT
   has_many :roles
   has_many :users, :through => :roles
   has_many :projects
+  has_many :projects_pending_moderation, -> { joins(:project_moderation).merge(ProjectModeration.pending) }, class_name: "Project"
   has_many :winning_projects, -> { where.not(funded_on: nil).order(funded_on: :desc) }, class_name: "Project"
   has_many :invitations
 

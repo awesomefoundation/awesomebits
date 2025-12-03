@@ -7,6 +7,7 @@ gem 'rake'
 gem 'bootsnap','>= 1.1.0', require: false
 
 gem 'addressable'
+gem 'anyway_config'
 gem 'aws-sdk-s3'
 gem 'bourbon', '~> 4.0.2'
 gem 'clearance', '~> 2.5.0'

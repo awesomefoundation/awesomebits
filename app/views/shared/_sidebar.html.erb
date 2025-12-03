@@ -18,6 +18,7 @@
     <li><%= link_to t(".invite-trustee"), new_invitation_path %></li>
   <% end %>
 
+  <% if chapter.present? %>
   <li class="section-title">
     <h3><%= chapter.display_name %></h3>
   </li>
@@ -28,6 +29,10 @@
   <% end %>
   <% if current_user.can_manage_chapter?(chapter) %>
     <li><%= link_to t(".edit-chapter-profile"), edit_chapter_path(chapter) %></li>
+  <% end %>
+  <% if current_user.can_moderate_for?(chapter) %>
+    <li><%= link_to t(".project-moderation"), chapter_moderations_path(chapter, filter: :all) %></li>
+  <% end %>
   <% end %>
 
   <% if current_user.admin? || current_user.can_create_chapters? %>
@@ -41,6 +46,7 @@
 
     <% if current_user.admin? %>
       <li><%= link_to t(".view-all-users"), users_path %></li>
+      <li><%= link_to t(".project-moderation"), moderations_path %></li>
     <% end %>
   <% end %>
 </ol>

@@ -57,6 +57,7 @@ en:
       finalists: Finalists
       trustees: Trustees
       members: Members
+      project-moderation: Project Moderation
       create-chapter: Create a Chapter
       invite-trustee: Invite a Trustee
       edit-profile: Edit My Profile
@@ -134,6 +135,20 @@ en:
       feed-title: Recent Posts
       prev-project: Previous Project
       next-project: Next Project
+  moderations:
+    index:
+      moderation: Project Moderation
+      title:
+        one: "%{count} Project for %{name}"
+        other: "%{count} Projects for %{name}"
+      viewing-all-moderated: Viewing all moderated projects
+      moderating-projects:
+        one: Reviewing %{count} moderated project
+        other: Reviewing %{count} moderated projects
+      review-now: Review now
+      back-to-approved-projects: Back to approved projects
+      view-all: view all
+      view-unmoderated-only: view unreviewed only
   passwords:
     create:
       description: You will receive an email within the next few minutes. It contains instructions for changing your password.
@@ -206,8 +221,16 @@ en:
         other: "%{count} Projects for %{name}"
       export-projects: Export Filtered
       export-all-projects: Export All From Date Range
+      held-for-review:
+        one: "%{count} project held for review"
+        other: "%{count} projects held for review"
     show:
       back-to: 'Back to <a href="%{url}">%{name}</a>'
+    moderation:
+      spam: Spam
+      not-spam: Not spam
+      undo: Undo
+      spam-signals: "Spam signals: %{signals}"
   emails:
     invitation:
       subject: "You have been invited to the %{name} chapter of the Awesome Foundation!"
@@ -215,6 +238,7 @@ en:
       subject: "Welcome to the %{name} chapter!"
     application:
       subject: "Thanks for applying!"
+
   sessions:
     new:
       sign-in: Trustee and Dean Sign In

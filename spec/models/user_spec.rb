@@ -156,6 +156,34 @@ describe User do
     end
   end
 
+  context "#can_moderate_for?" do
+    let(:admin) { FactoryBot.create(:admin) }
+    let!(:chapter) { FactoryBot.create(:chapter) }
+    let!(:trustee) { FactoryBot.create(:user_with_trustee_role) }
+    let!(:role) { FactoryBot.create(:role, user: trustee, chapter: chapter) }
+    let(:other_trustee) { FactoryBot.create(:user_with_trustee_role) }
+
+    it "is true for admins" do
+      expect(admin.reload.can_moderate_for?(chapter)).to be true
+    end
+
+    it "is true for a chapter trustee" do
+      expect(trustee.reload.can_moderate_for?(chapter)).to be true
+    end
+
+    it "is true for any trustee with the Any chapter" do
+      expect(trustee.reload.can_moderate_for?(Chapter.any_chapter)).to be true
+    end
+
+    it "is not true for a trustee of another chapter" do
+      expect(other_trustee.reload.can_moderate_for?(chapter)).to be false
+    end
+
+    it "is not true for a trustee when the chapter is nil" do
+      expect(trustee.reload.can_moderate_for?(nil)).to be_falsey
+    end
+  end
+
   context ".deans_first" do
     let(:chapter){ FactoryBot.create(:chapter) }
     let!(:trustee){ FactoryBot.create(:role, :chapter => chapter) }

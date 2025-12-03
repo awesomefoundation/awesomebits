@@ -14,6 +14,7 @@ class Project < ApplicationRecord
   has_many :photos, -> { merge(Photo.sorted) }
   has_many :real_photos, -> { merge(Photo.image_files.sorted) }, class_name: "Photo"
   has_one  :primary_photo, -> { merge(Photo.image_files.sorted) }, class_name: "Photo"
+  has_one :project_moderation, dependent: :destroy
 
   before_validation UrlNormalizer.new(:url, :rss_feed_url)
 
@@ -33,6 +34,8 @@ class Project < ApplicationRecord
   before_save :ensure_funded_description
   before_save :update_photo_order
   before_save :delete_photos
+
+  after_create :analyze_for_spam
 
   # For dependency injection
   cattr_accessor :mailer
@@ -258,7 +261,25 @@ class Project < ApplicationRecord
     value.to_s.truncate(max_length)
   end
 
-  protected
+  def analyze_for_spam
+    # Don't overwrite existing reviewed flags
+    return if project_moderation&.reviewed?
+
+    classifier = SpamClassifier.new(self)
+    classifier.analyze!
+
+    if classifier.suspected_spam?
+      create_project_moderation!(
+        moderation_type: :spam,
+        status: :suspected,
+        signals: classifier.analysis
+      )
+    end
+  end
+
+  def suspected_spam?
+    project_moderation&.suspected? || project_moderation&.confirmed_spam?
+  end
 
   # before save
   def ensure_funded_description
