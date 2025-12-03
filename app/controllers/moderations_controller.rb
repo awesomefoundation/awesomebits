@@ -1,4 +1,6 @@
 class ModerationsController < ApplicationController
+  CONFIRMATION_EMAIL_DELAY_SECONDS = 10
+
   before_action :require_login
   before_action :find_chapter, only: [:index]
   before_action :find_project_and_chapter, only: [:confirm_spam, :confirm_legit, :undo]
@@ -19,6 +21,10 @@ class ModerationsController < ApplicationController
 
   def confirm_legit
     @project.project_moderation&.mark_confirmed_legit!(current_user)
+
+    # Send the application confirmation email with a delay to allow for the undo
+    ProjectMailerJob.perform_in(CONFIRMATION_EMAIL_DELAY_SECONDS, @project.id)
+
     render partial: "projects/moderation", locals: {project: @project}
   end
 

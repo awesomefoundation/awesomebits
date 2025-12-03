@@ -13,18 +13,6 @@ describe Project do
   it { is_expected.to have_many(:users).through(:votes) }
   it { is_expected.to have_many(:photos) }
 
-  context '#save' do
-    let(:fake_mailer) { FakeMailer.new }
-    let(:chapter) { FactoryBot.create(:chapter) }
-    let(:project) { FactoryBot.build(:project, chapter: chapter) }
-
-    it 'sends an email to the applicant on successful save' do
-      project.mailer = fake_mailer
-      project.save
-      expect(fake_mailer).to have_delivered_email(:new_application)
-    end
-  end
-
   context '#chapter_name' do
     let(:chapter) { FactoryBot.create :chapter, :name => 'Test chapter' }
     let(:project) { FactoryBot.create :project, :chapter => chapter }

@@ -177,15 +177,6 @@ class Project < ApplicationRecord
     real_photos.present?
   end
 
-  def save
-    was_new_record = new_record?
-    saved = super
-    if saved && was_new_record
-      ProjectMailerJob.perform_async(self)
-    end
-    saved
-  end
-
   def extra_question(num)
     (question = read_attribute("extra_question_#{num}".to_sym)) && question.present? ? question : nil
   end
@@ -212,6 +203,10 @@ class Project < ApplicationRecord
 
   def hidden?
     !!hidden_at
+  end
+
+  def not_pending_moderation?
+    project_moderation.blank? || project_moderation.confirmed_legit?
   end
 
   def set_request_metadata(server_data, client_data_json = nil)
@@ -275,10 +270,6 @@ class Project < ApplicationRecord
         signals: classifier.analysis
       )
     end
-  end
-
-  def suspected_spam?
-    project_moderation&.suspected? || project_moderation&.confirmed_spam?
   end
 
   # before save
