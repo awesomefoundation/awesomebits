@@ -9,6 +9,7 @@ class SpamConfig < Anyway::Config
     weight_high_paste_ratio: 0.3,
     weight_bot_screen_resolution: 0.2,
     weight_gibberish_fields: 0.5,
+    weight_identical_fields: 0.8,
     time_on_page_threshold_ms: 10000,
     min_form_interactions: 2,
     gibberish_field_threshold: 3,
