@@ -132,7 +132,7 @@ class SpamClassifier
       next if value.blank?
 
       # Check if it's a single word (no spaces) and not empty
-      if value.strip.match?(/^\S+$/) && value.length > 1
+      if value.strip.match?(/\A\S+\z/) && value.length > 1
         gibberish_count += 1
       end
     end
