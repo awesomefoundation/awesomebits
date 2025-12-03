@@ -71,6 +71,9 @@ class ProjectsController < ApplicationController
       flash[:notice] = t("flash.applications.error")
       render :new
     elsif @project.save
+      # Send the application confirmation email
+      ProjectMailerJob.perform_async(@project.id)
+
       redirect_to success_submissions_path({ chapter: @project.chapter, mode: params[:mode] }.reject { |_, v| v.blank? })
     else
       flash.now[:notice] = t("flash.applications.error")

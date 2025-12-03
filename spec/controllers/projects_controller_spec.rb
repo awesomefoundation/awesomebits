@@ -117,30 +117,50 @@ describe ProjectsController do
   end
 
   context "creating a project submission" do
-    context "when incomplete but with an image" do
-      render_views
+    let(:fake_mailer) { FakeMailer.new }
+    let(:chapter) { FactoryBot.create(:chapter) }
+    let(:valid_project_params) do
+      {
+        chapter_id: chapter.id,
+        name: "Test User",
+        title: "Test Project",
+        email: "test@example.com",
+        about_me: "About me",
+        about_project: "About project",
+        use_for_money: "Use for money"
+      }
+    end
 
-      before do
-        post :create, params: { project: { new_photo_direct_upload_urls: ["http://example.com/test.png"] } }
+    before do
+      Project.any_instance.stubs(:mailer).returns(fake_mailer)
+    end
+
+    context "that is valid" do
+      it "creates a project and sends an email" do
+        expect {
+          post :create, params: { project: valid_project_params }
+        }.to change(Project, :count).by(1)
+
+        expect(response).to redirect_to(success_submissions_path(chapter: chapter))
+        expect(fake_mailer).to have_delivered_email(:new_application)
       end
+    end
 
-      it { is_expected.to respond_with(:success) }
-      it { is_expected.to render_template("new") }
+    context "that is suspected of being spam" do
+      it "creates a project but does not send an email" do
+        Project.any_instance.stubs(:project_moderation).returns(ProjectModeration.new(status: :suspected))
+
+        expect {
+          post :create, params: { project: valid_project_params }
+        }.to change(Project, :count).by(1)
+
+        expect(response).to redirect_to(success_submissions_path(chapter: chapter))
+        expect(Project.last.not_pending_moderation?).to eq(false)
+        expect(fake_mailer).to_not have_delivered_email(:new_application)
+      end
     end
 
     context "with client_metadata" do
-      let(:chapter) { FactoryBot.create(:chapter) }
-      let(:valid_project_params) do
-        {
-          chapter_id: chapter.id,
-          name: "Test User",
-          title: "Test Project",
-          email: "test@example.com",
-          about_me: "About me",
-          about_project: "About project",
-          use_for_money: "Use for money"
-        }
-      end
 
       it "sanitizes malicious client_metadata fields" do
         malicious_metadata = {
@@ -194,6 +214,18 @@ describe ProjectsController do
         expect(project.metadata["paste_count"]).to eq(1)
       end
     end
+
+    context "when incomplete but with an image" do
+      render_views
+
+      before do
+        post :create, params: { project: { new_photo_direct_upload_urls: ["http://example.com/test.png"] } }
+      end
+
+      it { is_expected.to respond_with(:success) }
+      it { is_expected.to render_template("new") }
+    end
+
   end
 
   context "the project submission form" do

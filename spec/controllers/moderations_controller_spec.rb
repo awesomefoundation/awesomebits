@@ -97,12 +97,18 @@ describe ModerationsController do
   end
 
   describe "POST #confirm_legit" do
+    let(:fake_mailer) { FakeMailer.new }
+
     context "when user is a trustee" do
-      before { sign_in_as(trustee) }
+      before do
+        sign_in_as(trustee)
+        Project.any_instance.stubs(:mailer).returns(fake_mailer)
+      end
 
       it "allows moderating projects in their chapter" do
         post :confirm_legit, params: { project_id: project.id }
         expect(response).to be_successful
+        expect(fake_mailer).to have_delivered_email(:new_application)
       end
 
       context "with Any chapter project" do
@@ -111,6 +117,7 @@ describe ModerationsController do
         it "allows moderating projects in the Any chapter" do
           post :confirm_legit, params: { project_id: project.id }
           expect(response).to be_successful
+          expect(fake_mailer).to have_delivered_email(:new_application)
         end
       end
 
@@ -120,6 +127,7 @@ describe ModerationsController do
 
         post :confirm_legit, params: { project_id: other_project.id }
         expect(response).to have_http_status(:not_found)
+        expect(fake_mailer).to_not have_delivered_email(:new_application)
       end
     end
   end
