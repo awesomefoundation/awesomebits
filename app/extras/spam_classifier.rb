@@ -10,6 +10,9 @@ class SpamClassifier
   end
 
   def analyze!
+    @score = 0
+    @signals = []
+
     # Check for missing metadata (bot indicator)
     if all_js_fields_missing?
       self.signals << "missing_js_metadata"
@@ -56,6 +59,12 @@ class SpamClassifier
     if gibberish_fields?
       self.signals << "gibberish_fields"
       self.score += @config.weight_gibberish_fields
+    end
+
+    # Nearly identical fields
+    if identical_fields?
+      self.signals << "identical_fields"
+      self.score += @config.weight_identical_fields
     end
 
     analysis
@@ -123,12 +132,22 @@ class SpamClassifier
       next if value.blank?
 
       # Check if it's a single word (no spaces) and not empty
-      if value.strip.match?(/^\S+$/) && value.length > 1
+      if value.strip.match?(/\A\S+\z/) && value.length > 1
         gibberish_count += 1
       end
     end
 
     # If more than threshold fields are single words, likely gibberish
     gibberish_count > @config.gibberish_field_threshold
+  end
+
+  def identical_fields?
+    fields_to_check = %w[about_me use_for_money about_project]
+
+    # Find the length of the shortest field
+    min_length = fields_to_check.collect { |field| @project.send(field).length if @project.send(field).present? }.compact.min
+
+    # Make all the strings the same length and see if their contents are the same
+    fields_to_check.collect { |field| @project.send(field)[0, min_length] }.uniq.length == 1
   end
 end

@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'spec_helper'
 
 describe SpamClassifier do
@@ -60,6 +61,22 @@ describe SpamClassifier do
 
       it "adds high_paste_ratio signal" do
         expect(classifier.signals).to include("high_paste_ratio")
+      end
+    end
+
+    context "with duplicated fields" do
+      let(:project) { FactoryBot.build(:project,
+          about_me: "КРАКЕН САЙТ — ОФИЦИАЛЬНЫЙ САЙТ ДАРКНЕТ МАРКЕТПЛЕЙСА КРАКЕН",
+          about_project: "КРАКЕН САЙТ — ОФИЦИАЛЬНЫЙ САЙТ ДАРКНЕТ МАРКЕТПЛЕЙСА КРАКЕН \r\n \r\nИщете Кракен сайт?",
+          use_for_money: "КРАКЕН САЙТ — ОФИЦИАЛЬНЫЙ САЙТ ДАРКНЕТ МАРКЕТПЛЕЙСА КРАКЕН",
+          metadata: metadata
+        )
+      }
+
+      before { classifier.analyze! }
+
+      it "adds identical_fields signal" do
+        expect(classifier.signals).to include("identical_fields")
       end
     end
   end
