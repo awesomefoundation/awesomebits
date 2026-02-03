@@ -56,7 +56,6 @@ group :development do
   gem 'dotenv-rails'
   gem 'letter_opener'
   gem 'listen'
-  gem 'standard'
   gem 'web-console'
 end
 
