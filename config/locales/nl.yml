@@ -1,0 +1,424 @@
+nl:
+  number:
+    delimiter: "."
+    separator: ","
+  date:
+    formats:
+      default: "%d-%m-%Y"
+      funding: "%B %Y"
+  word:
+    inactive: Inactief
+    twitter: Twitter
+    facebook: Facebook
+    monthly: Maandelijks
+  flash:
+    permissions:
+      must-be-admin: Je moet een beheerder zijn.
+      cannot-remove-user: Je mag deze gebruiker niet verwijderen.
+      must-be-dean-or-admin: Je moet een beheerder of dean zijn om deze pagina te bekijken.
+      must-have-chapter: Je account is niet gekoppeld aan een chapter.
+      cannot-view-finalists: "Je hebt geen toestemming om dit te bekijken."
+      cannot-invite: "Je hebt geen toestemming om anderen uit te nodigen."
+      cannot-modify-account: "Je hebt geen toestemming om dit account te wijzigen."
+      cannot-mark-winner: "Je kunt dat niet als winnaar markeren."
+    votes:
+      already-voted: "Er bestaat al een stem voor dit project"
+      already-deleted: "Stem is al verwijderd"
+    applications:
+      thanks: "Bedankt voor je aanmelding!"
+      error: Er was een probleem met je aanmelding
+    acceptances:
+      cannot: "Kon de uitnodiging niet accepteren"
+    projects:
+      hide-reason-required: Je moet een reden opgeven om een project te verbergen
+      error: Er was een probleem met het opslaan van je project
+  flashes:
+    failure_when_not_signed_in: Je moet ingelogd zijn.
+  layouts:
+    application:
+      main-header: The Awesome Foundation
+      apply: Aanmelden
+      dashboard: Dashboard
+      blog: Blog
+      chapters: Chapters
+      chapter_header: Awesome Overal!
+      projects: Projecten
+      home: Home
+      about_us: Over Ons
+      start_a_chapter: Start een Chapter
+      about_contact: Over & Contact
+      faq: Veelgestelde Vragen
+      want_to_help: Doe Mee
+      sign-out: Uitloggen
+      sign-in: Inloggen
+  shared:
+    sidebar:
+      projects: Projecten
+      finalists: Finalisten
+      trustees: Trustees
+      members: Leden
+      project-moderation: Project Moderatie
+      create-chapter: Creëer een Chapter
+      invite-trustee: Nodig een Trustee uit
+      edit-profile: Bewerk Mijn Profiel
+      edit-chapter-profile: Bewerk Chapter Profiel
+      view-all-users: Bekijk alle Gebruikers
+      trustee-resources: Trustee Bronnen
+      admin: Beheer
+  home:
+    index:
+      title: Het belang van Awesome bevorderen in het universum, $1.000 per keer.
+      by: "Door %{name}"
+      what:
+        header: Financiering nodig?
+        body-html: "Heb je een gek briljant idee dat financiering nodig heeft? We keren <strong>elke maand subsidies van $1.000</strong> uit. Het kan niet eenvoudiger! Je idee is van jou alleen. We willen er geen deel van. We willen je alleen helpen het waar te maken!"
+      call-to-action: Meld je nu aan voor een Awesome Foundation subsidie!
+      who:
+        header: Awesome is overal!
+        body: The Awesome Foundation is een steeds groeiende wereldwijde gemeenschap die zich inzet voor het bevorderen van het belang van awesome in het universum. Opgericht in de lange, hete zomerdagen van 2009 in Boston, verstrekt de Foundation subsidies van $1.000, zonder verplichtingen, aan projecten en hun makers. Bij elk volledig autonoom chapter wordt het geld samengevoegd uit de zak van zo'n tien zelforganiserende "micro-trustees" en vooraf uitgekeerd in contant geld, cheque of gouden dubloenen.
+      news:
+        header: Awesome Nieuws!
+        recent: Recente blogposts
+        events: Aankomende Evenementen
+      funding-html: "<em class='funding'>$%{amount}</em> Toegekend"
+      winner-count-html: "<em class='winners'>%{amount}</em> gefinancierde projecten"
+      chapter-count-html: "<em class='chapters'>%{count}</em> Chapters"
+      country-count-html: "<em class='countries'>%{count}</em> Landen"
+  chapters:
+    index:
+      title: Awesome is Overal
+      show_active_chapters: Toon Alleen Actieve Chapters
+      show_inactive_chapters: Toon Inactieve Chapters
+    show:
+      edit: Bewerk Chapter
+      recent_winners: Recent gefinancierde projecten
+      see_more: Zie meer Awesomeness
+      byline: "Door %{name}"
+      trustees:
+        header: Ontmoet de Trustees
+        about: Over Ons
+        news: "%{name} Nieuws"
+        photo-alt-text: "Foto van %{name}"
+      apply-for-grant: Vraag een Subsidie Aan
+      inactive-chapter: Dit chapter is momenteel inactief.
+      inactive-chapter-reason: Een inactief chapter is er een dat in zes maanden geen subsidie heeft verstrekt. Als je geïnteresseerd bent in het opnieuw activeren van dit chapter, kun je %{start_link:meer leren over hoe te beginnen}.
+    edit:
+      title: Bewerk chapter informatie
+    new:
+      title: Maak een nieuw chapter
+  finalists:
+    index:
+      title: "Finalisten voor %{name}"
+      filter-button: Filter
+      start-date: startdatum
+      end-date: einddatum
+      past-trustees-filter: Stemmen van voormalige trustees
+      hidden-filter: Verborgen
+      funded-filter: Gefinancierd
+      table:
+        title: Titel
+        id: ID
+        votes: Stemmen
+        date: Datum
+  funded_projects:
+    index:
+      all_chapters: Alle Chapters
+      reset: Reset
+    show:
+      view-photos: "Bekijk Foto's"
+      edit: Bewerk Project
+      byline-html: "<span class='chapter-name'>%{chapter_name}</span> project gemaakt door <span class='project-starter'>%{submitter_name}</span>"
+      funder-html: "Gefinancierd door <span class='chapter-name'>%{name}</span>"
+      submitted-to-html: "Projectaanmelding ingediend bij <span class=''>%{name}</span>"
+      description:
+        header: Projectbeschrijving
+      feed-title: Recente Posts
+      prev-project: Vorig Project
+      next-project: Volgend Project
+  moderations:
+    index:
+      moderation: Project Moderatie
+      title:
+        one: "%{count} Project voor %{name}"
+        other: "%{count} Projecten voor %{name}"
+      viewing-all-moderated: Alle gemodereerde projecten bekijken
+      moderating-projects:
+        one: "%{count} gemodereerd project beoordelen"
+        other: "%{count} gemodereerde projecten beoordelen"
+      review-now: Beoordeel nu
+      back-to-approved-projects: Terug naar goedgekeurde projecten
+      view-all: bekijk alles
+      view-unmoderated-only: bekijk alleen onbeoordeelde
+  passwords:
+    create:
+      description: Je ontvangt binnen een paar minuten een e-mail. Deze bevat instructies voor het wijzigen van je wachtwoord.
+    edit:
+      description: Je wachtwoord is gereset. Kies hieronder een nieuw wachtwoord.
+      title: Wijzig je wachtwoord
+    new:
+      description: Om een link te ontvangen om je wachtwoord te resetten, voer je e-mailadres in.
+      title: Reset je wachtwoord
+  projects:
+    wait-for-uploads-to-complete: Wacht tot je afbeeldingen klaar zijn met uploaden voordat je je aanmelding verstuurt.
+
+    project:
+      awesome:
+        one: Awesome
+        other: Awesome (%{chapter})
+      delete: Verwijder dit project
+      see-the-rest: Zie de rest →
+      view-public-page: Bekijk de openbare pagina
+      edit: Bewerk project
+      confirm-delete: Dit echt verwijderen?
+      winner: "Winnaar voor %{name}"
+      publish-as-winner: Publiceer als winnaar
+      unpublish-as-winner: Publicatie als winnaar ongedaan maken
+      edit-winner: Winnend project details bijwerken
+      about-me: "Een beetje over mij:"
+      about-project: "Dit is mijn idee:"
+      use-for-money: "Hoe ik het geld ga gebruiken:"
+      not-answered: Niet Beantwoord
+      images: "Afbeeldingen:"
+      image: "Afbeelding #%{index}"
+      add-comment: Voeg een opmerking toe
+      confirm-delete-comment: Weet je zeker dat je deze opmerking wilt verwijderen?
+      delete-comment: Verwijder opmerking
+    hide_form:
+      hide: Verberg
+      unhide: Maak zichtbaar
+      consider-hiding: Geen geschikt project?
+      hide-reason: Waarom is dit niet geschikt?
+      hidden-details: "Verborgen door %{username} op %{hidden_at} omdat %{reason}."
+      view-application: bekijk aanmelding
+      hiding-explanation: "Het verbergen van een project verbergt de details voor iedereen; de titel en waarom het verborgen is blijven zichtbaar, en het kan gemakkelijk weer zichtbaar gemaakt worden."
+      unhiding-explanation: "Herstel dit project zodat iedereen het weer kan zien."
+
+    new:
+      title: Ben je klaar om je Awesome project in te dienen? 
+      description: Vul onderstaande aanmelding in met informatie over jezelf en de details van je project.
+      apply: Indienen
+    success:
+      title: Bedankt voor je aanmelding!
+      description: We kijken ernaar uit je aanmelding voor het %{chapter} chapter te beoordelen.
+      explore-projects: Ontdek meer Awesome Projecten
+      share-on-twitter: Deel op Twitter
+      share-on-facebook: Deel op Facebook
+      i-just-applied-tweet: Ik heb zojuist een subsidie aangevraagd bij %{twitter}!
+    form:
+      save: Opslaan
+      image-notes: Upload tot 5 afbeeldingen die de trustees helpen je project beter te begrijpen. Als je een foutmelding krijgt, probeer het dan opnieuw met een kleiner bestand.
+      use-classic-uploader: Schakel over naar de klassieke uploader
+      use-default-uploader: Schakel over naar de standaard uploader
+    index:
+      filter-button: Filter
+      search: zoeken
+      start-date: startdatum
+      end-date: einddatum
+      short-list-filter: Mijn shortlist
+      funded-filter: Alleen winnaars
+      title:
+        one: "%{count} Project voor %{name}"
+        other: "%{count} Projecten voor %{name}"
+      export-projects: Exporteer Gefilterd
+      export-all-projects: Exporteer Alles uit Datumbereik
+      held-for-review:
+        one: "%{count} project wacht op beoordeling"
+        other: "%{count} projecten wachten op beoordeling"
+    show:
+      back-to: 'Terug naar <a href="%{url}">%{name}</a>'
+    moderation:
+      spam: Spam
+      not-spam: Geen spam
+      undo: Ongedaan maken
+      spam-signals: "Spam signalen: %{signals}"
+  emails:
+    invitation:
+      subject: "Je bent uitgenodigd voor het %{name} chapter van de Awesome Foundation!"
+    welcome:
+      subject: "Welkom bij het %{name} chapter!"
+    application:
+      subject: "Bedankt voor je aanmelding!"
+
+  sessions:
+    new:
+      sign-in: Trustee en Dean Inloggen
+      intro: Dit deel van de website is alleen voor Awesome Foundation Trustees en Deans. Als je een trustee bent en toegang nodig hebt, neem dan rechtstreeks contact op met de Dean van je chapter.
+      forgot-password: Wachtwoord vergeten?
+  users:
+    user:
+      promote_to_dean: Promoveer
+      demote_to_trustee: Degradeer
+      demote_admin: Degradeer
+      promote_admin: Promoveer
+      error_dean_promotion: Dean promotie mislukt
+      error_dean_demotion: Dean degradatie mislukt
+      error_admin_promotion: Beheerder promotie mislukt
+      error_admin_demotion: Beheerder degradatie mislukt
+      error_removing_user: Fout bij verwijderen gebruiker
+      remove_from_chapter: Verwijder
+    edit:
+      title: Bewerk gebruikersinformatie
+    index:
+      title: Awesome Foundation Leden
+      name: Naam
+      email: E-mail
+      chapter: Chapter
+      role: Rol
+      remove: Verwijder
+      dean: Dean
+      admin: Beheerder
+  invitations:
+    new:
+      title: Nodig een nieuwe trustee uit
+      invite_to_chapter: "Trustee wordt uitgenodigd voor:"
+      invite: Nodig uit
+    create:
+      invitation_sent: Je uitnodiging is verstuurd naar %{email}
+  acceptances:
+    new:
+      title: Accepteer je trustee uitnodiging
+      accept: Accepteer
+    create:
+      success: Je account is succesvol aangemaakt
+  winners:
+    edit:
+      title: Publiceer een winnend project
+      description: |
+        De volgende details worden gepubliceerd op de openbare pagina van het winnende project en op de pagina van je chapter.
+      save: Publiceer winnend project
+      cancel: of ga terug zonder dit project als winnaar in te stellen
+    form:
+      chapter_id: Financierend chapter
+      name: Naam van de projectmaker
+      image-notes: "**Upload minimaal 1 afbeelding omdat deze wordt weergegeven op de homepage met een link naar je project.** Als je een foutmelding krijgt, probeer het dan opnieuw met een kleiner bestand."
+      hints:
+        chapter_id: Dit kan alleen worden gewijzigd voor projecten die zijn ingediend bij het Any chapter.
+        funded_on: Wanneer heb je deze subsidie uitgekeerd? Deze datum kan in het verleden liggen en bepaalt de volgorde waarin je project wordt weergegeven op je chapter pagina en op de homepage.
+  pages:
+    about_us:
+      title_tag: Over Ons
+      meta_description: Over de Awesome Foundation
+      meta_keywords:
+    start_a_chapter:
+      title_tag: Start een Chapter
+      meta_description: Start een Awesome Foundation Chapter
+      meta_keywords:
+      headline: Iedereen Kan Een Awesome Foundation Chapter Starten
+      intro: |
+        The Awesome Foundation is eigenlijk helemaal geen stichting - het is een grassroots beweging! Onze wereldwijde gemeenschap bestaat uit geweldige mensen die hebben besloten om hun gemeenschappen een beetje meer awesome te maken. Zij organiseren zich om hun eigen chapters samen te stellen, te lanceren en te runnen.
+
+        We zijn waarschijnlijk bevooroordeeld, maar we vinden het erg leuk. Chapters hebben over de hele wereld geweldige dingen laten gebeuren, van [het bouwen van een gigantische hangmat](/nl/projects/188-the-big-hammock) en [het plaatsen van schommels op openbare plekken](/nl/projects/2598-swings), tot [honden helpen poker te spelen](/nl/projects/50233-dogs-playing-poker-live) en [iedereen een dag Indiana Jones laten zijn](/nl/projects/5071-indiana-jones-and-the-alley-of-doom).
+
+        **Klinkt awesome? Lees verder om te leren hoe je je eigen chapter kunt starten!**
+      photo_alt_0: Twee mensen van het Singapore Chapter poseren voor een banner met "Awesome Wanted"
+      photo_alt_1: Trustees die een presentatie bekijken op de wereldwijde top van 2019 met de woorden "Celebrating 10 Years" geprojecteerd achter de spreker
+      photo_alt_2: Drie vrouwen van het Amsterdam chapter met een bord waarop staat "Ik Maak Leiden Awesomûrrr"
+      steps_headline: Vijf Eenvoudige Stappen
+      steps_intro: Een nieuw Awesome Foundation chapter opzetten en draaiend krijgen is eenvoudig - we houden het graag simpel.
+      existing_chapters_header: Bekijk bestaande chapters
+      existing_chapters_text: Er zijn Awesome Foundation chapters over de hele wereld, dus het is mogelijk dat er al een chapter in jouw omgeving is. Kijk in het "Chapters" menu hierboven of er een is, en neem contact op als je er een in de buurt ziet.
+      handbook_header: Download het Handboek
+      handbook_text: Om je op weg te helpen, hebben we de wijsheid verzameld die we hebben opgedaan met het uitkeren van duizenden subsidies sinds 2009 en hebben we dit in ons [New Chapter Handbook](https://wiki.awesomestudies.org/images/9/92/Awesome_Foundation_New_Chapter_Handbook.pdf) gezet. Download het en lees het om erachter te komen wat er nodig is om je eigen chapter te starten. Doe dat nu - we wachten!
+      contact_header: Neem Contact Op
+      contact_text: Dus je hebt het handboek gelezen en je bent klaar om te beginnen. Geweldig! Stuur een e-mail naar join@awesomefoundation.org en vertel ons wie je bent en waar je je chapter start. We verbinden je met de wereldwijde Awesome Foundation gemeenschap en beantwoorden alle vragen die je mogelijk hebt over het opzetten van je chapter.
+      trustees_header: Stel je trustees samen
+      trustees_text: Trustees vormen het hart van elk Awesome Foundation chapter. Ze dragen elke maand geld bij (meestal $100 of het lokale equivalent) en zij beslissen wie de winnaar wordt van elke subsidie. Het is jouw taak om deze mensen te vinden en bij elkaar te brengen! Zodra je het grootste deel van je team hebt samengesteld, laat het ons weten en we voegen je toe aan onze website zodat je subsidieaanmeldingen kunt gaan accepteren.
+      launch_header: Lanceer
+      launch_text: Gefeliciteerd! Je bent nu onderdeel van de Awesome Foundation beweging. Vertel iedereen over je nieuwe chapter en begin met het financieren van het fantastische, wonderbaarlijke en (durven we te zeggen) awesome in je gemeenschap.
+    faq:
+      title_tag: Veelgestelde Vragen
+      headline: Veelgestelde Vragen
+  simple_form:
+    labels:
+      project:
+        name: Je naam
+        email: E-mail
+        phone: Telefoonnummer
+        title: Projecttitel
+        url: Project website
+        current_photos-html: "Huidige afbeeldingen <span>(sleep om opnieuw te ordenen)</span>"
+        new_photos-html: "Upload afbeeldingen van je project"
+        chapter_id: Selecteer chapter om bij aan te melden
+        rss_feed_url: Project RSS feed url
+        about_me: Vertel ons iets over jezelf
+        about_project: Vertel ons over je Awesome project!
+        use_for_money: Hoe zou je het geld gebruiken?
+        funded_on: Financieringsdatum
+        funded_description: Financieringsbeschrijving
+        photos:
+          caption: Voeg een optioneel bijschrift toe
+      chapter:
+        name: Naam
+        slug: Naam in de URL
+        rss_feed_url: RSS Feed URL
+        description: Beschrijving
+        extra_question_1: Extra vraag 1
+        extra_question_2: Extra vraag 2
+        extra_question_3: Extra vraag 3
+        submission_response_email: Aangepaste E-mail Reactie
+        inactive: Dit chapter is inactief
+        submit: Verstuur
+        locale: Taal voor %{slug}.awesomefoundation.org redirect
+      user:
+        first_name: Voornaam
+        last_name: Achternaam
+        email: E-mail
+        bio: Biografie
+        url: Website URL
+        twitter_username: Twitter gebruikersnaam
+        facebook_url: Facebook URL
+        linkedin_url: LinkedIn URL
+        new_password: Nieuw Wachtwoord
+        submit: Verstuur
+        user_image: Gebruikersafbeelding
+      invitation:
+        chapter_id: Selecteer een chapter
+        password: Stel een nieuw wachtwoord in
+        role_name: Nodig deze gebruiker uit als dean
+    hints:
+      project:
+        funded_description: "Dit is de omschrijving die aan het publiek wordt getoond. We moedigen je aan om deze omschrijving te herschrijven om details op te nemen over waarom je dit project hebt gefinancierd en waarom je chapter het awesome vindt. Opmaak: **vet** _cursief_ [link](http://example.com)"
+        rss_feed_url: Indien aanwezig, worden posts van deze feed getoond op de projectpagina
+      user:
+        user_image: Stel je gebruikersafbeelding in op <a href="https://nl.gravatar.com/site/signup/%{email}" target="_blank">gravatar.com</a> met je e-mailadres hierboven
+      chapter:
+        submission_response_email: Deze tekst wordt opgenomen in de bevestigingsmail die naar je subsidieaanvragers wordt gestuurd
+        hide_trustees: Voorkom dat de trustee lijst wordt weergegeven op de openbare chapter pagina
+        application_intro: "Deze tekst verschijnt bovenaan je aanmeldingsformulier. Optioneel, beperkt tot 1.000 tekens. Opmaak: **vet** _cursief_ [link](http://example.com)"
+    prompts:
+      invitation:
+        chapter_id: "- Selecteer -"
+    placeholders:
+      comment:
+        body: Typ je opmerking en druk op Enter om te versturen
+      project:
+        photos:
+          caption: bijv. Fotocredits, korte beschrijving van de afbeelding
+  activerecord:
+    attributes:
+      chapter:
+        twitter_url: Twitter URL
+        facebook_url: Facebook URL
+        instagram_url: Instagram URL
+        blog_url: Blog URL
+        application_intro: Aanmeldingsintro Tekst
+    errors:
+      models:
+        chapter:
+          attributes:
+            slug:
+              invalid: moet kleine letters zijn en mag geen spaties bevatten
+        project:
+          attributes:
+            url:
+              invalid: is geen geldige website
+            base:
+              spam_detected: Aanmelding is niet compleet
+        vote:
+          attributes:
+            chapter_id:
+              invalid_for_user: is niet geldig voor deze gebruiker
+  meta:
+    description: Het belang van Awesome bevorderen in het universum, $1.000 per keer.
+  feed:
+    title: Awesome Foundation - Projecten

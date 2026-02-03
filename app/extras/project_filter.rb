@@ -29,6 +29,16 @@ class ProjectFilter
     self
   end
 
+  def not_pending_moderation
+    @projects = @projects.left_joins(:project_moderation).where(project_moderations: {id: nil}).or(@projects.merge(ProjectModeration.approved))
+    self
+  end
+
+  def pending_moderation
+    @projects = @projects.joins(:project_moderation).merge(ProjectModeration.pending)
+    self
+  end
+
   def result
     @projects
   end

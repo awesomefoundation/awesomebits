@@ -1,0 +1,24 @@
+<%= turbo_frame_tag "moderation_actions_#{project.id}" do %>
+  <div class="application__moderation-actions flexbox center">
+    <% if project.project_moderation.reviewed? %>
+      <div class="application__moderation-status <%= project.project_moderation.confirmed_spam? ? "application__moderation-status--alert" : "application__moderation-status--success" %>">
+        <strong>
+          <%= project.project_moderation.confirmed_spam? ? t(".spam") : t(".not-spam") %>
+        </strong>
+        (<%= project.project_moderation.reviewed_by.name %>)
+
+        <%= button_to t(".undo"), undo_project_moderation_path(project), method: :put, class: "application__moderation-button", form_class: "inline-block" %>
+      </div>
+    <% else %>
+      <% if project.project_moderation&.triggered&.any? %>
+        <%= tag.i(class: "icon-question-sign application__moderation-signals", title: t(".spam-signals", signals: project.project_moderation.triggered.join(', '))) %>
+      <% end %>
+      <%= button_to confirm_spam_project_moderation_path(project), method: :put, class: "application__moderation-button spam-action" do %>
+        <%= tag.i(class: "icon-remove-sign") %> <%= t(".spam") %>
+      <% end %>
+      <%= button_to confirm_legit_project_moderation_path(project), method: :put, class: "application__moderation-button legit-action" do %>
+        <%= t(".not-spam") %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

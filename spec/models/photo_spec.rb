@@ -5,7 +5,7 @@ describe Photo do
   it { is_expected.to belong_to :project }
 
   context 'with an image' do
-    let(:photo) { FactoryGirl.create(:photo) }
+    let(:photo) { FactoryBot.create(:photo) }
 
     it "returns the base photo url as the original photo" do
       expect(photo.url).to eq(photo.image.url)
@@ -19,7 +19,7 @@ describe Photo do
 
   context "with S3 storage" do
     let(:image) { FakeData.fixture_file("1.JPG") }
-    let(:photo) { FactoryGirl.create(:s3_photo, image: image) }
+    let(:photo) { FactoryBot.create(:s3_photo, image: image) }
 
     it "can attach images" do
       expect(photo.image).to_not be_nil
@@ -44,7 +44,7 @@ describe Photo do
 
       let(:key) { nil }
       let(:uploaded_image) { @aws_factory.create_mock_file(key: key) }
-      let(:photo) { FactoryGirl.create(:s3_photo, image: nil, direct_upload_url: uploaded_image.public_url) }
+      let(:photo) { FactoryBot.create(:s3_photo, image: nil, direct_upload_url: uploaded_image.public_url) }
 
       it "copies a direct upload url to the correct destination" do
         expect(photo.image.storage_key).to eq(photo.image_attacher.store_key)

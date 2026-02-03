@@ -16,6 +16,9 @@ class ProjectsController < ApplicationController
 
     project_filter = ProjectFilter.new(@chapter.projects).during(@start_date, @end_date)
 
+    # Only display projects that do not require human review
+    project_filter.not_pending_moderation
+
     if params[:short_list]
       project_filter.shortlisted_by(current_user)
     end
@@ -29,6 +32,9 @@ class ProjectsController < ApplicationController
     unless @q.blank?
       project_filter.search(@q)
     end
+
+    # Count projects under moderation for the notification box
+    @moderation_count = @chapter.projects_pending_moderation.count
 
     respond_to do |format|
       format.html do
@@ -59,11 +65,15 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(create_project_params)
+    @project.set_request_metadata(server_metadata, params[:client_metadata])
 
     if SpamChecker::Project.new(@project).spam?
       flash[:notice] = t("flash.applications.error")
       render :new
     elsif @project.save
+      # Send the application confirmation email
+      ProjectMailerJob.perform_async(@project.id)
+
       redirect_to success_submissions_path({ chapter: @project.chapter, mode: params[:mode] }.reject { |_, v| v.blank? })
     else
       flash.now[:notice] = t("flash.applications.error")
@@ -205,5 +215,21 @@ class ProjectsController < ApplicationController
     else
       yield
     end
+  end
+
+  def server_metadata
+    {
+      ip_address: real_ip_for_spam_detection,
+      user_agent: request.user_agent,
+      referrer: request.referer
+    }
+  end
+
+  def real_ip_for_spam_detection
+    # CloudFront-Viewer-Address is the most accurate (requires CloudFront config)
+    # Fall back to X-Forwarded-For parsing, then Rails default
+    request.headers['CloudFront-Viewer-Address']&.split(':')&.first&.strip ||
+      request.headers['X-Forwarded-For']&.split(',')&.first&.strip ||
+      request.remote_ip
   end
 end

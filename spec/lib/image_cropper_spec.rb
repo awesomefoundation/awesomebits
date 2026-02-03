@@ -10,7 +10,7 @@ describe ImageCropper do
     end
 
     context "with a regular photo" do
-      let(:photo) { FactoryGirl.create(:photo) }
+      let(:photo) { FactoryBot.create(:photo) }
 
       it "generates a Magickly URL" do
         url = @cropper.crop_url(main_crop)
@@ -22,7 +22,7 @@ describe ImageCropper do
     end
 
     context "with a utf-8 encoded filename" do
-      let(:photo) { FactoryGirl.create(:utf8_photo) }
+      let(:photo) { FactoryBot.create(:utf8_photo) }
 
       it "generates a Magickly URL with an escaped filename" do
         expect(@cropper.crop_url(main_crop)).to match(/#{CGI.escape(Addressable::URI.unescape(photo.original_url))}/)
@@ -37,7 +37,7 @@ describe ImageCropper do
     end
 
     context "with a regular photo" do
-      let(:photo) { FactoryGirl.create(:photo) }
+      let(:photo) { FactoryBot.create(:photo) }
 
       it "generates a Thumbor URL" do
         url = @cropper.crop_url(main_crop)
@@ -49,7 +49,7 @@ describe ImageCropper do
     end
 
     context "with a utf-8 encoded filename" do
-      let(:photo) { FactoryGirl.create(:utf8_photo) }
+      let(:photo) { FactoryBot.create(:utf8_photo) }
 
       it "generates a Thumbor URL without an escaped filename" do
         expect(@cropper.crop_url(main_crop)).to match(/#{Addressable::URI.unescape(photo.original_url)}/)

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Invitation do
   context "validations" do
-    before{ FactoryGirl.create(:invitation) }
+    before{ FactoryBot.create(:invitation) }
     it { is_expected.to belong_to(:inviter) }
     it { is_expected.to belong_to(:invitee) }
     it { is_expected.to belong_to(:chapter) }
@@ -14,24 +14,24 @@ describe Invitation do
 
   context "email validations" do
     it "should not accept Test <test@example.com>" do
-      invitation = FactoryGirl.build(:invitation, email: "Test <test@example.com>")
+      invitation = FactoryBot.build(:invitation, email: "Test <test@example.com>")
       expect(invitation).not_to be_valid
     end
 
     it "should accept a valid email" do
-      invitation = FactoryGirl.build(:invitation)
+      invitation = FactoryBot.create(:invitation, email: "test@example.com")
       expect(invitation).to be_valid
     end
   end
 
   context "defaults" do
-    let(:invitation) { FactoryGirl.build(:invitation) }
+    let(:invitation) { FactoryBot.build(:invitation) }
 
     it { expect(invitation.role_name).to eq("trustee") }
   end
 
   describe "invalid role_name" do
-    let(:invitation) { FactoryGirl.build(:invitation, role_name: "INVALID") }
+    let(:invitation) { FactoryBot.build(:invitation, role_name: "INVALID") }
 
     it "should not be valid" do
       expect(invitation).not_to be_valid
@@ -39,16 +39,16 @@ describe Invitation do
   end
 
   context "#save" do
-    let(:user) { FactoryGirl.create(:user) }
-    let(:chapter) { FactoryGirl.create(:chapter) }
-    let(:invitation) { FactoryGirl.build(:invitation, :inviter => user, :chapter => chapter) }
+    let(:user) { FactoryBot.create(:user) }
+    let(:chapter) { FactoryBot.create(:chapter) }
+    let(:invitation) { FactoryBot.build(:invitation, :inviter => user, :chapter => chapter) }
     it 'should not be valid if the inviter cannot invite to this chapter' do
       expect(invitation).not_to be_valid
     end
   end
 
   context "#send_invitation" do
-    let(:invitation) { FactoryGirl.build(:invitation) }
+    let(:invitation) { FactoryBot.build(:invitation) }
     let(:fake_mailer) { FakeMailer.new }
     around do |example|
       old_mailer, invitation.mailer = invitation.mailer, fake_mailer
@@ -63,7 +63,7 @@ describe Invitation do
   end
 
   context "#accept" do
-    let(:invitation) { FactoryGirl.create(:invitation, :first_name => "Joe", :last_name => "Doe") }
+    let(:invitation) { FactoryBot.create(:invitation, :first_name => "Joe", :last_name => "Doe") }
     let(:attributes) { {:first_name => "Jane", :password => "12345"} }
     let(:fake_user_factory) { FakeUserFactory.new }
     let(:fake_mailer) { FakeMailer.new }

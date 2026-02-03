@@ -1,20 +1,24 @@
-<header data-controller="toggler">
+<header data-controller="toggler" data-toggler-spin-value="true">
   <div class="title">
     <%= link_to project.title, chapter_project_path(project.chapter, project), :class => "title" %>
 
+    <% if local_assigns[:moderation].present? && project.project_moderation %>
+      <%= render "projects/moderation", project: project %>
+    <% else %>
     <div class="actions">
-    <% if project.shortlisted_by?(current_user) %>
-      <%= link_to I18n.t(".awesome", scope: "projects.project", count: 1), project_vote_path(project), :method => :delete, :remote => true, :class => "short-list", data: { chapter: "" } %>
-    <% end %>
-    <% voting_chapters.each do |voting_chapter| %>
-      <%= link_to I18n.t(".awesome", scope: "projects.project", count: voting_chapters.size, chapter: voting_chapter.slug), project_vote_path(project, chapter_id: voting_chapter.id), :method => :post, :remote => true, :class => "short-list", data: { chapter: voting_chapter.id } %>
-    <% end %>
+      <% if project.shortlisted_by?(current_user) %>
+        <%= link_to I18n.t(".awesome", scope: "projects.project", count: 1), project_vote_path(project), :method => :delete, :remote => true, :class => "short-list", data: { chapter: "" } %>
+      <% end %>
+      <% voting_chapters.each do |voting_chapter| %>
+        <%= link_to I18n.t(".awesome", scope: "projects.project", count: voting_chapters.size, chapter: voting_chapter.slug), project_vote_path(project, chapter_id: voting_chapter.id), :method => :post, :remote => true, :class => "short-list", data: { chapter: voting_chapter.id } %>
+      <% end %>
 
     <% if display_project_actions?(current_user, project) %>
       <%= link_to '<i class="icon-gear"></i>'.html_safe, "#", class: "project-actions-toggle", data: { action: "click->toggler#toggle" } %>
       <%= link_to I18n.t("auto_awesome", scope: "projects.project.buttons"), show_or_create_project_project_analysis_path(project), class: "auto-awesome" %>
     <% end %>
     </div>
+    <% end %>
 
     <div class="public-link">
       <%= link_to funded_project_path(project), target: "blank" do %>
@@ -26,7 +30,7 @@
   <section class="meta-data">
     <%= project.created_at %> (<%= project.chapter.display_name %>)
 
-    <section class="project-actions" data-toggler-target="toggleable">
+    <section class="project-actions hidden" data-toggler-target="toggleable">
       <ul class="icons-ul">
         <% if current_user.can_mark_winner?(project) %>
           <li class="non-winner-action">
@@ -61,6 +65,7 @@
             <%= link_to project_path(project), :method => :delete, :data => { :confirm => I18n.t("projects.project.confirm-delete") }, :class => "text-muted delete-spam" do %>
               <i class="icon-li icon-remove"></i> <%= t("projects.project.delete") %>
             <% end %>
+          </li>
         <% end %>
       </ul>
     </section>

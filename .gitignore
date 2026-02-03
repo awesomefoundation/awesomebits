@@ -1,6 +1,7 @@
 .ruby-gemset
 .bundle
 .env
+.envrc
 db/*.sqlite3
 log/*.log
 tmp/

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'chapters/show' do
-  let!(:chapter) { FactoryGirl.create(:chapter) }
+  let!(:chapter) { FactoryBot.create(:chapter) }
 
   context 'an active chapter' do
     before do
@@ -26,7 +26,7 @@ describe 'chapters/show' do
 
   context 'an inactive chapter' do
     before do
-      assign(:chapter, FactoryGirl.build(:inactive_chapter))
+      assign(:chapter, FactoryBot.build(:inactive_chapter))
       view.stubs(:current_user).returns(nil)
 
       render
@@ -66,7 +66,7 @@ describe 'chapters/show' do
   end
 
   context 'with projects' do
-    let!(:project) { FactoryGirl.create(:winning_project, :chapter => chapter) }
+    let!(:project) { FactoryBot.create(:winning_project, :chapter => chapter) }
 
     it 'renders the project section' do
       assign(:chapter, chapter)
@@ -79,7 +79,7 @@ describe 'chapters/show' do
   end
 
   context 'with trustees' do
-    let!(:dean) { FactoryGirl.create(:user_with_dean_role) }
+    let!(:dean) { FactoryBot.create(:user_with_dean_role) }
 
     it 'renders the trustee secton' do
       assign(:chapter, dean.roles.first.chapter)
@@ -104,9 +104,9 @@ describe 'chapters/show' do
 end
 
 describe 'chapters/edit' do
-  let(:dean) { FactoryGirl.create(:user_with_dean_role) }
-  let(:admin) { FactoryGirl.create(:admin) }
-  let(:chapter) { FactoryGirl.create(:chapter) }
+  let(:dean) { FactoryBot.create(:user_with_dean_role) }
+  let(:admin) { FactoryBot.create(:admin) }
+  let(:chapter) { FactoryBot.create(:chapter) }
 
   it 'does not display the inactivity checkbox to deans' do
     assign(:chapter, dean.chapters.first)

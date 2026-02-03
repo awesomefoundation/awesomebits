@@ -4,7 +4,7 @@ FactoryGirl.define do
   sequence(:index)
 
   factory :chapter do
-    name { "Chapter for Generic Location ##{FactoryGirl.generate(:index)}" }
+    name { "Chapter for Generic Location ##{FactoryBot.generate(:index)}" }
     description { "This is a description." }
     country { "United States" }
 
@@ -13,15 +13,15 @@ FactoryGirl.define do
     end
   end
 
-  factory :user, aliases: [:inviter, :invitee] do
-    first_name "Joe"
-    last_name "Schmoe"
+  factory :user, :aliases => [:inviter, :invitee] do
+    first_name { "Joe" }
+    last_name { "Schmoe" }
     email
-    password "12345"
-    url "http://www.example.com/"
+    password { "12345" }
+    url { "http://www.example.com/" }
 
     factory :admin do
-      admin true
+      admin { true }
     end
 
     factory :user_with_dean_role do
@@ -41,7 +41,7 @@ FactoryGirl.define do
     chapter
 
     trait :trustee do
-      name "trustee"
+      name { "trustee" }
     end
   end
 
@@ -55,17 +55,17 @@ FactoryGirl.define do
   end
 
   factory :project do
-    name "Joe Schmoe"
+    name { "Joe Schmoe" }
     title { Faker::Lorem.sentence(word_count: 5) }
     email
-    url "http://something.com"
-    about_project "I am awesome."
-    about_me "I am a meat popsicle."
-    use_for_money "I will do awesome."
+    url { "http://something.com" }
+    about_project { "I am awesome." }
+    about_me { "I am a meat popsicle." }
+    use_for_money { "I will do awesome." }
     chapter
 
     factory :project_with_rss_feed do
-      rss_feed_url Rails.root.join("spec", "support", "feed.xml").to_s
+      rss_feed_url { Rails.root.join('spec', 'support', 'feed.xml').to_s }
     end
 
     factory :winning_project do
@@ -73,7 +73,7 @@ FactoryGirl.define do
     end
 
     factory :hidden_project do
-      hidden_reason "Hidden"
+      hidden_reason { "Hidden" }
       hidden_at { rand(30).days.ago }
     end
   end
@@ -113,6 +113,12 @@ FactoryGirl.define do
   factory :comment do
     project
     user
-    body "This is the body of my comment."
+    body { "This is the body of my comment." }
+  end
+
+  factory :project_moderation do
+    project
+    status { "suspected" }
+    moderation_type { "spam" }
   end
 end

@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 RSpec.describe CommentsController, type: :controller do
-  let(:user) { FactoryGirl.create(:user) }
-  let(:project) { FactoryGirl.create(:project) }
-  let(:comment) { FactoryGirl.create(:comment, project: project, user: user) }
-  let(:other_comment) { FactoryGirl.create(:comment, project: project) }
+  let(:user) { FactoryBot.create(:user) }
+  let(:project) { FactoryBot.create(:project) }
+  let(:comment) { FactoryBot.create(:comment, project: project, user: user) }
+  let(:other_comment) { FactoryBot.create(:comment, project: project) }
 
   context "when not logged in" do
     it "can't create a new comment" do
@@ -51,9 +51,9 @@ RSpec.describe CommentsController, type: :controller do
   end
 
   context "logged in as a dean" do
-    let(:dean) { FactoryGirl.create(:user_with_dean_role) }
-    let(:project) { FactoryGirl.create(:project, chapter: dean.chapters.first) }
-    let(:other_chapter_comment) { FactoryGirl.create(:comment) }
+    let(:dean) { FactoryBot.create(:user_with_dean_role) }
+    let(:project) { FactoryBot.create(:project, chapter: dean.chapters.first) }
+    let(:other_chapter_comment) { FactoryBot.create(:comment) }
 
     before do
       sign_in_as dean

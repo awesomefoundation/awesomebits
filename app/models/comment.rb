@@ -31,7 +31,7 @@ class Comment < ApplicationRecord
       body: ApplicationController.helpers.markdown(body),
       user_gravatar_url: user.gravatar_url,
       user_name: user.name,
-      created_at_human: created_at.in_time_zone(project.chapter.time_zone).to_s(:long_with_zone),
+      created_at_human: created_at.in_time_zone(project.chapter.time_zone).to_fs(:long_with_zone),
       visibility_class: ApplicationController.helpers.comment_visibility_class(self)
     })
   end

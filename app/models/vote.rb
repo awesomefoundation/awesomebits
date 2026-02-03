@@ -9,7 +9,7 @@ class Vote < ApplicationRecord
 
   validates_uniqueness_of :user_id, :scope => :project_id
 
-  validate :ensure_chapter, on: :create
+  validate :ensure_chapter
 
   def self.by(user)
     where(:user_id => user.id)

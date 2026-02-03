@@ -4,9 +4,9 @@ describe FundedProjectsController do
   context 'getting an Atom feed of winning projects' do
     render_views
 
-    let!(:chapter) { FactoryGirl.create(:chapter, country: 'United States') }
-    let!(:project) { FactoryGirl.create(:winning_project, chapter: chapter) }
-    let!(:image) { FactoryGirl.create(:photo, project: project) }
+    let!(:chapter) { FactoryBot.create(:chapter, country: 'United States') }
+    let!(:project) { FactoryBot.create(:winning_project, chapter: chapter) }
+    let!(:image) { FactoryBot.create(:photo, project: project) }
 
     before do
       get :index, format: :xml
@@ -21,12 +21,12 @@ describe FundedProjectsController do
   context 'making an HTML request' do
     render_views
 
-    let!(:chapter) { FactoryGirl.create(:chapter, slug: 'nyc', name: 'New York City') }
-    let!(:winner) { FactoryGirl.create(:winning_project, chapter: chapter) }
+    let!(:chapter) { FactoryBot.create(:chapter, slug: 'nyc', name: 'New York City') }
+    let!(:winner) { FactoryBot.create(:winning_project, chapter: chapter) }
 
     before do
       9.times do
-        FactoryGirl.create(:winning_project)
+        FactoryBot.create(:winning_project)
       end
     end
 
@@ -42,7 +42,7 @@ describe FundedProjectsController do
   end
 
   context 'viewing a project that has won while logged out' do
-    let!(:project) { FactoryGirl.create(:project, funded_on: Date.today) }
+    let!(:project) { FactoryBot.create(:project, funded_on: Date.today) }
 
     context "with the correct slug" do
       before do
@@ -64,9 +64,9 @@ describe FundedProjectsController do
   end
 
   context 'viewing a public project page that has not won yet' do
-    let!(:project) { FactoryGirl.create(:project) }
-    let!(:user) { FactoryGirl.create(:user) }
-    let!(:role) { FactoryGirl.create(:role, user: user) }
+    let!(:project) { FactoryBot.create(:project) }
+    let!(:user) { FactoryBot.create(:user) }
+    let!(:role) { FactoryBot.create(:role, user: user) }
 
     context 'while logged in' do
       before do

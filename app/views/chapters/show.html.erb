@@ -82,15 +82,16 @@
         <% @chapter.users.deans_first.including_role.distinct.each do |user| %>
         <li>
           <article class="trustee <%= user.role %>">
-            <%= link_to user.url, :class => :avatar do %>
+            <% trustee_html = capture do %>
               <div class="hat"></div>
               <div class="trustee-details">
-                <h3><%= user.first_name %> <%= user.last_name %></h3>
+                <h3><%= user.first_name %> <%= user.last_name %><%= "&nbsp;➚".html_safe if user.url.present? %></h3>
               </div>
               <div class="avatar">
                 <%= image_tag user.gravatar_url, :alt => t(".trustees.photo-alt-text", :name => user.name) %>
               </div>
             <% end %>
+            <%= link_to_if user.url.present?, trustee_html, user.url, { target: "_blank", class: :avatar } %>
           </article>
         </li>
         <% end %>
@@ -107,7 +108,7 @@
       </div>
     </section>
   <% end %>
-  
+
 </div>
 
 <% content_for :javascript do -%>

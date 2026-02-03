@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Vote do
   context "validations" do
-    before { FactoryGirl.create(:vote) }
+    before { FactoryBot.create(:vote) }
     it { is_expected.to belong_to :user }
     it { is_expected.to belong_to :project }
     it { is_expected.to belong_to :chapter }
@@ -13,24 +13,24 @@ describe Vote do
   end
 
   context ".by" do
-    let!(:vote){ FactoryGirl.create(:vote) }
-    let!(:other_vote) { FactoryGirl.create(:vote) }
+    let!(:vote){ FactoryBot.create(:vote) }
+    let!(:other_vote) { FactoryBot.create(:vote) }
     it 'returns the votes by a certain user' do
       expect(Vote.by(vote.user)).to eq([vote])
     end
   end
 
   context ".for" do
-    let!(:vote){ FactoryGirl.create(:vote) }
-    let!(:other_vote) { FactoryGirl.create(:vote) }
+    let!(:vote){ FactoryBot.create(:vote) }
+    let!(:other_vote) { FactoryBot.create(:vote) }
     it 'returns the votes for a certain project' do
       expect(Vote.for(vote.project)).to eq([vote])
     end
   end
 
   context "chapter" do
-    let(:vote) { FactoryGirl.build(:vote) }
-    let(:other_chapter) { FactoryGirl.create(:chapter) }
+    let(:vote) { FactoryBot.create(:vote) }
+    let(:other_chapter) { FactoryBot.create(:chapter) }
 
     it "can be one of the user's chapters" do
       vote.valid?

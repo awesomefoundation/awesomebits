@@ -36,7 +36,7 @@ describe ChaptersController do
 
     before do
       5.times do
-        FactoryGirl.create(:project)
+        FactoryBot.create(:project)
       end
     end
 

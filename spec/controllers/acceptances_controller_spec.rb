@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe AcceptancesController do
-  let(:invitation) { FactoryGirl.create(:invitation) }
+  let(:invitation) { FactoryBot.create(:invitation) }
 
   context 'not logged in' do
     context 'GET to #new' do

@@ -43,6 +43,7 @@ Rails.application.routes.draw do
       resources :projects, only: [:index, :show] do
         resource :winner, only: [:edit]
       end
+      resources :moderations, only: [:index]
       resources :users, only: [:index]
     end
 
@@ -60,11 +61,17 @@ Rails.application.routes.draw do
       resources :comments
       resource :winner, only: [:create, :update, :destroy]
       resource :vote, only: [:create, :destroy]
-
+      resource :moderation, only: [] do
+        put :confirm_spam
+        put :confirm_legit
+        put :undo
+      end
       resource :project_analysis, only: [] do
         get "show_or_create", to: "project_analyses#show_or_create"
       end
     end
+
+    resources :moderations, only: [:index]
 
     resources :submissions, controller: "projects" do
       collection do

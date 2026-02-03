@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Role do
   context 'having one in the database' do
     before do
-      FactoryGirl.create(:role)
+      FactoryBot.create(:role)
     end
     it { is_expected.to belong_to :user }
     it { is_expected.to belong_to :chapter }
@@ -11,7 +11,7 @@ describe Role do
   end
 
   it "should be invalid with an invalid name" do
-    role = FactoryGirl.build(:role, name: "INVALID")
+    role = FactoryBot.build(:role, name: "INVALID")
 
     expect(role).not_to be_valid
   end
@@ -21,7 +21,7 @@ describe Role do
   end
 
   context '#dean?' do
-    let(:role) { FactoryGirl.build(:role) }
+    let(:role) { FactoryBot.build(:role) }
     it 'returns true if this is a dean role' do
       role.name = "dean"
       expect(role.dean?).to be_truthy
@@ -35,21 +35,21 @@ describe Role do
 
   context ".can_invite?" do
     it 'returns true when any role is a dean role' do
-      FactoryGirl.create(:role, :name => "dean")
+      FactoryBot.create(:role, :name => "dean")
       expect(Role.can_invite?).to be_truthy
     end
 
     it 'return false if no roles are dean roles' do
       Role.delete_all
-      FactoryGirl.create(:role, :name => "trustee")
+      FactoryBot.create(:role, :name => "trustee")
       expect(Role.can_invite?).to be_falsey
     end
   end
 
   context ".can_invite_to_chapter?" do
-    let(:role) { FactoryGirl.create(:role, :name => "dean") }
+    let(:role) { FactoryBot.create(:role, :name => "dean") }
     let!(:chapter) { role.chapter }
-    let!(:other_chapter) { FactoryGirl.create(:chapter) }
+    let!(:other_chapter) { FactoryBot.create(:chapter) }
     it 'returns true when we have dean role for this chapter' do
       expect(Role.can_invite_to_chapter?(chapter)).to be_truthy
     end
@@ -62,9 +62,9 @@ describe Role do
   end
 
   context ".can_manage_chapter?" do
-    let(:role) { FactoryGirl.create(:role, :name => "dean") }
+    let(:role) { FactoryBot.create(:role, :name => "dean") }
     let!(:chapter) { role.chapter }
-    let!(:other_chapter) { FactoryGirl.create(:chapter) }
+    let!(:other_chapter) { FactoryBot.create(:chapter) }
     it 'returns true when we have dean role for this chapter' do
       expect(Role.can_manage_chapter?(chapter)).to be_truthy
     end
@@ -77,9 +77,9 @@ describe Role do
   end
 
   context ".can_manage_users?" do
-    let(:role) { FactoryGirl.create(:role, :name => "dean") }
+    let(:role) { FactoryBot.create(:role, :name => "dean") }
     let!(:chapter) { role.chapter }
-    let!(:other_chapter) { FactoryGirl.create(:chapter) }
+    let!(:other_chapter) { FactoryBot.create(:chapter) }
     it 'returns true when we have dean role for this chapter' do
       expect(Role.can_manage_users?(chapter)).to be_truthy
     end
@@ -92,9 +92,9 @@ describe Role do
   end
 
   context ".can_view_finalists_for?" do
-    let(:role) { FactoryGirl.create(:role, :name => "trustee") }
+    let(:role) { FactoryBot.create(:role, :name => "trustee") }
     let!(:chapter) { role.chapter }
-    let!(:other_chapter) { FactoryGirl.create(:chapter) }
+    let!(:other_chapter) { FactoryBot.create(:chapter) }
 
     it 'returns true when we have a trustee role for this chapter' do
       expect(Role.can_view_finalists_for?(chapter)).to be_truthy
@@ -108,10 +108,10 @@ describe Role do
   end
 
   context ".can_mark_winner?" do
-    let(:role) { FactoryGirl.create(:role, :name => "dean") }
+    let(:role) { FactoryBot.create(:role, :name => "dean") }
     let!(:chapter) { role.chapter }
-    let!(:project) { FactoryGirl.create(:project, :chapter => chapter) }
-    let!(:other_project) { FactoryGirl.create(:project) }
+    let!(:project) { FactoryBot.create(:project, :chapter => chapter) }
+    let!(:other_project) { FactoryBot.create(:project) }
     it 'returns true when we have dean role for this chapter' do
       expect(Role.can_mark_winner?(project)).to be_truthy
     end
@@ -124,10 +124,10 @@ describe Role do
   end
 
   context ".can_edit_project?" do
-    let(:role) { FactoryGirl.create(:role, :name => "dean") }
+    let(:role) { FactoryBot.create(:role, :name => "dean") }
     let!(:chapter) { role.chapter }
-    let!(:project) { FactoryGirl.create(:project, :chapter => chapter) }
-    let!(:other_project) { FactoryGirl.create(:project) }
+    let!(:project) { FactoryBot.create(:project, :chapter => chapter) }
+    let!(:other_project) { FactoryBot.create(:project) }
     it 'returns true when we have dean role for this chapter' do
       expect(Role.can_edit_project?(project)).to be_truthy
     end

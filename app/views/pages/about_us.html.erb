@@ -8,6 +8,7 @@
     <div class="contact">
       <div class="get-in-touch">
         <%= render("locales/contact").html_safe %>
+        <%= render("locales/dmca").html_safe if ENV["DMCA_URL"].present? %>
       </div>
 
       <div class="start-a-chapter">

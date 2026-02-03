@@ -35,6 +35,8 @@ class Project < ApplicationRecord
   before_save :update_photo_order
   before_save :delete_photos
 
+  after_create :analyze_for_spam
+
   # For dependency injection
   cattr_accessor :mailer
   self.mailer = ProjectMailer
@@ -175,15 +177,6 @@ class Project < ApplicationRecord
     real_photos.present?
   end
 
-  def save
-    was_new_record = new_record?
-    saved = super
-    if saved && was_new_record
-      ProjectMailerJob.perform_async(self)
-    end
-    saved
-  end
-
   def extra_question(num)
     ((question = read_attribute(:"extra_question_#{num}")) && question.present?) ? question : nil
   end
@@ -212,7 +205,72 @@ class Project < ApplicationRecord
     !!hidden_at
   end
 
-  protected
+  def not_pending_moderation?
+    project_moderation.blank? || project_moderation.confirmed_legit?
+  end
+
+  def set_request_metadata(server_data, client_data_json = nil)
+    client_data = parse_and_sanitize_client_data(client_data_json)
+
+    self.metadata = {
+      ip_address: server_data[:ip_address],
+      user_agent: server_data[:user_agent]&.truncate(500),
+      referrer: server_data[:referrer]&.truncate(500),
+      time_on_page_ms: client_data[:time_on_page_ms],
+      timezone: client_data[:timezone],
+      screen_resolution: client_data[:screen_resolution],
+      form_interactions_count: client_data[:form_interactions_count],
+      keystroke_count: client_data[:keystroke_count],
+      paste_count: client_data[:paste_count]
+    }.compact
+  end
+
+  private
+
+  def parse_and_sanitize_client_data(client_data_json)
+    return {} unless client_data_json.present?
+
+    begin
+      raw_data = JSON.parse(client_data_json)
+      {
+        time_on_page_ms: sanitize_integer(raw_data["time_on_page_ms"]),
+        timezone: sanitize_string(raw_data["timezone"], 50),
+        screen_resolution: sanitize_string(raw_data["screen_resolution"], 20),
+        form_interactions_count: sanitize_integer(raw_data["form_interactions_count"]),
+        keystroke_count: sanitize_integer(raw_data["keystroke_count"]),
+        paste_count: sanitize_integer(raw_data["paste_count"])
+      }
+    rescue JSON::ParserError => e
+      Rails.logger.warn "Invalid client_metadata JSON: #{e.message}"
+      {}
+    end
+  end
+
+  def sanitize_integer(value)
+    return nil unless value.present?
+    Integer(value) rescue nil
+  end
+
+  def sanitize_string(value, max_length)
+    return nil unless value.present?
+    value.to_s.truncate(max_length)
+  end
+
+  def analyze_for_spam
+    # Don't overwrite existing reviewed flags
+    return if project_moderation&.reviewed?
+
+    classifier = SpamClassifier.new(self)
+    classifier.analyze!
+
+    if classifier.suspected_spam?
+      create_project_moderation!(
+        moderation_type: :spam,
+        status: :suspected,
+        signals: classifier.analysis
+      )
+    end
+  end
 
   # before save
   def ensure_funded_description

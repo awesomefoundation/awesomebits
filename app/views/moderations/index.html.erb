@@ -1,0 +1,33 @@
+<% provide :page_title, (@chapter ? t(".title", name: @chapter.display_name, count: @projects.count) : t(".moderation"))  %>
+<% provide :meta_viewport, "width=device-width, initial-scale=1, maximum-scale=1" %>
+
+<section class="admin-panel">
+  <%= render "shared/sidebar", chapter: @chapter %>
+</section>
+
+<section class="applications">
+  <% if @chapter.present? %>
+    <h1><%= t ".title", name: @chapter.display_name, count: @projects.count %></h1>
+  <% end %>
+
+  <div class="application__moderation-notice notice flexbox justify-space-between center wrap">
+    <strong>
+      <% if params[:filter] == "all" %>
+        <%= t(".viewing-all-moderated") %>
+        (<%= link_to t(".view-unmoderated-only"), {filter: nil} %>)
+      <% else %>
+        <%= t(".moderating-projects", count: @projects.count) %>
+        (<%= link_to t(".view-all"), {filter: "all"} %>)
+      <% end %>
+    </strong>
+
+    <%= link_to(t(".back-to-approved-projects"), chapter_projects_path(@chapter), class: "application__moderation-button") if @chapter.present? %>
+  </div>
+
+  <%= render @projects, moderation: true %>
+  <%= will_paginate(@projects) %>
+</section>
+
+<%= render "shared/lightbox" %>
+<%= render "projects/project_actions_js" %>
+<%= render "projects/comments_js", comments: @comments %>

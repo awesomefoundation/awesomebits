@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'funded_projects/show' do
-  let!(:funded_project) { FactoryGirl.create(:project, funded_on: Time.zone.now.to_date, funded_description: "I am a funded project") }
+  let!(:funded_project) { FactoryBot.create(:project, funded_on: Time.zone.now.to_date, funded_description: "I am a funded project") }
     
   it 'displays the funded description for a funded project' do 
     assign(:project, funded_project)

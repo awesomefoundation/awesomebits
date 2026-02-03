@@ -4,7 +4,7 @@ describe UsersController, type: :controller do
   context "signed in as admin user" do
     render_views
 
-    let(:user) { FactoryGirl.create(:user, :admin => true) }
+    let(:user) { FactoryBot.create(:user, :admin => true) }
     before do
       sign_in_as user
     end
@@ -22,7 +22,7 @@ describe UsersController, type: :controller do
     end
   end
   context "signed in as non-admin user" do
-    let(:role) { FactoryGirl.create(:role) }
+    let(:role) { FactoryBot.create(:role) }
     let(:user) { role.user }
     let(:chapter) { role.chapter }
     before do

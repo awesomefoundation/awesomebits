@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe 'projects/index' do
-  let!(:role) { FactoryGirl.create(:role, :name => "trustee") }
+  let!(:role) { FactoryBot.create(:role, :name => "trustee") }
   let!(:user) { role.user }
-  let!(:project) { FactoryGirl.create(:project, :extra_question_1 => "Extra Question 1", :extra_answer_1 => "Extra Answer 1") }
+  let!(:project) { FactoryBot.create(:project, :extra_question_1 => "Extra Question 1", :extra_answer_1 => "Extra Answer 1") }
 
   it 'displays extra questions and answers' do 
     assign(:chapter, project.chapter)
@@ -17,8 +17,8 @@ describe 'projects/index' do
 end
 
 describe 'projects/show' do
-  let!(:user) { FactoryGirl.create(:user) }
-  let!(:unfunded_project) { FactoryGirl.create(:project) }
+  let!(:user) { FactoryBot.create(:user) }
+  let!(:unfunded_project) { FactoryBot.create(:project) }
 
   it 'displays the application text for an unfunded project' do 
     assign(:project, unfunded_project)
@@ -30,8 +30,8 @@ describe 'projects/show' do
 end
 
 describe 'projects/_form' do
-  let!(:active_chapter) { FactoryGirl.create(:chapter) }
-  let!(:inactive_chapter) { FactoryGirl.create(:inactive_chapter) }
+  let!(:active_chapter) { FactoryBot.create(:chapter) }
+  let!(:inactive_chapter) { FactoryBot.create(:inactive_chapter) }
 
   before do
     view.stubs(:current_user).returns(Guest.new)
@@ -49,7 +49,7 @@ describe 'projects/_form' do
 
   context 'projects/edit' do
     it 'shows inactive chapters' do
-      assign(:project, FactoryGirl.create(:project, :chapter => inactive_chapter))
+      assign(:project, FactoryBot.create(:project, :chapter => inactive_chapter))
 
       render :template => 'projects/edit'
       expect(rendered).to have_content(active_chapter.name)
