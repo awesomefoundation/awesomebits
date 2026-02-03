@@ -72,7 +72,8 @@ class ProjectAnalysisGenerator
       function_call: "auto"
     }
     response = @client.chat(parameters: parameters)
-    puts(JSON.generate({response: response}, indent: "  "))
+    # Avoid noisy output in tests/production. Use logger if needed.
+    # puts(JSON.generate({response: response}, indent: "  "))
     # response.merge(
     #   "prompt_usage_data" => { "total_tokens" => 800, "prompt_tokens" => 500, "completion_tokens" => 300 },
     #   "prompt_estimated_cost" => 0.02
