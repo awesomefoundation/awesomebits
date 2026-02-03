@@ -12,9 +12,9 @@ class ProjectAnalysesController < ApplicationController
     @project_analysis = @project.project_analysis || ProjectAnalysisGenerator.new(@project.id).call
 
     flash[:notice] = if @project_analysis.persisted?
-      "Project analysis loaded from cache."
+      I18n.t("project_analyses.flash.cache_loaded")
     else
-      "New project analysis generated."
+      I18n.t("project_analyses.flash.generated")
     end
     render :show
   end

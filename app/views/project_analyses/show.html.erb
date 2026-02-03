@@ -1,19 +1,19 @@
 <% provide(:body_class, 'project-analysis-show') %>
 <body class="<%= content_for?(:body_class) ? yield(:body_class) : '' %>">
-  <h1>Project Analysis for "<%= @project.title %>"</h1>
+  <h1><%= t(".title", title: @project.title) %></h1>
 
 
-  <p><strong>Summary:</strong> <%= @project_analysis.summary %></p>
-  <p><strong>Applicant Role:</strong> <%= @project_analysis.applicant_role.humanize %></p>
-  <p><strong>Language:</strong> <%= @project_analysis.language_code %></p>
-  <p><strong>Tags:</strong> <%= @project_analysis.tags.join(', ') %></p>
+  <p><strong><%= t(".summary") %>:</strong> <%= @project_analysis.summary %></p>
+  <p><strong><%= t(".applicant_role") %>:</strong> <%= @project_analysis.applicant_role.humanize %></p>
+  <p><strong><%= t(".language") %>:</strong> <%= @project_analysis.language_code %></p>
+  <p><strong><%= t(".tags") %>:</strong> <%= @project_analysis.tags.join(', ') %></p>
 
   <table class="scores-table">
     <thead>
       <tr style="padding: 0 1em;">
-        <th style="padding: 0 1em;">Criterion</th>
-        <th style="padding: 0 1em;">Score</th>
-        <th style="padding: 0 1em;">Reason</th>
+        <th style="padding: 0 1em;"><%= t(".criteria") %></th>
+        <th style="padding: 0 1em;"><%= t(".score") %></th>
+        <th style="padding: 0 1em;"><%= t(".reason") %></th>
       </tr>
     </thead>
     <tbody>
@@ -47,5 +47,5 @@
     </tbody>
   </table>
 
-  <p><strong>Suggestions:</strong> <%= @project_analysis.suggestion %></p>
+  <p><strong><%= t(".suggestions") %>:</strong> <%= @project_analysis.suggestion %></p>
 </body>
