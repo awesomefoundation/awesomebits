@@ -1,4 +1,4 @@
-require "rails_helper"
+require "spec_helper"
 
 RSpec.describe "ProjectAnalysisGenerator Integration", type: :integration do
   let(:project) { create(:project) }

@@ -14,6 +14,7 @@ class Project < ApplicationRecord
   has_many :photos, -> { merge(Photo.sorted) }
   has_many :real_photos, -> { merge(Photo.image_files.sorted) }, class_name: "Photo"
   has_one :primary_photo, -> { merge(Photo.image_files.sorted) }, class_name: "Photo"
+  has_one :project_moderation, dependent: :destroy
   has_one :project_analysis, dependent: :destroy
 
   before_validation UrlNormalizer.new(:url, :rss_feed_url)

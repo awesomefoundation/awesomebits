@@ -1,4 +1,5 @@
-FactoryGirl.define do
+# coding: utf-8
+FactoryBot.define do
   sequence(:email) { |n| "user#{n}@example.com" }
   sequence(:title) { |n| "Something Awesome ##{n}" }
   sequence(:index)
@@ -26,7 +27,7 @@ FactoryGirl.define do
 
     factory :user_with_dean_role do
       after(:create) do |user|
-        FactoryGirl.create(:role, user: user, name: "dean")
+        FactoryBot.create(:role, user: user, name: "dean")
         user.reload
       end
     end

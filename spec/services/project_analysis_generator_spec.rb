@@ -1,4 +1,4 @@
-require "rails_helper"
+require "spec_helper"
 
 RSpec.describe ProjectAnalysisGenerator, type: :service do
   let(:project) { create(:project) }
