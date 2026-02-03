@@ -1,7 +1,7 @@
 # coding: utf-8
 FactoryBot.define do
-  sequence(:email) { |n| "user#{n}@example.com" }
-  sequence(:title) { |n| "Something Awesome ##{n}" }
+  sequence(:email) {|n| "user#{n}@example.com" }
+  sequence(:title) {|n| "Something Awesome ##{n}" }
   sequence(:index)
 
   factory :chapter do
@@ -27,13 +27,13 @@ FactoryBot.define do
 
     factory :user_with_dean_role do
       after(:create) do |user|
-        FactoryBot.create(:role, user: user, name: "dean")
+        FactoryBot.create(:role, :user => user, :name => "dean")
         user.reload
       end
     end
 
     factory :user_with_trustee_role do
-      chapters { [association(:chapter)] }
+      chapters { [association(:chapter) ] }
     end
   end
 
@@ -48,7 +48,7 @@ FactoryBot.define do
 
   factory :invitation do
     email
-    association :inviter, factory: :user_with_dean_role
+    association :inviter, :factory => :user_with_dean_role
 
     after(:build) do |invitation, proxy|
       invitation.chapter = invitation.inviter.chapters.first
@@ -70,7 +70,7 @@ FactoryBot.define do
     end
 
     factory :winning_project do
-      sequence(:funded_on) { |n| (3000 - n.to_i).days.ago }
+      sequence(:funded_on) { |n| (3000-n.to_i).days.ago }
     end
 
     factory :hidden_project do
@@ -107,9 +107,10 @@ FactoryBot.define do
   # custom storage the way we do.
   factory :s3_photo, class: "Photo" do
     project
-    storage_keys { {store: :s3_store, cache: :s3_cache} }
+    storage_keys { { store: :s3_store, cache: :s3_cache } }
     image_data { FakeData.shrine_uploaded_file("1.JPG") }
   end
+
 
   factory :comment do
     project

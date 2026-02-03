@@ -10,17 +10,17 @@ class Project < ApplicationRecord
   belongs_to :hidden_by_user, class_name: "User", optional: true
   has_many :comments
   has_many :votes
-  has_many :users, through: :votes
+  has_many :users, :through => :votes
   has_many :photos, -> { merge(Photo.sorted) }
   has_many :real_photos, -> { merge(Photo.image_files.sorted) }, class_name: "Photo"
-  has_one :primary_photo, -> { merge(Photo.image_files.sorted) }, class_name: "Photo"
+  has_one  :primary_photo, -> { merge(Photo.image_files.sorted) }, class_name: "Photo"
   has_one :project_moderation, dependent: :destroy
   has_one :project_analysis, dependent: :destroy
 
   before_validation UrlNormalizer.new(:url, :rss_feed_url)
 
-  validates :url, :rss_feed_url, url: true, allow_blank: true
-  validates_length_of :url, :rss_feed_url, maximum: 255
+  validates           :url, :rss_feed_url, :url => true, :allow_blank => true
+  validates_length_of :url, :rss_feed_url, :maximum => 255
 
   validates_presence_of :name
   validates_presence_of :title
@@ -30,7 +30,7 @@ class Project < ApplicationRecord
   validates_presence_of :use_for_money
   validates_presence_of :chapter_id
 
-  delegate :name, to: :chapter, prefix: true
+  delegate :name, :to => :chapter, :prefix => true
 
   before_save :ensure_funded_description
   before_save :update_photo_order
@@ -44,9 +44,9 @@ class Project < ApplicationRecord
 
   # specify the default fields on which full text search will be performed
   extend Searchable(:name, :title, :email, :about_me, :about_project, :use_for_money,
-    :extra_answer_1, :extra_answer_2, :extra_answer_3)
+                    :extra_answer_1, :extra_answer_2, :extra_answer_3)
 
-  scope :public_search, lambda { |query| search({name: query, title: query, funded_description: query, url: query}, false) }
+  scope :public_search, lambda { |query| search({ name: query, title: query, funded_description: query, url: query }, false) }
 
   accepts_nested_attributes_for :photos, allow_destroy: true
 
@@ -55,9 +55,9 @@ class Project < ApplicationRecord
   end
 
   def self.visible_to(user)
-    joins(:chapter)
-      .joins("LEFT OUTER JOIN roles ON roles.chapter_id = chapters.id")
-      .where("roles.user_id = #{user.id} OR chapters.name = ?", Chapter::ANY_CHAPTER_NAME)
+    joins(:chapter).
+      joins("LEFT OUTER JOIN roles ON roles.chapter_id = chapters.id").
+      where("roles.user_id = #{user.id} OR chapters.name = ?", Chapter::ANY_CHAPTER_NAME)
   end
 
   def self.with_votes_for_chapter(c)
@@ -69,15 +69,15 @@ class Project < ApplicationRecord
   end
 
   def self.voted_for_by_members_of(chapter)
-    joins(users: :chapters).where("chapters.id = ? OR chapters.name = ?", chapter.id, Chapter::ANY_CHAPTER_NAME)
+    joins(:users => :chapters).where("chapters.id = ? OR chapters.name = ?", chapter.id, Chapter::ANY_CHAPTER_NAME)
   end
 
   def self.during_timeframe(start_date, end_date)
     # FIXME the database stores dates in UTC, whereas we parse the dates
     # provided in the local zone. This can result in mismatches when the
     # overlap crosses midnight.
-    start_date = 100.years.ago.strftime("%Y-%m-%d") if start_date.blank?
-    end_date = Time.zone.now.strftime("%Y-%m-%d") if end_date.blank?
+    start_date = 100.years.ago.strftime('%Y-%m-%d') if start_date.blank?
+    end_date   = Time.zone.now.strftime('%Y-%m-%d') if end_date.blank?
 
     where(
       "projects.created_at > ? AND projects.created_at < ?",
@@ -88,15 +88,15 @@ class Project < ApplicationRecord
 
   def self.by_vote_count(sort: nil)
     order = case sort
-    when "date" then "projects.created_at DESC, vote_count DESC"
-    when "title" then "projects.title ASC, vote_count DESC"
-    else "vote_count DESC, projects.created_at ASC"
-    end
+            when "date" then "projects.created_at DESC, vote_count DESC"
+            when "title" then "projects.title ASC, vote_count DESC"
+            else "vote_count DESC, projects.created_at ASC"
+            end
 
-    select("projects.chapter_id, projects.id, projects.title, projects.funded_on, COUNT(votes.project_id) as vote_count, projects.created_at")
-      .group("projects.id, projects.title, votes.project_id")
-      .joins(:users)
-      .order(order)
+    select("projects.chapter_id, projects.id, projects.title, projects.funded_on, COUNT(votes.project_id) as vote_count, projects.created_at").
+      group("projects.id, projects.title, votes.project_id").
+      joins(:users).
+      order(order)
   end
 
   def self.winners
@@ -118,7 +118,7 @@ class Project < ApplicationRecord
   end
 
   def self.attributes_for_export
-    %w[name title about_project use_for_money about_me url email phone chapter_name id created_at funded_on extra_question_1 extra_answer_1 extra_question_2 extra_answer_2 extra_question_3 extra_answer_3 rss_feed_url hidden_at hidden_reason]
+    %w(name title about_project use_for_money about_me url email phone chapter_name id created_at funded_on extra_question_1 extra_answer_1 extra_question_2 extra_answer_2 extra_question_3 extra_answer_3 rss_feed_url hidden_at hidden_reason)
   end
 
   def to_a
@@ -179,11 +179,11 @@ class Project < ApplicationRecord
   end
 
   def extra_question(num)
-    ((question = read_attribute(:"extra_question_#{num}")) && question.present?) ? question : nil
+    (question = read_attribute("extra_question_#{num}".to_sym)) && question.present? ? question : nil
   end
 
   def extra_answer(num)
-    ((answer = read_attribute(:"extra_answer_#{num}")) && answer.present?) ? answer : nil
+    (answer = read_attribute("extra_answer_#{num}".to_sym)) && answer.present? ? answer : nil
   end
 
   def hide!(reason, user)
