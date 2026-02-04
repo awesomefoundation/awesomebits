@@ -19,6 +19,7 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 
   config.mock_with :mocha
+  config.include FactoryBot::Syntax::Methods
   config.before(:each){ DatabaseCleaner.start }
   config.append_after(:each){ DatabaseCleaner.clean }
   config.before(:each){ FactoryBot.create(:chapter, :name => "Any") }

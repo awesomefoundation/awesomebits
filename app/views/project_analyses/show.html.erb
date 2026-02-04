@@ -1,0 +1,51 @@
+<% provide(:body_class, 'project-analysis-show') %>
+<body class="<%= content_for?(:body_class) ? yield(:body_class) : '' %>">
+  <h1><%= t(".title", title: @project.title) %></h1>
+
+
+  <p><strong><%= t(".summary") %>:</strong> <%= @project_analysis.summary %></p>
+  <p><strong><%= t(".applicant_role") %>:</strong> <%= @project_analysis.applicant_role.humanize %></p>
+  <p><strong><%= t(".language") %>:</strong> <%= @project_analysis.language_code %></p>
+  <p><strong><%= t(".tags") %>:</strong> <%= @project_analysis.tags.join(', ') %></p>
+
+  <table class="scores-table">
+    <thead>
+      <tr style="padding: 0 1em;">
+        <th style="padding: 0 1em;"><%= t(".criteria") %></th>
+        <th style="padding: 0 1em;"><%= t(".score") %></th>
+        <th style="padding: 0 1em;"><%= t(".reason") %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% # Collect and sort the scores from highest to lowest %>
+      <% scores = ProjectAnalysisScores::SCORE_FIELDS.map do |field|
+          score_obj = @project_analysis.scores.send(field)
+          {
+            field: field.humanize,
+            score: score_obj.score.to_f * 100,
+            reason: score_obj.reason
+          }
+        end
+        # end.sort_by { |s| -s[:score] } %>
+
+      <% # Loop through the sorted scores and apply color coding %>
+      <% scores.each do |score_hash| %>
+        <% # Determine the color classes based on the score %>
+        <% if score_hash[:score] >= 80 %>
+          <% row_style = 'background-color: #d1fae5; color: #022c22;' %>
+        <% elsif score_hash[:score] >= 50 %>
+          <% row_style = 'background-color: #fef9c3; color: #422006;' %>
+        <% else %>
+          <% row_style = 'background-color: #ffe4e6; color: #4c0519;' %>
+        <% end %>
+        <tr style="">
+          <td style="padding: 1em; <%= row_style %>"><%= score_hash[:field] %></td>
+          <td style="padding: 1em; <%= row_style %>"><%= (score_hash[:score]).round %></td>
+          <td style="padding: 1em;"><%= score_hash[:reason] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <p><strong><%= t(".suggestions") %>:</strong> <%= @project_analysis.suggestion %></p>
+</body>
