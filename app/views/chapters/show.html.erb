@@ -64,7 +64,7 @@
     <section class="description">
       <article class="about">
         <h2><%= t(".trustees.about") %></h2>
-        <%= markdown @chapter.description %>
+        <%= markdown @chapter.description, link_attributes: { target: "_blank" }, hard_wrap: true %>
       </article>
 
       <% if @chapter.rss_feed_url.present? %>
