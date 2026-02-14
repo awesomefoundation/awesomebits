@@ -270,8 +270,10 @@ bg:
       user:
         user_image: Задай профилма снимка на <a href="https://en.gravatar.com/site/signup/%{email}" target="_blank">gravatar.com</a> като използвате email адреса по-горе   
       chapter:
+        description: "Форматиране: **удебелен** _курсив_ [връзка](http://example.com)"
         submission_response_email: Този текст ще бъде включен в потвърждаващ имейл, който се изпраща на вашите кандидати  
         hide_trustees: Скрий списък с пазители от главна страница
+        application_intro: "Този текст ще се появи в горната част на формуляра за кандидатстване. Незадължително, ограничено до 1 000 знака. Форматиране: **удебелен** _курсив_ [връзка](http://example.com)"
   activerecord:
     attributes:
       chapter:

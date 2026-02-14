@@ -382,6 +382,7 @@ nl:
       user:
         user_image: Stel je gebruikersafbeelding in op <a href="https://nl.gravatar.com/site/signup/%{email}" target="_blank">gravatar.com</a> met je e-mailadres hierboven
       chapter:
+        description: "Opmaak: **vet** _cursief_ [link](http://example.com)"
         submission_response_email: Deze tekst wordt opgenomen in de bevestigingsmail die naar je subsidieaanvragers wordt gestuurd
         hide_trustees: Voorkom dat de trustee lijst wordt weergegeven op de openbare chapter pagina
         application_intro: "Deze tekst verschijnt bovenaan je aanmeldingsformulier. Optioneel, beperkt tot 1.000 tekens. Opmaak: **vet** _cursief_ [link](http://example.com)"

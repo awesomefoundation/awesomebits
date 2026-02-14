@@ -249,8 +249,10 @@ ru:
       user:
         user_image: Установите Ваше изображение пользователя через <a href="https://en.gravatar.com/site/signup/%{email}" target="_blank">gravatar.com</a>, используя указанный Вами имейл
       chapter:
+        description: "Форматирование: **жирный** _курсив_ [ссылка](http://example.com)"
         submission_response_email: Этот текст будет включен в электронное письмо с подтверждением, отправленное вашим заявителям
         hide_trustees: Запретить отображение списка попечителей на общедоступной странице филиала
+        application_intro: "Этот текст появится в верхней части вашей формы заявки. Необязательно, ограничено 1 000 символами. Форматирование: **жирный** _курсив_ [ссылка](http://example.com)"
   activerecord:
     attributes:
       chapter:

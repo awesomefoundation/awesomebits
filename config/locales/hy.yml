@@ -271,8 +271,10 @@
       user:
         user_image: 'Տեղադրեք Ձեր օգտահաշվի լուսանկարը <a href="https://en.gravatar.com/site/signup/%{email}" target="_blank">gravatar.com</a>ում կիրառելով Ձեր վերոնշյալ էլհասցեն:'
       chapter:
+        description: "Ձևաչափում՝ **թավ** _շեղ_ [հղում](http://example.com)"
         submission_response_email: "Այս տեքստը կներառվի ուղարկվող հաստատման նամակում"
         hide_trustees: Հոգաբարձուների ցուցակը ցույց չտալ մասնաճյուղի էջում
+        application_intro: "Այս տեքստը կհայտնվի ձեր դիմումի ձևի վերևում։ Ընտրովի է, սահմանափակված 1,000 նիշով։ Ձևաչափում՝ **թավ** _շեղ_ [հղում](http://example.com)"
   activerecord:
     attributes:
       chapter:
