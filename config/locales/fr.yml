@@ -273,8 +273,10 @@ fr:
       user:
         user_image: Réglez votre image utilisateur à <a href="https://fr.gravatar.com/site/signup/%{email}" target="_blank">gravatar.com</a> en utilisant l'adresse mail ci-dessus
       chapter:
+        description: "Mise en forme : **gras** _italique_ [lien](http://example.com)"
         submission_response_email: Ce texte sera inclu dans les messages de confirmation envoyés à vos candidats
         hide_trustees: Empêcher l'affichage de la liste des donateurs sur la page publique de la branche
+        application_intro: "Ce texte apparaîtra en haut de votre formulaire de candidature. Optionnel, limité à 1 000 caractères. Mise en forme : **gras** _italique_ [lien](http://example.com)"
   activerecord:
     attributes:
       chapter:

@@ -323,8 +323,10 @@ es:
       user:
         user_image: Fija tu imagen de usuario en <a href="https://en.gravatar.com/site/signup/%{email}" target="_blank">gravatar.com</a> usando la dirección de tu correo electrónico indicado previamente
       chapter:
+        description: "Formato: **negrita** _cursiva_ [enlace](http://example.com)"
         submission_response_email: Este texto será incluido en el correo electrónico de confirmación enviado a sus solicitantes de becas
         hide_trustees: No mostrar la lista de administradores en la pagina publica del capítulo
+        application_intro: "Este texto aparecerá en la parte superior del formulario de solicitud. Opcional, limitado a 1.000 caracteres. Formato: **negrita** _cursiva_ [enlace](http://example.com)"
     prompts:
       invitation:
         chapter_id: "- Select -"

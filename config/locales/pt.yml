@@ -304,8 +304,10 @@ pt:
       user:
         user_image: Defina sua imagem em <a href="https://en.gravatar.com/site/signup/%{email}" target="_blank">gravatar.com</a> usando seu endereço de e-mail informado acima
       chapter:
+        description: "Formatação: **negrito** _itálico_ [link](http://example.com)"
         submission_response_email: Esse texto será incluído no email de confirmação enviado para os projetos candidatos ao prêmio
         hide_trustees: Impedir que a lista de trustees seja exibida na página do capítulo público
+        application_intro: "Esse texto aparecerá no topo do seu formulário de inscrição. Opcional, limitado a 1.000 caracteres. Formatação: **negrito** _itálico_ [link](http://example.com)"
   activerecord:
     attributes:
       chapter:
