@@ -66,6 +66,9 @@ Rails.application.routes.draw do
         put :confirm_legit
         put :undo
       end
+      resource :project_analysis, :only => [] do
+        get "show_or_create", :to => "project_analyses#show_or_create"
+      end
     end
 
     resources :moderations, only: [:index]

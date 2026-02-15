@@ -459,6 +459,17 @@ body.projects-index {
         a.project-actions-toggle {
           font-size: 1.1em;
         }
+
+        a.auto-awesome {
+          @include button(rgb(240,240,240));
+          float: right;
+          margin-left: 10px;
+          text-decoration: none;
+
+          &.auto-awesome:hover {
+            @include button($pink);
+          }
+        }
       }
 
       .contact {
