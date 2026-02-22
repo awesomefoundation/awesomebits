@@ -41,9 +41,12 @@ class PreScorer
 
     # Content signals
     @features["url_count"] = all_text.scan(%r{https?://\S+}).length
-    @features["dollar_sign_count"] = all_text.count("$")
     @features["number_count"] = all_text.scan(/\b\d[\d,.]*\b/).length
     @features["email_count"] = all_text.scan(/\S+@\S+\.\S+/).length
+
+    # Money extraction (international currencies)
+    money_matches = extract_money_mentions(all_text)
+    @features["money_mention_count"] = money_matches.length
 
     # Capitalized words (proxy for proper nouns / named entities)
     words = all_text.split(/\s+/)
@@ -64,7 +67,25 @@ class PreScorer
     # Has images (title/about fields mention image/photo/picture URLs)
     @features["has_image_reference"] = all_text.match?(/\.(jpg|jpeg|png|gif|webp|bmp)/i) ? 1 : 0
 
+    # TF-IDF features (requires static IDF table)
+    if self.class.idf_table
+      tfidf_scores = compute_tfidf(all_text)
+      @features["tfidf_mean"] = tfidf_scores.empty? ? 0.0 : (tfidf_scores.values.sum / tfidf_scores.length.to_f).round(4)
+      @features["tfidf_max"] = tfidf_scores.empty? ? 0.0 : tfidf_scores.values.max.round(4)
+      @features["tfidf_unique_terms"] = tfidf_scores.count { |_, v| v > 0 }
+    end
+
     @features
+  end
+
+  # Load static IDF table (computed from full corpus via notebook 02)
+  def self.idf_table
+    @idf_table
+  end
+
+  def self.load_idf(path)
+    require "json"
+    @idf_table = JSON.parse(File.read(path))
   end
 
   private
@@ -85,5 +106,46 @@ class PreScorer
     return 0.0 if values.length < 2
     mean = values.sum / values.length.to_f
     values.sum { |v| (v - mean)**2 } / values.length.to_f
+  end
+
+  # International money/currency extraction
+  CURRENCY_SYMBOLS = /[\$\£\€\¥\₹\₩\₫\₱\₺\₽\฿]/
+  CURRENCY_PREFIXED = /(?:A|NZ|CA|HK|S|US|C)\$/
+  CURRENCY_CODES = /\b(?:USD|GBP|EUR|AUD|NZD|CAD|CHF|JPY|CNY|INR|BRL|MXN|ZAR|SEK|NOK|DKK|KRW|SGD|HKD|TWD|THB|MYR|PHP|IDR|VND|CZK|PLN|HUF|RON|RUB|TRY|ILS|AED|SAR|CLP|COP|PEN|ARS)\b/i
+  CURRENCY_WORDS = /\b(?:dollars?|pounds?|euros?|yen|yuan|rupees?|rand|krona|kronor|francs?|pesos?|reais?|real|won|baht|ringgit|crowns?|zloty|forints?|lira|shekels?|dirhams?|riyals?)\b/i
+  NUMBER_PAT = /\d[\d,.\s]*\d|\d+/
+
+  MONEY_PATTERN = Regexp.union(
+    /(?:#{CURRENCY_PREFIXED}|#{CURRENCY_SYMBOLS})\s*#{NUMBER_PAT}/,
+    /#{NUMBER_PAT}\s*(?:#{CURRENCY_PREFIXED}|#{CURRENCY_SYMBOLS})/,
+    /#{NUMBER_PAT}\s*#{CURRENCY_WORDS}/,
+    /#{CURRENCY_CODES}\s*#{NUMBER_PAT}/,
+    /#{NUMBER_PAT}\s*#{CURRENCY_CODES}/
+  )
+
+  def extract_money_mentions(text)
+    text.scan(MONEY_PATTERN)
+  end
+
+  # TF-IDF: compute term frequencies against static IDF table
+  def compute_tfidf(text)
+    idf = self.class.idf_table
+    return {} unless idf
+
+    # Tokenize: lowercase, split on non-word, reject short
+    words = text.downcase.split(/\W+/).reject { |w| w.length < 2 }
+    return {} if words.empty?
+
+    # Term frequency (normalized)
+    tf = Hash.new(0)
+    words.each { |w| tf[w] += 1 }
+    tf.transform_values! { |c| c.to_f / words.length }
+
+    # TF-IDF for terms in our IDF table
+    scores = {}
+    tf.each do |term, freq|
+      scores[term] = freq * idf[term] if idf.key?(term)
+    end
+    scores
   end
 end
