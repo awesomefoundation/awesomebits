@@ -1,22 +1,102 @@
 [
-  "public-art",
-  "community-garden",
-  "youth-education",
-  "music",
-  "food-community",
-  "film-media",
-  "literary",
-  "dance",
-  "theater",
-  "environment",
-  "sports-recreation",
-  "festival-event",
-  "technology-stem",
-  "women-girls",
-  "health-wellness",
-  "children-families",
-  "civic-social-justice",
-  "cultural-heritage",
-  "immigrant-refugee",
-  "housing-homelessness"
+  {
+    "slug": "public-art",
+    "name": "Public Art",
+    "description": "Murals, installations, sculptures, street art, public creative works"
+  },
+  {
+    "slug": "community-garden",
+    "name": "Community Garden",
+    "description": "Gardens, urban farming, composting, food growing, green spaces"
+  },
+  {
+    "slug": "youth-education",
+    "name": "Youth & Education",
+    "description": "After-school programs, tutoring, mentoring, youth camps, student support"
+  },
+  {
+    "slug": "music",
+    "name": "Music",
+    "description": "Instruments, bands, concerts, recording, music education, community music"
+  },
+  {
+    "slug": "food-community",
+    "name": "Food & Community",
+    "description": "Cooking, community meals, food security, kitchen programs, nutrition"
+  },
+  {
+    "slug": "film-media",
+    "name": "Film & Media",
+    "description": "Film, documentary, podcast, video, animation, media production"
+  },
+  {
+    "slug": "literary",
+    "name": "Literary",
+    "description": "Books, libraries, reading programs, zines, publishing, writing workshops"
+  },
+  {
+    "slug": "dance",
+    "name": "Dance",
+    "description": "Dance, ballet, movement, choreography, dance education"
+  },
+  {
+    "slug": "theater",
+    "name": "Theater",
+    "description": "Theater, improv, puppets, drama, comedy, stage performance"
+  },
+  {
+    "slug": "environment",
+    "name": "Environment",
+    "description": "Conservation, recycling, sustainability, ecology, tree planting, clean energy"
+  },
+  {
+    "slug": "sports-recreation",
+    "name": "Sports & Recreation",
+    "description": "Bikes, skating, sports leagues, outdoor recreation, fitness, play"
+  },
+  {
+    "slug": "festival-event",
+    "name": "Festival & Event",
+    "description": "Festivals, block parties, parades, celebrations, community gatherings"
+  },
+  {
+    "slug": "technology-stem",
+    "name": "Technology & STEM",
+    "description": "Robotics, coding, maker spaces, digital literacy, science education"
+  },
+  {
+    "slug": "women-girls",
+    "name": "Women & Girls",
+    "description": "Women's empowerment, girls in STEM, gender equity, women's health"
+  },
+  {
+    "slug": "health-wellness",
+    "name": "Health & Wellness",
+    "description": "Mental health, disability support, therapy, wellness, medical access"
+  },
+  {
+    "slug": "children-families",
+    "name": "Children & Families",
+    "description": "Childcare, family support, parenting resources, family activities"
+  },
+  {
+    "slug": "civic-social-justice",
+    "name": "Civic & Social Justice",
+    "description": "Activism, voting, rights, advocacy, community organizing"
+  },
+  {
+    "slug": "cultural-heritage",
+    "name": "Cultural Heritage",
+    "description": "Indigenous culture, preservation, history, museums, ancestral arts"
+  },
+  {
+    "slug": "immigrant-refugee",
+    "name": "Immigrant & Refugee",
+    "description": "Immigrant services, ESL, refugee support, newcomer programs"
+  },
+  {
+    "slug": "housing-homelessness",
+    "name": "Housing & Homelessness",
+    "description": "Shelter, housing, homelessness services, housing advocacy"
+  }
 ]

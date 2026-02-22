@@ -47,9 +47,13 @@ class PromptBuilder
     @categories ||= begin
       custom = @config.dig("category_config", "custom") || []
       disabled = @config.dig("category_config", "disabled") || []
-      base = canonical_categories.reject { |c| disabled.include?(c) }
-      base + custom.map { |c| c["slug"] }
+      base = canonical_categories.reject { |c| disabled.include?(c["slug"]) }
+      base + custom
     end
+  end
+
+  def category_slugs
+    categories.map { |c| c["slug"] }
   end
 
   def model
@@ -224,22 +228,32 @@ class PromptBuilder
     },
   }.freeze
 
-  CATEGORY_TOOL = {
-    "name" => "categorize_application",
-    "description" => "Categorize a grant application with thematic scores and freeform tags",
-    "input_schema" => {
-      "type" => "object",
-      "required" => %w[categories tags primary_category],
-      "properties" => {
-        "primary_category" => { "type" => "string" },
-        "categories" => {
-          "type" => "object",
-          "properties" => JSON.parse(File.read(CATEGORIES_PATH)).each_with_object({}) { |c, h|
-            h[c] = { "type" => "number" }
+  def self.build_category_tool
+    cats = JSON.parse(File.read(CATEGORIES_PATH))
+    {
+      "name" => "categorize_application",
+      "description" => "Categorize a grant application with thematic scores and freeform tags",
+      "input_schema" => {
+        "type" => "object",
+        "required" => %w[categories tags primary_category],
+        "properties" => {
+          "primary_category" => { "type" => "string", "description" => "The single most fitting category slug" },
+          "categories" => {
+            "type" => "object",
+            "description" => "Confidence score 0-1 for each category (omit below 0.2)",
+            "properties" => cats.each_with_object({}) { |c, h|
+              h[c["slug"]] = { "type" => "number", "description" => c["description"] }
+            },
+          },
+          "tags" => {
+            "type" => "array",
+            "items" => { "type" => "string" },
+            "description" => "3-5 freeform keyword tags for themes not in canonical categories",
           },
         },
-        "tags" => { "type" => "array", "items" => { "type" => "string" } },
       },
-    },
-  }.freeze
+    }.freeze
+  end
+
+  CATEGORY_TOOL = build_category_tool
 end
