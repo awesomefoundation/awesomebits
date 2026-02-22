@@ -17,6 +17,8 @@ require "net/http"
 require "uri"
 require "fileutils"
 require_relative "pre_scorer"
+require_relative "prompt_builder"
+require_relative "anthropic_cache"
 
 DATA_DIR = File.expand_path("../../.scratch/data", __dir__)
 DB_PATH = File.join(DATA_DIR, "awesomebits.duckdb")
@@ -26,6 +28,8 @@ MODELS = {
   "sonnet" => "claude-sonnet-4-20250514",
   "opus" => "claude-opus-4-0-20250514",
 }.freeze
+
+CACHE = AnthropicCache.new
 
 # --- DuckDB helper ---
 
@@ -37,118 +41,22 @@ end
 
 # --- Tool schema for structured output ---
 
-SCORE_TOOL = {
-  name: "score_application",
-  description: "Score a grant application and extract structured features",
-  input_schema: {
-    type: "object",
-    required: %w[composite_score reason flags features],
-    properties: {
-      composite_score: {
-        type: "number",
-        description: "Overall score 0.0-1.0"
-      },
-      reason: {
-        type: "string",
-        description: "One-sentence explanation of the score"
-      },
-      flags: {
-        type: "array",
-        items: { type: "string" },
-        description: "Applicable flags: spam, ai_spam, duplicate, incomplete, wrong_location, business_pitch, personal_fundraising, low_effort"
-      },
-      features: {
-        type: "object",
-        required: %w[
-          credibility reliability intimacy self_interest
-          specificity creativity budget_alignment catalytic_potential
-          community_benefit personal_voice
-          ai_spam_likelihood ai_writing_likelihood
-        ],
-        properties: {
-          credibility: { type: "number" },
-          reliability: { type: "number" },
-          intimacy: { type: "number" },
-          self_interest: { type: "number" },
-          specificity: { type: "number" },
-          creativity: { type: "number" },
-          budget_alignment: { type: "number" },
-          catalytic_potential: { type: "number" },
-          community_benefit: { type: "number" },
-          personal_voice: { type: "number" },
-          ai_spam_likelihood: { type: "number" },
-          ai_writing_likelihood: { type: "number" },
-        }
-      }
-    }
-  }
-}.freeze
+# --- Prompt builder instance ---
 
-SYSTEM_PROMPT = <<~PROMPT
-  You are an expert grant application screener for the Awesome Foundation.
-
-  The Awesome Foundation is a global network of volunteer "micro-trustees" who each chip in to award $1,000 grants for awesome projects. No strings attached — the money goes to creative, community-benefiting, unique ideas.
-
-  Score each application using the score_application tool. Extract structured features to help trustees prioritize their review.
-
-  ## Scoring Rubric (composite_score: 0.0 to 1.0)
-
-  - 0.0–0.1: Clear spam, gibberish, test submissions, or AI-generated mass submissions
-  - 0.1–0.3: Real but very weak — business pitches, personal fundraising, vague ideas, wrong location
-  - 0.3–0.5: Borderline — decent concept but missing details, unclear community benefit, generic
-  - 0.5–0.7: Solid — clear project, community benefit, actionable plan, reasonable for $1,000
-  - 0.7–0.9: Strong — creative, specific, well-articulated, exactly what AF funds
-  - 0.9–1.0: Exceptional — innovative, clearly impactful, inspiring, would excite any trustee
-
-  ## Feature Dimensions
-
-  ### Trust Equation: T = (Credibility + Reliability + Intimacy) / (1 + Self-Interest)
-
-  **Numerator (higher = better):**
-  - credibility: Clear budget, realistic plan, relevant expertise. (0=vague, 1=detailed budget + clear execution)
-  - reliability: Track record, prior work, organizational backing. (0=no evidence, 1=strong track record)
-  - intimacy: Connection to community, local ties, authentic voice. Named neighborhoods, specific orgs, personal anecdotes. Sub-city precision (ward/zip) scores higher than city-level. (0=generic, 1=deeply embedded)
-
-  **Denominator (higher = worse):**
-  - self_interest: Money primarily benefits applicant? Living expenses, tuition, business startup, self-payment >50% of budget. (0=community-benefiting, 1=self-serving)
-
-  ### Additional Signals
-
-  - specificity: Concrete details — costs, addresses, timelines, partner names. (0=vague, 1=highly specific)
-  - creativity: How original, unique, fun, or surprising? "The opposite of whimsy is boring, not serious." (0=generic, 1=delightfully novel)
-  - budget_alignment: Can $1K meaningfully complete this? Is it a "drop in the bucket" or perfectly sized? (0=wildly mismatched, 1=perfectly scoped)
-  - catalytic_potential: Does $1K unlock something bigger — prototype, proof-of-concept, career catalyst? "That money was just a cheap way to start a relationship." (0=standalone purchase, 1=unlocks outsized outcomes)
-  - community_benefit: Clear benefit beyond the applicant? Creating new connections scores higher than serving existing community. (0=purely personal, 1=broad community impact + new connections)
-  - personal_voice: Does it sound like a real person? Quirky details, informal language, personal anecdotes = POSITIVE. Over-polished corporate language = NEGATIVE. Brevity is fine — a 3-sentence authentic app beats a 3-paragraph polished one. (0=robotic/templated, 1=authentic and personal)
-
-  ### AI Detection (two separate signals)
-
-  - ai_spam_likelihood: Mass-generated generic proposal — no personal details, no local knowledge, could apply to any grant program unchanged. NOT the same as someone using AI to write about a genuine project. (0=clearly genuine, 1=almost certainly mass-generated)
-  - ai_writing_likelihood: Does the writing exhibit AI patterns? Uniform sentence structure, significance inflation ("pivotal", "groundbreaking"), superficial -ing analyses ("highlighting...", "showcasing..."), promotional language ("vibrant", "nestled", "in the heart of"). This is INFORMATIONAL ONLY — do not factor into composite_score. A genuine project with AI-polished writing is still fundable. (0=clearly human-written, 1=heavily AI-styled)
-
-  ## Flags (include any that apply)
-  spam, ai_spam, duplicate, incomplete, wrong_location, business_pitch, personal_fundraising, low_effort
-
-  ## Key Principles
-  - AF values creativity, community impact, and fun. Weird/quirky is great.
-  - $1,000 is small. Projects should be scoped appropriately.
-  - Professional credentials (degrees, awards, institutions) are neutral-to-negative — AF funds people, not organizations.
-  - Projects "too weird for traditional funders" = MORE awesome, not less.
-  - ~28% of applications are typically review-worthy. Most are generic but not spam.
-PROMPT
-
-# --- Format helpers ---
-
-def format_application(project)
-  parts = ["Title: #{project['title'] || '(empty)'}"]
-  parts << "Chapter: #{project['chapter_name']}" if project["chapter_name"]
-  parts << "About Me: #{project['about_me']}" if project["about_me"].to_s.strip != ""
-  parts << "About Project: #{project['about_project']}" if project["about_project"].to_s.strip != ""
-  parts << "Use for Money: #{project['use_for_money']}" if project["use_for_money"].to_s.strip != ""
-  parts.join("\n")
+def prompt_builder(chapter: nil)
+  PromptBuilder.new(chapter: chapter)
 end
 
-def build_few_shot_examples
+def build_user_message(builder, project, examples_text = nil)
+  app_text = builder.format_application(project)
+  if examples_text
+    "Here are examples of previously funded and hidden applications:\n\n#{examples_text}\n\n---\n\nNow score this application:\n\n#{app_text}"
+  else
+    "Score this application:\n\n#{app_text}"
+  end
+end
+
+def build_few_shot_examples(builder)
   labeled = duckdb(<<~SQL)
     SELECT cv.*, c.name as chapter_name
     FROM chicago_validation cv
@@ -156,19 +64,10 @@ def build_few_shot_examples
     ORDER BY actual_label, hidden_reason
   SQL
 
-  funded = labeled.select { |p| p["actual_label"] == "funded" }.first(15)
-  hidden = labeled.select { |p| p["actual_label"] == "hidden" }.first(15)
+  funded = labeled.select { |p| p["actual_label"] == "funded" }
+  hidden = labeled.select { |p| p["actual_label"] == "hidden" }
 
-  text = "## EXAMPLES OF FUNDED (WINNING) APPLICATIONS\n\n"
-  funded.each { |p| text += "### Project #{p['id']} — FUNDED\n#{format_application(p)}\n\n" }
-
-  text += "## EXAMPLES OF HIDDEN (REJECTED/FILTERED) APPLICATIONS\n\n"
-  hidden.each do |p|
-    reason = p["hidden_reason"] ? " (reason: #{p['hidden_reason']})" : ""
-    text += "### Project #{p['id']} — HIDDEN#{reason}\n#{format_application(p)}\n\n"
-  end
-
-  text
+  builder.few_shot_text(funded, hidden)
 end
 
 # --- Commands ---
@@ -264,32 +163,45 @@ def cmd_pre_score
   puts "  Apps with empty fields: #{empty}/#{results.length}"
 end
 
-def cmd_build_batch(model_alias:)
+def cmd_build_batch(model_alias:, chapter: nil, no_fewshot: false)
+  builder = prompt_builder(chapter: chapter)
   model = MODELS[model_alias] || model_alias
   puts "Building batch for model: #{model} (#{model_alias})"
+  puts "  Chapter: #{chapter || 'default'}, few-shot: #{!no_fewshot}"
 
-  examples_text = build_few_shot_examples
+  examples_text = no_fewshot ? nil : build_few_shot_examples(builder)
   projects = duckdb("SELECT * FROM sample_400")
   puts "  #{projects.length} projects to score"
 
-  lines = projects.map do |p|
-    {
+  # Skip cached requests
+  skipped = 0
+  lines = []
+  projects.each do |p|
+    request_params = {
+      model: model,
+      system: builder.system_prompt,
+      tools: [builder.score_tool],
+      messages: [{ role: "user", content: build_user_message(builder, p, examples_text) }],
+    }
+
+    if CACHE.cached?(request_params)
+      skipped += 1
+      next
+    end
+
+    lines << {
       custom_id: "project-#{p['id']}",
       params: {
         model: model,
         max_tokens: 1024,
-        system: SYSTEM_PROMPT,
-        tools: [SCORE_TOOL],
+        system: builder.system_prompt,
+        tools: [builder.score_tool],
         tool_choice: { type: "tool", name: "score_application" },
-        messages: [
-          {
-            role: "user",
-            content: "Here are examples of previously funded and hidden applications:\n\n#{examples_text}\n\n---\n\nNow score this application:\n\n#{format_application(p)}"
-          }
-        ]
-      }
+        messages: [{ role: "user", content: build_user_message(builder, p, examples_text) }],
+      },
     }.to_json
   end
+  puts "  Skipped #{skipped} cached requests" if skipped > 0
 
   output = File.join(DATA_DIR, "batch-#{model_alias}.jsonl")
   File.write(output, lines.join("\n") + "\n")
@@ -443,7 +355,10 @@ when "pre-score"
 when "build-batch"
   i = ARGV.index("--model")
   model = i ? ARGV[i + 1] : "haiku"
-  cmd_build_batch(model_alias: model)
+  i = ARGV.index("--chapter")
+  chapter = i ? ARGV[i + 1] : nil
+  no_fewshot = ARGV.include?("--no-fewshot")
+  cmd_build_batch(model_alias: model, chapter: chapter, no_fewshot: no_fewshot)
 
 when "submit"
   i = ARGV.index("--input")
@@ -472,7 +387,7 @@ else
     Commands:
       build-sample   Build stratified 400-app sample in DuckDB
       pre-score      Run PreScorer on sample (deterministic features)
-      build-batch    Build batch JSONL [--model haiku|sonnet|opus]
+      build-batch    Build batch JSONL [--model haiku|sonnet|opus] [--chapter name] [--no-fewshot]
       submit         Submit batch [--input path.jsonl]
       submit-all     Submit all built batches (haiku, sonnet, opus)
       results        Fetch results [--batch-id <id>]
