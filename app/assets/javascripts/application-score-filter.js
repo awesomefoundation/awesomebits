@@ -22,3 +22,12 @@ $(document).click(function(e) {
     $('a.score-selection').removeClass('expanded');
   }
 });
+
+/* Show/hide score badges — purely client-side toggle */
+$('#show-scores').on('change', function() {
+  if ($(this).is(':checked')) {
+    $('.signal-score').show();
+  } else {
+    $('.signal-score').hide();
+  }
+});

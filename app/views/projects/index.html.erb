@@ -40,12 +40,12 @@
       </div>
 
       <div class="input toggle">
-        <input type="checkbox" id="show-scores" name="show_scores" value="1" <%= 'checked' if @show_scores %>>
+        <input type="checkbox" id="show-scores">
         <label for="show-scores">Show scores</label>
       </div>
 
       <div class="score-filter-wrapper">
-        <% sort_labels = { nil => "Newest first", "score_desc" => "Score, highest", "score_asc" => "Score, lowest", "latest" => "Newest first", "earliest" => "Oldest first", "random" => "Random" } %>
+        <% sort_labels = { nil => "Latest", "score_desc" => "Score, highest", "score_asc" => "Score, lowest", "latest" => "Latest", "earliest" => "Earliest", "random" => "Random" } %>
         <a href="#" class="score-selection">
           <span><%= sort_labels[@sort_mode] || "Default order" %></span>
           <span class="arrow"></span>
