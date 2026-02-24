@@ -45,7 +45,7 @@
       </div>
 
       <div class="score-filter-wrapper">
-        <% sort_labels = { nil => "Default order", "score_desc" => "Score ↓ highest", "score_asc" => "Score ↑ lowest", "latest" => "Latest first", "earliest" => "Earliest first", "random" => "Random" } %>
+        <% sort_labels = { nil => "Newest first", "score_desc" => "Score, highest", "score_asc" => "Score, lowest", "latest" => "Newest first", "earliest" => "Oldest first", "random" => "Random" } %>
         <a href="#" class="score-selection">
           <span><%= sort_labels[@sort_mode] || "Default order" %></span>
           <span class="arrow"></span>
