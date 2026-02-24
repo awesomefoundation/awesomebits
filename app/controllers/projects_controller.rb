@@ -46,6 +46,7 @@ class ProjectsController < ApplicationController
       project_filter.sort_by_date(:desc)
     when "random"
       project_filter.sort_by_random
+    # else: default sort (created_at DESC) applied by ProjectFilter#initialize
     end
 
     @q = params[:q].to_s.strip

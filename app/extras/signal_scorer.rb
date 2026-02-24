@@ -197,7 +197,13 @@ class SignalScorer
     response = http.request(request)
 
     unless response.code.to_i == 200
-      raise ScoringError, "Anthropic API error #{response.code}: #{response.body[0..200]}"
+      # Log only status code and error type — don't leak response body which may contain user content
+      error_type = begin
+        JSON.parse(response.body).dig("error", "type")
+      rescue
+        "unknown"
+      end
+      raise ScoringError, "Anthropic API error #{response.code} (#{error_type})"
     end
 
     JSON.parse(response.body)
@@ -206,13 +212,20 @@ class SignalScorer
   def persist_score!
     return unless @score_result
 
-    metadata = project.metadata || {}
-    metadata["signal_score"] = @score_result.merge(
+    score_data = @score_result.merge(
       "scored_at" => Time.current.iso8601,
       "model" => @config.dig("scoring_config", "model") || DEFAULT_MODEL,
       "variant" => "live"
     )
-    project.update_column(:metadata, metadata)
+
+    # Atomic JSONB merge — avoids lost updates from concurrent metadata writes.
+    # Uses || operator to merge into existing metadata rather than replacing it.
+    Project.where(id: project.id).update_all(
+      ["metadata = COALESCE(metadata, '{}'::jsonb) || jsonb_build_object('signal_score', ?::jsonb), updated_at = ?",
+       score_data.to_json, Time.current]
+    )
+
+    project.reload
   end
 
   def default_system_prompt

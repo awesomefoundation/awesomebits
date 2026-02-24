@@ -34,9 +34,12 @@ class ProjectFilter
     self
   end
 
+  SORT_DIRECTIONS = { asc: "ASC", desc: "DESC" }.freeze
+
   def sort_by_signal_score(direction = :desc)
+    sql_dir = SORT_DIRECTIONS.fetch(direction, "DESC")
     @projects = @projects.reorder(
-      Arel.sql("COALESCE((metadata->'signal_score'->>'composite_score')::float, -1) #{direction == :asc ? 'ASC' : 'DESC'}")
+      Arel.sql("COALESCE((metadata->'signal_score'->>'composite_score')::float, -1) #{sql_dir}")
     )
     self
   end

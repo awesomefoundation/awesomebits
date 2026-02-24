@@ -2,9 +2,9 @@
 
 $('a.score-selection').on('click', function(event) {
   event.preventDefault();
-  var $wrapper = $(this).closest('.score-filter-wrapper');
-  var $selector = $wrapper.find('.score-selector');
-  var isOpen = $selector.hasClass('expanded');
+  const $wrapper = $(this).closest('.score-filter-wrapper');
+  const $selector = $wrapper.find('.score-selector');
+  const isOpen = $selector.hasClass('expanded');
 
   // Close all dropdowns first
   $('.score-selector').removeClass('expanded');
