@@ -39,19 +39,25 @@
         <%= label_tag "funded", t(".funded-filter") %>
       </div>
 
+      <%
+        sort_cycle = { nil => "score_desc", "score_desc" => "score_asc", "score_asc" => nil }
+        next_sort = sort_cycle[@signal_score_sort]
+        sort_labels = { nil => "Score ↕", "score_desc" => "Score ↓", "score_asc" => "Score ↑" }
+      %>
       <div class="input toggle">
-        <%= check_box_tag "sort", "score", @signal_score_sort, id: "sort-by-score" %>
-        <label for="sort-by-score">Sort by score</label>
+        <%= link_to sort_labels[@signal_score_sort],
+            url_for(request.query_parameters.merge(sort: next_sort).compact_blank),
+            class: "score-sort-toggle #{@signal_score_sort ? 'active' : ''}" %>
       </div>
 
       <div class="score-filter-wrapper">
-        <% score_labels = { 0 => "All apps", 0.15 => "Hide low signal", 0.3 => "Borderline+ (≥0.3)", 0.5 => "Solid+ (≥0.5)", 0.7 => "Strong only (≥0.7)" } %>
+        <% score_labels_map = { 0 => "All apps", 0.15 => "Hide low signal", 0.3 => "Borderline+ (≥0.3)", 0.5 => "Solid+ (≥0.5)", 0.7 => "Strong only (≥0.7)" } %>
         <a href="#" class="score-selection">
-          <span><%= score_labels[@signal_score_min] || "All apps" %></span>
+          <span><%= score_labels_map[@signal_score_min] || "All apps" %></span>
           <span class="arrow"></span>
         </a>
         <ol class="score-selector">
-          <% score_labels.each do |val, label| %>
+          <% score_labels_map.each do |val, label| %>
             <li><%= link_to label, url_for(request.query_parameters.merge(score_min: val)) %></li>
           <% end %>
         </ol>

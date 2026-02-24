@@ -1,10 +1,32 @@
 // Signal Score — AI-assisted grant pre-screening
 // Matches existing awesomebits design language
 
-// Score filter dropdown — mirrors chapter-selection pattern
+// Score sort toggle — sits inline with checkboxes
+a.score-sort-toggle {
+  display: inline-block;
+  padding: 4px 10px;
+  background: rgb(230,230,230);
+  border: 1px solid rgb(190,190,190);
+  border-radius: 3px;
+  color: rgb(100,100,100);
+  font: normal 12px/18px $sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover { background: rgb(220,220,220); }
+
+  &.active {
+    background: rgb(210,210,210);
+    color: rgb(55,55,55);
+    border-color: rgb(170,170,170);
+  }
+}
+
+// Score filter dropdown — mirrors chapter-selection pattern, inline with toggles
 .score-filter-wrapper {
   position: relative;
   display: inline-block;
+  vertical-align: middle;
 
   a.score-selection {
     background: rgb(230,230,230);

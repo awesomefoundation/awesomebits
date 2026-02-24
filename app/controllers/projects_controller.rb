@@ -27,6 +27,19 @@ class ProjectsController < ApplicationController
       project_filter.funded
     end
 
+    # Signal Score filtering — default excludes low-signal apps (≤0.15)
+    @signal_score_min = params.key?(:score_min) ? params[:score_min].to_f : 0.15
+    @signal_score_sort = params[:sort] if %w[score_desc score_asc].include?(params[:sort])
+
+    if @signal_score_min > 0
+      project_filter.signal_score_above(@signal_score_min)
+    end
+
+    if @signal_score_sort
+      direction = @signal_score_sort == "score_asc" ? :asc : :desc
+      project_filter.sort_by_signal_score(direction)
+    end
+
     @q = params[:q].to_s.strip
 
     unless @q.blank?
