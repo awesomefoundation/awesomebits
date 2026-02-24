@@ -18,9 +18,10 @@
   reason = signal_score["reason"]
   tags = signal_score["tags"] || []
   features = signal_score["features"] || {}
+  always_show = local_assigns[:always_show]
 %>
 
-<div class="signal-score <%= color_class %>" style="display:none">
+<div class="signal-score <%= color_class %>" style="<%= 'display:none' unless always_show %>">
   <div class="signal-score__header">
     <span class="signal-score__value"><%= score_pct %></span>
     <span class="signal-score__label"><%= label %></span>
