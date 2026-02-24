@@ -3,7 +3,7 @@
 require "spec_helper"
 
 describe SignalScoreConfig do
-  it { is_expected.to belong_to(:chapter).optional }
+  it { is_expected.to belong_to(:chapter).class_name("Chapter") }
 
   describe "validations" do
     it "allows one global default (chapter_id = nil)" do

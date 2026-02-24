@@ -14,6 +14,8 @@ require "sucker_punch"
 class ScoreGrantJob
   include SuckerPunch::Job
 
+  MAX_RETRIES = 3
+
   def perform(project_id)
     ActiveRecord::Base.connection_pool.with_connection do
       # Atomic claim: only proceed if no score exists yet.
@@ -28,13 +30,24 @@ class ScoreGrantJob
       # Skip if scoring is disabled for this chapter
       config = SignalScoreConfig.resolve(project.chapter) rescue {}
       unless config["enabled"]
-        # Release the claim
-        Project.where(id: project_id).update_all(
-          "metadata = metadata - 'signal_score'"
-        )
+        release_claim!(project_id)
         return
       end
 
+      score_with_retries!(project, project_id)
+    rescue => e
+      Rails.logger.error("[SignalScore] Unexpected error scoring project ##{project_id}: #{e.class}: #{e.message}")
+      release_claim!(project_id)
+    end
+  end
+
+  private
+
+  def score_with_retries!(project, project_id)
+    attempts = 0
+
+    begin
+      attempts += 1
       scorer = SignalScorer.new(project)
       scorer.score!
 
@@ -44,26 +57,22 @@ class ScoreGrantJob
       )
     rescue SignalScorer::ScoringError => e
       Rails.logger.error("[SignalScore] Failed to score project ##{project_id}: #{e.message}")
-      # Retry with exponential backoff (max 3 attempts)
-      @retry_count = (@retry_count || 0) + 1
-      if @retry_count < 3
-        sleep_time = 2**@retry_count # 2s, 4s
-        Rails.logger.info("[SignalScore] Retrying project ##{project_id} in #{sleep_time}s (attempt #{@retry_count + 1}/3)")
+
+      if attempts < MAX_RETRIES
+        sleep_time = 2**attempts # 2s, 4s
+        Rails.logger.info("[SignalScore] Retrying project ##{project_id} in #{sleep_time}s (attempt #{attempts + 1}/#{MAX_RETRIES})")
         sleep(sleep_time)
         retry
-      else
-        # Clear the "scoring" claim so the project can be retried later
-        Project.where(id: project_id)
-          .where("metadata->'signal_score'->>'status' = 'scoring'")
-          .update_all("metadata = metadata - 'signal_score'")
-        Rails.logger.error("[SignalScore] Gave up on project ##{project_id} after 3 attempts")
       end
-    rescue => e
-      Rails.logger.error("[SignalScore] Unexpected error scoring project ##{project_id}: #{e.class}: #{e.message}")
-      # Clear claim on unexpected errors
-      Project.where(id: project_id)
-        .where("metadata->'signal_score'->>'status' = 'scoring'")
-        .update_all("metadata = metadata - 'signal_score'")
+
+      Rails.logger.error("[SignalScore] Gave up on project ##{project_id} after #{MAX_RETRIES} attempts")
+      release_claim!(project_id)
     end
+  end
+
+  def release_claim!(project_id)
+    Project.where(id: project_id)
+      .where("metadata->'signal_score'->>'status' = 'scoring'")
+      .update_all("metadata = metadata - 'signal_score'")
   end
 end

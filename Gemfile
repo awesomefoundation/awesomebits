@@ -78,6 +78,7 @@ group :test do
   gem 'shoulda-matchers', '~> 3'
   gem 'timecop'
   gem 'turnip'
+  gem 'webmock'
 end
 
 group :staging, :production do
