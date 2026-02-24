@@ -23,11 +23,24 @@ $(document).click(function(e) {
   }
 });
 
-/* Show/hide score badges — purely client-side toggle */
-$('#show-scores').on('change', function() {
-  if ($(this).is(':checked')) {
+/* Show/hide score badges — client-side toggle with localStorage persistence */
+(function() {
+  var STORAGE_KEY = 'awesomebits-show-scores';
+  var $checkbox = $('#show-scores');
+
+  // Restore saved state on page load
+  if (localStorage.getItem(STORAGE_KEY) === 'true') {
+    $checkbox.prop('checked', true);
     $('.signal-score').show();
-  } else {
-    $('.signal-score').hide();
   }
-});
+
+  $checkbox.on('change', function() {
+    var checked = $(this).is(':checked');
+    localStorage.setItem(STORAGE_KEY, checked);
+    if (checked) {
+      $('.signal-score').show();
+    } else {
+      $('.signal-score').hide();
+    }
+  });
+})();

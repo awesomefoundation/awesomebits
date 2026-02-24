@@ -29,6 +29,8 @@
     </nav>
 
     <form accept-charset="UTF-8" action="<%= chapter_projects_path(@chapter) %>" class="simple_form filter flexbox horizontal wrap" method="get">
+      <% if @sort_mode.present? %><input type="hidden" name="sort" value="<%= @sort_mode %>"><% end %>
+      <% if @signal_score_min.present? && @signal_score_min > 0 %><input type="hidden" name="score_min" value="<%= @signal_score_min %>"><% end %>
       <div class="input short-list-toggle">
         <input class="" id="my-short-list" name="short_list" <%= checked_attribute_if(@short_listed) %> type="checkbox">
         <label for="my-short-list"><%= t ".short-list-filter" %></label>
