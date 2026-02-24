@@ -39,6 +39,24 @@
         <%= label_tag "funded", t(".funded-filter") %>
       </div>
 
+      <div class="input toggle">
+        <%= check_box_tag "sort", "score", @signal_score_sort, id: "sort-by-score" %>
+        <label for="sort-by-score">Sort by score</label>
+      </div>
+
+      <div>
+        <div class="input string optional date-range">
+          <label class="string optional" for="score_min">Min score</label>
+          <select name="score_min" id="score_min" class="string optional prefilled" style="height: 30px; width: 160px;">
+            <option value="0" <%= 'selected' if @signal_score_min == 0 %>>All apps</option>
+            <option value="0.15" <%= 'selected' if @signal_score_min == 0.15 %>>Low signal (&le;0.15)</option>
+            <option value="0.3" <%= 'selected' if @signal_score_min == 0.3 %>>Borderline+ (&ge;0.3)</option>
+            <option value="0.5" <%= 'selected' if @signal_score_min == 0.5 %>>Solid+ (&ge;0.5)</option>
+            <option value="0.7" <%= 'selected' if @signal_score_min == 0.7 %>>Strong only (&ge;0.7)</option>
+          </select>
+        </div>
+      </div>
+
       <div>
         <div class="input string optional date-range">
           <label class="string optional" for="filter_start"><%= t ".start-date" %></label>

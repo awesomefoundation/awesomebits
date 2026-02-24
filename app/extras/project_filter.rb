@@ -29,6 +29,18 @@ class ProjectFilter
     self
   end
 
+  def signal_score_above(threshold)
+    @projects = @projects.where("(metadata->'signal_score'->>'composite_score')::float >= ?", threshold)
+    self
+  end
+
+  def sort_by_signal_score(direction = :desc)
+    @projects = @projects.reorder(
+      Arel.sql("COALESCE((metadata->'signal_score'->>'composite_score')::float, -1) #{direction == :asc ? 'ASC' : 'DESC'}")
+    )
+    self
+  end
+
   def not_pending_moderation
     @projects = @projects.left_joins(:project_moderation).where(project_moderations: {id: nil}).or(@projects.merge(ProjectModeration.approved))
     self
