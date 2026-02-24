@@ -62,6 +62,44 @@ AWS_SECRET_ACCESS_KEY=YYY
 AWS_BUCKET=your-bucket-name
 ```
 
+### Signal Score (AI-Assisted Pre-Screening)
+
+Signal Score uses the Anthropic API to pre-screen grant applications, helping trustees
+prioritize their review. Scores are advisory only and never auto-hide applications.
+
+**Setup:**
+
+1. Get an Anthropic API key from [console.anthropic.com](https://console.anthropic.com)
+2. Add it to `.env.local` (create this file if it doesn't exist — it's gitignored):
+
+```shell
+ANTHROPIC_API_KEY=sk-ant-...
+```
+
+3. Enable scoring for a chapter by inserting a config row:
+
+```sql
+INSERT INTO signal_score_configs (chapter_id, scoring_config, prompt_overrides, category_config, enabled, created_at, updated_at)
+VALUES (NULL, '{"model": "claude-haiku-4-5-20251001"}'::jsonb, '{}'::jsonb, '{}'::jsonb, true, NOW(), NOW());
+```
+
+Set `chapter_id` to NULL for a global default, or a specific chapter ID for per-chapter config.
+
+**How it works:**
+- New applications are scored asynchronously via `ScoreGrantJob` (SuckerPunch)
+- Each score costs ~$0.01 via the Anthropic Haiku model (~2 seconds per app)
+- Results are stored in `projects.metadata['signal_score']` as JSONB
+- Trustees can filter by score threshold and sort by score on the dashboard
+- Score badges are hidden by default — trustees opt in via "Show scores" checkbox
+- The scoring rubric uses a Trust Equation framework: `T = (C + R + I) / (1 + S)`
+
+**Dashboard controls:**
+- **Show scores** — toggle score badges on individual applications
+- **Sort** — Latest, Earliest, Score highest, Score lowest, Random (stable hash)
+- **Filter** — All apps, Hide low signal (default), Borderline+, Solid+, Strong only
+
+**Cost at scale:** ~$0.01/app. A chapter receiving 50 apps/month = ~$0.50/month.
+
 Subdomains
 ----------
 

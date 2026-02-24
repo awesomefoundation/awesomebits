@@ -1,7 +1,10 @@
 .ruby-gemset
 .bundle
 .env
+.env.local
 .envrc
+.scratch/
+context/memory/.basic-memory/
 db/*.sqlite3
 log/*.log
 tmp/

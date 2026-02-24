@@ -1,0 +1,60 @@
+<%
+  score = signal_score["composite_score"].to_f
+  score_pct = (score * 100).round
+  color_class = case score
+                when 0.7..1.0 then "signal-score--strong"
+                when 0.5...0.7 then "signal-score--solid"
+                when 0.3...0.5 then "signal-score--borderline"
+                else "signal-score--weak"
+                end
+  label = case score
+          when 0.7..1.0 then "Strong"
+          when 0.5...0.7 then "Solid"
+          when 0.3...0.5 then "Borderline"
+          when 0.1...0.3 then "Weak"
+          else "Low Signal"
+          end
+  category = signal_score["primary_category"]&.gsub(/[-_]/, " ")&.titleize
+  reason = signal_score["reason"]
+  tags = signal_score["tags"] || []
+  features = signal_score["features"] || {}
+  always_show = local_assigns[:always_show]
+%>
+
+<div class="signal-score <%= color_class %>" style="<%= 'display:none' unless always_show %>">
+  <div class="signal-score__header">
+    <span class="signal-score__value"><%= score_pct %></span>
+    <span class="signal-score__label"><%= label %></span>
+    <% if category.present? %>
+      <span class="signal-score__category"><%= category %></span>
+    <% end %>
+    <% tags.first(3).each do |tag| %>
+      <span class="signal-score__tag"><%= tag %></span>
+    <% end %>
+  </div>
+
+  <% if reason.present? %>
+    <p class="signal-score__reason"><%= reason %></p>
+  <% end %>
+
+  <details class="signal-score__details">
+    <summary>Scoring factors</summary>
+    <div class="signal-score__features">
+      <% %w[credibility reliability intimacy self_interest specificity creativity budget_alignment catalytic_potential community_benefit personal_voice].each do |feat| %>
+        <% val = features[feat].to_f %>
+        <% feat_class = feat == "self_interest" ? (val > 0.5 ? "signal-score__feat--bad" : "signal-score__feat--good") : (val >= 0.5 ? "signal-score__feat--good" : "signal-score__feat--bad") %>
+        <div class="signal-score__feat">
+          <span class="signal-score__feat-name"><%= feat.gsub("_", " ") %></span>
+          <span class="signal-score__feat-val <%= feat_class %>"><%= "%.1f" % val %></span>
+        </div>
+      <% end %>
+    </div>
+    <% ai_spam = features["ai_spam_likelihood"].to_f %>
+    <% ai_write = features["ai_writing_likelihood"].to_f %>
+    <% if ai_spam > 0.3 || ai_write > 0.5 %>
+      <p class="signal-score__ai-warning">
+        ⚠️ AI signals: spam=<%= "%.1f" % ai_spam %>, writing=<%= "%.1f" % ai_write %>
+      </p>
+    <% end %>
+  </details>
+</div>

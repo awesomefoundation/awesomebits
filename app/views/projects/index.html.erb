@@ -29,6 +29,8 @@
     </nav>
 
     <form accept-charset="UTF-8" action="<%= chapter_projects_path(@chapter) %>" class="simple_form filter flexbox horizontal wrap" method="get">
+      <% if @sort_mode.present? %><input type="hidden" name="sort" value="<%= @sort_mode %>"><% end %>
+      <% if @signal_score_min.present? && @signal_score_min > 0 %><input type="hidden" name="score_min" value="<%= @signal_score_min %>"><% end %>
       <div class="input short-list-toggle">
         <input class="" id="my-short-list" name="short_list" <%= checked_attribute_if(@short_listed) %> type="checkbox">
         <label for="my-short-list"><%= t ".short-list-filter" %></label>
@@ -37,6 +39,37 @@
       <div class="input funded-toggle">
         <%= check_box_tag "funded", nil, params[:funded].present? %>
         <%= label_tag "funded", t(".funded-filter") %>
+      </div>
+
+      <div class="input toggle">
+        <input type="checkbox" id="show-scores">
+        <label for="show-scores">Show scores</label>
+      </div>
+
+      <div class="score-filter-wrapper">
+        <% sort_labels = { nil => "Latest", "score_desc" => "Score, highest", "score_asc" => "Score, lowest", "latest" => "Latest", "earliest" => "Earliest", "random" => "Random" } %>
+        <a href="#" class="score-selection">
+          <span><%= sort_labels[@sort_mode] || "Default order" %></span>
+          <span class="arrow"></span>
+        </a>
+        <ol class="score-selector">
+          <% sort_labels.each do |val, label| %>
+            <li><%= link_to label, url_for(request.query_parameters.merge(sort: val).compact_blank) %></li>
+          <% end %>
+        </ol>
+      </div>
+
+      <div class="score-filter-wrapper">
+        <% score_labels_map = { 0 => "All apps", 0.15 => "Hide low signal", 0.3 => "Borderline+ (≥0.3)", 0.5 => "Solid+ (≥0.5)", 0.7 => "Strong only (≥0.7)" } %>
+        <a href="#" class="score-selection">
+          <span><%= score_labels_map[@signal_score_min] || "All apps" %></span>
+          <span class="arrow"></span>
+        </a>
+        <ol class="score-selector">
+          <% score_labels_map.each do |val, label| %>
+            <li><%= link_to label, url_for(request.query_parameters.merge(score_min: val)) %></li>
+          <% end %>
+        </ol>
       </div>
 
       <div>
