@@ -39,15 +39,22 @@
         <%= label_tag "funded", t(".funded-filter") %>
       </div>
 
-      <%
-        sort_cycle = { nil => "score_desc", "score_desc" => "score_asc", "score_asc" => nil }
-        next_sort = sort_cycle[@signal_score_sort]
-        sort_labels = { nil => "Score ↕", "score_desc" => "Score ↓", "score_asc" => "Score ↑" }
-      %>
       <div class="input toggle">
-        <%= link_to sort_labels[@signal_score_sort],
-            url_for(request.query_parameters.merge(sort: next_sort).compact_blank),
-            class: "score-sort-toggle #{@signal_score_sort ? 'active' : ''}" %>
+        <input type="checkbox" id="show-scores" name="show_scores" value="1" <%= 'checked' if @show_scores %>>
+        <label for="show-scores">Show scores</label>
+      </div>
+
+      <div class="score-filter-wrapper">
+        <% sort_labels = { nil => "Default order", "score_desc" => "Score ↓ highest", "score_asc" => "Score ↑ lowest", "latest" => "Latest first", "earliest" => "Earliest first", "random" => "Random" } %>
+        <a href="#" class="score-selection">
+          <span><%= sort_labels[@sort_mode] || "Default order" %></span>
+          <span class="arrow"></span>
+        </a>
+        <ol class="score-selector">
+          <% sort_labels.each do |val, label| %>
+            <li><%= link_to label, url_for(request.query_parameters.merge(sort: val).compact_blank) %></li>
+          <% end %>
+        </ol>
       </div>
 
       <div class="score-filter-wrapper">

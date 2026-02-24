@@ -1,30 +1,7 @@
 // Signal Score — AI-assisted grant pre-screening
 // Matches existing awesomebits design language
 
-// Score sort toggle — matches the checkbox toggle pattern exactly
-// The .toggle class in _projects-index.scss handles float/margin/label styling.
-// We just need to style the link inside it to look like the checkbox labels.
-form.filter div.toggle a.score-sort-toggle {
-  background: rgb(230,230,230);
-  border: 1px solid rgb(190,190,190);
-  border-radius: 3px;
-  color: rgb(55,55,55);
-  display: block;
-  font: normal 12px $sans-serif;
-  height: 21px;
-  margin: 0;
-  padding: 8px 12px 0 12px;
-  text-decoration: none;
-  text-shadow: 0 1px rgba(255,255,255, 0.8);
-
-  &:hover { background: rgb(220,220,220); }
-
-  &.active {
-    background: rgb(220,220,220);
-  }
-}
-
-// Score filter dropdown — floated like the other filter controls
+// Score filter dropdowns — floated like the other filter controls
 .score-filter-wrapper {
   float: left;
   margin-right: 10px;
