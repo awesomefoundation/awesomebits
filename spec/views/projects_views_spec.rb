@@ -30,6 +30,7 @@ describe 'projects/show' do
 end
 
 describe 'projects/_form' do
+  let(:any_chapter) { Chapter.any_chapter }
   let!(:active_chapter) { FactoryBot.create(:chapter) }
   let!(:inactive_chapter) { FactoryBot.create(:inactive_chapter) }
 
@@ -41,9 +42,25 @@ describe 'projects/_form' do
     it 'does not show inactive chapters' do
       assign(:project, Project.new)
 
-      render :template => 'projects/new'
+      render template: 'projects/new'
       expect(rendered).to     have_content(active_chapter.name)
       expect(rendered).not_to have_content(inactive_chapter.name)
+    end
+
+    it 'does not show the Any chapter when it is inactive' do
+      any_chapter.update!(inactive_at: Time.zone.now)
+      assign(:project, Project.new)
+
+      render template: 'projects/new'
+      expect(rendered).to have_selector("select#project_chapter_id option[value='#{active_chapter.id}']", text: active_chapter.name)
+      expect(rendered).not_to have_selector("select#project_chapter_id option[value='#{any_chapter.id}']", text: any_chapter.name)
+    end
+
+    it 'shows the Any chapter when it is active' do
+      assign(:project, Project.new)
+
+      render template: 'projects/new'
+      expect(rendered).to have_selector("select#project_chapter_id option[value='#{any_chapter.id}']", text: any_chapter.name)
     end
   end
 

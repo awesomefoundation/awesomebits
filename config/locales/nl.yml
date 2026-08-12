@@ -205,6 +205,7 @@ nl:
       share-on-facebook: Deel op Facebook
       i-just-applied-tweet: Ik heb zojuist een subsidie aangevraagd bij %{twitter}!
     form:
+      prompt: "- Selecteer -"
       save: Opslaan
       image-notes: Upload tot 5 afbeeldingen die de trustees helpen je project beter te begrijpen. Als je een foutmelding krijgt, probeer het dan opnieuw met een kleiner bestand.
       use-classic-uploader: Schakel over naar de klassieke uploader
