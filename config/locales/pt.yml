@@ -166,6 +166,7 @@ pt:
       share-on-facebook: Compartilhe no Facebook
       i-just-applied-tweet: Acabo de me inscrever em um edital de %{twitter}!
     form:
+      prompt: "- Selecione -"
       save: Salvar
       image-notes: A primeira imagem é usada como imagem de capa. As imagens serão redimensionadas para %{dimensions} pixels. Se você receber uma mensagem de erro, por favor tente novamente com menos arquivos ou arquivos menores.
       use-classic-uploader: Troque para o upload clássico

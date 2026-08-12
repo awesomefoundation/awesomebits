@@ -161,6 +161,7 @@ fr:
     success:
       title: Merci pour votre candidature !
     form:
+      prompt: "- Sélectionner -"
       save: Sauvegarder
       image-notes: "L'image d'en haut sert d'image de couverture. Les images seront redimensionnées à %{dimensions} pixels. En cas d'erreur, merci de réessayer avec de plus petites images."
       use-classic-uploader: "Passer au chargeur de fichiers classique"

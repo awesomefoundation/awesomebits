@@ -205,6 +205,7 @@ en:
       share-on-facebook: Share on Facebook
       i-just-applied-tweet: I just applied for a grant from %{twitter}!
     form:
+      prompt: "- Select -"
       save: Save
       image-notes: Upload up to 5 images that will help the trustees better understand your project. If you get an error message, please try again with a smaller file.
       use-classic-uploader: Switch to the classic uploader
