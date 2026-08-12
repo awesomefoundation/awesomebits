@@ -4,7 +4,7 @@
   <%= form.input :chapter_id, as: :hidden %>
 <% else %>
   <div class="project-section chapter-select">
-    <%= form.input :chapter_id, collection:Chapter.select_data(@project.new_record? ? :active : :all, include_any: Chapter.any_chapter.active?), prompt: t(".prompt"), as: :grouped_select, group_method: :chapters, group_label_method: :name, label_method: :name %>
+    <%= form.input :chapter_id, collection: Chapter.select_data(@project.new_record? ? :active : :all, include_any: Chapter.any_chapter.active?), prompt: t(".prompt"), as: :grouped_select, group_method: :chapters, group_label_method: :name, label_method: :name %>
   </div>
 <% end %>
 
