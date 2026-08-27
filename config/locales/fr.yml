@@ -220,6 +220,32 @@ fr:
       title_tag: A Propos
       meta_description: A Propos de l'Awesome Foundation
       meta_keywords:
+    start_a_chapter:
+      title_tag: Créer une branche
+      meta_description: Créer une branche de l'Awesome Foundation
+      meta_keywords:
+      headline: Tout le monde peut créer une branche de l'Awesome Foundation
+      intro: |
+        L'Awesome Foundation n'est pas vraiment une fondation - c'est un mouvement citoyen ! Notre communauté internationale réunit des personnes formidables qui ont décidé de rendre leurs communautés un peu plus géniales. Elles s'organisent pour constituer, lancer et animer leurs propres branches.
+
+        Nous ne sommes probablement pas objectifs, mais nous trouvons cela très amusant. Les branches ont rendu possibles des projets incroyables partout dans le monde, comme [construire un hamac géant](/en/projects/188-the-big-hammock), [installer des balançoires dans des lieux publics](/en/projects/2598-swings), [aider des chiens à jouer au poker](/en/projects/50233-dogs-playing-poker-live) ou [permettre à n'importe qui d'être Indiana Jones pendant une journée](/en/projects/5071-indiana-jones-and-the-alley-of-doom).
+
+        **Cela vous semble génial ? Lisez la suite pour savoir comment créer votre propre branche !**
+      photo_alt_0: Deux personnes de la branche de Singapour posent devant une bannière indiquant "Awesome Wanted"
+      photo_alt_1: Des membres regardent une présentation lors du sommet mondial 2019, avec les mots "Celebrating 10 Years" projetés derrière l'intervenant
+      photo_alt_2: Trois femmes de la branche d'Amsterdam tiennent une pancarte indiquant "Ik Maak Leiden Awesomûrrr"
+      steps_headline: Cinq étapes simples
+      steps_intro: Lancer une nouvelle branche de l'Awesome Foundation est simple - nous aimons garder les choses simples.
+      existing_chapters_header: Consultez les branches existantes
+      existing_chapters_text: Il existe des branches de l'Awesome Foundation partout dans le monde ; il y en a donc peut-être déjà une dans votre région. Consultez le menu "Branches" ci-dessus pour vérifier, et contactez-les si vous en trouvez une près de chez vous.
+      handbook_header: Téléchargez le guide
+      handbook_text: Pour vous aider à démarrer, nous avons rassemblé ce que nous avons appris en attribuant des milliers de bourses depuis 2009 dans notre [Guide des nouvelles branches](https://wiki.awesomestudies.org/images/9/92/Awesome_Foundation_New_Chapter_Handbook.pdf). Téléchargez-le et lisez-le pour découvrir ce qu'il faut pour créer votre propre branche. Faites-le maintenant - nous attendons !
+      contact_header: Contactez-nous
+      contact_text: Vous avez donc lu le guide et vous êtes prêt à commencer. Parfait ! Envoyez un e-mail à join@awesomefoundation.org et dites-nous qui vous êtes et où vous lancez votre branche. Nous vous mettrons en relation avec la communauté internationale de l'Awesome Foundation et répondrons à vos questions sur le lancement de votre branche.
+      trustees_header: Réunissez vos membres
+      trustees_text: Les membres sont au coeur de chaque branche de l'Awesome Foundation. Ils contribuent financièrement chaque mois (généralement 100 $ ou l'équivalent local) et choisissent le lauréat de chaque bourse. Votre rôle est de trouver ces personnes et de les réunir ! Quand vous aurez constitué la majeure partie de votre équipe, dites-le-nous et nous vous ajouterons à notre site afin que vous puissiez commencer à recevoir des candidatures.
+      launch_header: Lancez-vous
+      launch_text: Félicitations ! Vous faites maintenant partie du mouvement Awesome Foundation. Parlez de votre nouvelle branche autour de vous et commencez à financer ce qui est fantastique, merveilleux et, osons le dire, génial dans votre communauté.
     faq:
       title_tag: Foire aux Questions
       headline: Foire aux Questions (FAQ)
