@@ -24,7 +24,7 @@ La única forma de saber con seguridad si un capítulo apoyará tu proyecto es s
 
 ### ¿A qué capítulo debo solicitar?
 
-La mayoría de los capítulos demuestran una fuerte preferencia por aquellos proyectos que contribuyen a sus propias comunidades, aunque ocasionalmente algunos consideran solicitudes de regiones más remotas. Prueba [solicitando a un capítulo cercano](<%= chapters_url %>) en un lugar donde tienes raíces o donde crees que tu idea sea de interés particular.  De no ser posible, puedes seleccionar "Any" (cualquiera) en el formulario de solicitud o solicitar a uno de varios capítulos temáticos.
+La mayoría de los capítulos demuestran una fuerte preferencia por aquellos proyectos que contribuyen a sus propias comunidades, aunque ocasionalmente algunos consideran solicitudes de regiones más remotas. Prueba [solicitando a un capítulo cercano](<%= chapters_url %>) en un lugar donde tienes raíces o donde crees que tu idea sea de interés particular. <% if Chapter.any_chapter.active? %>De no ser posible, puedes seleccionar "Any" (cualquiera) en el formulario de solicitud o solicitar a uno de varios capítulos temáticos.<% end %>
 
 ### ¿Puedo solicitar a más de un capítulo?
 

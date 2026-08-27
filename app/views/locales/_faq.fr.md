@@ -20,11 +20,11 @@ Tout le monde est éligible pour recevoir une bourse, les particuliers comme les
 
 ### Allez-vous soutenir mon projet ?
 
-La seule façon de savoir si une branche va vous soutenir est de postuler ; ça ne prend pas beaucoup de temps ! Néanmoins, et bien que toutes les branches soient différentes, certains projets ne sont généralement pas soutenus : ce sont souvent des projets personnels sans impact sur la communauté, ou des projets bien établis et pour lesquels une petite bourse ne ferait pas une grande différence. 
+La seule façon de savoir si une branche va vous soutenir est de postuler ; ça ne prend pas beaucoup de temps ! Néanmoins, et bien que toutes les branches soient différentes, certains projets ne sont généralement pas soutenus : ce sont souvent des projets personnels sans impact sur la communauté, ou des projets bien établis et pour lesquels une petite bourse ne ferait pas une grande différence.
 
 ### Auprès de quelle branche dois-je postuler ?
 
-La majorité des branches a une forte préférence pour des projets qui bénéficient à leur propre communauté, même si certaines acceptent parfois des candidatures venant d’autres horizons. Essayez de postuler auprès [d’une branche près de chez vous](<%= chapters_url %>), dans un endroit où vous avez vos racines, ou qui pourrait avoir un intérêt particulier pour votre projet. Si ce n’est pas possible, sélectionnez « Any » (Tous) sur la fiche de candidature, ou postulez auprès de l’une des branches thématiques.
+La majorité des branches a une forte préférence pour des projets qui bénéficient à leur propre communauté, même si certaines acceptent parfois des candidatures venant d’autres horizons. Essayez de postuler auprès [d’une branche près de chez vous](<%= chapters_url %>), dans un endroit où vous avez vos racines, ou qui pourrait avoir un intérêt particulier pour votre projet. <% if Chapter.any_chapter.active? %>Si ce n’est pas possible, sélectionnez « Any » (Tous) sur la fiche de candidature, ou postulez auprès de l’une des branches thématiques.<% end %>
 
 ### Est-ce que je peux postuler auprès de plusieurs branches ?
 
@@ -36,5 +36,5 @@ La plupart des branches se réunissent une fois par mois pour étudier les candi
 
 ### Comment est-ce que je peux m’impliquer ?
 
-Nous serions ravis que vous nous aidiez ! Tout d’abord, si vous connaissez des gens qui ont des idées géniales et ont besoin de soutiens, renvoyez-les vers nous. Mais si vous voulez faire un pas de plus et devenir membre, n’hésitez pas à contacter votre branche locale. S’il n’y a pas encore de branche locale et que vous voulez en créer une, envoyez-nous un mot à join@awesomefoundation.org. 
+Nous serions ravis que vous nous aidiez ! Tout d’abord, si vous connaissez des gens qui ont des idées géniales et ont besoin de soutiens, renvoyez-les vers nous. Mais si vous voulez faire un pas de plus et devenir membre, n’hésitez pas à contacter votre branche locale. S’il n’y a pas encore de branche locale et que vous voulez en créer une, envoyez-nous un mot à join@awesomefoundation.org.
 

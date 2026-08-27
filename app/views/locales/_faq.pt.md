@@ -30,7 +30,7 @@ A única maneira de saber com certeza se um capítulo irá apoiar o seu projeto 
 
 ### Para qual capítulo devo enviar minha proposta?
 
-A maioria dos capítulos mostra uma forte preferência por projetos que contribuam para a cidade ou comunidade onde o capítulo está baseado, embora alguns ocasionalmente consideram pedidos de mais longe. Tente [candidatar-se a um capítulo perto de você](<%= chapters_url %>), em um local onde você tem raízes, ou que você acha que tem um interesse particular na sua proposta. Se isso não for possível, você pode selecionar "Qualquer" no campo "Capítulo" no formulário, ou candidatar-se a um ou mais capítulos temáticos.
+A maioria dos capítulos mostra uma forte preferência por projetos que contribuam para a cidade ou comunidade onde o capítulo está baseado, embora alguns ocasionalmente consideram pedidos de mais longe. Tente [candidatar-se a um capítulo perto de você](<%= chapters_url %>), em um local onde você tem raízes, ou que você acha que tem um interesse particular na sua proposta. <% if Chapter.any_chapter.active? %>Se isso não for possível, você pode selecionar "Qualquer" no campo "Capítulo" no formulário, ou candidatar-se a um ou mais capítulos temáticos.<% end %>
 
 ### Posso concorrer em mais de um capÌtulo?
 
@@ -40,7 +40,7 @@ Sim, se você acha que mais de um capítulo pode estar interessado em seu projet
 ### Quando terei resposta?
 
 A maioria dos capítulos se reúne mensalmente para avaliar os pedidos e decidir o projeto escolhido &#151; embora alguns capítulos decidam em eventos com presentação ao vivo "pitch" aberto ao público. Se você ainda não obteve retorno após alguns meses, é provável que o seu projeto não tenha sido selecionado. A maioria dos capítulos continua considerando os pedidos de meses anteriores, porém não há necessidade de enviar seu projeto de novo a menos que sua proposta tenha mudado.
- 
+
 
 ### Como posso participar?
 

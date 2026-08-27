@@ -24,7 +24,7 @@ De enige manier om er zeker van te zijn of een chapter je project zal ondersteun
 
 ### Bij welk chapter moet ik aanmelden?
 
-De meeste chapters tonen een sterke voorkeur voor projecten die bijdragen aan hun eigen gemeenschappen, hoewel sommige af en toe aanmeldingen van verder weg overwegen. Probeer [aan te melden bij een chapter bij jou in de buurt](<%= chapters_url %>), op een locatie waar je wortels hebt, of waarvan je denkt dat het een bijzondere interesse zou hebben in je idee. Als dit niet mogelijk is, kun je "Any" selecteren op het aanmeldingsformulier, of aanmelden bij een van de handvol thematische chapters.
+De meeste chapters tonen een sterke voorkeur voor projecten die bijdragen aan hun eigen gemeenschappen, hoewel sommige af en toe aanmeldingen van verder weg overwegen. Probeer [aan te melden bij een chapter bij jou in de buurt](<%= chapters_url %>), op een locatie waar je wortels hebt, of waarvan je denkt dat het een bijzondere interesse zou hebben in je idee. <% if Chapter.any_chapter.active? %>Als dit niet mogelijk is, kun je "Any" selecteren op het aanmeldingsformulier, of aanmelden bij een van de handvol thematische chapters.<% end %>
 
 ### Kan ik bij meer dan één chapter aanmelden?
 
@@ -33,7 +33,7 @@ Ja, als je denkt dat meer dan één chapter geïnteresseerd zou kunnen zijn in j
 ### Wanneer hoor ik iets terug?
 
 De meeste chapters komen maandelijks bijeen om aanmeldingen te beoordelen en een ontvanger te beslissen &#151; hoewel sommige chapters beslissingen nemen tijdens live "pitch" evenementen die open zijn voor het publiek. Als je binnen een paar maanden na aanmelding niets hebt gehoord, is het waarschijnlijk dat je project niet is geselecteerd. De meeste chapters blijven echter aanmeldingen van vorige maanden overwegen, dus er is geen noodzaak om opnieuw aan te melden tenzij je idee is veranderd.
- 
+
 ### Hoe kan ik betrokken raken?
 
 We zouden het geweldig vinden als je zou helpen! Allereerst, als je iemand kent met awesome ideeën die ondersteuning nodig hebben, zou je ze onze kant op moeten sturen. Maar als je de extra mijl wilt gaan en een trustee wilt worden, neem dan contact op met je lokale chapter. Als er geen lokaal chapter is, en je zou er een willen starten, [kun je hier meer leren over hoe je dat doet](<%= start_a_chapter_path %>).

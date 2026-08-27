@@ -24,7 +24,7 @@ The only way to find out for sure if a chapter will support your project is to a
 
 ### Which chapter should I apply to?
 
-Most chapters show a strong preference for projects that contribute to their own communities, though some occasionally consider applications from further afield. Try to [apply to a chapter near you](<%= chapters_url %>), in a location where you have roots, or that you think would have a particular interest your idea. If this isn't possible, you can select "Any" on the application form, or apply to one of a handful of thematic chapters.
+Most chapters show a strong preference for projects that contribute to their own communities, though some occasionally consider applications from further afield. Try to [apply to a chapter near you](<%= chapters_url %>), in a location where you have roots, or that you think would have a particular interest your idea. <% if Chapter.any_chapter.active? %>If this isn't possible, you can select "Any" on the application form, or apply to one of a handful of thematic chapters.<% end %>
 
 ### Can I apply to more than one chapter?
 
@@ -33,7 +33,7 @@ Yes, if you think more than one chapter might be interested in your idea. Howeve
 ### When will I hear back?
 
 Most chapters meet monthly to review applications and decide on a recipient &#151; though some chapters make decisions at live "pitch" events open to the public. If you haven't heard anything within a few months of applying, it's likely your project was not selected. Most chapters continue to consider applications from previous months, however, so there's no need to apply again unless your idea has changed.
- 
+
 ### How can I get involved?
 
 We'd love for you to help out! First and foremost, if you know someone with awesome ideas that need support, you should send them our way. But if you want to go the next mile and become a trustee, please reach out to your local chapter. If there isn't a local chapter, and you'd like to start one, [you can learn more about how to do that here](<%= start_a_chapter_path %>).
