@@ -27,6 +27,28 @@ class ProjectsController < ApplicationController
       project_filter.funded
     end
 
+    # Signal Score filtering — only applied when explicitly requested via score_min param
+    @signal_score_min = params.key?(:score_min) ? params[:score_min].to_f : 0
+    @sort_mode = params[:sort] if %w[score_desc score_asc earliest latest random].include?(params[:sort])
+
+    if @signal_score_min > 0
+      project_filter.signal_score_above(@signal_score_min)
+    end
+
+    case @sort_mode
+    when "score_desc"
+      project_filter.sort_by_signal_score(:desc)
+    when "score_asc"
+      project_filter.sort_by_signal_score(:asc)
+    when "earliest"
+      project_filter.sort_by_date(:asc)
+    when "latest"
+      project_filter.sort_by_date(:desc)
+    when "random"
+      project_filter.sort_by_random
+    # else: default sort (created_at DESC) applied by ProjectFilter#initialize
+    end
+
     @q = params[:q].to_s.strip
 
     unless @q.blank?

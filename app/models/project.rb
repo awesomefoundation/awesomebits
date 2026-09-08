@@ -36,6 +36,7 @@ class Project < ApplicationRecord
   before_save :delete_photos
 
   after_create :analyze_for_spam
+  after_create :enqueue_signal_score
 
   # For dependency injection
   cattr_accessor :mailer
@@ -270,6 +271,10 @@ class Project < ApplicationRecord
         signals: classifier.analysis
       )
     end
+  end
+
+  def enqueue_signal_score
+    ScoreGrantJob.perform_async(id) if ENV["ANTHROPIC_API_KEY"].present?
   end
 
   # before save

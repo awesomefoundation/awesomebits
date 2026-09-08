@@ -29,6 +29,33 @@ class ProjectFilter
     self
   end
 
+  def signal_score_above(threshold)
+    @projects = @projects.where("(metadata->'signal_score'->>'composite_score')::float >= ?", threshold)
+    self
+  end
+
+  SORT_DIRECTIONS = { asc: "ASC", desc: "DESC" }.freeze
+
+  def sort_by_signal_score(direction = :desc)
+    sql_dir = SORT_DIRECTIONS.fetch(direction, "DESC")
+    @projects = @projects.reorder(
+      Arel.sql("COALESCE((metadata->'signal_score'->>'composite_score')::float, -1) #{sql_dir}")
+    )
+    self
+  end
+
+  def sort_by_date(direction = :desc)
+    @projects = @projects.reorder(created_at: direction)
+    self
+  end
+
+  def sort_by_random
+    # Stable random: hash the project ID so the order is consistent per page load
+    # but looks random to the reviewer (no bias from submission order or score)
+    @projects = @projects.reorder(Arel.sql("md5(projects.id::text)"))
+    self
+  end
+
   def not_pending_moderation
     @projects = @projects.left_joins(:project_moderation).where(project_moderations: {id: nil}).or(@projects.merge(ProjectModeration.approved))
     self

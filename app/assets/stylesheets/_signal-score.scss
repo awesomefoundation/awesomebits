@@ -1,0 +1,195 @@
+// Signal Score — AI-assisted grant pre-screening
+// Matches existing awesomebits design language
+
+// Score filter dropdowns — floated like the other filter controls
+.score-filter-wrapper {
+  float: left;
+  margin-right: 10px;
+  margin-top: 20px;
+  position: relative;
+
+  a.score-selection {
+    background: rgb(230,230,230);
+    border: 1px solid rgb(190,190,190);
+    border-radius: 3px;
+    display: block;
+    height: 21px;
+    padding: 8px 34px 0 10px;
+    text-decoration: none;
+    position: relative;
+
+    &:hover {
+      background: rgb(220,220,220);
+    }
+
+    span {
+      color: rgb(55,55,55);
+      font: normal 12px $sans-serif;
+      text-shadow: 0 1px rgba(255,255,255, 0.8);
+    }
+
+    span.arrow {
+      border-top: 5px solid rgb(150,150,150);
+      border-right: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 5px solid transparent;
+      position: absolute;
+      top: 13px;
+      right: 10px;
+    }
+  }
+
+  ol.score-selector {
+    background: rgb(255,255,255);
+    border: 1px solid rgb(150,150,150);
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    box-shadow: 0 3px 5px 0 rgba(0,0,0, 0.2);
+    display: none;
+    position: absolute;
+    z-index: 10;
+    margin-top: -1px;
+    margin-bottom: 0;
+    min-width: 100%;
+    padding: 0;
+
+    li {
+      border-bottom: 1px solid rgb(200,200,200);
+      list-style: none;
+      margin: 0 5px;
+      padding: 3px 0;
+
+      &:last-child { border: none; }
+
+      a {
+        color: rgb(55,55,55);
+        display: block;
+        padding: 5px 8px;
+        font: normal 12px/16px $sans-serif;
+        text-decoration: none;
+        white-space: nowrap;
+
+        &:hover {
+          background: rgb(240,240,240);
+          border-radius: 3px;
+        }
+      }
+    }
+  }
+
+  ol.score-selector.expanded {
+    display: block;
+  }
+
+  a.score-selection.expanded {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+// Score badge
+
+.signal-score {
+  margin: 0;
+  padding: 8px 10px;
+  border-left: 4px solid rgb(200,200,200);
+  font: normal 12px/16px $sans-serif;
+
+  &--strong  { border-left-color: #2ecc71; }
+  &--solid   { border-left-color: #f39c12; }
+  &--borderline { border-left-color: #e67e22; }
+  &--weak    { border-left-color: #e74c3c; }
+
+  &__header {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  &__value {
+    font: bold 16px/18px $sans-serif;
+
+    .signal-score--strong &  { color: #2ecc71; }
+    .signal-score--solid &   { color: #f39c12; }
+    .signal-score--borderline & { color: #e67e22; }
+    .signal-score--weak &    { color: #e74c3c; }
+  }
+
+  &__label {
+    font: 500 13px/18px $sans-serif;
+    color: $base-font-color;
+  }
+
+  &__category {
+    background: rgb(230,230,230);
+    border: 1px solid rgb(200,200,200);
+    border-radius: 3px;
+    padding: 1px 6px;
+    font: normal 11px/14px $sans-serif;
+    color: rgb(100,100,100);
+  }
+
+  &__tag {
+    background: #e8f0f8;
+    border: 1px solid #c8d8e8;
+    border-radius: 3px;
+    padding: 1px 5px;
+    font: normal 10px/13px $sans-serif;
+    color: #4a7aaa;
+  }
+
+  &__reason {
+    margin: 4px 0 0 0;
+    padding: 0;
+    font: italic 12px/16px $serif;
+    color: rgb(120,120,120);
+  }
+
+  &__details {
+    margin-top: 4px;
+
+    summary {
+      cursor: pointer;
+      font: normal 11px/14px $sans-serif;
+      color: rgb(160,160,160);
+
+      &:hover { color: $pink; }
+    }
+  }
+
+  &__features {
+    margin-top: 4px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 3px;
+  }
+
+  &__feat {
+    display: flex;
+    justify-content: space-between;
+    padding: 2px 4px;
+    background: rgb(248,248,248);
+    border-radius: 2px;
+  }
+
+  &__feat-name {
+    font: normal 11px/14px $sans-serif;
+    color: rgb(120,120,120);
+    text-transform: capitalize;
+  }
+
+  &__feat-val {
+    font: 500 11px/14px $sans-serif;
+  }
+
+  &__feat--good { color: #2ecc71; }
+  &__feat--bad  { color: #e67e22; }
+
+  &__ai-warning {
+    margin: 4px 0 0 0;
+    padding: 0;
+    font: normal 11px/14px $sans-serif;
+    color: #e74c3c;
+  }
+}

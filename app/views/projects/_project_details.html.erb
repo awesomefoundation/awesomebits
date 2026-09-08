@@ -26,6 +26,11 @@
     </div>
   </div>
 
+  <% signal_score = project.metadata&.dig("signal_score") %>
+  <% if signal_score && signal_score["composite_score"] %>
+    <%= render "projects/signal_score_badge", signal_score: signal_score, always_show: local_assigns[:full_view] %>
+  <% end %>
+
   <section class="meta-data">
     <%= project.created_at %> (<%= project.chapter.display_name %>)
 
