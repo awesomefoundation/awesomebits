@@ -1,0 +1,264 @@
+default_settings: &default
+  api_key: <%= ENV['OPENAI_API_KEY'] || '' %>
+  project_analysis:
+    model: gpt-4o
+    prompt_text: |
+      You are an Awesome Foundation trustee. You have been asked to review the
+      following grant application and provide your feedback to qualify it for the
+      monthly award.
+
+    format_instructions: |
+      DO NOT start the summary with unnecessary setup like 'This grant application
+      seeks funding for a community garden in Rogers Park...'. Instead just say
+      something like 'A community garden in Rogers Park...'
+
+      For the score fields, provide a decimal value between 0 and 1, as well as a short
+      2-sentence explanation for why the application meets or does not meet the
+      criteria described in the field.
+
+      For the score fields, provide a JSON object with the score value as a number
+      (without quotes) and the reason field as a string.
+
+      DO provide values for all scores.
+      DO NOT provide any other text in the result beyond the JSON.
+      DO NOT surround the JSON in backticks.
+
+      Return all responses in English.
+
+    response_schema:
+      "$defs":
+        ApplicantRole:
+          enum:
+            - community_leader
+            - teacher
+            - student
+            - artist
+            - academic
+            - entrepreneur
+            - nonprofit_organizer
+            - activist
+            - healthcare_worker
+            - scientist
+            - engineer
+            - social_worker
+            - musician
+            - filmmaker
+            - writer
+            - performer
+            - environmentalist
+            - technologist
+            - craftsperson
+            - parent
+          title: ApplicantRole
+          type: string
+        ProjectTag:
+          enum:
+            - science
+            - music
+            - technology
+            - art
+            - education
+            - environment
+            - health
+            - community
+            - social_justice
+            - culture
+            - history
+            - literature
+            - sports
+            - mental_health
+            - youth
+            - seniors
+            - accessibility
+            - urban_gardening
+            - sustainability
+            - renewable_energy
+            - robotics
+            - coding
+            - wildlife_conservation
+            - food_security
+            - housing
+            - dance
+            - theater
+            - filmmaking
+            - photography
+            - public_art
+            - disaster_relief
+            - transportation
+            - civic_engagement
+            - public_health
+            - water_safety
+            - astronomy
+            - journalism
+            - advocacy
+            - peacebuilding
+            - maker_space
+            - entrepreneurship
+            - clean_technology
+            - urban_planning
+            - heritage
+            - migration
+            - storytelling
+            - digital_inclusion
+            - biodiversity
+            - maker_education
+            - language_preservation
+            - homelessness
+            - libraries
+            - autism
+            - arts_activism
+            - food
+            - disability
+            - gender_equality
+            - lgbtq
+            - bicycles
+            - media_literacy
+            - animals
+            - crafts
+            - parks
+          title: ProjectTag
+          type: string
+        Score:
+          properties:
+            score:
+              title: Score
+              type: number
+              description:
+                Decimal value between 0 and 1 representing whether or not the
+                project fits this criterion described in the field. Two digit precision.
+            reason:
+              title: Reason
+              type: string
+              description:
+                One to two sentences explaining why the application received its score
+                for this field.
+          required:
+            - score
+            - reason
+          title: Score
+          type: object
+        Scores:
+          properties:
+            reach:
+              "$ref": "#/$defs/Score"
+              description: |
+                Number of people impacted, focusing on those local to the chapter's region.
+            alignment:
+              "$ref": "#/$defs/Score"
+              description: |
+                Project alignment with the Awesome Foundation’s mission and geographical focus.
+            novelty:
+              "$ref": "#/$defs/Score"
+              description: |
+                Originality, cleverness, and uniqueness of the project’s concept or approach. Should
+                not be an obvious idea that replicates other existing work.
+            use_of_proceeds:
+              "$ref": "#/$defs/Score"
+              description: |
+                Clarity and detail of fund allocation within the proposal, as well as ensuring the
+                funds will NOT finacially enrich the applicant directly (e.g., stipends paid to the
+                applicant).
+            impact_of_grant:
+              "$ref": "#/$defs/Score"
+              description: |
+                Significance of the $1000 grant in achieving the project’s goals. The grant should
+                be executable solely with no additional outside funding.
+            feasibility:
+              "$ref": "#/$defs/Score"
+              description: |
+                Practicality of executing the project within the stated timeline and budget. Also
+                evaluate applicant’s experience and credibility relevant to the project’s scope.
+            sustainability:
+              "$ref": "#/$defs/Score"
+              description: |
+                Long-term viability and potential for impact beyond the grant period,
+                as well as potential for project expansion or replication in other contexts.
+            urgency:
+              "$ref": "#/$defs/Score"
+              description: |
+                Immediacy of need for funds; score lower if impact isn’t time-sensitive.
+            whimsy:
+              "$ref": "#/$defs/Score"
+              description: |
+                Playful, imaginative qualities that inspire curiosity or delight.
+            social_good:
+              "$ref": "#/$defs/Score"
+              description: |
+                Potential for positive social impact and contribution to community welfare.
+          required:
+            - reach
+            - alignment
+            - novelty
+            - use_of_proceeds
+            - impact_of_grant
+            - feasibility
+            - sustainability
+            - urgency
+            - whimsy
+            - social_good
+          title: Scores
+          type: object
+      properties:
+        project_id:
+          title: Project Id
+          type: integer
+        summary:
+          description:
+            A brief overview of the project, outlining its goals, activities,
+            and potential risks.
+          title: Summary
+          type: string
+        tags:
+          description:
+            List of tags representing the project's themes. Should be instances
+            of the provided list of enums.
+          items:
+            "$ref": "#/$defs/ProjectTag"
+          title: Tags
+          type: array
+        applicant_role:
+          "$ref": "#/$defs/ApplicantRole"
+          description:
+            The applicant's primary role or background in relation to the project.
+            Should be an be one of the provided list of enums.
+        language_code:
+          description:
+            The ISO 639-1 code representing the language of the project description,
+            e.g., 'en' for English.
+          title: Language Code
+          type: string
+        funding_deadline:
+          anyOf:
+            - type: string
+            - type: "null"
+          default:
+          description:
+            The date by which the grant funds are needed to ensure timely execution
+            of the project, in ISO format.
+          title: Funding Deadline
+        suggestions:
+          description:
+            4 - 6 sentences with any additional comments or suggestions for the
+            applicant.
+          title: Suggestions
+          type: string
+        scores:
+          "$ref": "#/$defs/Scores"
+      required:
+        - project_id
+        - summary
+        - tags
+        - applicant_role
+        - language_code
+        - scores
+      title: ProjectSummary
+      type: object
+
+development:
+  <<: *default
+
+production:
+  <<: *default
+
+test:
+  <<: *default

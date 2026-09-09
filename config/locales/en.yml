@@ -34,6 +34,20 @@ en:
       error: There was a problem saving your project
   flashes:
     failure_when_not_signed_in: You must be logged in.
+  project_analyses:
+    flash:
+      cache_loaded: Project analysis loaded from cache.
+      generated: New project analysis generated.
+    show:
+      title: Project Analysis for "%{title}"
+      summary: Summary
+      applicant_role: Applicant Role
+      language: Language
+      tags: Tags
+      criteria: Criterion
+      score: Score
+      reason: Reason
+      suggestions: Suggestions
   layouts:
     application:
       main-header: The Awesome Foundation
@@ -183,6 +197,8 @@ en:
       add-comment: Add a comment
       confirm-delete-comment: Are you sure you want to remove this comment?
       delete-comment: Delete comment
+      buttons:
+        auto_awesome: Auto-awesome
     hide_form:
       hide: Hide
       unhide: Unhide

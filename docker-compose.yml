@@ -3,6 +3,8 @@ services:
     image: postgres
     volumes:
       - postgresqldata:/var/lib/postgresql/data
+    ports:
+      - "6432:5432"
     environment:
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "mysecretpassword"
