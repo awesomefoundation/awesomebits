@@ -251,7 +251,8 @@ GEM
       crass (~> 1.0.2)
       nokogiri (>= 1.19.5)
     magnific-popup-rails (1.1.0)
-    mail (2.8.1)
+    mail (2.9.1)
+      logger
       mini_mime (>= 0.1.1)
       net-imap
       net-pop
@@ -266,14 +267,14 @@ GEM
     mocha (1.2.1)
       metaclass (~> 0.0.1)
     msgpack (1.8.2)
-    net-imap (0.5.15)
+    net-imap (0.6.8)
       date
       net-protocol
     net-pop (0.1.2)
       net-protocol
     net-protocol (0.4.0)
       timeout
-    net-smtp (0.5.1)
+    net-smtp (0.5.2)
       net-protocol
     newrelic_rpm (9.22.0)
     nio4r (2.7.5)
