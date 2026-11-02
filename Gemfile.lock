@@ -104,7 +104,7 @@ GEM
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
     base64 (0.2.0)
-    bcrypt (3.1.20)
+    bcrypt (3.1.22)
     benchmark (0.4.0)
     bigdecimal (3.1.9)
     bindex (0.8.1)
