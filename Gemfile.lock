@@ -265,7 +265,7 @@ GEM
     minitest (5.25.5)
     mocha (1.2.1)
       metaclass (~> 0.0.1)
-    msgpack (1.8.0)
+    msgpack (1.8.2)
     net-imap (0.5.15)
       date
       net-protocol
