@@ -3,10 +3,10 @@ require 'spec_helper'
 describe FinalistsController do
   context '#index' do
     let(:chapter) { FactoryBot.create(:chapter) }
-    let(:project1) { FactoryBot.create(:project, chapter: chapter) }
-    let(:project2) { FactoryBot.create(:project, chapter: chapter) }
-    let(:funded_project) { FactoryBot.create(:winning_project, chapter: chapter) }
-    let(:hidden_project) { FactoryBot.create(:hidden_project, chapter: chapter) }
+    let(:project1) { FactoryBot.create(:project, chapter: chapter, title: "Bravo project") }
+    let(:project2) { FactoryBot.create(:project, chapter: chapter, title: "Alpha project") }
+    let(:funded_project) { FactoryBot.create(:winning_project, chapter: chapter, title: "Delta project") }
+    let(:hidden_project) { FactoryBot.create(:hidden_project, chapter: chapter, title: "Charlie project") }
     let(:trustee_role) { FactoryBot.create(:role, :trustee, chapter: chapter) }
     let(:past_trustee_role) { FactoryBot.create(:role, :trustee, chapter: chapter) }
     let!(:past_trustee) { past_trustee_role.user }
@@ -57,7 +57,7 @@ describe FinalistsController do
       it "sorts by title" do
         get :index, params: { chapter_id: chapter, past_trustees: "on", funded: "on", "hidden": "on", sort: "title" }
 
-        expect(controller.view_assigns['projects'].collect { |p| p.id }).to eq(projects.sort { |a, b| a.title <=> b.title }.collect { |p| p.id })
+        expect(controller.view_assigns['projects'].collect { |p| p.id }).to eq([project2.id, project1.id, hidden_project.id, funded_project.id])
       end
 
       it "sorts by creation date" do
