@@ -162,6 +162,9 @@ fr:
       title: Merci pour votre candidature !
     form:
       prompt: "- Sélectionner -"
+      continue: "Continuer vers le formulaire de candidature"
+      chapter-load-error: "Impossible de charger les questions de cette branche. La branche précédente reste sélectionnée. Veuillez réessayer."
+      chapter-needs-js: "Pour changer de branche tout en conservant votre candidature, activez JavaScript. Sinon, ouvrez à nouveau la page de candidature pour choisir une autre branche."
       save: Sauvegarder
       image-notes: "L'image d'en haut sert d'image de couverture. Les images seront redimensionnées à %{dimensions} pixels. En cas d'erreur, merci de réessayer avec de plus petites images."
       use-classic-uploader: "Passer au chargeur de fichiers classique"

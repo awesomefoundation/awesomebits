@@ -1,3 +1,14 @@
+def choose_initial_application_chapter(name = "Any")
+  return unless page.has_button?(I18n.t("projects.form.continue"))
+
+  select(name, from: "Select chapter to apply to")
+  if page.driver.is_a?(Capybara::RackTest::Driver)
+    click_button(I18n.t("projects.form.continue"))
+  else
+    expect(page).to have_field("project_name")
+  end
+end
+
 step 'save and open the page' do
   save_and_open_page
 end
@@ -13,6 +24,7 @@ step 'I submit a project to the :name chapter' do |name|
 end
 
 step 'I fill in the application form' do
+  choose_initial_application_chapter
   @about_me ||= "I am awesome"
   fill_in("Your name", :with => "Mr. Awesome")
   fill_in("Project title", :with => "Awesomeness")
@@ -22,7 +34,6 @@ step 'I fill in the application form' do
   fill_in("project_about_me", :with => @about_me)
   fill_in("project_about_project", :with => "I want to make awesomeness.")
   fill_in("project_use_for_money", :with => "I'll spend it on stuff. Obviously.")
-  select("Any", :from => "Select chapter to apply to") if page.has_selector?("#project_chapter_id", visible: true)
 end
 
 step 'I submit a spam project to the :name chapter' do |name|
@@ -32,7 +43,11 @@ end
 
 step 'I should see them on the application form' do
   click_link("Apply")
-  select(@current_chapter.name, :from => "Select chapter to apply to")
+  if page.has_button?(I18n.t("projects.form.continue"))
+    choose_initial_application_chapter(@current_chapter.name)
+  else
+    select(@current_chapter.name, from: "Select chapter to apply to")
+  end
   fill_in("New Stuff 1", :with => "Something")
   fill_in("New Stuff 2", :with => "Something")
   fill_in("New Stuff 3", :with => "Something")
@@ -40,12 +55,17 @@ step 'I should see them on the application form' do
 end
 
 step 'I select the chapter to apply to' do
-  select(@current_chapter.name, :from => "Select chapter to apply to")
+  if page.has_button?(I18n.t("projects.form.continue"))
+    choose_initial_application_chapter(@current_chapter.name)
+  else
+    select(@current_chapter.name, from: "Select chapter to apply to")
+  end
 end
 
 step 'I submit a project to the :name chapter with the extra questions answered' do |name|
   @project_title = "Crusades!"
   click_link("Apply")
+  choose_initial_application_chapter(@current_chapter.name)
   fill_in("Your name", :with => "Arthur")
   fill_in("Project title", :with => @project_title)
   fill_in("Project website", :with => "http://awesome.com")
@@ -54,7 +74,6 @@ step 'I submit a project to the :name chapter with the extra questions answered'
   fill_in("project_about_me", :with => "I am awesome.")
   fill_in("project_about_project", :with => "I want to make awesomeness.")
   fill_in("project_use_for_money", :with => "Buying stuff.")
-  select(@current_chapter.name, :from => "Select chapter to apply to")
   @extra_answer_1 = "Arthur of Camelot."
   fill_in(@extra_question_1, :with => @extra_answer_1)
   @extra_answer_2 = "I seek the Grail."
@@ -77,6 +96,7 @@ end
 
 step 'I submit a project to the :name chapter, but it fails' do |name|
   click_link("Apply")
+  choose_initial_application_chapter
   click_button("Apply")
 end
 
@@ -94,6 +114,7 @@ end
 
 step 'I fix the error and resubmit' do
   click_link("Apply")
+  choose_initial_application_chapter
   fill_in("Your name", :with => "Mr. Awesome")
   fill_in("Project title", :with => "Awesomeness")
   fill_in("Project website", :with => "http://awesome.com")
@@ -102,7 +123,6 @@ step 'I fix the error and resubmit' do
   fill_in("project_about_me", :with => "I am awesome.")
   fill_in("project_about_project", :with => "I want to make awesomeness.")
   fill_in("project_use_for_money", :with => "Buying stuff.")
-  select("Any", :from => "Select chapter to apply to")
   click_button("Apply")
 end
 

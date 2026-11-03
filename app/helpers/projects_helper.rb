@@ -1,4 +1,8 @@
 module ProjectsHelper
+  def grouped_chapter_options_for(project)
+    Chapter.select_data(project.persisted? ? :all : :active, include_any: project.persisted? || Chapter.any_chapter.active?)
+  end
+
   def selectable_chapters_for(user)
     any_chapter = Chapter.where(:name => Chapter::ANY_CHAPTER_NAME).first
     if user.admin?

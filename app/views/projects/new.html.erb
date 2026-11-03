@@ -7,10 +7,13 @@
   </section>
   <% end %>
 
-  <section class="project-form">
-    <%= simple_form_for @project, url: submissions_url, html: { multipart: true, honeypot: true, data: { uploading_alert_text: strip_tags(t("projects.wait-for-uploads-to-complete")), controller: "metadata", metadata_target: "form", action: "submit->metadata#submit focusin->metadata#trackInteraction keydown->metadata#trackKeystroke paste->metadata#trackPaste" } } do |form| %>
-      <%= render 'form', project: @project, form: form %>
-      <%= submit_tag t ".apply" %>
+  <section class="project-form" data-controller="chapter-selection" data-action="submit->chapter-selection#preventMismatchedChapterSubmission">
+    <%= render "chapter_picker", project: @project unless embed? %>
+    <% if @project.chapter || @project.errors.any? %>
+      <%= simple_form_for @project, url: submissions_url, html: { multipart: true, honeypot: true, data: { uploading_alert_text: strip_tags(t("projects.wait-for-uploads-to-complete")), controller: "metadata", metadata_target: "form", action: "submit->metadata#submit focusin->metadata#trackInteraction keydown->metadata#trackKeystroke paste->metadata#trackPaste" } } do |form| %>
+        <%= render 'form', project: @project, form: form %>
+        <%= submit_tag t(".apply"), data: { chapter_selection_target: "submit" } %>
+      <% end %>
     <% end %>
   </section>
 </div>

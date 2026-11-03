@@ -35,13 +35,6 @@ mark_as_winner_success = (event, data, status, xhr) ->
 mark_as_winner_failure = (xhr, status, error) ->
   alert(error.message)
 
-display_remaining_chars = ->
-  self = $(this)
-  element = $('#'+self.attr('id')+'_chars_left')
-  max_length = self.attr('maxlength')
-  curr_length = self.val().length
-  element.text(max_length - curr_length)
-
 $(".short-list")
   .bind("ajax:beforeSend",  shortlist_before_send)
   .bind("ajax:success", shortlist_success)
@@ -51,10 +44,6 @@ $(".mark-as-winner, .remove-as-winner")
   .bind("ajax:beforeSend", mark_as_winner_before_send)
   .bind("ajax:success", mark_as_winner_success)
   .bind("ajax:failure", mark_as_winner_failure)
-
-$('#project_about_me').keyup(display_remaining_chars)
-$('#project_about_project').keyup(display_remaining_chars)
-$('#project_use_for_money').keyup(display_remaining_chars)
 
 populate_funded_description = ->
   funded_description = $('#project_funded_description')

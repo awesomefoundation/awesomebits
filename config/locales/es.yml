@@ -174,6 +174,9 @@ es:
       title: ¡Gracias por solicitar!
     form:
       prompt: "- Selecciona -"
+      continue: "Continuar a la solicitud"
+      chapter-load-error: "No se pudieron cargar las preguntas de este capítulo. Tu capítulo anterior sigue seleccionado. Inténtalo de nuevo."
+      chapter-needs-js: "Para cambiar de capítulo sin perder tu solicitud, activa JavaScript. Si no, vuelve a abrir la página de solicitud para elegir otro capítulo."
       save: Guarda
       image-notes: La imagen superior está fijada como la imagen de la cubierta. El tamaño de las imágenes será ajustado a %{dimensions} pixels. Si recibes un mensaje de error, por favor intenta nuevamente con menos archivos o archivos más pequeños.
       use-classic-uploader: Cambia al cargador de archivos clásico

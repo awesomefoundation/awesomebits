@@ -128,11 +128,9 @@
     <h3><%= I18n.t(".about-me", scope: "projects.project") %></h3>
     <%= markdown project.about_me, :link_attributes => { :target => "_blank" }, :hard_wrap => true %>
 
-    <% 1.upto(Chapter::EXTRA_QUESTIONS_COUNT) do |num| -%>
-      <% if project.extra_question(num).present? %>
-        <h3><%= project.extra_question(num) %></h3>
-        <%= markdown project.extra_answer(num), :link_attributes => { :target => "_blank" } || "_#{I18n.t '.not-answered', scope: 'projects.project'}_" %>
-      <% end %>
+    <% project.extra_questions_array.each do |question| -%>
+      <h3><%= question.text %></h3>
+      <%= markdown(question.answer.presence || "_#{t('projects.project.not-answered')}_", link_attributes: { target: "_blank" }) %>
     <% end %>
     </div>
   </div>

@@ -1,7 +1,10 @@
 <% provide(:page_title, @project.title) %>
 <div class="flexbox vertical center">
   <section class="project-form">
-  <%= simple_form_for @project, :html => { :multipart => true, "data-uploading-alert-text" => strip_tags(t("projects.wait-for-uploads-to-complete")) } do |form| %>
+    <%= simple_form_for @project, :html => { :multipart => true, "data-uploading-alert-text" => strip_tags(t("projects.wait-for-uploads-to-complete")) } do |form| %>
+      <div class="project-section chapter-select">
+        <%= form.input :chapter_id, collection: grouped_chapter_options_for(@project), as: :grouped_select, group_method: :chapters, group_label_method: :name, label_method: :name, value_method: :slug, selected: @project.chapter&.slug, include_blank: false, input_html: { name: "chapter" } %>
+      </div>
       <%= render 'form', :project => @project, :form => form %>
       <%= submit_tag t("projects.form.save") %>
     <% end %>

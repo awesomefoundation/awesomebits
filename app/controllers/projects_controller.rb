@@ -4,7 +4,9 @@ class ProjectsController < ApplicationController
   before_action :require_login, except: [:new, :create, :success]
   before_action :verify_user_can_edit, :only => [:destroy]
   before_action :redirect_to_chapter_or_sign_in, :only => [:index], :if => :chapter_missing?
-  before_action :find_chapter
+  before_action :find_chapter_by_id, except: [:new, :create, :update]
+  before_action :find_chapter_by_slug, only: [:new, :create, :update]
+  before_action :ensure_chapter_active, only: [:new, :create]
 
   around_action :set_time_zone, :only => [:index, :show]
 
@@ -60,11 +62,19 @@ class ProjectsController < ApplicationController
   def new
     render_404 and return if embed? && !@chapter
 
-    @project = Project.new(chapter: @chapter)
+    @project = Project.new(chapter: @chapter).populate_extra_questions_from_chapter
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream do
+        render_404 and return unless @chapter
+      end
+    end
   end
 
   def create
     @project = Project.new(create_project_params)
+    @project.chapter = @chapter
     @project.set_request_metadata(server_metadata, params[:client_metadata])
 
     if SpamChecker::Project.new(@project).spam?
@@ -103,6 +113,7 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
+    @project.chapter = @chapter if params.key?(:chapter)
 
     if @project.update(update_project_params)
       redirect_to @project
@@ -158,7 +169,7 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    [ :name, :title, :url, :email, :phone, :about_me, :about_project, :chapter_id, :extra_question_1, :extra_question_2, :extra_question_3, :extra_answer_1, :extra_answer_2, :extra_answer_3, :photo_order, :rss_feed_url, :use_for_money, photo_ids_to_delete: [], photos_attributes: [:id, :image, :caption, :sort_order, :_destroy] ]
+    [ :name, :title, :url, :email, :phone, :about_me, :about_project, :extra_question_1, :extra_question_2, :extra_question_3, :extra_answer_1, :extra_answer_2, :extra_answer_3, :photo_order, :rss_feed_url, :use_for_money, photo_ids_to_delete: [], photos_attributes: [:id, :image, :caption, :sort_order, :_destroy] ]
   end
 
   def create_project_params
@@ -201,12 +212,19 @@ class ProjectsController < ApplicationController
     params[:chapter_id].blank?
   end
 
-  def find_chapter
-    if params[:chapter_id]
-      @chapter = Chapter.find(params[:chapter_id])
-    elsif params[:chapter]
-      @chapter = Chapter.friendly.find(params[:chapter].downcase, allow_nil: !embed?)
-    end
+  def find_chapter_by_id
+    @chapter = Chapter.find(params[:chapter_id]) if params[:chapter_id]
+  end
+
+  def find_chapter_by_slug
+    @chapter = Chapter.friendly.find(params[:chapter].strip.downcase, allow_nil: !embed?) if params[:chapter]
+  end
+
+  def ensure_chapter_active
+    return unless @chapter&.inactive?
+
+    @chapter = nil
+    raise ActiveRecord::RecordNotFound if embed?
   end
 
   def set_time_zone(&block)

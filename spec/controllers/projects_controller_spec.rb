@@ -121,7 +121,6 @@ describe ProjectsController do
     let(:chapter) { FactoryBot.create(:chapter) }
     let(:valid_project_params) do
       {
-        chapter_id: chapter.id,
         name: "Test User",
         title: "Test Project",
         email: "test@example.com",
@@ -138,11 +137,36 @@ describe ProjectsController do
     context "that is valid" do
       it "creates a project and sends an email" do
         expect {
-          post :create, params: { project: valid_project_params }
+          post :create, params: { chapter: chapter.slug, project: valid_project_params }
         }.to change(Project, :count).by(1)
 
         expect(response).to redirect_to(success_submissions_path(chapter: chapter))
         expect(fake_mailer).to have_delivered_email(:new_application)
+      end
+
+      it "uses the top-level chapter slug instead of a nested chapter ID" do
+        other_chapter = FactoryBot.create(:chapter)
+        post :create, params: { chapter: chapter.slug, project: valid_project_params.merge(chapter_id: other_chapter.id) }
+
+        expect(response).to be_redirect
+        expect(Project.last.chapter).to eq(chapter)
+      end
+    end
+
+    context "when the selected chapter has become inactive" do
+      render_views
+
+      it "rejects the submission and retains the draft" do
+        chapter.update!(inactive_at: Time.current)
+
+        expect {
+          post :create, params: { chapter: chapter.slug, project: valid_project_params }
+        }.not_to change(Project, :count)
+
+        expect(response).to render_template(:new)
+        expect(response.body).to include("Test User", "Test Project")
+        expect(assigns(:project).errors[:chapter_id]).to be_present
+        expect(fake_mailer).not_to have_delivered_email(:new_application)
       end
     end
 
@@ -151,12 +175,40 @@ describe ProjectsController do
         Project.any_instance.stubs(:project_moderation).returns(ProjectModeration.new(status: :suspected))
 
         expect {
-          post :create, params: { project: valid_project_params }
+          post :create, params: { chapter: chapter.slug, project: valid_project_params }
         }.to change(Project, :count).by(1)
 
         expect(response).to redirect_to(success_submissions_path(chapter: chapter))
         expect(Project.last.not_pending_moderation?).to eq(false)
         expect(fake_mailer).to_not have_delivered_email(:new_application)
+      end
+    end
+
+    context "with displayed questions" do
+      render_views
+
+      it "saves the displayed wording even if the chapter questions change" do
+        chapter.update!(extra_question_1: "Replacement question?")
+        post :create, params: { chapter: chapter.slug, project: valid_project_params.merge(extra_question_1: "Original question?", extra_answer_1: "Original answer") }
+
+        expect(response).to be_redirect
+        expect(Project.last.extra_question_1).to eq("Original question?")
+        expect(Project.last.extra_answer_1).to eq("Original answer")
+      end
+
+      it "keeps optional answers optional" do
+        post :create, params: { chapter: chapter.slug, project: valid_project_params.merge(extra_question_1: "Optional question?") }
+        expect(response).to be_redirect
+        expect(Project.last.extra_question_1).to eq("Optional question?")
+        expect(Project.last.extra_answer_1).to be_blank
+      end
+
+      it "preserves submitted questions and answers when validation fails" do
+        chapter.update!(extra_question_1: "Replacement question?")
+        post :create, params: { chapter: chapter.slug, project: valid_project_params.merge(title: "", extra_question_1: "Original question?", extra_answer_1: "My answer") }
+        expect(response.body).to include("Original question?", "My answer")
+        expect(response.body).not_to include("Replacement question?")
+        expect(Project.count).to eq(0)
       end
     end
 
@@ -173,6 +225,7 @@ describe ProjectsController do
         }.to_json
 
         post :create, params: {
+          chapter: chapter.slug,
           project: valid_project_params,
           client_metadata: malicious_metadata
         }
@@ -199,6 +252,7 @@ describe ProjectsController do
         }.to_json
 
         post :create, params: {
+          chapter: chapter.slug,
           project: valid_project_params,
           client_metadata: valid_metadata
         }
@@ -228,8 +282,120 @@ describe ProjectsController do
 
   end
 
+  context "editing a project without saved question text" do
+    render_views
+
+    it "shows only saved questions, even when the chapter has added questions" do
+      chapter = FactoryBot.create(:chapter, extra_question_2: "Chapter question?")
+      project = FactoryBot.create(:project, chapter: chapter)
+      sign_in_as FactoryBot.create(:user, admin: true)
+
+      get :edit, params: { id: project }
+
+      expect(response.body).not_to include("Chapter question?")
+      expect(Nokogiri::HTML(response.body).at_css('[name="project[extra_question_1]"]')).to be_nil
+      expect(project.reload.extra_question_1).to be_nil
+    end
+  end
+
+  context "updating a project without a chapter parameter" do
+    it "keeps the existing chapter" do
+      project = FactoryBot.create(:project, extra_answer_2: "Answer without question")
+      chapter = project.chapter
+      sign_in_as FactoryBot.create(:user, admin: true)
+
+      patch :update, params: { id: project, project: { title: "Updated project" } }
+
+      expect(response).to be_redirect
+      expect(project.reload.chapter).to eq(chapter)
+      expect(project.title).to eq("Updated project")
+      expect(project.extra_answer_2).to eq("Answer without question")
+    end
+  end
+
+  context "moving an existing project to an inactive chapter" do
+    it "allows the chapter change when saving an edit" do
+      project = FactoryBot.create(:project)
+      chapter = FactoryBot.create(:inactive_chapter)
+      sign_in_as FactoryBot.create(:user, admin: true)
+
+      patch :update, params: { id: project, chapter: chapter.slug, project: { title: "Updated project" } }
+
+      expect(response).to be_redirect
+      expect(project.reload.chapter).to eq(chapter)
+    end
+  end
+
   context "the project submission form" do
     let(:mode) { nil }
+
+    context "with an inactive chapter" do
+      render_views
+
+      let(:chapter) { FactoryBot.create(:inactive_chapter) }
+
+      it "shows chapter selection instead of an application" do
+        get :new, params: { chapter: chapter.slug }
+        expect(response).to have_http_status(:ok)
+        expect(response.body).not_to include('id="project_name"')
+        expect(response.body).to include(I18n.t("projects.form.continue"))
+      end
+
+      it "returns not found for a stream request" do
+        get :new, params: { chapter: chapter.slug }, format: :turbo_stream
+        expect(response).to have_http_status(:not_found)
+      end
+
+      it "treats an embedded application like an invalid chapter" do
+        expect {
+          get :new, params: { chapter: chapter.slug, mode: "embed" }
+        }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+
+    context "server-rendered chapter content" do
+      render_views
+
+      let(:chapter) { FactoryBot.create(:chapter, application_intro: "Chapter welcome", extra_question_1: "Chapter question?") }
+
+      it "includes questions and intro in embedded HTML" do
+        get :new, params: { chapter: chapter.slug, mode: "embed" }
+        expect(response.body).to include("Chapter welcome", "Chapter question?", 'name="project[extra_question_1]"')
+        expect(response.body).not_to include('class="project-section chapter-select"')
+      end
+
+      it "opens the application when a chapter link has trailing whitespace" do
+        get :new, params: { locale: "nl", chapter: "#{chapter.slug} " }
+
+        expect(response).to have_http_status(:ok)
+        document = Nokogiri::HTML(response.body)
+        expect(document.at_css('input[name="chapter"]')["value"]).to eq(chapter.slug)
+        expect(document.at_css('#project_name')).to be_present
+      end
+
+      it "returns only targeted stream updates for chapter changes" do
+        get :new, params: { chapter: chapter.slug }, format: :turbo_stream
+        expect(response).to have_http_status(:ok)
+        expect(response.media_type).to eq("text/vnd.turbo-stream.html")
+        document = Nokogiri::HTML.fragment(response.body)
+        expect(document.css("turbo-stream").map { |stream| stream["target"] }).to eq(["application-chapter-intro", "application-chapter-questions"])
+        expect(response.body).to include("Chapter question?", 'name="project[extra_answer_1]"', 'name="chapter"')
+        expect(response.body).not_to include("project_name", "js-uploader")
+      end
+
+      it "populates nonblank chapter questions in order in the initial HTML" do
+        chapter.update!(extra_question_1: "", extra_question_2: "Second slot?", extra_question_3: "Third slot?")
+        get :new, params: { chapter: chapter.slug }
+        document = Nokogiri::HTML(response.body)
+        expect(document.at_css('input[name="project[extra_question_1]"]')["value"]).to eq("Second slot?")
+        expect(document.at_css('input[name="project[extra_question_2]"]')["value"]).to eq("Third slot?")
+      end
+
+      it "returns a failure instead of streams for an unknown chapter" do
+        get :new, params: { chapter: "unknown" }, format: :turbo_stream
+        expect(response).to have_http_status(:not_found)
+      end
+    end
 
     context "with a chapter" do
       let(:chapter) { FactoryBot.create(:chapter) }

@@ -1,0 +1,6 @@
+<%= turbo_stream.replace "application-chapter-intro" do %>
+  <%= render "application_intro", project: @project %>
+<% end %>
+<%= turbo_stream.replace "application-chapter-questions" do %>
+  <%= render "application_questions", project: @project %>
+<% end %>

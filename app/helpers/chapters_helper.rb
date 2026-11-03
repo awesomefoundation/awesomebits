@@ -12,10 +12,6 @@ module ChaptersHelper
     chapter.active?
   end
 
-  def extra_questions_json(chapter)
-    [chapter.extra_question_1, chapter.extra_question_2, chapter.extra_question_3].reject(&:blank?).to_json.html_safe
-  end
-
   def link_if_not_blank(url, css_class, options = {})
     if url.present?
       link_to("", url, options.merge(:class => css_class))

@@ -1,5 +1,5 @@
 step "I am on the submission page" do
-  visit new_submission_path
+  visit new_submission_path(chapter: "any")
 end
 
 step "I am on the submission page in embed mode" do

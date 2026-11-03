@@ -2,6 +2,7 @@ require "textacular/searchable"
 
 class Project < ApplicationRecord
   MAX_PHOTOS = 5
+  ExtraQuestion = Data.define(:text, :answer, :question_attribute, :answer_attribute)
 
   attr_accessor :photo_order
   attr_accessor :photo_ids_to_delete
@@ -177,12 +178,25 @@ class Project < ApplicationRecord
     real_photos.present?
   end
 
-  def extra_question(num)
-    (question = read_attribute("extra_question_#{num}".to_sym)) && question.present? ? question : nil
+  def extra_questions_array
+    extra_question_numbers.filter_map do |number|
+      question_attribute = :"extra_question_#{number}"
+      answer_attribute = :"extra_answer_#{number}"
+      text = public_send(question_attribute)
+      next if text.blank?
+
+      ExtraQuestion.new(text: text, answer: public_send(answer_attribute), question_attribute: question_attribute, answer_attribute: answer_attribute)
+    end
   end
 
-  def extra_answer(num)
-    (answer = read_attribute("extra_answer_#{num}".to_sym)) && answer.present? ? answer : nil
+  def populate_extra_questions_from_chapter
+    return self if persisted? || chapter.nil? || extra_questions_array.any?
+
+    questions = extra_question_numbers.filter_map { |number| chapter["extra_question_#{number}"].presence }
+    questions.each_with_index do |question, index|
+      self["extra_question_#{index + 1}"] = question
+    end
+    self
   end
 
   def hide!(reason, user)
@@ -226,6 +240,10 @@ class Project < ApplicationRecord
   end
 
   private
+
+  def extra_question_numbers
+    1..Chapter::EXTRA_QUESTIONS_COUNT
+  end
 
   def parse_and_sanitize_client_data(client_data_json)
     return {} unless client_data_json.present?
