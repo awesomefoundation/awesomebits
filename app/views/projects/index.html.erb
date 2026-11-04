@@ -72,7 +72,7 @@
   </p>
 
   <%= render @projects %>
-  <%= will_paginate(@projects) %>
+  <%= will_paginate(@projects, params: {chapter_id: @chapter.to_param}) %>
 </section>
 
 <% content_for :javascript do %>
