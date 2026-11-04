@@ -12,6 +12,11 @@ describe ProjectMailer, :type => :mailer do
       # mail.body.to_s but not mail.body.encoded
       expect(mail.body.to_s).to include(Chapter::DEFAULT_SUBMISSION_RESPONSE_EMAIL)
     end
+
+    it 'includes saved question-answer pairs even when earlier slots are empty' do
+      project.update!(extra_question_3: "Saved question?", extra_answer_3: "Saved answer")
+      expect(mail.body.to_s).to include("Saved question?:\nSaved answer")
+    end
   end
 
   describe 'in a chapter with a custom email response' do

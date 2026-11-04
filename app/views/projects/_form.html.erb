@@ -1,15 +1,6 @@
 <%= hidden_field_tag :mode, params[:mode] %>
 
-<% if embed? %>
-  <%= form.input :chapter_id, as: :hidden %>
-<% else %>
-  <div class="project-section chapter-select">
-    <%= form.input :chapter_id, collection: Chapter.select_data(@project.new_record? ? :active : :all, include_any: Chapter.any_chapter.active?), prompt: t(".prompt"), as: :grouped_select, group_method: :chapters, group_label_method: :name, label_method: :name %>
-  </div>
-<% end %>
-
-<div class="intro-text hidden">
-</div>
+<%= render "application_intro", project: project %>
 
 <div class="personal-info">
   <%= form.input :name %>
@@ -22,7 +13,7 @@
   <%= form.input :title, :maxlength => 50 %>
   <%= form.input :url, :as => :string %>
 </div>
-<div class="descriptions">
+<div class="descriptions" data-controller="character-count" data-action="input->character-count#update">
   <%= form.input :about_project, :maxlength => 2000, :input_html => { :class => "project-desc" }, :disabled => !form.object.new_record? %>
   <div class="chars_left">
     You have <span id="project_about_project_chars_left">2000</span> chars left
@@ -39,16 +30,9 @@
 
 <%= render partial: "image_upload", locals: { form: form } %>
 
-<div class="extra-questions" style="display:none">
-  <%= form.input :extra_question_1, :as => :hidden, :wrapper_html => {:class => "extra-question"}  %>
-  <%= form.input :extra_question_2, :as => :hidden, :wrapper_html => {:class => "extra-question"}  %>
-  <%= form.input :extra_question_3, :as => :hidden, :wrapper_html => {:class => "extra-question"}  %>
-  <%= form.input :extra_answer_1, :wrapper_html => {:class => "extra-answer"} %>
-  <%= form.input :extra_answer_2, :wrapper_html => {:class => "extra-answer"} %>
-  <%= form.input :extra_answer_3, :wrapper_html => {:class => "extra-answer"} %>
-</div>
+<%= render "application_questions", project: project %>
 
-<% if current_user.can_edit_project?(project) %>
+<% if project.persisted? && current_user.can_edit_project?(project) %>
   <a name="winner"></a>
 
   <%= render partial: "funded_date", locals: { form: form } %>
@@ -58,25 +42,6 @@
   </div>
 
   <%= form.input :rss_feed_url, :as => :string %>
-<% end %>
-
-<% content_for :javascript do %>
-  <%= javascript_tag do %>
-    $(window).load(function(){
-      // Update the remaining character counts on pageload
-      $('#project_about_me').keydown();
-      $('#project_about_project').keydown();
-      $('#project_use_for_money').keydown();
-    });
-
-    var extra_questions = {
-    <% Chapter.all.each do |chapter| %>
-      "<%= chapter.id %>": {
-        "questions": <%= extra_questions_json(chapter) %>,
-        "intro": "<%= escape_javascript(markdown(chapter.application_intro)) %>"
-      },
-    <% end %>}
-  <% end %>
 <% end %>
 
 <% content_for :javascript do %>

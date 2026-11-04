@@ -206,6 +206,9 @@ en:
       i-just-applied-tweet: I just applied for a grant from %{twitter}!
     form:
       prompt: "- Select -"
+      continue: Continue to application
+      chapter-load-error: Could not load this chapter’s questions. Your previous chapter is still selected. Please try again.
+      chapter-needs-js: To change chapters while keeping your application, enable JavaScript. Otherwise, open the application page again to choose another chapter.
       save: Save
       image-notes: Upload up to 5 images that will help the trustees better understand your project. If you get an error message, please try again with a smaller file.
       use-classic-uploader: Switch to the classic uploader

@@ -1,0 +1,38 @@
+<%= simple_form_for project, url: new_submission_path, method: :get, html: {
+  id: "chapter-picker",
+  data: {
+    turbo: project.chapter.present? || project.errors.any?,
+    turbo_stream: true,
+    chapter_selection_target: "picker",
+    action: %w[
+      change->chapter-selection#submit
+      turbo:submit-start->chapter-selection#start
+      turbo:before-fetch-response->chapter-selection#response
+      turbo:fetch-request-error->chapter-selection#failed
+    ].join(" ")
+  }
+} do |form| %>
+  <div class="<%= class_names("chapter-select", "project-section": project.chapter.present? || project.errors.any?) %>">
+    <%= form.input :chapter_id,
+      collection: grouped_chapter_options_for(project),
+      prompt: (t("projects.form.prompt") unless project.chapter),
+      include_blank: false,
+      as: :grouped_select,
+      group_method: :chapters,
+      group_label_method: :name,
+      label_method: :name,
+      value_method: :slug,
+      selected: project.chapter&.slug,
+      input_html: {
+        name: "chapter", required: true, disabled: project.chapter.present?,
+        data: { chapter_selection_target: "select" }
+      } %>
+    <% unless project.chapter %>
+      <%= submit_tag t("projects.form.continue") %>
+    <% end %>
+    <p role="alert" data-chapter-selection-target="error" data-message="<%= t("projects.form.chapter-load-error") %>" hidden></p>
+    <% if project.chapter %>
+      <noscript><p><%= t("projects.form.chapter-needs-js") %></p></noscript>
+    <% end %>
+  </div>
+<% end %>

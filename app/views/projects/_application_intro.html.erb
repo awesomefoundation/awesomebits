@@ -1,0 +1,3 @@
+<div id="application-chapter-intro" class="<%= class_names("intro-text", hidden: project.chapter&.application_intro.blank?) %>">
+  <%= markdown(project.chapter.application_intro) if project.chapter&.application_intro.present? %>
+</div>

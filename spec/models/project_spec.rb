@@ -13,6 +13,59 @@ describe Project do
   it { is_expected.to have_many(:users).through(:votes) }
   it { is_expected.to have_many(:photos) }
 
+  describe '#extra_questions_array' do
+    it 'only reads object attributes without filling chapter defaults' do
+      project = Project.new(chapter: Chapter.new(extra_question_1: "New chapter question?"))
+
+      expect(project.extra_questions_array).to be_empty
+      expect(project.extra_question_1).to be_nil
+    end
+
+    it 'preserves question-answer pairs and field names across gaps, including unanswered questions' do
+      project = Project.new(extra_question_1: "First?", extra_answer_1: "First answer", extra_answer_2: "Answer without question", extra_question_3: "Third?")
+
+      questions = project.extra_questions_array
+
+      expect(questions.map { |question| [question.text, question.answer] }).to eq([["First?", "First answer"], ["Third?", nil]])
+      expect(questions.last.question_attribute).to eq(:extra_question_3)
+      expect(questions.last.answer_attribute).to eq(:extra_answer_3)
+    end
+  end
+
+  describe '#populate_extra_questions_from_chapter' do
+    it 'does not add questions to a persisted project that has no saved questions' do
+      project = FactoryBot.create(:project, chapter: FactoryBot.create(:chapter, extra_question_1: "Added later?"))
+
+      project.populate_extra_questions_from_chapter
+
+      expect(project.extra_questions_array).to be_empty
+      expect(project.extra_question_1).to be_nil
+    end
+
+    it 'uses current chapter questions in order when no questions were saved' do
+      chapter = Chapter.new(extra_question_1: "", extra_question_2: "Second?", extra_question_3: "Third?")
+      project = Project.new(chapter: chapter, extra_answer_2: "Keep this answer")
+
+      expect(project.populate_extra_questions_from_chapter).to eq(project)
+      expect(project.extra_questions_array.map(&:text)).to eq(["Second?", "Third?"])
+      expect(project.extra_answer_2).to eq("Keep this answer")
+    end
+
+    it 'does not mix current questions into a saved question set with gaps' do
+      project = Project.new(chapter: Chapter.new(extra_question_1: "New question?"), extra_question_3: "Original question?", extra_answer_3: "Original answer")
+
+      project.populate_extra_questions_from_chapter
+
+      expect(project.extra_question_1).to be_nil
+      expect(project.extra_questions_array.map { |question| [question.text, question.answer] }).to eq([["Original question?", "Original answer"]])
+    end
+
+    it 'leaves a project without a chapter unchanged' do
+      project = Project.new
+      expect(project.populate_extra_questions_from_chapter.extra_questions_array).to be_empty
+    end
+  end
+
   context '#chapter_name' do
     let(:chapter) { FactoryBot.create :chapter, :name => 'Test chapter' }
     let(:project) { FactoryBot.create :project, :chapter => chapter }

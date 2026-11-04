@@ -206,6 +206,9 @@ nl:
       i-just-applied-tweet: Ik heb zojuist een subsidie aangevraagd bij %{twitter}!
     form:
       prompt: "- Selecteer -"
+      continue: "Doorgaan naar het aanvraagformulier"
+      chapter-load-error: "De vragen van dit chapter konden niet worden geladen. Je vorige chapter is nog geselecteerd. Probeer het opnieuw."
+      chapter-needs-js: "Schakel JavaScript in om van chapter te wisselen zonder je aanvraag te verliezen. Open anders de aanvraagpagina opnieuw om een ander chapter te kiezen."
       save: Opslaan
       image-notes: Upload tot 5 afbeeldingen die de trustees helpen je project beter te begrijpen. Als je een foutmelding krijgt, probeer het dan opnieuw met een kleiner bestand.
       use-classic-uploader: Schakel over naar de klassieke uploader

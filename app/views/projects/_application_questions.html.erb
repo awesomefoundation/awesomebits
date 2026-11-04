@@ -1,0 +1,12 @@
+<% questions = project.extra_questions_array %>
+<div id="application-chapter-questions" class="<%= class_names("extra-questions", hidden: questions.empty?) %>">
+  <%= simple_fields_for project do |form| %>
+    <% if project.new_record? %>
+      <%= hidden_field_tag :chapter, project.chapter&.slug, data: { chapter_selection_target: "chapter" } %>
+    <% end %>
+    <% questions.each do |question| %>
+      <%= form.hidden_field question.question_attribute %>
+      <%= form.input question.answer_attribute, label: question.text, required: false, wrapper_html: { class: "extra-answer" } %>
+    <% end %>
+  <% end %>
+</div>

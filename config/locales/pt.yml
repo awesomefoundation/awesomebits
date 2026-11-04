@@ -167,6 +167,9 @@ pt:
       i-just-applied-tweet: Acabo de me inscrever em um edital de %{twitter}!
     form:
       prompt: "- Selecione -"
+      continue: "Continuar para a inscrição"
+      chapter-load-error: "Não foi possível carregar as perguntas deste capítulo. O capítulo anterior continua selecionado. Tente novamente."
+      chapter-needs-js: "Para mudar de capítulo sem perder os dados da inscrição, ative o JavaScript. Caso contrário, abra novamente a página de candidatura para escolher outro capítulo."
       save: Salvar
       image-notes: A primeira imagem é usada como imagem de capa. As imagens serão redimensionadas para %{dimensions} pixels. Se você receber uma mensagem de erro, por favor tente novamente com menos arquivos ou arquivos menores.
       use-classic-uploader: Troque para o upload clássico
