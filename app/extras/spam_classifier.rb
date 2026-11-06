@@ -67,6 +67,11 @@ class SpamClassifier
       self.score += @config.weight_identical_fields
     end
 
+    if blocked_email?
+      self.signals << "email_blocklist"
+      self.score = [score, @config.threshold].max
+    end
+
     analysis
   end
 
@@ -82,6 +87,15 @@ class SpamClassifier
   end
 
   private
+
+  def blocked_email?
+    return false if @config.email_block_pattern.blank? || @project.email.blank?
+
+    Regexp.new(@config.email_block_pattern, Regexp::IGNORECASE).match?(@project.email.strip)
+  rescue RegexpError => e
+    Rails.logger.warn "Invalid SPAM_EMAIL_BLOCK_PATTERN: #{e.message}"
+    false
+  end
 
   def all_js_fields_missing?
     js_fields = ["time_on_page_ms", "timezone", "screen_resolution", "form_interactions_count", "keystroke_count", "paste_count"]

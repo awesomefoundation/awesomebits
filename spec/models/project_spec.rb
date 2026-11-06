@@ -476,6 +476,23 @@ describe Project do
       )
     end
   end
+
+  describe 'email blocklist moderation' do
+    it 'saves matching applications as suspected spam with the blocklist signal' do
+      config = SpamConfig.new(email_block_pattern: '@blocked\.example\z', threshold: 2.0)
+      SpamConfig.stubs(:new).returns(config)
+
+      project = FactoryBot.create(:project,
+        email: "applicant@blocked.example",
+        metadata: { "time_on_page_ms" => 30000, "timezone" => "UTC", "referrer" => "https://example.com" })
+      moderation = project.reload.project_moderation
+
+      expect(moderation).to be_suspected
+      expect(moderation).to be_spam
+      expect(moderation.triggered).to include("email_blocklist")
+      expect(moderation.score).to eq(config.threshold)
+    end
+  end
 end
 
 describe Project, 'csv_export' do

@@ -126,6 +126,16 @@ Spam Protection
 
 We implement very basic spam projection on applications. Set the environment variable SPAM_REGEXP to be a `|` separated list of blocked strings which will be rejected at the time of project creation.
 
+To flag applications by email address for spam moderation, set `SPAM_EMAIL_BLOCK_PATTERN` to a Ruby regular expression (without surrounding `/` delimiters). This rule is disabled by default. Matches are case-insensitive and ignore surrounding whitespace in the email. Matching applications are saved and marked as suspected spam, even if their other spam signals fall below the configured threshold.
+
+For example, to flag email addresses at `example.com` or `example.org`, use alternation, escape the dots, and anchor the end with `\z`:
+
+```shell
+SPAM_EMAIL_BLOCK_PATTERN='@(example\.com|example\.org)\z'
+```
+
+Preserve the backslashes when setting the environment variable. Invalid patterns log a warning and leave the other spam classification rules active.
+
 
 Blocklist
 ---------
