@@ -1,6 +1,7 @@
 class SpamConfig < Anyway::Config
   attr_config(
     threshold: 0.85,
+    email_block_pattern: "",
     weight_missing_js_metadata: 0.2,
     weight_short_time_on_page: 0.3,
     weight_no_referrer: 0.2,

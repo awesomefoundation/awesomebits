@@ -7,6 +7,82 @@ describe SpamClassifier do
   let(:classifier) { SpamClassifier.new(project) }
 
   describe "#analyze!" do
+    context "with an email block pattern" do
+      let(:project) { FactoryBot.build(:project, email: "applicant@blocked.example", metadata: metadata) }
+      let(:metadata) { { "time_on_page_ms" => 30000, "timezone" => "UTC", "referrer" => "https://example.com" } }
+      let(:pattern) { '@blocked\.example\z' }
+      let!(:config) { SpamConfig.new(email_block_pattern: pattern, threshold: 2.0) }
+
+      before { SpamConfig.stubs(:new).returns(config) }
+
+      it "forces otherwise legitimate applications above the configured threshold" do
+        classifier.analyze!
+
+        expect(classifier.signals).to eq(["email_blocklist"])
+        expect(classifier.score).to eq(config.threshold)
+        expect(classifier.suspected_spam?).to be true
+      end
+
+      it "matches case-insensitively and ignores surrounding whitespace" do
+        project.email = "  Applicant@BLOCKED.EXAMPLE \t"
+        classifier.analyze!
+
+        expect(classifier.signals).to include("email_blocklist")
+      end
+
+      it "does not match lookalike domains or suffixes" do
+        ["applicant@blockedXexample", "applicant@blocked.example.org", "applicant@sub.blocked.example", "applicant@example.com"].each do |email|
+          project.email = email
+          classifier.analyze!
+
+          expect(classifier.signals).not_to include("email_blocklist")
+          expect(classifier.suspected_spam?).to be false
+        end
+      end
+
+      it "skips missing and blank email addresses" do
+        [nil, "", "  "].each do |email|
+          project.email = email
+          classifier.analyze!
+
+          expect(classifier.signals).to be_empty
+        end
+      end
+
+      it "retains other signals and does not reduce a higher score" do
+        config.threshold = 0.1
+        project.metadata["user_agent"] = "bot"
+        classifier.analyze!
+
+        expect(classifier.signals).to include("suspicious_user_agent", "email_blocklist")
+        expect(classifier.score).to eq(config.weight_suspicious_user_agent)
+      end
+
+      context "when the pattern is blank" do
+        let(:pattern) { "" }
+
+        it "leaves ordinary classification unchanged" do
+          classifier.analyze!
+
+          expect(classifier.signals).to be_empty
+          expect(classifier.suspected_spam?).to be false
+        end
+      end
+
+      context "when the pattern is invalid" do
+        let(:pattern) { "[" }
+
+        it "logs a warning and continues ordinary classification" do
+          Rails.logger.expects(:warn).with(regexp_matches(/Invalid SPAM_EMAIL_BLOCK_PATTERN/))
+          project.metadata["user_agent"] = "bot"
+          classifier.analyze!
+
+          expect(classifier.signals).to eq(["suspicious_user_agent"])
+          expect(classifier.score).to eq(config.weight_suspicious_user_agent)
+        end
+      end
+    end
+
     context "with missing JS metadata" do
       let(:metadata) { {} }
 
