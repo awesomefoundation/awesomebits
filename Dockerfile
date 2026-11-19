@@ -1,4 +1,4 @@
-FROM ruby:3.3.6-alpine
+FROM ruby:3.3.14-alpine
 
 RUN apk update && \
     apk upgrade && \
